@@ -14,6 +14,12 @@ plugins {
 }
 
 dependencies {
+    commonMainApi(projects.mppLibrary.feature.auth)
+//    commonMainApi(project(":mpp-library:core:data:network"))
+//    commonMainApi(project(":mpp-library:core:data:storage"))
+
+    commonMainImplementation("io.insert-koin:koin-core:3.1.4")
+
     commonMainImplementation(libs.coroutines)
 
     commonMainImplementation(libs.kotlinSerialization)
@@ -22,8 +28,6 @@ dependencies {
 
     androidMainImplementation(libs.multidex)
     androidMainImplementation(libs.lifecycleViewModel)
-
-    commonMainApi(projects.mppLibrary.feature.auth)
 
     commonMainApi(libs.multiplatformSettings)
     commonMainApi(libs.napier)
@@ -47,6 +51,13 @@ dependencies {
     commonTestImplementation(libs.mokoUnitsTest)
     commonTestImplementation(libs.multiplatformSettingsTest)
     commonTestImplementation(libs.ktorClientMock)
+
+    val composeVersion = "1.3.0-alpha01"
+    androidMainImplementation("androidx.compose.animation:animation:$composeVersion")
+    androidMainImplementation("androidx.compose.foundation:foundation:$composeVersion")
+    androidMainImplementation("androidx.compose.material:material:$composeVersion")
+    androidMainImplementation("androidx.compose.runtime:runtime:$composeVersion")
+    androidMainImplementation("androidx.compose.ui:ui:$composeVersion")
 }
 
 multiplatformResources {
@@ -60,6 +71,7 @@ framework {
     export(libs.napier)
     export(libs.mokoParcelize)
     export(libs.mokoResources)
+    export(libs.mokoGraphics)
     export(libs.mokoMvvmCore)
     export(libs.mokoMvvmLiveData)
     export(libs.mokoMvvmState)
@@ -77,8 +89,8 @@ cocoaPods {
     pod("MCRCDynamicProxy", onlyLink = true)
 }
 
-mokoNetwork {
-    spec("serverApi") {
-        inputSpec = file("src/api/openapi.yml")
-    }
-}
+//mokoNetwork {
+//    spec("serverApi") {
+//        inputSpec = file("src/api/openapi.yml")
+//    }
+//}
