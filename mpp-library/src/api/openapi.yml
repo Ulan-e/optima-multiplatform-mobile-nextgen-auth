@@ -1,0 +1,464 @@
+openapi: 3.0.0
+info:
+  title: 'Mobile API'
+  version: 0.1.0
+paths:
+  /v1/auth/signin:
+    post:
+      tags:
+        - Auth
+      summary: SignIn by email and password
+      operationId: 'signIn'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignInRequest'
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SigninResponse'
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/auth/refresh:
+    post:
+      tags:
+        - Auth
+      summary: Refresh JWT token
+      operationId: 'refreshToken'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SigninResponse'
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/auth/restore-password:
+    post:
+      tags:
+        - Auth
+      summary: 'Request restore password (1st step).'
+      operationId: 'restorePassword'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailRequest'
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: 'Validation failed'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+    put:
+      tags:
+        - Auth
+      summary: 'Change restore password (3rd step).'
+      operationId: 'changeRestorePassword'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeRestorePasswordRequest'
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: 'Validation failed'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+  /v1/auth/restore-password/{token}:
+    post:
+      tags:
+        - Auth
+      summary: 'Restore password confirm (2nd step).'
+      operationId: 'restorePasswordConfirm'
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmationTokenResponse'
+        '422':
+          description: 'Validation failed'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+  /v1/auth/logout:
+    post:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - Auth
+      summary: 'Logout from system'
+      operationId: 'logout'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogoutRequest'
+      responses:
+        '200':
+          description: 'Ok'
+        '422':
+          description: 'Validation failed'
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/auth/signup:
+    post:
+      tags:
+        - Auth
+      summary: Create user
+      operationId: 'signup'
+      requestBody:
+        description: |
+          Content-Type: multipart/form-data; boundary=boundary
+
+          --boundary
+          Content-Disposition: form-data; name="signup"
+
+            {
+              "firstName": "Andrey",
+              "lastName": "Kim",
+              "middleName": "Vladimirovich",
+              "phone": "71111111111",
+              "email": "test23@email.com",
+              "password": "mypassword",
+              "passwordRepeat": "mypassword",
+              "post": "CEO",
+              "countryId": 10,
+              "cityId": 11
+            }
+          --boundary
+          Content-Disposition: form-data; name="avatar"; filename="avatar.png";
+
+          < ./avatar.png
+
+          --boundary--
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                signup:
+                  $ref: '#/components/schemas/SignupRequest'
+                avatar:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '422':
+          description: 'Validation error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Response:
+      description: 'Basic response'
+      required:
+        - status
+        - message
+        - timestamp
+        - success
+      properties:
+        status:
+          description: Http status code
+          type: integer
+        message:
+          description: Response message
+          type: string
+        timestamp:
+          description: Response timestamp
+          type: number
+        success:
+          description: Response status
+          type: boolean
+      type: object
+    ResponseList:
+      description: 'Basic response list'
+      required:
+        - status
+        - message
+        - timestamp
+        - success
+        - totalCount
+      properties:
+        status:
+          description: Http status code
+          type: integer
+        message:
+          description: Response message
+          type: string
+        timestamp:
+          description: Response timestamp
+          type: number
+        success:
+          description: Response status
+          type: boolean
+        totalCount:
+          description: Response totlal list count
+          type: integer
+      type: object
+    ErrorResponse:
+      description: 'Error response'
+      allOf:
+        - $ref: '#/components/schemas/Response'
+        - type: object
+          properties:
+            success:
+              type: boolean
+              default: false
+    ValidationErrorResponse:
+      description: 'Validation Error Response'
+      allOf:
+        - $ref: '#/components/schemas/ResponseList'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/ErrorDetail'
+      type: object
+    ErrorDetail:
+      description: 'Error detail'
+      required:
+        - message
+        - code
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: integer
+          description: Error code
+      type: object
+    SigninResponse:
+      description: 'SigninResponse'
+      allOf:
+        - $ref: '#/components/schemas/Response'
+        - type: object
+          properties:
+            data:
+              type: object
+              required:
+                - accessToken
+                - refreshToken
+              properties:
+                accessToken:
+                  type: string
+                  description: JWT access token
+                refreshToken:
+                  type: string
+                  description: JWT refresh token
+    SignInRequest:
+      description: 'SignInRequest'
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    LogoutRequest:
+      description: 'LogoutRequest'
+      properties:
+        refreshToken:
+          description: $refreshToken
+          type: string
+      type: object
+    RefreshRequest:
+      properties:
+        refreshToken:
+          type: string
+    EmailRequest:
+      description: 'PhoneRequest'
+      required:
+        - email
+      properties:
+        email:
+          description: E-mail address
+          type: string
+      type: object
+    ChangeRestorePasswordRequest:
+      description: 'ChangePasswordRequest'
+      required:
+        - confirmationToken
+        - password
+        - passwordRepeat
+      properties:
+        confirmationToken:
+          description: Password
+          type: string
+        password:
+          description: Password
+          type: string
+        passwordRepeat:
+          description: Repeat password
+          type: string
+      type: object
+    ConfirmationTokenResponse:
+      description: 'ConfirmationTokenResponse'
+      allOf:
+        - $ref: '#/components/schemas/Response'
+        - type: object
+          properties:
+            data:
+              type: object
+              required:
+                - confirmationToken
+              properties:
+                confirmationToken:
+                  description: Confirmation token
+                  type: string
+      type: object
+    SignupRequest:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - phone
+        - email
+        - password
+        - passwordRepeat
+        - countryId
+        - cityId
+        - company
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+        phone:
+          type: string
+          example: 79999999999
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+        passwordRepeat:
+          type: string
+          format: password
+        post:
+          type: string
+        countryId:
+          type: integer
+        cityId:
+          type: integer
+        company:
+          type: string
+        interests:
+          type: string
+    User:
+      type: object
+      required:
+        - id
+        - role
+        - firstName
+        - lastName
+        - phone
+        - email
+        - pushNotification
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        role:
+          type: string
+          enum: [ ORGANIZATOR, SPEAKER, VISITOR ]
+        lastName:
+          type: string
+        middleName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        company:
+          type: string
+        post:
+          type: string
+        countryId:
+          type: integer
+        countryName:
+          type: string
+        cityId:
+          type: integer
+        cityName:
+          type: string
+        avatar:
+          type: string
+          description: URL
+        interests:
+          type: string
+        pushNotification:
+          type: boolean
+        hasUnreadAnnouncements:
+          type: boolean
+        newGatheringCount:
+          type: integer
+          description: Count of new not approved/declined gathering (SPEAKER role only is not null)

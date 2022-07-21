@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="@style/Theme.AppCompat.DayNight">
+        <!-- Base App Style -->
+    </style>
+
+    <style name="AppTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Splash Style -->
+        <!-- <item name="android:windowBackground">@drawable/screen_launch</item> -->
+    </style>
+</resources>

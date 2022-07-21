@@ -1,0 +1,109 @@
+# ВСЕ GLOBAL VARIABLES ИЗ GITLAB-CI.YAML И ДРУГИХ ФАЙЛОВ ОТ КОТОРЫХ ОН ЗАВИСИТ, ДОЛЖНЫ БЫТЬ ДОБАВЛЕНЫ В ПЕРЕМЕННЫЕ СРЕДЫ BITBUCKET PIPELINES
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          runs-on:
+            - self.hosted
+            - macos
+          script:
+            - git submodule update --init
+            - (cd ios-app && pod install)
+            - ./fastcheck.sh
+            - cd ios-app
+            - pod install
+            - set -o pipefail && xcodebuild -scheme ${IOS_SCHEME_DEV} -workspace ios-app.xcworkspace -configuration dev-debug -sdk iphonesimulator -arch x86_64 build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO | xcpretty
+
+  tags:
+    build/ios/dev/*:
+      - step:
+          name: Build iOS dev app
+          runs-on:
+            - self.hosted
+            - macos
+          script:
+            - git submodule update --init
+            
+            - export BUILD_APP_IDENTIFIER=$IOS_BUNDLEID_DEV
+            - export BUILD_SCHEME=$IOS_SCHEME_DEV
+
+            - ./build_ios.sh
+          artifacts:
+            - dist/**
+      - step:
+          name: Deploy to Firebase
+          runs-on:
+            - self.hosted
+            - macos
+          script:
+            - export BUILD_APP_IDENTIFIER=$IOS_BUNDLEID_DEV
+            - export BUILD_SCHEME=$IOS_SCHEME_DEV
+            - export BUILD_EXPORT_METHOD='development'
+            - export FIREBASE_APP_ID=$FIREBASE_APP_ID_IOS_DEV
+
+            - ./deploy_ios_to_firebase.sh
+          artifacts:
+            paths:
+              - dist/**
+              
+    build/ios/test/*:
+      - step:
+          name: Build iOS test app
+          runs-on:
+            - self.hosted
+            - macos
+          script:
+            - git submodule update --init
+            
+            - export BUILD_APP_IDENTIFIER=$IOS_BUNDLEID_TEST
+            - export BUILD_SCHEME=$IOS_SCHEME_TEST
+
+            - ./build_ios.sh
+          artifacts:
+            - dist/**
+      - step:
+          name: Deploy to Firebase
+          runs-on:
+            - self.hosted
+            - macos
+          script:
+            - export BUILD_APP_IDENTIFIER=$IOS_BUNDLEID_TEST
+            - export BUILD_SCHEME=$IOS_SCHEME_TEST
+            - export BUILD_EXPORT_METHOD='development'
+            - export FIREBASE_APP_ID=$FIREBASE_APP_ID_IOS_TEST
+
+            - ./deploy_ios_to_firebase.sh
+          artifacts:
+            paths:
+              - dist/**
+    build/ios/prod/*:
+      - step:
+          name: Build iOS prod app
+          runs-on:
+            - self.hosted
+            - macos
+          script:
+            - git submodule update --init
+            
+            - export BUILD_APP_IDENTIFIER=$IOS_BUNDLEID_PROD
+            - export BUILD_SCHEME=$IOS_SCHEME_PROD
+
+            - ./build_ios.sh
+          artifacts:
+            - dist/**
+      - step:
+          name: Deploy to Firebase
+          runs-on:
+            - self.hosted
+            - macos
+          script:
+            - export BUILD_APP_IDENTIFIER=$IOS_BUNDLEID_PROD
+            - export BUILD_SCHEME=$IOS_SCHEME_PROD
+            - export BUILD_EXPORT_METHOD='development'
+            - export FIREBASE_APP_ID=$FIREBASE_APP_ID_IOS_PROD
+
+            - ./deploy_ios_to_firebase.sh
+          artifacts:
+            paths:
+              - dist/**

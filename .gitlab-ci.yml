@@ -1,0 +1,349 @@
+include:
+  - 'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.common.yml'
+  - 'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.ios.yml'
+  - 'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.android.yml'
+  - /testlab.yml
+
+stages:
+  - check
+  - build
+  - deploy
+
+variables:
+  extends: .global_variables
+  BUILD_CRASHLYTICS_TEST_GROUPS: "icerock-testers"
+
+  # iOS-config
+  IOS_BUNDLEID_DEV: "dev.icerock.boilerplate.dev"
+  IOS_SCHEME_DEV: "ios-app-dev"
+  FIREBASE_APP_ID_IOS_DEV: "1:509592578403:ios:26cef826ef428a21ffcb56"
+
+  IOS_BUNDLEID_STAGE: "dev.icerock.boilerplate.stage"
+  IOS_SCHEME_STAGE: "ios-app-stage"
+  FIREBASE_APP_ID_IOS_STAGE: "1:509592578403:ios:c35eb1a9dd27087effcb56"
+
+  IOS_BUNDLEID_PROD: "dev.icerock.boilerplate"
+  IOS_SCHEME_PROD: "ios-app-prod"
+  FIREBASE_APP_ID_IOS_PROD: "1:509592578403:ios:eda143962ef96913ffcb56"
+
+  # Android-config
+  FIREBASE_APP_ID_ANDROID_DEV: "1:509592578403:android:de36668b13f6af77ffcb56"
+  FIREBASE_APP_ID_ANDROID_STAGE: "1:509592578403:android:0cc17adab53556c6ffcb56"
+  FIREBASE_APP_ID_ANDROID_PROD: "1:509592578403:android:bd25d2fbf3fb70bbffcb56"
+
+.ios_dev_pre_script: &ios_dev_pre_script
+  PRE_SCRIPT: >
+    export MATCH_GIT_BRANCH=$MATCH_GIT_BRANCH_DEV &&
+    export FASTLANE_TEAM_ID=$FASTLANE_TEAM_ID_DEV
+
+.ios_prod_pre_script: &ios_prod_pre_script
+  PRE_SCRIPT: >
+    export MATCH_GIT_BRANCH=$MATCH_GIT_BRANCH_PROD &&
+    export FASTLANE_TEAM_ID=$FASTLANE_TEAM_ID_PROD
+
+.ios_stage_pre_script: &ios_stage_pre_script
+  PRE_SCRIPT: >
+    export MATCH_GIT_BRANCH=$MATCH_GIT_BRANCH_STAGE &&
+    export FASTLANE_TEAM_ID=$FASTLANE_TEAM_ID_STAGE
+
+build ios dev:
+  extends: .build_ios_mpp
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_DEV
+    BUILD_SCHEME: $IOS_SCHEME_DEV
+    <<: *ios_dev_pre_script
+  except:
+    - branches
+  only:
+    - /^build/ios/dev/[0-9]*$/
+
+# remove dot if you want firebase deploy
+.deploy ios to dev firebase:
+  extends: .deploy_ios_mpp_firebase
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_DEV
+    BUILD_SCHEME: $IOS_SCHEME_DEV
+    BUILD_EXPORT_METHOD: 'enterprise'
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_IOS_DEV
+    <<: *ios_dev_pre_script
+  environment:
+    name: firebase ios dev
+  except:
+    - branches
+  only:
+    - /^build/ios/dev/[0-9]*$/
+
+deploy ios to dev gitlab:
+  extends: .deploy_ios_mpp_gitlab
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_DEV
+    BUILD_SCHEME: $IOS_SCHEME_DEV
+    BUILD_EXPORT_METHOD: 'enterprise'
+    <<: *ios_dev_pre_script
+  environment:
+    name: gitlab ios dev
+  except:
+    - branches
+  only:
+    - /^build/ios/dev/[0-9]*$/
+
+build ios stage:
+  extends: .build_ios_mpp
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_STAGE
+    BUILD_SCHEME: $IOS_SCHEME_STAGE
+    <<: *ios_stage_pre_script
+  except:
+    - branches
+  only:
+    - /^build/ios/stage/[0-9]*$/
+
+# remove dot if you want firebase deploy
+.deploy ios to stage firebase:
+  extends: .deploy_ios_mpp_firebase
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_STAGE
+    BUILD_SCHEME: $IOS_SCHEME_STAGE
+    BUILD_EXPORT_METHOD: 'enterprise'
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_IOS_STAGE
+    <<: *ios_stage_pre_script
+  environment:
+    name: firebase ios stage
+  except:
+    - branches
+  only:
+    - /^build/ios/stage/[0-9]*$/
+
+deploy ios to stage gitlab:
+  extends: .deploy_ios_mpp_gitlab
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_STAGE
+    BUILD_SCHEME: $IOS_SCHEME_STAGE
+    BUILD_EXPORT_METHOD: 'enterprise'
+    <<: *ios_stage_pre_script
+  environment:
+    name: gitlab ios stage
+  except:
+    - branches
+  only:
+    - /^build/ios/stage/[0-9]*$/
+
+build ios prod:
+  extends: .build_ios_mpp
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_PROD
+    BUILD_SCHEME: $IOS_SCHEME_PROD
+    <<: *ios_prod_pre_script
+  except:
+    - branches
+  only:
+    - /^build/ios/prod/[0-9]*$/
+
+# remove dot if you want firebase deploy
+.deploy ios to prod firebase:
+  extends: .deploy_ios_mpp_firebase
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_PROD
+    BUILD_SCHEME: $IOS_SCHEME_PROD
+    BUILD_EXPORT_METHOD: 'ad-hoc'
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_IOS_PROD
+    <<: *ios_prod_pre_script
+  environment:
+    name: firebase ios prod
+  except:
+    - branches
+  only:
+    - /^build/ios/prod/[0-9]*$/
+
+deploy ios to prod gitlab:
+  extends: .deploy_ios_mpp_gitlab
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_PROD
+    BUILD_SCHEME: $IOS_SCHEME_PROD
+    BUILD_EXPORT_METHOD: 'ad-hoc'
+    <<: *ios_prod_pre_script
+  environment:
+    name: gitlab ios prod
+  except:
+    - branches
+  only:
+    - /^build/ios/prod/[0-9]*$/
+
+build ios prod appstore:
+  extends: .build_ios_mpp
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_PROD
+    BUILD_SCHEME: $IOS_SCHEME_PROD
+    <<: *ios_prod_pre_script
+    IS_APPSTORE: "true"
+  except:
+    - branches
+  only:
+    - /^build/ios/appstore/[0-9]*$/
+
+deploy ios to prod appstore:
+  extends: .deploy_ios_mpp_appstore
+  variables:
+    BUILD_APP_IDENTIFIER: $IOS_BUNDLEID_PROD
+    BUILD_SCHEME: $IOS_SCHEME_PROD
+    BUILD_EXPORT_METHOD: 'app-store'
+    <<: *ios_prod_pre_script
+  environment:
+    name: appstore ios prod
+  when: manual
+  except:
+    - branches
+  only:
+    - /^build/ios/appstore/[0-9]*$/
+
+build android dev:
+  extends: .build_android
+  variables:
+    ASSEMBLE_TASK: :android-app:assembleDevRelease :android-app:bundleDevRelease
+    ARTIFACT_APK: android-app/build/outputs/apk/dev/release/android-app-dev-release.apk
+    ARTIFACT_AAB: android-app/build/outputs/bundle/devRelease/android-app-dev-release.aab
+  except:
+    - branches
+  only:
+    - /^build/android/dev/[0-9]*$/
+
+build android stage:
+  extends: .build_android
+  variables:
+    ASSEMBLE_TASK: :android-app:assembleStageRelease :android-app:bundleStageRelease
+    ARTIFACT_APK: android-app/build/outputs/apk/stage/release/android-app-stage-release.apk
+    ARTIFACT_AAB: android-app/build/outputs/bundle/stageRelease/android-app-stage-release.aab
+  except:
+    - branches
+  only:
+    - /^build/android/stage/[0-9]*$/
+
+build android prod:
+  extends: .build_android
+  variables:
+    ASSEMBLE_TASK: :android-app:assembleProdRelease :android-app:bundleProdRelease
+    ARTIFACT_APK: android-app/build/outputs/apk/prod/release/android-app-prod-release.apk
+    ARTIFACT_AAB: android-app/build/outputs/bundle/prodRelease/android-app-prod-release.aab
+  except:
+    - branches
+  only:
+    - /^build/android/prod/[0-9]*$/
+
+# remove dot if you want firebase deploy
+.deploy android dev to firebase:
+  extends: .deploy_android_firebase
+  variables:
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_ANDROID_DEV
+  environment:
+    name: firebase android dev
+  except:
+    - branches
+  only:
+    - /^build/android/dev/[0-9]*$/
+
+deploy android dev to gitlab:
+  extends: .deploy_android_gitlab
+  environment:
+    name: gitlab android dev
+  except:
+    - branches
+  only:
+    - /^build/android/dev/[0-9]*$/
+
+# remove dot to enable Fireabase Testlab for Android (setup of service account required!)
+.deploy testlab dev:
+  extends: .deploy_android_firebase_test_lab
+  variables:
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_ANDROID_DEV
+  environment:
+    name: firebase android dev test lab
+  except:
+    - branches
+  only:
+    - /^build/android/dev/[0-9]*$/
+
+# remove dot if you want firebase deploy
+.deploy android stage to firebase:
+  extends: .deploy_android_firebase
+  variables:
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_ANDROID_STAGE
+  environment:
+    name: firebase android stage
+  except:
+    - branches
+  only:
+    - /^build/android/stage/[0-9]*$/
+
+deploy android stage to gitlab:
+  extends: .deploy_android_gitlab
+  environment:
+    name: gitlab android stage
+  except:
+    - branches
+  only:
+    - /^build/android/stage/[0-9]*$/
+
+# remove dot to enable Fireabase Testlab for Android (setup of service account required!)
+.deploy testlab stage:
+  extends: .deploy_android_firebase_test_lab
+  variables:
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_ANDROID_STAGE
+  environment:
+    name: firebase android dev test lab
+  except:
+    - branches
+  only:
+    - /^build/android/stage/[0-9]*$/
+
+# remove dot if you want firebase deploy
+.deploy android prod to firebase:
+  extends: .deploy_android_firebase
+  variables:
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_ANDROID_PROD
+  environment:
+    name: firebase android prod
+  except:
+    - branches
+  only:
+    - /^build/android/prod/[0-9]*$/
+
+deploy android prod to gitlab:
+  extends: .deploy_android_gitlab
+  environment:
+    name: gitlab android prod
+  except:
+    - branches
+  only:
+    - /^build/android/prod/[0-9]*$/
+
+# remove dot to enable Fireabase Testlab for Android (setup of service account required!)
+.deploy testlab prod:
+  extends: .deploy_android_firebase_test_lab
+  variables:
+    FIREBASE_APP_ID: $FIREBASE_APP_ID_ANDROID_PROD
+  environment:
+    name: firebase android dev test lab
+  except:
+    - branches
+  only:
+    - /^build/android/prod/[0-9]*$/
+
+tests:
+  stage: check
+  script:
+    - (cd ios-app && pod install)
+    - ./fastcheck.sh
+    - cd ios-app
+    - pod install
+    - set -o pipefail && xcodebuild -scheme ${IOS_SCHEME_DEV} -workspace ios-app.xcworkspace -configuration dev-debug -sdk iphonesimulator -arch x86_64 build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO | xcpretty
+  artifacts:
+    when: always
+    reports:
+      junit: "**/test-results/**/TEST-*.xml"
+  only:
+    - merge_requests
+  tags:
+    - gradle
+    - android
+    - osx
+    - xcode

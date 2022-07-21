@@ -1,0 +1,226 @@
+{
+  "project_info": {
+    "project_number": "509592578403",
+    "project_id": "moko-boilerplate",
+    "storage_bucket": "moko-boilerplate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509592578403:android:bd25d2fbf3fb70bbffcb56",
+        "android_client_info": {
+          "package_name": "dev.icerock.boilerplate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHilf320oWZ8MeF8W16Te1DEIiKs-JhpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509592578403-23koipmdaq1rveqjf0pdbl8o0i8ps1ub.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.icerock.boilerplate.stage.debug"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509592578403:android:3c467ea252a27962ffcb56",
+        "android_client_info": {
+          "package_name": "dev.icerock.boilerplate.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHilf320oWZ8MeF8W16Te1DEIiKs-JhpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509592578403-23koipmdaq1rveqjf0pdbl8o0i8ps1ub.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.icerock.boilerplate.stage.debug"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509592578403:android:de36668b13f6af77ffcb56",
+        "android_client_info": {
+          "package_name": "dev.icerock.boilerplate.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHilf320oWZ8MeF8W16Te1DEIiKs-JhpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509592578403-23koipmdaq1rveqjf0pdbl8o0i8ps1ub.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.icerock.boilerplate.stage.debug"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509592578403:android:26dca6eb31769127ffcb56",
+        "android_client_info": {
+          "package_name": "dev.icerock.boilerplate.dev.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHilf320oWZ8MeF8W16Te1DEIiKs-JhpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509592578403-23koipmdaq1rveqjf0pdbl8o0i8ps1ub.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.icerock.boilerplate.stage.debug"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509592578403:android:0cc17adab53556c6ffcb56",
+        "android_client_info": {
+          "package_name": "dev.icerock.boilerplate.stage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHilf320oWZ8MeF8W16Te1DEIiKs-JhpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509592578403-23koipmdaq1rveqjf0pdbl8o0i8ps1ub.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.icerock.boilerplate.stage.debug"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509592578403:android:5b25d973e6862949ffcb56",
+        "android_client_info": {
+          "package_name": "dev.icerock.boilerplate.stage.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHilf320oWZ8MeF8W16Te1DEIiKs-JhpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509592578403-3forrr6o5b5rulbtoelu8sj5v4vebpcu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509592578403-23koipmdaq1rveqjf0pdbl8o0i8ps1ub.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.icerock.boilerplate.stage.debug"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

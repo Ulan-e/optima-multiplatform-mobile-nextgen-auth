@@ -1,0 +1,6 @@
+// add "prod" params
+PRODUCT_BUNDLE_IDENTIFIER = dev.icerock.boilerplate
+PROVISIONING_PROFILE_SPECIFIER = $(sigh_dev.icerock.boilerplate_development_profile-name)
+// $() is hack to pass // in value
+SERVER_ENDPOINT = https:/$()/localhost/
+BUNDLE_DISPLAY_NAME = MOKO app

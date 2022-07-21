@@ -1,0 +1,13 @@
+variables:
+  FIREBASE_PROJECT_ID: "ucar-test-lab"
+  TEST_DEVICE_NAME: "Nexus6"
+  TEST_DEVICE_VERSION: 21
+  TEST_TIMEOUT: "600s"
+  TEST_DEVICE_OPTIONS: >
+    click:actionConfirmCode=,
+    text:edit_code=6518,
+    text:edit_phone=0001042875,
+    ignore:button_step=,
+    ignore:chat_btn=,
+    ignore:call_btn=,
+    ignore:iv_send='
