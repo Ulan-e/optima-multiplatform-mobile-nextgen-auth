@@ -89,8 +89,8 @@ cocoaPods {
     pod("MCRCDynamicProxy", onlyLink = true)
 }
 
-//mokoNetwork {
-//    spec("serverApi") {
-//        inputSpec = file("src/api/openapi.yml")
-//    }
-//}
+mokoNetwork {
+    spec("serverApi") {
+        inputSpec = file("src/api/openapi.yml")
+    }
+}

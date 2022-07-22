@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>$(BUNDLE_DISPLAY_NAME)</string>
+	<string>Optima.kg</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,6 +20,13 @@
 	<string>0.1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>Environment</key>
+	<dict>
+		<key>serverBaseUrl</key>
+		<string>$(SERVER_ENDPOINT)</string>
+	</dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -45,12 +52,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-    <key>Environment</key>
-    <dict>
-        <key>serverBaseUrl</key>
-        <string>$(SERVER_ENDPOINT)</string>
-    </dict>
 </dict>
 </plist>

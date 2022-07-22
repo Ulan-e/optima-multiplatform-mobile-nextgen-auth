@@ -7,7 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.github.aakira.napier.Antilog
 import kg.optima.mobile.BuildConfig
-//import kg.optima.mobile.SharedFactory
+import kg.optima.mobile.SharedFactory
 import javax.inject.Singleton
 
 /**
@@ -16,14 +16,14 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object SharedFactoryModule {
-//    @Provides
-//    @Singleton
-//    fun provideMultiplatformFactory(
-//        settings: Settings,
-//        antilog: Antilog,
-//    ): SharedFactory = SharedFactory(
-//        settings = settings,
-//        antilog = antilog,
-//        baseUrl = BuildConfig.BASE_URL
-//    )
+    @Provides
+    @Singleton
+    fun provideMultiplatformFactory(
+        settings: Settings,
+        antilog: Antilog,
+    ): SharedFactory = SharedFactory(
+        settings = settings,
+        antilog = antilog,
+        baseUrl = BuildConfig.BASE_URL
+    )
 }
