@@ -2,7 +2,7 @@ package kg.optima.mobile.resources
 
 import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.getImageByFileName
-import org.example.library.MR
+import kg.optima.mobile.MR
 
 public object Images {
 	/**

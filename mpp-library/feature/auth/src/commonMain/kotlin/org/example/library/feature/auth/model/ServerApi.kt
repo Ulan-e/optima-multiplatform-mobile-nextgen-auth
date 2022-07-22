@@ -1,4 +1,4 @@
-package org.example.library.feature.auth.model
+package kg.optima.mobile.feature.auth.model
 
 interface ServerApi {
     suspend fun login(login: String, password: String)

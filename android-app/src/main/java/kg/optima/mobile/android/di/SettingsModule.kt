@@ -1,4 +1,4 @@
-package org.example.app.di
+package kg.optima.mobile.di
 
 import android.content.Context
 import com.russhwolf.settings.AndroidSettings

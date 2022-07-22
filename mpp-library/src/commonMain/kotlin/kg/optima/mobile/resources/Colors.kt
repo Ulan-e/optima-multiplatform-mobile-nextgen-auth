@@ -1,7 +1,7 @@
 package kg.optima.mobile.resources
 
 import dev.icerock.moko.resources.ColorResource
-import org.example.library.MR
+import kg.optima.mobile.MR
 
 public object Colors {
 	/**

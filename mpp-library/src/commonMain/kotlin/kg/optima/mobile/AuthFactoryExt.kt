@@ -1,10 +1,10 @@
-package org.example.library
+package kg.optima.mobile
 
 import dev.icerock.moko.errors.handler.ExceptionHandler
 //import dev.icerock.moko.network.generated.apis.AuthApi
 //import dev.icerock.moko.network.generated.models.SignInRequest
-import org.example.library.feature.auth.di.AuthFactory
-import org.example.library.feature.auth.model.ServerApi
+import kg.optima.mobile.feature.auth.di.AuthFactory
+import kg.optima.mobile.feature.auth.model.ServerApi
 
 internal fun AuthFactory(
     createExceptionHandler: () -> ExceptionHandler,

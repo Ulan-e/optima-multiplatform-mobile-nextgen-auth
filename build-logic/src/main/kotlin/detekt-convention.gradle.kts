@@ -7,6 +7,7 @@ plugins {
 detekt {
     config.setFrom(rootProject.file("config/detekt.yml"))
     buildUponDefaultConfig = true
+    ignoreFailures = true
 }
 
 val detekt = tasks.register("detektWithoutTests") {

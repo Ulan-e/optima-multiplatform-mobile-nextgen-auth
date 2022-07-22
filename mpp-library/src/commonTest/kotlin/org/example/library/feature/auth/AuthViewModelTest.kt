@@ -1,4 +1,4 @@
-package org.example.library.feature.auth
+package kg.optima.mobile.feature.auth
 
 import dev.icerock.moko.mvvm.test.TestViewModelScopeRule
 import dev.icerock.moko.mvvm.test.createTestEventsDispatcher
@@ -8,9 +8,9 @@ import io.ktor.client.engine.mock.MockRequestHandler
 import io.ktor.client.engine.mock.respondBadRequest
 import io.ktor.client.engine.mock.respondOk
 import io.ktor.client.request.forms.FormDataContent
-import org.example.library.createSharedFactory
-import org.example.library.feature.auth.di.AuthFactory
-import org.example.library.feature.auth.presentation.AuthViewModel
+import kg.optima.mobile.createSharedFactory
+import kg.optima.mobile.feature.auth.di.AuthFactory
+import kg.optima.mobile.feature.auth.presentation.AuthViewModel
 import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals

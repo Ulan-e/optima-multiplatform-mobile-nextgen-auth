@@ -1,4 +1,4 @@
-package org.example.library
+package kg.optima.mobile
 
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.nullableString

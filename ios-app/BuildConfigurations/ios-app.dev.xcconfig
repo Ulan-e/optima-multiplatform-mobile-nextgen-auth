@@ -1,6 +1,6 @@
 // add "dev" params
-PRODUCT_BUNDLE_IDENTIFIER = dev.icerock.boilerplate.dev
-PROVISIONING_PROFILE_SPECIFIER = $(sigh_dev.icerock.boilerplate.dev_development_profile-name)
+PRODUCT_BUNDLE_IDENTIFIER = kg.optima.mobile.dev
+PROVISIONING_PROFILE_SPECIFIER = $(sigh_kg.optima.mobile.dev_development_profile-name)
 // $() is hack to pass // in value
 SERVER_ENDPOINT = https:/$()/dev.localhost/
 BUNDLE_DISPLAY_NAME = MOKO app (D)

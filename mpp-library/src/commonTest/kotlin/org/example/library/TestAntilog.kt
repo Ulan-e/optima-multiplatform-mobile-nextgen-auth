@@ -2,7 +2,7 @@
  * Copyright 2021 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-package org.example.library
+package kg.optima.mobile
 
 import io.github.aakira.napier.Antilog
 import io.github.aakira.napier.LogLevel

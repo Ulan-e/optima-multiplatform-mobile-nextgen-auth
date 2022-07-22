@@ -14,15 +14,15 @@ variables:
   BUILD_CRASHLYTICS_TEST_GROUPS: "icerock-testers"
 
   # iOS-config
-  IOS_BUNDLEID_DEV: "dev.icerock.boilerplate.dev"
+  IOS_BUNDLEID_DEV: "kg.optima.mobile.dev"
   IOS_SCHEME_DEV: "ios-app-dev"
   FIREBASE_APP_ID_IOS_DEV: "1:509592578403:ios:26cef826ef428a21ffcb56"
 
-  IOS_BUNDLEID_STAGE: "dev.icerock.boilerplate.stage"
+  IOS_BUNDLEID_STAGE: "kg.optima.mobile.stage"
   IOS_SCHEME_STAGE: "ios-app-stage"
   FIREBASE_APP_ID_IOS_STAGE: "1:509592578403:ios:c35eb1a9dd27087effcb56"
 
-  IOS_BUNDLEID_PROD: "dev.icerock.boilerplate"
+  IOS_BUNDLEID_PROD: "kg.optima.mobile"
   IOS_SCHEME_PROD: "ios-app-prod"
   FIREBASE_APP_ID_IOS_PROD: "1:509592578403:ios:eda143962ef96913ffcb56"
 

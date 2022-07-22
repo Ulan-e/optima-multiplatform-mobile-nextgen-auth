@@ -1,4 +1,4 @@
-package org.example.library
+package kg.optima.mobile
 
 import dev.icerock.moko.network.exceptionfactory.HttpExceptionFactory
 import dev.icerock.moko.network.exceptionfactory.parser.ErrorExceptionParser

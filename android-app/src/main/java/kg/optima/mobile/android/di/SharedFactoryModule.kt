@@ -1,4 +1,4 @@
-package org.example.app.di
+package kg.optima.mobile.di
 
 import com.russhwolf.settings.Settings
 import dagger.Module
@@ -6,8 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.github.aakira.napier.Antilog
-import org.example.app.BuildConfig
-//import org.example.library.SharedFactory
+import kg.optima.mobile.BuildConfig
+//import kg.optima.mobile.SharedFactory
 import javax.inject.Singleton
 
 /**

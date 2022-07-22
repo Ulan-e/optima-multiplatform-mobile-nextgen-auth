@@ -33,9 +33,9 @@
 		363BA6BFAA3FA87230445070 /* Pods_ios_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		451D7B19235845B100095112 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		45964D362282A1FD00C16658 /* mpp-library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "mpp-library"; path = "../mpp-library"; sourceTree = "<group>"; };
-		45D8D7F426FB248400DD3A58 /* GoogleService-Info-dev.icerock.boilerplate.dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.icerock.boilerplate.dev.plist"; sourceTree = "<group>"; };
-		45D8D7F526FB248400DD3A58 /* GoogleService-Info-dev.icerock.boilerplate.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.icerock.boilerplate.plist"; sourceTree = "<group>"; };
-		45D8D7F626FB248400DD3A58 /* GoogleService-Info-dev.icerock.boilerplate.stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.icerock.boilerplate.stage.plist"; sourceTree = "<group>"; };
+		45D8D7F426FB248400DD3A58 /* GoogleService-Info-kg.optima.mobile.dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-kg.optima.mobile.dev.plist"; sourceTree = "<group>"; };
+		45D8D7F526FB248400DD3A58 /* GoogleService-Info-kg.optima.mobile.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-kg.optima.mobile.plist"; sourceTree = "<group>"; };
+		45D8D7F626FB248400DD3A58 /* GoogleService-Info-kg.optima.mobile.stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-kg.optima.mobile.stage.plist"; sourceTree = "<group>"; };
 		45D8D7F926FB24AE00DD3A58 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		45F47913219463C7003D25FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45F47915219463C7003D25FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,9 +106,9 @@
 		0E5748052660B2E800C9BCDB /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				45D8D7F426FB248400DD3A58 /* GoogleService-Info-dev.icerock.boilerplate.dev.plist */,
-				45D8D7F526FB248400DD3A58 /* GoogleService-Info-dev.icerock.boilerplate.plist */,
-				45D8D7F626FB248400DD3A58 /* GoogleService-Info-dev.icerock.boilerplate.stage.plist */,
+				45D8D7F426FB248400DD3A58 /* GoogleService-Info-kg.optima.mobile.dev.plist */,
+				45D8D7F526FB248400DD3A58 /* GoogleService-Info-kg.optima.mobile.plist */,
+				45D8D7F626FB248400DD3A58 /* GoogleService-Info-kg.optima.mobile.stage.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";

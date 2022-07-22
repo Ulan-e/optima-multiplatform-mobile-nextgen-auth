@@ -15,8 +15,8 @@ plugins {
 
 dependencies {
     commonMainApi(projects.mppLibrary.feature.auth)
-//    commonMainApi(project(":mpp-library:core:data:network"))
-//    commonMainApi(project(":mpp-library:core:data:storage"))
+    commonMainApi(project(":mpp-library:core:data:network"))
+    commonMainApi(project(":mpp-library:core:data:storage"))
 
     commonMainImplementation("io.insert-koin:koin-core:3.1.4")
 
@@ -61,7 +61,7 @@ dependencies {
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "org.example.library"
+    multiplatformResourcesPackage = "kg.optima.mobile"
 }
 
 framework {

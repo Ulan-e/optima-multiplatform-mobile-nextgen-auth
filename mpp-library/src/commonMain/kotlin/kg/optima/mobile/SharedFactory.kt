@@ -2,7 +2,7 @@
 // * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
 // */
 //
-//package org.example.library
+//package kg.optima.mobile
 //
 //import com.russhwolf.settings.Settings
 //import dev.icerock.moko.crashreporting.crashlytics.CrashlyticsLogger
@@ -33,7 +33,7 @@
 //import io.ktor.client.features.logging.Logging
 //import io.ktor.http.HttpStatusCode
 //import kotlinx.serialization.json.Json
-//import org.example.library.feature.auth.di.AuthFactory
+//import kg.optima.mobile.feature.auth.di.AuthFactory
 //
 //class SharedFactory(
 //    settings: Settings,
