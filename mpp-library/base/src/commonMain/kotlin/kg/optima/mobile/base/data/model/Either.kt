@@ -15,9 +15,9 @@
  */
 package kg.optima.mobile.base.data.model
 
-import kg.optima.mobile.network.failure.Failure
 import kg.optima.mobile.base.data.model.Either.Left
 import kg.optima.mobile.base.data.model.Either.Right
+import kg.optima.mobile.core.error.Failure
 
 /**
  * Represents a value of one of two possible types (a disjoint union).

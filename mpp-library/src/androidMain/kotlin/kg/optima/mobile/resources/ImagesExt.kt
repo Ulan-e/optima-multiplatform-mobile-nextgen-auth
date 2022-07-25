@@ -1,11 +1,8 @@
 package kg.optima.mobile.resources
 
 import dev.icerock.moko.resources.ImageResource
+import kg.optima.mobile.R
 
-public fun ImageResource?.resId(default: Int): Int {
+fun ImageResource?.resId(default: Int = R.drawable.img_placeholder): Int {
 	return this?.drawableResId ?: default
-}
-
-public fun ImageResource?.resId(): Int? {
-	return this?.drawableResId
 }

@@ -83,6 +83,7 @@ ktorClient = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientVer
 ktorClientLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClientVersion" }
 ktorClientOkHttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktorClientVersion" }
 ktorClientMock = { module = "io.ktor:ktor-client-mock", version.ref = "ktorClientVersion" }
+ktorClientSerialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktorClientVersion" }
 
 # moko
 mokoResources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesVersion" }

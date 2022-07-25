@@ -1,4 +1,4 @@
-package kg.optima.mobile.di
+package kg.optima.mobile.android.di
 
 import dagger.Module
 import dagger.Provides

@@ -2,6 +2,7 @@ package kg.optima.mobile.design_system.android.ui.buttons
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
@@ -16,7 +17,7 @@ import kg.optima.mobile.resources.Headings
 
 @Composable
 fun SecondaryButton(
-	modifier: Modifier = Modifier,
+	modifier: Modifier = Modifier.height(Deps.buttonHeight),
 	enabled: Boolean = true,
 	text: String,
 	fontSize: Headings = Headings.H4,

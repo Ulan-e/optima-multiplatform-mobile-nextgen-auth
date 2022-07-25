@@ -26,15 +26,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(":mpp-library:core"))
+
                 implementation("io.insert-koin:koin-core:3.1.4")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
 
-//                val ktorVersion = "2.0.3"
-//                implementation("io.ktor:ktor-client-cio:$ktorVersion")
-//                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-//                implementation("io.ktor:ktor-client-core:$ktorVersion")
-//                implementation("io.ktor:ktor-client-logging:$ktorVersion")
-//                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation(libs.ktorClient)
+                implementation(libs.ktorClientLogging)
+                implementation(libs.ktorClientSerialization)
 
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
             }
@@ -78,4 +77,7 @@ android {
         minSdk = 21
         targetSdk = 32
     }
+}
+dependencies {
+    implementation(project(mapOf("path" to ":mpp-library:core")))
 }

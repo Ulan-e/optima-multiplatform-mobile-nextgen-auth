@@ -1,6 +1,6 @@
 //package kg.optima.mobile.network.client.ext
 //
-//import io.ktor.client.plugins.websocket.*
+//import io.ktor.client.features.websocket.*
 //import io.ktor.http.*
 //import kg.optima.mobile.network.client.NetworkClient
 //

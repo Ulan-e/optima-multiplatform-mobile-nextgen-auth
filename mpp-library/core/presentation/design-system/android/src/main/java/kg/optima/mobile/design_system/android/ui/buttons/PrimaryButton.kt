@@ -1,6 +1,7 @@
 package kg.optima.mobile.design_system.android.ui.buttons
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -24,13 +25,12 @@ fun PrimaryButton(
 	onClick: () -> Unit = {}
 ) = Button(
 	modifier = modifier
-		.background(
-			color = Color.Companion.Transparent,
-			shape = RoundedCornerShape(Deps.buttonCornerRadius * 2)
-		),
+		.height(Deps.buttonHeight)
+		.background(color = Color.Companion.Transparent),
+	shape = RoundedCornerShape(Deps.buttonCornerRadius),
 	colors = ButtonDefaults.buttonColors(
 		backgroundColor = ComposeColors.primaryRed,
-		disabledBackgroundColor = ComposeColors.primaryDisabledGrey,
+		disabledBackgroundColor = ComposeColors.primaryDisabledGray,
 	),
 	onClick = onClick,
 	enabled = enabled,

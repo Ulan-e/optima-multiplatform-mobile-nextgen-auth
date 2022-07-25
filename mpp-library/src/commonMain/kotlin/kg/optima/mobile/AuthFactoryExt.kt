@@ -9,7 +9,7 @@ import kg.optima.mobile.feature.auth.model.ServerApi
 internal fun AuthFactory(
     createExceptionHandler: () -> ExceptionHandler,
     authApi: AuthApi
-) = AuthFactory(
+): AuthFactory = AuthFactory(
     createExceptionHandler = createExceptionHandler,
     serverApi = object : ServerApi {
         override suspend fun login(login: String, password: String) {

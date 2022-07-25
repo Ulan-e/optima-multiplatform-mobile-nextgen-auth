@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    kotlin("plugin.serialization")
 }
 
 version = "1.0"
@@ -24,9 +25,15 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(":mpp-library:core"))
+
                 implementation("io.insert-koin:koin-core:3.1.4")
+
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+
                 implementation("com.russhwolf:multiplatform-settings-no-arg:0.8.1")
+
+                implementation("co.touchlab:stately-concurrency:1.2.0")
             }
         }
         val commonTest by getting {

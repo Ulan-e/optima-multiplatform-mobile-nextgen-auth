@@ -1,26 +1,25 @@
 package kg.optima.mobile.base.domain
 
-import kg.optima.mobile.network.failure.BaseFailure
-import kg.optima.mobile.network.failure.Failure
 import kg.optima.mobile.base.data.model.Either
+import kg.optima.mobile.core.error.Failure
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 
-abstract class BaseUseCase<in Params, out Type> where Type : Any {
+abstract class BaseUseCase<in Model, out Result> where Result : Any {
 
-   abstract suspend fun execute(params: Params, scope: CoroutineScope): Either<Failure, Type>
+   abstract suspend fun execute(model: Model, scope: CoroutineScope): Either<Failure, Result>
 
    open suspend operator fun invoke(
 	  scope: CoroutineScope,
-	  params: Params,
-   ): Either<Failure, Type> {
+	  params: Model,
+   ): Either<Failure, Result> {
 	  val deferred = scope.async { execute(params, this) }
 	  return withContext(scope.coroutineContext) {
 		 try {
 			deferred.await()
 		 } catch (e: Exception) {
-			Either.Left(BaseFailure.UseCaseError)
+			Either.Left(Failure.UseCaseError)
 		 }
 	  }
    }

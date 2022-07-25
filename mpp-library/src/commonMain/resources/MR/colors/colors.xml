@@ -3,10 +3,10 @@
 	<!-- Primary -->
 	<color name="red">#E21D26</color>
 	<color name="black">#404040</color>
-	<color name="grey">#90929C</color>
-	<color name="lightGrey">#F2F2F7</color>
+	<color name="gray">#90929C</color>
+	<color name="lightGray">#F2F2F7</color>
 	<color name="white">#FAFAFA</color>
-	<color name="disabledGrey">#404040</color>
+	<color name="disabledGray">#404040</color>
 
 	<!-- Secondary -->
 	<color name="systemBlue">#007AFF</color>
@@ -15,4 +15,5 @@
 	<color name="green">#00A873</color>
 	<color name="light">#F6F6F7</color>
 	<color name="dark">#6B6B6C</color>
+	<color name="descriptionGray">#999BA3</color>
 </resources>

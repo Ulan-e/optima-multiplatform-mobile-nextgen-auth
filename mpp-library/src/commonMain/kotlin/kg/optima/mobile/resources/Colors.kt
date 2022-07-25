@@ -3,20 +3,21 @@ package kg.optima.mobile.resources
 import dev.icerock.moko.resources.ColorResource
 import kg.optima.mobile.MR
 
-public object Colors {
+object Colors {
 	/**
 	 * Primary
 	 **/
-	public val PrimaryRed: ColorResource.Single = MR.colors.red
-	public val PrimaryBlack: ColorResource.Single = MR.colors.black
-	public val PrimaryGrey: ColorResource.Single = MR.colors.grey
-	public val PrimaryLightGrey: ColorResource.Single = MR.colors.lightGrey
-	public val PrimaryWhite: ColorResource.Single = MR.colors.white
-	public val PrimaryDisabledGrey: ColorResource.Single = MR.colors.disabledGrey
+	val PrimaryRed: ColorResource.Single = MR.colors.red
+	val PrimaryBlack: ColorResource.Single = MR.colors.black
+	val PrimaryGray: ColorResource.Single = MR.colors.gray
+	val PrimaryLightGray: ColorResource.Single = MR.colors.lightGray
+	val PrimaryWhite: ColorResource.Single = MR.colors.white
+	val PrimaryDisabledGray: ColorResource.Single = MR.colors.disabledGray
 
 	/**
 	 * Secondary
 	 **/
-	public val SecondaryOrange: ColorResource.Single = MR.colors.orange
-	public val SecondarySystemGreen: ColorResource.Single = MR.colors.systemGreen
+	val SecondaryOrange: ColorResource.Single = MR.colors.orange
+	val SecondarySystemGreen: ColorResource.Single = MR.colors.systemGreen
+	val SecondaryDescriptionGray:  ColorResource.Single = MR.colors.descriptionGray
 }

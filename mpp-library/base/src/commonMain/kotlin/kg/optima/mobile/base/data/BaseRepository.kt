@@ -1,13 +1,12 @@
 package kg.optima.mobile.base.data
 
-import kg.optima.mobile.network.failure.BaseFailure
-import kg.optima.mobile.network.failure.Failure
 import kg.optima.mobile.base.data.model.Either
+import kg.optima.mobile.core.error.Failure
 
 /**
  * Базовый класс для запросов в сеть и в локал
  */
-abstract class BaseRepository {
+abstract class BaseDataSource {
 
     companion object {
         val STATUS_OK = 200..299
@@ -25,23 +24,23 @@ abstract class BaseRepository {
     ): Either<Failure, R> =
         try {
             Either.Right(mapResponse(call.invoke()))
-        } catch (response: BaseFailure.ClientRequestException) {
-            Either.Left(BaseFailure.ClientRequestException)
-        } catch (exception: BaseFailure.SocketTimeoutException) {
-            Either.Left(BaseFailure.SocketTimeoutException)
+        } catch (response: Failure.ClientRequestException) {
+            Either.Left(Failure.ClientRequestException)
+        } catch (exception: Failure.SocketTimeoutException) {
+            Either.Left(Failure.SocketTimeoutException)
         } catch (ex: Failure) {
             Either.Left(ex)
         }
 
-    protected inline fun <reified T : Any> apiCall(
+    protected inline fun <reified T : Any?> apiCall(
         call: () -> T,
     ): Either<Failure, T> =
         try {
             Either.Right(call.invoke())
-        } catch (response: BaseFailure.ClientRequestException) {
-            Either.Left(BaseFailure.ClientRequestException)
-        } catch (exception: BaseFailure.SocketTimeoutException) {
-            Either.Left(BaseFailure.SocketTimeoutException)
+        } catch (response: Failure.ClientRequestException) {
+            Either.Left(Failure.ClientRequestException)
+        } catch (exception: Failure.SocketTimeoutException) {
+            Either.Left(Failure.SocketTimeoutException)
         } catch (ex: Failure) {
             Either.Left(ex)
         }
@@ -64,4 +63,5 @@ abstract class BaseRepository {
         } catch (ex: Failure) {
             Either.Left(ex)
         }
+
 }

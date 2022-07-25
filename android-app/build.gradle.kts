@@ -63,6 +63,7 @@ dependencies {
     implementation(projects.mppLibrary)
 
     implementation(project(":mpp-library:base")) // needed to use feature modules, remove when state machine will be done
+    implementation(project(":mpp-library:core"))
     implementation(project(":mpp-library:core:presentation:design-system:android"))
     implementation(project(":mpp-library:core:presentation:decompose"))
     implementation(project(":mpp-library:feature:auth"))
