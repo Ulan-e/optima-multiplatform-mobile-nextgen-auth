@@ -5,6 +5,7 @@ import org.gradle.api.internal.artifacts.DefaultModuleVersionSelector
 
 plugins {
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
+    id("dev.icerock.moko.kswift") version "0.5.0"
 }
 
 buildscript {

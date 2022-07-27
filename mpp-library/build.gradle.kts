@@ -1,16 +1,17 @@
-/*
- * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
+
+import dev.icerock.moko.kswift.plugin.feature.SealedToSwiftEnumFeature
 
 plugins {
     id("multiplatform-library-convention")
     id("detekt-convention")
+    id("kotlinx-serialization")
+    id("kotlin-parcelize")
+
     id("dev.icerock.mobile.multiplatform-resources")
     id("dev.icerock.mobile.multiplatform.ios-framework")
     id("dev.icerock.mobile.multiplatform-network-generator")
-    id("kotlinx-serialization")
-    id("kotlin-parcelize")
     id("dev.icerock.mobile.multiplatform.cocoapods")
+    id("dev.icerock.moko.kswift")
 }
 
 dependencies {
@@ -65,8 +66,15 @@ multiplatformResources {
     multiplatformResourcesPackage = "kg.optima.mobile"
 }
 
+val modules = listOf(
+    projects.mppLibrary.base,
+    projects.mppLibrary.core,
+    projects.mppLibrary.core.presentation.designSystem.ios,
+    projects.mppLibrary.feature.auth,
+)
+
 framework {
-    export(projects.mppLibrary.feature.auth)
+    modules.forEach { export(it) }
 
     export(libs.multiplatformSettings)
     export(libs.napier)
@@ -94,4 +102,8 @@ mokoNetwork {
     spec("serverApi") {
         inputSpec = file("src/api/openapi.yml")
     }
+}
+
+kswift {
+    install(SealedToSwiftEnumFeature)
 }
