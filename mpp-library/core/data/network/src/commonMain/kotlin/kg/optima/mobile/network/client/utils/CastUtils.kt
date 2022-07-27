@@ -3,7 +3,7 @@ package kg.optima.mobile.network.client.utils
 /**
 * Don`t use, not safety
 * */
-private fun <T> Any.cast(): T {
+fun <T> Any.cast(): T {
    return this as T
 }
 

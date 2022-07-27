@@ -16,7 +16,7 @@ import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.auth.presentation.login.LoginFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
-import kg.optima.mobile.base.presentation.Status
+import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
 import kg.optima.mobile.design_system.android.values.Deps
@@ -31,20 +31,15 @@ fun MainScreen() {
 	val intentHandler: LoginIntentHandler = LoginFactory.intentHandler
 
 	val state by stateMachine.state.collectAsState(initial = null)
-	val status by stateMachine.status.collectAsState(initial = Status.HIDE_LOADING)
 
 	when (state) {
-		is LoginStateMachine.LoginState -> {
-			Log.d("MainScreen", "Success")
-		}
+		is LoginStateMachine.LoginState ->
+			Log.d("MainScreen", "Success State")
+		is StateMachine.State.Loading ->
+			Log.d("MainScreen", "Loading State")
+		is StateMachine.State.Error ->
+			Log.d("MainScreen", "Error State")
 		null -> Unit
-	}
-
-	when (status) {
-		Status.SHOW_LOADING -> Log.d("MainScreen", "ShowLoading")
-		Status.HIDE_LOADING -> Log.d("MainScreen", "HideLoading")
-		Status.ERROR -> Log.d("MainScreen", "Error")
-		else -> Unit
 	}
 
 	Column(

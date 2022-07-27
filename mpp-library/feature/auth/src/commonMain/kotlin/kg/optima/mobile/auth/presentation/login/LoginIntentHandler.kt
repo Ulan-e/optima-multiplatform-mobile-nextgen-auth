@@ -8,7 +8,7 @@ import org.koin.core.component.inject
 
 class LoginIntentHandler(
 	override val stateMachine: LoginStateMachine,
-) : IntentHandler<LoginIntentHandler.LoginIntent, LoginUseCase.Token, LoginStateMachine.LoginState>() {
+) : IntentHandler<LoginIntentHandler.LoginIntent, LoginUseCase.Token>() {
 
 	class LoginIntent(
 		val mobile: String,

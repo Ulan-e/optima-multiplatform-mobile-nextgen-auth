@@ -11,7 +11,7 @@ import org.koin.core.component.KoinComponent
  * [E] - In parameter coming from Domain,
  * [S] - Out parameter sending to StateFlow.
  **/
-abstract class IntentHandler<in I : IntentHandler.Intent, in E, out S : StateMachine.State>(
+abstract class IntentHandler<in I : Intent, in E>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) : KoinComponent {
 
@@ -22,7 +22,7 @@ abstract class IntentHandler<in I : IntentHandler.Intent, in E, out S : StateMac
 		println("StateMachine CoroutineExceptionHandler got $exception")
 	}
 
-	abstract val stateMachine: StateMachine<E, S>
+	abstract val stateMachine: StateMachine<E>
 
 	abstract fun dispatch(intent: I)
 
@@ -30,9 +30,9 @@ abstract class IntentHandler<in I : IntentHandler.Intent, in E, out S : StateMac
 		operation: suspend () -> Either<Failure, E>,
 	): Job {
 		return coroutineScope.launch(handler) {
-			stateMachine.setStatus(Status.SHOW_LOADING)
+			stateMachine.setLoading()
 			operation().fold(
-				fnL = { err -> stateMachine.setError(err) },
+				fnL = { err -> stateMachine.setError(StateMachine.State.Error.BaseError(err.message)) },
 				fnR = { model -> stateMachine.handle(model) }
 			)
 			delay(100)
