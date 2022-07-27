@@ -1,7 +1,7 @@
 package kg.optima.mobile.auth.domain.auth_manager
 
 import kg.optima.mobile.auth.data.component.FeatureAuthComponent
-import kg.optima.mobile.auth.presentation.state.AuthStateMachine
+import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -13,7 +13,7 @@ class AuthManagerImpl : AuthManager, KoinComponent {
         return component.isAuthorized
     }
 
-    val m = AuthStateMachine()
+    val m = LoginStateMachine()
 
     override fun isAuthorized(authorized: () -> Unit, notAuthorized: () -> Unit) {
         if (component.isAuthorized) {

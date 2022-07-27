@@ -15,7 +15,7 @@ import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-internal class AuthViewModelTest : TestCases() {
+internal class AuthenticateViewModelTest : TestCases() {
 
     private val viewModelScopeRule = TestViewModelScopeRule()
 

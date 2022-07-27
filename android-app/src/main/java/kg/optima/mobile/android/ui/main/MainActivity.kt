@@ -28,6 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     @Composable
     private fun Content(coroutineScope: CoroutineScope) {
-        MainScreen(this)
+        MainScreen()
     }
 }

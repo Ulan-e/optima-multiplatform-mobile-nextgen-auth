@@ -6,28 +6,28 @@ import kg.optima.mobile.auth.data.component.FeatureAuthComponent
 import kg.optima.mobile.auth.data.component.FeatureAuthComponentImpl
 import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.auth.data.repository.AuthRepositoryImpl
-import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
-import kg.optima.mobile.auth.presentation.intent.AuthIntentHandler
-import kg.optima.mobile.auth.presentation.state.AuthStateMachine
-//import kg.optima.mobile.auth.domain.AuthUseCase
+import kg.optima.mobile.auth.domain.usecase.LoginUseCase
+import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
+import kg.optima.mobile.auth.presentation.login.LoginStateMachine
+import kg.optima.mobile.base.di.Factory
+import org.koin.core.component.KoinComponent
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object AuthFactory {
-    val module: Module = module {
-        factory<AuthApi> { AuthApiImpl(networkClient = get()) }
-        factory<AuthRepository> { AuthRepositoryImpl(authApi = get()) }
-        factory<FeatureAuthComponent> {
-            FeatureAuthComponentImpl(storageRepository = get(), runtimeCache = get())
-        }
-        factory { AuthStateMachine() }
-        factory { AuthIntentHandler() }
+object AuthFactory : Factory, KoinComponent {
 
-        useCaseFactories
-    }
+	override val module: Module = module {
+		factory<AuthApi> { AuthApiImpl(networkClient = get()) }
+		factory<AuthRepository> { AuthRepositoryImpl(authApi = get()) }
+		factory<FeatureAuthComponent> {
+			FeatureAuthComponentImpl(storageRepository = get(), runtimeCache = get())
+		}
 
-    private val Module.useCaseFactories: Unit
-        get() {
-            factory { LoginUseCase(authRepository = get(), component = get()) }
-        }
+		//UseCases injection
+		factory { LoginUseCase(authRepository = get(), component = get()) }
+
+		// StateMachines and IntentHandlers injection by pair
+		factory { LoginStateMachine() }
+		factory { sm -> LoginIntentHandler(sm.get()) }
+	}
 }

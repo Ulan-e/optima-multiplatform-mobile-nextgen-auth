@@ -1,56 +1,56 @@
 package kg.optima.mobile.base.presentation
 
 import co.touchlab.stately.concurrency.AtomicReference
+import kg.optima.mobile.base.presentation.StateMachine.State
 import kg.optima.mobile.base.presentation.utils.asCommonFlow
-import kg.optima.mobile.core.PlatformViewModel
 import kg.optima.mobile.core.error.Failure
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.*
 
 /**
- * [DomainModel] - In parameter, receiving from UseCase,
- * [State] - Out parameter, sending to StateFlow.
- * */
-abstract class StateMachine<in DomainModel, out State>(
-    coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
-) : PlatformViewModel() {
-    /**
-     * Common state for each screen. Use with sealed classes.
-     */
-    private val _state = MutableSharedFlow<State?>()
-    protected val stateValue: AtomicReference<@UnsafeVariance State?> = AtomicReference(null)
+ * [E] - Entity. In parameter, receiving from Domain,
+ * [S] - State. Out parameter, sending to StateFlow.
+ **/
+abstract class StateMachine<in E, out S : State>(
+	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
+) {
+	protected val stateValue: AtomicReference<@UnsafeVariance S?> = AtomicReference(null)
 
-    /**
-     * for iOS
-     */
-    val state = _state.filterNotNull().asCommonFlow()
+	/**
+	 * Common state for each screen. Use with sealed classes.
+	 */
+	private val _state = MutableSharedFlow<S?>()
+	val state: SharedFlow<S?> = _state
 
-    /**
-     * for Android
-     */
-    val stateFlow = _state.filterNotNull()
+	private val _status = MutableSharedFlow<Status>(1)
+	val status: SharedFlow<Status> get() = _status
 
-    /**
-     * Loading status changing by [StateMachine.launchOperation].
-     */
-    internal val _status = MutableSharedFlow<Status>(1)
-    val status = _status.filterNotNull().asCommonFlow()
+	private val _error = MutableSharedFlow<Failure?>(1)
+	val error = _error.filterNotNull().asCommonFlow()
 
-    // TODO combine status and error
-    private val _error = MutableSharedFlow<Failure?>(1)
-    val error = _error.filterNotNull().asCommonFlow()
+	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
 
-    private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
+	protected fun setState(newState: @UnsafeVariance S?) {
+		coroutineScope.launch(Dispatchers.Main) {
+			stateValue.set(newState)
+			_state.emit(newState)
+			_status.emit(Status.HIDE_LOADING)
+		}
+	}
 
-    internal fun setError(error: String) {
-        _status.tryEmit(Status.HIDE_LOADING)
-        _error.tryEmit(Failure.Message(error))
-    }
+	internal suspend fun setStatus(status: Status) {
+		_status.emit(status)
+	}
 
-    // TODO perform error
-    internal fun setError(failure: Failure) {
-        _status.tryEmit(Status.HIDE_LOADING)
+	internal fun setError(error: String) {
+		_status.tryEmit(Status.HIDE_LOADING)
+		_error.tryEmit(Failure.Message(error))
+	}
+
+	// TODO perform error
+	internal fun setError(failure: Failure) {
+		_status.tryEmit(Status.HIDE_LOADING)
 //        when (failure) {
 //            is BaseFailure.ApiCodeFailure -> TODO()
 //            BaseFailure.ApiDataFailure -> TODO()
@@ -66,15 +66,9 @@ abstract class StateMachine<in DomainModel, out State>(
 //            BaseFailure.UnknownException -> TODO()
 //            BaseFailure.UseCaseError -> TODO()
 //        }
-    }
+	}
 
-    protected fun setState(newState: @UnsafeVariance State) {
-        coroutineScope.launch {
-            stateValue.set(newState)
-            _state.emit(newState)
-        }
-    }
+	abstract fun handle(entity: E)
 
-    abstract fun handle(model: DomainModel)
-
+	interface State
 }

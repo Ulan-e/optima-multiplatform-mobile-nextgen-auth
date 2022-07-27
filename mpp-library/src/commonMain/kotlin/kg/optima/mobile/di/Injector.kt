@@ -5,16 +5,17 @@ import kg.optima.mobile.network.NetworkFactory
 import kg.optima.mobile.storage.StorageFactory
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
+import org.koin.core.module.Module
 import org.koin.dsl.KoinAppDeclaration
 
 object Injector {
 
-	private val commonModules = listOf(
+	private val commonModules: List<Module> = listOf(
 		NetworkFactory.module,
 		StorageFactory.module
 	)
 
-	private val featureModules = listOf(
+	private val featureModules: List<Module> = listOf(
 		AuthFactory.module
 	)
 

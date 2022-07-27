@@ -10,22 +10,22 @@ import org.koin.core.context.loadKoinModules
 
 class OptimaApp : Application() {
 
-	override fun onCreate() {
-		super.onCreate()
-		initFirebase()
-		initDi()
-	}
+    override fun onCreate() {
+        super.onCreate()
+        initFirebase()
+        initDi()
+    }
 
-	private fun initDi() {
-		Injector.initKoin {
-			androidContext(this@OptimaApp)
-			loadKoinModules(listOf())
-		}
-	}
+    private fun initDi() {
+        Injector.initKoin {
+            androidContext(this@OptimaApp)
+            loadKoinModules(listOf())
+        }
+    }
 
-	private fun initFirebase() {
-		FirebaseApp.initializeApp(this)
-		FirebaseCrashlytics.getInstance()
-			.setCrashlyticsCollectionEnabled(BuildConfig.DEBUG.not())
-	}
+    private fun initFirebase() {
+        FirebaseApp.initializeApp(this)
+        FirebaseCrashlytics.getInstance()
+            .setCrashlyticsCollectionEnabled(BuildConfig.DEBUG.not())
+    }
 }

@@ -15,6 +15,7 @@ plugins {
 
 dependencies {
     commonMainApi(projects.mppLibrary.feature.auth)
+    commonMainApi(project(":mpp-library:base"))
     commonMainApi(project(":mpp-library:core:data:network"))
     commonMainApi(project(":mpp-library:core:data:storage"))
 

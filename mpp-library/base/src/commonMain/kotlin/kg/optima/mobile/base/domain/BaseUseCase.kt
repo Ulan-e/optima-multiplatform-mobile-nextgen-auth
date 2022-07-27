@@ -8,13 +8,13 @@ import kotlinx.coroutines.withContext
 
 abstract class BaseUseCase<in Model, out Result> where Result : Any {
 
-   abstract suspend fun execute(model: Model, scope: CoroutineScope): Either<Failure, Result>
+   abstract suspend fun execute(model: Model): Either<Failure, Result>
 
    open suspend operator fun invoke(
 	  scope: CoroutineScope,
 	  params: Model,
    ): Either<Failure, Result> {
-	  val deferred = scope.async { execute(params, this) }
+	  val deferred = scope.async { execute(params) }
 	  return withContext(scope.coroutineContext) {
 		 try {
 			deferred.await()

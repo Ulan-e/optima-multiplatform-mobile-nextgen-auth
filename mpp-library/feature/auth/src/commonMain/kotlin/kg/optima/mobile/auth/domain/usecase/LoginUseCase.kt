@@ -1,15 +1,13 @@
-package kg.optima.mobile.auth.domain.usecase.login
+package kg.optima.mobile.auth.domain.usecase
 
 import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationRequest
 import kg.optima.mobile.auth.data.component.FeatureAuthComponent
 import kg.optima.mobile.auth.data.repository.AuthRepository
-import kg.optima.mobile.auth.domain.AuthModel
-import kg.optima.mobile.auth.domain.usecase.AuthUseCase
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.data.model.onSuccess
+import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.error.Failure
-import kotlinx.coroutines.CoroutineScope
 
 /* TODO
    1. Refactor saving params with throwing errors and handling them.
@@ -18,12 +16,17 @@ import kotlinx.coroutines.CoroutineScope
 class LoginUseCase(
     private val authRepository: AuthRepository,
     private val component: FeatureAuthComponent,
-) : AuthUseCase<LoginUseCase.Params, AuthModel.Token>() {
+) : BaseUseCase<LoginUseCase.Params, LoginUseCase.Token>() {
+
+    class Token(
+        val jwt: String,
+        val refreshToken: String = "",
+        val refreshTokenExp: String = "",
+    )
 
     override suspend fun execute(
         model: Params,
-        scope: CoroutineScope,
-    ): Either<Failure, AuthModel.Token> {
+    ): Either<Failure, Token> {
         val request = UserAuthenticationRequest(
             deviceId = component.deviceId,
             mobile = model.mobile,
@@ -36,7 +39,7 @@ class LoginUseCase(
                 component.isAuthorized = true
             }
             .map {
-                AuthModel.Token(
+                Token(
                     jwt = it?.jwt.orEmpty(),
                     refreshToken = it?.refreshToken.orEmpty(),
                     refreshTokenExp = it?.refreshTokenExp.orEmpty()
