@@ -8,6 +8,7 @@ import io.ktor.client.features.logging.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.utils.io.charsets.*
+import kg.optima.mobile.core.StringMap
 import kg.optima.mobile.network.client.NetworkClient
 import kg.optima.mobile.network.client.NetworkClientImpl
 import kg.optima.mobile.network.failure.NetworkFailure
@@ -39,7 +40,7 @@ fun provideHttpClient(
     kotlinxSerializer: KotlinxSerializer,
     httpLogger: Logger = KtorLogger(),
     networkFailure: NetworkFailure,
-    params: Map<String, String>,
+    params: StringMap,
 ): HttpClient {
     return HttpClient {
         install(JsonFeature) {
@@ -54,6 +55,7 @@ fun provideHttpClient(
         }
         HttpResponseValidator {
             handleResponseException { error ->
+                print(error)
                 when (error) {
                     is ClientRequestException -> {
                         throw getError(error, networkFailure)

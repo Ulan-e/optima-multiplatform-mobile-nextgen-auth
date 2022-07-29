@@ -2,11 +2,10 @@
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-package kg.optima.mobile.android
+package kg.optima.mobile.android.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import kg.optima.mobile.android.ui.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onPostResume() {

@@ -17,7 +17,9 @@ object Colors {
 	/**
 	 * Secondary
 	 **/
+	val SecondaryBackground: ColorResource.Single = MR.colors.background
 	val SecondaryOrange: ColorResource.Single = MR.colors.orange
+	val SecondaryGreen: ColorResource.Single = MR.colors.green
 	val SecondarySystemGreen: ColorResource.Single = MR.colors.systemGreen
 	val SecondaryDescriptionGray:  ColorResource.Single = MR.colors.descriptionGray
 }

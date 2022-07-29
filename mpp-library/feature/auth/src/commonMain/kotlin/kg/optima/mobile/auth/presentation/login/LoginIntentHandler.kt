@@ -1,33 +1,33 @@
 package kg.optima.mobile.auth.presentation.login
 
-import kg.optima.mobile.auth.domain.usecase.LoginUseCase
-import kg.optima.mobile.base.data.model.Either
+import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationResponse
+import kg.optima.mobile.auth.domain.CryptographyUtils
+import kg.optima.mobile.auth.domain.usecase.login.GrantType
+import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.base.presentation.IntentHandler
-import kotlinx.coroutines.delay
 import org.koin.core.component.inject
 
 class LoginIntentHandler(
 	override val stateMachine: LoginStateMachine,
-) : IntentHandler<LoginIntentHandler.LoginIntent, LoginUseCase.Token>() {
+) : IntentHandler<LoginIntentHandler.LoginIntent, UserAuthenticationResponse>() {
 
 	class LoginIntent(
-		val mobile: String,
+		val clientId: String,
 		val password: String,
+		val grantType: GrantType,
 	) : Intent
 
 	private val loginUseCase: LoginUseCase by inject()
 
 	override fun dispatch(intent: LoginIntent) {
-		launchOperation<LoginUseCase.Token> {
+		launchOperation<UserAuthenticationResponse> {
 			val model = LoginUseCase.Params(
-				mobile = intent.mobile,
-				password = intent.password,
+				clientId = intent.clientId,
+				password = CryptographyUtils.getHash(intent.password),
+				grantType = intent.grantType,
 			)
-			delay(300)
 
-			Either.Right(LoginUseCase.Token(""))
-
-//        return loginUseCase.execute(model)
+			loginUseCase.execute(model)
 		}
 	}
 }

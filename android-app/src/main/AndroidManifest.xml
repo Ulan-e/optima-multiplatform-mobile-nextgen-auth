@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".android.SplashActivity"
+            android:name=".android.ui.SplashActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="kg.optima.mobile.android.ui.main.MainActivity" />
+        <activity
+            android:name="kg.optima.mobile.android.ui.MainActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme" />
     </application>
 </manifest>

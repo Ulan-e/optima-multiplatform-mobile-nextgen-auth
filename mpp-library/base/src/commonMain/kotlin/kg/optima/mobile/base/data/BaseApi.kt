@@ -1,30 +1,29 @@
 package kg.optima.mobile.base.data
 
 import io.ktor.http.*
+import kg.optima.mobile.core.StringMap
 import kg.optima.mobile.network.client.NetworkClient
 import kotlinx.serialization.KSerializer
+import kotlin.reflect.KClass
 
 
 abstract class BaseApi(
-    private val networkClient: NetworkClient,
-    private val baseUrl: String,
+	val networkClient: NetworkClient,
 ) {
-    suspend fun <T, R> request(
-        path: String,
-        body: T? = null,
-        serializer: KSerializer<T>? = null,
-        httpMethod: HttpMethod = HttpMethod.Post,
-    ): R? {
-        return networkClient.request(baseUrl, path, body, serializer, httpMethod)
-    }
+	abstract val baseUrl: String
 
-    suspend fun <T, R> request(
-        path: String,
-        body: T,
-        serializer: KSerializer<T>? = null,
-        httpMethod: HttpMethod = HttpMethod.Post,
-        defaultValue: R,
-    ): R {
-        return networkClient.request(baseUrl, path, body, serializer, httpMethod, defaultValue)
-    }
+	suspend inline fun <R, reified V> request(
+		path: String,
+		body: Pair<R, KSerializer<R>>? = null,
+		httpMethod: HttpMethod = HttpMethod.Post,
+	): V {
+		return networkClient.request(baseUrl, path, body, httpMethod)
+	}
+
+	suspend inline fun <reified V> post(
+		path: String,
+		params: StringMap = mapOf(),
+	): V {
+		return networkClient.post(baseUrl, path, params)
+	}
 }

@@ -12,15 +12,10 @@ class FeatureAuthComponentImpl(
     private val runtimeCache: RuntimeCache,
 ) : FeatureAuthComponent {
 
-    override var userId: String?
-        get() = storageRepository.getString(FeatureAuthComponent.USER_ID, emptyString)
+    override var clientId: String?
+        get() = storageRepository.getString(FeatureAuthComponent.CLIENT_ID, emptyString)
         set(value) {
-            storageRepository.putString(FeatureAuthComponent.USER_ID, value.orEmpty())
-        }
-    override var profileId: String?
-        get() = storageRepository.getString(FeatureAuthComponent.PROFILE_ID, emptyString)
-        set(value) {
-            storageRepository.putString(FeatureAuthComponent.PROFILE_ID, value.orEmpty())
+            storageRepository.putString(FeatureAuthComponent.CLIENT_ID, value.orEmpty())
         }
 
     override var refreshToken: String?
@@ -42,27 +37,25 @@ class FeatureAuthComponentImpl(
         set(value) {
             storageRepository.putString(FeatureAuthComponent.DEVICE_ID, value)
         }
+    override var token: String?
+        get() = storageRepository.getString(FeatureAuthComponent.TOKEN)
+        set(value) {
+            storageRepository.putString(FeatureAuthComponent.TOKEN, value.orEmpty())
+        }
 
     override fun saveToken(token: String?) {
-        if (token == null) {
-            userId = null
-            profileId = null
-        } else {
-            userId = PlatformJWT.getParamByKey(token, JwtParameter.USER_ID)
-            profileId = PlatformJWT.getParamByKey(token, JwtParameter.BASE_PROFILE_ID)
-        }
+//        clientId = if (token != null) {
+//            PlatformJWT.getParamByKey(token, JwtParameter.USER_ID)
+//        } else {
+//            null
+//        }
         storageRepository.putString(FeatureAuthComponent.TOKEN, token.orEmpty())
-    }
-
-    override fun saveMobile(mobile: String?) {
-        storageRepository.putString(FeatureAuthComponent.MOBILE, mobile.orEmpty())
     }
 
     override fun clearProfile() {
         isAuthorized = false
         saveToken(null)
-        userId = null
-        profileId = null
+        clientId = null
         refreshToken = null
         runtimeCache.setProfile(null)
     }

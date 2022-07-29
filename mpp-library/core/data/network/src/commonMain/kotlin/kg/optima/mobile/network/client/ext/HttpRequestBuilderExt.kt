@@ -5,6 +5,7 @@ import io.ktor.client.request.forms.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.util.*
+import kg.optima.mobile.core.StringMap
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 
@@ -19,7 +20,7 @@ fun HttpRequestBuilder.setBody(body: String) {
     )
 }
 
-fun HttpRequestBuilder.setFormData(map: Map<String, String>) {
+fun HttpRequestBuilder.setFormData(map: StringMap) {
     this.body = FormDataContent(
         formData = Parameters.build {
             map.forEach {
@@ -29,7 +30,7 @@ fun HttpRequestBuilder.setFormData(map: Map<String, String>) {
     )
 }
 
-fun HttpRequestBuilder.setQueryParams(params: Map<String, Any>) {
+fun HttpRequestBuilder.setQueryParams(params: StringMap) {
     params.forEach {
         parameter(it.key, it.value)
     }

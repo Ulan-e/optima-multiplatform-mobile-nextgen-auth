@@ -6,7 +6,7 @@ import kg.optima.mobile.auth.data.component.FeatureAuthComponent
 import kg.optima.mobile.auth.data.component.FeatureAuthComponentImpl
 import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.auth.data.repository.AuthRepositoryImpl
-import kg.optima.mobile.auth.domain.usecase.LoginUseCase
+import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.di.Factory

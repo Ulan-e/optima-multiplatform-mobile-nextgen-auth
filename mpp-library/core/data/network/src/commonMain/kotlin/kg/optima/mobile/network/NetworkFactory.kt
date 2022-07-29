@@ -1,5 +1,6 @@
 package kg.optima.mobile.network
 
+import io.ktor.http.*
 import kg.optima.mobile.network.di.provideHttpClient
 import kg.optima.mobile.network.di.provideJson
 import kg.optima.mobile.network.di.provideNetworkClient
@@ -17,7 +18,9 @@ object NetworkFactory {
 			provideHttpClient(
                 kotlinxSerializer = get(),
 				networkFailure = NetworkFailureImpl(json = get()),
-				params = mapOf()
+				params = mapOf(
+					HttpHeaders.UserAgent to "Optima24/2.10.3 (Android/12; Samsung SM-G991B/vbeb8u4kz7ooj99o)"
+				)
 			)
 		}
 		factory {

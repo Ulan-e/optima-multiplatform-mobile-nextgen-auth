@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import kg.optima.mobile.resources.*
+import kg.optima.mobile.resources.Headings.Companion.px
 
 val LocalTypography = staticCompositionLocalOf { ApplicationTypographyData }
 
@@ -23,27 +24,27 @@ val ApplicationTypographyData = TypographyData(
 	typography = androidx.compose.material.Typography(
 		defaultFontFamily = TT_Norms_Pro_FontFamily,
 		h1 = TextStyle(
-			fontSize = Headings.H1.px.toInt().toDp().sp,
+			fontSize = Headings.H1.px().sp(),
 			letterSpacing = 0.sp,
 		),
 		h2 = TextStyle(
-			fontSize = Headings.H2.px.toInt().toDp().sp,
+			fontSize = Headings.H2.px().sp(),
 			letterSpacing = 0.sp,
 		),
 		h3 = TextStyle(
-			fontSize = Headings.H3.px.toInt().toDp().sp,
+			fontSize = Headings.H3.px().sp(),
 			letterSpacing = 0.sp,
 		),
 		h4 = TextStyle(
-			fontSize = Headings.H4.px.toInt().toDp().sp,
+			fontSize = Headings.H4.px().sp(),
 			letterSpacing = 0.sp,
 		),
 		h5 = TextStyle(
-			fontSize = Headings.H5.px.toInt().toDp().sp,
+			fontSize = Headings.H5.px().sp(),
 			letterSpacing = 0.sp,
 		),
 		h6 = TextStyle(
-			fontSize = Headings.H6.px.toInt().toDp().sp,
+			fontSize = Headings.H6.px().sp(),
 			letterSpacing = 0.sp,
 		),
 		subtitle1 = TextStyle(
@@ -83,23 +84,5 @@ val ApplicationTypographyData = TypographyData(
 			letterSpacing = 0.sp
 		),
 	),
-	subtitleGray = TextStyle(
-		fontWeight = FontWeight.W400,
-		fontSize = 12.sp,
-		lineHeight = 16.sp,
-		letterSpacing = 0.sp
-	),
-	hintInput = TextStyle(
-		fontWeight = FontWeight.W400,
-		fontSize = 16.sp,
-		lineHeight = 20.sp,
-		letterSpacing = 0.sp
-	),
-	textInput = TextStyle(
-		fontWeight = FontWeight.W400,
-		fontSize = 16.sp,
-		lineHeight = 20.sp,
-		letterSpacing = 0.sp
-	)
 )
 

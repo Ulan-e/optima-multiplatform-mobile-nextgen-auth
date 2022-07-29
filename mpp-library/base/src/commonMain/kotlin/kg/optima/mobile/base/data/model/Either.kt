@@ -53,7 +53,7 @@ inline fun <L, R> Either<L, R>.onSuccess(action: (R) -> Unit): Either<L, R> {
     return this
 }
 
-inline fun <L, R> Either<L, R>.onFailure(action: (L) -> Unit) {
+inline fun <L, R> Either<L, R>.doOnFailure(action: (L) -> Unit) {
     if (this is Left) action(a)
 }
 
@@ -97,7 +97,7 @@ inline fun <L, R, Z, X> Either<L, Pair<R, Z>>.zipWithUp(fn: (Pair<R, Z>) -> Eith
         }
     }
 
-inline fun <L, R> Either<L, R>.doOnFailure(failure: (L) -> Unit): Either<L, R> =
+inline fun <L, R> Either<L, R>.onFailure(failure: (L) -> Unit): Either<L, R> =
     when (this) {
         is Left -> {
             failure.invoke(a)

@@ -9,6 +9,7 @@
 	<color name="disabledGray">#404040</color>
 
 	<!-- Secondary -->
+	<color name="background">#FFFFFF</color>
 	<color name="systemBlue">#007AFF</color>
 	<color name="systemGreen">#34C759</color>
 	<color name="orange">#FF9500</color>

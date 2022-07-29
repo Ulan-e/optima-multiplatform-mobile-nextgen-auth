@@ -18,4 +18,7 @@ dependencies {
     commonMainApi(libs.mokoMvvmLiveData)
     commonMainApi(libs.mokoResources)
     commonMainApi(libs.mokoErrors)
+
+    val kryptoVersion = "2.2.0"
+    commonMainImplementation("com.soywiz.korlibs.krypto:krypto:$kryptoVersion")
 }

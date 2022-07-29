@@ -2,15 +2,17 @@ package kg.optima.mobile.resources
 
 import android.content.res.Resources
 import android.util.TypedValue
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.sp
 import dev.icerock.moko.resources.FontResource
 import kotlin.math.roundToInt
 
-public fun FontResource.resId(): Int = this.fontResourceId
+fun FontResource.resId(): Int = this.fontResourceId
 
 /**
  * DP to Px
  **/
-public fun Int.toPx(): Int =
+fun Int.toPx(): Int =
 	TypedValue.applyDimension(
 		TypedValue.COMPLEX_UNIT_DIP,
 		this.toFloat(),
@@ -20,9 +22,14 @@ public fun Int.toPx(): Int =
 /**
  * Px to Dp
  **/
-public fun Int.toDp(): Int =
+fun Int.dp(): Int =
 	TypedValue.applyDimension(
 		TypedValue.COMPLEX_UNIT_PX,
 		this.toFloat(),
 		Resources.getSystem().displayMetrics
 	).roundToInt()
+
+/**
+ * Px to sp
+ **/
+fun Int.sp(): TextUnit = this.dp().sp

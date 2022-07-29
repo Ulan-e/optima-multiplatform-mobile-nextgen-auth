@@ -8,4 +8,6 @@ object MainImages : Images {
     val chartup get() = byFileName("img_chartup")
     val ellipse get() = byFileName("img_ellipse")
     val phone get() = byFileName("img_phone")
+    val invisible get() = byFileName("img_invisible")
+    val visible get() = byFileName("img_visible")
 }

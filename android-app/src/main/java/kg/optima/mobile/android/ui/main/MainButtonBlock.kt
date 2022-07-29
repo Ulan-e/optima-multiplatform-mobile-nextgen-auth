@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.main
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -14,106 +13,106 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.design_system.android.values.sp
 import kg.optima.mobile.resources.ComposeColors
 import kg.optima.mobile.resources.Headings
-import kg.optima.mobile.resources.Headings.Companion.px
 import kg.optima.mobile.resources.images.MainImages
 import kg.optima.mobile.resources.resId
 
 @Composable
 fun MainButtonBlock(
-    modifier: Modifier,
+	modifier: Modifier,
 ) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(64.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(40.dp)
-        ) {
-            MainButton(
-                imageResId = MainImages.bell.resId(),
-                text = "Уведомления",
-            ) {
+	Row(
+		modifier = modifier,
+		horizontalArrangement = Arrangement.spacedBy(64.dp),
+		verticalAlignment = Alignment.CenterVertically
+	) {
+		Column(
+			horizontalAlignment = Alignment.CenterHorizontally,
+			verticalArrangement = Arrangement.spacedBy(40.dp)
+		) {
+			MainButton(
+				imageResId = MainImages.bell.resId(),
+				text = "Уведомления",
+			) {
 
-            }
-            MainButton(
-                imageResId = MainImages.chartup.resId(),
-                text = "Курсы валют",
-            ) {
+			}
+			MainButton(
+				imageResId = MainImages.chartup.resId(),
+				text = "Курсы валют",
+			) {
 
-            }
-        }
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(40.dp)
-        ) {
-            MainButton(
-                imageResId = MainImages.ellipse.resId(),
-                text = "Языки",
-            ) {
+			}
+		}
+		Column(
+			horizontalAlignment = Alignment.CenterHorizontally,
+			verticalArrangement = Arrangement.spacedBy(40.dp)
+		) {
+			MainButton(
+				imageResId = MainImages.ellipse.resId(),
+				text = "Языки",
+			) {
 
-            }
-            MainButton(
-                imageResId = MainImages.phone.resId(),
-                text = "Контакты",
-            ) {
+			}
+			MainButton(
+				imageResId = MainImages.phone.resId(),
+				text = "Контакты",
+			) {
 
-            }
-        }
-    }
+			}
+		}
+	}
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MainButton(
-    imageResId: Int,
-    text: String,
-    onClick: () -> Unit,
+private fun MainButton(
+	imageResId: Int,
+	text: String,
+	onClick: () -> Unit,
 ) {
-    val colors = ButtonDefaults.buttonColors()
-    val interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+	val colors = ButtonDefaults.buttonColors()
+	val interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 
-    Surface(
-        onClick = onClick,
-        shape = MaterialTheme.shapes.small,
-        color = Color.Transparent,
-        interactionSource = interactionSource,
-    ) {
-        Column(
-            modifier = Modifier
+	Surface(
+		onClick = onClick,
+		shape = MaterialTheme.shapes.small,
+		color = Color.Transparent,
+		interactionSource = interactionSource,
+	) {
+		Column(
+			modifier = Modifier
                 .size(width = 100.dp, height = 77.dp)
                 .background(Color.Transparent),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
-            Box(
-                modifier = Modifier
+			horizontalAlignment = Alignment.CenterHorizontally,
+			verticalArrangement = Arrangement.spacedBy(16.dp),
+		) {
+			Box(
+				modifier = Modifier
                     .size(
                         width = Deps.mainButtonSize.first,
                         height = Deps.mainButtonSize.second
                     )
                     .background(
                         color = ComposeColors.primaryRed,
-                        shape = RoundedCornerShape(Deps.mainButtonBackgroundRadius)
+                        shape = RoundedCornerShape(Deps.mainButtonCornerRadius)
                     ),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    modifier = Modifier.size(Deps.mainButtonImageSize),
-                    painter = painterResource(id = imageResId),
-                    contentDescription = ""
-                )
-            }
-            Text(
-                text = text,
-                fontSize = Headings.H5.px().sp(),
-                fontWeight = FontWeight.Medium,
-            )
-        }
-    }
+				contentAlignment = Alignment.Center
+			) {
+				Icon(
+					modifier = Modifier.size(Deps.mainButtonImageSize),
+					painter = painterResource(id = imageResId),
+					contentDescription = "",
+					tint = ComposeColors.secondaryBackground,
+				)
+			}
+			Text(
+				text = text,
+				fontSize = Headings.H5.px.sp,
+				fontWeight = FontWeight.Medium,
+			)
+		}
+	}
 }
