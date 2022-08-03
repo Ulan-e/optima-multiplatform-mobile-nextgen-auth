@@ -3,7 +3,7 @@ package kg.optima.mobile.auth.data.api
 import io.ktor.http.*
 import kg.optima.mobile.auth.data.api.model.jwt.JwtRefreshRequest
 import kg.optima.mobile.auth.data.api.model.jwt.JwtRefreshResponse
-import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationResponse
+import kg.optima.mobile.auth.data.api.model.login.LoginResponse
 import kg.optima.mobile.auth.data.api.model.otp.AuthorizeOtpRequest
 import kg.optima.mobile.auth.data.api.model.otp.AuthorizeOtpResponse
 import kg.optima.mobile.auth.data.api.model.otp.SendOtpRequest
@@ -20,7 +20,7 @@ import kg.optima.mobile.core.StringMap
 import kg.optima.mobile.network.client.NetworkClient
 
 abstract class AuthApi(
-    networkClient: NetworkClient,
+	networkClient: NetworkClient,
 ) : BaseApi(networkClient) {
 
 	override val baseUrl: String
@@ -29,7 +29,7 @@ abstract class AuthApi(
 	abstract suspend fun login(
 		params: StringMap,
 		path: String = "realms/Optima24/protocol/openid-connect/token",
-	): UserAuthenticationResponse
+	): LoginResponse
 
 	abstract suspend fun checkOtp(
 		request: AuthorizeOtpRequest,

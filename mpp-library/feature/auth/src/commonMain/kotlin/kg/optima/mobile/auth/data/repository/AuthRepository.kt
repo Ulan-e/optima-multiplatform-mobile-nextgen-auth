@@ -2,7 +2,7 @@ package kg.optima.mobile.auth.data.repository
 
 import kg.optima.mobile.auth.data.api.model.jwt.JwtRefreshRequest
 import kg.optima.mobile.auth.data.api.model.jwt.JwtRefreshResponse
-import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationResponse
+import kg.optima.mobile.auth.data.api.model.login.LoginResponse
 import kg.optima.mobile.auth.data.api.model.otp.AuthorizeOtpRequest
 import kg.optima.mobile.auth.data.api.model.otp.AuthorizeOtpResponse
 import kg.optima.mobile.auth.data.api.model.otp.SendOtpRequest
@@ -21,7 +21,7 @@ import kg.optima.mobile.core.error.Failure
 
 interface AuthRepository {
 
-	suspend fun login(params: StringMap): Either<Failure, UserAuthenticationResponse>
+	suspend fun login(params: StringMap): Either<Failure, LoginResponse>
 
 	suspend fun checkOtp(body: AuthorizeOtpRequest): Either<Failure, AuthorizeOtpResponse?>
 

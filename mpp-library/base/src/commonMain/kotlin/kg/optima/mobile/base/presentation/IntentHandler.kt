@@ -22,11 +22,11 @@ abstract class IntentHandler<in I : Intent, in E>(
 		println("StateMachine CoroutineExceptionHandler got $exception")
 	}
 
-	abstract val stateMachine: StateMachine<E>
+	protected abstract val stateMachine: StateMachine<E>
 
 	abstract fun dispatch(intent: I)
 
-	protected fun <T> launchOperation(
+	protected fun launchOperation(
 		operation: suspend () -> Either<Failure, E>,
 	): Job {
 		return coroutineScope.launch(handler) {

@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -17,10 +15,9 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kg.optima.mobile.android.ui.login.LoginScreen
 import kg.optima.mobile.android.utils.appVersion
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
-import kg.optima.mobile.auth.presentation.login.LoginFactory
-import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
-import kg.optima.mobile.auth.presentation.login.LoginStateMachine
+import kg.optima.mobile.auth.presentation.auth_state.AuthStateFactory
+import kg.optima.mobile.auth.presentation.auth_state.AuthStateIntentHandler
+import kg.optima.mobile.auth.presentation.auth_state.AuthStatusStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
@@ -35,7 +32,23 @@ object MainScreen : Screen {
 
 	@Composable
 	override fun Content() {
+		val stateMachine = AuthStateFactory.stateMachine
+		val intentHandler = AuthStateFactory.intentHandler
+
 		val navigator = LocalNavigator.currentOrThrow
+
+		val state by stateMachine.state.collectAsState(initial = null)
+
+		when (val state = state) {
+			is AuthStatusStateMachine.AuthStatusState.ClientInfo -> {
+				navigator.push(LoginScreen(state.isAuthorized, state.clientId))
+			}
+			is StateMachine.State.Loading ->
+				Log.d("MainScreen", "Loading State")
+			is StateMachine.State.Error ->
+				Log.d("MainScreen", "Error State")
+			null -> Unit
+		}
 
 		Column(
 			modifier = Modifier
@@ -58,9 +71,7 @@ object MainScreen : Screen {
 			PrimaryButton(
 				modifier = Modifier.fillMaxWidth(),
 				text = "Войти",
-				onClick = {
-					navigator.push(LoginScreen)
-				},
+				onClick = { intentHandler.checkIsAuthorized() },
 			)
 			TransparentButton(
 				modifier = Modifier
@@ -78,4 +89,7 @@ object MainScreen : Screen {
 			)
 		}
 	}
+
+	private fun AuthStateIntentHandler.checkIsAuthorized() =
+		this.dispatch(AuthStateIntentHandler.CheckIsAuthorizedIntent)
 }

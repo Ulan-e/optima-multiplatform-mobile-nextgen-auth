@@ -12,37 +12,35 @@ import androidx.lifecycle.lifecycleScope
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import com.google.accompanist.insets.ProvideWindowInsets
-import kg.optima.mobile.android.ui.login.LoginScreen
 import kg.optima.mobile.android.ui.main.MainScreen
 import kg.optima.mobile.design_system.android.theme.Theme
-import kotlinx.coroutines.CoroutineScope
 
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
 
-        lifecycleScope.launchWhenResumed {
-            setContent {
-                ProvideWindowInsets {
-                    Theme.OptimaTheme {
-                        Content()
-                    }
-                }
-            }
-        }
-    }
+		lifecycleScope.launchWhenResumed {
+			setContent {
+				ProvideWindowInsets {
+					Theme.OptimaTheme {
+						Content()
+					}
+				}
+			}
+		}
+	}
 
-    @OptIn(ExperimentalMaterialApi::class)
-    @Composable
-    private fun Content() {
-        BottomSheetNavigator(
-            sheetElevation = 0.dp,
-            sheetBackgroundColor = Color.Transparent,
-            sheetShape = RoundedCornerShape(16.dp, 16.dp)
-        ) {
-            Navigator(screen = MainScreen)
-        }
-    }
+	@OptIn(ExperimentalMaterialApi::class)
+	@Composable
+	private fun Content() {
+		BottomSheetNavigator(
+			sheetElevation = 0.dp,
+			sheetBackgroundColor = Color.Transparent,
+			sheetShape = RoundedCornerShape(16.dp, 16.dp)
+		) {
+			Navigator(screen = MainScreen)
+		}
+	}
 }

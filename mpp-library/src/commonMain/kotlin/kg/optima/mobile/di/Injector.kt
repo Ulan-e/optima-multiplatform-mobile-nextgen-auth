@@ -1,6 +1,6 @@
 package kg.optima.mobile.di
 
-import kg.optima.mobile.auth.AuthFactory
+import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.network.NetworkFactory
 import kg.optima.mobile.storage.StorageFactory
 import org.koin.core.KoinApplication
@@ -16,7 +16,7 @@ object Injector {
 	)
 
 	private val featureModules: List<Module> = listOf(
-		AuthFactory.module
+		AuthFeatureFactory.module
 	)
 
 	fun initKoin(appDeclaration: KoinAppDeclaration = {}): KoinApplication {

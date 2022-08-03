@@ -13,13 +13,13 @@ class FeatureAuthComponentImpl(
 ) : FeatureAuthComponent {
 
     override var clientId: String?
-        get() = storageRepository.getString(FeatureAuthComponent.CLIENT_ID, emptyString)
+        get() = storageRepository.getString(FeatureAuthComponent.CLIENT_ID)
         set(value) {
             storageRepository.putString(FeatureAuthComponent.CLIENT_ID, value.orEmpty())
         }
 
     override var refreshToken: String?
-        get() = storageRepository.getString(FeatureAuthComponent.REFRESH_TOKEN, emptyString)
+        get() = storageRepository.getString(FeatureAuthComponent.REFRESH_TOKEN)
         set(value) {
             storageRepository.putString(FeatureAuthComponent.REFRESH_TOKEN, value.orEmpty())
         }

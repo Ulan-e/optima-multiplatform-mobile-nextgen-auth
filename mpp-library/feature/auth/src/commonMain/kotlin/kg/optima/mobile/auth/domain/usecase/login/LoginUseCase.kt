@@ -1,7 +1,7 @@
 package kg.optima.mobile.auth.domain.usecase.login
 
+import kg.optima.mobile.auth.data.api.model.login.LoginResponse
 import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationRequest
-import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationResponse
 import kg.optima.mobile.auth.data.component.FeatureAuthComponent
 import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.base.data.model.Either
@@ -17,11 +17,11 @@ import kg.optima.mobile.core.error.Failure
 class LoginUseCase(
 	private val authRepository: AuthRepository,
 	private val component: FeatureAuthComponent,
-) : BaseUseCase<LoginUseCase.Params, UserAuthenticationResponse>() {
+) : BaseUseCase<LoginUseCase.Params, LoginResponse>() {
 
 	override suspend fun execute(
 		model: Params,
-	): Either<Failure, UserAuthenticationResponse> {
+	): Either<Failure, LoginResponse> {
 		val request = UserAuthenticationRequest(
 			grantType = model.grantType,
 			clientId = model.clientId,

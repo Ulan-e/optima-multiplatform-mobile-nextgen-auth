@@ -27,7 +27,10 @@ import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.ComposeColors
 
 
-object LoginScreen : Screen {
+class LoginScreen(
+	private val isAuthorized: Boolean,
+	private val clientId: String?
+) : Screen {
 
 	@Composable
 	override fun Content() {
@@ -38,8 +41,12 @@ object LoginScreen : Screen {
 
 		val state by stateMachine.state.collectAsState(initial = null)
 
-		when (state) {
-			is LoginStateMachine.LoginState ->
+		val clientIdInputFieldState = remember { mutableStateOf(clientId.orEmpty()) }
+		val passwordInputFieldState = remember { mutableStateOf("") }
+		val checkedState = remember { mutableStateOf(true) }
+
+		when (val state = state) {
+			is LoginStateMachine.LoginState.SignIn ->
 				Log.d("MainScreen", "Success State")
 			is StateMachine.State.Loading ->
 				Log.d("MainScreen", "Loading State")
@@ -47,10 +54,6 @@ object LoginScreen : Screen {
 				Log.d("MainScreen", "Error State")
 			null -> Unit
 		}
-
-		val clientIdInputFieldState = remember { mutableStateOf("") }
-		val passwordInputFieldState = remember { mutableStateOf("") }
-		val checkedState = remember { mutableStateOf(true) }
 
 		Column(
 			modifier = Modifier
@@ -100,7 +103,7 @@ object LoginScreen : Screen {
 					.padding(all = Deps.standardPadding),
 				text = "Продолжить",
 				onClick = {
-					intentHandler.dispatch(LoginIntentHandler.LoginIntent(
+					intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn(
 						clientId = clientIdInputFieldState.value,
 						password = passwordInputFieldState.value,
 						grantType = GrantType.Password

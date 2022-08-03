@@ -3,7 +3,7 @@ package kg.optima.mobile.auth.data.api
 import io.ktor.http.*
 import kg.optima.mobile.auth.data.api.model.jwt.JwtRefreshRequest
 import kg.optima.mobile.auth.data.api.model.jwt.JwtRefreshResponse
-import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationResponse
+import kg.optima.mobile.auth.data.api.model.login.LoginResponse
 import kg.optima.mobile.auth.data.api.model.otp.AuthorizeOtpRequest
 import kg.optima.mobile.auth.data.api.model.otp.AuthorizeOtpResponse
 import kg.optima.mobile.auth.data.api.model.otp.SendOtpRequest
@@ -25,7 +25,7 @@ class AuthApiImpl(
 	override suspend fun login(
 		params: StringMap,
 		path: String,
-	): UserAuthenticationResponse = post(
+	): LoginResponse = post(
 		path = path,
 		params = params
 	)
