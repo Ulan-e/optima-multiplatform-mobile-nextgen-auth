@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import com.google.accompanist.insets.ProvideWindowInsets
-import kg.optima.mobile.android.ui.main.MainScreen
+import kg.optima.mobile.android.ui.welcome.WelcomeScreen
 import kg.optima.mobile.design_system.android.theme.Theme
 
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 			sheetBackgroundColor = Color.Transparent,
 			sheetShape = RoundedCornerShape(16.dp, 16.dp),
 		) {
-			Navigator(screen = MainScreen)
+			Navigator(screen = WelcomeScreen)
 		}
 	}
 }

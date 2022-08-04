@@ -14,34 +14,30 @@ class FeatureAuthComponentImpl(
 
     override var clientId: String?
         get() = storageRepository.getString(FeatureAuthComponent.CLIENT_ID)
-        set(value) {
-            storageRepository.putString(FeatureAuthComponent.CLIENT_ID, value.orEmpty())
-        }
+        set(value) = storageRepository.putString(FeatureAuthComponent.CLIENT_ID, value.orEmpty())
 
     override var refreshToken: String?
         get() = storageRepository.getString(FeatureAuthComponent.REFRESH_TOKEN)
-        set(value) {
-            storageRepository.putString(FeatureAuthComponent.REFRESH_TOKEN, value.orEmpty())
-        }
+        set(value) = storageRepository.putString(FeatureAuthComponent.REFRESH_TOKEN, value.orEmpty())
 
     override var isAuthorized: Boolean
         get() = storageRepository.getBoolean(FeatureAuthComponent.AUTHORIZED, false)
-        set(value) {
-            storageRepository.putBoolean(FeatureAuthComponent.AUTHORIZED, value)
-        }
+        set(value) = storageRepository.putBoolean(FeatureAuthComponent.AUTHORIZED, value)
 
     override var deviceId: String
-        get() = storageRepository.getString(FeatureAuthComponent.DEVICE_ID) ?: run {
-            return PlatformDate.getTimeMills().toString().also { id -> deviceId = id }
-        }
-        set(value) {
-            storageRepository.putString(FeatureAuthComponent.DEVICE_ID, value)
-        }
+        get() = storageRepository.getString(
+            key = FeatureAuthComponent.DEVICE_ID,
+            defaultValue = PlatformDate.getTimeMills().also { id -> deviceId = id }
+        )
+        set(value) = storageRepository.putString(FeatureAuthComponent.DEVICE_ID, value)
+
     override var token: String?
         get() = storageRepository.getString(FeatureAuthComponent.TOKEN)
-        set(value) {
-            storageRepository.putString(FeatureAuthComponent.TOKEN, value.orEmpty())
-        }
+        set(value) = storageRepository.putString(FeatureAuthComponent.TOKEN, value.orEmpty())
+
+    override var pin: String
+        get() = storageRepository.getString("PIN", emptyString)
+        set(value) = storageRepository.putString("PIN", value)
 
     override fun saveToken(token: String?) {
 //        clientId = if (token != null) {

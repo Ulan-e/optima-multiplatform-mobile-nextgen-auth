@@ -12,6 +12,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import kg.optima.mobile.android.ui.pin.PinScreen
 import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.presentation.login.LoginFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
@@ -29,7 +30,6 @@ import kg.optima.mobile.resources.ComposeColors
 
 
 class LoginScreen(
-	private val isAuthorized: Boolean,
 	private val clientId: String?
 ) : Screen {
 
@@ -48,7 +48,7 @@ class LoginScreen(
 
 		when (val state = state) {
 			is LoginStateMachine.LoginState.SignIn ->
-				Log.d("MainScreen", "Success State")
+				navigator.push(PinScreen)
 			is StateMachine.State.Loading ->
 				Log.d("MainScreen", "Loading State")
 			is StateMachine.State.Error ->
@@ -104,11 +104,12 @@ class LoginScreen(
 					.padding(all = Deps.Spacing.standardPadding),
 				text = "Продолжить",
 				onClick = {
-					intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn(
-						clientId = clientIdInputFieldState.value,
-						password = passwordInputFieldState.value,
-						grantType = GrantType.Password
-					))
+					navigator.push(PinScreen)
+//					intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn(
+//						clientId = clientIdInputFieldState.value,
+//						password = passwordInputFieldState.value,
+//						grantType = GrantType.Password
+//					))
 				},
 			)
 		}

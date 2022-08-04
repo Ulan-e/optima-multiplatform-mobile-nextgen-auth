@@ -12,8 +12,9 @@ class ClientInfoUseCase(
 	override suspend fun execute(model: Params): Either<Failure, ClientInfo> =
 		Either.Right(ClientInfo(
 			isAuthorized = component.isAuthorized,
-			clientId = component.clientId
+			clientId = component.clientId,
+			autoCheck = model.autoCheck,
 		))
 
-	object Params
+	class Params(val autoCheck: Boolean = false)
 }

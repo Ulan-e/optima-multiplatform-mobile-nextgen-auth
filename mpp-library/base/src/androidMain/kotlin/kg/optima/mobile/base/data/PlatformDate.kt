@@ -18,8 +18,8 @@ actual object PlatformDate {
         }
     }
 
-    actual fun getTimeMills(): Long {
-        return System.currentTimeMillis()
+    actual fun getTimeMills(): String {
+        return System.currentTimeMillis().toString()
     }
 
 }

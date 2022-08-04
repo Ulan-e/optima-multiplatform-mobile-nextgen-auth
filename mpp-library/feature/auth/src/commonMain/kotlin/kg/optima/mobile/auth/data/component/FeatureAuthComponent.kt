@@ -19,6 +19,8 @@ interface FeatureAuthComponent {
     var deviceId: String
     var token: String?
 
+    var pin: String
+
     fun saveToken(token: String?)
 
     fun clearProfile()

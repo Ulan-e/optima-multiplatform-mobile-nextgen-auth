@@ -19,14 +19,14 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.common.Constants
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.ComposeColors
-import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
 import kg.optima.mobile.resources.resId
 import kotlinx.coroutines.delay
@@ -37,11 +37,25 @@ import kotlinx.coroutines.launch
 fun CodeInput(
 	modifier: Modifier = Modifier,
 	length: Int = Constants.PIN_LENGTH,
-	value: String,
-	onValueChanged: (String) -> Unit,
+	value: String = "",
+	withKeyboard: Boolean = false,
+	onValueChanged: (String) -> Unit = {},
+	onInputCompleted: (String) -> Unit = {},
 ) {
 	val focusRequester = remember { FocusRequester() }
 	val keyboard = LocalSoftwareKeyboardController.current
+
+	if (!withKeyboard) {
+		if (value.length <= length) {
+			if (value.all { c -> c in numberRange }) {
+				onValueChanged(value)
+			}
+			if (value.length >= length) {
+				onInputCompleted(value)
+			}
+		}
+	}
+
 	TextField(
 		modifier = Modifier
 			.size(Deps.Size.invisible)
@@ -49,11 +63,12 @@ fun CodeInput(
 		value = value,
 		onValueChange = {
 			if (it.length <= length) {
-				if (it.all { c -> c in '0'..'9' }) {
+				if (it.all { c -> c in numberRange }) {
 					onValueChanged(it)
 				}
 				if (it.length >= length) {
 					keyboard?.hide()
+					onInputCompleted(it)
 				}
 			}
 		},
@@ -67,7 +82,10 @@ fun CodeInput(
 		repeat(length) {
 			OtpCell(
 				modifier = modifier.clickable {
-					focusRequester.requestFocus(); keyboard?.show()
+					if (withKeyboard) {
+						focusRequester.requestFocus()
+						keyboard?.show()
+					}
 				},
 				cellStatus = when {
 					value.length == it -> CellStatus.Focused
@@ -121,13 +139,17 @@ private fun OtpCell(
 			when (cellStatus) {
 				CellStatus.Empty -> Unit
 				CellStatus.Focused -> Text(
+					modifier = Modifier
+						.align(Alignment.Center)
+						.offset(y = (-4).dp),
 					text = cursorSymbol,
-					modifier = Modifier.align(Alignment.Center),
-					fontSize = Headings.H1.px.sp,
+					color = ComposeColors.PrimaryBlack,
+					fontSize = Deps.TextSize.codeInputSymbol,
+					style = TextStyle(fontWeight = FontWeight.W200),
 				)
 				CellStatus.Filled -> Icon(
 					modifier = Modifier
-						.size(10.dp)
+						.size(Deps.Size.pinDotSize)
 						.align(Alignment.Center),
 					painter = painterResource(id = MainImages.dot.resId()),
 					contentDescription = emptyString,
@@ -141,3 +163,5 @@ private fun OtpCell(
 private enum class CellStatus {
 	Empty, Focused, Filled;
 }
+
+private val numberRange = '0'..'9'

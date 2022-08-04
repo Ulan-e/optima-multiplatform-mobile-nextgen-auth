@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.main
+package kg.optima.mobile.android.ui.welcome
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -21,7 +21,7 @@ import kg.optima.mobile.resources.images.MainImages
 import kg.optima.mobile.resources.resId
 
 @Composable
-fun MainButtonBlock(
+fun WelcomeScreenButtonBlock(
 	modifier: Modifier,
 ) {
 	Row(
@@ -33,13 +33,13 @@ fun MainButtonBlock(
 			horizontalAlignment = Alignment.CenterHorizontally,
 			verticalArrangement = Arrangement.spacedBy(40.dp)
 		) {
-			MainButton(
+			Button(
 				imageResId = MainImages.bell.resId(),
 				text = "Уведомления",
 			) {
 
 			}
-			MainButton(
+			Button(
 				imageResId = MainImages.chartup.resId(),
 				text = "Курсы валют",
 			) {
@@ -50,13 +50,13 @@ fun MainButtonBlock(
 			horizontalAlignment = Alignment.CenterHorizontally,
 			verticalArrangement = Arrangement.spacedBy(40.dp)
 		) {
-			MainButton(
+			Button(
 				imageResId = MainImages.ellipse.resId(),
 				text = "Языки",
 			) {
 
 			}
-			MainButton(
+			Button(
 				imageResId = MainImages.phone.resId(),
 				text = "Контакты",
 			) {
@@ -68,12 +68,11 @@ fun MainButtonBlock(
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun MainButton(
+private fun Button(
 	imageResId: Int,
 	text: String,
 	onClick: () -> Unit,
 ) {
-	val colors = ButtonDefaults.buttonColors()
 	val interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 
 	Surface(

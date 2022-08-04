@@ -18,7 +18,7 @@ actual object PlatformDate {
         }
     }
 
-    actual fun getTimeMills(): Long {
-        return NSDate().timeIntervalSince1970.toLong()
+    actual fun getTimeMills(): String {
+        return NSDate().timeIntervalSince1970.toLong().toString()
     }
 }

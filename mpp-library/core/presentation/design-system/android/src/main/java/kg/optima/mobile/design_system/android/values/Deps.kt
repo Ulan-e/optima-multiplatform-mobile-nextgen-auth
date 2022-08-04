@@ -8,16 +8,17 @@ object Deps {
 		val standardMargin get() = 16.dp
 		val standardPadding get() = 20.dp
 
-		val marginFromTop get() = standardMargin * 6
+		val minPadding get() = 1.dp
+
+		val marginFromTop get() = standardMargin * 4
 		val marginFromTitle get() = standardMargin * 2
 		val marginFromInput get() = 8.dp
 		val marginFromHeader get() = 54.dp
 		val subheaderMargin get() = 8.dp
 
-		val pinBtnXMargin get() = 36.dp
 		val pinBtnYMargin get() = 36.dp
-
 		val pinCellXMargin get() = 10.dp
+		val numPadXMargin get() = 40.dp
 
 		val spacing get() = 24.dp
 	}
@@ -35,10 +36,12 @@ object Deps {
 		val invisible get() = 0.dp
 
 		val pinBtnSize get() = 75.dp
+		val pinDotSize get() = 10.dp
 	}
 
 	object TextSize {
 		val pinBtnText get() = 32.sp
+		val codeInputSymbol get() = 40.sp
 	}
 
 	val cornerRadius get() = 8.dp
@@ -49,4 +52,6 @@ object Deps {
 	val inputFieldCornerRadius get() = 10.dp
 
 	val checkboxCornerRadius get() = 6.dp
+
+	val pinBtnElevation get() = 2.dp
 }
