@@ -17,20 +17,18 @@ object Theme {
 
 	private val LightThemeColors = ThemeColors(
 		material = lightColors(
-			primary = ComposeColors.primaryRed,
+			primary = ComposeColors.PrimaryRed,
 			secondary = LightMainGreen,
-			background = ComposeColors.secondaryBackground,
-			surface = ComposeColors.primaryRed,
+			background = ComposeColors.Background,
 			error = LightRed,
 		)
 	)
 
 	private val DarkThemeColors = ThemeColors(
 		material = darkColors(
-			primary = ComposeColors.primaryRed,
+			primary = ComposeColors.PrimaryRed,
 			secondary = DarkMainGreen,
-			background = ComposeColors.secondaryBackground,
-			surface = ComposeColors.primaryRed,
+			background = ComposeColors.Background,
 			error = DarkRed,
 		)
 	)

@@ -82,7 +82,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.activity:activity-compose:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.1.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.2.0")
 
     val accompanistVersion = "0.19.0"
     implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")

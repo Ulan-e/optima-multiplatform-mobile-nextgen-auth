@@ -108,7 +108,7 @@ fun InputField(
 		placeholder = {
 			Text(
 				text = hint,
-				color = ComposeColors.secondaryDescriptionGray,
+				color = ComposeColors.DescriptionGray,
 			)
 		},
 		singleLine = singleLine,
@@ -125,7 +125,7 @@ fun InputField(
 		trailingIcon = trailingIcon,
 		shape = RoundedCornerShape(Deps.inputFieldCornerRadius),
 		colors = TextFieldDefaults.textFieldColors(
-			backgroundColor = ComposeColors.opaquedDisabledGray,
+			backgroundColor = ComposeColors.OpaquedDisabledGray,
 			cursorColor = Color.Black,
 			focusedIndicatorColor = Color.Transparent,
 			disabledIndicatorColor = Color.Transparent,
@@ -140,18 +140,18 @@ fun InputField(
 		Text(
 			modifier = Modifier
 				.clickable(onClick = bottomActionButton.second)
-				.padding(top = Deps.marginFromInput),
+				.padding(top = Deps.Spacing.marginFromInput),
 			text = bottomActionButton.first,
-			color = ComposeColors.secondaryGreen,
+			color = ComposeColors.Green,
 			fontSize = Headings.H5.px().sp()
 		)
 	}
 
 	if (errorState.value.message.isNotEmpty()) {
 		Text(
-			modifier = Modifier.padding(top = Deps.marginFromInput),
+			modifier = Modifier.padding(top = Deps.Spacing.marginFromInput),
 			text = errorState.value.message,
-			color = ComposeColors.primaryRed,
+			color = ComposeColors.PrimaryRed,
 		)
 	}
 

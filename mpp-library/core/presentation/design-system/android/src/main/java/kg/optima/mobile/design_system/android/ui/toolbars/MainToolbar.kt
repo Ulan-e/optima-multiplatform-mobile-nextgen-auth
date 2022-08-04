@@ -42,7 +42,7 @@ fun MainToolbar(
 					Icon(
 						painter = painterResource(id = navigationIconId),
 						contentDescription = null,
-						tint = ComposeColors.primaryDisabledGray,
+						tint = ComposeColors.PrimaryDisabledGray,
 					)
 				}
 			}
@@ -57,7 +57,7 @@ fun MainToolbar(
 				}
 			} ?: Spacer(Modifier.width(64.dp))
 		},
-		backgroundColor = ComposeColors.secondaryBackground,
+		backgroundColor = ComposeColors.Background,
 		elevation = 0.dp
 	)
 }

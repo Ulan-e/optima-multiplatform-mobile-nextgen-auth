@@ -21,12 +21,12 @@ fun TransparentButton(
     fontSize: Headings = Headings.H4,
     onClick: () -> Unit = {},
 ) = Button(
-    modifier = modifier.height(Deps.buttonHeight),
+    modifier = modifier.height(Deps.Size.buttonHeight),
     shape = MaterialTheme.shapes.small,
     colors = ButtonDefaults.buttonColors(
         backgroundColor = Color.Transparent,
         disabledBackgroundColor = Color.Transparent,
-        disabledContentColor = ComposeColors.primaryDisabledGray,
+        disabledContentColor = ComposeColors.PrimaryDisabledGray,
     ),
     elevation = null,
     enabled = enabled,
@@ -35,6 +35,6 @@ fun TransparentButton(
     Text(
         text = text,
         fontSize = fontSize.px.sp,
-        color = ComposeColors.primaryRed,
+        color = ComposeColors.PrimaryRed,
     )
 }

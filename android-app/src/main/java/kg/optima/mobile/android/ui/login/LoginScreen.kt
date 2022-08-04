@@ -17,6 +17,7 @@ import kg.optima.mobile.auth.presentation.login.LoginFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
+import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.checkbox.Checkbox
 import kg.optima.mobile.design_system.android.ui.input.InputField
@@ -42,7 +43,7 @@ class LoginScreen(
 		val state by stateMachine.state.collectAsState(initial = null)
 
 		val clientIdInputFieldState = remember { mutableStateOf(clientId.orEmpty()) }
-		val passwordInputFieldState = remember { mutableStateOf("") }
+		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
 		val checkedState = remember { mutableStateOf(true) }
 
 		when (val state = state) {
@@ -58,7 +59,7 @@ class LoginScreen(
 		Column(
 			modifier = Modifier
 				.fillMaxSize()
-				.background(ComposeColors.secondaryBackground),
+				.background(ComposeColors.Background),
 		) {
 			MainToolbar(
 				onBackClick = { navigator.pop() }
@@ -66,17 +67,17 @@ class LoginScreen(
 			Column(
 				modifier = Modifier
 					.fillMaxWidth()
-					.padding(horizontal = Deps.standardPadding)
+					.padding(horizontal = Deps.Spacing.standardPadding)
 					.weight(1f),
 			) {
 				TitleTextField(
-					modifier = Modifier.padding(top = Deps.standardMargin * 3),
+					modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 3),
 					text = "Авторизация"
 				)
 				InputField(
 					modifier = Modifier
 						.fillMaxWidth()
-						.padding(top = Deps.marginFromTitle),
+						.padding(top = Deps.Spacing.marginFromTitle),
 					valueState = clientIdInputFieldState,
 					hint = "Client ID",
 					keyboardType = KeyboardType.Number,
@@ -87,12 +88,12 @@ class LoginScreen(
 				PasswordInput(
 					modifier = Modifier
 						.fillMaxWidth()
-						.padding(top = Deps.spacing),
+						.padding(top = Deps.Spacing.spacing),
 					passwordState = passwordInputFieldState,
 					hint = "Пароль",
 				)
 				Checkbox(
-					modifier = Modifier.padding(top = Deps.spacing),
+					modifier = Modifier.padding(top = Deps.Spacing.spacing),
 					checkedState = checkedState,
 					text = "Запомнить логин",
 				)
@@ -100,7 +101,7 @@ class LoginScreen(
 			PrimaryButton(
 				modifier = Modifier
 					.fillMaxWidth()
-					.padding(all = Deps.standardPadding),
+					.padding(all = Deps.Spacing.standardPadding),
 				text = "Продолжить",
 				onClick = {
 					intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn(

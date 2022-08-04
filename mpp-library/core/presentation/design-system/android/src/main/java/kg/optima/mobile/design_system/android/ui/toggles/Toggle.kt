@@ -23,7 +23,7 @@ import kg.optima.mobile.resources.ComposeColors
 
 @Composable
 fun Toggle(
-	checkedTrackColor: Color = ComposeColors.secondarySystemGreen,
+	checkedTrackColor: Color = ComposeColors.SystemGreen,
 	onClick: (Boolean) -> Unit = {}
 ) {
 	val interactionSource = remember { MutableInteractionSource() }

@@ -3,15 +3,16 @@ package kg.optima.mobile.resources
 import androidx.compose.ui.graphics.Color
 
 object ComposeColors {
-	val primaryRed: Color get() = Colors.PrimaryRed.toComposeColor()
-	val primaryDisabledGray: Color get() = Colors.PrimaryDisabledGray.toComposeColor()
-	val primaryWhite: Color get() = Colors.PrimaryWhite.toComposeColor()
-	val primaryBlack: Color get() = Colors.PrimaryBlack.toComposeColor()
+	val PrimaryRed: Color get() = Colors.PrimaryRed.toComposeColor()
+	val PrimaryDisabledGray: Color get() = Colors.PrimaryDisabledGray.toComposeColor()
+	val PrimaryWhite: Color get() = Colors.PrimaryWhite.toComposeColor()
+	val PrimaryBlack: Color get() = Colors.PrimaryBlack.toComposeColor()
 
-	val secondaryBackground: Color get() = Colors.SecondaryBackground.toComposeColor()
-	val secondaryGreen: Color get() = Colors.SecondaryGreen.toComposeColor()
-	val secondarySystemGreen: Color get() = Colors.SecondarySystemGreen.toComposeColor()
-	val secondaryDescriptionGray: Color get() = Colors.SecondaryDescriptionGray.toComposeColor()
+	val Background: Color get() = Colors.SecondaryBackground.toComposeColor()
+	val Green: Color get() = Colors.Green.toComposeColor()
+	val SystemGreen: Color get() = Colors.SystemGreen.toComposeColor()
+	val DescriptionGray: Color get() = Colors.DescriptionGray.toComposeColor()
+	val WhiteF5: Color get() = Colors.WhiteF5.toComposeColor()
 
-	val opaquedDisabledGray: Color get() = secondaryDescriptionGray.copy(alpha = 0.08f)
+	val OpaquedDisabledGray: Color get() = DescriptionGray.copy(alpha = 0.08f)
 }

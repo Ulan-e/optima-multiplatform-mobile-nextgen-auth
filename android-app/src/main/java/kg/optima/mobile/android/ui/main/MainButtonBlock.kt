@@ -92,20 +92,20 @@ private fun MainButton(
 			Box(
 				modifier = Modifier
                     .size(
-                        width = Deps.mainButtonSize.first,
-                        height = Deps.mainButtonSize.second
+                        width = Deps.Size.mainButtonSize.first,
+                        height = Deps.Size.mainButtonSize.second
                     )
                     .background(
-                        color = ComposeColors.primaryRed,
+                        color = ComposeColors.PrimaryRed,
                         shape = RoundedCornerShape(Deps.mainButtonCornerRadius)
                     ),
 				contentAlignment = Alignment.Center
 			) {
 				Icon(
-					modifier = Modifier.size(Deps.mainButtonImageSize),
+					modifier = Modifier.size(Deps.Size.mainButtonImageSize),
 					painter = painterResource(id = imageResId),
 					contentDescription = "",
-					tint = ComposeColors.secondaryBackground,
+					tint = ComposeColors.Background,
 				)
 			}
 			Text(

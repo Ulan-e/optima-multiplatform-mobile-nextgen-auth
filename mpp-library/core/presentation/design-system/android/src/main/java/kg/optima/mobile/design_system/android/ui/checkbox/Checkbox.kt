@@ -15,8 +15,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -34,13 +32,13 @@ fun Checkbox(
 	text: String = "",
 	onCheck: (Boolean) -> Unit = {}
 ) {
-	val checkboxColor = ComposeColors.secondaryGreen
+	val checkboxColor = ComposeColors.Green
 
 	Row(
 		modifier = modifier
 	) {
 		Card(
-			modifier = Modifier.background(ComposeColors.primaryWhite),
+			modifier = Modifier.background(ComposeColors.PrimaryWhite),
 			elevation = 0.dp,
 			shape = RoundedCornerShape(size = Deps.checkboxCornerRadius),
 			border = BorderStroke(
@@ -48,14 +46,14 @@ fun Checkbox(
 				color = if (checkedState.value) {
 					checkboxColor
 				} else {
-					ComposeColors.secondaryDescriptionGray
+					ComposeColors.DescriptionGray
 				}
 			)
 		) {
 			Box(
 				modifier = Modifier
-					.size(Deps.checkboxSize)
-					.background(ComposeColors.primaryWhite)
+					.size(Deps.Size.checkboxSize)
+					.background(ComposeColors.PrimaryWhite)
 					.clickable {
 						checkedState.value = !checkedState.value
 						onCheck(checkedState.value)
@@ -77,7 +75,7 @@ fun Checkbox(
 				.align(Alignment.CenterVertically)
 				.padding(start = 8.dp),
 			text = text,
-			color = ComposeColors.secondaryDescriptionGray,
+			color = ComposeColors.DescriptionGray,
 			fontSize = Headings.H4.px().dp().sp(),
 		)
 	}

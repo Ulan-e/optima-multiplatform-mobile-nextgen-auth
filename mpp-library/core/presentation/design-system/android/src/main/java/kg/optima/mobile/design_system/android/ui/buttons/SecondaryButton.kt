@@ -17,7 +17,7 @@ import kg.optima.mobile.resources.Headings
 
 @Composable
 fun SecondaryButton(
-	modifier: Modifier = Modifier.height(Deps.buttonHeight),
+	modifier: Modifier = Modifier.height(Deps.Size.buttonHeight),
 	enabled: Boolean = true,
 	text: String,
 	fontSize: Headings = Headings.H4,
@@ -25,17 +25,17 @@ fun SecondaryButton(
 	onClick: () -> Unit = {}
 ) {
 	val contentColor = when (buttonType) {
-		ButtonType.Secondary -> ComposeColors.primaryRed
-		ButtonType.Tertiary -> ComposeColors.primaryBlack
+		ButtonType.Secondary -> ComposeColors.PrimaryRed
+		ButtonType.Tertiary -> ComposeColors.PrimaryDisabledGray
 	}
 
 	OutlinedButton(
 		modifier = modifier
 			.background(
 				color = Color.Companion.Transparent,
-				shape = RoundedCornerShape(Deps.buttonCornerRadius * 2)
+				shape = RoundedCornerShape(Deps.cornerRadius * 2)
 			),
-		border = BorderStroke(width = Deps.buttonBorderStroke, color = contentColor),
+		border = BorderStroke(width = Deps.borderStroke, color = contentColor),
 		enabled = enabled,
 		onClick = onClick,
 	) {

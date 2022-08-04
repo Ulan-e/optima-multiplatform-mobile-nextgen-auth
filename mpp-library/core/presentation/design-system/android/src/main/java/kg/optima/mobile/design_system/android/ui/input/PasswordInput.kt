@@ -91,10 +91,10 @@ private fun PasswordVisibility(onClick: (Boolean) -> Unit) {
 		},
 		content = {
 			Icon(
-				modifier = Modifier.size(Deps.trailingIconSize),
+				modifier = Modifier.size(Deps.Size.trailingIconSize),
 				painter = icon,
                 contentDescription = "",
-                tint = ComposeColors.secondaryDescriptionGray,
+                tint = ComposeColors.DescriptionGray,
 			)
 		}
 	)

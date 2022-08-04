@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 		BottomSheetNavigator(
 			sheetElevation = 0.dp,
 			sheetBackgroundColor = Color.Transparent,
-			sheetShape = RoundedCornerShape(16.dp, 16.dp)
+			sheetShape = RoundedCornerShape(16.dp, 16.dp),
 		) {
 			Navigator(screen = MainScreen)
 		}

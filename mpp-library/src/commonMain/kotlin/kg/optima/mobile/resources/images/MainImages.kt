@@ -10,4 +10,5 @@ object MainImages : Images {
     val phone get() = byFileName("img_phone")
     val invisible get() = byFileName("img_invisible")
     val visible get() = byFileName("img_visible")
+    val dot get() = byFileName("img_dot")
 }

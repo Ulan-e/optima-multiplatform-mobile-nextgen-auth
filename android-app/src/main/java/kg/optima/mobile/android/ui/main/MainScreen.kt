@@ -53,7 +53,7 @@ object MainScreen : Screen {
 		Column(
 			modifier = Modifier
 				.fillMaxSize()
-				.padding(all = Deps.standardPadding),
+				.padding(all = Deps.Spacing.standardPadding),
 			horizontalAlignment = Alignment.CenterHorizontally,
 		) {
 			Image(
@@ -77,15 +77,15 @@ object MainScreen : Screen {
 				modifier = Modifier
 					.fillMaxWidth()
 					.padding(
-						top = Deps.standardMargin,
-						bottom = Deps.standardMargin,
+						top = Deps.Spacing.standardMargin,
+						bottom = Deps.Spacing.standardMargin,
 					),
 				text = "Зарегистрироваться",
 			)
 			Text(
 				text = "Версия $appVersion",
 				fontSize = Headings.H6.px.sp,
-				color = ComposeColors.secondaryDescriptionGray,
+				color = ComposeColors.DescriptionGray,
 			)
 		}
 	}

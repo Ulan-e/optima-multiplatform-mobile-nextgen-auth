@@ -54,6 +54,8 @@ dependencies {
 	implementation("androidx.compose.runtime:runtime:$composeVersion")
 	implementation("androidx.compose.ui:ui:$composeVersion")
 	implementation("androidx.activity:activity-compose:1.5.0")
+	implementation("androidx.compose.ui:ui-tooling:1.3.0-alpha02")
+	implementation("androidx.compose.ui:ui-tooling-preview:1.2.0")
 
 	val mokoResourcesVersion = "0.20.1"
 	implementation("dev.icerock.moko:resources:$mokoResourcesVersion")
