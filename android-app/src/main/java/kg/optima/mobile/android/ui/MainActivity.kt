@@ -40,7 +40,12 @@ class MainActivity : AppCompatActivity() {
 			sheetBackgroundColor = Color.Transparent,
 			sheetShape = RoundedCornerShape(16.dp, 16.dp),
 		) {
-			Navigator(screen = WelcomeScreen)
+			Navigator(
+				screen = WelcomeScreen,
+				onBackPressed = {
+					onBackPressed(); true
+				}
+			)
 		}
 	}
 }
