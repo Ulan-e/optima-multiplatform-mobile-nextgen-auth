@@ -34,7 +34,7 @@ object Theme {
 	)
 
 	@Composable
-	fun OptimaTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+	fun OptimaTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
 		val colors = if (darkTheme) DarkThemeColors else LightThemeColors
 
 		CompositionLocalProvider(

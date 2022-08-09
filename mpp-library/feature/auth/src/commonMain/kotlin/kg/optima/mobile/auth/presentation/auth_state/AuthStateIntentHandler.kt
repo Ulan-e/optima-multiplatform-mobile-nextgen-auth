@@ -9,19 +9,13 @@ class AuthStateIntentHandler(
 	override val stateMachine: AuthStatusStateMachine,
 ) : IntentHandler<AuthStateIntentHandler.CheckIsAuthorizedIntent, ClientInfo>() {
 
-	init {
-		dispatch(CheckIsAuthorizedIntent(true))
-	}
-
 	private val clientInfoUseCase: ClientInfoUseCase by inject()
 
 	override fun dispatch(intent: CheckIsAuthorizedIntent) {
 		launchOperation {
-			clientInfoUseCase.execute(ClientInfoUseCase.Params(intent.autoCheck))
+			clientInfoUseCase.execute(ClientInfoUseCase.Params)
 		}
 	}
 
-	class CheckIsAuthorizedIntent(
-		val autoCheck: Boolean = false
-	) : Intent
+	object CheckIsAuthorizedIntent : Intent
 }

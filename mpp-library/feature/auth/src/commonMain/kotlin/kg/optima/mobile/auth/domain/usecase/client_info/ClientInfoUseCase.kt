@@ -13,8 +13,7 @@ class ClientInfoUseCase(
 		Either.Right(ClientInfo(
 			isAuthorized = component.isAuthorized,
 			clientId = component.clientId,
-			autoCheck = model.autoCheck,
 		))
 
-	class Params(val autoCheck: Boolean = false)
+	object Params
 }

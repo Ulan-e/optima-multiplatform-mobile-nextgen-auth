@@ -33,8 +33,8 @@ object WelcomeScreen : Screen {
 
 	@Composable
 	override fun Content() {
-		val stateMachine = AuthStateFactory.stateMachine
-		val intentHandler = AuthStateFactory.intentHandler
+		val stateMachine: AuthStatusStateMachine = AuthStateFactory.stateMachine
+		val intentHandler: AuthStateIntentHandler = AuthStateFactory.intentHandler
 
 		val navigator = LocalNavigator.currentOrThrow
 
@@ -42,10 +42,7 @@ object WelcomeScreen : Screen {
 
 		when (val state = state) {
 			is AuthStatusStateMachine.AuthStatusState.ClientInfo -> {
-				when {
-					state.isAuthorized -> navigator.push(LoginScreen(state.clientId))
-					!state.forceLaunch -> navigator.push(LoginScreen(state.clientId))
-				}
+				navigator.push(LoginScreen(state.clientId))
 			}
 			is StateMachine.State.Loading ->
 				Log.d("MainScreen", "Loading State")
@@ -95,5 +92,5 @@ object WelcomeScreen : Screen {
 	}
 
 	private fun AuthStateIntentHandler.checkIsAuthorized() =
-		this.dispatch(AuthStateIntentHandler.CheckIsAuthorizedIntent())
+		this.dispatch(AuthStateIntentHandler.CheckIsAuthorizedIntent)
 }

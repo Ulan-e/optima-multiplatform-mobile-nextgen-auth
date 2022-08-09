@@ -9,7 +9,6 @@ class AuthStatusStateMachine : StateMachine<ClientInfo>() {
 		class ClientInfo(
 			val isAuthorized: Boolean,
 			val clientId: String?,
-			val forceLaunch: Boolean,
 		) : AuthStatusState
 	}
 
@@ -17,7 +16,6 @@ class AuthStatusStateMachine : StateMachine<ClientInfo>() {
 		setState(AuthStatusState.ClientInfo(
 			isAuthorized = entity.isAuthorized,
 			clientId = entity.clientId,
-			forceLaunch = entity.autoCheck,
 		))
 	}
 }

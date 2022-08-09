@@ -12,7 +12,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kg.optima.mobile.android.ui.pin.PinScreen
+import kg.optima.mobile.android.ui.pin.PinSetScreen
 import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.presentation.login.LoginFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
@@ -30,7 +30,7 @@ import kg.optima.mobile.resources.ComposeColors
 
 
 class LoginScreen(
-	private val clientId: String?
+	private val clientId: String?,
 ) : Screen {
 
 	@Composable
@@ -46,14 +46,13 @@ class LoginScreen(
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
 		val checkedState = remember { mutableStateOf(true) }
 
-		when (val state = state) {
+		when (state) {
 			is LoginStateMachine.LoginState.SignIn ->
-				navigator.push(PinScreen)
+				navigator.push(PinSetScreen)
 			is StateMachine.State.Loading ->
 				Log.d("MainScreen", "Loading State")
 			is StateMachine.State.Error ->
 				Log.d("MainScreen", "Error State")
-			null -> Unit
 		}
 
 		Column(
@@ -104,12 +103,11 @@ class LoginScreen(
 					.padding(all = Deps.Spacing.standardPadding),
 				text = "Продолжить",
 				onClick = {
-					navigator.push(PinScreen)
-//					intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn(
-//						clientId = clientIdInputFieldState.value,
-//						password = passwordInputFieldState.value,
-//						grantType = GrantType.Password
-//					))
+					intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn(
+						clientId = clientIdInputFieldState.value,
+						password = passwordInputFieldState.value,
+						grantType = GrantType.Password
+					))
 				},
 			)
 		}

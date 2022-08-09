@@ -5,7 +5,6 @@ import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationRequest
 import kg.optima.mobile.auth.data.component.FeatureAuthComponent
 import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.base.data.model.Either
-import kg.optima.mobile.base.data.model.onFailure
 import kg.optima.mobile.base.data.model.onSuccess
 import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.error.Failure
@@ -33,9 +32,6 @@ class LoginUseCase(
 				component.saveToken(it.accessToken)
 				component.refreshToken = it.refreshToken
 				component.isAuthorized = true
-			}
-			.onFailure {
-				print(it)
 			}
 	}
 
