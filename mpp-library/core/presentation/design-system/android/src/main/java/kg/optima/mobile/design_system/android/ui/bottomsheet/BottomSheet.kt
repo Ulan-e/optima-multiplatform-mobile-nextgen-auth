@@ -11,7 +11,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.resources.Headings
 
 @Composable

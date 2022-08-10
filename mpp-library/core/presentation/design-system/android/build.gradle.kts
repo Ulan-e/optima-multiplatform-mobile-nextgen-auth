@@ -60,6 +60,9 @@ dependencies {
 	val mokoResourcesVersion = "0.20.1"
 	implementation("dev.icerock.moko:resources:$mokoResourcesVersion")
 
+	implementation("io.coil-kt:coil-compose:1.4.0")
+	implementation("id.zelory:compressor:3.0.1")
+
 	testImplementation("junit:junit:4.13.2")
 	androidTestImplementation("androidx.test.ext:junit:1.1.3")
 	androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")

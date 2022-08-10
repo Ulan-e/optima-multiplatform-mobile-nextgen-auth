@@ -8,10 +8,10 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.ApplicationTypographyData
 import kg.optima.mobile.design_system.android.values.LocalTypography
 import kg.optima.mobile.design_system.android.values.ThemeColors
-import kg.optima.mobile.resources.ComposeColors
 
 object Theme {
 	private val LocalColors = staticCompositionLocalOf { LightThemeColors }

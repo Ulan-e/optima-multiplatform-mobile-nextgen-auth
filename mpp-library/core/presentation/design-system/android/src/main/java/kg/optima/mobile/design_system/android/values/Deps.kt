@@ -21,6 +21,8 @@ object Deps {
 		val numPadXMargin get() = 40.dp
 
 		val swiperTopMargin get() = 6.dp
+
+		val rowElementMargin get() = 10.dp
 	}
 
 	object Size {

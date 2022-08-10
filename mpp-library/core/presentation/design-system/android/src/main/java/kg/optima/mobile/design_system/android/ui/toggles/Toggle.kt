@@ -19,7 +19,7 @@ import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 
 @Composable
 fun Toggle(

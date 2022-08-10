@@ -1,4 +1,4 @@
-package kg.optima.mobile.resources
+package kg.optima.mobile.design_system.android.utils.resources
 
 import dev.icerock.moko.resources.ImageResource
 import kg.optima.mobile.R

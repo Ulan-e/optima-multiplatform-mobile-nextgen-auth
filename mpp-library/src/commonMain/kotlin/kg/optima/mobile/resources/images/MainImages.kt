@@ -12,4 +12,6 @@ object MainImages : Images {
     val visible get() = byFileName("img_visible")
     val dot get() = byFileName("img_dot")
     val backspace get() = byFileName("img_backspace")
+    val remove get() = byFileName("img_remove")
+    val logout get() = byFileName("img_logout")
 }

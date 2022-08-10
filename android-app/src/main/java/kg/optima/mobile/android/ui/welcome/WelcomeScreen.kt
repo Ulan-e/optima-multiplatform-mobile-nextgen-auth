@@ -29,10 +29,10 @@ import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.containers.MainContainer
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
-import kg.optima.mobile.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.resId
 
 
 @Suppress("NAME_SHADOWING")

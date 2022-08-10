@@ -6,6 +6,8 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.resources.*
 import kg.optima.mobile.resources.Headings.Companion.px
 

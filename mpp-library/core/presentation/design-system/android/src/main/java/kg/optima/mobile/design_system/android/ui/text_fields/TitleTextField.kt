@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.Headings.Companion.px
-import kg.optima.mobile.resources.sp
+import kg.optima.mobile.design_system.android.utils.resources.sp
 
 @Composable
 fun TitleTextField(

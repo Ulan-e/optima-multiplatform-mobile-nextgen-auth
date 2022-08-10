@@ -1,6 +1,7 @@
-package kg.optima.mobile.resources
+package kg.optima.mobile.design_system.android.utils.resources
 
 import androidx.compose.ui.graphics.Color
+import kg.optima.mobile.resources.Colors
 
 object ComposeColors {
 	val PrimaryRed: Color get() = Colors.PrimaryRed.toComposeColor()

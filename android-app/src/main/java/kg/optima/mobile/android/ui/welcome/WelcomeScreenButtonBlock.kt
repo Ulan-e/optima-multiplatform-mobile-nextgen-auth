@@ -14,11 +14,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
-import kg.optima.mobile.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.resId
 
 @Composable
 fun WelcomeScreenButtonBlock(
@@ -103,7 +104,7 @@ private fun Button(
 				Icon(
 					modifier = Modifier.size(Deps.Size.mainButtonImageSize),
 					painter = painterResource(id = imageResId),
-					contentDescription = "",
+					contentDescription = emptyString,
 					tint = ComposeColors.Background,
 				)
 			}

@@ -6,7 +6,7 @@ import androidx.compose.ui.graphics.Color
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.SecondaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.resources.Headings
 
 sealed interface ButtonView {

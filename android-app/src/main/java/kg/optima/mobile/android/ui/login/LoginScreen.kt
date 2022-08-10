@@ -26,7 +26,7 @@ import kg.optima.mobile.design_system.android.ui.input.PasswordInput
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.MainToolbar
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 
 
 class LoginScreen(

@@ -26,9 +26,9 @@ import androidx.compose.ui.unit.dp
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.common.Constants
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.resources.images.MainImages
-import kg.optima.mobile.resources.resId
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

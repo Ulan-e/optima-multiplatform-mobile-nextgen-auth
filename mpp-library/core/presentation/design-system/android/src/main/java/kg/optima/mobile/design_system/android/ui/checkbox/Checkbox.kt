@@ -19,11 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.dp
+import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.Headings.Companion.px
-import kg.optima.mobile.resources.dp
-import kg.optima.mobile.resources.sp
 
 @Composable
 fun Checkbox(

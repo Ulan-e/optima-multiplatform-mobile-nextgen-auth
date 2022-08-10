@@ -11,7 +11,9 @@ import kg.optima.mobile.auth.presentation.pin_set.PinSetIntentHandler
 import kg.optima.mobile.auth.presentation.pin_set.PinSetStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.base.utils.emptyString
-import kg.optima.mobile.design_system.android.ui.screens.PinScreen
+import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
+import kg.optima.mobile.design_system.android.ui.screens.pin.headers.enterPinScreenHeader
+import kg.optima.mobile.design_system.android.ui.screens.pin.headers.setPinScreenHeader
 
 object PinSetScreen : Screen {
 	@Composable
@@ -46,8 +48,7 @@ object PinSetScreen : Screen {
 				Log.d("MainScreen", "Error State")
 		}
 		PinScreen(
-			headerState = headerState,
-			subheaderState = subheaderState,
+			header = setPinScreenHeader(headerState.value, subheaderState.value),
 			codeState = codeState,
 			onInputCompleted = {
 				when (state) {

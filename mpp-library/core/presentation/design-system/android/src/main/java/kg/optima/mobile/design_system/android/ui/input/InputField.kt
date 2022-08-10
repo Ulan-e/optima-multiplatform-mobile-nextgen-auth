@@ -30,10 +30,10 @@ import kg.optima.mobile.design_system.android.ui.input.filter.ITextFieldComposeF
 import kg.optima.mobile.design_system.android.ui.input.filter.NoTextFieldFilter
 import kg.optima.mobile.design_system.android.ui.input.model.ErrorTextField
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.Headings.Companion.px
-import kg.optima.mobile.resources.sp
+import kg.optima.mobile.design_system.android.utils.resources.sp
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

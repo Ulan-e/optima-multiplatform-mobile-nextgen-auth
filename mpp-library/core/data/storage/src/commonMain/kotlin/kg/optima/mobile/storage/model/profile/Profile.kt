@@ -1,7 +1,6 @@
 package kg.optima.mobile.storage.model.profile
 
 import kg.optima.mobile.storage.model.Geo
-import kg.optima.mobile.storage.model.image.Image
 
 data class Profile(
     val id: String,
@@ -10,7 +9,6 @@ data class Profile(
     val title: String,
     val userid: String,
     val description: String,
-    val avatar: Image?,
     val geo: Geo?,
     val items: List<ProfileMap>,
     val phone: String = "",

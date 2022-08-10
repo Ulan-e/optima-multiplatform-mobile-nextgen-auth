@@ -18,9 +18,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import kg.optima.mobile.design_system.android.ui.input.model.ErrorTextField
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.resources.images.MainImages
-import kg.optima.mobile.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.resId
 
 
 @SuppressLint("ResourceType")
