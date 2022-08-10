@@ -1,5 +1,6 @@
 package kg.optima.mobile.design_system.android.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -15,21 +16,35 @@ import kg.optima.mobile.resources.ComposeColors
 object Theme {
 	private val LocalColors = staticCompositionLocalOf { LightThemeColors }
 
+	@SuppressLint("ConflictingOnColor")
 	private val LightThemeColors = ThemeColors(
 		material = lightColors(
 			primary = ComposeColors.PrimaryRed,
 			secondary = LightMainGreen,
 			background = ComposeColors.Background,
 			error = LightRed,
+			surface = ComposeColors.Background,
+			onPrimary = ComposeColors.PrimaryRed,
+			onSecondary = ComposeColors.PrimaryRed,
+			onBackground = ComposeColors.PrimaryBlack,
+			onSurface = ComposeColors.PrimaryDisabledGray,
+			onError = ComposeColors.PrimaryRed,
 		)
 	)
 
+	@SuppressLint("ConflictingOnColor")
 	private val DarkThemeColors = ThemeColors(
 		material = darkColors(
 			primary = ComposeColors.PrimaryRed,
 			secondary = DarkMainGreen,
 			background = ComposeColors.Background,
 			error = DarkRed,
+			surface = ComposeColors.Background,
+			onPrimary = ComposeColors.PrimaryRed,
+			onSecondary = ComposeColors.PrimaryRed,
+			onBackground = ComposeColors.PrimaryBlack,
+			onSurface = ComposeColors.PrimaryDisabledGray,
+			onError = ComposeColors.PrimaryRed,
 		)
 	)
 

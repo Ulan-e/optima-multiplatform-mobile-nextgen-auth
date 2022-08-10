@@ -60,9 +60,7 @@ class LoginScreen(
 				.fillMaxSize()
 				.background(ComposeColors.Background),
 		) {
-			MainToolbar(
-				onBackClick = { navigator.pop() }
-			)
+			MainToolbar(onBackClick = { navigator.pop() })
 			Column(
 				modifier = Modifier
 					.fillMaxWidth()

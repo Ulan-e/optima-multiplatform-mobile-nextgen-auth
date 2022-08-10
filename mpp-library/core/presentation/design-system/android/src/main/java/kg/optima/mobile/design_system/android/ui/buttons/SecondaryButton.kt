@@ -10,27 +10,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
-import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonType
+import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonSecondaryType
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.ComposeColors
 import kg.optima.mobile.resources.Headings
 
 @Composable
 fun SecondaryButton(
-	modifier: Modifier = Modifier.height(Deps.Size.buttonHeight),
+	modifier: Modifier = Modifier,
 	enabled: Boolean = true,
 	text: String,
 	fontSize: Headings = Headings.H4,
-	buttonType: ButtonType = ButtonType.Secondary,
-	onClick: () -> Unit = {}
+	buttonType: ButtonSecondaryType = ButtonSecondaryType.Main,
+	onClick: () -> Unit = {},
 ) {
 	val contentColor = when (buttonType) {
-		ButtonType.Secondary -> ComposeColors.PrimaryRed
-		ButtonType.Tertiary -> ComposeColors.PrimaryDisabledGray
+		ButtonSecondaryType.Main -> ComposeColors.PrimaryRed
+		ButtonSecondaryType.Tertiary -> ComposeColors.PrimaryDisabledGray
 	}
 
 	OutlinedButton(
 		modifier = modifier
+			.height(Deps.Size.buttonHeight)
 			.background(
 				color = Color.Companion.Transparent,
 				shape = RoundedCornerShape(Deps.cornerRadius * 2)

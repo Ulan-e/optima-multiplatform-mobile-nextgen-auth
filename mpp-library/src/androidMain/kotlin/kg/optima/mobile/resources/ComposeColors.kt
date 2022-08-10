@@ -15,4 +15,5 @@ object ComposeColors {
 	val WhiteF5: Color get() = Colors.WhiteF5.toComposeColor()
 
 	val OpaquedDisabledGray: Color get() = DescriptionGray.copy(alpha = 0.08f)
+	val OpaquedDisabledGray20: Color get() = DescriptionGray.copy(alpha = 0.2f)
 }

@@ -20,14 +20,15 @@ fun PrimaryButton(
 	enabled: Boolean = true,
 	text: String,
 	fontSize: Headings = Headings.H4,
-	onClick: () -> Unit = {}
+	color: Color = ComposeColors.PrimaryRed,
+	onClick: () -> Unit = {},
 ) = Button(
 	modifier = modifier
 		.height(Deps.Size.buttonHeight)
 		.background(color = Color.Companion.Transparent),
 	shape = RoundedCornerShape(Deps.cornerRadius),
 	colors = ButtonDefaults.buttonColors(
-		backgroundColor = ComposeColors.PrimaryRed,
+		backgroundColor = color,
 		disabledBackgroundColor = ComposeColors.PrimaryDisabledGray,
 	),
 	onClick = onClick,

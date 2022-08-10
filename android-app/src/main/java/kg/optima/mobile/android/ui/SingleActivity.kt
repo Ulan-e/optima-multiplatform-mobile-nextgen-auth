@@ -68,8 +68,9 @@ class SingleActivity : AppCompatActivity() {
 			sheetElevation = 0.dp,
 			sheetBackgroundColor = Color.Transparent,
 			sheetShape = RoundedCornerShape(16.dp, 16.dp),
-		) {
-			Navigator(screens = screens.value)
-		}
+			content = {
+				Navigator(screens = screens.value)
+			},
+		)
 	}
 }
