@@ -15,7 +15,9 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import com.google.accompanist.insets.ProvideWindowInsets
 import kg.optima.mobile.android.ui.login.LoginScreen
+import kg.optima.mobile.android.ui.pin.PinSetScreen
 import kg.optima.mobile.android.ui.welcome.WelcomeScreen
+import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateFactory
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateIntentHandler
 import kg.optima.mobile.auth.presentation.auth_state.AuthStatusStateMachine
@@ -50,12 +52,27 @@ class SingleActivity : AppCompatActivity() {
 
 		val screens = remember {
 			intentHandler.dispatch(AuthStateIntentHandler.CheckIsAuthorizedIntent)
-			mutableStateOf<List<Screen>>(listOf(WelcomeScreen))
+			mutableStateOf<List<Screen>>(listOf())
 		}
 
 		when (val state = state) {
-			is AuthStatusStateMachine.AuthStatusState.ClientInfo -> {
-				if (state.isAuthorized) screens.value = screens.value + LoginScreen(state.clientId)
+			is AuthStatusStateMachine.AuthStatusState -> {
+				val items = mutableListOf(
+					WelcomeScreen,
+					LoginScreen(state.clientId)
+				)
+				when (state) {
+					is AuthStatusStateMachine.AuthStatusState.Authorized -> {
+						if (state.grantTypes.contains(GrantType.Pin)) {
+							items.add(PinSetScreen)
+						}
+						if (state.grantTypes.contains(GrantType.Biometry)) {
+							// TODO add biometry
+						}
+					}
+					is AuthStatusStateMachine.AuthStatusState.NotAuthorized -> Unit
+				}
+				screens.value = items
 			}
 			is StateMachine.State.Loading ->
 				Log.d("MainScreen", "Loading State")
@@ -69,7 +86,9 @@ class SingleActivity : AppCompatActivity() {
 			sheetBackgroundColor = Color.Transparent,
 			sheetShape = RoundedCornerShape(16.dp, 16.dp),
 			content = {
-				Navigator(screens = screens.value)
+				if (screens.value.isNotEmpty()) {
+					Navigator(screens = screens.value)
+				}
 			},
 		)
 	}

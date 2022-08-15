@@ -39,6 +39,10 @@ class FeatureAuthComponentImpl(
         get() = storageRepository.getString("PIN", emptyString)
         set(value) = storageRepository.putString("PIN", value)
 
+    override var fingerPrint: String
+        get() = storageRepository.getString("Fingerprint", emptyString)
+        set(value) = storageRepository.putString("Fingerprint", value)
+
     override fun saveToken(token: String?) {
 //        clientId = if (token != null) {
 //            PlatformJWT.getParamByKey(token, JwtParameter.USER_ID)

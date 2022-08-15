@@ -22,8 +22,8 @@ object Theme {
 			primary = ComposeColors.PrimaryRed,
 			secondary = LightMainGreen,
 			background = ComposeColors.Background,
-			error = LightRed,
 			surface = ComposeColors.Background,
+			error = LightRed,
 			onPrimary = ComposeColors.PrimaryRed,
 			onSecondary = ComposeColors.PrimaryRed,
 			onBackground = ComposeColors.PrimaryBlack,
@@ -38,8 +38,8 @@ object Theme {
 			primary = ComposeColors.PrimaryRed,
 			secondary = DarkMainGreen,
 			background = ComposeColors.Background,
-			error = DarkRed,
 			surface = ComposeColors.Background,
+			error = DarkRed,
 			onPrimary = ComposeColors.PrimaryRed,
 			onSecondary = ComposeColors.PrimaryRed,
 			onBackground = ComposeColors.PrimaryBlack,
@@ -54,7 +54,7 @@ object Theme {
 
 		CompositionLocalProvider(
 			LocalColors provides colors,
-			LocalTypography provides ApplicationTypographyData
+			LocalTypography provides ApplicationTypographyData,
 		) {
 			MaterialTheme(
 				colors = colors.material,

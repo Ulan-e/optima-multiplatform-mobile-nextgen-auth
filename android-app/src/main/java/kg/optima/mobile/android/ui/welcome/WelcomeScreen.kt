@@ -18,7 +18,9 @@ import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kg.optima.mobile.android.ui.common.show
 import kg.optima.mobile.android.ui.login.LoginScreen
+import kg.optima.mobile.android.ui.pin.PinSetScreen
 import kg.optima.mobile.android.utils.appVersion
+import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateFactory
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateIntentHandler
 import kg.optima.mobile.auth.presentation.auth_state.AuthStatusStateMachine
@@ -49,25 +51,38 @@ object WelcomeScreen : Screen {
 		val state by stateMachine.state.collectAsState(initial = null)
 
 		when (val state = state) {
-			is AuthStatusStateMachine.AuthStatusState.ClientInfo ->
-				navigator.push(LoginScreen(state.clientId))
+			is AuthStatusStateMachine.AuthStatusState -> {
+				val items = mutableListOf<Screen>(LoginScreen(state.clientId))
+				when (state) {
+					is AuthStatusStateMachine.AuthStatusState.Authorized -> {
+						if (state.grantTypes.contains(GrantType.Pin)) {
+							items.add(PinSetScreen)
+						}
+						if (state.grantTypes.contains(GrantType.Biometry)) {
+							// TODO add biometry
+						}
+					}
+					is AuthStatusStateMachine.AuthStatusState.NotAuthorized -> Unit
+				}
+				navigator.push(items)
+			}
 			is StateMachine.State.Loading ->
-				Log.d("MainScreen", "Loading State")
+				Log.d("WelcomeScreen", "Loading State")
 			is StateMachine.State.Error ->
-				Log.d("MainScreen", "Error State")
+				Log.d("WelcomeScreen", "Error State")
 			null -> Unit
 		}
-		bottomSheetNavigator.show(BottomSheetInfo(
-			title = "Пароль не совпадает\nс предыдущим",
-			buttons = listOf(
-				ButtonView.Primary(
-					modifier = Modifier.fillMaxWidth(),
-					text = "Повторить попытку",
-					color = ComposeColors.Green,
-					onClick = { bottomSheetNavigator.hide() }
-				)
-			)
-		))
+//		bottomSheetNavigator.show(BottomSheetInfo(
+//			title = "Пароль не совпадает\nс предыдущим",
+//			buttons = listOf(
+//				ButtonView.Primary(
+//					modifier = Modifier.fillMaxWidth(),
+//					text = "Повторить попытку",
+//					color = ComposeColors.Green,
+//					onClick = { bottomSheetNavigator.hide() }
+//				)
+//			)
+//		))
 
 		MainContainer {
 			Column(

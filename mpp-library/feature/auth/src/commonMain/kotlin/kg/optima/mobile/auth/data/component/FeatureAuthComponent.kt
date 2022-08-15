@@ -20,6 +20,7 @@ interface FeatureAuthComponent {
     var token: String?
 
     var pin: String
+    var fingerPrint: String
 
     fun saveToken(token: String?)
 

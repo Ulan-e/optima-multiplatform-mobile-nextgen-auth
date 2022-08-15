@@ -56,6 +56,8 @@ abstract class StateMachine<in E>(
 //        }
 	}
 
+	fun resetState() = setState(null)
+
 	abstract fun handle(entity: E)
 
 	interface State {

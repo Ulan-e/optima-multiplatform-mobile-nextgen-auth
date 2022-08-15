@@ -20,5 +20,5 @@ dependencies {
     commonMainApi(libs.mokoErrors)
 
     val kryptoVersion = "2.2.0"
-    commonMainApi("com.soywiz.korlibs.krypto:krypto:$kryptoVersion")
+    commonMainImplementation("com.soywiz.korlibs.krypto:krypto:$kryptoVersion")
 }
