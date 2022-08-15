@@ -20,5 +20,5 @@ dependencies {
 	commonMainApi(libs.mokoResources)
 	commonMainApi(libs.mokoErrors)
 
-	commonMainImplementation("com.soywiz.korlibs.krypto:krypto:3.0.0")
+	commonMainApi("com.soywiz.korlibs.krypto:krypto:3.0.0")
 }
