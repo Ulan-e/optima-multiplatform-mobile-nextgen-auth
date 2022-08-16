@@ -16,7 +16,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.2.1")
+        classpath("com.android.tools.build:gradle:7.2.2")
         classpath(libs.mokoResourcesGeneratorGradle)
         classpath(libs.mokoNetworkGeneratorGradle)
         classpath(libs.mokoUnitsGeneratorGradle)
