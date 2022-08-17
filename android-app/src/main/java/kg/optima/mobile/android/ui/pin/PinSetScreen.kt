@@ -11,6 +11,7 @@ import kg.optima.mobile.auth.presentation.pin_set.PinSetIntentHandler
 import kg.optima.mobile.auth.presentation.pin_set.PinSetStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
 import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
 import kg.optima.mobile.design_system.android.ui.screens.pin.headers.enterPinScreenHeader
 import kg.optima.mobile.design_system.android.ui.screens.pin.headers.setPinScreenHeader
@@ -43,9 +44,9 @@ object PinSetScreen : Screen {
 				}
 			}
 			is StateMachine.State.Loading ->
-				Log.d("MainScreen", "Loading State")
+				Log.d("PinSetScreen", "Loading State")
 			is StateMachine.State.Error ->
-				Log.d("MainScreen", "Error State")
+				Log.d("PinSetScreen", "Error State")
 		}
 		PinScreen(
 			header = setPinScreenHeader(headerState.value, subheaderState.value),
@@ -60,6 +61,9 @@ object PinSetScreen : Screen {
 						intentHandler.dispatch(PinSetIntentHandler.PinSetIntent.Compare(codeState.value))
 				}
 			},
+			actionCell = ActionCell.Close {
+				
+			}
 		)
 	}
 }

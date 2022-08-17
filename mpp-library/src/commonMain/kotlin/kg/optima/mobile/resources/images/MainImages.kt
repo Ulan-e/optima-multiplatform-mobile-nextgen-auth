@@ -6,7 +6,7 @@ object MainImages : Images {
 
     val bell get() = byFileName("img_bell")
     val chartup get() = byFileName("img_chartup")
-    val ellipse get() = byFileName("img_ellipse")
+    val pin get() = byFileName("img_pin")
     val phone get() = byFileName("img_phone")
     val invisible get() = byFileName("img_invisible")
     val visible get() = byFileName("img_visible")
@@ -14,4 +14,6 @@ object MainImages : Images {
     val backspace get() = byFileName("img_backspace")
     val remove get() = byFileName("img_remove")
     val logout get() = byFileName("img_logout")
+
+    val fingerprint get() = byFileName("img_fingerprint")
 }

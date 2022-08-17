@@ -17,10 +17,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import kg.optima.mobile.design_system.android.ui.input.model.ErrorTextField
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
-import kg.optima.mobile.resources.images.MainImages
 import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.resources.images.MainImages
 
 
 @SuppressLint("ResourceType")
@@ -54,10 +54,10 @@ fun PasswordInput(
 		title = title,
 		hint = hint,
 		modifier = modifier
-            .fillMaxWidth()
-            .onFocusChanged {
-                if (!it.hasFocus) onFocusLost()
-            },
+			.fillMaxWidth()
+			.onFocusChanged {
+				if (!it.hasFocus) onFocusLost()
+			},
 		enabled = enabled,
 		keyboardType = KeyboardType.Password,
 		imeAction = imeAction,
@@ -80,9 +80,8 @@ fun PasswordInput(
 @Composable
 private fun PasswordVisibility(onClick: (Boolean) -> Unit) {
 	val visible = remember { mutableStateOf(false) }
-	val icon = painterResource(
-		id = (if (visible.value) MainImages.invisible else MainImages.visible).resId()
-	)
+	val img = if (visible.value) MainImages.invisible else MainImages.visible
+	val icon = painterResource(id = img.resId())
 
 	IconButton(
 		onClick = {
@@ -93,8 +92,8 @@ private fun PasswordVisibility(onClick: (Boolean) -> Unit) {
 			Icon(
 				modifier = Modifier.size(Deps.Size.trailingIconSize),
 				painter = icon,
-                contentDescription = "",
-                tint = ComposeColors.DescriptionGray,
+				contentDescription = "",
+				tint = ComposeColors.DescriptionGray,
 			)
 		}
 	)

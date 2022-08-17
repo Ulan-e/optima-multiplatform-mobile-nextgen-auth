@@ -12,18 +12,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kg.optima.mobile.base.utils.emptyString
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
-import kg.optima.mobile.design_system.android.utils.resources.resId
-
-typealias OnCellClick = (CellType) -> Unit
 
 @Composable
 fun NumberPad(
 	modifier: Modifier = Modifier,
-	onClick: OnCellClick = {}
+	onClick: OnCellClick = {},
+	actionCell: Cell,
 ) {
 	val rows = listOf(
 		listOf("1", "2", "3"),
@@ -47,6 +46,7 @@ fun NumberPad(
 		BottomRow(
 			modifier = Modifier.padding(top = Deps.Spacing.pinBtnYMargin),
 			onClick = onClick,
+			startCell = actionCell,
 		)
 	}
 }
@@ -63,11 +63,8 @@ private fun NumberRow(
 		verticalAlignment = Alignment.CenterVertically,
 	) {
 		repeat(row.size) { i ->
-			val cellType = CellType.Num(row[i])
-			PinCell(
-				cellType = cellType,
-				onClick = { onClick(cellType) }
-			)
+			val cell = Cell.Num(row[i], onClick)
+			PinCell(cell = cell)
 		}
 	}
 }
@@ -75,6 +72,7 @@ private fun NumberRow(
 @Composable
 private fun BottomRow(
 	modifier: Modifier = Modifier,
+	startCell: Cell,
 	onClick: OnCellClick,
 ) {
 	Row(
@@ -83,21 +81,16 @@ private fun BottomRow(
 		verticalAlignment = Alignment.CenterVertically,
 	) {
 		PinCell(
-			cellType = CellType.Text(
-				text = "Закрыть",
-				color = ComposeColors.PrimaryRed
-			),
-			onClick = onClick,
+			cell = startCell,
 		)
 		PinCell(
-			cellType = CellType.Num("0"),
-			onClick = onClick,
+			cell = Cell.Num("0", onClick = onClick),
 		)
 		PinCell(
-			cellType = CellType.Img(
-				resId = MainImages.backspace.resId()
-			),
-			onClick = onClick,
+			cell = Cell.Img(
+				resId = MainImages.backspace.resId(),
+				onClick = onClick,
+			)
 		)
 	}
 }
@@ -106,13 +99,12 @@ private fun BottomRow(
 @Composable
 private fun PinCell(
 	modifier: Modifier = Modifier,
-	cellType: CellType,
-	onClick: OnCellClick,
+	cell: Cell,
 ) {
-	if (cellType is CellType.Text) {
+	if (cell is Cell.Text) {
 		Surface(
 			modifier = Modifier.size(Deps.Size.pinBtnSize),
-			onClick = { onClick(cellType) },
+			onClick = { cell.onClick(cell) },
 			shape = MaterialTheme.shapes.small,
 			color = Color.Transparent,
 		) {
@@ -120,9 +112,9 @@ private fun PinCell(
 				contentAlignment = Alignment.Center
 			) {
 				Text(
-					text = cellType.text,
+					text = cell.text,
 					fontSize = Headings.H4.px.sp,
-					color = cellType.color,
+					color = cell.color,
 					maxLines = 1,
 				)
 			}
@@ -132,27 +124,27 @@ private fun PinCell(
 			modifier = modifier
 				.size(Deps.Size.pinBtnSize)
 				.padding(Deps.Spacing.minPadding),
-			onClick = { onClick(cellType) },
+			onClick = { cell.onClick(cell) },
 			shape = CircleShape,
 			colors = ButtonDefaults.buttonColors(backgroundColor = ComposeColors.PrimaryWhite),
 			elevation = ButtonDefaults.elevation(defaultElevation = Deps.pinBtnElevation),
 		) {
-			if (cellType is CellType.Num) {
+			if (cell is Cell.Num) {
 				Box(modifier = Modifier.background(ComposeColors.PrimaryWhite)) {
 					Text(
-						text = cellType.num,
+						text = cell.num,
 						modifier = Modifier.align(Alignment.Center),
 						fontSize = Deps.TextSize.pinBtnText,
 					)
 				}
-			} else if (cellType is CellType.Img) {
+			} else if (cell is Cell.Img) {
 				Box(modifier = Modifier.background(ComposeColors.PrimaryWhite)) {
 					Icon(
 						modifier = Modifier
 							.size(Deps.Size.mainButtonImageSize * 2)
 							.align(Alignment.Center)
 							.offset(y = 4.dp),
-						painter = painterResource(id = cellType.resId),
+						painter = painterResource(id = cell.resId),
 						contentDescription = emptyString,
 						tint = ComposeColors.PrimaryBlack,
 					)

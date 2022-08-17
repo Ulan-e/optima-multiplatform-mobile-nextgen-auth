@@ -12,7 +12,7 @@ class OptimaApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        initFirebase()
+//        initFirebase()
         initDi()
     }
 

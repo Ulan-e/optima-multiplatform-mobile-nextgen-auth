@@ -50,9 +50,9 @@ class LoginScreen(
 			is LoginStateMachine.LoginState.SignIn ->
 				navigator.push(PinSetScreen)
 			is StateMachine.State.Loading ->
-				Log.d("MainScreen", "Loading State")
+				Log.d("LoginScreen", "Loading State")
 			is StateMachine.State.Error ->
-				Log.d("MainScreen", "Error State")
+				Log.d("LoginScreen", "Error State")
 		}
 
 		Column(

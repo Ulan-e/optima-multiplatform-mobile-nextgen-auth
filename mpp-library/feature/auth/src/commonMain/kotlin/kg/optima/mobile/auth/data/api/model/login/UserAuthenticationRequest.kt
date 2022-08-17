@@ -7,7 +7,7 @@ class UserAuthenticationRequest(
     val clientId: String,
     val password: String,
 ) {
-	val map
+	val map: Map<String, String>
 		get() = mapOf(
             "client_id" to "optima-24",
             "grant_type" to grantType.method,

@@ -15,11 +15,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kg.optima.mobile.base.utils.emptyString
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.images.resId
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
-import kg.optima.mobile.design_system.android.utils.resources.resId
 
 @Composable
 fun WelcomeScreenButtonBlock(
@@ -35,8 +36,8 @@ fun WelcomeScreenButtonBlock(
 			verticalArrangement = Arrangement.spacedBy(40.dp)
 		) {
 			Button(
-				imageResId = MainImages.bell.resId(),
-				text = "Уведомления",
+				imageResId = MainImages.pin.resId(),
+				text = "На карте",
 			) {
 
 			}
@@ -52,8 +53,8 @@ fun WelcomeScreenButtonBlock(
 			verticalArrangement = Arrangement.spacedBy(40.dp)
 		) {
 			Button(
-				imageResId = MainImages.ellipse.resId(),
-				text = "Языки",
+				imageResId = MainImages.bell.resId(),
+				text = "Уведомления",
 			) {
 
 			}
@@ -84,21 +85,21 @@ private fun Button(
 	) {
 		Column(
 			modifier = Modifier
-                .size(width = 100.dp, height = 77.dp)
-                .background(Color.Transparent),
+				.size(width = 100.dp, height = 77.dp)
+				.background(Color.Transparent),
 			horizontalAlignment = Alignment.CenterHorizontally,
 			verticalArrangement = Arrangement.spacedBy(16.dp),
 		) {
 			Box(
 				modifier = Modifier
-                    .size(
-                        width = Deps.Size.mainButtonSize.first,
-                        height = Deps.Size.mainButtonSize.second
-                    )
-                    .background(
-                        color = ComposeColors.PrimaryRed,
-                        shape = RoundedCornerShape(Deps.mainButtonCornerRadius)
-                    ),
+					.size(
+						width = Deps.Size.mainButtonSize.first,
+						height = Deps.Size.mainButtonSize.second
+					)
+					.background(
+						color = ComposeColors.PrimaryRed,
+						shape = RoundedCornerShape(Deps.mainButtonCornerRadius)
+					),
 				contentAlignment = Alignment.Center
 			) {
 				Icon(

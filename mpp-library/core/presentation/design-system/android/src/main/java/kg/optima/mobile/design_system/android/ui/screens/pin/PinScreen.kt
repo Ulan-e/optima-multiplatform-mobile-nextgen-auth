@@ -6,7 +6,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import kg.optima.mobile.design_system.android.ui.input.CodeInput
-import kg.optima.mobile.design_system.android.ui.pad.CellType
+import kg.optima.mobile.design_system.android.ui.pad.Cell
 import kg.optima.mobile.design_system.android.ui.pad.NumberPad
 import kg.optima.mobile.design_system.android.values.Deps
 
@@ -16,6 +16,7 @@ fun PinScreen(
 	codeState: MutableState<String>,
 	onValueChanged: (String) -> Unit = {},
 	onInputCompleted: (String) -> Unit = {},
+	actionCell: ActionCell,
 ) {
 	Column(
 		modifier = Modifier
@@ -37,19 +38,20 @@ fun PinScreen(
 			),
 			onClick = { type ->
 				when (type) {
-					is CellType.Img -> {
+					is Cell.Img -> {
 						if (codeState.value.isNotBlank()) {
 							val sliced =
 								codeState.value.slice(0 until codeState.value.length - 1)
 							codeState.value = sliced
 						}
 					}
-					is CellType.Num -> {
+					is Cell.Num -> {
 						codeState.value = codeState.value + type.num
 					}
-					is CellType.Text -> Unit
+					is Cell.Text -> Unit
 				}
-			}
+			},
+			actionCell = actionCell.cell,
 		)
 		Spacer(modifier = Modifier.weight(1f))
 	}

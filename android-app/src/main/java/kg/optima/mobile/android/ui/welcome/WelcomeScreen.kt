@@ -12,33 +12,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.fragment.app.FragmentActivity
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kg.optima.mobile.android.ui.common.show
 import kg.optima.mobile.android.ui.login.LoginScreen
-import kg.optima.mobile.android.ui.pin.PinSetScreen
+import kg.optima.mobile.android.ui.pin.PinEnterScreen
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateFactory
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateIntentHandler
 import kg.optima.mobile.auth.presentation.auth_state.AuthStatusStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
-import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
-import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.containers.MainContainer
-import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.design_system.android.utils.biometry.BiometryManager
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
-import kg.optima.mobile.design_system.android.utils.resources.resId
 
 
 @Suppress("NAME_SHADOWING")
-object WelcomeScreen : Screen {
+class WelcomeScreen(
+	private val activity: FragmentActivity
+) : Screen {
 
 	@Composable
 	override fun Content() {
@@ -56,10 +57,18 @@ object WelcomeScreen : Screen {
 				when (state) {
 					is AuthStatusStateMachine.AuthStatusState.Authorized -> {
 						if (state.grantTypes.contains(GrantType.Pin)) {
-							items.add(PinSetScreen)
+							items.add(PinEnterScreen(state.clientId, activity))
 						}
 						if (state.grantTypes.contains(GrantType.Biometry)) {
-							// TODO add biometry
+							BiometryManager.authorize(
+								activity = activity,
+								doOnSuccess = {
+
+								},
+								doOnFailure = {
+
+								},
+							)
 						}
 					}
 					is AuthStatusStateMachine.AuthStatusState.NotAuthorized -> Unit
