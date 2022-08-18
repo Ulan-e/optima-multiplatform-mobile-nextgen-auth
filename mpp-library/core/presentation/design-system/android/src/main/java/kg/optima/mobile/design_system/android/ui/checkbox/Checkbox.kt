@@ -73,7 +73,11 @@ fun Checkbox(
 		Text(
 			modifier = Modifier
 				.align(Alignment.CenterVertically)
-				.padding(start = 8.dp),
+				.padding(start = 8.dp)
+				.clickable {
+					checkedState.value = !checkedState.value
+					onCheck(checkedState.value)
+				},
 			text = text,
 			color = ComposeColors.DescriptionGray,
 			fontSize = Headings.H4.px().dp().sp(),

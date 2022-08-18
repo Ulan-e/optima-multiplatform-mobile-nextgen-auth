@@ -120,34 +120,34 @@ private fun PinCell(
 			}
 		}
 	} else {
+		val background = if (cell.withBackground) ComposeColors.PrimaryWhite else Color.Transparent
+		val elevation = if (cell.withBackground) ButtonDefaults.elevation() else null
+
 		Button(
 			modifier = modifier
 				.size(Deps.Size.pinBtnSize)
 				.padding(Deps.Spacing.minPadding),
 			onClick = { cell.onClick(cell) },
 			shape = CircleShape,
-			colors = ButtonDefaults.buttonColors(backgroundColor = ComposeColors.PrimaryWhite),
-			elevation = ButtonDefaults.elevation(defaultElevation = Deps.pinBtnElevation),
+			colors = ButtonDefaults.buttonColors(backgroundColor = background),
+			elevation = elevation,
 		) {
-			if (cell is Cell.Num) {
-				Box(modifier = Modifier.background(ComposeColors.PrimaryWhite)) {
-					Text(
+			Box(modifier = Modifier.background(background)) {
+				when (cell) {
+					is Cell.Num -> Text(
 						text = cell.num,
 						modifier = Modifier.align(Alignment.Center),
 						fontSize = Deps.TextSize.pinBtnText,
 					)
-				}
-			} else if (cell is Cell.Img) {
-				Box(modifier = Modifier.background(ComposeColors.PrimaryWhite)) {
-					Icon(
+					is Cell.Img -> Icon(
 						modifier = Modifier
 							.size(Deps.Size.mainButtonImageSize * 2)
 							.align(Alignment.Center)
-							.offset(y = 4.dp),
+							.offset(y = 3.dp),
 						painter = painterResource(id = cell.resId),
 						contentDescription = emptyString,
-						tint = ComposeColors.PrimaryBlack,
 					)
+					else -> Unit
 				}
 			}
 		}

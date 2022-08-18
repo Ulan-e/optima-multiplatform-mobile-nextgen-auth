@@ -13,8 +13,10 @@ object BiometryManager {
 		.setNegativeButtonText("Использовать код доступа")
 		.build()
 
-	fun authorize(activity: FragmentActivity, doOnSuccess: () -> Unit, doOnFailure: () -> Unit) {
-		biometricPrompt(activity, doOnSuccess, doOnFailure).authenticate(promptInfo)
+	fun authorize(activity: FragmentActivity?, doOnSuccess: () -> Unit, doOnFailure: () -> Unit) {
+		if (activity != null) {
+			biometricPrompt(activity, doOnSuccess, doOnFailure).authenticate(promptInfo)
+		}
 	}
 
 	private fun executor(activity: FragmentActivity): Executor =
@@ -25,16 +27,19 @@ object BiometryManager {
 		doOnSuccess: () -> Unit,
 		doOnFailure: () -> Unit
 	): BiometricPrompt {
-		return BiometricPrompt(activity, executor(activity), object  : BiometricPrompt.AuthenticationCallback() {
-			override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-				super.onAuthenticationSucceeded(result)
-				doOnSuccess()
-			}
+		return BiometricPrompt(
+			activity,
+			executor(activity),
+			object : BiometricPrompt.AuthenticationCallback() {
+				override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+					super.onAuthenticationSucceeded(result)
+					doOnSuccess()
+				}
 
-			override fun onAuthenticationFailed() {
-				super.onAuthenticationFailed()
-				doOnFailure()
-			}
-		})
+				override fun onAuthenticationFailed() {
+					super.onAuthenticationFailed()
+					doOnFailure()
+				}
+			})
 	}
 }

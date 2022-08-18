@@ -12,9 +12,10 @@ class LoginStateMachine : StateMachine<LoginModel>() {
 	}
 
 	override fun handle(entity: LoginModel) {
-		val state: LoginState = when (entity) {
+		val state = when (entity) {
 			is LoginModel.Success -> LoginState.SignIn
 			is LoginModel.ClientId -> LoginState.ClientId(clientId = entity.id)
+			is LoginModel.Biometry -> if (entity.show) LoginState.ShowBiometry else State.Initial
 		}
 
 		setState(state)

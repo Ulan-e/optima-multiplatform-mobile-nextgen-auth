@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.FragmentActivity
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -37,9 +36,7 @@ import kg.optima.mobile.resources.images.MainImages
 
 
 @Suppress("NAME_SHADOWING")
-class WelcomeScreen(
-	private val activity: FragmentActivity
-) : Screen {
+object WelcomeScreen : Screen {
 
 	@Composable
 	override fun Content() {
@@ -54,17 +51,14 @@ class WelcomeScreen(
 		val loginScreen = rememberScreen(provider = AuthScreens.Login)
 
 		@Composable
-		fun pinEnterScreen(showBiometry: Boolean): Screen {
-			val initialState = if (showBiometry) LoginStateMachine.LoginState.ShowBiometry else null
-			return rememberScreen(provider = AuthScreens.PinEnter(activity, initialState))
-		}
+		fun pinEnterScreen(showBiometry: Boolean) =
+			rememberScreen(provider = AuthScreens.PinEnter(showBiometry))
 
 		when (val state = state) {
 			is AuthStatusStateMachine.AuthStatusState -> {
-				val items = mutableListOf<Screen>()
+				val items = mutableListOf(loginScreen)
 				when (state) {
 					is AuthStatusStateMachine.AuthStatusState.Authorized -> {
-						items.add(loginScreen)
 						if (state.grantTypes.contains(GrantType.Pin)) {
 							items.add(pinEnterScreen(state.grantTypes.contains(GrantType.Biometry)))
 						}
@@ -123,6 +117,7 @@ class WelcomeScreen(
 							bottom = Deps.Spacing.standardMargin,
 						),
 					text = "Зарегистрироваться",
+					onClick = { intentHandler.checkIsAuthorized() },
 				)
 				Text(
 					text = "Версия $appVersion",

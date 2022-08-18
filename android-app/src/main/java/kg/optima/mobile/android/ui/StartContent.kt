@@ -18,7 +18,7 @@ import kg.optima.mobile.base.presentation.StateMachine
 
 @Suppress("NAME_SHADOWING")
 @Composable
-fun StartContent(activity: FragmentActivity) {
+fun StartContent() {
 	val stateMachine: AuthStatusStateMachine = AuthStateFactory.stateMachine
 	val intentHandler: AuthStateIntentHandler = AuthStateFactory.intentHandler
 	val state by stateMachine.state.collectAsState(initial = null)
@@ -28,14 +28,12 @@ fun StartContent(activity: FragmentActivity) {
 		mutableStateOf<List<Screen>>(listOf())
 	}
 
-	val welcomeScreen = rememberScreen(provider = EntryScreens.Welcome(activity))
+	val welcomeScreen = rememberScreen(provider = EntryScreens.Welcome)
 	val loginScreen = rememberScreen(provider = AuthScreens.Login)
 
 	@Composable
-	fun pinEnterScreen(showBiometry: Boolean): Screen {
-		val initialState = if (showBiometry) LoginStateMachine.LoginState.ShowBiometry else null
-		return rememberScreen(provider = AuthScreens.PinEnter(activity, initialState))
-	}
+	fun pinEnterScreen(showBiometry: Boolean) =
+		rememberScreen(provider = AuthScreens.PinEnter(showBiometry))
 
 	when (val state = state) {
 		is AuthStatusStateMachine.AuthStatusState -> {

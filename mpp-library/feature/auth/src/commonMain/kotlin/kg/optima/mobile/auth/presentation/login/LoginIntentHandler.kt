@@ -1,6 +1,7 @@
 package kg.optima.mobile.auth.presentation.login
 
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
+import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
 import kg.optima.mobile.auth.presentation.login.utils.toUseCaseModel
@@ -22,20 +23,21 @@ class LoginIntentHandler(
 			when (intent) {
 				is LoginIntent.SignIn -> signIn(intent)
 				LoginIntent.GetClientId -> getClientId()
+				LoginIntent.ShowBiometry -> showBiometry()
 			}
 		}
 
 		launchOperation(operation = operation)
 	}
 
-	private suspend fun signIn(intent: LoginIntent.SignIn): Either<Failure, LoginModel.Success> {
-		return loginUseCase.execute(intent.toUseCaseModel()).map { LoginModel.Success }
-	}
+	private suspend fun signIn(intent: LoginIntent.SignIn) =
+		loginUseCase.execute(intent.toUseCaseModel()).map { LoginModel.Success }
 
-	private suspend fun getClientId(): Either<Failure, LoginModel.ClientId> {
-		return clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
-			LoginModel.ClientId(it.clientId)
-		}
+	private suspend fun getClientId() =
+		clientInfoUseCase.execute(ClientInfoUseCase.Params).map { LoginModel.ClientId(it.clientId) }
+
+	private suspend fun showBiometry() = clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
+		LoginModel.Biometry(show = it.grantTypes.contains(GrantType.Biometry))
 	}
 
 	sealed interface LoginIntent : Intent {
@@ -51,6 +53,8 @@ class LoginIntentHandler(
 
 			object Biometry : SignIn
 		}
+
+		object ShowBiometry : LoginIntent
 
 		object GetClientId : LoginIntent
 	}
