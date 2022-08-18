@@ -1,13 +1,9 @@
 package kg.optima.mobile.auth.presentation.login
 
-import kg.optima.mobile.auth.data.api.model.login.LoginResponse
-import kg.optima.mobile.auth.domain.CryptographyUtils
-import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfo
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
-import kg.optima.mobile.auth.presentation.login.model.toPlainModel
+import kg.optima.mobile.auth.presentation.login.utils.toUseCaseModel
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.IntentHandler
@@ -19,33 +15,43 @@ class LoginIntentHandler(
 ) : IntentHandler<LoginIntentHandler.LoginIntent, LoginModel>() {
 
 	private val loginUseCase: LoginUseCase by inject()
+	private val clientInfoUseCase: ClientInfoUseCase by inject()
 
 	override fun dispatch(intent: LoginIntent) {
 		val operation: suspend () -> Either<Failure, LoginModel> = {
 			when (intent) {
 				is LoginIntent.SignIn -> signIn(intent)
+				LoginIntent.GetClientId -> getClientId()
 			}
 		}
 
 		launchOperation(operation = operation)
 	}
 
-	private suspend fun signIn(intent: LoginIntent.SignIn): Either<Failure, LoginModel.LoginResponse> {
-		val model = LoginUseCase.Params(
-			clientId = intent.clientId,
-			password = CryptographyUtils.getHash(intent.password),
-			grantType = intent.grantType,
-		)
-
-		return loginUseCase.execute(model).map(LoginResponse::toPlainModel)
+	private suspend fun signIn(intent: LoginIntent.SignIn): Either<Failure, LoginModel.Success> {
+		return loginUseCase.execute(intent.toUseCaseModel()).map { LoginModel.Success }
 	}
 
+	private suspend fun getClientId(): Either<Failure, LoginModel.ClientId> {
+		return clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
+			LoginModel.ClientId(it.clientId)
+		}
+	}
 
 	sealed interface LoginIntent : Intent {
-		class SignIn(
-			val clientId: String,
-			val password: String,
-			val grantType: GrantType,
-		) : LoginIntent
+		sealed interface SignIn : LoginIntent {
+			class Password(
+				val clientId: String,
+				val password: String,
+			) : SignIn
+
+			class Pin(
+				val pin: String
+			) : SignIn
+
+			object Biometry : SignIn
+		}
+
+		object GetClientId : LoginIntent
 	}
 }

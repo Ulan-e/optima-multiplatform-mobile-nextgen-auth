@@ -7,9 +7,8 @@ import kotlinx.coroutines.*
 import org.koin.core.component.KoinComponent
 
 /**
- * [Intent] - In parameter using as params for launch executing,
- * [E] - In parameter coming from Domain,
- * [S] - Out parameter sending to StateFlow.
+ * [I] - Intent, In parameter using as param launching executing,
+ * [E] - Entity, In parameter coming from Domain,
  **/
 abstract class IntentHandler<in I : Intent, in E>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,

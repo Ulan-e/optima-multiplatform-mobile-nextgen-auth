@@ -1,9 +1,11 @@
 package kg.optima.mobile.android
 
 import android.app.Application
+import cafe.adriel.voyager.core.registry.ScreenRegistry
 import com.google.firebase.FirebaseApp
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kg.optima.mobile.BuildConfig
+import kg.optima.mobile.android.ui.screens
 import kg.optima.mobile.di.Injector
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
@@ -14,6 +16,7 @@ class OptimaApp : Application() {
         super.onCreate()
 //        initFirebase()
         initDi()
+        ScreenRegistry { screens() }
     }
 
     private fun initDi() {

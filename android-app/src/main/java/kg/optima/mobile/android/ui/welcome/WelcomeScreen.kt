@@ -13,22 +13,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentActivity
+import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kg.optima.mobile.android.ui.login.LoginScreen
-import kg.optima.mobile.android.ui.pin.PinEnterScreen
+import kg.optima.mobile.android.ui.auth.AuthScreens
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateFactory
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateIntentHandler
 import kg.optima.mobile.auth.presentation.auth_state.AuthStatusStateMachine
+import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
 import kg.optima.mobile.design_system.android.ui.containers.MainContainer
-import kg.optima.mobile.design_system.android.utils.biometry.BiometryManager
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.values.Deps
@@ -51,24 +51,22 @@ class WelcomeScreen(
 
 		val state by stateMachine.state.collectAsState(initial = null)
 
+		val loginScreen = rememberScreen(provider = AuthScreens.Login)
+
+		@Composable
+		fun pinEnterScreen(showBiometry: Boolean): Screen {
+			val initialState = if (showBiometry) LoginStateMachine.LoginState.ShowBiometry else null
+			return rememberScreen(provider = AuthScreens.PinEnter(activity, initialState))
+		}
+
 		when (val state = state) {
 			is AuthStatusStateMachine.AuthStatusState -> {
-				val items = mutableListOf<Screen>(LoginScreen(state.clientId))
+				val items = mutableListOf<Screen>()
 				when (state) {
 					is AuthStatusStateMachine.AuthStatusState.Authorized -> {
+						items.add(loginScreen)
 						if (state.grantTypes.contains(GrantType.Pin)) {
-							items.add(PinEnterScreen(state.clientId, activity))
-						}
-						if (state.grantTypes.contains(GrantType.Biometry)) {
-							BiometryManager.authorize(
-								activity = activity,
-								doOnSuccess = {
-
-								},
-								doOnFailure = {
-
-								},
-							)
+							items.add(pinEnterScreen(state.grantTypes.contains(GrantType.Biometry)))
 						}
 					}
 					is AuthStatusStateMachine.AuthStatusState.NotAuthorized -> Unit
@@ -136,5 +134,5 @@ class WelcomeScreen(
 	}
 
 	private fun AuthStateIntentHandler.checkIsAuthorized() =
-		this.dispatch(AuthStateIntentHandler.CheckIsAuthorizedIntent)
+		this.dispatch(AuthStateIntentHandler.AuthStateIntent.CheckIsAuthorized)
 }

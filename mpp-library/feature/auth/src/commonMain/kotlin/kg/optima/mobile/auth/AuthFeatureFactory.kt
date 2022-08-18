@@ -2,8 +2,8 @@ package kg.optima.mobile.auth
 
 import kg.optima.mobile.auth.data.api.AuthApi
 import kg.optima.mobile.auth.data.api.AuthApiImpl
-import kg.optima.mobile.auth.data.component.FeatureAuthComponent
-import kg.optima.mobile.auth.data.component.FeatureAuthComponentImpl
+import kg.optima.mobile.auth.data.component.AuthPreferences
+import kg.optima.mobile.auth.data.component.AuthPreferencesImpl
 import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.auth.data.repository.AuthRepositoryImpl
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
@@ -25,14 +25,14 @@ object AuthFeatureFactory : Factory, KoinComponent {
 	override val module: Module = module {
 		factory<AuthApi> { AuthApiImpl(networkClient = get()) }
 		factory<AuthRepository> { AuthRepositoryImpl(authApi = get()) }
-		factory<FeatureAuthComponent> {
-			FeatureAuthComponentImpl(storageRepository = get(), runtimeCache = get())
+		factory<AuthPreferences> {
+			AuthPreferencesImpl(storageRepository = get(), runtimeCache = get())
 		}
 
 		//UseCases injection
-		factory { LoginUseCase(authRepository = get(), component = get()) }
-		factory { ClientInfoUseCase(component = get()) }
-		factory { PinSetUseCase(authRepository = get(), component = get()) }
+		factory { LoginUseCase(authRepository = get(), authPreferences = get()) }
+		factory { ClientInfoUseCase(authPreferences = get()) }
+		factory { PinSetUseCase(authPreferences = get()) }
 
 		// StateMachines and IntentHandlers injection by pair
 		factory { LoginStateMachine() }

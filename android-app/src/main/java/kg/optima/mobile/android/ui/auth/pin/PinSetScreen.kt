@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.pin
+package kg.optima.mobile.android.ui.auth.pin
 
 import android.util.Log
 import androidx.compose.runtime.*
@@ -62,7 +62,7 @@ object PinSetScreen : Screen {
 				}
 			},
 			actionCell = ActionCell.Close {
-				
+
 			}
 		)
 	}

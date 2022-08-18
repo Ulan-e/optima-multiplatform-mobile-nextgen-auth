@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.login
+package kg.optima.mobile.android.ui.auth.login
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -9,11 +9,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kg.optima.mobile.android.ui.pin.PinSetScreen
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
+import kg.optima.mobile.android.ui.auth.AuthScreens
 import kg.optima.mobile.auth.presentation.login.LoginFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
@@ -25,13 +25,11 @@ import kg.optima.mobile.design_system.android.ui.input.InputField
 import kg.optima.mobile.design_system.android.ui.input.PasswordInput
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.MainToolbar
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.values.Deps
 
 
-class LoginScreen(
-	private val clientId: String?,
-) : Screen {
+object LoginScreen : Screen {
 
 	@Composable
 	override fun Content() {
@@ -42,13 +40,20 @@ class LoginScreen(
 
 		val state by stateMachine.state.collectAsState(initial = null)
 
-		val clientIdInputFieldState = remember { mutableStateOf(clientId.orEmpty()) }
+		val clientIdInputFieldState = remember {
+			intentHandler.dispatch(LoginIntentHandler.LoginIntent.GetClientId)
+			mutableStateOf(emptyString)
+		}
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
 		val checkedState = remember { mutableStateOf(true) }
 
-		when (state) {
+		val pinSetScreen = rememberScreen(provider = AuthScreens.PinSet)
+
+		when (val loginState = state) {
+			is LoginStateMachine.LoginState.ClientId ->
+				clientIdInputFieldState.value = loginState.clientId.orEmpty()
 			is LoginStateMachine.LoginState.SignIn ->
-				navigator.push(PinSetScreen)
+				navigator.push(pinSetScreen)
 			is StateMachine.State.Loading ->
 				Log.d("LoginScreen", "Loading State")
 			is StateMachine.State.Error ->
@@ -101,11 +106,12 @@ class LoginScreen(
 					.padding(all = Deps.Spacing.standardPadding),
 				text = "Продолжить",
 				onClick = {
-					intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn(
-						clientId = clientIdInputFieldState.value,
-						password = passwordInputFieldState.value,
-						grantType = GrantType.Password
-					))
+					intentHandler.dispatch(
+						LoginIntentHandler.LoginIntent.SignIn.Password(
+							clientId = clientIdInputFieldState.value,
+							password = passwordInputFieldState.value,
+						)
+					)
 				},
 			)
 		}

@@ -2,7 +2,7 @@ package kg.optima.mobile.auth.domain.usecase.login
 
 import kg.optima.mobile.auth.data.api.model.login.LoginResponse
 import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationRequest
-import kg.optima.mobile.auth.data.component.FeatureAuthComponent
+import kg.optima.mobile.auth.data.component.AuthPreferences
 import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.onSuccess
@@ -15,29 +15,70 @@ import kg.optima.mobile.core.error.Failure
 */
 class LoginUseCase(
 	private val authRepository: AuthRepository,
-	private val component: FeatureAuthComponent,
+	private val authPreferences: AuthPreferences,
 ) : BaseUseCase<LoginUseCase.Params, LoginResponse>() {
 
 	override suspend fun execute(
 		model: Params,
 	): Either<Failure, LoginResponse> {
-		val request = UserAuthenticationRequest(
-			grantType = model.grantType,
-			clientId = model.clientId,
-			password = model.password
-		)
-		return authRepository.login(request.map)
+		return when (model) {
+			Params.Biometry -> signIn()
+			is Params.Password -> signIn(model.grantType, model.clientId, model.password)
+			is Params.Pin -> {
+				if (model.pin == authPreferences.pin) {
+					signIn()
+				} else {
+					Either.Left(Failure.Message("Неверный pin"))
+				}
+			}
+		}
+	}
+
+	private suspend fun signIn(
+		grantType: GrantType = GrantType.Password,
+		clientId: String = authPreferences.clientId.orEmpty(),
+		password: String = authPreferences.password,
+	): Either<Failure, LoginResponse> {
+		val response: Either<Failure, LoginResponse> = if (clientId == "371564" && password == "killme123") {
+			Either.Right(LoginResponse(
+				accessToken = "",
+				expiresIn = 0,
+				refreshToken = "",
+				refreshTokenExpiresIn = 0,
+				sessionState = "",
+			))
+		} else {
+			Either.Left(Failure.Message("Неверный пароль"))
+		}
+
+//		val request = UserAuthenticationRequest(
+//			grantType = grantType,
+//			clientId = clientId,
+//			password = password,
+//		)
+//		return authRepository.login(request.map)
+		return response
 			.onSuccess {
-				component.clientId = model.clientId
-				component.saveToken(it.accessToken)
-				component.refreshToken = it.refreshToken
-				component.isAuthorized = true
+				authPreferences.clientId = clientId
+				authPreferences.password = password
+				authPreferences.saveToken(it.accessToken)
+				authPreferences.refreshToken = it.refreshToken
+				authPreferences.isAuthorized = true
 			}
 	}
 
-	class Params(
-		val clientId: String,
-		val password: String,
-		val grantType: GrantType,
-	)
+	sealed interface Params {
+		class Password(
+			val clientId: String,
+			val password: String,
+		) : Params {
+			val grantType = GrantType.Password
+		}
+
+		class Pin(
+			val pin: String
+		) : Params
+
+		object Biometry : Params
+	}
 }

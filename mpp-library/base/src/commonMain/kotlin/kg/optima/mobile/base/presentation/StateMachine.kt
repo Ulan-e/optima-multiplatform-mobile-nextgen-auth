@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.*
 
 /**
  * [E] - Entity. In parameter, receiving from Domain,
- * [S] - State. Out parameter, sending to StateFlow.
  **/
 abstract class StateMachine<in E>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,

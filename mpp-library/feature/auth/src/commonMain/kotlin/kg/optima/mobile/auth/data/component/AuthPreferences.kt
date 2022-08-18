@@ -1,9 +1,9 @@
 package kg.optima.mobile.auth.data.component
 
-interface FeatureAuthComponent {
+interface AuthPreferences {
 
     companion object {
-        const val AUTHORIZED: String = "Authorized"
+        const val AUTHORIZED = "AUTHORIZED"
         const val CLIENT_ID = "USER_ID"
         const val DEVICE_ID = "DEVICE_ID"
         const val FIRST_START = "FIRST_START"
@@ -19,6 +19,7 @@ interface FeatureAuthComponent {
     var deviceId: String
     var token: String?
 
+    var password: String
     var pin: String
     var fingerPrint: String
 
