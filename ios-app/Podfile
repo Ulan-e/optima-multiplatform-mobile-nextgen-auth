@@ -18,8 +18,8 @@ install! 'cocoapods', :disable_input_output_paths => true
 
 target 'ios-app' do
   pod 'MultiPlatformLibrary', :path => '../mpp-library'
-  pod 'MultiPlatformLibraryUnits/Core',
-    :git => 'https://github.com/icerockdev/moko-units.git', :tag => 'release/0.7.0'
+#  pod 'MultiPlatformLibraryUnits/Core',
+#    :git => 'https://github.com/icerockdev/moko-units.git', :tag => 'release/0.7.0'
   pod 'MCRCDynamicProxy',
     :git => 'https://github.com/icerockdev/moko-crash-reporting.git', :tag => 'release/0.2.1'
   pod 'MCRCStaticReporter',

@@ -49,7 +49,7 @@ class BaseCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
             self?.removeDependency(coordinator)
             completion?()
         }
-        
+
         childCoordinators.append(coordinator)
         return coordinator
     }
