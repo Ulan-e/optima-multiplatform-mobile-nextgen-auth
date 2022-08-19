@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 
 @Composable
-fun CircularProgress(modifier: Modifier) {
+fun CircularProgress(modifier: Modifier = Modifier) {
 	CircularProgressIndicator(
 		modifier = modifier,
 		color = ComposeColors.PrimaryRed

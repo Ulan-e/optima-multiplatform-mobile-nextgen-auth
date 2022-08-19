@@ -2,23 +2,21 @@ package kg.optima.mobile.android.ui
 
 import android.util.Log
 import androidx.compose.runtime.*
-import androidx.fragment.app.FragmentActivity
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import kg.optima.mobile.android.ui.auth.AuthScreens
 import kg.optima.mobile.android.ui.welcome.EntryScreens
 import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateFactory
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateIntentHandler
 import kg.optima.mobile.auth.presentation.auth_state.AuthStatusStateMachine
-import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
 
 
 @Suppress("NAME_SHADOWING")
-@Composable
-fun StartContent() {
+val startContent: @Composable (bottomSheetNavigator: BottomSheetNavigator) -> Unit = {
 	val stateMachine: AuthStatusStateMachine = AuthStateFactory.stateMachine
 	val intentHandler: AuthStateIntentHandler = AuthStateFactory.intentHandler
 	val state by stateMachine.state.collectAsState(initial = null)

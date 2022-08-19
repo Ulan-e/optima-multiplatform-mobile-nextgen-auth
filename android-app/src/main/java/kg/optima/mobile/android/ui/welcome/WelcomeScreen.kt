@@ -1,12 +1,9 @@
 package kg.optima.mobile.android.ui.welcome
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -18,16 +15,16 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kg.optima.mobile.android.ui.auth.AuthScreens
+import kg.optima.mobile.android.ui.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateFactory
 import kg.optima.mobile.auth.presentation.auth_state.AuthStateIntentHandler
 import kg.optima.mobile.auth.presentation.auth_state.AuthStatusStateMachine
-import kg.optima.mobile.auth.presentation.login.LoginStateMachine
-import kg.optima.mobile.base.presentation.StateMachine
+import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
-import kg.optima.mobile.design_system.android.ui.containers.MainContainer
+import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.values.Deps
@@ -44,15 +41,12 @@ object WelcomeScreen : Screen {
 		val intentHandler: AuthStateIntentHandler = AuthStateFactory.intentHandler
 
 		val navigator = LocalNavigator.currentOrThrow
-		val bottomSheetNavigator = LocalBottomSheetNavigator.current
 
 		val state by stateMachine.state.collectAsState(initial = null)
 
-		val loginScreen = rememberScreen(provider = AuthScreens.Login)
+		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
-		@Composable
-		fun pinEnterScreen(showBiometry: Boolean) =
-			rememberScreen(provider = AuthScreens.PinEnter(showBiometry))
+		val loginScreen = rememberScreen(provider = AuthScreens.Login)
 
 		when (val state = state) {
 			is AuthStatusStateMachine.AuthStatusState -> {
@@ -60,32 +54,24 @@ object WelcomeScreen : Screen {
 				when (state) {
 					is AuthStatusStateMachine.AuthStatusState.Authorized -> {
 						if (state.grantTypes.contains(GrantType.Pin)) {
-							items.add(pinEnterScreen(state.grantTypes.contains(GrantType.Biometry)))
+							val pinEnterScreen = rememberScreen(
+								AuthScreens.PinEnter(
+									showBiometry = state.grantTypes.contains(GrantType.Biometry)
+								)
+							)
+							items.add(pinEnterScreen)
 						}
 					}
 					is AuthStatusStateMachine.AuthStatusState.NotAuthorized -> Unit
 				}
 				navigator.push(items)
 			}
-			is StateMachine.State.Loading ->
-				Log.d("WelcomeScreen", "Loading State")
-			is StateMachine.State.Error ->
-				Log.d("WelcomeScreen", "Error State")
-			null -> Unit
 		}
-//		bottomSheetNavigator.show(BottomSheetInfo(
-//			title = "Пароль не совпадает\nс предыдущим",
-//			buttons = listOf(
-//				ButtonView.Primary(
-//					modifier = Modifier.fillMaxWidth(),
-//					text = "Повторить попытку",
-//					color = ComposeColors.Green,
-//					onClick = { bottomSheetNavigator.hide() }
-//				)
-//			)
-//		))
 
-		MainContainer {
+		MainContainer(
+			mainState = state,
+			infoState = bottomSheetState.value,
+		) {
 			Column(
 				modifier = Modifier
 					.fillMaxSize()
@@ -117,7 +103,19 @@ object WelcomeScreen : Screen {
 							bottom = Deps.Spacing.standardMargin,
 						),
 					text = "Зарегистрироваться",
-					onClick = { intentHandler.checkIsAuthorized() },
+					onClick = {
+						bottomSheetState.value = BottomSheetInfo(
+							title = "Пароль не совпадает\nс предыдущим",
+							buttons = listOf(
+								ButtonView.Primary(
+									modifier = Modifier.fillMaxWidth(),
+									text = "Повторить попытку",
+									color = ComposeColors.Green,
+									onClick = { }
+								)
+							)
+						)
+					},
 				)
 				Text(
 					text = "Версия $appVersion",

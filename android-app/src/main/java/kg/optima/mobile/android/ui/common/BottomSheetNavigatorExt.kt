@@ -6,5 +6,4 @@ import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 
 fun BottomSheetNavigator.show(
 	info: BottomSheetInfo,
-	modifier: Modifier = Modifier
-) = show(BottomSheetScreen(info, modifier))
+) = show(BottomSheetScreen(info))

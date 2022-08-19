@@ -10,11 +10,10 @@ import java.lang.System.currentTimeMillis
 
 class BottomSheetScreen(
 	private val info: BottomSheetInfo,
-	private val modifier: Modifier = Modifier,
 ) : Screen {
 	override val key: ScreenKey
 		get() = currentTimeMillis().toString()
 
 	@Composable
-	override fun Content() = BottomSheet(info, modifier)
+	override fun Content() = BottomSheet(info)
 }

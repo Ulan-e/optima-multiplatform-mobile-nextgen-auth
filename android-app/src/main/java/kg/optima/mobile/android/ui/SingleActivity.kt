@@ -8,6 +8,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
+import com.google.accompanist.insets.ProvideWindowInsets
 import kg.optima.mobile.design_system.android.theme.Theme
 
 
@@ -18,14 +19,15 @@ class SingleActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 
 		setContent {
-			Theme.OptimaTheme {
-				BottomSheetNavigator(
-					sheetElevation = 0.dp,
-					sheetBackgroundColor = Color.Transparent,
-					sheetShape = RoundedCornerShape(16.dp, 16.dp),
-					content = { StartContent() },
-				)
-
+			ProvideWindowInsets {
+				Theme.OptimaTheme {
+					BottomSheetNavigator(
+						sheetElevation = 0.dp,
+						sheetBackgroundColor = Color.Transparent,
+						sheetShape = RoundedCornerShape(16.dp, 16.dp),
+						content = startContent,
+					)
+				}
 			}
 		}
 	}
