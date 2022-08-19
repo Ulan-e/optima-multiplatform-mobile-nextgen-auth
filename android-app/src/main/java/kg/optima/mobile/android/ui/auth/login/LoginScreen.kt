@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.auth.login
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,10 +13,10 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kg.optima.mobile.android.ui.auth.AuthScreens
+import kg.optima.mobile.android.ui.common.MainContainer
 import kg.optima.mobile.auth.presentation.login.LoginFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
-import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.checkbox.Checkbox
@@ -54,66 +53,64 @@ object LoginScreen : Screen {
 				clientIdInputFieldState.value = loginState.clientId.orEmpty()
 			is LoginStateMachine.LoginState.SignIn ->
 				navigator.push(pinSetScreen)
-			is StateMachine.State.Loading ->
-				Log.d("LoginScreen", "Loading State")
-			is StateMachine.State.Error ->
-				Log.d("LoginScreen", "Error State")
 		}
 
-		Column(
-			modifier = Modifier
-				.fillMaxSize()
-				.background(ComposeColors.Background),
-		) {
-			MainToolbar(onBackClick = { navigator.pop() })
+		MainContainer(mainState = state) {
 			Column(
 				modifier = Modifier
-					.fillMaxWidth()
-					.padding(horizontal = Deps.Spacing.standardPadding)
-					.weight(1f),
+					.fillMaxSize()
+					.background(ComposeColors.Background),
 			) {
-				TitleTextField(
-					modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 3),
-					text = "Авторизация"
-				)
-				InputField(
+				MainToolbar(onBackClick = { navigator.pop() })
+				Column(
 					modifier = Modifier
 						.fillMaxWidth()
-						.padding(top = Deps.Spacing.marginFromTitle),
-					valueState = clientIdInputFieldState,
-					hint = "Client ID",
-					keyboardType = KeyboardType.Number,
-					bottomActionButton = "Запросить Client ID" to {
-						// TODO get clientid
-					}
-				)
-				PasswordInput(
+						.padding(horizontal = Deps.Spacing.standardPadding)
+						.weight(1f),
+				) {
+					TitleTextField(
+						modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 3),
+						text = "Авторизация"
+					)
+					InputField(
+						modifier = Modifier
+							.fillMaxWidth()
+							.padding(top = Deps.Spacing.marginFromTitle),
+						valueState = clientIdInputFieldState,
+						hint = "Client ID",
+						keyboardType = KeyboardType.Number,
+						bottomActionButton = "Запросить Client ID" to {
+							// TODO get clientid
+						}
+					)
+					PasswordInput(
+						modifier = Modifier
+							.fillMaxWidth()
+							.padding(top = Deps.Spacing.spacing),
+						passwordState = passwordInputFieldState,
+						hint = "Пароль",
+					)
+					Checkbox(
+						modifier = Modifier.padding(top = Deps.Spacing.spacing),
+						checkedState = checkedState,
+						text = "Запомнить логин",
+					)
+				}
+				PrimaryButton(
 					modifier = Modifier
 						.fillMaxWidth()
-						.padding(top = Deps.Spacing.spacing),
-					passwordState = passwordInputFieldState,
-					hint = "Пароль",
-				)
-				Checkbox(
-					modifier = Modifier.padding(top = Deps.Spacing.spacing),
-					checkedState = checkedState,
-					text = "Запомнить логин",
+						.padding(all = Deps.Spacing.standardPadding),
+					text = "Продолжить",
+					onClick = {
+						intentHandler.dispatch(
+							LoginIntentHandler.LoginIntent.SignIn.Password(
+								clientId = clientIdInputFieldState.value,
+								password = passwordInputFieldState.value,
+							)
+						)
+					},
 				)
 			}
-			PrimaryButton(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(all = Deps.Spacing.standardPadding),
-				text = "Продолжить",
-				onClick = {
-					intentHandler.dispatch(
-						LoginIntentHandler.LoginIntent.SignIn.Password(
-							clientId = clientIdInputFieldState.value,
-							password = passwordInputFieldState.value,
-						)
-					)
-				},
-			)
 		}
 	}
 }

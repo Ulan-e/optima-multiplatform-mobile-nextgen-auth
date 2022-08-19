@@ -5,6 +5,7 @@ import androidx.compose.runtime.*
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import kg.optima.mobile.android.ui.common.MainContainer
 import kg.optima.mobile.android.ui.main.MainScreen
 import kg.optima.mobile.auth.presentation.pin_set.PinSetFactory
 import kg.optima.mobile.auth.presentation.pin_set.PinSetIntentHandler
@@ -48,22 +49,29 @@ object PinSetScreen : Screen {
 			is StateMachine.State.Error ->
 				Log.d("PinSetScreen", "Error State")
 		}
-		PinScreen(
-			header = setPinScreenHeader(headerState.value, subheaderState.value),
-			codeState = codeState,
-			onInputCompleted = {
-				when (state) {
-					null -> {
-						intentHandler.dispatch(PinSetIntentHandler.PinSetIntent.Save(codeState.value))
-						codeState.value = emptyString
-					}
-					PinSetStateMachine.PinSetState.Save ->
-						intentHandler.dispatch(PinSetIntentHandler.PinSetIntent.Compare(codeState.value))
-				}
-			},
-			actionCell = ActionCell.Close {
 
-			}
-		)
+		MainContainer(mainState = state) {
+			PinScreen(
+				header = setPinScreenHeader(headerState.value, subheaderState.value),
+				codeState = codeState,
+				onInputCompleted = {
+					when (state) {
+						null -> {
+							intentHandler.dispatch(
+								PinSetIntentHandler.PinSetIntent.Save(codeState.value)
+							)
+							codeState.value = emptyString
+						}
+						PinSetStateMachine.PinSetState.Save ->
+							intentHandler.dispatch(
+								PinSetIntentHandler.PinSetIntent.Compare(codeState.value)
+							)
+					}
+				},
+				actionCell = ActionCell.Close {
+
+				}
+			)
+		}
 	}
 }
