@@ -17,7 +17,7 @@ class ExampleTabBarCoordinator: BaseTabBarCoordinator {
         case menu
         case profile
         static func values() -> [TabId] {
-            return [menu, profile]
+            [menu, profile]
         }
     }
 

@@ -46,6 +46,6 @@ extension MVVMController {
 
 extension MVVMController: ViewModelHolder {
     var baseViewModel: ViewModel? {
-        return self.viewModel
+        self.viewModel
     }
 }

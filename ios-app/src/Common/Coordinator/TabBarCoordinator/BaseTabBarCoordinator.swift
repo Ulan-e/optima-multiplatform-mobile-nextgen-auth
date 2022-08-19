@@ -50,7 +50,7 @@ class BaseTabBarCoordinator: BaseCoordinator {
 
     // Override for using custom UITabBarController
     func createTabBarController() -> UITabBarController {
-        return UITabBarController()
+        UITabBarController()
     }
 
     /*
@@ -109,7 +109,7 @@ class BaseTabBarCoordinator: BaseCoordinator {
         selectedImage: UIImage?,
         isDefaultStart: Bool = true
     ) -> UINavigationController {
-        addDependency(coordinator)
+        let _ = addDependency(coordinator)
         let navVC = UINavigationController()
         coordinator.navigationController = navVC
 

@@ -9,7 +9,7 @@ class Environment {
         case serverBaseUrl
 
         func value() -> String {
-            return Environment.bundleDict[self.rawValue] as? String ?? ""
+            Environment.bundleDict[self.rawValue] as? String ?? ""
         }
     }
 
