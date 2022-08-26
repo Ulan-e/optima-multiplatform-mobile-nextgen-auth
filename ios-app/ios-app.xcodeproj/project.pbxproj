@@ -29,7 +29,7 @@
 /* Begin PBXFileReference section */
 		0E42E0F82701D4B500A0B283 /* icerock.swiftformat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icerock.swiftformat; sourceTree = "<group>"; };
 		1685A4C75BB495AA6F388127 /* Pods-ios-app.dev-debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-app.dev-debug.xcconfig"; path = "Target Support Files/Pods-ios-app/Pods-ios-app.dev-debug.xcconfig"; sourceTree = "<group>"; };
-		287627FF1F319065007FA12B /* mokoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mokoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		287627FF1F319065007FA12B /* Optima24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optima24.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		451D7B19235845B100095112 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		45964D362282A1FD00C16658 /* mpp-library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "mpp-library"; path = "../mpp-library"; sourceTree = "<group>"; };
 		45D8D7F926FB24AE00DD3A58 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		287628001F319065007FA12B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				287627FF1F319065007FA12B /* mokoApp.app */,
+				287627FF1F319065007FA12B /* Optima24.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 			);
 			name = "ios-app";
 			productName = IosApp;
-			productReference = 287627FF1F319065007FA12B /* mokoApp.app */;
+			productReference = 287627FF1F319065007FA12B /* Optima24.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -452,6 +452,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1685A4C75BB495AA6F388127 /* Pods-ios-app.dev-debug.xcconfig */;
 			buildSettings = {
+				BUNDLE_DISPLAY_NAME = "Optima24 Dev Debug";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UV672JPLP6;
+				PRODUCT_NAME = Optima24;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "dev-debug";
 		};
@@ -459,6 +465,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF0A68CA389A6B6EB9A34F72 /* Pods-ios-app.dev-release.xcconfig */;
 			buildSettings = {
+				BUNDLE_DISPLAY_NAME = "Optima24 Dev";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UV672JPLP6;
+				PRODUCT_NAME = Optima24;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "dev-release";
 		};
@@ -474,6 +486,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F531ED0CEDF51A56A528820 /* Pods-ios-app.stage-debug.xcconfig */;
 			buildSettings = {
+				BUNDLE_DISPLAY_NAME = "Optima24 Stage Debug";
+				DEVELOPMENT_TEAM = UV672JPLP6;
+				PRODUCT_NAME = Optima24;
 			};
 			name = "stage-debug";
 		};
@@ -489,6 +504,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9DBF843D98379400F39654BB /* Pods-ios-app.prod-debug.xcconfig */;
 			buildSettings = {
+				BUNDLE_DISPLAY_NAME = "Optima24 Debug";
+				DEVELOPMENT_TEAM = UV672JPLP6;
+				PRODUCT_NAME = Optima24;
 			};
 			name = "prod-debug";
 		};
@@ -505,6 +523,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7C6727DB27F07EC9CA9DAB56 /* Pods-ios-app.prod-release.xcconfig */;
 			buildSettings = {
+				BUNDLE_DISPLAY_NAME = Optima24;
+				DEVELOPMENT_TEAM = UV672JPLP6;
+				PRODUCT_NAME = Optima24;
 			};
 			name = "prod-release";
 		};
@@ -521,6 +542,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FADC460B9BB49FE045016735 /* Pods-ios-app.stage-release.xcconfig */;
 			buildSettings = {
+				BUNDLE_DISPLAY_NAME = "Optima24 Stage";
+				DEVELOPMENT_TEAM = UV672JPLP6;
+				PRODUCT_NAME = Optima24;
 			};
 			name = "stage-release";
 		};
