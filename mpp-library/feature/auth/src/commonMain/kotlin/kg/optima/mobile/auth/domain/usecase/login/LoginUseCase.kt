@@ -4,7 +4,9 @@ import kg.optima.mobile.auth.data.api.model.login.LoginResponse
 import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationRequest
 import kg.optima.mobile.auth.data.component.AuthPreferences
 import kg.optima.mobile.auth.data.repository.AuthRepository
+import kg.optima.mobile.auth.presentation.login.model.LoginModel
 import kg.optima.mobile.base.data.model.Either
+import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.data.model.onSuccess
 import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.error.Failure
@@ -16,11 +18,11 @@ import kg.optima.mobile.core.error.Failure
 class LoginUseCase(
 	private val authRepository: AuthRepository,
 	private val authPreferences: AuthPreferences,
-) : BaseUseCase<LoginUseCase.Params, LoginResponse>() {
+) : BaseUseCase<LoginUseCase.Params, LoginModel.Success>() {
 
 	override suspend fun execute(
 		model: Params,
-	): Either<Failure, LoginResponse> {
+	): Either<Failure, LoginModel.Success> {
 		return when (model) {
 			Params.Biometry -> signIn()
 			is Params.Password -> signIn(model.grantType, model.clientId, model.password)
@@ -38,7 +40,7 @@ class LoginUseCase(
 		grantType: GrantType = GrantType.Password,
 		clientId: String = authPreferences.clientId.orEmpty(),
 		password: String = authPreferences.password,
-	): Either<Failure, LoginResponse> {
+	): Either<Failure, LoginModel.Success> {
 		val response: Either<Failure, LoginResponse> = if (clientId == "371564" && password == "killme123") {
 			Either.Right(LoginResponse(
 				accessToken = "",
@@ -57,6 +59,7 @@ class LoginUseCase(
 //			password = password,
 //		)
 //		return authRepository.login(request.map)
+		val firstAuth = !authPreferences.isAuthorized
 		return response
 			.onSuccess {
 				authPreferences.clientId = clientId
@@ -65,6 +68,7 @@ class LoginUseCase(
 				authPreferences.refreshToken = it.refreshToken
 				authPreferences.isAuthorized = true
 			}
+			.map { LoginModel.Success(firstAuth) }
 	}
 
 	sealed interface Params {

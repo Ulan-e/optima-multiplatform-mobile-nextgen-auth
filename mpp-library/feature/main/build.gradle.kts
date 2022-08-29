@@ -22,12 +22,7 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                val decomposeVersion = "0.7.0"
-                implementation("com.arkivanov.decompose:decompose:$decomposeVersion")
-            }
-        }
+        val commonMain by getting
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))

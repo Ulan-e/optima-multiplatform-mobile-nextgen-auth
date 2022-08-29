@@ -1,34 +1,39 @@
 package kg.optima.mobile.android
 
 import android.app.Application
-import cafe.adriel.voyager.core.registry.ScreenRegistry
 import com.google.firebase.FirebaseApp
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kg.optima.mobile.BuildConfig
-import kg.optima.mobile.android.ui.screens
+import kg.optima.mobile.android.ui.base.Router
+import kg.optima.mobile.android.ui.base.RouterImpl
 import kg.optima.mobile.di.Injector
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
 class OptimaApp : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
+	override fun onCreate() {
+		super.onCreate()
 //        initFirebase()
-        initDi()
-        ScreenRegistry { screens() }
-    }
+		initDi()
+	}
 
-    private fun initDi() {
-        Injector.initKoin {
-            androidContext(this@OptimaApp)
-            loadKoinModules(listOf())
-        }
-    }
+	private fun initDi() {
+		Injector.initKoin {
+			androidContext(this@OptimaApp)
+			loadKoinModules(listOf(navigationModule))
+		}
+	}
 
-    private fun initFirebase() {
-        FirebaseApp.initializeApp(this)
-        FirebaseCrashlytics.getInstance()
-            .setCrashlyticsCollectionEnabled(BuildConfig.DEBUG.not())
-    }
+	private val navigationModule: Module = module {
+		factory<Router> { RouterImpl }
+	}
+
+	private fun initFirebase() {
+		FirebaseApp.initializeApp(this)
+		FirebaseCrashlytics.getInstance()
+			.setCrashlyticsCollectionEnabled(BuildConfig.DEBUG.not())
+	}
 }

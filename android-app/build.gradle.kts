@@ -66,7 +66,7 @@ dependencies {
     implementation(project(":mpp-library:base")) // needed to use feature modules, remove when state machine will be done
     implementation(project(":mpp-library:core"))
     implementation(project(":mpp-library:core:presentation:design-system:android"))
-    implementation(project(":mpp-library:core:presentation:decompose"))
+    implementation(project(":mpp-library:feature"))
     implementation(project(":mpp-library:feature:auth"))
 
     // Koin
@@ -89,11 +89,6 @@ dependencies {
     implementation("com.google.accompanist:accompanist-insets:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-permissions:$accompanistVersion")
-
-    val decomposeVersion = "0.7.0"
-    implementation("com.arkivanov.decompose:extensions-android:$decomposeVersion")
-    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:$decomposeVersion")
-    implementation("com.arkivanov.decompose:extensions-compose-jetpack:$decomposeVersion")
 
     val mokoResourcesVersion = "0.20.1"
     implementation("dev.icerock.moko:resources-compose:$mokoResourcesVersion")

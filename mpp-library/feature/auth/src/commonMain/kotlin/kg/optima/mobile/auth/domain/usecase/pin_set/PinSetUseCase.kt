@@ -8,17 +8,18 @@ import kg.optima.mobile.core.error.Failure
 // TODO check pin on server
 class PinSetUseCase(
 	private val authPreferences: AuthPreferences,
-) : BaseUseCase<PinSetUseCase.Params, PinSetResult>() {
+) : BaseUseCase<PinSetUseCase.Params, SetupAuthResult>() {
 
 	override suspend fun execute(
 		model: Params,
-	): Either<Failure, PinSetResult> {
+	): Either<Failure, SetupAuthResult> {
 		return when (model) {
 			is Params.Save -> {
-				authPreferences.pin = model.pin; Either.Right(PinSetResult.Save)
+				authPreferences.pin = model.pin; Either.Right(SetupAuthResult.Save)
 			}
-			is Params.Compare ->
-				Either.Right(PinSetResult.Compare(authPreferences.pin == model.pin))
+			is Params.Compare -> {
+				Either.Right(SetupAuthResult.Compare(isMatch = authPreferences.pin == model.pin))
+			}
 		}
 	}
 

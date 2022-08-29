@@ -2,6 +2,7 @@ package kg.optima.mobile.base.presentation
 
 import co.touchlab.stately.concurrency.AtomicReference
 import kg.optima.mobile.core.error.Failure
+import kg.optima.mobile.core.navigation.ScreenModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
@@ -55,6 +56,8 @@ abstract class StateMachine<in E>(
 //        }
 	}
 
+	internal fun pop() = setState(State.Pop)
+
 	fun resetState() = setState(null)
 
 	abstract fun handle(entity: E)
@@ -63,6 +66,10 @@ abstract class StateMachine<in E>(
 		object Initial : State
 
 		object Loading : State
+
+		class Navigate(val screenModels: List<ScreenModel>) : State
+
+		object Pop : State
 
 		sealed interface Error : State {
 			val error: String

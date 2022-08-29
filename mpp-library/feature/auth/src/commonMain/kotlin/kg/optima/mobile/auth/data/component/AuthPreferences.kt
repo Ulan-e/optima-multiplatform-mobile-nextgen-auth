@@ -21,7 +21,7 @@ interface AuthPreferences {
 
     var password: String
     var pin: String
-    var fingerPrint: String
+    var biometry: String
 
     fun saveToken(token: String?)
 
