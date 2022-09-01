@@ -1,57 +1,33 @@
 package kg.optima.mobile.android.ui
 
-import android.util.Log
 import androidx.compose.runtime.*
-import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
-import kg.optima.mobile.android.ui.auth.AuthScreens
-import kg.optima.mobile.android.ui.welcome.EntryScreens
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
-import kg.optima.mobile.auth.presentation.auth_state.AuthStateFactory
-import kg.optima.mobile.auth.presentation.auth_state.AuthStateIntentHandler
-import kg.optima.mobile.auth.presentation.auth_state.AuthStatusStateMachine
+import kg.optima.mobile.android.ui.base.Router
+import kg.optima.mobile.auth.presentation.launch.LaunchIntentFactory
+import kg.optima.mobile.auth.presentation.launch.LaunchIntentHandler
+import kg.optima.mobile.auth.presentation.launch.LaunchStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
+import org.koin.androidx.compose.inject
 
 
 @Suppress("NAME_SHADOWING")
 val startContent: @Composable (bottomSheetNavigator: BottomSheetNavigator) -> Unit = {
-	val stateMachine: AuthStatusStateMachine = AuthStateFactory.stateMachine
-	val intentHandler: AuthStateIntentHandler = AuthStateFactory.intentHandler
-	val state by stateMachine.state.collectAsState(initial = null)
+	val stateMachine: LaunchStateMachine = LaunchIntentFactory.stateMachine
+	val intentHandler: LaunchIntentHandler = LaunchIntentFactory.intentHandler
 
-	val screens = remember {
-		intentHandler.dispatch(AuthStateIntentHandler.AuthStateIntent.CheckIsAuthorized)
-		mutableStateOf<List<Screen>>(listOf())
-	}
+	val router: Router by inject()
 
-	val welcomeScreen = rememberScreen(provider = EntryScreens.Welcome)
-	val loginScreen = rememberScreen(provider = AuthScreens.Login)
+	val state by stateMachine.state.collectAsState(initial = StateMachine.State.Initial)
 
-	@Composable
-	fun pinEnterScreen(showBiometry: Boolean) =
-		rememberScreen(provider = AuthScreens.PinEnter(showBiometry))
+	val screens = remember { mutableStateOf(listOf<Screen>()) }
 
 	when (val state = state) {
-		is AuthStatusStateMachine.AuthStatusState -> {
-			val items = mutableListOf(welcomeScreen)
-			when (state) {
-				is AuthStatusStateMachine.AuthStatusState.Authorized -> {
-					items.add(loginScreen)
-					if (state.grantTypes.contains(GrantType.Pin)) {
-						items.add(pinEnterScreen(state.grantTypes.contains(GrantType.Biometry)))
-					}
-				}
-				is AuthStatusStateMachine.AuthStatusState.NotAuthorized -> Unit
-			}
-			screens.value = items
-		}
-		is StateMachine.State.Loading ->
-			Log.d("MainScreen", "Loading State")
-		is StateMachine.State.Error ->
-			Log.d("MainScreen", "Error State")
-		null -> Unit
+		is StateMachine.State.Initial ->
+			intentHandler.dispatch(LaunchIntentHandler.LaunchIntent.CheckIsAuthorized)
+		is StateMachine.State.Navigate ->
+			screens.value = router.compose(screenModels = state.screenModels).map { it.screen }
 	}
 
 	if (screens.value.isNotEmpty()) {

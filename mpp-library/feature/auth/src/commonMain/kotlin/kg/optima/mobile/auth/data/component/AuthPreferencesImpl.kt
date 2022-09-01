@@ -41,9 +41,9 @@ class AuthPreferencesImpl(
         get() = storageRepository.getString("PIN", emptyString)
         set(value) = storageRepository.putString("PIN", value)
 
-    override var fingerPrint: String
-        get() = storageRepository.getString("Fingerprint", emptyString)
-        set(value) = storageRepository.putString("Fingerprint", value)
+    override var biometry: String
+        get() = storageRepository.getString("Biometry", emptyString)
+        set(value) = storageRepository.putString("Biometry", value)
 
     override fun saveToken(token: String?) {
 //        clientId = if (token != null) {

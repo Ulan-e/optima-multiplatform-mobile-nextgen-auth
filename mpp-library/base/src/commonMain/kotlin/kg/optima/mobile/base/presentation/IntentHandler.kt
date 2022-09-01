@@ -25,6 +25,8 @@ abstract class IntentHandler<in I : Intent, in E>(
 
 	abstract fun dispatch(intent: I)
 
+	open fun pop() = stateMachine.pop()
+
 	protected fun launchOperation(
 		operation: suspend () -> Either<Failure, E>,
 	): Job {

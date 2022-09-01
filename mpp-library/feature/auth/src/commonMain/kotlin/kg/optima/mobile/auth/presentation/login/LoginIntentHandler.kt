@@ -31,7 +31,7 @@ class LoginIntentHandler(
 	}
 
 	private suspend fun signIn(intent: LoginIntent.SignIn) =
-		loginUseCase.execute(intent.toUseCaseModel()).map { LoginModel.Success }
+		loginUseCase.execute(intent.toUseCaseModel())
 
 	private suspend fun getClientId() =
 		clientInfoUseCase.execute(ClientInfoUseCase.Params).map { LoginModel.ClientId(it.clientId) }
