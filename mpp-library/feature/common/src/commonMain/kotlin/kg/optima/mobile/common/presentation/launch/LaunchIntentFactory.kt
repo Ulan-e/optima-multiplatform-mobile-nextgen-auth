@@ -1,4 +1,4 @@
-package kg.optima.mobile.auth.presentation.launch
+package kg.optima.mobile.common.presentation.launch
 
 import kg.optima.mobile.base.di.IntentFactory
 import org.koin.core.component.inject

@@ -10,20 +10,15 @@ import kg.optima.mobile.auth.domain.usecase.biometry_auth.SetupBiometryUseCase
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.domain.usecase.pin_set.PinSetUseCase
-import kg.optima.mobile.auth.presentation.launch.LaunchIntentHandler
-import kg.optima.mobile.auth.presentation.launch.LaunchStateMachine
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntentHandler
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthStateMachine
-import kg.optima.mobile.auth.presentation.welcome.WelcomeIntentHandler
-import kg.optima.mobile.auth.presentation.welcome.WelcomeStateMachine
 import kg.optima.mobile.base.di.Factory
-import org.koin.core.component.KoinComponent
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object AuthFeatureFactory : Factory, KoinComponent {
+object AuthFeatureFactory : Factory {
 
 	override val module: Module = module {
 		factory<AuthApi> { AuthApiImpl(networkClient = get()) }
@@ -39,12 +34,6 @@ object AuthFeatureFactory : Factory, KoinComponent {
 		factory { SetupBiometryUseCase(authPreferences = get()) }
 
 		// StateMachines and IntentHandlers injection by pair
-		factory { LaunchStateMachine() }
-		factory { sm -> LaunchIntentHandler(sm.get()) }
-
-		factory { WelcomeStateMachine() }
-		factory { sm -> WelcomeIntentHandler(sm.get()) }
-
 		factory { LoginStateMachine() }
 		factory { sm -> LoginIntentHandler(sm.get()) }
 

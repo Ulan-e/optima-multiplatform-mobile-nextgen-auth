@@ -68,6 +68,7 @@ dependencies {
     implementation(project(":mpp-library:core:presentation:design-system:android"))
     implementation(project(":mpp-library:feature"))
     implementation(project(":mpp-library:feature:auth"))
+    implementation(project(":mpp-library:feature:common"))
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")

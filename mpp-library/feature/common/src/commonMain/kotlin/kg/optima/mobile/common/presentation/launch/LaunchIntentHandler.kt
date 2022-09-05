@@ -1,4 +1,4 @@
-package kg.optima.mobile.auth.presentation.launch
+package kg.optima.mobile.common.presentation.launch
 
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfo
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase

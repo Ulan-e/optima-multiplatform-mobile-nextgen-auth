@@ -2,8 +2,6 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-
-    kotlin("plugin.serialization")
 }
 
 version = "1.0"
@@ -19,15 +17,19 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = "feature"
+            baseName = "common"
         }
     }
     
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(":mpp-library:base"))
                 implementation(project(":mpp-library:core"))
-                implementation(libs.kotlinSerialization)
+                implementation(project(":mpp-library:feature"))
+                implementation(project(":mpp-library:feature:auth"))
+
+                implementation("io.insert-koin:koin-core:3.1.4")
             }
         }
         val commonTest by getting {
@@ -62,7 +64,7 @@ android {
     compileSdk = 32
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = 23
+        minSdk = 21
         targetSdk = 32
     }
 }

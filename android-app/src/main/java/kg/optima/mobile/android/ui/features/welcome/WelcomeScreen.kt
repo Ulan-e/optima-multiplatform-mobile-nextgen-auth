@@ -12,9 +12,9 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
-import kg.optima.mobile.auth.presentation.welcome.WelcomeIntentFactory
-import kg.optima.mobile.auth.presentation.welcome.WelcomeIntentHandler
-import kg.optima.mobile.auth.presentation.welcome.WelcomeStateMachine
+import kg.optima.mobile.common.presentation.welcome.WelcomeIntentFactory
+import kg.optima.mobile.common.presentation.welcome.WelcomeIntentHandler
+import kg.optima.mobile.common.presentation.welcome.WelcomeStateMachine
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
@@ -26,7 +26,6 @@ import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
 
 
-@Suppress("NAME_SHADOWING")
 object WelcomeScreen : Screen {
 
 	@Composable
@@ -81,7 +80,7 @@ object WelcomeScreen : Screen {
 									modifier = Modifier.fillMaxWidth(),
 									text = "Повторить попытку",
 									color = ComposeColors.Green,
-									onClick = { }
+									onClick = { bottomSheetState.value = null }
 								)
 							)
 						)

@@ -15,10 +15,11 @@ plugins {
 }
 
 dependencies {
-    commonMainApi(projects.mppLibrary.feature.auth)
     commonMainApi(project(":mpp-library:base"))
     commonMainApi(project(":mpp-library:core:data:network"))
     commonMainApi(project(":mpp-library:core:data:storage"))
+    commonMainApi(projects.mppLibrary.feature.auth)
+    commonMainApi(project(":mpp-library:feature:common"))
 
     commonMainImplementation("io.insert-koin:koin-core:3.1.4")
 

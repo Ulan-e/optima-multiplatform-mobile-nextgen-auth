@@ -1,4 +1,4 @@
-package kg.optima.mobile.auth.presentation.welcome
+package kg.optima.mobile.common.presentation.welcome
 
 import kg.optima.mobile.base.di.IntentFactory
 import org.koin.core.component.inject
