@@ -34,7 +34,7 @@ object AuthFeatureFactory : Factory {
 		factory { SetupBiometryUseCase(authPreferences = get()) }
 
 		// StateMachines and IntentHandlers injection by pair
-		factory { LoginStateMachine() }
+		factory { next -> LoginStateMachine(next.get()) }
 		factory { sm -> LoginIntentHandler(sm.get()) }
 
 		factory { SetupAuthStateMachine() }

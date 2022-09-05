@@ -9,6 +9,7 @@ import kg.optima.mobile.auth.presentation.login.LoginFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
 import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
 import kg.optima.mobile.design_system.android.ui.screens.pin.headers.enterPinScreenHeader
@@ -17,12 +18,14 @@ import kg.optima.mobile.design_system.android.utils.biometry.BiometryManager
 
 class PinEnterScreen(
 	private val showBiometry: Boolean = false,
+	private val nextScreenModel: ScreenModel,
 ) : Screen {
 
 	@Composable
 	override fun Content() {
-		val stateMachine: LoginStateMachine = LoginFactory.stateMachine
-		val intentHandler: LoginIntentHandler = LoginFactory.intentHandler
+		val loginFactory = LoginFactory(nextScreenModel)
+		val stateMachine: LoginStateMachine = loginFactory.stateMachine
+		val intentHandler: LoginIntentHandler = loginFactory.intentHandler
 
 		val state by stateMachine.state.collectAsState(
 			initial = if (showBiometry) LoginStateMachine.LoginState.ShowBiometry else null

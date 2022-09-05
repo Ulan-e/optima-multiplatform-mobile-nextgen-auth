@@ -24,7 +24,7 @@ class LoginUseCase(
 		model: Params,
 	): Either<Failure, LoginModel.Success> {
 		return when (model) {
-			Params.Biometry -> signIn()
+			is Params.Biometry -> signIn()
 			is Params.Password -> signIn(model.grantType, model.clientId, model.password)
 			is Params.Pin -> {
 				if (model.pin == authPreferences.pin) {

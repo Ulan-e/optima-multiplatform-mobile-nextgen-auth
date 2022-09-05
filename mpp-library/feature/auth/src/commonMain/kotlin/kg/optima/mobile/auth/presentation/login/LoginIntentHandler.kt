@@ -37,7 +37,7 @@ class LoginIntentHandler(
 		clientInfoUseCase.execute(ClientInfoUseCase.Params).map { LoginModel.ClientId(it.clientId) }
 
 	private suspend fun showBiometry() = clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
-		LoginModel.Biometry(show = it.grantTypes.contains(GrantType.Biometry))
+		LoginModel.Biometry(enabled = it.grantTypes.contains(GrantType.Biometry))
 	}
 
 	sealed interface LoginIntent : Intent {
@@ -48,7 +48,7 @@ class LoginIntentHandler(
 			) : SignIn
 
 			class Pin(
-				val pin: String
+				val pin: String,
 			) : SignIn
 
 			object Biometry : SignIn

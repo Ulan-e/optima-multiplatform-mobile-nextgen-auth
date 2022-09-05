@@ -12,9 +12,10 @@ object AuthRouter : FeatureRouter<AuthScreenModel> {
 	@Composable
 	override fun compose(screenModel: AuthScreenModel): Screen {
 		return when (screenModel) {
-			AuthScreenModel.Login -> LoginScreen
-			is AuthScreenModel.PinEnter -> PinEnterScreen(screenModel.showBiometry)
-			AuthScreenModel.PinSet -> PinSetScreen
+			is AuthScreenModel.Login -> LoginScreen(screenModel.nextScreenModel)
+			is AuthScreenModel.PinEnter ->
+				PinEnterScreen(screenModel.showBiometry, screenModel.nextScreenModel)
+			is AuthScreenModel.PinSet -> PinSetScreen
 		}
 	}
 

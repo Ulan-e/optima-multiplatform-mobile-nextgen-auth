@@ -3,7 +3,16 @@ package kg.optima.mobile.feature.auth
 import kg.optima.mobile.core.navigation.ScreenModel
 
 sealed interface AuthScreenModel : ScreenModel {
-	object Login : AuthScreenModel
-	object PinSet : AuthScreenModel
-	class PinEnter(val showBiometry: Boolean) : AuthScreenModel
+	val nextScreenModel: ScreenModel
+
+	class Login(override val nextScreenModel: ScreenModel) : AuthScreenModel
+
+	class PinEnter(
+		val showBiometry: Boolean,
+		override val nextScreenModel: ScreenModel,
+	) : AuthScreenModel
+
+	object PinSet : AuthScreenModel {
+		override val nextScreenModel: ScreenModel = object : ScreenModel {}
+	}
 }

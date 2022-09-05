@@ -15,6 +15,7 @@ import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.checkbox.Checkbox
 import kg.optima.mobile.design_system.android.ui.input.InputField
@@ -25,12 +26,15 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 
 
-object LoginScreen : Screen {
+class LoginScreen(
+	private val nextScreenModel: ScreenModel,
+) : Screen {
 
 	@Composable
 	override fun Content() {
-		val stateMachine: LoginStateMachine = LoginFactory.stateMachine
-		val intentHandler: LoginIntentHandler = LoginFactory.intentHandler
+		val loginFactory = LoginFactory(nextScreenModel)
+		val stateMachine: LoginStateMachine = loginFactory.stateMachine
+		val intentHandler: LoginIntentHandler = loginFactory.intentHandler
 
 		val state by stateMachine.state.collectAsState(initial = StateMachine.State.Initial)
 
