@@ -5,7 +5,7 @@ import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.asActivity
-import kg.optima.mobile.auth.presentation.login.LoginFactory
+import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.utils.emptyString
@@ -23,9 +23,11 @@ class PinEnterScreen(
 
 	@Composable
 	override fun Content() {
-		val loginFactory = LoginFactory(nextScreenModel)
-		val stateMachine: LoginStateMachine = loginFactory.stateMachine
-		val intentHandler: LoginIntentHandler = loginFactory.intentHandler
+		val model = remember {
+			AuthFeatureFactory.create<LoginIntentHandler, LoginStateMachine>(nextScreenModel)
+		}
+		val stateMachine = model.stateMachine
+		val intentHandler = model.intentHandler
 
 		val state by stateMachine.state.collectAsState(
 			initial = if (showBiometry) LoginStateMachine.LoginState.ShowBiometry else null

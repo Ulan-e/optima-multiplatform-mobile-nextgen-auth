@@ -3,7 +3,7 @@ package kg.optima.mobile.android.ui.features.auth.pin
 import androidx.compose.runtime.*
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthFactory
+import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntentHandler
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthStateMachine
 import kg.optima.mobile.base.utils.emptyString
@@ -14,8 +14,11 @@ import kg.optima.mobile.design_system.android.ui.screens.pin.headers.setPinScree
 object PinSetScreen : Screen {
 	@Composable
 	override fun Content() {
-		val stateMachine: SetupAuthStateMachine = SetupAuthFactory.stateMachine
-		val intentHandler: SetupAuthIntentHandler = SetupAuthFactory.intentHandler
+		val model = remember {
+			AuthFeatureFactory.create<SetupAuthIntentHandler, SetupAuthStateMachine>()
+		}
+		val stateMachine = model.stateMachine
+		val intentHandler = model.intentHandler
 
 		val state by stateMachine.state.collectAsState(initial = null)
 

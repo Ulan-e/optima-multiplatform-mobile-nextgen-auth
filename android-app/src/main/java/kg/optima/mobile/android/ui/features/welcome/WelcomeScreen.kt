@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
-import kg.optima.mobile.common.presentation.welcome.WelcomeIntentFactory
+import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.welcome.WelcomeIntentHandler
 import kg.optima.mobile.common.presentation.welcome.WelcomeStateMachine
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
@@ -30,8 +30,11 @@ object WelcomeScreen : Screen {
 
 	@Composable
 	override fun Content() {
-		val stateMachine: WelcomeStateMachine = WelcomeIntentFactory.stateMachine
-		val intentHandler: WelcomeIntentHandler = WelcomeIntentFactory.intentHandler
+		val model = remember {
+			CommonFeatureFactory.create<WelcomeIntentHandler, WelcomeStateMachine>()
+		}
+		val stateMachine = model.stateMachine
+		val intentHandler = model.intentHandler
 
 		val state by stateMachine.state.collectAsState(initial = null)
 

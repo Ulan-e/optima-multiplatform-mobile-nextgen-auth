@@ -16,8 +16,6 @@ class LaunchStateMachine : StateMachine<ClientInfo>() {
 			val nextScreenModel = BottomNavScreenModel
 			screenModels.add(AuthScreenModel.Login(nextScreenModel))
 			screenModels.addAll(authScreenModels(entity.grantTypes, nextScreenModel))
-		} else {
-			screenModels.add(AuthScreenModel.Login(nextScreenModel = AuthScreenModel.PinSet))
 		}
 
 		setState(State.Navigate(screenModels))

@@ -6,7 +6,7 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import kg.optima.mobile.android.ui.base.Router
 import kg.optima.mobile.base.presentation.StateMachine
-import kg.optima.mobile.common.presentation.launch.LaunchIntentFactory
+import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.launch.LaunchIntentHandler
 import kg.optima.mobile.common.presentation.launch.LaunchStateMachine
 import org.koin.androidx.compose.inject
@@ -14,8 +14,11 @@ import org.koin.androidx.compose.inject
 
 @Suppress("NAME_SHADOWING")
 val startContent: @Composable (bottomSheetNavigator: BottomSheetNavigator) -> Unit = {
-	val stateMachine: LaunchStateMachine = LaunchIntentFactory.stateMachine
-	val intentHandler: LaunchIntentHandler = LaunchIntentFactory.intentHandler
+	val model = remember {
+		CommonFeatureFactory.create<LaunchIntentHandler, LaunchStateMachine>()
+	}
+	val stateMachine = model.stateMachine
+	val intentHandler = model.intentHandler
 
 	val router: Router by inject()
 

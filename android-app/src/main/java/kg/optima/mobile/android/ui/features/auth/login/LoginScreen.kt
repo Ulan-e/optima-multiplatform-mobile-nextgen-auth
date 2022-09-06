@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.auth.presentation.login.LoginFactory
+import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
@@ -32,9 +32,11 @@ class LoginScreen(
 
 	@Composable
 	override fun Content() {
-		val loginFactory = LoginFactory(nextScreenModel)
-		val stateMachine: LoginStateMachine = loginFactory.stateMachine
-		val intentHandler: LoginIntentHandler = loginFactory.intentHandler
+		val model = remember {
+			AuthFeatureFactory.create<LoginIntentHandler, LoginStateMachine>(nextScreenModel)
+		}
+		val stateMachine = model.stateMachine
+		val intentHandler = model.intentHandler
 
 		val state by stateMachine.state.collectAsState(initial = StateMachine.State.Initial)
 

@@ -15,10 +15,13 @@ import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntentHandler
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthStateMachine
 import kg.optima.mobile.base.di.Factory
+import kg.optima.mobile.core.navigation.ScreenModel
+import org.koin.core.component.inject
 import org.koin.core.module.Module
+import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 
-object AuthFeatureFactory : Factory {
+object AuthFeatureFactory : Factory() {
 
 	override val module: Module = module {
 		factory<AuthApi> { AuthApiImpl(networkClient = get()) }
@@ -39,6 +42,5 @@ object AuthFeatureFactory : Factory {
 
 		factory { SetupAuthStateMachine() }
 		factory { sm -> SetupAuthIntentHandler(sm.get()) }
-
 	}
 }
