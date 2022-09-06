@@ -2,10 +2,10 @@ package kg.optima.mobile.android.ui.base
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
-import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kg.optima.mobile.android.ui.features.auth.AuthRouter
+import kg.optima.mobile.android.ui.features.BottomNavigationScreen
 import kg.optima.mobile.android.ui.features.main.MainRouter
 import kg.optima.mobile.android.ui.features.welcome.WelcomeRouter
 import kg.optima.mobile.core.navigation.ScreenModel
@@ -32,10 +32,22 @@ object RouterImpl : Router {
 		val screens = mutableListOf<RouteInfo>()
 		screenModels.forEach {
 			val screen = when (it) {
-				is WelcomeScreenModel -> RouteInfo(WelcomeRouter.compose(screenModel = it), it.dropBackStack)
-				is AuthScreenModel -> RouteInfo(AuthRouter.compose(screenModel = it), it.dropBackStack)
-				is MainScreenModel -> RouteInfo(MainRouter.compose(screenModel = it), it.dropBackStack)
-				else -> RouteInfo(MainRouter.default(it), it.dropBackStack)
+				is WelcomeScreenModel -> RouteInfo(
+					screen = WelcomeRouter.compose(screenModel = it),
+					dropBackStack = it.dropBackStack
+				)
+				is AuthScreenModel -> RouteInfo(
+					screen = AuthRouter.compose(screenModel = it),
+					dropBackStack = it.dropBackStack
+				)
+				is MainScreenModel -> RouteInfo(
+					screen = MainRouter.compose(screenModel = it),
+					dropBackStack = it.dropBackStack
+				)
+				else -> RouteInfo(
+					screen = BottomNavigationScreen,
+					dropBackStack = it.dropBackStack
+				)
 			}
 			screens.add(screen)
 		}

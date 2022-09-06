@@ -98,4 +98,8 @@ dependencies {
     implementation("cafe.adriel.voyager:voyager-core:$voyagerVersion")
     implementation ("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
     implementation("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
+
+
+    implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
+    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")
 }

@@ -11,7 +11,6 @@ import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kg.optima.mobile.android.ui.SingleActivity
 import kg.optima.mobile.android.ui.base.Router
 import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.base.presentation.StateMachine
@@ -19,6 +18,7 @@ import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.navigation.root.Root
 import org.koin.androidx.compose.inject
 
 @Composable
@@ -26,6 +26,7 @@ fun MainContainer(
 	modifier: Modifier = Modifier,
 	mainState: StateMachine.State?,
 	infoState: BottomSheetInfo? = null,
+	component: Root.Child.Component? = null,
 	content: @Composable () -> Unit,
 ) {
 	val router: Router by inject()
@@ -44,6 +45,7 @@ fun MainContainer(
 				CircularProgress(modifier = Modifier.align(Alignment.Center))
 			}
 			is StateMachine.State.Navigate -> {
+				component?.addAll(mainState.screenModels)
 				router.push(mainState.screenModels)
 			}
 			is StateMachine.State.Pop -> {

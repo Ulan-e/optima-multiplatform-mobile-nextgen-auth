@@ -5,7 +5,7 @@ import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
-import kg.optima.mobile.feature.main.MainScreenModel
+import kg.optima.mobile.feature.main.BottomNavScreenModel
 import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 
 class LaunchStateMachine : StateMachine<ClientInfo>() {
@@ -13,7 +13,7 @@ class LaunchStateMachine : StateMachine<ClientInfo>() {
 	override fun handle(entity: ClientInfo) {
 		val screenModels = mutableListOf<ScreenModel>(WelcomeScreenModel.Welcome)
 		if (entity.isAuthorized) {
-			val nextScreenModel = MainScreenModel.Main
+			val nextScreenModel = BottomNavScreenModel
 			screenModels.add(AuthScreenModel.Login(nextScreenModel))
 			screenModels.addAll(authScreenModels(entity.grantTypes, nextScreenModel))
 		} else {
