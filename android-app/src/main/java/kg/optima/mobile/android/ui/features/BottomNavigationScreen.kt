@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -11,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
@@ -41,6 +44,12 @@ object BottomNavigationScreen : Screen {
 		val root = RootComponent(context.asActivity()!!.defaultComponentContext())
 		val childStack by root.childStack.subscribeAsState()
 		val activeComponent = childStack.active.instance
+
+		val navigator = LocalNavigator.currentOrThrow
+		if (!navigator.canPop) {
+			val activity = LocalContext.current.asActivity()
+			BackHandler { activity?.finish() }
+		}
 
 		Scaffold(
 			bottomBar = {
@@ -91,7 +100,7 @@ object BottomNavigationScreen : Screen {
 	}
 }
 
-fun Root.Child.isInstance(item: BottomNavItem) = when (this) {
+private fun Root.Child.isInstance(item: BottomNavItem) = when (this) {
 	is Root.Child.History -> item == BottomNavItem.History
 	is Root.Child.Main -> item == BottomNavItem.Main
 	is Root.Child.Menu -> item == BottomNavItem.Menu

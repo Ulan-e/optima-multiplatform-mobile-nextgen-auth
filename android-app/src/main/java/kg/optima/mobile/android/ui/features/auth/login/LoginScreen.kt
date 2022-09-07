@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
@@ -51,6 +52,15 @@ class LoginScreen(
 				clientIdInputFieldState.value = loginState.clientId.orEmpty()
 		}
 
+		val signIn: () -> Unit = {
+			intentHandler.dispatch(
+				LoginIntentHandler.LoginIntent.SignIn.Password(
+					clientId = clientIdInputFieldState.value,
+					password = passwordInputFieldState.value,
+				)
+			)
+		}
+
 		MainContainer(mainState = state) {
 			Column(
 				modifier = Modifier
@@ -77,9 +87,10 @@ class LoginScreen(
 						valueState = clientIdInputFieldState,
 						hint = "Client ID",
 						keyboardType = KeyboardType.Number,
+						imeAction = ImeAction.Next,
 						bottomActionButton = "Запросить Client ID" to {
 							// TODO get clientid
-						}
+						},
 					)
 					PasswordInput(
 						modifier = Modifier
@@ -87,6 +98,7 @@ class LoginScreen(
 							.padding(top = Deps.Spacing.spacing),
 						passwordState = passwordInputFieldState,
 						hint = "Пароль",
+						onKeyboardActionDone = signIn,
 					)
 					Checkbox(
 						modifier = Modifier.padding(top = Deps.Spacing.spacing),
@@ -99,14 +111,7 @@ class LoginScreen(
 						.fillMaxWidth()
 						.padding(all = Deps.Spacing.standardPadding),
 					text = "Продолжить",
-					onClick = {
-						intentHandler.dispatch(
-							LoginIntentHandler.LoginIntent.SignIn.Password(
-								clientId = clientIdInputFieldState.value,
-								password = passwordInputFieldState.value,
-							)
-						)
-					},
+					onClick = signIn,
 				)
 			}
 		}

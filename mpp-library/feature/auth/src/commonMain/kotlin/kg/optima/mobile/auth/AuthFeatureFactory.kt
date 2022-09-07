@@ -40,7 +40,7 @@ object AuthFeatureFactory : Factory() {
 		factory { next -> LoginStateMachine(next.get()) }
 		factory { sm -> LoginIntentHandler(sm.get()) }
 
-		factory { SetupAuthStateMachine() }
+		factory { next -> SetupAuthStateMachine(next.get()) }
 		factory { sm -> SetupAuthIntentHandler(sm.get()) }
 	}
 }

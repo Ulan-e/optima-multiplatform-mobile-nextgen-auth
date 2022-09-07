@@ -12,7 +12,7 @@ sealed interface AuthScreenModel : ScreenModel {
 		override val nextScreenModel: ScreenModel,
 	) : AuthScreenModel
 
-	object PinSet : AuthScreenModel {
-		override val nextScreenModel: ScreenModel = object : ScreenModel {}
+	class PinSet(override val nextScreenModel: ScreenModel) : AuthScreenModel {
+		override val dropBackStack: Boolean = true
 	}
 }

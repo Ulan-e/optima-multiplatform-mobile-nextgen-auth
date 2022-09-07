@@ -7,15 +7,18 @@ import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntentHandler
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthStateMachine
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
 import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
 import kg.optima.mobile.design_system.android.ui.screens.pin.headers.setPinScreenHeader
 
-object PinSetScreen : Screen {
+class PinSetScreen(
+	private val nextScreenModel: ScreenModel,
+) : Screen {
 	@Composable
 	override fun Content() {
 		val model = remember {
-			AuthFeatureFactory.create<SetupAuthIntentHandler, SetupAuthStateMachine>()
+			AuthFeatureFactory.create<SetupAuthIntentHandler, SetupAuthStateMachine>(nextScreenModel)
 		}
 		val stateMachine = model.stateMachine
 		val intentHandler = model.intentHandler

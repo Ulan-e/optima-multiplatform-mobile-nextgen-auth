@@ -15,7 +15,7 @@ object AuthRouter : FeatureRouter<AuthScreenModel> {
 			is AuthScreenModel.Login -> LoginScreen(screenModel.nextScreenModel)
 			is AuthScreenModel.PinEnter ->
 				PinEnterScreen(screenModel.showBiometry, screenModel.nextScreenModel)
-			is AuthScreenModel.PinSet -> PinSetScreen
+			is AuthScreenModel.PinSet -> PinSetScreen(screenModel.nextScreenModel)
 		}
 	}
 

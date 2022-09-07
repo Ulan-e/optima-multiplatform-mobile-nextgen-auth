@@ -67,7 +67,9 @@ abstract class StateMachine<in E>(
 
 		object Loading : State
 
-		class Navigate(val screenModels: List<ScreenModel>) : State
+		class Navigate(val screenModels: List<ScreenModel>) : State {
+			constructor(screenModel: ScreenModel) : this(listOf(screenModel))
+		}
 
 		object Pop : State
 

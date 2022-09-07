@@ -15,7 +15,7 @@ class LoginStateMachine(
 
 	override fun handle(entity: LoginModel) {
 		val state = when (entity) {
-			is LoginModel.Success -> State.Navigate(listOf(nextScreenModel))
+			is LoginModel.Success -> State.Navigate(nextScreenModel)
 			is LoginModel.ClientId -> LoginState.ClientId(clientId = entity.id)
 			is LoginModel.Biometry -> if (entity.enabled) LoginState.ShowBiometry else State.Initial
 		}

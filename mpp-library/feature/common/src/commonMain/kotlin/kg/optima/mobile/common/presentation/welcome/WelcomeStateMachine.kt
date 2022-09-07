@@ -11,12 +11,16 @@ class WelcomeStateMachine : StateMachine<ClientInfo>() {
 
 	override fun handle(entity: ClientInfo) {
 		val screenModels = mutableListOf<ScreenModel>()
+		val nextScreenModel = BottomNavScreenModel
 		if (entity.isAuthorized) {
-			val nextScreenModel = BottomNavScreenModel
 			screenModels.add(AuthScreenModel.Login(nextScreenModel))
 			screenModels.addAll(authScreenModels(entity.grantTypes, nextScreenModel))
 		} else {
-			screenModels.add(AuthScreenModel.Login(nextScreenModel = AuthScreenModel.PinSet))
+			screenModels.add(AuthScreenModel.Login(
+				nextScreenModel = AuthScreenModel.PinSet(
+					nextScreenModel = nextScreenModel,
+				)
+			))
 		}
 
 		setState(State.Navigate(screenModels))
