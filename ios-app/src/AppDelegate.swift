@@ -12,6 +12,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     var window: UIWindow?
 
     private(set) var coordinator: AppCoordinator!
+    
+//    private var factory: RegistrationFeatureFactory = RegistrationFeatureFactory()
+//    private var product = factory<AgreementIntent, AgreementState>.create()
+//    private var intent: AgreementIntent = product.intent
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
