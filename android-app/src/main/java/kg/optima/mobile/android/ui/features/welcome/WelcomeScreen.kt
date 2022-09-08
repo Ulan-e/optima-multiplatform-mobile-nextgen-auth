@@ -13,7 +13,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
-import kg.optima.mobile.common.presentation.welcome.WelcomeIntentHandler
+import kg.optima.mobile.common.presentation.welcome.WelcomeIntent
 import kg.optima.mobile.common.presentation.welcome.WelcomeStateMachine
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -31,12 +31,12 @@ object WelcomeScreen : Screen {
 	@Composable
 	override fun Content() {
 		val model = remember {
-			CommonFeatureFactory.create<WelcomeIntentHandler, WelcomeStateMachine>()
+			CommonFeatureFactory.create<WelcomeIntent, WelcomeStateMachine>()
 		}
 		val stateMachine = model.stateMachine
-		val intentHandler = model.intentHandler
+		val intentHandler = model.intent
 
-		val state by stateMachine.state.collectAsState(initial = null)
+		val state by stateMachine.stateFlow.collectAsState(initial = null)
 
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
@@ -97,7 +97,4 @@ object WelcomeScreen : Screen {
 			}
 		}
 	}
-
-	private fun WelcomeIntentHandler.checkIsAuthorized() =
-		this.dispatch(WelcomeIntentHandler.WelcomeIntent.CheckIsAuthorized)
 }

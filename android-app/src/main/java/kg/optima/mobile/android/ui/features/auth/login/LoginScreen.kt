@@ -12,7 +12,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
-import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
+import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.presentation.StateMachine
 import kg.optima.mobile.base.utils.emptyString
@@ -34,12 +34,12 @@ class LoginScreen(
 	@Composable
 	override fun Content() {
 		val model = remember {
-			AuthFeatureFactory.create<LoginIntentHandler, LoginStateMachine>(nextScreenModel)
+			AuthFeatureFactory.create<LoginIntent, LoginStateMachine>(nextScreenModel)
 		}
 		val stateMachine = model.stateMachine
-		val intentHandler = model.intentHandler
+		val intent = model.intent
 
-		val state by stateMachine.state.collectAsState(initial = StateMachine.State.Initial)
+		val state by stateMachine.stateFlow.collectAsState(initial = StateMachine.State.Initial)
 
 		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
@@ -47,14 +47,14 @@ class LoginScreen(
 
 		when (val loginState = state) {
 			is StateMachine.State.Initial ->
-				intentHandler.dispatch(LoginIntentHandler.LoginIntent.GetClientId)
+				intent.getClientId()
 			is LoginStateMachine.LoginState.ClientId ->
 				clientIdInputFieldState.value = loginState.clientId.orEmpty()
 		}
 
 		val signIn: () -> Unit = {
-			intentHandler.dispatch(
-				LoginIntentHandler.LoginIntent.SignIn.Password(
+			intent.signIn(
+				info = LoginIntent.SignInInfo.Password(
 					clientId = clientIdInputFieldState.value,
 					password = passwordInputFieldState.value,
 				)
@@ -68,7 +68,7 @@ class LoginScreen(
 					.background(ComposeColors.Background),
 			) {
 				MainToolbar(onBackClick = {
-					intentHandler.pop()
+					intent.pop()
 				})
 				Column(
 					modifier = Modifier

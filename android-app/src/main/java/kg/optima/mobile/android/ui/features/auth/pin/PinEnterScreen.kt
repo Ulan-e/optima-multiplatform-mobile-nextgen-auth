@@ -6,7 +6,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.auth.AuthFeatureFactory
-import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
+import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginStateMachine
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.navigation.ScreenModel
@@ -24,12 +24,12 @@ class PinEnterScreen(
 	@Composable
 	override fun Content() {
 		val model = remember {
-			AuthFeatureFactory.create<LoginIntentHandler, LoginStateMachine>(nextScreenModel)
+			AuthFeatureFactory.create<LoginIntent, LoginStateMachine>(nextScreenModel)
 		}
 		val stateMachine = model.stateMachine
-		val intentHandler = model.intentHandler
+		val intent = model.intent
 
-		val state by stateMachine.state.collectAsState(
+		val state by stateMachine.stateFlow.collectAsState(
 			initial = if (showBiometry) LoginStateMachine.LoginState.ShowBiometry else null
 		)
 
@@ -37,38 +37,33 @@ class PinEnterScreen(
 
 		val codeState = remember { mutableStateOf(emptyString) }
 
+		val onBiometryAuthenticateSuccess: () -> Unit = {
+			intent.signIn(LoginIntent.SignInInfo.Biometry)
+		}
+		val onBiometryAuthenticate: () -> Unit = {
+			BiometryManager.authorize(
+				activity = context.asActivity(),
+				doOnSuccess = onBiometryAuthenticateSuccess,
+				doOnFailure = {},
+			)
+		}
+
 		when (state) {
-			is LoginStateMachine.LoginState.ShowBiometry -> {
-				BiometryManager.authorize(
-					activity = context.asActivity(),
-					doOnSuccess = {
-						intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn.Biometry)
-					},
-					doOnFailure = {},
-				)
-			}
+			is LoginStateMachine.LoginState.ShowBiometry -> onBiometryAuthenticate()
 		}
 
 		MainContainer(mainState = state) {
 			PinScreen(
 				header = enterPinScreenHeader(
-					onCloseClick = { intentHandler.pop() },
+					onCloseClick = { intent.pop() },
 					onLogoutClick = {},
 				),
 				codeState = codeState,
 				onInputCompleted = { pin ->
-					intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn.Pin(pin = pin))
+					intent.signIn(LoginIntent.SignInInfo.Pin(pin = pin))
 				},
 				actionCell = ActionCell.FingerPrint(
-					onCellClick = {
-						BiometryManager.authorize(
-							activity = context.asActivity(),
-							doOnSuccess = {
-								intentHandler.dispatch(LoginIntentHandler.LoginIntent.SignIn.Biometry)
-							},
-							doOnFailure = {},
-						)
-					},
+					onCellClick = { onBiometryAuthenticate() },
 				)
 			)
 		}

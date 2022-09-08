@@ -1,16 +1,14 @@
 package kg.optima.mobile.base.presentation
 
 import kg.optima.mobile.base.data.model.Either
-import kg.optima.mobile.base.presentation.IntentHandler.Intent
 import kg.optima.mobile.core.error.Failure
 import kotlinx.coroutines.*
 import org.koin.core.component.KoinComponent
 
 /**
- * [I] - Intent, In parameter using as param launching executing,
  * [E] - Entity, In parameter coming from Domain,
  **/
-abstract class IntentHandler<in I : Intent, in E>(
+abstract class Intent<in E>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) : KoinComponent {
 
@@ -22,8 +20,6 @@ abstract class IntentHandler<in I : Intent, in E>(
 	}
 
 	protected abstract val stateMachine: StateMachine<E>
-
-	abstract fun dispatch(intent: I)
 
 	open fun pop() = stateMachine.pop()
 
@@ -39,6 +35,4 @@ abstract class IntentHandler<in I : Intent, in E>(
 			delay(100)
 		}
 	}
-
-	interface Intent
 }

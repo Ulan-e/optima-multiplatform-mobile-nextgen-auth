@@ -18,7 +18,7 @@ abstract class StateMachine<in E>(
 	 * Common state for each screen. Use with sealed classes.
 	 */
 	private val _state = MutableSharedFlow<State?>()
-	val state: SharedFlow<State?> = _state.asSharedFlow()
+	val stateFlow: SharedFlow<State?> = _state.asSharedFlow()
 
 	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
 
@@ -57,8 +57,6 @@ abstract class StateMachine<in E>(
 	}
 
 	internal fun pop() = setState(State.Pop)
-
-	fun resetState() = setState(null)
 
 	abstract fun handle(entity: E)
 

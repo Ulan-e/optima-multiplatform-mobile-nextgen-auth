@@ -1,9 +1,9 @@
 package kg.optima.mobile.common
 
 import kg.optima.mobile.base.di.Factory
-import kg.optima.mobile.common.presentation.launch.LaunchIntentHandler
+import kg.optima.mobile.common.presentation.launch.LaunchIntent
 import kg.optima.mobile.common.presentation.launch.LaunchStateMachine
-import kg.optima.mobile.common.presentation.welcome.WelcomeIntentHandler
+import kg.optima.mobile.common.presentation.welcome.WelcomeIntent
 import kg.optima.mobile.common.presentation.welcome.WelcomeStateMachine
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -14,10 +14,10 @@ object CommonFeatureFactory : Factory() {
 
 		// StateMachines and IntentHandlers injection by pair
 		factory { LaunchStateMachine() }
-		factory { sm -> LaunchIntentHandler(sm.get()) }
+		factory { sm -> LaunchIntent(sm.get()) }
 
 		factory { WelcomeStateMachine() }
-		factory { sm -> WelcomeIntentHandler(sm.get()) }
+		factory { sm -> WelcomeIntent(sm.get()) }
 
 	}
 }

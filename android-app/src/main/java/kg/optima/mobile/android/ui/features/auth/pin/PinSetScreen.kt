@@ -4,7 +4,7 @@ import androidx.compose.runtime.*
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
-import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntentHandler
+import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthStateMachine
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.navigation.ScreenModel
@@ -18,12 +18,12 @@ class PinSetScreen(
 	@Composable
 	override fun Content() {
 		val model = remember {
-			AuthFeatureFactory.create<SetupAuthIntentHandler, SetupAuthStateMachine>(nextScreenModel)
+			AuthFeatureFactory.create<SetupAuthIntent, SetupAuthStateMachine>(nextScreenModel)
 		}
 		val stateMachine = model.stateMachine
-		val intentHandler = model.intentHandler
+		val intent = model.intent
 
-		val state by stateMachine.state.collectAsState(initial = null)
+		val state by stateMachine.stateFlow.collectAsState(initial = null)
 
 		val headerState = remember { mutableStateOf("Установить новый PIN-код") }
 		val subheaderState = remember { mutableStateOf("для быстрого входа в приложение") }
@@ -38,9 +38,7 @@ class PinSetScreen(
 					is SetupAuthStateMachine.SetupAuthState.ComparePin -> {
 						if (pinSetState.isMatches) {
 							// TODO showSetBiometry
-							intentHandler.dispatch(
-								SetupAuthIntentHandler.SetupAuthIntent.Biometry(true)
-							)
+							intent.setBiometry(true)
 						} else {
 							// TODO pin not matches
 						}
@@ -56,15 +54,12 @@ class PinSetScreen(
 				onInputCompleted = {
 					when (state) {
 						null -> {
-							intentHandler.dispatch(
-								SetupAuthIntentHandler.SetupAuthIntent.SavePin(codeState.value)
-							)
+							intent.savePin(codeState.value)
 							codeState.value = emptyString
 						}
-						SetupAuthStateMachine.SetupAuthState.SavePin ->
-							intentHandler.dispatch(
-								SetupAuthIntentHandler.SetupAuthIntent.ComparePin(codeState.value)
-							)
+						SetupAuthStateMachine.SetupAuthState.SavePin -> {
+							intent.comparePin(codeState.value)
+						}
 					}
 				},
 				actionCell = ActionCell.Close {
