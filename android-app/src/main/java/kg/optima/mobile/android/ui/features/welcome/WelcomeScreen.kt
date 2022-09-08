@@ -14,7 +14,7 @@ import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.welcome.WelcomeIntent
-import kg.optima.mobile.common.presentation.welcome.WelcomeStateMachine
+import kg.optima.mobile.common.presentation.welcome.WelcomeState
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
@@ -30,18 +30,18 @@ object WelcomeScreen : Screen {
 
 	@Composable
 	override fun Content() {
-		val model = remember {
-			CommonFeatureFactory.create<WelcomeIntent, WelcomeStateMachine>()
+		val product = remember {
+			CommonFeatureFactory.create<WelcomeIntent, WelcomeState>()
 		}
-		val stateMachine = model.stateMachine
-		val intentHandler = model.intent
+		val state = product.state
+		val intent = product.intent
 
-		val state by stateMachine.stateFlow.collectAsState(initial = null)
+		val model by state.stateFlow.collectAsState(initial = null)
 
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
 		MainContainer(
-			mainState = state,
+			mainState = model,
 			infoState = bottomSheetState.value,
 		) {
 			Column(
@@ -65,7 +65,7 @@ object WelcomeScreen : Screen {
 				PrimaryButton(
 					modifier = Modifier.fillMaxWidth(),
 					text = "Войти",
-					onClick = { intentHandler.checkIsAuthorized() },
+					onClick = { intent.checkIsAuthorized() },
 				)
 				TransparentButton(
 					modifier = Modifier

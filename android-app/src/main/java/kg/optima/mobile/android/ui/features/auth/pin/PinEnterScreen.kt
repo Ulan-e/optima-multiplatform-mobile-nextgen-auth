@@ -7,7 +7,7 @@ import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
-import kg.optima.mobile.auth.presentation.login.LoginStateMachine
+import kg.optima.mobile.auth.presentation.login.LoginState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
@@ -23,14 +23,14 @@ class PinEnterScreen(
 
 	@Composable
 	override fun Content() {
-		val model = remember {
-			AuthFeatureFactory.create<LoginIntent, LoginStateMachine>(nextScreenModel)
+		val product = remember {
+			AuthFeatureFactory.create<LoginIntent, LoginState>(nextScreenModel)
 		}
-		val stateMachine = model.stateMachine
-		val intent = model.intent
+		val state = product.state
+		val intent = product.intent
 
-		val state by stateMachine.stateFlow.collectAsState(
-			initial = if (showBiometry) LoginStateMachine.LoginState.ShowBiometry else null
+		val model by state.stateFlow.collectAsState(
+			initial = if (showBiometry) LoginState.LoginStateModel.ShowBiometry else null
 		)
 
 		val context = LocalContext.current
@@ -48,11 +48,11 @@ class PinEnterScreen(
 			)
 		}
 
-		when (state) {
-			is LoginStateMachine.LoginState.ShowBiometry -> onBiometryAuthenticate()
+		when (model) {
+			is LoginState.LoginStateModel.ShowBiometry -> onBiometryAuthenticate()
 		}
 
-		MainContainer(mainState = state) {
+		MainContainer(mainState = model) {
 			PinScreen(
 				header = enterPinScreenHeader(
 					onCloseClick = { intent.pop() },

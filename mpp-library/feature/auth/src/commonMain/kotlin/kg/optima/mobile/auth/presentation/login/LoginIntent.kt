@@ -10,7 +10,7 @@ import kg.optima.mobile.base.presentation.Intent
 import org.koin.core.component.inject
 
 class LoginIntent(
-	override val stateMachine: LoginStateMachine,
+	override val state: LoginState,
 ) : Intent<LoginModel>() {
 
 	private val loginUseCase: LoginUseCase by inject()

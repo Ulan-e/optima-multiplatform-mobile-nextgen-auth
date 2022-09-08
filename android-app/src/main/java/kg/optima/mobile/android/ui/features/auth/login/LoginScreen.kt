@@ -13,8 +13,8 @@ import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
-import kg.optima.mobile.auth.presentation.login.LoginStateMachine
-import kg.optima.mobile.base.presentation.StateMachine
+import kg.optima.mobile.auth.presentation.login.LoginState
+import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -33,22 +33,22 @@ class LoginScreen(
 
 	@Composable
 	override fun Content() {
-		val model = remember {
-			AuthFeatureFactory.create<LoginIntent, LoginStateMachine>(nextScreenModel)
+		val product = remember {
+			AuthFeatureFactory.create<LoginIntent, LoginState>(nextScreenModel)
 		}
-		val stateMachine = model.stateMachine
-		val intent = model.intent
+		val state = product.state
+		val intent = product.intent
 
-		val state by stateMachine.stateFlow.collectAsState(initial = StateMachine.State.Initial)
+		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
 		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
 		val checkedState = remember { mutableStateOf(true) }
 
-		when (val loginState = state) {
-			is StateMachine.State.Initial ->
+		when (val loginState = model) {
+			is State.StateModel.Initial ->
 				intent.getClientId()
-			is LoginStateMachine.LoginState.ClientId ->
+			is LoginState.LoginStateModel.ClientId ->
 				clientIdInputFieldState.value = loginState.clientId.orEmpty()
 		}
 
@@ -61,7 +61,7 @@ class LoginScreen(
 			)
 		}
 
-		MainContainer(mainState = state) {
+		MainContainer(mainState = model) {
 			Column(
 				modifier = Modifier
 					.fillMaxSize()

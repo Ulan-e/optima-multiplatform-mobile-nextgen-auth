@@ -11,9 +11,9 @@ import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.domain.usecase.pin_set.PinSetUseCase
 import kg.optima.mobile.auth.presentation.login.LoginIntent
-import kg.optima.mobile.auth.presentation.login.LoginStateMachine
+import kg.optima.mobile.auth.presentation.login.LoginState
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
-import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthStateMachine
+import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthState
 import kg.optima.mobile.base.di.Factory
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -33,11 +33,11 @@ object AuthFeatureFactory : Factory() {
 		factory { PinSetUseCase(authPreferences = get()) }
 		factory { SetupBiometryUseCase(authPreferences = get()) }
 
-		// StateMachines and IntentHandlers injection by pair
-		factory { next -> LoginStateMachine(next.get()) }
+		// States and Intents injection by pair
+		factory { next -> LoginState(next.get()) }
 		factory { sm -> LoginIntent(sm.get()) }
 
-		factory { next -> SetupAuthStateMachine(next.get()) }
+		factory { next -> SetupAuthState(next.get()) }
 		factory { sm -> SetupAuthIntent(sm.get()) }
 	}
 }

@@ -7,7 +7,7 @@ import kg.optima.mobile.base.presentation.Intent
 import org.koin.core.component.inject
 
 class SetupAuthIntent(
-	override val stateMachine: SetupAuthStateMachine,
+	override val state: SetupAuthState,
 ) : Intent<SetupAuthResult>() {
 
 	private val pinSetUseCase: PinSetUseCase by inject()

@@ -6,7 +6,7 @@ import kg.optima.mobile.base.presentation.Intent
 import org.koin.core.component.inject
 
 class LaunchIntent(
-	override val stateMachine: LaunchStateMachine,
+	override val state: LaunchState,
 ) : Intent<ClientInfo>() {
 
 	private val clientInfoUseCase: ClientInfoUseCase by inject()

@@ -6,7 +6,7 @@ import kg.optima.mobile.base.presentation.Intent
 import org.koin.core.component.inject
 
 class WelcomeIntent(
-	override val stateMachine: WelcomeStateMachine,
+	override val state: WelcomeState,
 ) : Intent<ClientInfo>() {
 
 	private val clientInfoUseCase: ClientInfoUseCase by inject()

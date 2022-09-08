@@ -9,32 +9,32 @@ import kotlinx.coroutines.flow.*
 /**
  * [E] - Entity. In parameter, receiving from Domain,
  **/
-abstract class StateMachine<in E>(
+abstract class State<in E>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) {
-	protected val stateValue: AtomicReference<@UnsafeVariance State?> = AtomicReference(null)
+	protected val stateValue: AtomicReference<@UnsafeVariance StateModel?> = AtomicReference(null)
 
 	/**
 	 * Common state for each screen. Use with sealed classes.
 	 */
-	private val _state = MutableSharedFlow<State?>()
-	val stateFlow: SharedFlow<State?> = _state.asSharedFlow()
+	private val _stateFlow = MutableSharedFlow<StateModel?>()
+	val stateFlow: SharedFlow<StateModel?> = _stateFlow.asSharedFlow()
 
 	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
 
-	protected fun setState(newState: @UnsafeVariance State?) {
+	protected fun setStateModel(newState: @UnsafeVariance StateModel?) {
 		coroutineScope.launch(Dispatchers.Main) {
-			_state.emit(newState)
+			_stateFlow.emit(newState)
 		}
 	}
 
 	internal suspend fun setLoading() {
-		_state.emit(State.Loading)
+		_stateFlow.emit(StateModel.Loading)
 	}
 
 	// TODO perform error
-	internal suspend fun setError(error: State.Error) {
-		_state.emit(error)
+	internal suspend fun setError(error: StateModel.Error) {
+		_stateFlow.emit(error)
 	}
 
 	// TODO perform error
@@ -56,22 +56,22 @@ abstract class StateMachine<in E>(
 //        }
 	}
 
-	internal fun pop() = setState(State.Pop)
+	internal fun pop() = setStateModel(StateModel.Pop)
 
 	abstract fun handle(entity: E)
 
-	interface State {
-		object Initial : State
+	interface StateModel {
+		object Initial : StateModel
 
-		object Loading : State
+		object Loading : StateModel
 
-		class Navigate(val screenModels: List<ScreenModel>) : State {
+		class Navigate(val screenModels: List<ScreenModel>) : StateModel {
 			constructor(screenModel: ScreenModel) : this(listOf(screenModel))
 		}
 
-		object Pop : State
+		object Pop : StateModel
 
-		sealed interface Error : State {
+		sealed interface Error : StateModel {
 			val error: String
 
 			class BaseError(override val error: String) : Error

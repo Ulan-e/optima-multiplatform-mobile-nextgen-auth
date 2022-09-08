@@ -16,21 +16,21 @@ abstract class Intent<in E>(
 
 	private val handler = CoroutineExceptionHandler { _, exception ->
 		// TODO log exception to Crashlytics
-		println("StateMachine CoroutineExceptionHandler got $exception")
+		println("State CoroutineExceptionHandler got $exception")
 	}
 
-	protected abstract val stateMachine: StateMachine<E>
+	protected abstract val state: State<E>
 
-	open fun pop() = stateMachine.pop()
+	open fun pop() = state.pop()
 
 	protected fun launchOperation(
 		operation: suspend () -> Either<Failure, E>,
 	): Job {
 		return coroutineScope.launch(handler) {
-			stateMachine.setLoading()
+			state.setLoading()
 			operation().fold(
-				fnL = { err -> stateMachine.setError(StateMachine.State.Error.BaseError(err.message)) },
-				fnR = { model -> stateMachine.handle(model) }
+				fnL = { err -> state.setError(State.StateModel.Error.BaseError(err.message)) },
+				fnR = { model -> state.handle(model) }
 			)
 			delay(100)
 		}

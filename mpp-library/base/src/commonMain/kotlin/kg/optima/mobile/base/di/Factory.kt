@@ -13,16 +13,16 @@ import org.koin.core.parameter.parametersOf
 abstract class Factory : KoinComponent {
 	abstract val module: Module
 
-	inline fun <reified I, reified SM> create(
+	inline fun <reified I, reified S> create(
 		parameter: Any? = null,
-	): Product<I, SM> {
-		val sm: SM by inject { parametersOf(parameter) }
-		val ih: I by inject { parametersOf(sm) }
-		return Product(ih, sm)
+	): Product<I, S> {
+		val state: S by inject { parametersOf(parameter) }
+		val intent: I by inject { parametersOf(state) }
+		return Product(intent, state)
 	}
 
-	class Product<I, SM>(
+	class Product<I, S>(
 		val intent: I,
-		val stateMachine: SM,
+		val state: S,
 	)
 }

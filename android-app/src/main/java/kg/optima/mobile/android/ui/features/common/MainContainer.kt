@@ -13,7 +13,7 @@ import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kg.optima.mobile.android.ui.base.Router
 import kg.optima.mobile.android.utils.asActivity
-import kg.optima.mobile.base.presentation.StateMachine
+import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
@@ -24,7 +24,7 @@ import org.koin.androidx.compose.inject
 @Composable
 fun MainContainer(
 	modifier: Modifier = Modifier,
-	mainState: StateMachine.State?,
+	mainState: State.StateModel?,
 	infoState: BottomSheetInfo? = null,
 	component: Root.Child.Component? = null,
 	content: @Composable () -> Unit,
@@ -41,20 +41,20 @@ fun MainContainer(
 
 	Box(modifier = modifier.fillMaxSize()) {
 		when (mainState) {
-			is StateMachine.State.Loading -> {
+			is State.StateModel.Loading -> {
 				CircularProgress(modifier = Modifier.align(Alignment.Center))
 			}
-			is StateMachine.State.Navigate -> {
+			is State.StateModel.Navigate -> {
 				component?.addAll(mainState.screenModels)
 				router.push(mainState.screenModels)
 			}
-			is StateMachine.State.Pop -> {
+			is State.StateModel.Pop -> {
 				navigator.pop()
 			}
-			is StateMachine.State.Error -> {
+			is State.StateModel.Error -> {
 				// TODO process error
 				when (val errorState = mainState) {
-					is StateMachine.State.Error.BaseError -> bottomSheetNavigator.show(
+					is State.StateModel.Error.BaseError -> bottomSheetNavigator.show(
 						info = BottomSheetInfo(
 							title = errorState.error,
 							buttons = listOf(
