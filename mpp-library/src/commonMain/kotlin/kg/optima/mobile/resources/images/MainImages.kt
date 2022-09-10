@@ -16,4 +16,10 @@ object MainImages : Images {
     val logout get() = byFileName("img_logout")
 
     val fingerprint get() = byFileName("img_fingerprint")
+
+    val main get() = byFileName("img_main")
+    val transfers get() = byFileName("img_transfers")
+    val payments get() = byFileName("img_payments")
+    val history get() = byFileName("img_history")
+    val menu get() = byFileName("img_menu")
 }

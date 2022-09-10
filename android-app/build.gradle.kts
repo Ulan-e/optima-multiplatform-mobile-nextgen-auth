@@ -68,6 +68,7 @@ dependencies {
     implementation(project(":mpp-library:core:presentation:design-system:android"))
     implementation(project(":mpp-library:feature"))
     implementation(project(":mpp-library:feature:auth"))
+    implementation(project(":mpp-library:feature:common"))
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")
@@ -96,5 +97,9 @@ dependencies {
     val voyagerVersion = "1.0.0-beta15"
     implementation("cafe.adriel.voyager:voyager-core:$voyagerVersion")
     implementation ("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
-    implementation("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
+    implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+
+
+    implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
+    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")
 }

@@ -2,6 +2,8 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+
+    kotlin("plugin.serialization")
 }
 
 version = "1.0"
@@ -25,6 +27,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":mpp-library:core"))
+                implementation(libs.kotlinSerialization)
             }
         }
         val commonTest by getting {

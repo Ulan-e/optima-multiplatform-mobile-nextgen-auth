@@ -1,5 +1,6 @@
 package kg.optima.mobile.design_system.android.utils.biometry
 
+import android.content.pm.PackageManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -14,7 +15,7 @@ object BiometryManager {
 		.build()
 
 	fun authorize(activity: FragmentActivity?, doOnSuccess: () -> Unit, doOnFailure: () -> Unit) {
-		if (activity != null) {
+		if (activity != null && activity.packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) {
 			biometricPrompt(activity, doOnSuccess, doOnFailure).authenticate(promptInfo)
 		}
 	}

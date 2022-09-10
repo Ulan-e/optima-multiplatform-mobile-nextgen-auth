@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
@@ -29,11 +30,11 @@ import kg.optima.mobile.design_system.android.ui.input.debounce.debounce
 import kg.optima.mobile.design_system.android.ui.input.filter.ITextFieldComposeFilter
 import kg.optima.mobile.design_system.android.ui.input.filter.NoTextFieldFilter
 import kg.optima.mobile.design_system.android.ui.input.model.ErrorTextField
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.sp
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.Headings.Companion.px
-import kg.optima.mobile.design_system.android.utils.resources.sp
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -58,6 +59,7 @@ fun InputField(
 	errorState: MutableState<ErrorTextField> = mutableStateOf(ErrorTextField.empty()),
 	interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 	clearErrorTextOnChange: Boolean = true,
+	onKeyboardActionDone: (() -> Unit)? = null,
 ) {
 	val keyboardController = LocalSoftwareKeyboardController.current
 	val focusManager = LocalFocusManager.current
@@ -118,7 +120,10 @@ fun InputField(
 			imeAction = imeAction
 		),
 		keyboardActions = KeyboardActions(
-			onDone = { keyboardController?.hide() },
+			onDone = {
+				keyboardController?.hide()
+				onKeyboardActionDone?.invoke()
+			},
 			onNext = { focusManager.moveFocus(FocusDirection.Down) }),
 		visualTransformation = visualTransformation,
 		leadingIcon = leadingIcon,

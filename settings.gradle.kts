@@ -1,19 +1,17 @@
-/*
- * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
 
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+plugins {
+    id("dev.icerock.gradle.talaiot") version("3.+")
+}
 
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
         google()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
-}
-
-plugins {
-    id("dev.icerock.gradle.talaiot") version("3.+")
 }
 
 includeBuild("build-logic")
@@ -32,3 +30,4 @@ include(":mpp-library:feature:main")
 include(":mpp-library:feature:payments")
 include(":mpp-library:feature:transfers")
 include(":mpp-library:feature:registration")
+include(":mpp-library:feature:common")

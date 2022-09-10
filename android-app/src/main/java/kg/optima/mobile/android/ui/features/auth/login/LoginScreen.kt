@@ -7,14 +7,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import cafe.adriel.voyager.core.screen.Screen
+import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.auth.presentation.login.LoginFactory
-import kg.optima.mobile.auth.presentation.login.LoginIntentHandler
-import kg.optima.mobile.auth.presentation.login.LoginStateMachine
-import kg.optima.mobile.base.presentation.StateMachine
+import kg.optima.mobile.auth.AuthFeatureFactory
+import kg.optima.mobile.auth.presentation.login.LoginIntent
+import kg.optima.mobile.auth.presentation.login.LoginState
+import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.checkbox.Checkbox
 import kg.optima.mobile.design_system.android.ui.input.InputField
@@ -25,34 +27,48 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 
 
-object LoginScreen : Screen {
+class LoginScreen(
+	private val nextScreenModel: ScreenModel,
+) : BaseScreen {
 
 	@Composable
 	override fun Content() {
-		val stateMachine: LoginStateMachine = LoginFactory.stateMachine
-		val intentHandler: LoginIntentHandler = LoginFactory.intentHandler
+		val product = remember {
+			AuthFeatureFactory.create<LoginIntent, LoginState>(nextScreenModel)
+		}
+		val state = product.state
+		val intent = product.intent
 
-		val state by stateMachine.state.collectAsState(initial = StateMachine.State.Initial)
+		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
 		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
 		val checkedState = remember { mutableStateOf(true) }
 
-		when (val loginState = state) {
-			is StateMachine.State.Initial ->
-				intentHandler.dispatch(LoginIntentHandler.LoginIntent.GetClientId)
-			is LoginStateMachine.LoginState.ClientId ->
+		when (val loginState = model) {
+			is State.StateModel.Initial ->
+				intent.getClientId()
+			is LoginState.LoginStateModel.ClientId ->
 				clientIdInputFieldState.value = loginState.clientId.orEmpty()
 		}
 
-		MainContainer(mainState = state) {
+		val signIn: () -> Unit = {
+			intent.signIn(
+				info = LoginIntent.SignInInfo.Password(
+					clientId = clientIdInputFieldState.value,
+					password = passwordInputFieldState.value,
+				)
+			)
+		}
+
+		MainContainer(mainState = model) {
 			Column(
 				modifier = Modifier
 					.fillMaxSize()
 					.background(ComposeColors.Background),
 			) {
 				MainToolbar(onBackClick = {
-					intentHandler.pop()
+					intent.pop()
 				})
 				Column(
 					modifier = Modifier
@@ -71,9 +87,10 @@ object LoginScreen : Screen {
 						valueState = clientIdInputFieldState,
 						hint = "Client ID",
 						keyboardType = KeyboardType.Number,
+						imeAction = ImeAction.Next,
 						bottomActionButton = "Запросить Client ID" to {
 							// TODO get clientid
-						}
+						},
 					)
 					PasswordInput(
 						modifier = Modifier
@@ -81,6 +98,7 @@ object LoginScreen : Screen {
 							.padding(top = Deps.Spacing.spacing),
 						passwordState = passwordInputFieldState,
 						hint = "Пароль",
+						onKeyboardActionDone = signIn,
 					)
 					Checkbox(
 						modifier = Modifier.padding(top = Deps.Spacing.spacing),
@@ -93,14 +111,7 @@ object LoginScreen : Screen {
 						.fillMaxWidth()
 						.padding(all = Deps.Spacing.standardPadding),
 					text = "Продолжить",
-					onClick = {
-						intentHandler.dispatch(
-							LoginIntentHandler.LoginIntent.SignIn.Password(
-								clientId = clientIdInputFieldState.value,
-								password = passwordInputFieldState.value,
-							)
-						)
-					},
+					onClick = signIn,
 				)
 			}
 		}

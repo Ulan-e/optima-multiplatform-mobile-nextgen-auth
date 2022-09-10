@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import cafe.adriel.voyager.core.screen.Screen
+import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
-import kg.optima.mobile.auth.presentation.welcome.WelcomeIntentFactory
-import kg.optima.mobile.auth.presentation.welcome.WelcomeIntentHandler
-import kg.optima.mobile.auth.presentation.welcome.WelcomeStateMachine
+import kg.optima.mobile.common.CommonFeatureFactory
+import kg.optima.mobile.common.presentation.welcome.WelcomeIntent
+import kg.optima.mobile.common.presentation.welcome.WelcomeState
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
@@ -26,20 +26,22 @@ import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
 
 
-@Suppress("NAME_SHADOWING")
-object WelcomeScreen : Screen {
+object WelcomeScreen : BaseScreen {
 
 	@Composable
 	override fun Content() {
-		val stateMachine: WelcomeStateMachine = WelcomeIntentFactory.stateMachine
-		val intentHandler: WelcomeIntentHandler = WelcomeIntentFactory.intentHandler
+		val product = remember {
+			CommonFeatureFactory.create<WelcomeIntent, WelcomeState>()
+		}
+		val state = product.state
+		val intent = product.intent
 
-		val state by stateMachine.state.collectAsState(initial = null)
+		val model by state.stateFlow.collectAsState(initial = null)
 
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
 		MainContainer(
-			mainState = state,
+			mainState = model,
 			infoState = bottomSheetState.value,
 		) {
 			Column(
@@ -63,7 +65,7 @@ object WelcomeScreen : Screen {
 				PrimaryButton(
 					modifier = Modifier.fillMaxWidth(),
 					text = "Войти",
-					onClick = { intentHandler.checkIsAuthorized() },
+					onClick = { intent.checkIsAuthorized() },
 				)
 				TransparentButton(
 					modifier = Modifier
@@ -81,7 +83,7 @@ object WelcomeScreen : Screen {
 									modifier = Modifier.fillMaxWidth(),
 									text = "Повторить попытку",
 									color = ComposeColors.Green,
-									onClick = { }
+									onClick = { bottomSheetState.value = null }
 								)
 							)
 						)
@@ -95,7 +97,4 @@ object WelcomeScreen : Screen {
 			}
 		}
 	}
-
-	private fun WelcomeIntentHandler.checkIsAuthorized() =
-		this.dispatch(WelcomeIntentHandler.WelcomeIntent.CheckIsAuthorized)
 }
