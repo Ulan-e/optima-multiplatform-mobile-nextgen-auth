@@ -4,4 +4,6 @@ import kg.optima.mobile.core.navigation.ScreenModel
 
 sealed interface RegistrationScreenModel : ScreenModel {
 	object Agreement : RegistrationScreenModel
+
+	object EnterPhone : RegistrationScreenModel
 }

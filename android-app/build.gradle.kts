@@ -69,6 +69,7 @@ dependencies {
     implementation(project(":mpp-library:feature"))
     implementation(project(":mpp-library:feature:auth"))
     implementation(project(":mpp-library:feature:common"))
+    implementation(project(":mpp-library:feature:registration"))
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")
