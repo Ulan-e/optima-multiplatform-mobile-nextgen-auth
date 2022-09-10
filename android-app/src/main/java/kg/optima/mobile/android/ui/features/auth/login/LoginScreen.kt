@@ -9,7 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import cafe.adriel.voyager.core.screen.Screen
+import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
@@ -29,7 +29,7 @@ import kg.optima.mobile.design_system.android.values.Deps
 
 class LoginScreen(
 	private val nextScreenModel: ScreenModel,
-) : Screen {
+) : BaseScreen {
 
 	@Composable
 	override fun Content() {

@@ -11,13 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
+import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.history.HistoryContent
 import kg.optima.mobile.android.ui.features.main.MainContent
 import kg.optima.mobile.android.ui.features.menu.MenuContent
@@ -35,7 +35,7 @@ import kg.optima.mobile.navigation.root.RootComponent
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.Headings.Companion.px
 
-object BottomNavigationScreen : Screen {
+object BottomNavigationScreen : BaseScreen {
 
 	@OptIn(ExperimentalDecomposeApi::class)
 	@Composable
@@ -88,11 +88,11 @@ object BottomNavigationScreen : Screen {
 					modifier = Modifier.padding(all)
 				) {
 					when (val child = it.instance) {
-						is Root.Child.History -> HistoryContent(child.component)
 						is Root.Child.Main -> MainContent(child.component)
-						is Root.Child.Menu -> MenuContent(child.component)
-						is Root.Child.Payments -> PaymentsContent(child.component)
 						is Root.Child.Transfers -> TransfersContent(child.component)
+						is Root.Child.Payments -> PaymentsContent(child.component)
+						is Root.Child.History -> HistoryContent(child.component)
+						is Root.Child.Menu -> MenuContent(child.component)
 					}
 				}
 			}

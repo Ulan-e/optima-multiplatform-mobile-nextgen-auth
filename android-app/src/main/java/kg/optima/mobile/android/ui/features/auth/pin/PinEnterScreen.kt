@@ -2,7 +2,7 @@ package kg.optima.mobile.android.ui.features.auth.pin
 
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
-import cafe.adriel.voyager.core.screen.Screen
+import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.auth.AuthFeatureFactory
@@ -19,7 +19,7 @@ import kg.optima.mobile.design_system.android.utils.biometry.BiometryManager
 class PinEnterScreen(
 	private val showBiometry: Boolean = false,
 	private val nextScreenModel: ScreenModel,
-) : Screen {
+) : BaseScreen {
 
 	@Composable
 	override fun Content() {

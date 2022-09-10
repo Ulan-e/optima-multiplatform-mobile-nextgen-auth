@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import cafe.adriel.voyager.core.screen.Screen
+import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -26,7 +26,7 @@ import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
 
 
-object WelcomeScreen : Screen {
+object WelcomeScreen : BaseScreen {
 
 	@Composable
 	override fun Content() {
