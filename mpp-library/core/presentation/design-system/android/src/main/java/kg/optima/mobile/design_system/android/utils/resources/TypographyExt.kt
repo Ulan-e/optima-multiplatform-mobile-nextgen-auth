@@ -3,8 +3,11 @@ package kg.optima.mobile.design_system.android.utils.resources
 import android.content.res.Resources
 import android.util.TypedValue
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.icerock.moko.resources.FontResource
+import kg.optima.mobile.resources.Headings
+import kg.optima.mobile.resources.Headings.Companion.pix
 import kotlin.math.roundToInt
 
 fun FontResource.resId(): Int = this.fontResourceId
@@ -29,7 +32,5 @@ fun Int.dp(): Int =
 		Resources.getSystem().displayMetrics
 	).roundToInt()
 
-/**
- * Px to sp
- **/
-fun Int.sp(): TextUnit = this.dp().sp
+val Headings.sp: TextUnit
+	get() = this.pix.dp().sp

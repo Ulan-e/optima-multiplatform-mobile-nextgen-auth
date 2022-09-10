@@ -1,11 +1,11 @@
 package kg.optima.mobile.android.ui.features.auth.login
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -22,7 +22,8 @@ import kg.optima.mobile.design_system.android.ui.checkbox.Checkbox
 import kg.optima.mobile.design_system.android.ui.input.InputField
 import kg.optima.mobile.design_system.android.ui.input.PasswordInput
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
-import kg.optima.mobile.design_system.android.ui.toolbars.MainToolbar
+import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
+import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 
@@ -61,59 +62,51 @@ class LoginScreen(
 			)
 		}
 
-		MainContainer(mainState = model) {
-			Column(
+		MainContainer(
+			mainState = model,
+			toolbarInfo = ToolbarInfo(
+				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
+			),
+			contentModifier = Modifier.background(ComposeColors.Background),
+			contentHorizontalAlignment = Alignment.Start,
+		) {
+			TitleTextField(
+				modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 3),
+				text = "Авторизация"
+			)
+			InputField(
 				modifier = Modifier
-					.fillMaxSize()
-					.background(ComposeColors.Background),
-			) {
-				MainToolbar(onBackClick = {
-					intent.pop()
-				})
-				Column(
-					modifier = Modifier
-						.fillMaxWidth()
-						.padding(horizontal = Deps.Spacing.standardPadding)
-						.weight(1f),
-				) {
-					TitleTextField(
-						modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 3),
-						text = "Авторизация"
-					)
-					InputField(
-						modifier = Modifier
-							.fillMaxWidth()
-							.padding(top = Deps.Spacing.marginFromTitle),
-						valueState = clientIdInputFieldState,
-						hint = "Client ID",
-						keyboardType = KeyboardType.Number,
-						imeAction = ImeAction.Next,
-						bottomActionButton = "Запросить Client ID" to {
-							// TODO get clientid
-						},
-					)
-					PasswordInput(
-						modifier = Modifier
-							.fillMaxWidth()
-							.padding(top = Deps.Spacing.spacing),
-						passwordState = passwordInputFieldState,
-						hint = "Пароль",
-						onKeyboardActionDone = signIn,
-					)
-					Checkbox(
-						modifier = Modifier.padding(top = Deps.Spacing.spacing),
-						checkedState = checkedState,
-						text = "Запомнить логин",
-					)
-				}
-				PrimaryButton(
-					modifier = Modifier
-						.fillMaxWidth()
-						.padding(all = Deps.Spacing.standardPadding),
-					text = "Продолжить",
-					onClick = signIn,
-				)
-			}
+					.fillMaxWidth()
+					.padding(top = Deps.Spacing.marginFromTitle),
+				valueState = clientIdInputFieldState,
+				hint = "Client ID",
+				keyboardType = KeyboardType.Number,
+				imeAction = ImeAction.Next,
+				bottomActionButton = "Запросить Client ID" to {
+					// TODO get clientid
+				},
+			)
+			PasswordInput(
+				modifier = Modifier
+					.fillMaxWidth()
+					.padding(top = Deps.Spacing.spacing),
+				passwordState = passwordInputFieldState,
+				hint = "Пароль",
+				onKeyboardActionDone = signIn,
+			)
+			Checkbox(
+				modifier = Modifier.padding(top = Deps.Spacing.spacing),
+				checkedState = checkedState,
+				text = "Запомнить логин",
+			)
+			Spacer(modifier = Modifier.weight(1f))
+			PrimaryButton(
+				modifier = Modifier
+					.fillMaxWidth()
+					.padding(all = Deps.Spacing.standardPadding),
+				text = "Продолжить",
+				onClick = signIn,
+			)
 		}
 	}
 }

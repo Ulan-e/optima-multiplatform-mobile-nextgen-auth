@@ -33,7 +33,6 @@ import kg.optima.mobile.navigation.navItemList
 import kg.optima.mobile.navigation.root.Root
 import kg.optima.mobile.navigation.root.RootComponent
 import kg.optima.mobile.resources.Headings
-import kg.optima.mobile.resources.Headings.Companion.px
 
 object BottomNavigationScreen : BaseScreen {
 
@@ -74,7 +73,7 @@ object BottomNavigationScreen : BaseScreen {
 									)
 									Text(
 										text = it.title,
-										fontSize = Headings.H7.px().sp(),
+										fontSize = Headings.H7.sp,
 									)
 								}
 							}

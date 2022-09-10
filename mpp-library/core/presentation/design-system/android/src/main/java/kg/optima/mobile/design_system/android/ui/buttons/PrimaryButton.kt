@@ -9,9 +9,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.sp
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 
 @Composable
@@ -36,7 +36,7 @@ fun PrimaryButton(
 ) {
 	Text(
 		text = text,
-		fontSize = fontSize.px.sp,
+		fontSize = fontSize.sp,
 		color = ComposeColors.PrimaryWhite,
 	)
 }

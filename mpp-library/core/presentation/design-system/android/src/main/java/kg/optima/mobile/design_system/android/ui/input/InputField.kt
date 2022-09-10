@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
@@ -34,7 +33,6 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
-import kg.optima.mobile.resources.Headings.Companion.px
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -148,7 +146,7 @@ fun InputField(
 				.padding(top = Deps.Spacing.marginFromInput),
 			text = bottomActionButton.first,
 			color = ComposeColors.Green,
-			fontSize = Headings.H5.px().sp()
+			fontSize = Headings.H5.sp,
 		)
 	}
 

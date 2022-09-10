@@ -7,10 +7,12 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import kg.optima.mobile.android.ui.features.auth.AuthRouter
 import kg.optima.mobile.android.ui.features.BottomNavigationScreen
 import kg.optima.mobile.android.ui.features.main.MainRouter
+import kg.optima.mobile.android.ui.features.registration.RegistrationRouter
 import kg.optima.mobile.android.ui.features.welcome.WelcomeRouter
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
 import kg.optima.mobile.feature.main.MainScreenModel
+import kg.optima.mobile.feature.register.RegistrationScreenModel
 import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 
 object RouterImpl : Router {
@@ -42,6 +44,10 @@ object RouterImpl : Router {
 				)
 				is MainScreenModel -> RouteInfo(
 					screen = MainRouter.compose(screenModel = it),
+					dropBackStack = it.dropBackStack
+				)
+				is RegistrationScreenModel -> RouteInfo(
+					screen = RegistrationRouter.compose(screenModel = it),
 					dropBackStack = it.dropBackStack
 				)
 				else -> RouteInfo(

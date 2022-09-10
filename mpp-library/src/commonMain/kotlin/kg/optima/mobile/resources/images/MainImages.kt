@@ -3,6 +3,7 @@ package kg.optima.mobile.resources.images
 object MainImages : Images {
 
     val optimaLogo get() = byFileName("logo_optima_horizontal")
+    val optimaLogoOld get() = byFileName("img_optima_logo_old")
 
     val bell get() = byFileName("img_bell")
     val chartup get() = byFileName("img_chartup")

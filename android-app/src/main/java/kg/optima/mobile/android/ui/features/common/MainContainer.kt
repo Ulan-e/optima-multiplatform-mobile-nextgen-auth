@@ -1,9 +1,8 @@
 package kg.optima.mobile.android.ui.features.common
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,7 +16,10 @@ import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
+import kg.optima.mobile.design_system.android.ui.toolbars.MainToolbar
+import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.navigation.root.Root
 import org.koin.androidx.compose.inject
 
@@ -27,7 +29,10 @@ fun MainContainer(
 	mainState: State.StateModel?,
 	infoState: BottomSheetInfo? = null,
 	component: Root.Child.Component? = null,
-	content: @Composable () -> Unit,
+	toolbarInfo: ToolbarInfo = ToolbarInfo(),
+	contentModifier: Modifier = Modifier,
+	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+	content: @Composable ColumnScope.() -> Unit,
 ) {
 	val router: Router by inject()
 
@@ -76,7 +81,21 @@ fun MainContainer(
 			bottomSheetNavigator.hide()
 		}
 
-		content()
+		Column(
+			modifier = Modifier
+				.fillMaxSize()
+				.background(ComposeColors.Background)
+		) {
+			MainToolbar(toolbarInfo)
+			Column(
+				modifier = contentModifier
+					.fillMaxSize()
+					.padding(all = Deps.Spacing.standardPadding)
+					.background(ComposeColors.Background),
+				horizontalAlignment = contentHorizontalAlignment,
+				content = content,
+			)
+		}
 	}
 }
 

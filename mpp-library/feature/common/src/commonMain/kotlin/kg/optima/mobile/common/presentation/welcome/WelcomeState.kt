@@ -1,15 +1,24 @@
 package kg.optima.mobile.common.presentation.welcome
 
-import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfo
 import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
 import kg.optima.mobile.feature.main.BottomNavScreenModel
+import kg.optima.mobile.feature.register.RegistrationScreenModel
 
-class WelcomeState : State<ClientInfo>() {
+class WelcomeState : State<WelcomeEntity>() {
 
-	override fun handle(entity: ClientInfo) {
+	override fun handle(entity: WelcomeEntity) {
+		val stateModel = when (entity) {
+			is WelcomeEntity.ClientInfo -> clientInfo(entity)
+			WelcomeEntity.Register -> StateModel.Navigate(RegistrationScreenModel.Agreement)
+		}
+
+		setStateModel(stateModel)
+	}
+
+	private fun clientInfo(entity: WelcomeEntity.ClientInfo): StateModel.Navigate {
 		val screenModels = mutableListOf<ScreenModel>()
 		val nextScreenModel = BottomNavScreenModel
 		if (entity.isAuthorized) {
@@ -25,7 +34,7 @@ class WelcomeState : State<ClientInfo>() {
 			)
 		}
 
-		setStateModel(StateModel.Navigate(screenModels))
+		return StateModel.Navigate(screenModels)
 	}
 
 	private fun authScreenModels(

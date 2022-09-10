@@ -4,11 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
@@ -18,9 +18,10 @@ import kg.optima.mobile.common.presentation.welcome.WelcomeState
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.TransparentButton
-import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
+import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
@@ -43,58 +44,57 @@ object WelcomeScreen : BaseScreen {
 		MainContainer(
 			mainState = model,
 			infoState = bottomSheetState.value,
+			toolbarInfo = ToolbarInfo(navigationIcon = null),
 		) {
 			Column(
 				modifier = Modifier
-					.fillMaxSize()
-					.padding(all = Deps.Spacing.standardPadding),
-				horizontalAlignment = Alignment.CenterHorizontally,
+					.wrapContentSize()
+					.weight(1f),
 			) {
-				Image(
-					modifier = Modifier
-						.padding(top = 60.dp)
-						.size(width = 170.dp, height = 36.dp),
-					painter = painterResource(
-						id = MainImages.optimaLogo.resId()
-					),
-					contentDescription = "Optima24",
-				)
-				WelcomeScreenButtonBlock(
-					modifier = Modifier.weight(1f),
-				)
-				PrimaryButton(
-					modifier = Modifier.fillMaxWidth(),
-					text = "Войти",
-					onClick = { intent.checkIsAuthorized() },
-				)
-				TransparentButton(
-					modifier = Modifier
-						.fillMaxWidth()
-						.padding(
-							top = Deps.Spacing.standardMargin,
-							bottom = Deps.Spacing.standardMargin,
-						),
-					text = "Зарегистрироваться",
-					onClick = {
-						bottomSheetState.value = BottomSheetInfo(
-							title = "Пароль не совпадает\nс предыдущим",
-							buttons = listOf(
-								ButtonView.Primary(
-									modifier = Modifier.fillMaxWidth(),
-									text = "Повторить попытку",
-									color = ComposeColors.Green,
-									onClick = { bottomSheetState.value = null }
-								)
-							)
-						)
-					},
+				Text(
+					text = "Добро пожаловать!",
+					fontSize = Headings.H1.sp,
+					fontWeight = FontWeight.Bold,
 				)
 				Text(
-					text = "Версия $appVersion",
-					fontSize = Headings.H6.px.sp,
-					color = ComposeColors.DescriptionGray,
+					modifier = Modifier
+						.padding(top = Deps.Spacing.standardMargin * 2),
+					text = "Весь банк в одном приложении",
+					fontSize = Headings.H4.sp,
 				)
 			}
+			WelcomeScreenButtonBlock(
+				modifier = Modifier
+					.wrapContentSize()
+					.weight(3f),
+			)
+			PrimaryButton(
+				modifier = Modifier.fillMaxWidth(),
+				text = "Войти",
+				onClick = { intent.checkIsAuthorized() },
+			)
+			TransparentButton(
+				modifier = Modifier
+					.fillMaxWidth()
+					.padding(
+						top = Deps.Spacing.standardMargin,
+						bottom = Deps.Spacing.standardMargin,
+					),
+				text = "Зарегистрироваться",
+				onClick = { intent.register() },
+			)
+			Text(
+				text = "Версия $appVersion",
+				fontSize = Headings.H6.sp,
+				color = ComposeColors.DescriptionGray,
+			)
 		}
 	}
+}
+
+
+@Preview
+@Composable
+private fun WelcomeScreenPreview() {
+	WelcomeScreen.Content()
 }

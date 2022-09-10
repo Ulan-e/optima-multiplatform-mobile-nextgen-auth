@@ -10,7 +10,7 @@ import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
 import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
-import kg.optima.mobile.design_system.android.ui.screens.pin.headers.setPinScreenHeader
+import kg.optima.mobile.design_system.android.ui.screens.pin.headers.pinSetScreenHeader
 
 class PinSetScreen(
 	private val nextScreenModel: ScreenModel,
@@ -49,7 +49,7 @@ class PinSetScreen(
 
 		MainContainer(mainState = model) {
 			PinScreen(
-				header = setPinScreenHeader(headerState.value, subheaderState.value),
+				header = pinSetScreenHeader(headerState.value, subheaderState.value),
 				codeState = codeState,
 				onInputCompleted = {
 					when (model) {
