@@ -8,6 +8,7 @@ object ComposeColors {
 	val PrimaryDisabledGray: Color get() = Colors.PrimaryDisabledGray.toComposeColor()
 	val PrimaryWhite: Color get() = Colors.PrimaryWhite.toComposeColor()
 	val PrimaryBlack: Color get() = Colors.PrimaryBlack.toComposeColor()
+	val PrimaryLightGray: Color get() = Colors.PrimaryLightGray.toComposeColor()
 
 	val Background: Color get() = Colors.SecondaryBackground.toComposeColor()
 	val Green: Color get() = Colors.Green.toComposeColor()

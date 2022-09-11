@@ -29,7 +29,7 @@ fun PrimaryButton(
 	shape = RoundedCornerShape(Deps.cornerRadius),
 	colors = ButtonDefaults.buttonColors(
 		backgroundColor = color,
-		disabledBackgroundColor = ComposeColors.PrimaryDisabledGray,
+		disabledBackgroundColor = ComposeColors.PrimaryLightGray,
 	),
 	onClick = onClick,
 	enabled = enabled,

@@ -25,6 +25,8 @@ object Deps {
 		val rowElementMargin get() = 10.dp
 
 		val iconDescriptionMargin get() = 4.dp
+
+		val bigMarginTop get() = 80.dp
 	}
 
 	object Size {

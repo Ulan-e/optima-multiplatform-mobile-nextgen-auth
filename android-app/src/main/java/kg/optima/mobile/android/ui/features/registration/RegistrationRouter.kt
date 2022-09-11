@@ -10,7 +10,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 	override fun compose(screenModel: RegistrationScreenModel): Screen {
 		return when (screenModel) {
 			RegistrationScreenModel.Agreement -> AgreementScreen
-			RegistrationScreenModel.EnterPhone -> AgreementScreen
+			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
 		}
 	}
 }
