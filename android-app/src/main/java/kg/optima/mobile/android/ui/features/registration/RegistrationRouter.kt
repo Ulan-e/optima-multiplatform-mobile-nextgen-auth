@@ -11,6 +11,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 		return when (screenModel) {
 			RegistrationScreenModel.Agreement -> AgreementScreen
 			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
+			RegistrationScreenModel.AcceptCode -> AgreementScreen
 		}
 	}
 }

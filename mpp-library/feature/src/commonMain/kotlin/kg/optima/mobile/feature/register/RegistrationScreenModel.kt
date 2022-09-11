@@ -6,4 +6,6 @@ sealed interface RegistrationScreenModel : ScreenModel {
 	object Agreement : RegistrationScreenModel
 
 	object EnterPhone : RegistrationScreenModel
+
+	object AcceptCode : RegistrationScreenModel
 }
