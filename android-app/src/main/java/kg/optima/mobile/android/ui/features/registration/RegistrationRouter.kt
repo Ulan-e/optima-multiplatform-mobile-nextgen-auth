@@ -6,12 +6,15 @@ import kg.optima.mobile.android.ui.FeatureRouter
 import kg.optima.mobile.feature.register.RegistrationScreenModel
 
 object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
-	@Composable
-	override fun compose(screenModel: RegistrationScreenModel): Screen {
-		return when (screenModel) {
-			RegistrationScreenModel.Agreement -> AgreementScreen
-			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
-			is RegistrationScreenModel.AcceptCode -> AgreementScreen
-		}
-	}
+    @Composable
+    override fun compose(screenModel: RegistrationScreenModel): Screen {
+        return when (screenModel) {
+            RegistrationScreenModel.Agreement -> AgreementScreen
+            RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
+            is RegistrationScreenModel.AcceptCode -> SmsOtpScreen(
+                screenModel.phoneNumber,
+                screenModel.timeout
+            )
+        }
+    }
 }

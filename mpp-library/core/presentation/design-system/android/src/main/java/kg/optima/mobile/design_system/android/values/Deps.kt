@@ -23,6 +23,7 @@ object Deps {
 		val swiperTopMargin get() = 6.dp
 
 		val rowElementMargin get() = 10.dp
+		val colElementMargin get() = 10.dp
 
 		val iconDescriptionMargin get() = 4.dp
 
