@@ -15,6 +15,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
                 screenModel.phoneNumber,
                 screenModel.timeout
             )
+            RegistrationScreenModel.IdConfirmation -> AgreementScreen
         }
     }
 }
