@@ -21,8 +21,8 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.registration.RegistrationFeatureFactory
-import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
-import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
+import kg.optima.mobile.registration.presentation.sms_code.SmsCodeIntent
+import kg.optima.mobile.registration.presentation.sms_code.SmsCodeState
 import kg.optima.mobile.resources.Headings
 import kotlinx.coroutines.delay
 
@@ -37,7 +37,7 @@ class SmsOtpScreen(
     override fun Content() {
 
         //TODO: create own intent and state
-        val product = RegistrationFeatureFactory.create<PhoneNumberIntent, PhoneNumberState>()
+        val product = RegistrationFeatureFactory.create<SmsCodeIntent, SmsCodeState>()
         val intent = product.intent
         val state = product.state
 
@@ -50,6 +50,12 @@ class SmsOtpScreen(
         //TODO: remove mockup or set up with constants
         val buttonText = remember { mutableStateOf("Запросить через ${timeoutState.value} сек.") }
         val errorState = remember { mutableStateOf(emptyString) }
+
+        when (val model = model) {
+            is SmsCodeState.SmsCodeStateModel.ReRequestSmsCode -> {
+                timeoutState.value = model.timeout
+            }
+        }
 
 
         if (timeoutState.value != 0) {
@@ -65,7 +71,7 @@ class SmsOtpScreen(
 
 
         MainContainer(
-            mainState = null,
+            mainState = model,
             toolbarInfo = ToolbarInfo(
                 navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
             ),
@@ -104,8 +110,11 @@ class SmsOtpScreen(
                 value = codeState.value,
                 onValueChanged = { codeState.value = it; { } },
                 //TODO: callback onValueChanged
-                onInputCompleted = { errorState.value = "" },
-                //TODO: callback onInputCompleted
+                onInputCompleted = {
+                    errorState.value = ""
+                    intent.smsCodeEntered(it)
+                },
+
                 withKeyboard = true,
                 isValid = (errorState.value != "ERROR"),
                 //TODO: remove mockup
@@ -128,8 +137,11 @@ class SmsOtpScreen(
                     .fillMaxWidth(),
                 text = buttonText.value,
                 color = ComposeColors.Green,
-                onClick = { errorState.value = "ERROR" },
-                //TODO: callback onRetryClick
+                onClick = {
+                    errorState.value = "ERROR"
+                    intent.smsCodeReRequest()
+                },
+
                 enabled = buttonIsEnabledState.value,
             )
 
