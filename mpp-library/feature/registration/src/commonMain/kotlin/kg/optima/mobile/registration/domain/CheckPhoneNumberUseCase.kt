@@ -1,11 +1,17 @@
 package kg.optima.mobile.registration.domain
 
 import kg.optima.mobile.base.data.model.Either
+import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.error.Failure
+import kg.optima.mobile.registration.data.repository.RegistrationRepository
 
-class CheckPhoneNumberUseCase : BaseUseCase<String, Boolean>() {
+class CheckPhoneNumberUseCase(
+	private val registrationRepository: RegistrationRepository,
+) : BaseUseCase<String, Boolean>() {
+
 	override suspend fun execute(model: String): Either<Failure, Boolean> {
-		return Either.Right(true)
+		return registrationRepository.checkPhoneNumber(model).map { it.isSuccess }
 	}
+
 }
