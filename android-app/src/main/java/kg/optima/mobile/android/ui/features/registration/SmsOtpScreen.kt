@@ -15,7 +15,6 @@ import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.input.CodeInput
-import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
@@ -52,15 +51,18 @@ class SmsOtpScreen(
         val buttonText = remember { mutableStateOf("Запросить через ${timeoutState.value} сек.") }
         val errorState = remember { mutableStateOf(emptyString) }
 
-        LaunchedEffect(Unit) {
-            while (timeoutState.value > 0) {
-                delay(1000)
-                timeoutState.value--
-                buttonText.value = "Запросить через ${timeoutState.value} сек."
+
+        if (timeoutState.value != 0) {
+            LaunchedEffect(key1 = Unit) {
+                while (timeoutState.value > 0) {
+                    delay(1000)
+                    timeoutState.value--
+                }
+                buttonText.value = "Отправить повторно"
+                buttonIsEnabledState.value = true
             }
-            buttonText.value = "Отправить повторно"
-            buttonIsEnabledState.value = true
         }
+
 
         MainContainer(
             mainState = null,
@@ -76,13 +78,25 @@ class SmsOtpScreen(
                     .padding(Deps.Spacing.standardPadding, top = Deps.Spacing.bigMarginTop)
                     .align(Alignment.CenterHorizontally),
             ) {
-                TitleTextField(text = "Введите код подтверждения")
-                SimpleGreyTextField(
+                Text(
+                    text = "Введите код подтверждения",
+                    fontSize = Headings.H4.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = ComposeColors.PrimaryRed
+                )
+                Text(
                     modifier = Modifier.padding(top = Deps.Spacing.colElementMargin),
                     text = "Вводя код из SMS вы подписываете оферту, " +
-                            "подтверждая свое согласие\nМы отправили SMS на номер:"
+                            "подтверждая свое согласие\nМы отправили SMS на номер:",
+                    fontSize = Headings.H4.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = ComposeColors.PrimaryRed
                 )
-                SimpleBlackTextField(text = phoneNumber)
+                Text(
+                    text = phoneNumber,
+                    fontSize = Headings.H2.sp,
+                    fontWeight = FontWeight.Normal,
+                )
             }
 
             CodeInput(
@@ -98,9 +112,12 @@ class SmsOtpScreen(
             )
 
             if (errorState.value.isNotEmpty()) {
-                ErrorTextField(
+                Text(
                     modifier = Modifier.padding(Deps.Spacing.standardMargin),
-                    text = "Неверный Код."
+                    text = "Неверный Код.",
+                    fontSize = Headings.H4.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = ComposeColors.PrimaryRed
                 )
             }
 
@@ -119,45 +136,5 @@ class SmsOtpScreen(
         }
     }
 
-    @Composable
-    private fun ErrorTextField(
-        modifier: Modifier = Modifier,
-        text: String,
-    ) {
-        Text(
-            modifier = modifier,
-            text = text,
-            fontSize = Headings.H4.sp,
-            fontWeight = FontWeight.Normal,
-            color = ComposeColors.PrimaryRed
-        )
-    }
-
-    @Composable
-    private fun SimpleGreyTextField(
-        modifier: Modifier = Modifier,
-        text: String,
-    ) {
-        Text(
-            modifier = modifier,
-            text = text,
-            fontSize = Headings.H4.sp,
-            fontWeight = FontWeight.Normal,
-            color = ComposeColors.DescriptionGray
-        )
-    }
-
-    @Composable
-    private fun SimpleBlackTextField(
-        modifier: Modifier = Modifier,
-        text: String,
-    ) {
-        Text(
-            modifier = modifier,
-            text = text,
-            fontSize = Headings.H2.sp,
-            fontWeight = FontWeight.Normal,
-        )
-    }
 
 }
