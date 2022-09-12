@@ -24,7 +24,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import kg.optima.mobile.common.Constants
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.input.debounce.debounce
 import kg.optima.mobile.design_system.android.ui.input.filter.ITextFieldComposeFilter
 import kg.optima.mobile.design_system.android.ui.input.filter.NoTextFieldFilter

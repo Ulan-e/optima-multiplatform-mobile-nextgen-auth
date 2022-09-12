@@ -1,4 +1,4 @@
-package kg.optima.mobile.common
+package kg.optima.mobile.core.common
 
 object Constants {
 	const val MAX_LENGTH_INPUT = 999
@@ -10,4 +10,6 @@ object Constants {
 	const val PHONE_NUMBER_LENGTH = 9
 	const val PHONE_NUMBER_CODE = "+996 "
 	const val PHONE_NUMBER_MASK = "$PHONE_NUMBER_CODE(000) 000 000"
+
+	const val SMS_CODE_TIMEOUT = 60
 }

@@ -2,6 +2,7 @@ package kg.optima.mobile.registration.presentation.phone_number
 
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.feature.register.RegistrationScreenModel
 
 class PhoneNumberState : State<CheckPhoneNumberInfo>() {
@@ -12,7 +13,10 @@ class PhoneNumberState : State<CheckPhoneNumberInfo>() {
 				PhoneNumberStateModel.ValidateResult(entity.success, entity.message)
 			is CheckPhoneNumberInfo.Check -> {
 				if (entity.success) {
-					val screenModel = RegistrationScreenModel.AcceptCode(entity.phoneNumber)
+					val screenModel = RegistrationScreenModel.AcceptCode(
+						phoneNumber = entity.phoneNumber,
+						timeout = Constants.SMS_CODE_TIMEOUT
+					)
 					StateModel.Navigate(screenModel)
 				} else {
 					StateModel.Error.BaseError("Неверный номер телефона!")

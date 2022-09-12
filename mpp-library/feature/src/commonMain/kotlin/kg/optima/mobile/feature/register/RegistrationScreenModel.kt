@@ -9,5 +9,6 @@ sealed interface RegistrationScreenModel : ScreenModel {
 
 	class AcceptCode(
 		val phoneNumber: String,
+		val timeout: Int,
 	) : RegistrationScreenModel
 }
