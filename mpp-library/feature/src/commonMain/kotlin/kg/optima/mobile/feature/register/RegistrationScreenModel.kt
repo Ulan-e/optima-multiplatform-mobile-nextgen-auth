@@ -7,5 +7,7 @@ sealed interface RegistrationScreenModel : ScreenModel {
 
 	object EnterPhone : RegistrationScreenModel
 
-	object AcceptCode : RegistrationScreenModel
+	class AcceptCode(
+		val phoneNumber: String,
+	) : RegistrationScreenModel
 }

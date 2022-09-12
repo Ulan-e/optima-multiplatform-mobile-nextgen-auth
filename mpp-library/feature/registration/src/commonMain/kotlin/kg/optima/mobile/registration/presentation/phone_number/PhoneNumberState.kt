@@ -12,7 +12,7 @@ class PhoneNumberState : State<CheckPhoneNumberInfo>() {
 				PhoneNumberStateModel.ValidateResult(entity.success, entity.message)
 			is CheckPhoneNumberInfo.Check -> {
 				if (entity.success) {
-					val screenModel = RegistrationScreenModel.AcceptCode
+					val screenModel = RegistrationScreenModel.AcceptCode(entity.phoneNumber)
 					StateModel.Navigate(screenModel)
 				} else {
 					StateModel.Error.BaseError("Неверный номер телефона!")

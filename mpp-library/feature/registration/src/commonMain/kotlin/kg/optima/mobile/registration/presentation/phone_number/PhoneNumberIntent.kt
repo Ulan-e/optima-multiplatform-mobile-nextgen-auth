@@ -21,7 +21,9 @@ class PhoneNumberIntent(
 
 	fun phoneNumberEntered(number: String) {
 		launchOperation {
-			checkPhoneNumberUseCase.execute(number).map { CheckPhoneNumberInfo.Check(it) }
+			checkPhoneNumberUseCase.execute(number).map {
+				CheckPhoneNumberInfo.Check(it, number)
+			}
 		}
 	}
 }
