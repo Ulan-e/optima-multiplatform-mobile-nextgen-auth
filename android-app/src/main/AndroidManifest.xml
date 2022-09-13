@@ -19,5 +19,17 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+
+		<activity android:name="kg.optima.mobile.android.ui.features.biometrics.StartBiometricsActivity"
+			android:noHistory="true"
+			android:screenOrientation="portrait"/>
+
+		<activity android:name="kg.optima.mobile.android.ui.features.biometrics.LivenessActivity"
+			android:noHistory="true"
+			android:screenOrientation="portrait"/>
+
+		<activity android:name="kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity"
+			android:noHistory="true"
+			android:screenOrientation="portrait"/>
 	</application>
 </manifest>

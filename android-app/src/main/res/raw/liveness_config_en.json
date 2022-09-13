@@ -1,0 +1,62 @@
+{
+  "lang": "custom",
+  "recordVideo": true,
+  "videoBitrate": 250000,
+  "render": {
+    "oval": true,
+    "ovalType": "oval",
+    "ovalRingColor": {
+      "default": "#F5F542",
+      "actionSuccess": "#00F500",
+      "actionFailure": "#F50000",
+      "sessionSuccess": "#00F500",
+      "sessionFailure": "#F50000"
+    },
+    "ovalWidth": 2.0,
+    "overlay": true,
+    "overlayColor": {
+      "default": "#2F4F4F"
+    },
+    "overlayTransparency": {
+      "default": 0.70
+    },
+    "arrow": true,
+    "arrowColor": {
+      "default": "#F0F0F0"
+    },
+    "arrowProgressColor": {
+      "default": "#404040"
+    },
+    "hint": true,
+    "hintTextColor": {
+      "default": "#C8C9CC"
+    },
+    "hintFontType": "Arial",
+    "hintUseProgressiveFontSize": true,
+    "hintProgressiveFontSizeMultiplier": 1.0,
+    "hintFontSize": 18,
+    "hintCloudColor": {
+      "default": "#00000000"
+    }
+  },
+  "hints": {
+    "noHint": "",
+    "noFace": "You can't be seen",
+    "badLight": "Align the lighting",
+    "closer": "Approach",
+    "away": "Move away",
+    "closerToCenter": "Move closer to the center of the screen",
+    "targetLeft": "Slowly turn your head to the left",
+    "targetRight": "Slowly turn your head to the right ",
+    "targetCenter": "Look straight ahead",
+    "lookWait": "Look straight ahead and wait",
+    "sessionSuccess": "Done!",
+    "sessionFailure": "Failed to pass the identification",
+    "sessionError": "An error has occurred. Please try again",
+    "waitForProcessing": "Wait, processing in progress."
+  },
+  "bestframe": {
+    "maxWidth": 500,
+    "maxHeight": 400
+  }
+}

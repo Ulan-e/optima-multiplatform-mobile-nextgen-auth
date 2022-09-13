@@ -9,6 +9,11 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
         google()
+        jcenter()
+
+        flatDir{
+            dirs("libs")
+        }
     }
 }
 

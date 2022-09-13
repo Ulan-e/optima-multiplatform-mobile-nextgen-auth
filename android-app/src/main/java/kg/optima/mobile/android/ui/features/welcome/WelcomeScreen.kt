@@ -1,15 +1,18 @@
 package kg.optima.mobile.android.ui.features.welcome
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
+import kg.optima.mobile.android.ui.features.biometrics.StartBiometricsActivity
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.auth.presentation.welcome.WelcomeIntentFactory
@@ -37,6 +40,8 @@ object WelcomeScreen : Screen {
 		val state by stateMachine.state.collectAsState(initial = null)
 
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+
+		val context = LocalContext.current
 
 		MainContainer(
 			mainState = state,
@@ -74,17 +79,8 @@ object WelcomeScreen : Screen {
 						),
 					text = "Зарегистрироваться",
 					onClick = {
-						bottomSheetState.value = BottomSheetInfo(
-							title = "Пароль не совпадает\nс предыдущим",
-							buttons = listOf(
-								ButtonView.Primary(
-									modifier = Modifier.fillMaxWidth(),
-									text = "Повторить попытку",
-									color = ComposeColors.Green,
-									onClick = { }
-								)
-							)
-						)
+						val intent = Intent(context, StartBiometricsActivity::class.java)
+						context.startActivity(intent)
 					},
 				)
 				Text(

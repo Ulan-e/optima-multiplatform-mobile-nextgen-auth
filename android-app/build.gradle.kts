@@ -48,6 +48,13 @@ kapt {
 }
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
+
+    implementation(files("libs/veridoc-module-release-v1.16.1.aar"))
+    implementation(files("libs/liveness-module-v1.13.4.aar"))
+
+    implementation("androidx.activity:activity-ktx:1.5.1")
+
     implementation(libs.appCompat)
     implementation(libs.material)
     implementation(libs.recyclerView)
@@ -97,4 +104,7 @@ dependencies {
     implementation("cafe.adriel.voyager:voyager-core:$voyagerVersion")
     implementation ("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
     implementation("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
+
+    implementation("io.fotoapparat:fotoapparat:2.7.0")
+   // implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:layout_marginTop="@dimen/dp10"
+        android:elevation="@dimen/dp10"
+        android:orientation="horizontal"
+        tools:targetApi="lollipop">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp20"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/continue_"
+            android:padding="@dimen/dp10"
+            android:src="@drawable/ic_arrow_left" />
+
+        <TextView
+            android:id="@+id/text_toolbar"
+            style="@style/Text_16_main_gray_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/document_scanning" />
+    </LinearLayout>
+
+    <kz.verigram.veridoc.sdk.ui.CameraCaptureComponent
+        android:id="@+id/camera_capture_doc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/text_success"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="120dp"
+        android:gravity="center"
+        android:text="@string/ready"
+        android:textAlignment="center"
+        android:textColor="@color/green"
+        android:textSize="@dimen/sp16"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_continue"
+        style="@style/PrimaryButtonFilledStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="@dimen/dp20"
+        android:layout_marginVertical="@dimen/dp20"
+        android:elevation="5dp"
+        android:text="@string/continue_"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</FrameLayout>
