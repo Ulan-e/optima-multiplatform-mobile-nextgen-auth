@@ -37,6 +37,6 @@ fun PrimaryButton(
 	Text(
 		text = text,
 		fontSize = fontSize.sp,
-		color = ComposeColors.PrimaryWhite,
+		color = if (enabled) {ComposeColors.PrimaryWhite} else {ComposeColors.DescriptionGray},
 	)
 }
