@@ -7,7 +7,6 @@ import kg.optima.mobile.registration.data.repository.RegistrationRepository
 import kg.optima.mobile.registration.data.repository.RegistrationRepositoryImpl
 import kg.optima.mobile.registration.domain.CheckPhoneNumberUseCase
 import kg.optima.mobile.registration.domain.CheckSmsCodeUseCase
-import kg.optima.mobile.registration.domain.ReRequestSmsCodeUseCase
 import kg.optima.mobile.registration.presentation.agreement.AgreementIntent
 import kg.optima.mobile.registration.presentation.agreement.AgreementState
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
@@ -26,7 +25,6 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
 
         factory { CheckPhoneNumberUseCase(get()) }
         factory { CheckSmsCodeUseCase(get()) }
-        factory { ReRequestSmsCodeUseCase(get()) }
 
         factory { SmsCodeState() }
         factory { st -> SmsCodeIntent(st.get()) }

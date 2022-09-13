@@ -12,21 +12,36 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
                     val screenModel = RegistrationScreenModel.IdConfirmation
                     StateModel.Navigate(screenModel)
                 } else {
-                    StateModel.Error.BaseError("Неверный смс-код!")
+                    SmsCodeStateModel.InvalidCodeError()
                 }
             }
             is CheckSmsCodeInfo.ReRequest ->
-                SmsCodeStateModel.ReRequestSmsCode(timeout = entity.timeout)
+                if (entity.success) {
+                    SmsCodeStateModel.EnableReRequest(false)
+                } else {
+                    SmsCodeStateModel.InvalidCodeError()
+                }
+            is CheckSmsCodeInfo.Timeout ->
+                SmsCodeStateModel.Timeout(entity.timeout)
+            CheckSmsCodeInfo.EnableReRequest -> SmsCodeStateModel.EnableReRequest(true)
         }
         setStateModel(stateModel)
     }
 
     sealed interface SmsCodeStateModel : StateModel {
-        class ReRequestSmsCode(
+        object ReRequest : SmsCodeStateModel
+
+        class Timeout(
             val timeout: Int
         ) : SmsCodeStateModel
 
-        object InvalidSmsCode : SmsCodeStateModel
+        class EnableReRequest(
+            val enabled : Boolean
+        ) : SmsCodeStateModel
+
+        class InvalidCodeError(
+            val error : String = "Неверный Код."
+        ) : SmsCodeStateModel
     }
 
 }

@@ -8,11 +8,16 @@ import kg.optima.mobile.registration.data.repository.RegistrationRepository
 
 class CheckSmsCodeUseCase(
     private val registrationRepository: RegistrationRepository,
-) : BaseUseCase<String, Boolean>() {
+) : BaseUseCase<CheckSmsCodeUseCase.Params, Boolean>() {
 
-    override suspend fun execute(model: String): Either<Failure, Boolean> {
-        return registrationRepository.checkSmsCode(model).map { it }
+    override suspend fun execute(model: Params): Either<Failure, Boolean> {
+        return registrationRepository.checkSmsCode(model.phoneNumber, model.verificationCode)
+            .map { it.isSuccess }
     }
 
+    class Params(
+        val phoneNumber: String,
+        val verificationCode: String,
+    )
 
 }
