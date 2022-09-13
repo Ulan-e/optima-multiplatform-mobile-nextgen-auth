@@ -12,6 +12,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 			RegistrationScreenModel.Agreement -> AgreementScreen
 			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
 			is RegistrationScreenModel.AcceptCode -> AgreementScreen
+			RegistrationScreenModel.SelfConfirm -> SelfConfirmScreen
 		}
 	}
 }

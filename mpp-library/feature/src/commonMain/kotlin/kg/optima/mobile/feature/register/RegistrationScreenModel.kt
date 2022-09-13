@@ -11,4 +11,6 @@ sealed interface RegistrationScreenModel : ScreenModel {
 		val phoneNumber: String,
 		val timeout: Int,
 	) : RegistrationScreenModel
+
+	object SelfConfirm : RegistrationScreenModel
 }
