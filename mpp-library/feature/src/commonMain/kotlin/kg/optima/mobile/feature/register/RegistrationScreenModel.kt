@@ -12,5 +12,5 @@ sealed interface RegistrationScreenModel : ScreenModel {
 		val timeout: Int,
 	) : RegistrationScreenModel
 
-	object IdConfirmation : RegistrationScreenModel
+	object SelfConfirm : RegistrationScreenModel
 }

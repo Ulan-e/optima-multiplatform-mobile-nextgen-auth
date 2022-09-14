@@ -2,8 +2,6 @@ package kg.optima.mobile.registration.data.api
 
 import io.ktor.http.*
 import kg.optima.mobile.base.data.model.BaseDto
-import kg.optima.mobile.base.platform.PlatformInfo
-import kg.optima.mobile.base.platform.format
 import kg.optima.mobile.network.client.NetworkClient
 import kg.optima.mobile.registration.data.api.model.CheckCodeDto
 import kg.optima.mobile.registration.data.api.model.CodeCheckRequest
