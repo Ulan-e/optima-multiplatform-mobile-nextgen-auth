@@ -24,11 +24,13 @@ import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.secret_question.SecretQuestionIntent
 import kg.optima.mobile.registration.presentation.secret_question.SecretQuestionState
 import kg.optima.mobile.registration.presentation.secret_question.model.Question
+import kg.optima.mobile.resources.Headings
 
 class ControlQuestionScreen(
 	val hashCode : String
@@ -39,28 +41,42 @@ class ControlQuestionScreen(
 	@Composable
 	override fun Content() {
 
-		//TODO: make own intent/state
 		val product = remember { RegistrationFeatureFactory.create<SecretQuestionIntent, SecretQuestionState>() }
 		val intent = product.intent
 		val state = product.state
 
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
+		val list = listOf(
+			Question("Сколько цифр в слове гвоздь", "4"),
+			Question("Сколько цифр в слове болт", "4"),
+			Question("Сколько цифр в слове слон", "4"),
+			Question("Сколько цифр в слове выдра", "4"),
+			Question("Сколько цифр в слове конь", "4")
+		)
+		val newList = mutableListOf<DropDownItemModel<Question>>()
+		list.map {
+			newList.add(DropDownItemModel(it.question, it))
+		}
+
 		val answerInputText = remember { mutableStateOf(emptyString) }
 		val buttonEnabled = remember { mutableStateOf(false) }
 		val dropDownExpandedState = remember { mutableStateOf(false) }
 		val items = remember {
-			intent.getQuestions()
-			mutableStateOf(DropDownItemsList(list = listOf<DropDownItemModel<Question>>()))
+//			intent.getQuestions()
+//			mutableStateOf(DropDownItemsList(list = listOf<DropDownItemModel<Question>>()))
+			mutableStateOf(DropDownItemsList(newList))
 		}
 
 		val keyboardController = LocalSoftwareKeyboardController.current
 
 		when (val model = model) {
-			SecretQuestionState.SecretQuestionModel.ShowQuestions -> dropDownExpandedState.value =
-				true
-			SecretQuestionState.SecretQuestionModel.HideQuestions -> dropDownExpandedState.value =
-				false
+			SecretQuestionState.SecretQuestionModel.ShowQuestions -> {
+				dropDownExpandedState.value = true
+			}
+			SecretQuestionState.SecretQuestionModel.HideQuestions -> {
+				dropDownExpandedState.value = false
+			}
 			is SecretQuestionState.SecretQuestionModel.SetQuestion -> {
 				items.value = items.value.copy(
 					selectedItemIndex = items.value.list.indexOf(
@@ -113,7 +129,7 @@ class ControlQuestionScreen(
 				Text(
 					text = "Контрольный вопрос необходим \nдля подтверждения личности",
 					color = ComposeColors.DescriptionGray,
-					fontSize = 14.sp,
+					fontSize = Headings.H5.sp,
 					modifier = Modifier
 						.fillMaxWidth()
 						.padding(
@@ -130,6 +146,7 @@ class ControlQuestionScreen(
 					}
 				)
 			}
+
 			PrimaryButton(
 				modifier = Modifier
 					.fillMaxWidth()

@@ -40,19 +40,19 @@ class SecretQuestionIntent(
 	}
 
 	fun showQuestions() {
-		SecretQuestionInfo.ShowQuestions
+		state.handle(SecretQuestionInfo.ShowQuestions)
 	}
 
 	fun hideQuestions() {
-		SecretQuestionInfo.HideQuestions
+		state.handle(SecretQuestionInfo.HideQuestions)
 	}
 
 	fun setQuestion(question: Question) {
-		SecretQuestionInfo.SetQuestion(question)
+		state.handle(SecretQuestionInfo.SetQuestion(question))
 	}
 
 	fun confirm(hashCode: String, questionId: String, answer: String) {
-		SecretQuestionInfo.ConfirmQuestion(hashCode, questionId, answer)
+		state.handle(SecretQuestionInfo.ConfirmQuestion(hashCode, questionId, answer))
 	}
 
 }

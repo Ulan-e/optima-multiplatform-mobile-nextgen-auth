@@ -1,6 +1,5 @@
 package kg.optima.mobile.design_system.android.ui.dropdown_list
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,12 +16,14 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -44,40 +45,39 @@ fun <T> DropDownList(
 
 	Surface(
 		elevation = if (expanded) 4.dp else 0.dp,
-		shape = RoundedCornerShape(Deps.inputFieldCornerRadius)
+		shape = RoundedCornerShape(Deps.inputFieldCornerRadius),
 	) {
 		Box(
 			contentAlignment = Alignment.Center,
 			modifier = modifier
-                .background(ComposeColors.OpaquedDisabledGray)
-                .fillMaxWidth()
-                .onGloballyPositioned { coordinates ->
-                    contentWidth = coordinates.size.toSize()
-                },
+				.background(ComposeColors.OpaquedDisabledGray)
+				.fillMaxWidth()
+				.onGloballyPositioned { coordinates ->
+					contentWidth = coordinates.size.toSize()
+				}
+				.clickable(
+					indication = null,
+					interactionSource = remember { MutableInteractionSource() }) {
+					keyboardController?.hide()
+					onExpandClick.invoke()
+				},
 		) {
-			Row(
+			Text(
 				modifier = Modifier
-                    .align(Alignment.Center)
-                    .fillMaxWidth()
-			) {
-				Text(
-					modifier = Modifier
-                        .weight(1f, fill = true)
-                        .requiredHeightIn(min = Deps.Size.buttonHeight)
-                        .padding(Deps.Spacing.pinCellXMargin),
-					text = items.selectedItem?.title ?: "",
+					.align(Alignment.Center)
+					.offset(y = (4).dp)
+					.fillMaxWidth()
+					.requiredHeightIn(min = Deps.Size.buttonHeight)
+					.padding(Deps.Spacing.pinCellXMargin),
+				text = items.selectedItem?.title ?: "",
+				color = ComposeColors.PrimaryDisabledGray
+			)
+
+			Icon(icon, contentDescription = "icon", modifier = Modifier
+				.align(Alignment.CenterEnd)
+				.size(Deps.Size.dropDownIconSize)
+				.padding(Deps.Spacing.marginFromInput)
 				)
-				Image(icon, contentDescription = "icon", modifier = Modifier
-					.align(Alignment.CenterVertically)
-                    .size(Deps.Size.dropDownIconSize)
-                    .padding(Deps.Spacing.marginFromInput)
-                    .clickable(
-                        indication = null,
-                        interactionSource = remember { MutableInteractionSource() }) {
-                        keyboardController?.hide()
-                        onExpandClick.invoke()
-                    })
-			}
 
 			MaterialTheme(
 				colors = MaterialTheme.colors.copy(surface = ComposeColors.WhiteF5),
@@ -96,14 +96,14 @@ fun <T> DropDownList(
 								onItemSelected(selectedOption.entity)
 							}
 						) {
-							Text(text = selectedOption.title, color = Color(0xFF404040))
+							Text(text = selectedOption.title, color = ComposeColors.PrimaryDisabledGray)
 						}
 						Divider(
 							thickness = Deps.Spacing.minPadding,
 							color = Color(0xFFF1F1F2),
 							modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = Deps.Spacing.standardPadding),
+								.fillMaxWidth()
+								.padding(horizontal = Deps.Spacing.standardPadding),
 						)
 					}
 				}
