@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import kg.optima.mobile.android.ui.base.BaseScreen
@@ -33,6 +34,8 @@ object WelcomeScreen : BaseScreen {
         }
         val state = product.state
         val intent = product.intent
+
+        val context = LocalContext.current
 
         val model by state.stateFlow.collectAsState(initial = null)
 
@@ -79,10 +82,9 @@ object WelcomeScreen : BaseScreen {
 					),
                 text = "Зарегистрироваться",
                 onClick = {
-                    intent.register()
-
-//					val intent = Intent(context, StartBiometricsActivity::class.java)
-//					context.startActivity(intent)
+//                    intent.register()
+					val intent = Intent(context, StartBiometricsActivity::class.java)
+					context.startActivity(intent)
                 },
             )
             Text(
