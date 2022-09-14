@@ -1,7 +1,7 @@
 package kg.optima.mobile.registration.presentation.self_confirm
 
 import kg.optima.mobile.base.presentation.State
-import kg.optima.mobile.feature.register.RegistrationScreenModel
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.registration.presentation.self_confirm.model.AnimationModel
 
 class SelfConfirmState : State<SelfConfirmModel>() {

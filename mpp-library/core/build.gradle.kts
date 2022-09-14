@@ -22,7 +22,13 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(libs.ktorClient)
+                implementation("com.arkivanov.essenty:parcelable:0.6.0")
+                api("com.soywiz.korlibs.krypto:krypto:2.7.0")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))

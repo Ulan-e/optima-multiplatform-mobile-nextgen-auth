@@ -20,6 +20,4 @@ dependencies {
 	commonMainApi(libs.mokoMvvmLiveData)
 	commonMainApi(libs.mokoResources)
 	commonMainApi(libs.mokoErrors)
-
-	commonMainApi("com.soywiz.korlibs.krypto:krypto:2.7.0")
 }

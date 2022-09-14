@@ -56,7 +56,7 @@ object SelfConfirmScreen : Screen {
 		}
 
 		MainContainer(
-			mainState = null,
+			mainState = model,
 			toolbarInfo = ToolbarInfo(
 				navigationIcon = NavigationIcon(onBackClick = { })
 			),

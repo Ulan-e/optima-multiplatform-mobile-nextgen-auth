@@ -3,7 +3,7 @@ package kg.optima.mobile.registration.presentation.phone_number
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.common.Constants
-import kg.optima.mobile.feature.register.RegistrationScreenModel
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 class PhoneNumberState : State<CheckPhoneNumberInfo>() {
 

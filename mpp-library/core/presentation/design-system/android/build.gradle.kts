@@ -3,6 +3,9 @@ plugins {
 	id("org.jetbrains.kotlin.android")
 	id("kotlin-android")
 	id("dev.icerock.mobile.multiplatform-resources")
+
+	id("kotlinx-serialization")
+	id("kotlin-parcelize")
 }
 
 android {
@@ -64,6 +67,8 @@ dependencies {
 	implementation("id.zelory:compressor:3.0.1")
 
 	implementation("androidx.biometric:biometric:1.1.0")
+
+	implementation("com.arkivanov.essenty:parcelable:0.6.0")
 
 	testImplementation("junit:junit:4.13.2")
 	androidTestImplementation("androidx.test.ext:junit:1.1.3")

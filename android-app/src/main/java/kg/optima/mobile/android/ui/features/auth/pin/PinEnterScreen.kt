@@ -2,6 +2,7 @@ package kg.optima.mobile.android.ui.features.auth.pin
 
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.asActivity
@@ -15,7 +16,7 @@ import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
 import kg.optima.mobile.design_system.android.ui.screens.pin.headers.enterPinScreenHeader
 import kg.optima.mobile.design_system.android.utils.biometry.BiometryManager
 
-
+@Parcelize
 class PinEnterScreen(
 	private val showBiometry: Boolean = false,
 	private val nextScreenModel: ScreenModel,
@@ -52,7 +53,10 @@ class PinEnterScreen(
 			is LoginState.LoginStateModel.ShowBiometry -> onBiometryAuthenticate()
 		}
 
-		MainContainer(mainState = model) {
+		MainContainer(
+			mainState = model,
+			toolbarInfo = null,
+		) {
 			PinScreen(
 				header = enterPinScreenHeader(
 					onCloseClick = { intent.pop() },
