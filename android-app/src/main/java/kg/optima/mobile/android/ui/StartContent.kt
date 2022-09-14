@@ -37,8 +37,6 @@ val startContent: @Composable (bottomSheetNavigator: BottomSheetNavigator) -> Un
 	}
 
 	if (screens.value.isNotEmpty()) {
-		Navigator(screens = screens.value) {
-			SlideTransition(navigator = it)
-		}
+		Navigator(screens = screens.value)
 	}
 }
