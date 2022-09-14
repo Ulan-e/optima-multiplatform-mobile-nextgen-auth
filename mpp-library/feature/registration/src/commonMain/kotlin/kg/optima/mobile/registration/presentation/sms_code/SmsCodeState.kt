@@ -9,7 +9,7 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
         val stateModel: StateModel = when (entity) {
             is CheckSmsCodeInfo.Check -> {
                 if (entity.success) {
-                    val screenModel = RegistrationScreenModel.IdConfirmation
+                    val screenModel = RegistrationScreenModel.SelfConfirm
                     StateModel.Navigate(screenModel)
                 } else {
                     SmsCodeStateModel.InvalidCodeError()
