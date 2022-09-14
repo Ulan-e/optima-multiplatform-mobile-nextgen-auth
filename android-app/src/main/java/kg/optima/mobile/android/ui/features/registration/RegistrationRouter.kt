@@ -11,7 +11,10 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 		return when (screenModel) {
 			RegistrationScreenModel.Agreement -> AgreementScreen
 			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
-			is RegistrationScreenModel.AcceptCode -> AgreementScreen
+			is RegistrationScreenModel.AcceptCode -> SmsOtpScreen(
+				screenModel.phoneNumber,
+				screenModel.timeout
+			)
 			RegistrationScreenModel.SelfConfirm -> SelfConfirmScreen
 		}
 	}

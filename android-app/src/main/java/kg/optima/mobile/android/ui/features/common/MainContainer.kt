@@ -25,77 +25,79 @@ import org.koin.androidx.compose.inject
 
 @Composable
 fun MainContainer(
-	modifier: Modifier = Modifier,
-	mainState: State.StateModel?,
-	infoState: BottomSheetInfo? = null,
-	component: Root.Child.Component? = null,
-	toolbarInfo: ToolbarInfo = ToolbarInfo(),
-	contentModifier: Modifier = Modifier,
-	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
-	content: @Composable ColumnScope.() -> Unit,
+    modifier: Modifier = Modifier,
+    mainState: State.StateModel?,
+    infoState: BottomSheetInfo? = null,
+    component: Root.Child.Component? = null,
+    toolbarInfo: ToolbarInfo = ToolbarInfo(),
+    contentModifier: Modifier = Modifier,
+    contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+    content: @Composable ColumnScope.() -> Unit,
 ) {
-	val router: Router by inject()
+    val router: Router by inject()
 
-	val navigator = LocalNavigator.currentOrThrow
-	val bottomSheetNavigator = LocalBottomSheetNavigator.current
+    val navigator = LocalNavigator.currentOrThrow
+    val bottomSheetNavigator = LocalBottomSheetNavigator.current
 
-	if (!navigator.canPop) {
-		val activity = LocalContext.current.asActivity()
-		BackHandler { activity?.finish() }
-	}
+    if (!navigator.canPop) {
+        val activity = LocalContext.current.asActivity()
+        BackHandler { activity?.finish() }
+    }
 
-	Box(modifier = modifier.fillMaxSize()) {
-		when (mainState) {
-			is State.StateModel.Loading -> {
-				CircularProgress(modifier = Modifier.align(Alignment.Center))
-			}
-			is State.StateModel.Navigate -> {
-				component?.addAll(mainState.screenModels)
-				router.push(mainState.screenModels)
-			}
-			is State.StateModel.Pop -> {
-				navigator.pop()
-			}
-			is State.StateModel.Error -> {
-				// TODO process error
-				when (val errorState = mainState) {
-					is State.StateModel.Error.BaseError -> bottomSheetNavigator.show(
-						info = BottomSheetInfo(
-							title = errorState.error,
-							buttons = listOf(
-								ButtonView.Primary(
-									modifier = Modifier.fillMaxWidth(),
-									text = "Повторить попытку",
-									color = ComposeColors.Green,
-									onClick = { bottomSheetNavigator.pop() }
-								)
-							)
-						))
-				}
-			}
-		}
+    Box(modifier = modifier.fillMaxSize()) {
+        if (infoState != null) {
+            bottomSheetNavigator.show(infoState)
+        } else {
+            bottomSheetNavigator.hide()
 
-		if (infoState != null) {
-			bottomSheetNavigator.show(infoState)
-		} else {
-			bottomSheetNavigator.hide()
-		}
+        }
+        when (mainState) {
+            is State.StateModel.Loading -> {
+                CircularProgress(modifier = Modifier.align(Alignment.Center))
+            }
+            is State.StateModel.Navigate -> {
+                component?.addAll(mainState.screenModels)
+                router.push(mainState.screenModels)
+            }
+            is State.StateModel.Pop -> {
+                navigator.pop()
+            }
+            is State.StateModel.Error -> {
+                // TODO process error
+                when (val errorState = mainState) {
+                    is State.StateModel.Error.BaseError -> bottomSheetNavigator.show(
+                        info = BottomSheetInfo(
+                            title = errorState.error,
+                            buttons = listOf(
+                                ButtonView.Primary(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Повторить попытку",
+                                    color = ComposeColors.Green,
+                                    onClick = { bottomSheetNavigator.pop() }
+                                )
+                            )
+                        ))
+                }
+            }
+        }
 
-		Column(
-			modifier = Modifier
+
+
+        Column(
+            modifier = Modifier
 				.fillMaxSize()
 				.background(ComposeColors.Background)
-		) {
-			MainToolbar(toolbarInfo)
-			Column(
-				modifier = contentModifier
+        ) {
+            MainToolbar(toolbarInfo)
+            Column(
+                modifier = contentModifier
 					.fillMaxSize()
 					.padding(all = Deps.Spacing.standardPadding)
 					.background(ComposeColors.Background),
-				horizontalAlignment = contentHorizontalAlignment,
-				content = content,
-			)
-		}
-	}
+                horizontalAlignment = contentHorizontalAlignment,
+                content = content,
+            )
+        }
+    }
 }
 
