@@ -26,11 +26,13 @@ import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.registration.RegistrationFeatureFactory
-import kg.optima.mobile.registration.presentation.T
-import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
-import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
+import kg.optima.mobile.registration.presentation.secret_question.SecretQuestionIntent
+import kg.optima.mobile.registration.presentation.secret_question.SecretQuestionState
+import kg.optima.mobile.registration.presentation.secret_question.model.Question
 
-object SecretQuestionScreen : Screen {
+class ControlQuestionScreen(
+	val hashCode : String
+) : Screen {
 
 	@OptIn(ExperimentalComposeUiApi::class)
 	@Suppress("NAME_SHADOWING")
@@ -38,38 +40,46 @@ object SecretQuestionScreen : Screen {
 	override fun Content() {
 
 		//TODO: make own intent/state
-		val product =
-			remember { RegistrationFeatureFactory.create<PhoneNumberIntent, PhoneNumberState>() }
+		val product = remember { RegistrationFeatureFactory.create<SecretQuestionIntent, SecretQuestionState>() }
 		val intent = product.intent
 		val state = product.state
 
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-		val inputFieldText = remember { mutableStateOf(emptyString) }
+		val answerInputText = remember { mutableStateOf(emptyString) }
 		val buttonEnabled = remember { mutableStateOf(false) }
 		val dropDownExpandedState = remember { mutableStateOf(false) }
 		val items = remember {
-			mutableStateOf(
-				DropDownItemsList(
-					list = listOf(
-						DropDownItemModel("Какие 5 последних цифр вашей кредитной карты?", T()),
-						DropDownItemModel("Как звали вашего лучшего друга детства?", T()),
-						DropDownItemModel("Какое имя вашей бабушки? ", T()),
-						DropDownItemModel("Какая кличка вашего животного?", T()),
-						DropDownItemModel("Какой ваш любимый фильм?", T()),
-						DropDownItemModel("Ваш любимый цвет?", T()),
-					),
-					selectedItemIndex = 0
-				)
-			)
+			intent.getQuestions()
+			mutableStateOf(DropDownItemsList(list = listOf<DropDownItemModel<Question>>()))
 		}
 
 		val keyboardController = LocalSoftwareKeyboardController.current
-		val answerMinLength = 5
 
+		when (val model = model) {
+			SecretQuestionState.SecretQuestionModel.ShowQuestions -> dropDownExpandedState.value =
+				true
+			SecretQuestionState.SecretQuestionModel.HideQuestions -> dropDownExpandedState.value =
+				false
+			is SecretQuestionState.SecretQuestionModel.SetQuestion -> {
+				items.value = items.value.copy(
+					selectedItemIndex = items.value.list.indexOf(
+						DropDownItemModel(model.question.question, model.question)
+					)
+				)
+				dropDownExpandedState.value = false
+			}
 
-
-		buttonEnabled.value = inputFieldText.value.length > answerMinLength
+			is SecretQuestionState.SecretQuestionModel.ValidateResult -> buttonEnabled.value =
+				model.success
+			is SecretQuestionState.SecretQuestionModel.GetQuestions -> {
+				val newList = mutableListOf<DropDownItemModel<Question>>()
+				model.questions.map {
+					newList.add(DropDownItemModel(it.question, it))
+				}
+				items.value = DropDownItemsList(newList)
+			}
+		}
 
 		MainContainer(
 			mainState = model,
@@ -93,11 +103,10 @@ object SecretQuestionScreen : Screen {
 					items = items.value,
 					expanded = dropDownExpandedState.value,
 					onItemSelected = {
-						items.value = it
-						dropDownExpandedState.value = false
+						intent.setQuestion(it)
 					},
-					onExpandClick = { dropDownExpandedState.value = true },
-					onDismiss = { dropDownExpandedState.value = false },
+					onExpandClick = { intent.showQuestions() },
+					onDismiss = { intent.hideQuestions() },
 					modifier = Modifier.fillMaxWidth(),
 					keyboardController = keyboardController
 				)
@@ -114,7 +123,11 @@ object SecretQuestionScreen : Screen {
 				)
 				InputField(
 					hint = "Ответ",
-					valueState = inputFieldText,
+					valueState = answerInputText,
+					onValueChange = {
+						intent.onValueChanged(it)
+						answerInputText.value = it
+					}
 				)
 			}
 			PrimaryButton(
@@ -123,7 +136,16 @@ object SecretQuestionScreen : Screen {
 					.padding(Deps.Spacing.standardPadding),
 				text = "Продолжить",
 				color = ComposeColors.Green,
-				onClick = { },
+				onClick = {
+					if (items.value.list.isNotEmpty()) {
+						intent.confirm(
+							hashCode = hashCode,
+							questionId = items.value.selectedItem!!.entity.questionId,
+							answer = answerInputText.value
+						)
+					}
+
+				},
 				enabled = buttonEnabled.value,
 			)
 		}

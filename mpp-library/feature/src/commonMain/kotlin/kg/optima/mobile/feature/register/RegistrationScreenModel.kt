@@ -3,6 +3,7 @@ package kg.optima.mobile.feature.register
 import kg.optima.mobile.core.navigation.ScreenModel
 
 sealed interface RegistrationScreenModel : ScreenModel {
+
 	object Agreement : RegistrationScreenModel
 
 	object EnterPhone : RegistrationScreenModel
@@ -16,4 +17,10 @@ sealed interface RegistrationScreenModel : ScreenModel {
 	object SelfConfirm : RegistrationScreenModel
 
 	object ControlQuestion : RegistrationScreenModel
+
+	class Password(
+		val hashCode: String,
+		val questionId: String,
+		val answer: String
+	) : RegistrationScreenModel
 }

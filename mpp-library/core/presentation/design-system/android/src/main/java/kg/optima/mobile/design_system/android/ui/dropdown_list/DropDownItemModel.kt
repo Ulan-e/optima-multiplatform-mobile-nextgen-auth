@@ -7,11 +7,10 @@ data class DropDownItemModel<T>(
 
 data class DropDownItemsList<T>(
 	val list : List<DropDownItemModel<T>>,
-	val selectedItemIndex : Int
+	val selectedItemIndex : Int = 0
 ) {
-	val selectedItem = list[selectedItemIndex]
+	val selectedItem = if (list.isNotEmpty()) {
+		list[selectedItemIndex]
+	} else { null }
 
-	fun pickItem(item : DropDownItemModel<T>) : DropDownItemsList<T> {
-		return this.copy(selectedItemIndex = this.list.indexOf(item))
-	}
 }

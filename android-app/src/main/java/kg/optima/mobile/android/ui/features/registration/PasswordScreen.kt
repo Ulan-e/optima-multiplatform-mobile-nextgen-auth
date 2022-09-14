@@ -29,7 +29,11 @@ import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
 import kg.optima.mobile.resources.Headings
 
-object PasswordScreen : Screen {
+class PasswordScreen(
+	val hashCode: String,
+	val questionId : String,
+	val answer: String
+) : Screen {
 
 	@Composable
 	override fun Content() {

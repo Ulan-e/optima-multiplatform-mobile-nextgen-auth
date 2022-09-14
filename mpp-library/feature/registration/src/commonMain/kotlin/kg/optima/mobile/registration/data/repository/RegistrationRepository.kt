@@ -5,6 +5,7 @@ import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.core.error.Failure
 import kg.optima.mobile.registration.data.api.model.CheckCodeDto
 import kg.optima.mobile.registration.data.api.model.PhoneCheckDto
+import kg.optima.mobile.registration.data.api.model.QuestionDto
 
 
 interface RegistrationRepository {
@@ -14,4 +15,6 @@ interface RegistrationRepository {
 		smsCode: String,
 		referenceId: String,
 	): Either<Failure, BaseDto<CheckCodeDto>>
+
+	suspend fun getQuestions(): Either<Failure, BaseDto<List<QuestionDto>>>
 }
