@@ -9,9 +9,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.sp
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 
 @Composable
@@ -29,14 +29,14 @@ fun PrimaryButton(
 	shape = RoundedCornerShape(Deps.cornerRadius),
 	colors = ButtonDefaults.buttonColors(
 		backgroundColor = color,
-		disabledBackgroundColor = ComposeColors.PrimaryDisabledGray,
+		disabledBackgroundColor = ComposeColors.PrimaryLightGray,
 	),
 	onClick = onClick,
 	enabled = enabled,
 ) {
 	Text(
 		text = text,
-		fontSize = fontSize.px.sp,
-		color = ComposeColors.PrimaryWhite,
+		fontSize = fontSize.sp,
+		color = if (enabled) {ComposeColors.PrimaryWhite} else {ComposeColors.DescriptionGray},
 	)
 }

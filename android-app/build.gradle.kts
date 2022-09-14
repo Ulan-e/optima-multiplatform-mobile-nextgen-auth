@@ -48,13 +48,6 @@ kapt {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
-
-    implementation(files("libs/veridoc-module-release-v1.16.1.aar"))
-    implementation(files("libs/liveness-module-v1.13.4.aar"))
-
-    implementation("androidx.activity:activity-ktx:1.5.1")
-
     implementation(libs.appCompat)
     implementation(libs.material)
     implementation(libs.recyclerView)
@@ -75,6 +68,8 @@ dependencies {
     implementation(project(":mpp-library:core:presentation:design-system:android"))
     implementation(project(":mpp-library:feature"))
     implementation(project(":mpp-library:feature:auth"))
+    implementation(project(":mpp-library:feature:common"))
+    implementation(project(":mpp-library:feature:registration"))
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")
@@ -103,7 +98,17 @@ dependencies {
     val voyagerVersion = "1.0.0-beta15"
     implementation("cafe.adriel.voyager:voyager-core:$voyagerVersion")
     implementation ("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
-    implementation("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
+    implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+
+    implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
+    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")
+
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
+
+    implementation(files("libs/veridoc-module-release-v1.16.1.aar"))
+    implementation(files("libs/liveness-module-v1.13.4.aar"))
+
+    implementation("androidx.activity:activity-ktx:1.5.1")
 
     implementation("io.fotoapparat:fotoapparat:2.7.0")
    // implementation("com.sdsmdg.harjot:vectormaster:1.1.3")

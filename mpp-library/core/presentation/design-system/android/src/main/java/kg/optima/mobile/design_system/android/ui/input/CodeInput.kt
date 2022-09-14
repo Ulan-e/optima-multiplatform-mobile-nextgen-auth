@@ -24,7 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import kg.optima.mobile.base.utils.emptyString
-import kg.optima.mobile.common.Constants
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
@@ -39,6 +39,7 @@ fun CodeInput(
 	length: Int = Constants.PIN_LENGTH,
 	value: String = "",
 	withKeyboard: Boolean = false,
+	isValid: Boolean = true,
 	onValueChanged: (String) -> Unit = {},
 	onInputCompleted: (String) -> Unit = {},
 ) {
@@ -88,6 +89,7 @@ fun CodeInput(
 					}
 				},
 				cellStatus = when {
+					!isValid -> CellStatus.Error
 					value.length == it -> CellStatus.Focused
 					value.length > it -> CellStatus.Filled
 					else -> CellStatus.Empty
@@ -123,10 +125,10 @@ private fun OtpCell(
 			),
 		border = BorderStroke(
 			width = Deps.borderStroke,
-			color = if (cellStatus == CellStatus.Focused) {
-				ComposeColors.PrimaryBlack
-			} else {
-				Color.Transparent
+			color = when (cellStatus) {
+				CellStatus.Error -> ComposeColors.PrimaryRed
+				CellStatus.Focused -> ComposeColors.PrimaryBlack
+				else -> Color.Transparent
 			},
 		),
 		shape = RoundedCornerShape(size = Deps.cornerRadius),
@@ -137,6 +139,7 @@ private fun OtpCell(
 				.background(ComposeColors.WhiteF5)
 		) {
 			when (cellStatus) {
+				CellStatus.Error -> Unit
 				CellStatus.Empty -> Unit
 				CellStatus.Focused -> Text(
 					modifier = Modifier
@@ -161,7 +164,7 @@ private fun OtpCell(
 }
 
 private enum class CellStatus {
-	Empty, Focused, Filled;
+	Empty, Focused, Filled, Error;
 }
 
 private val numberRange = '0'..'9'

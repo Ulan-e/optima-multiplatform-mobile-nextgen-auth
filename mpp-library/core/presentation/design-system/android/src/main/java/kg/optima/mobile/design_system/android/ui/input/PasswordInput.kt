@@ -31,12 +31,13 @@ fun PasswordInput(
 	hint: String = "",
 	title: String = "",
 	enabled: Boolean = true,
-	imeAction: ImeAction = ImeAction.Next,
+	imeAction: ImeAction = ImeAction.Done,
 	onFocusLost: () -> Unit = {},
 	isFocused: Boolean = false,
 	errorState: MutableState<ErrorTextField> = mutableStateOf(ErrorTextField.empty()),
 	onValueChange: ((String) -> Unit) = {},
 	onDebounceValueChange: ((String) -> Unit)? = null,
+	onKeyboardActionDone: (() -> Unit)? = null,
 ) {
 	val visualTransformation = remember {
 		mutableStateOf<VisualTransformation>(PasswordVisualTransformation())
@@ -74,6 +75,7 @@ fun PasswordInput(
 			)
 		},
 		onDebounceValueChange = onDebounceValueChange,
+		onKeyboardActionDone = onKeyboardActionDone,
 	)
 }
 

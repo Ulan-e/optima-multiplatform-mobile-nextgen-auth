@@ -26,4 +26,12 @@ abstract class BaseApi(
 	): V {
 		return networkClient.post(baseUrl, path, params)
 	}
+
+	suspend inline fun <Request : Any, reified V> post(
+		path: String,
+		noinline headers: HeadersBuilder.() -> Unit,
+		request: Request,
+	): V {
+		return networkClient.post(baseUrl, path, headers, request)
+	}
 }

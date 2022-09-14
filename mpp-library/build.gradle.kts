@@ -15,10 +15,17 @@ plugins {
 }
 
 dependencies {
-    commonMainApi(projects.mppLibrary.feature.auth)
     commonMainApi(project(":mpp-library:base"))
+    commonMainApi(project(":mpp-library:core"))
     commonMainApi(project(":mpp-library:core:data:network"))
     commonMainApi(project(":mpp-library:core:data:storage"))
+    commonMainApi(projects.mppLibrary.feature)
+    commonMainApi(projects.mppLibrary.feature.auth)
+    commonMainApi(project(":mpp-library:feature:common"))
+    commonMainApi(project(":mpp-library:feature:main"))
+    commonMainApi(project(":mpp-library:feature:payments"))
+    commonMainApi(project(":mpp-library:feature:registration"))
+    commonMainApi(project(":mpp-library:feature:transfers"))
 
     commonMainImplementation("io.insert-koin:koin-core:3.1.4")
 
@@ -46,6 +53,8 @@ dependencies {
     commonMainApi(libs.mokoCrashReportingCore)
     commonMainApi(libs.mokoCrashReportingCrashlytics)
     commonMainApi(libs.mokoCrashReportingNapier)
+
+    commonMainImplementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
 
 
     commonTestImplementation(libs.mokoTestCore)

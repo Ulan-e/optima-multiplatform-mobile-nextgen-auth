@@ -10,10 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
@@ -113,7 +113,7 @@ private fun PinCell(
 			) {
 				Text(
 					text = cell.text,
-					fontSize = Headings.H4.px.sp,
+					fontSize = Headings.H4.sp,
 					color = cell.color,
 					maxLines = 1,
 				)

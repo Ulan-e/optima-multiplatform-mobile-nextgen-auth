@@ -8,8 +8,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.utils.resources.sp
-import kg.optima.mobile.resources.*
-import kg.optima.mobile.resources.Headings.Companion.px
+import kg.optima.mobile.resources.Headings
+import kg.optima.mobile.resources.Headings.Companion.pix
+import kg.optima.mobile.resources.Typography
 
 val LocalTypography = staticCompositionLocalOf { ApplicationTypographyData }
 
@@ -26,27 +27,27 @@ val ApplicationTypographyData = TypographyData(
 	typography = androidx.compose.material.Typography(
 		defaultFontFamily = TT_Norms_Pro_FontFamily,
 		h1 = TextStyle(
-			fontSize = Headings.H1.px().sp(),
+			fontSize = Headings.H1.sp,
 			letterSpacing = 0.sp,
 		),
 		h2 = TextStyle(
-			fontSize = Headings.H2.px().sp(),
+			fontSize = Headings.H2.sp,
 			letterSpacing = 0.sp,
 		),
 		h3 = TextStyle(
-			fontSize = Headings.H3.px().sp(),
+			fontSize = Headings.H3.sp,
 			letterSpacing = 0.sp,
 		),
 		h4 = TextStyle(
-			fontSize = Headings.H4.px().sp(),
+			fontSize = Headings.H4.sp,
 			letterSpacing = 0.sp,
 		),
 		h5 = TextStyle(
-			fontSize = Headings.H5.px().sp(),
+			fontSize = Headings.H5.sp,
 			letterSpacing = 0.sp,
 		),
 		h6 = TextStyle(
-			fontSize = Headings.H6.px().sp(),
+			fontSize = Headings.H6.sp,
 			letterSpacing = 0.sp,
 		),
 		subtitle1 = TextStyle(

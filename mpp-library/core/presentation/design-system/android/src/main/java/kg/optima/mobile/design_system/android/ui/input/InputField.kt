@@ -24,16 +24,15 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import kg.optima.mobile.common.Constants
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.input.debounce.debounce
 import kg.optima.mobile.design_system.android.ui.input.filter.ITextFieldComposeFilter
 import kg.optima.mobile.design_system.android.ui.input.filter.NoTextFieldFilter
 import kg.optima.mobile.design_system.android.ui.input.model.ErrorTextField
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
-import kg.optima.mobile.resources.Headings
-import kg.optima.mobile.resources.Headings.Companion.px
 import kg.optima.mobile.design_system.android.utils.resources.sp
+import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.resources.Headings
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -58,6 +57,7 @@ fun InputField(
 	errorState: MutableState<ErrorTextField> = mutableStateOf(ErrorTextField.empty()),
 	interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 	clearErrorTextOnChange: Boolean = true,
+	onKeyboardActionDone: (() -> Unit)? = null,
 ) {
 	val keyboardController = LocalSoftwareKeyboardController.current
 	val focusManager = LocalFocusManager.current
@@ -118,7 +118,10 @@ fun InputField(
 			imeAction = imeAction
 		),
 		keyboardActions = KeyboardActions(
-			onDone = { keyboardController?.hide() },
+			onDone = {
+				keyboardController?.hide()
+				onKeyboardActionDone?.invoke()
+			},
 			onNext = { focusManager.moveFocus(FocusDirection.Down) }),
 		visualTransformation = visualTransformation,
 		leadingIcon = leadingIcon,
@@ -143,7 +146,7 @@ fun InputField(
 				.padding(top = Deps.Spacing.marginFromInput),
 			text = bottomActionButton.first,
 			color = ComposeColors.Green,
-			fontSize = Headings.H5.px().sp()
+			fontSize = Headings.H5.sp,
 		)
 	}
 

@@ -1,6 +1,6 @@
 package kg.optima.mobile.auth.data.component
 
-import kg.optima.mobile.base.data.PlatformDate
+import kg.optima.mobile.base.platform.PlatformDate
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.storage.StorageRepository
 import kg.optima.mobile.storage.cache.RuntimeCache

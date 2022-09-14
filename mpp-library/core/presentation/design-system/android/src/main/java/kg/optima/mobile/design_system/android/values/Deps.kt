@@ -23,6 +23,11 @@ object Deps {
 		val swiperTopMargin get() = 6.dp
 
 		val rowElementMargin get() = 10.dp
+		val colElementMargin get() = 10.dp
+
+		val iconDescriptionMargin get() = 4.dp
+
+		val bigMarginTop get() = 80.dp
 	}
 
 	object Size {
@@ -40,6 +45,8 @@ object Deps {
 		val pinBtnSize get() = 75.dp
 		val pinDotSize get() = 10.dp
 
+		val passValidityDotSize get() = 8.dp
+
 		val sheetSwiperSize get() = 48.dp to 3.dp
 	}
 
@@ -55,6 +62,4 @@ object Deps {
 	val inputFieldCornerRadius get() = 10.dp
 	val checkboxCornerRadius get() = 6.dp
 	val cardCornerRadius get() = 16.dp
-
-	val pinBtnElevation get() = 2.dp
 }

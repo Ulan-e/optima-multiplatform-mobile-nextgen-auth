@@ -8,33 +8,33 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.sp
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 
 @Composable
 fun TransparentButton(
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    text: String,
-    fontSize: Headings = Headings.H4,
-    onClick: () -> Unit = {},
+	modifier: Modifier = Modifier,
+	enabled: Boolean = true,
+	text: String,
+	fontSize: Headings = Headings.H4,
+	onClick: () -> Unit = {},
 ) = Button(
-    modifier = modifier.height(Deps.Size.buttonHeight),
-    shape = MaterialTheme.shapes.small,
-    colors = ButtonDefaults.buttonColors(
-        backgroundColor = Color.Transparent,
-        disabledBackgroundColor = Color.Transparent,
-        disabledContentColor = ComposeColors.PrimaryDisabledGray,
-    ),
-    elevation = null,
-    enabled = enabled,
-    onClick = onClick,
+	modifier = modifier.height(Deps.Size.buttonHeight),
+	shape = MaterialTheme.shapes.small,
+	colors = ButtonDefaults.buttonColors(
+		backgroundColor = Color.Transparent,
+		disabledBackgroundColor = Color.Transparent,
+		disabledContentColor = ComposeColors.PrimaryDisabledGray,
+	),
+	elevation = null,
+	enabled = enabled,
+	onClick = onClick,
 ) {
-    Text(
-        text = text,
-        fontSize = fontSize.px.sp,
-        color = ComposeColors.PrimaryRed,
-    )
+	Text(
+		text = text,
+		fontSize = fontSize.sp,
+		color = ComposeColors.PrimaryRed,
+	)
 }
