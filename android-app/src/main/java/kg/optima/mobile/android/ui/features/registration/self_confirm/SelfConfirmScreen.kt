@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.registration
+package kg.optima.mobile.android.ui.features.registration.self_confirm
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnimModel
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -17,54 +18,37 @@ import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
-import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.registration.RegistrationFeatureFactory
+import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
+import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
-import kg.optima.mobile.resources.images.RegistrationImages
 import kotlinx.coroutines.delay
 
-
-private val items = listOf(
-	FadeInAnimModel(
-		durationMillis = 0,
-		delayMillis = 0,
-		resId = RegistrationImages.passport.resId(),
-		text = "Паспорта КР - ID карта (серии AN или ID)",
-	),
-	FadeInAnimModel(
-		delayMillis = 1000,
-		resId = RegistrationImages.sun.resId(),
-		text = "Хорошее освещение",
-	),
-	FadeInAnimModel(
-		delayMillis = 2000,
-		resId = RegistrationImages.smile.resId(),
-		text = "Нейтральное выражение лица",
-	),
-	FadeInAnimModel(
-		delayMillis = 3000,
-		resId = RegistrationImages.glasses.resId(),
-		text = "Отсутствие очков или друких аксессуаров на лице",
-	),
-	FadeInAnimModel(
-		delayMillis = 4000,
-		resId = RegistrationImages.fullscreen.resId(),
-		text = "Лицо по центру экрана, без движений",
-	),
-	FadeInAnimModel(
-		delayMillis = 5000,
-		resId = RegistrationImages.person.resId(),
-		text = "Волосы собраны и не закрывают лицо, на камере не должно быть других людей",
-	)
-)
 
 @Suppress("SameParameterValue")
 object SelfConfirmScreen : Screen {
 
 	@Composable
 	override fun Content() {
+		val product = remember {
+			RegistrationFeatureFactory.create<SelfConfirmIntent, SelfConfirmState>()
+		}
+		val intent = product.intent
+		val state = product.state
+
+		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+
+		var items by remember { mutableStateOf<List<FadeInAnimModel>>(listOf()) }
 		var buttonEnabled by remember { mutableStateOf(false) }
+
+		when (val selfConfirmStateModel = model) {
+			is State.StateModel.Initial ->
+				intent.fadeAnimationModels()
+			is SelfConfirmState.SelfConfirmStateModel.AnimationModels ->
+				items = selfConfirmStateModel.models.toUiModel()
+		}
 
 		LaunchedEffect(key1 = !buttonEnabled) {
 			delay(6000)

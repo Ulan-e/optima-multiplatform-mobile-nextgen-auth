@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.registration
+package kg.optima.mobile.android.ui.features.registration.phone_number
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth

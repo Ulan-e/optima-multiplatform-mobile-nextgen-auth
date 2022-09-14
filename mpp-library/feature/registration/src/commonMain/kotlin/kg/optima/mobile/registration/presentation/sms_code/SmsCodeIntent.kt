@@ -15,11 +15,17 @@ class SmsCodeIntent(
 	private val checkSmsCodeUseCase: CheckSmsCodeUseCase by inject()
 	private val checkPhoneNumberUseCase: CheckPhoneNumberUseCase by inject()
 
-	fun smsCodeEntered(phoneNumber: String, smsCode: String) {
+	fun smsCodeEntered(
+		phoneNumber: String,
+		smsCode: String,
+		referenceId: String,
+	) {
 		launchOperation {
-			checkSmsCodeUseCase.execute(CheckSmsCodeUseCase.Params(phoneNumber, smsCode)).map {
-				CheckSmsCodeInfo.Check(it)
-			}
+			checkSmsCodeUseCase.execute(CheckSmsCodeUseCase.Params(
+				phoneNumber = phoneNumber,
+				verificationCode = smsCode,
+				referenceId = referenceId
+			)).map { CheckSmsCodeInfo.Check(it) }
 		}
 	}
 
@@ -27,7 +33,7 @@ class SmsCodeIntent(
 		startTimeout()
 		launchOperation {
 			checkPhoneNumberUseCase.execute(phoneNumber).map {
-				CheckSmsCodeInfo.ReRequest(it)
+				CheckSmsCodeInfo.ReRequest(it.success)
 			}
 		}
 	}

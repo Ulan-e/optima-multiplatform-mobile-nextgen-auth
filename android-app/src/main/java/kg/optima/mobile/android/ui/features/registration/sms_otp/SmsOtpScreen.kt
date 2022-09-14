@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.registration
+package kg.optima.mobile.android.ui.features.registration.sms_otp
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,6 +29,7 @@ import kg.optima.mobile.resources.Headings
 class SmsOtpScreen(
     private val phoneNumber: String,
     private val timeout: Int,
+    private val referenceId: String,
 ) : BaseScreen {
 
     @Suppress("NAME_SHADOWING")
@@ -93,7 +94,7 @@ class SmsOtpScreen(
                 modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 2),
                 value = codeState.value,
                 onValueChanged = { codeState.value = it; errorState.value = emptyString },
-                onInputCompleted = { intent.smsCodeEntered(phoneNumber, it) },
+                onInputCompleted = { intent.smsCodeEntered(phoneNumber, it, referenceId) },
                 withKeyboard = true,
                 isValid = (errorState.value == ""),
             )

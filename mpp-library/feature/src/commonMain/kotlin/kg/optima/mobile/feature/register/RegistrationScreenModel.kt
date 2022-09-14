@@ -10,7 +10,10 @@ sealed interface RegistrationScreenModel : ScreenModel {
 	class AcceptCode(
 		val phoneNumber: String,
 		val timeout: Int,
+		val referenceId: String,
 	) : RegistrationScreenModel
 
 	object SelfConfirm : RegistrationScreenModel
+
+	object ControlQuestion : RegistrationScreenModel
 }

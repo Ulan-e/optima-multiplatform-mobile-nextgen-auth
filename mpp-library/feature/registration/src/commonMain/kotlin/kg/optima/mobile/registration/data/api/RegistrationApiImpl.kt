@@ -33,12 +33,13 @@ class RegistrationApiImpl(
 //		)
 	}
 
-	override suspend fun checkSmsCode(codeCheckRequest: CodeCheckRequest): BaseDto<CheckCodeDto> =
+	override suspend fun checkSmsCode(codeCheckRequest: CodeCheckRequest, referenceId: String): BaseDto<CheckCodeDto> =
 		post(
 			path = "vl/check-code",
 			headers = {
 				append(HttpHeaders.AcceptLanguage, "ru-RU")
 				append(HttpHeaders.UserAgent, userAgent())
+				append("reference-id", referenceId)
 			},
 			request = codeCheckRequest,
 		)

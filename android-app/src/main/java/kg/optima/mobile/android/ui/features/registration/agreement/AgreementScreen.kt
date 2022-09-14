@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.registration
+package kg.optima.mobile.android.ui.features.registration.agreement
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

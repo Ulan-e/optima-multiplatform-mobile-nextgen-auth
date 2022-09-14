@@ -15,5 +15,8 @@ abstract class RegistrationApi(
 
 	abstract suspend fun checkPhoneNumber(phoneCheckRequest: PhoneCheckRequest): BaseDto<PhoneCheckDto>
 
-	abstract suspend fun checkSmsCode(codeCheckRequest: CodeCheckRequest) : BaseDto<CheckCodeDto>
+	abstract suspend fun checkSmsCode(
+		codeCheckRequest: CodeCheckRequest,
+		referenceId: String
+	) : BaseDto<CheckCodeDto>
 }

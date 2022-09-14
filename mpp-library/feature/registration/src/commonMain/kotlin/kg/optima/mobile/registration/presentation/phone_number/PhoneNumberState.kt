@@ -15,7 +15,8 @@ class PhoneNumberState : State<CheckPhoneNumberInfo>() {
 				if (entity.success) {
 					val screenModel = RegistrationScreenModel.AcceptCode(
 						phoneNumber = entity.phoneNumber,
-						timeout = Constants.SMS_CODE_TIMEOUT
+						timeout = Constants.SMS_CODE_TIMEOUT,
+						referenceId = entity.referenceId,
 					)
 					StateModel.Navigate(screenModel)
 				} else {

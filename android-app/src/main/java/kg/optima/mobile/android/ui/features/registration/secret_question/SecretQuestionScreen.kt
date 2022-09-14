@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.registration
+package kg.optima.mobile.android.ui.features.registration.secret_question
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

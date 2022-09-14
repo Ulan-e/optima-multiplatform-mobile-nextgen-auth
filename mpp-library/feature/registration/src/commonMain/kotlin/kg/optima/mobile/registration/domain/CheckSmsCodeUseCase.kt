@@ -11,13 +11,17 @@ class CheckSmsCodeUseCase(
 ) : BaseUseCase<CheckSmsCodeUseCase.Params, Boolean>() {
 
     override suspend fun execute(model: Params): Either<Failure, Boolean> {
-        return registrationRepository.checkSmsCode(model.phoneNumber, model.verificationCode)
-            .map { it.isSuccess }
+        return registrationRepository.checkSmsCode(
+            phoneNumber = model.phoneNumber,
+            smsCode = model.verificationCode,
+            referenceId = model.referenceId
+        ).map { it.isSuccess }
     }
 
     class Params(
         val phoneNumber: String,
         val verificationCode: String,
+        val referenceId: String,
     )
 
 }

@@ -13,8 +13,8 @@ class RegistrationRepositoryImpl(
 		registrationApi.checkPhoneNumber(PhoneCheckRequest(phoneNumber))
 	}
 
-	override suspend fun checkSmsCode(phoneNumber: String ,smsCode: String) = apiCall {
-		registrationApi.checkSmsCode(CodeCheckRequest(phoneNumber, smsCode))
+	override suspend fun checkSmsCode(phoneNumber: String, smsCode: String, referenceId: String) = apiCall {
+		registrationApi.checkSmsCode(CodeCheckRequest(phoneNumber, smsCode), referenceId)
 	}
 
 }

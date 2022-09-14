@@ -14,5 +14,6 @@ sealed interface CheckPhoneNumberInfo {
 	class Check(
 		override val success: Boolean,
 		val phoneNumber: String,
+		val referenceId: String,
 	) : CheckPhoneNumberInfo
 }

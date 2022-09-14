@@ -22,7 +22,11 @@ class PhoneNumberIntent(
 	fun phoneNumberEntered(number: String) {
 		launchOperation {
 			checkPhoneNumberUseCase.execute(number).map {
-				CheckPhoneNumberInfo.Check(it, number)
+				CheckPhoneNumberInfo.Check(
+					success = it.success,
+					phoneNumber = number,
+					referenceId = it.referenceId,
+				)
 			}
 		}
 	}
