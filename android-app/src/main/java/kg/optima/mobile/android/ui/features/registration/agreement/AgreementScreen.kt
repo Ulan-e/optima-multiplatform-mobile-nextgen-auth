@@ -12,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
@@ -22,6 +23,7 @@ import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonSecondaryTy
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.utils.resources.sp
@@ -32,6 +34,7 @@ import kg.optima.mobile.registration.presentation.agreement.AgreementState
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.RegistrationImages
 
+@Parcelize
 object AgreementScreen : BaseScreen {
 
 	@Composable
@@ -114,7 +117,9 @@ object AgreementScreen : BaseScreen {
 			SecondaryButton(
 				modifier = Modifier.fillMaxWidth(),
 				text = "Не согласен",
-				buttonType = ButtonSecondaryType.Main(color = ComposeColors.PrimaryBlack),
+				buttonType = ButtonSecondaryType.Main(
+					composeColor = ComposeColor.composeColor(ComposeColors.PrimaryBlack)
+				),
 				onClick = { intent.pop() }
 			)
 		}

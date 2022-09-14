@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
@@ -26,7 +27,8 @@ import kg.optima.mobile.registration.presentation.sms_code.SmsCodeIntent
 import kg.optima.mobile.registration.presentation.sms_code.SmsCodeState
 import kg.optima.mobile.resources.Headings
 
-class SmsOtpScreen(
+@Parcelize
+class SmsCodeScreen(
     private val phoneNumber: String,
     private val timeout: Int,
     private val referenceId: String,
@@ -71,7 +73,7 @@ class SmsOtpScreen(
             Column(
                 modifier = Modifier
 					.fillMaxWidth()
-					.padding(Deps.Spacing.standardPadding, top = Deps.Spacing.bigMarginTop)
+					.padding(top = Deps.Spacing.bigMarginTop)
 					.align(Alignment.CenterHorizontally),
             ) {
                 TitleTextField(text = "Введите код подтверждения")
@@ -103,7 +105,7 @@ class SmsOtpScreen(
                 Text(
                     modifier = Modifier
 						.align(Alignment.CenterHorizontally)
-						.padding(Deps.Spacing.standardMargin),
+						.padding(vertical = Deps.Spacing.standardMargin),
                     text = "Неверный Код.",
                     fontSize = Headings.H4.sp,
                     fontWeight = FontWeight.Normal,

@@ -18,6 +18,7 @@ import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
 import kg.optima.mobile.design_system.android.ui.toolbars.MainToolbar
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.navigation.root.Root
@@ -29,7 +30,7 @@ fun MainContainer(
     mainState: State.StateModel?,
     infoState: BottomSheetInfo? = null,
     component: Root.Child.Component? = null,
-    toolbarInfo: ToolbarInfo = ToolbarInfo(),
+    toolbarInfo: ToolbarInfo? = ToolbarInfo(),
     contentModifier: Modifier = Modifier,
     contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     content: @Composable ColumnScope.() -> Unit,
@@ -49,14 +50,14 @@ fun MainContainer(
             bottomSheetNavigator.show(infoState)
         } else {
             bottomSheetNavigator.hide()
-
         }
+
         when (mainState) {
             is State.StateModel.Loading -> {
                 CircularProgress(modifier = Modifier.align(Alignment.Center))
             }
             is State.StateModel.Navigate -> {
-                component?.addAll(mainState.screenModels)
+//                component?.addAll(mainState.screenModels)
                 router.push(mainState.screenModels)
             }
             is State.StateModel.Pop -> {
@@ -70,10 +71,12 @@ fun MainContainer(
                             title = errorState.error,
                             buttons = listOf(
                                 ButtonView.Primary(
-                                    modifier = Modifier.fillMaxWidth(),
+                                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(true),
                                     text = "Повторить попытку",
-                                    color = ComposeColors.Green,
-                                    onClick = { bottomSheetNavigator.pop() }
+                                    composeColor = ComposeColor.composeColor(ComposeColors.Green),
+                                    onClickListener = ButtonView.OnClickListener.onClickListener {
+                                        bottomSheetNavigator.pop()
+                                    }
                                 )
                             )
                         ))
@@ -88,7 +91,7 @@ fun MainContainer(
 				.fillMaxSize()
 				.background(ComposeColors.Background)
         ) {
-            MainToolbar(toolbarInfo)
+            if (toolbarInfo != null) MainToolbar(toolbarInfo)
             Column(
                 modifier = contentModifier
 					.fillMaxSize()

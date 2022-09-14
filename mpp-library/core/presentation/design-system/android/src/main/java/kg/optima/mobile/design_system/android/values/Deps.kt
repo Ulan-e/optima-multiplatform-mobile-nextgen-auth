@@ -18,7 +18,7 @@ object Deps {
 
 		val pinBtnYMargin get() = 36.dp
 		val pinCellXMargin get() = 10.dp
-		val numPadXMargin get() = 40.dp
+		val numPadXMargin get() = 24.dp
 
 		val swiperTopMargin get() = 6.dp
 

@@ -1,6 +1,9 @@
 package kg.optima.mobile.design_system.android.utils.resources
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.compose.ui.graphics.Color
+import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.resources.Colors
 
 object ComposeColors {
@@ -19,4 +22,25 @@ object ComposeColors {
 	val OpaquedLightGray80: Color get() = PrimaryLightGray.copy(alpha = 0.8f)
 	val OpaquedDisabledGray: Color get() = DescriptionGray.copy(alpha = 0.08f)
 	val OpaquedDisabledGray20: Color get() = DescriptionGray.copy(alpha = 0.2f)
+}
+
+@Parcelize
+class ComposeColor(
+	val colorParameter: ColorParameter
+) : Parcelable {
+	companion object {
+		fun composeColor(color: Color) = ComposeColor(
+			object : ColorParameter {
+				override val color: Color = color
+				override fun describeContents(): Int = 0
+				override fun writeToParcel(parcel: Parcel?, p1: Int) {
+					parcel?.writeString(color.toString())
+				}
+			}
+		)
+	}
+
+	interface ColorParameter : Parcelable {
+		val color: Color
+	}
 }
