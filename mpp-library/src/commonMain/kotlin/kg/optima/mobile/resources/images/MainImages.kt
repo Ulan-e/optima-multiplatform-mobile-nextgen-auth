@@ -23,4 +23,7 @@ object MainImages : Images {
     val payments get() = byFileName("img_payments")
     val history get() = byFileName("img_history")
     val menu get() = byFileName("img_menu")
+
+    val arrowDown get() = byFileName("img_dropdown")
+    val arrowUp get() = byFileName("img_arrow_up")
 }
