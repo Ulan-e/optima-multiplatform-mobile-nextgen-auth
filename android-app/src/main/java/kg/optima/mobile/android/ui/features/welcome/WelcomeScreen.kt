@@ -3,6 +3,7 @@ package kg.optima.mobile.android.ui.features.welcome
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,9 +44,8 @@ object WelcomeScreen : BaseScreen {
             toolbarInfo = ToolbarInfo(navigationIcon = null),
         ) {
             Column(
-                modifier = Modifier
-					.wrapContentSize()
-					.weight(1f),
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = "Добро пожаловать!",

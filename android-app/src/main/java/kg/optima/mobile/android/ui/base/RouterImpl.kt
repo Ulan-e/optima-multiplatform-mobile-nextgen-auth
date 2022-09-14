@@ -12,7 +12,7 @@ import kg.optima.mobile.android.ui.features.welcome.WelcomeRouter
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
 import kg.optima.mobile.feature.main.MainScreenModel
-import kg.optima.mobile.feature.register.RegistrationScreenModel
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 
 object RouterImpl : Router {

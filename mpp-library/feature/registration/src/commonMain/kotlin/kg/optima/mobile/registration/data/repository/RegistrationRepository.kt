@@ -9,9 +9,17 @@ import kg.optima.mobile.registration.data.api.model.PhoneCheckDto
 
 interface RegistrationRepository {
 	suspend fun checkPhoneNumber(phoneNumber: String): Either<Failure, BaseDto<PhoneCheckDto>>
+
 	suspend fun checkSmsCode(
 		phoneNumber: String,
 		smsCode: String,
 		referenceId: String,
 	): Either<Failure, BaseDto<CheckCodeDto>>
+
+	suspend fun register(
+		hash: String,
+		hashPassword: String,
+		questionId: String,
+		answer: String,
+	): Either<Failure, BaseDto<String>>
 }

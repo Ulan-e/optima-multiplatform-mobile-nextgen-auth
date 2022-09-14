@@ -2,7 +2,10 @@ package kg.optima.mobile.android.ui.features.common
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,6 +34,7 @@ fun MainContainer(
     infoState: BottomSheetInfo? = null,
     component: Root.Child.Component? = null,
     toolbarInfo: ToolbarInfo? = ToolbarInfo(),
+    scrollable: Boolean = false,
     contentModifier: Modifier = Modifier,
     contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     content: @Composable ColumnScope.() -> Unit,
@@ -84,19 +88,19 @@ fun MainContainer(
             }
         }
 
-
-
         Column(
             modifier = Modifier
-				.fillMaxSize()
-				.background(ComposeColors.Background)
+                .fillMaxSize()
+                .background(ComposeColors.Background)
         ) {
             if (toolbarInfo != null) MainToolbar(toolbarInfo)
             Column(
                 modifier = contentModifier
-					.fillMaxSize()
-					.padding(all = Deps.Spacing.standardPadding)
-					.background(ComposeColors.Background),
+                    .fillMaxSize()
+                    .weight(1f, false)
+                    .padding(all = Deps.Spacing.standardPadding)
+                    .background(ComposeColors.Background)
+                    .verticalScroll(rememberScrollState()),
                 horizontalAlignment = contentHorizontalAlignment,
                 content = content,
             )

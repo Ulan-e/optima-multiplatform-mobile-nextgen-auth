@@ -1,4 +1,4 @@
-package kg.optima.mobile.registration.presentation.password
+package kg.optima.mobile.registration.presentation.create_password.validity
 
 data class PasswordValidityModel(
 	val isValid : Boolean,

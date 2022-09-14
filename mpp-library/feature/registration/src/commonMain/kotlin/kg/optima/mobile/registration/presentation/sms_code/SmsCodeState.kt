@@ -1,7 +1,7 @@
 package kg.optima.mobile.registration.presentation.sms_code
 
 import kg.optima.mobile.base.presentation.State
-import kg.optima.mobile.feature.register.RegistrationScreenModel
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 class SmsCodeState : State<CheckSmsCodeInfo>() {
 

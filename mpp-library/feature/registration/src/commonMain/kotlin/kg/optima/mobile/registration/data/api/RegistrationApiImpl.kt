@@ -3,10 +3,7 @@ package kg.optima.mobile.registration.data.api
 import io.ktor.http.*
 import kg.optima.mobile.base.data.model.BaseDto
 import kg.optima.mobile.network.client.NetworkClient
-import kg.optima.mobile.registration.data.api.model.CheckCodeDto
-import kg.optima.mobile.registration.data.api.model.CodeCheckRequest
-import kg.optima.mobile.registration.data.api.model.PhoneCheckDto
-import kg.optima.mobile.registration.data.api.model.PhoneCheckRequest
+import kg.optima.mobile.registration.data.api.model.*
 
 class RegistrationApiImpl(
 	networkClient: NetworkClient,
@@ -33,7 +30,10 @@ class RegistrationApiImpl(
 //		)
 	}
 
-	override suspend fun checkSmsCode(codeCheckRequest: CodeCheckRequest, referenceId: String): BaseDto<CheckCodeDto> =
+	override suspend fun checkSmsCode(
+		codeCheckRequest: CodeCheckRequest,
+		referenceId: String
+	): BaseDto<CheckCodeDto> =
 		post(
 			path = "vl/check-code",
 			headers = {
@@ -42,6 +42,16 @@ class RegistrationApiImpl(
 				append("reference-id", referenceId)
 			},
 			request = codeCheckRequest,
+		)
+
+	override suspend fun register(registrationRequest: RegistrationRequest): BaseDto<String> =
+		post(
+			path = "vl/check-code",
+			headers = {
+				append(HttpHeaders.AcceptLanguage, "ru-RU")
+				append(HttpHeaders.UserAgent, userAgent())
+			},
+			request = registrationRequest,
 		)
 
 }

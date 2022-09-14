@@ -1,4 +1,4 @@
-package kg.optima.mobile.feature.register
+package kg.optima.mobile.feature.registration
 
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.core.navigation.ScreenModel
@@ -22,4 +22,11 @@ sealed interface RegistrationScreenModel : ScreenModel {
 
 	@Parcelize
 	object ControlQuestion : RegistrationScreenModel
+
+	@Parcelize
+	class CreatePassword(
+		val hash: String = "",
+		val questionId: String = "",
+		val answer: String = "",
+	) : RegistrationScreenModel
 }

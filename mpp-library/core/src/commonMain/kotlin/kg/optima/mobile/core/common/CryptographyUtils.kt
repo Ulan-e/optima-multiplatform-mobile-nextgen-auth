@@ -1,4 +1,4 @@
-package kg.optima.mobile.auth.domain
+package kg.optima.mobile.core.common
 
 import com.soywiz.krypto.sha256
 import io.ktor.utils.io.core.*
