@@ -44,6 +44,8 @@ object Deps {
 		val pinBtnSize get() = 75.dp
 		val pinDotSize get() = 10.dp
 
+		val passValidityDotSize get() = 8.dp
+
 		val sheetSwiperSize get() = 48.dp to 3.dp
 	}
 
