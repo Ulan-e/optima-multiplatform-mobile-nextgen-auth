@@ -8,6 +8,9 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("dagger.hilt.android.plugin")
+
+    id("kotlinx-serialization")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -69,6 +72,7 @@ dependencies {
     implementation(project(":mpp-library:feature"))
     implementation(project(":mpp-library:feature:auth"))
     implementation(project(":mpp-library:feature:common"))
+    implementation(project(":mpp-library:feature:registration"))
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")

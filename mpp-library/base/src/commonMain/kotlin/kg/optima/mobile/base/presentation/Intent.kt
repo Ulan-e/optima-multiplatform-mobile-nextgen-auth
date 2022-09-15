@@ -24,15 +24,16 @@ abstract class Intent<in E>(
 	open fun pop() = state.pop()
 
 	protected fun launchOperation(
+		delayTimeMillis: Long = 200,
 		operation: suspend () -> Either<Failure, E>,
 	): Job {
 		return coroutineScope.launch(handler) {
 			state.setLoading()
+			delay(delayTimeMillis)
 			operation().fold(
 				fnL = { err -> state.setError(State.StateModel.Error.BaseError(err.message)) },
 				fnR = { model -> state.handle(model) }
 			)
-			delay(100)
 		}
 	}
 }

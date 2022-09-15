@@ -18,13 +18,16 @@ object Deps {
 
 		val pinBtnYMargin get() = 36.dp
 		val pinCellXMargin get() = 10.dp
-		val numPadXMargin get() = 40.dp
+		val numPadXMargin get() = 24.dp
 
 		val swiperTopMargin get() = 6.dp
 
 		val rowElementMargin get() = 10.dp
+		val colElementMargin get() = 10.dp
 
 		val iconDescriptionMargin get() = 4.dp
+
+		val bigMarginTop get() = 80.dp
 	}
 
 	object Size {
@@ -32,6 +35,8 @@ object Deps {
 		val mainButtonSize get() = 44.dp to 40.dp
 		val mainButtonImageSize get() = 24.dp
 		val trailingIconSize get() = 20.dp
+
+		val dropDownIconSize get() = 28.dp
 
 		val checkboxSize get() = 24.dp
 
@@ -41,6 +46,8 @@ object Deps {
 
 		val pinBtnSize get() = 75.dp
 		val pinDotSize get() = 10.dp
+
+		val passValidityDotSize get() = 8.dp
 
 		val sheetSwiperSize get() = 48.dp to 3.dp
 	}

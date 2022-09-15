@@ -18,12 +18,10 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
-import kg.optima.mobile.design_system.android.utils.resources.dp
 import kg.optima.mobile.design_system.android.utils.resources.sp
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
-import kg.optima.mobile.resources.Headings.Companion.px
 
 @Composable
 fun Checkbox(
@@ -80,7 +78,7 @@ fun Checkbox(
 				},
 			text = text,
 			color = ComposeColors.DescriptionGray,
-			fontSize = Headings.H4.px().dp().sp(),
+			fontSize = Headings.H4.sp,
 		)
 	}
 }

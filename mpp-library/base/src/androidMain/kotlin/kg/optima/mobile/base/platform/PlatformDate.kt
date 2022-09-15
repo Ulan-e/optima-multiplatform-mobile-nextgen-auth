@@ -1,4 +1,4 @@
-package kg.optima.mobile.base.data
+package kg.optima.mobile.base.platform
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat

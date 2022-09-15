@@ -1,4 +1,4 @@
-package kg.optima.mobile.base.data
+package kg.optima.mobile.base.platform
 
 import kg.optima.mobile.base.utils.orEmpty
 import platform.Foundation.*

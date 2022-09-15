@@ -35,9 +35,9 @@ object AuthFeatureFactory : Factory() {
 
 		// States and Intents injection by pair
 		factory { next -> LoginState(next.get()) }
-		factory { sm -> LoginIntent(sm.get()) }
+		factory { st -> LoginIntent(st.get()) }
 
 		factory { next -> SetupAuthState(next.get()) }
-		factory { sm -> SetupAuthIntent(sm.get()) }
+		factory { st -> SetupAuthIntent(st.get()) }
 	}
 }

@@ -13,10 +13,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
@@ -28,7 +28,7 @@ fun WelcomeScreenButtonBlock(
 	Row(
 		modifier = modifier,
 		horizontalArrangement = Arrangement.spacedBy(64.dp),
-		verticalAlignment = Alignment.CenterVertically
+		verticalAlignment = Alignment.CenterVertically,
 	) {
 		Column(
 			horizontalAlignment = Alignment.CenterHorizontally,
@@ -110,7 +110,7 @@ private fun Button(
 			}
 			Text(
 				text = text,
-				fontSize = Headings.H5.px.sp,
+				fontSize = Headings.H5.sp,
 				fontWeight = FontWeight.Medium,
 			)
 		}

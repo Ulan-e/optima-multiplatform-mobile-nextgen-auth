@@ -24,6 +24,7 @@ dependencies {
     commonMainApi(project(":mpp-library:feature:common"))
     commonMainApi(project(":mpp-library:feature:main"))
     commonMainApi(project(":mpp-library:feature:payments"))
+    commonMainApi(project(":mpp-library:feature:registration"))
     commonMainApi(project(":mpp-library:feature:transfers"))
 
     commonMainImplementation("io.insert-koin:koin-core:3.1.4")

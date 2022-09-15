@@ -23,13 +23,13 @@ abstract class State<in E>(
 	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
 
 	protected fun setStateModel(newState: @UnsafeVariance StateModel?) {
-		coroutineScope.launch(Dispatchers.Main) {
+		coroutineScope.launch {
 			_stateFlow.emit(newState)
 		}
 	}
 
-	internal suspend fun setLoading() {
-		_stateFlow.emit(StateModel.Loading)
+	internal fun setLoading() {
+		_stateFlow.tryEmit(StateModel.Loading)
 	}
 
 	// TODO perform error

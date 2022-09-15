@@ -39,4 +39,15 @@ abstract class NetworkClient {
 			}
 		)
 	}
+
+	suspend inline fun<Request : Any?, reified Response> post(
+		baseUrl: String,
+		path: String,
+		noinline headers: HeadersBuilder.() -> Unit,
+		request: Request,
+	): Response = httpClient.post("$baseUrl/$path") {
+		contentType(ContentType.Application.Json)
+		headers(headers)
+		if (request != null) body = request
+	}
 }

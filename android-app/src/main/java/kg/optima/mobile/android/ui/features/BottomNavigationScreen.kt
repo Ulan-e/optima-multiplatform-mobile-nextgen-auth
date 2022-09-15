@@ -17,6 +17,7 @@ import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
+import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.history.HistoryContent
 import kg.optima.mobile.android.ui.features.main.MainContent
@@ -33,8 +34,8 @@ import kg.optima.mobile.navigation.navItemList
 import kg.optima.mobile.navigation.root.Root
 import kg.optima.mobile.navigation.root.RootComponent
 import kg.optima.mobile.resources.Headings
-import kg.optima.mobile.resources.Headings.Companion.px
 
+@Parcelize
 object BottomNavigationScreen : BaseScreen {
 
 	@OptIn(ExperimentalDecomposeApi::class)
@@ -74,7 +75,7 @@ object BottomNavigationScreen : BaseScreen {
 									)
 									Text(
 										text = it.title,
-										fontSize = Headings.H7.px().sp(),
+										fontSize = Headings.H7.sp,
 									)
 								}
 							}

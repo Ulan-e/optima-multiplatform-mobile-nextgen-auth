@@ -9,9 +9,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
-import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.utils.resources.sp
+import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
 
 @Composable
@@ -27,7 +27,7 @@ fun BottomSheet(
 			Text(
 				text = bottomSheetInfo.title,
 				color = ComposeColors.PrimaryBlack,
-				fontSize = Headings.H1.px.sp,
+				fontSize = Headings.H1.sp,
 				fontWeight = FontWeight.Bold,
 				textAlign = TextAlign.Center,
 			)
@@ -36,7 +36,7 @@ fun BottomSheet(
 					modifier = Modifier.padding(vertical = Deps.Spacing.subheaderMargin),
 					text = bottomSheetInfo.description,
 					color = ComposeColors.PrimaryBlack,
-					fontSize = Headings.H4.px.sp,
+					fontSize = Headings.H4.sp,
 				)
 			}
 			bottomSheetInfo.content()
