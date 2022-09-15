@@ -15,8 +15,8 @@ import kg.optima.mobile.registration.presentation.create_password.CreatePassword
 import kg.optima.mobile.registration.presentation.create_password.CreatePasswordState
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
-import kg.optima.mobile.registration.presentation.secret_question.SecretQuestionIntent
-import kg.optima.mobile.registration.presentation.secret_question.SecretQuestionState
+import kg.optima.mobile.registration.presentation.control_question.ControlQuestionIntent
+import kg.optima.mobile.registration.presentation.control_question.ControlQuestionState
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.registration.presentation.sms_code.SmsCodeIntent
@@ -53,6 +53,8 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
 
         factory { CreatePasswordState() }
         factory { st -> CreatePasswordIntent(st.get()) }
+        factory { ControlQuestionState() }
+        factory { st -> ControlQuestionIntent(st.get()) }
     }
 
 }

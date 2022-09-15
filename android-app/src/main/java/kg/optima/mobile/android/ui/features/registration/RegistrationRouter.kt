@@ -6,7 +6,7 @@ import kg.optima.mobile.android.ui.FeatureRouter
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
 import kg.optima.mobile.android.ui.features.registration.create_password.CreatePasswordScreen
 import kg.optima.mobile.android.ui.features.registration.phone_number.PhoneNumberScreen
-import kg.optima.mobile.android.ui.features.registration.secret_question.ControlQuestionScreen
+import kg.optima.mobile.android.ui.features.registration.control_question.ControlQuestionScreen
 import kg.optima.mobile.android.ui.features.registration.self_confirm.SelfConfirmScreen
 import kg.optima.mobile.android.ui.features.registration.sms_otp.SmsCodeScreen
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
