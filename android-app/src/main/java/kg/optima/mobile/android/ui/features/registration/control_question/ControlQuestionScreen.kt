@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.registration.secret_question
+package kg.optima.mobile.android.ui.features.registration.control_question
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
@@ -27,9 +26,9 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.registration.RegistrationFeatureFactory
-import kg.optima.mobile.registration.presentation.secret_question.SecretQuestionIntent
-import kg.optima.mobile.registration.presentation.secret_question.SecretQuestionState
-import kg.optima.mobile.registration.presentation.secret_question.model.Question
+import kg.optima.mobile.registration.presentation.control_question.ControlQuestionIntent
+import kg.optima.mobile.registration.presentation.control_question.ControlQuestionState
+import kg.optima.mobile.registration.presentation.control_question.model.Question
 import kg.optima.mobile.resources.Headings
 
 class ControlQuestionScreen(
@@ -41,43 +40,30 @@ class ControlQuestionScreen(
 	@Composable
 	override fun Content() {
 
-		val product = remember { RegistrationFeatureFactory.create<SecretQuestionIntent, SecretQuestionState>() }
+		val product = remember { RegistrationFeatureFactory.create<ControlQuestionIntent, ControlQuestionState>() }
 		val intent = product.intent
 		val state = product.state
 
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-		val list = listOf(
-			Question("Сколько цифр в слове гвоздь", "4"),
-			Question("Сколько цифр в слове болт", "4"),
-			Question("Сколько цифр в слове слон", "4"),
-			Question("Сколько цифр в слове выдра", "4"),
-			Question("Сколько цифр в слове конь", "4")
-		)
-		val newList = mutableListOf<DropDownItemModel<Question>>()
-		list.map {
-			newList.add(DropDownItemModel(it.question, it))
-		}
-
 		val answerInputText = remember { mutableStateOf(emptyString) }
 		val buttonEnabled = remember { mutableStateOf(false) }
 		val dropDownExpandedState = remember { mutableStateOf(false) }
 		val items = remember {
-//			intent.getQuestions()
-//			mutableStateOf(DropDownItemsList(list = listOf<DropDownItemModel<Question>>()))
-			mutableStateOf(DropDownItemsList(newList))
+			intent.getQuestions()
+			mutableStateOf(DropDownItemsList(list = listOf<DropDownItemModel<Question>>()))
 		}
 
 		val keyboardController = LocalSoftwareKeyboardController.current
 
 		when (val model = model) {
-			SecretQuestionState.SecretQuestionModel.ShowQuestions -> {
+			ControlQuestionState.ControlQuestionModel.ShowQuestions -> {
 				dropDownExpandedState.value = true
 			}
-			SecretQuestionState.SecretQuestionModel.HideQuestions -> {
+			ControlQuestionState.ControlQuestionModel.HideQuestions -> {
 				dropDownExpandedState.value = false
 			}
-			is SecretQuestionState.SecretQuestionModel.SetQuestion -> {
+			is ControlQuestionState.ControlQuestionModel.SetQuestion -> {
 				items.value = items.value.copy(
 					selectedItemIndex = items.value.list.indexOf(
 						DropDownItemModel(model.question.question, model.question)
@@ -86,9 +72,9 @@ class ControlQuestionScreen(
 				dropDownExpandedState.value = false
 			}
 
-			is SecretQuestionState.SecretQuestionModel.ValidateResult -> buttonEnabled.value =
+			is ControlQuestionState.ControlQuestionModel.ValidateResult -> buttonEnabled.value =
 				model.success
-			is SecretQuestionState.SecretQuestionModel.GetQuestions -> {
+			is ControlQuestionState.ControlQuestionModel.GetQuestions -> {
 				val newList = mutableListOf<DropDownItemModel<Question>>()
 				model.questions.map {
 					newList.add(DropDownItemModel(it.question, it))

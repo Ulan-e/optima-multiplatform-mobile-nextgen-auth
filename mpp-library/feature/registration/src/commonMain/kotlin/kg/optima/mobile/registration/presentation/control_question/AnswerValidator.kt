@@ -1,4 +1,4 @@
-package kg.optima.mobile.registration.presentation.secret_question
+package kg.optima.mobile.registration.presentation.control_question
 
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.core.common.Constants
@@ -8,10 +8,10 @@ object AnswerValidator {
 
 	fun validate(answer: String): Either<Failure, Unit> {
 		return when {
-			answer.length >= Constants.SECRET_ANSWER_LENGTH ->
+			answer.length >= Constants.CONTROL_ANSWER_LENGTH ->
 				Either.Right(Unit)
 			else ->
-				Either.Left(Failure.Message("Должен содержать не менее ${Constants.SECRET_ANSWER_LENGTH} символов!))"))
+				Either.Left(Failure.Message("Должен содержать не менее ${Constants.CONTROL_ANSWER_LENGTH} символов!))"))
 		}
 	}
 

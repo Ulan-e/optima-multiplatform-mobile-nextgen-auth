@@ -1,14 +1,14 @@
-package kg.optima.mobile.registration.presentation.secret_question
+package kg.optima.mobile.registration.presentation.control_question
 
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.Intent
 import kg.optima.mobile.registration.domain.GetQuestionsUseCase
-import kg.optima.mobile.registration.presentation.secret_question.model.Question
+import kg.optima.mobile.registration.presentation.control_question.model.Question
 import org.koin.core.component.inject
 
-class SecretQuestionIntent(
-	override val state: SecretQuestionState,
-) : Intent<SecretQuestionInfo>() {
+class ControlQuestionIntent(
+	override val state: ControlQuestionState,
+) : Intent<ControlQuestionInfo>() {
 
 	private val getQuestionsUseCase: GetQuestionsUseCase by inject()
 	private val answerValidator = AnswerValidator
@@ -25,7 +25,7 @@ class SecretQuestionIntent(
 						)
 					)
 				}
-				SecretQuestionInfo.GetQuestions(
+				ControlQuestionInfo.GetQuestions(
 					success = it.success,
 					questions = list)
 			}
@@ -34,25 +34,25 @@ class SecretQuestionIntent(
 
 	fun onValueChanged(number: String) {
 		answerValidator.validate(number).fold(
-			fnL = { state.handle(SecretQuestionInfo.Validation(false, it.message)) },
-			fnR = { state.handle(SecretQuestionInfo.Validation(true)) }
+			fnL = { state.handle(ControlQuestionInfo.Validation(false, it.message)) },
+			fnR = { state.handle(ControlQuestionInfo.Validation(true)) }
 		)
 	}
 
 	fun showQuestions() {
-		state.handle(SecretQuestionInfo.ShowQuestions)
+		state.handle(ControlQuestionInfo.ShowQuestions)
 	}
 
 	fun hideQuestions() {
-		state.handle(SecretQuestionInfo.HideQuestions)
+		state.handle(ControlQuestionInfo.HideQuestions)
 	}
 
 	fun setQuestion(question: Question) {
-		state.handle(SecretQuestionInfo.SetQuestion(question))
+		state.handle(ControlQuestionInfo.SetQuestion(question))
 	}
 
 	fun confirm(hashCode: String, questionId: String, answer: String) {
-		state.handle(SecretQuestionInfo.ConfirmQuestion(hashCode, questionId, answer))
+		state.handle(ControlQuestionInfo.ConfirmQuestion(hashCode, questionId, answer))
 	}
 
 }

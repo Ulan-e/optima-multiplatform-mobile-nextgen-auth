@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
 import kg.optima.mobile.android.ui.features.registration.phone_number.PhoneNumberScreen
-import kg.optima.mobile.android.ui.features.registration.secret_question.ControlQuestionScreen
+import kg.optima.mobile.android.ui.features.registration.control_question.ControlQuestionScreen
 import kg.optima.mobile.android.ui.features.registration.self_confirm.SelfConfirmScreen
 import kg.optima.mobile.android.ui.features.registration.sms_otp.SmsOtpScreen
 import kg.optima.mobile.feature.register.RegistrationScreenModel

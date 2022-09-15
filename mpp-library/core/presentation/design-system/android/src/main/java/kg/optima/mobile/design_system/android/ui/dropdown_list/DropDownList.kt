@@ -22,8 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
+import kg.optima.mobile.resources.Typography
 import kg.optima.mobile.resources.images.MainImages
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -70,7 +72,9 @@ fun <T> DropDownList(
 					.requiredHeightIn(min = Deps.Size.buttonHeight)
 					.padding(Deps.Spacing.pinCellXMargin),
 				text = items.selectedItem?.title ?: "",
-				color = ComposeColors.PrimaryDisabledGray
+				color = ComposeColors.PrimaryDisabledGray,
+				fontSize = Headings.H4.sp,
+				fontWeight = FontWeight.W500
 			)
 
 			Icon(icon, contentDescription = "icon", modifier = Modifier
@@ -96,7 +100,11 @@ fun <T> DropDownList(
 								onItemSelected(selectedOption.entity)
 							}
 						) {
-							Text(text = selectedOption.title, color = ComposeColors.PrimaryDisabledGray)
+							Text(
+								text = selectedOption.title,
+								fontSize = Headings.H4.sp,
+								fontWeight = FontWeight.W500,
+								color = ComposeColors.PrimaryDisabledGray)
 						}
 						Divider(
 							thickness = Deps.Spacing.minPadding,
