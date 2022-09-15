@@ -48,13 +48,11 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
         factory { SelfConfirmState() }
         factory { st -> SelfConfirmIntent(st.get()) }
 
-        factory { SecretQuestionState() }
-        factory { st -> SecretQuestionIntent(st.get()) }
+        factory { ControlQuestionState() }
+        factory { st -> ControlQuestionIntent(st.get()) }
 
         factory { CreatePasswordState() }
         factory { st -> CreatePasswordIntent(st.get()) }
-        factory { ControlQuestionState() }
-        factory { st -> ControlQuestionIntent(st.get()) }
     }
 
 }

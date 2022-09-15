@@ -2,7 +2,7 @@ package kg.optima.mobile.registration.presentation.control_question
 
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
-import kg.optima.mobile.feature.register.RegistrationScreenModel
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.registration.presentation.control_question.model.Question
 
 class ControlQuestionState : State<ControlQuestionInfo>() {
@@ -13,10 +13,13 @@ class ControlQuestionState : State<ControlQuestionInfo>() {
 			ControlQuestionInfo.HideQuestions -> ControlQuestionModel.HideQuestions
 			is ControlQuestionInfo.SetQuestion -> ControlQuestionModel.SetQuestion(entity.question)
 			is ControlQuestionInfo.GetQuestions -> ControlQuestionModel.GetQuestions(entity.questions)
-			is ControlQuestionInfo.Validation -> ControlQuestionModel.ValidateResult(entity.success, entity.message)
+			is ControlQuestionInfo.Validation -> ControlQuestionModel.ValidateResult(
+				entity.success,
+				entity.message
+			)
 			is ControlQuestionInfo.ConfirmQuestion -> {
-				val screenModel = RegistrationScreenModel.Password(
-					hashCode = entity.hashCode,
+				val screenModel = RegistrationScreenModel.CreatePassword(
+					hash = entity.hashCode,
 					questionId = entity.questionId,
 					answer = entity.answer
 				)

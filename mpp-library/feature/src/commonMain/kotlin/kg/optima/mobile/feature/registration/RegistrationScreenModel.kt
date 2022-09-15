@@ -24,13 +24,6 @@ sealed interface RegistrationScreenModel : ScreenModel {
 	object ControlQuestion : RegistrationScreenModel
 
 	@Parcelize
-	class Password(
-		val hashCode: String,
-		val questionId: String,
-		val answer: String
-	) : RegistrationScreenModel
-
-	@Parcelize
 	class CreatePassword(
 		val hash: String = "",
 		val questionId: String = "",
