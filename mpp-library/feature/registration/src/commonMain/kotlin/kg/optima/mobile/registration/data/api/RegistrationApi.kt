@@ -17,6 +17,8 @@ abstract class RegistrationApi(
 		referenceId: String
 	) : BaseDto<CheckCodeDto>
 
+	abstract suspend fun getQuestions() : BaseDto<List<QuestionDto>>
+
 	abstract suspend fun register(
 		registrationRequest: RegistrationRequest
 	) : BaseDto<String>

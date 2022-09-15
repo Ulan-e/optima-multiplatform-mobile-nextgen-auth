@@ -36,6 +36,8 @@ object Deps {
 		val mainButtonImageSize get() = 24.dp
 		val trailingIconSize get() = 20.dp
 
+		val dropDownIconSize get() = 28.dp
+
 		val checkboxSize get() = 24.dp
 
 		val pinCellSize get() = 58.dp to 64.dp

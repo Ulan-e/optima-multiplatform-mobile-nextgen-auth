@@ -40,7 +40,7 @@ object SelfConfirmScreen : Screen {
 
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-		var items by remember { mutableStateOf<List<FadeInAnimModel>>(listOf()) }
+		var items by remember { mutableStateOf<List<FadeInAnimModel>>(emptyList()) }
 		var buttonEnabled by remember { mutableStateOf(false) }
 
 		when (val selfConfirmStateModel = model) {

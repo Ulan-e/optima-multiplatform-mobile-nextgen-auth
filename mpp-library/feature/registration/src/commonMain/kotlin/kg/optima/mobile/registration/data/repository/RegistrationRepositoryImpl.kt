@@ -13,12 +13,17 @@ import kg.optima.mobile.registration.data.api.model.RegistrationRequest
 class RegistrationRepositoryImpl(
 	private val registrationApi: RegistrationApi,
 ) : RegistrationRepository, BaseDataSource() {
+
 	override suspend fun checkPhoneNumber(phoneNumber: String) = apiCall {
 		registrationApi.checkPhoneNumber(PhoneCheckRequest(phoneNumber))
 	}
 
 	override suspend fun checkSmsCode(phoneNumber: String, smsCode: String, referenceId: String) = apiCall {
 		registrationApi.checkSmsCode(CodeCheckRequest(phoneNumber, smsCode), referenceId)
+	}
+
+	override suspend fun getQuestions() = apiCall {
+		registrationApi.getQuestions()
 	}
 
 	override suspend fun register(

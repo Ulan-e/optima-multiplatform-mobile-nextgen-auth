@@ -44,6 +44,16 @@ class RegistrationApiImpl(
 			request = codeCheckRequest,
 		)
 
+	override suspend fun getQuestions(): BaseDto<List<QuestionDto>> =
+		post(
+			path = "api/registration/questions",
+			headers = {
+				append(HttpHeaders.AcceptLanguage, "ru-RU")
+				append(HttpHeaders.UserAgent, userAgent())
+			},
+			request = null,
+		)
+
 	override suspend fun register(registrationRequest: RegistrationRequest): BaseDto<String> =
 		post(
 			path = "vl/check-code",
