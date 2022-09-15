@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	package="kg.optima.mobile">
 
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -20,16 +21,16 @@
 			</intent-filter>
 		</activity>
 
-		<activity android:name="kg.optima.mobile.android.ui.features.biometrics.StartBiometricsActivity"
+		<activity
+			android:name="kg.optima.mobile.android.ui.features.biometrics.LivenessActivity"
 			android:noHistory="true"
-			android:screenOrientation="portrait"/>
+			android:screenOrientation="portrait"
+			tools:ignore="LockedOrientationActivity" />
 
-		<activity android:name="kg.optima.mobile.android.ui.features.biometrics.LivenessActivity"
+		<activity
+			android:name="kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity"
 			android:noHistory="true"
-			android:screenOrientation="portrait"/>
-
-		<activity android:name="kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity"
-			android:noHistory="true"
-			android:screenOrientation="portrait"/>
+			android:screenOrientation="portrait"
+			tools:ignore="LockedOrientationActivity" />
 	</application>
 </manifest>

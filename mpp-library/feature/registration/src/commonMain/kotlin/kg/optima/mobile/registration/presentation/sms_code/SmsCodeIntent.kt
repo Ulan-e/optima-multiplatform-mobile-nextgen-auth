@@ -21,11 +21,20 @@ class SmsCodeIntent(
 		referenceId: String,
 	) {
 		launchOperation {
-			checkSmsCodeUseCase.execute(CheckSmsCodeUseCase.Params(
-				phoneNumber = phoneNumber,
-				verificationCode = smsCode,
-				referenceId = referenceId
-			)).map { CheckSmsCodeInfo.Check(it) }
+			checkSmsCodeUseCase.execute(
+				CheckSmsCodeUseCase.Params(
+					phoneNumber = phoneNumber,
+					verificationCode = smsCode,
+					referenceId = referenceId
+				)
+			).map {
+				CheckSmsCodeInfo.Check(
+					success = it.success,
+					date = it.date,
+					accessToken = it.accessToken,
+					personId = it.personId
+				)
+			}
 		}
 	}
 

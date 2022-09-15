@@ -7,9 +7,7 @@ import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import kg.optima.mobile.R
 import kg.optima.mobile.android.utils.saveFile
-import kg.optima.mobile.android.utils.showExitAlertDialog
 import kg.optima.mobile.databinding.ActivityDocumentScanBinding
 import kz.verigram.veridoc.sdk.dependency.ICameraCaptureListener
 import kz.verigram.veridoc.sdk.model.DocumentType
@@ -19,8 +17,9 @@ import kz.verigram.verilive.sdk.LivenessInitializer
 
 class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
 
-    private val tag = DocumentScanActivity::class.java.simpleName
     private lateinit var binding: ActivityDocumentScanBinding
+    private val tag = DocumentScanActivity::class.java.simpleName
+    private val filename = "scanned_file"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +27,7 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
         setContentView(binding.root)
 
         binding.btnBack.setOnClickListener {
-            showDialog()
+            // TODO Показать диалог
         }
         setupCameraCaptureComponent()
         setBtnContinueClickListener()
@@ -67,22 +66,18 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
     }
 
     override fun onBackPressed() {
-        showDialog()
+        // TODO Показать диалог
     }
 
     private fun setBtnContinueClickListener() {
         binding.btnContinue.setOnClickListener {
-            Handler(Looper.getMainLooper()).postDelayed({
-                LivenessInitializer.init()
-                startActivity(Intent(this, LivenessActivity::class.java))
-            }, 200)
+            LivenessInitializer.init()
+            startActivity(Intent(this, LivenessActivity::class.java))
         }
     }
 
     private fun saveDocumentContent(content: HashMap<String, String>?) {
-        content?.let { data ->
-            saveFile(filename = "VERIFIED_DOC_FILE", data = data)
-        }
+        content?.let { data -> saveFile(filename = filename, data = data) }
     }
 
     private fun setupCameraCaptureComponent() {
@@ -91,17 +86,6 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
             setRecognitionMode(RecognitionMode.TWO_SIDED_DOCUMENT)
             setDocumentType(DocumentType.KG_ID)
             setIsGlareCheckNeeded(true)
-        }
-    }
-
-    private fun showDialog() {
-        showExitAlertDialog(
-            title = getString(R.string.are_u_sure_exit),
-            subtitle = getString(R.string.identification_is_not_finished),
-            btnExitText = getString(R.string.exit),
-            btnCancelText = getString(R.string.cancel)
-        ) {
-            // TODO Переход куда-то
         }
     }
 }

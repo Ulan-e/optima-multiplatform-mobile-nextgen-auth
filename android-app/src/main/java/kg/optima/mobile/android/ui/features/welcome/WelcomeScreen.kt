@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.biometrics.StartBiometricsActivity
+import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -23,6 +23,7 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
+import kz.verigram.veridoc.sdk.VeridocInitializer
 
 
 object WelcomeScreen : BaseScreen {
@@ -34,8 +35,6 @@ object WelcomeScreen : BaseScreen {
         }
         val state = product.state
         val intent = product.intent
-
-        val context = LocalContext.current
 
         val model by state.stateFlow.collectAsState(initial = null)
 
@@ -82,9 +81,7 @@ object WelcomeScreen : BaseScreen {
 					),
                 text = "Зарегистрироваться",
                 onClick = {
-//                    intent.register()
-					val intent = Intent(context, StartBiometricsActivity::class.java)
-					context.startActivity(intent)
+                    intent.register()
                 },
             )
             Text(

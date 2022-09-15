@@ -111,5 +111,5 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.5.1")
 
     implementation("io.fotoapparat:fotoapparat:2.7.0")
-   // implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
+    implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
 }

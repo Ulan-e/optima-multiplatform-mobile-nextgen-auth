@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kg.optima.mobile.R
 import kg.optima.mobile.android.utils.readTextFile
-import kg.optima.mobile.android.utils.showExitAlertDialog
 import kz.verigram.veridoc.sdk.VeridocInitializer
 import kz.verigram.verilive.sdk.LivenessInitializer
 import kz.verigram.verilive.sdk.data.verification.entities.LivenessResult
@@ -39,7 +38,7 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
         btnBack = findViewById(R.id.btn_back)
 
         btnBack.setOnClickListener {
-            showDialog()
+            // TODO Показать диалог
         }
 
         setLivenessConfigs()
@@ -106,10 +105,7 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
 
     private fun setBtnContinueClickListener() {
         btnContinue.setOnClickListener {
-            Handler(Looper.getMainLooper()).postDelayed({
-                VeridocInitializer.init()
-
-            }, DELAY)
+            // TODO Переход на следующий экран
         }
     }
 
@@ -117,19 +113,7 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-    private fun showDialog() {
-        showExitAlertDialog(
-            title = "Хотите выйти?",
-            subtitle = "Текст",
-            btnExitText = getString(R.string.exit),
-            btnCancelText = getString(R.string.cancel)
-        ) {
-            // TODO Переход куда-то
-        }
-    }
-
     companion object {
         private const val serverUrl = "https://veritest.optima24.kg/vl/verilive"
-        private const val DELAY = 300L
     }
 }
