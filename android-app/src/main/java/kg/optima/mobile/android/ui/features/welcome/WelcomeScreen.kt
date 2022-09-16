@@ -1,7 +1,10 @@
 package kg.optima.mobile.android.ui.features.welcome
 
 import android.content.Intent
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -9,7 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
+import kg.optima.mobile.android.ui.features.biometrics.LivenessActivity
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -23,7 +26,8 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
-import kz.verigram.veridoc.sdk.VeridocInitializer
+import kz.verigram.verilive.sdk.LivenessInitializer
+import kz.verigram.verilive.sdk.data.verification.entities.LivenessResult
 
 
 object WelcomeScreen : BaseScreen {
@@ -35,6 +39,8 @@ object WelcomeScreen : BaseScreen {
         }
         val state = product.state
         val intent = product.intent
+
+        val context = LocalContext.current
 
         val model by state.stateFlow.collectAsState(initial = null)
 
@@ -81,7 +87,9 @@ object WelcomeScreen : BaseScreen {
 					),
                 text = "Зарегистрироваться",
                 onClick = {
-                    intent.register()
+                  //  intent.register()
+                    LivenessInitializer.init()
+                    context.startActivity(Intent(context, LivenessActivity::class.java))
                 },
             )
             Text(
