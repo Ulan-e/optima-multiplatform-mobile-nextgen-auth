@@ -2,7 +2,7 @@ package kg.optima.mobile.registration.presentation.phone_number
 
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.Intent
-import kg.optima.mobile.registration.domain.CheckPhoneNumberUseCase
+import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
 import org.koin.core.component.inject
 
 class PhoneNumberIntent(

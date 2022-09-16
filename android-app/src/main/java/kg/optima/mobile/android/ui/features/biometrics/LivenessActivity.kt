@@ -1,8 +1,6 @@
 package kg.optima.mobile.android.ui.features.biometrics
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -11,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kg.optima.mobile.R
 import kg.optima.mobile.android.utils.readTextFile
-import kz.verigram.veridoc.sdk.VeridocInitializer
+import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kz.verigram.verilive.sdk.LivenessInitializer
 import kz.verigram.verilive.sdk.data.verification.entities.LivenessResult
 import kz.verigram.verilive.sdk.domain.CameraException
@@ -22,10 +20,14 @@ import kz.verigram.verilive.sdk.domain.config.Hint
 import kz.verigram.verilive.sdk.interfaces.ICameraCaptureListener
 import kz.verigram.verilive.sdk.ui.CameraCaptureComponent
 import kz.verigram.verilive.sdk.ui.entities.Direction
+import org.koin.android.ext.android.inject
 
 class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
 
     private var cameraCapture: CameraCaptureComponent? = null
+
+    private val registrationPreferences: RegistrationPreferences by inject()
+
     private lateinit var btnContinue: Button
     private lateinit var btnBack: ImageButton
     private var sessionId: String = ""
@@ -50,10 +52,14 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
         super.onStart()
         cameraCapture!!.startPreview()
 
+        Log.d("terra", "registrationPreferences ${registrationPreferences.accessToken}")
+        Log.d("terra", "registrationPreferences ${registrationPreferences.personId}")
+
         //  TODO Получение token & personId и сохранение sessionId
-        // val accessToken = biometricsRepository.getAccessToken()
-        // val personId = biometricsRepository.getPersonId()
-        // sessionId = cameraCapture!!.startProcessing(accessToken, personId)
+        val accessToken = registrationPreferences.accessToken
+        val personId = registrationPreferences.personId
+
+        sessionId = cameraCapture!!.startProcessing(accessToken, personId)
         // biometricsRepository.putSessionId(sessionId)
     }
 

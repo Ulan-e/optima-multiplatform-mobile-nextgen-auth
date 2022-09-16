@@ -8,10 +8,7 @@ sealed interface CheckSmsCodeInfo {
 	) : CheckSmsCodeInfo
 
 	class Check(
-		val success: Boolean,
-		val date: String,
-		val accessToken: String,
-		val personId: String
+		val success: Boolean
 	) : CheckSmsCodeInfo
 
 	class Timeout(
