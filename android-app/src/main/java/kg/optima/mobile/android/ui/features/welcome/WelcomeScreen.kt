@@ -48,6 +48,7 @@ object WelcomeScreen : BaseScreen {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
+                    modifier = Modifier.padding(top = Deps.Spacing.bigMarginTop),
                     text = "Добро пожаловать!",
                     fontSize = Headings.H1.sp,
                     fontWeight = FontWeight.Bold,
