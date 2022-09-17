@@ -13,6 +13,7 @@ object Colors {
 	val PrimaryLightGray: ColorResource.Single = MR.colors.lightGray
 	val PrimaryWhite: ColorResource.Single = MR.colors.white
 	val PrimaryDisabledGray: ColorResource.Single = MR.colors.disabledGray
+	val Dark: ColorResource.Single = MR.colors.dark
 
 	/**
 	 * Secondary
