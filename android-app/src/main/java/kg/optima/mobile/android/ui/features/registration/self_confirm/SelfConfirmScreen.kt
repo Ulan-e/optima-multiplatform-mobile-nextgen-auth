@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
+import dev.icerock.moko.permissions.Permission
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
@@ -29,7 +30,6 @@ import kotlinx.coroutines.delay
 
 @Suppress("SameParameterValue")
 object SelfConfirmScreen : Screen {
-
 	@Composable
 	override fun Content() {
 		val product = remember {
@@ -81,7 +81,10 @@ object SelfConfirmScreen : Screen {
 				text = "Начать",
 				enabled = buttonEnabled,
 				color = ComposeColors.Green,
-				onClick = { }
+				onClick = {
+					val permissions = listOf(Permission.CAMERA, Permission.STORAGE)
+					intent.requestPermissions(permissions)
+				}
 			)
 		}
 	}

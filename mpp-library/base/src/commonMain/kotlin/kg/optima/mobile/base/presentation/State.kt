@@ -1,10 +1,13 @@
 package kg.optima.mobile.base.presentation
 
 import co.touchlab.stately.concurrency.AtomicReference
+import dev.icerock.moko.permissions.Permission
 import kg.optima.mobile.core.error.Failure
 import kg.optima.mobile.core.navigation.ScreenModel
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 
 /**
  * [E] - Entity. In parameter, receiving from Domain,
@@ -22,10 +25,8 @@ abstract class State<in E>(
 
 	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
 
-	protected fun setStateModel(newState: @UnsafeVariance StateModel?) {
-		coroutineScope.launch {
-			_stateFlow.emit(newState)
-		}
+	fun setStateModel(newState: @UnsafeVariance StateModel?) {
+		coroutineScope.launch { _stateFlow.emit(newState) }
 	}
 
 	internal fun setLoading() {
@@ -70,6 +71,13 @@ abstract class State<in E>(
 		}
 
 		object Pop : StateModel
+
+		class RequestPermissionResult(
+			val title: String,
+			val description: String? = null,
+			val acceptedPermissions: List<Permission>,
+			val customPermissionRequiredPermissions: List<Permission>,
+		) : StateModel
 
 		sealed interface Error : StateModel {
 			val error: String

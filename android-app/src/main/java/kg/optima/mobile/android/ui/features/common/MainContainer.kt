@@ -1,8 +1,11 @@
 package kg.optima.mobile.android.ui.features.common
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -29,82 +32,130 @@ import org.koin.androidx.compose.inject
 
 @Composable
 fun MainContainer(
-    modifier: Modifier = Modifier,
-    mainState: State.StateModel?,
-    infoState: BottomSheetInfo? = null,
-    component: Root.Child.Component? = null,
-    toolbarInfo: ToolbarInfo? = ToolbarInfo(),
-    scrollable: Boolean = false,
-    contentModifier: Modifier = Modifier,
-    contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
-    content: @Composable ColumnScope.() -> Unit,
+	modifier: Modifier = Modifier,
+	mainState: State.StateModel?,
+	infoState: BottomSheetInfo? = null,
+	component: Root.Child.Component? = null,
+	toolbarInfo: ToolbarInfo? = ToolbarInfo(),
+	scrollable: Boolean = false,
+	contentModifier: Modifier = Modifier,
+	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+	content: @Composable ColumnScope.() -> Unit,
 ) {
-    val router: Router by inject()
+	val router: Router by inject()
 
-    val navigator = LocalNavigator.currentOrThrow
-    val bottomSheetNavigator = LocalBottomSheetNavigator.current
+	val navigator = LocalNavigator.currentOrThrow
+	val bottomSheetNavigator = LocalBottomSheetNavigator.current
 
-    if (!navigator.canPop) {
-        val activity = LocalContext.current.asActivity()
-        BackHandler { activity?.finish() }
-    }
+	val context = LocalContext.current
 
-    Box(modifier = modifier.fillMaxSize()) {
-        if (infoState != null) {
-            bottomSheetNavigator.show(infoState)
-        } else {
-            bottomSheetNavigator.hide()
-        }
+	if (!navigator.canPop) {
+		val activity = LocalContext.current.asActivity()
+		BackHandler { activity?.finish() }
+	}
 
-        when (mainState) {
-            is State.StateModel.Loading -> {
-                CircularProgress(modifier = Modifier.align(Alignment.Center))
-            }
-            is State.StateModel.Navigate -> {
+	Box(modifier = modifier.fillMaxSize()) {
+		if (infoState != null) {
+			bottomSheetNavigator.show(infoState)
+		} else {
+			bottomSheetNavigator.hide()
+		}
+
+		when (mainState) {
+			is State.StateModel.Loading -> {
+				CircularProgress(modifier = Modifier.align(Alignment.Center))
+			}
+			is State.StateModel.Navigate -> {
 //                component?.addAll(mainState.screenModels)
-                router.push(mainState.screenModels)
-            }
-            is State.StateModel.Pop -> {
-                navigator.pop()
-            }
-            is State.StateModel.Error -> {
-                // TODO process error
-                when (val errorState = mainState) {
-                    is State.StateModel.Error.BaseError -> bottomSheetNavigator.show(
-                        info = BottomSheetInfo(
-                            title = errorState.error,
-                            buttons = listOf(
-                                ButtonView.Primary(
-                                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(true),
-                                    text = "Повторить попытку",
-                                    composeColor = ComposeColor.composeColor(ComposeColors.Green),
-                                    onClickListener = ButtonView.OnClickListener.onClickListener {
-                                        bottomSheetNavigator.pop()
-                                    }
-                                )
-                            )
-                        ))
-                }
-            }
-        }
+				router.push(mainState.screenModels)
+			}
+			is State.StateModel.Pop -> {
+				navigator.pop()
+			}
+			is State.StateModel.RequestPermissionResult -> {
+				val customPermissionRequiredPermissions =
+					mainState.customPermissionRequiredPermissions
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(ComposeColors.Background)
-        ) {
-            if (toolbarInfo != null) MainToolbar(toolbarInfo)
-            Column(
-                modifier = contentModifier
-                    .fillMaxSize()
-                    .weight(1f, false)
-                    .padding(all = Deps.Spacing.standardPadding)
-                    .background(ComposeColors.Background)
-                    .verticalScroll(rememberScrollState()),
-                horizontalAlignment = contentHorizontalAlignment,
-                content = content,
-            )
-        }
-    }
+				if (customPermissionRequiredPermissions.isNotEmpty()) {
+					bottomSheetNavigator.show(
+						info = BottomSheetInfo(
+							title = mainState.title,
+							description = mainState.description,
+							buttons = listOf(
+								ButtonView.Primary(
+									modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+										true
+									),
+									text = "Настройки",
+									composeColor = ComposeColor.composeColor(ComposeColors.Green),
+									onClickListener = ButtonView.OnClickListener.onClickListener {
+										context.openDeviceSettings()
+									}
+								),
+								ButtonView.Primary(
+									modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+										true
+									),
+									text = "Отмена",
+									onClickListener = ButtonView.OnClickListener.onClickListener {
+										bottomSheetNavigator.pop()
+									}
+								),
+							)
+						)
+					)
+				}
+			}
+			is State.StateModel.Error -> {
+				// TODO process error
+				when (val errorState = mainState) {
+					is State.StateModel.Error.BaseError -> bottomSheetNavigator.show(
+						info = BottomSheetInfo(
+							title = errorState.error,
+							buttons = listOf(
+								ButtonView.Primary(
+									modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+										true
+									),
+									text = "Повторить попытку",
+									composeColor = ComposeColor.composeColor(ComposeColors.Green),
+									onClickListener = ButtonView.OnClickListener.onClickListener {
+										bottomSheetNavigator.pop()
+									}
+								)
+							)
+						))
+				}
+			}
+		}
+
+		Column(
+			modifier = Modifier
+				.fillMaxSize()
+				.background(ComposeColors.Background)
+		) {
+			if (toolbarInfo != null) MainToolbar(toolbarInfo)
+			val columnModifier = contentModifier
+				.fillMaxSize()
+				.weight(1f, false)
+				.padding(all = Deps.Spacing.standardPadding)
+				.background(ComposeColors.Background)
+			if (scrollable)
+				columnModifier.verticalScroll(rememberScrollState())
+
+			Column(
+				modifier = columnModifier,
+				horizontalAlignment = contentHorizontalAlignment,
+				content = content,
+			)
+		}
+	}
 }
 
+fun Context.openDeviceSettings() {
+	val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+		.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+	val uri = Uri.fromParts("package", packageName, null)
+	intent.data = uri
+	startActivity(intent)
+}
