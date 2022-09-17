@@ -24,13 +24,15 @@ fun BottomSheet(
 			modifier = it,
 			horizontalAlignment = Alignment.CenterHorizontally,
 		) {
-			Text(
-				text = bottomSheetInfo.title,
-				color = ComposeColors.PrimaryBlack,
-				fontSize = Headings.H1.sp,
-				fontWeight = FontWeight.Bold,
-				textAlign = TextAlign.Center,
-			)
+			if (bottomSheetInfo.title != null) {
+				Text(
+					text = bottomSheetInfo.title,
+					color = ComposeColors.PrimaryBlack,
+					fontSize = Headings.H1.sp,
+					fontWeight = FontWeight.Bold,
+					textAlign = TextAlign.Center,
+				)
+			}
 			if (bottomSheetInfo.description != null) {
 				Text(
 					modifier = Modifier.padding(vertical = Deps.Spacing.subheaderMargin),

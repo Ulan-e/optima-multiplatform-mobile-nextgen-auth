@@ -8,7 +8,7 @@ import kg.optima.mobile.android.ui.features.registration.control_question.Contro
 import kg.optima.mobile.android.ui.features.registration.create_password.CreatePasswordScreen
 import kg.optima.mobile.android.ui.features.registration.phone_number.PhoneNumberScreen
 import kg.optima.mobile.android.ui.features.registration.self_confirm.SelfConfirmScreen
-import kg.optima.mobile.android.ui.features.registration.sms_otp.SmsCodeScreen
+import kg.optima.mobile.android.ui.features.registration.sms_otp.OtpScreen
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
@@ -18,7 +18,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
         return when (screenModel) {
             RegistrationScreenModel.Agreement -> AgreementScreen
             RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
-            is RegistrationScreenModel.AcceptCode -> SmsCodeScreen(
+            is RegistrationScreenModel.AcceptCode -> OtpScreen(
                 phoneNumber = screenModel.phoneNumber,
                 timeout = screenModel.timeout,
                 referenceId = screenModel.referenceId,

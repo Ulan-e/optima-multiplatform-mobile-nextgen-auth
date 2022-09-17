@@ -40,6 +40,7 @@ fun CodeInput(
 	modifier: Modifier = Modifier,
 	length: Int = Constants.PIN_LENGTH,
 	value: String = "",
+	inputEnabled: Boolean = true,
 	withKeyboard: Boolean = false,
 	showValue : Boolean = false,
 	isValid: Boolean = true,
@@ -89,7 +90,9 @@ fun CodeInput(
 				modifier = modifier.clickable {
 					if (withKeyboard) {
 						focusRequester.requestFocus()
-						keyboard?.show()
+						if (inputEnabled) {
+							keyboard?.show()
+						}
 					}
 				},
 				cellStatus = when {

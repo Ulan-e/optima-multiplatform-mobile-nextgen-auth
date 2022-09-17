@@ -13,6 +13,7 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
                     StateModel.Navigate(screenModel)
                 } else {
                     SmsCodeStateModel.InvalidCodeError()
+//                    StateModel.Error.BaseError(entity.message)
                 }
             }
             is CheckSmsCodeInfo.ReRequest ->
