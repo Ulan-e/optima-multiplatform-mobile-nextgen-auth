@@ -63,7 +63,8 @@ object WelcomeScreen : BaseScreen {
             WelcomeScreenButtonBlock(
                 modifier = Modifier
 					.wrapContentSize()
-					.weight(3f),
+					.weight(2f)
+                ,
             )
             PrimaryButton(
                 modifier = Modifier.fillMaxWidth(),
