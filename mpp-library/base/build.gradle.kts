@@ -47,6 +47,8 @@ kotlin {
                 implementation(libs.ktorClient)
                 implementation(libs.ktorClientLogging)
                 implementation(libs.ktorClientSerialization)
+
+                implementation(libs.mokoPermissions)
             }
         }
         val commonTest by getting {

@@ -32,15 +32,15 @@ import kg.optima.mobile.registration.presentation.control_question.model.Questio
 import kg.optima.mobile.resources.Headings
 
 class ControlQuestionScreen(
-	private val hashCode : String
+	private val hashCode: String,
 ) : Screen {
 
 	@OptIn(ExperimentalComposeUiApi::class)
 	@Suppress("NAME_SHADOWING")
 	@Composable
 	override fun Content() {
-
-		val product = remember { RegistrationFeatureFactory.create<ControlQuestionIntent, ControlQuestionState>() }
+		val product =
+			remember { RegistrationFeatureFactory.create<ControlQuestionIntent, ControlQuestionState>() }
 		val intent = product.intent
 		val state = product.state
 

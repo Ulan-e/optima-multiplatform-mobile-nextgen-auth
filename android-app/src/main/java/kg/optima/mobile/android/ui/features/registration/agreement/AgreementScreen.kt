@@ -77,7 +77,7 @@ object AgreementScreen : BaseScreen {
 						modifier = Modifier.padding(start = Deps.Spacing.standardMargin),
 						text = "Убедитесь, что Вы являетесь резидентом КР с оригинальным паспортом - " +
 								"ID карта образца 2014 и 2017 года",
-						fontSize = Headings.H4.sp,
+						fontSize = Headings.H5.sp,
 						color = ComposeColors.PrimaryBlack,
 					)
 				}
