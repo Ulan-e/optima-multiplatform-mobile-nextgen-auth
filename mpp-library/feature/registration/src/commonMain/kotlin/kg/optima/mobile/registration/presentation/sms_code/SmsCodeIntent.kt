@@ -20,15 +20,15 @@ class SmsCodeIntent(
 		smsCode: String,
 		referenceId: String,
 	) {
-//		launchOperation {
-//			checkSmsCodeUseCase.execute(CheckSmsCodeUseCase.Params(
-//				phoneNumber = phoneNumber,
-//				verificationCode = smsCode,
-//				referenceId = referenceId
-//			)).map { CheckSmsCodeInfo.Check(it) }
-//		}
+		launchOperation {
+			checkSmsCodeUseCase.execute(CheckSmsCodeUseCase.Params(
+				phoneNumber = phoneNumber,
+				verificationCode = smsCode,
+				referenceId = referenceId
+			)).map { CheckSmsCodeInfo.Check(it) }
+		}
 		//TODO: delete mockup
-		state.handle(CheckSmsCodeInfo.Check(smsCode == "0000"))
+//		state.handle(CheckSmsCodeInfo.Check(smsCode == "0000"))
 	}
 
 	fun smsCodeReRequest(timeout : Int, phoneNumber: String) {
