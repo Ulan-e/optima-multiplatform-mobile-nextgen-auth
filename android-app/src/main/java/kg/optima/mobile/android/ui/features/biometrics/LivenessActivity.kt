@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -58,7 +61,7 @@ import kz.verigram.verilive.sdk.ui.CameraCaptureComponent
 import kz.verigram.verilive.sdk.ui.entities.Direction
 import org.koin.androidx.compose.inject
 
-class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
+class LivenessActivity : AppCompatActivity() {
 
     private var cameraComponent: CameraCaptureComponent? = null
 
@@ -80,8 +83,6 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
                 }
             }
         }
-
-        cameraComponent?.cameraCaptureListener = this
         LivenessInitializer.init()
     }
 
@@ -89,31 +90,6 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
         cameraComponent!!.stopProcessing()
         cameraComponent!!.stopPreview()
         super.onStop()
-    }
-
-    override fun onLivenessError(e: Throwable) {
-        if (e is ConnectionException) {
-            showToast("Network error. Please check you connection ${e.localizedMessage}")
-        }
-        if (e is ServerResponseException || e is JsonFormatException) {
-            showToast("ServerResponseException ${e.localizedMessage}")
-        }
-        if (e is CameraException) {
-            showToast("Error initializing camera")
-        }
-    }
-
-    override fun onLivenessFailed(result: LivenessResult) {
-        Log.d("onLivenessFailed", "onLivenessFailed")
-    }
-
-    override fun onLivenessPassed(result: LivenessResult) {
-        // biometricsRepository.putLivenessStatus(result.status)
-        // btnContinue.visibility = View.VISIBLE
-    }
-
-    override fun onUpdateOverlay(direction: Direction, hint: Hint) {
-
     }
 
     override fun onBackPressed() {
@@ -142,8 +118,8 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
             val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
             val registrationPreferences: RegistrationPreferences by inject()
-            val context = LocalContext.current
             val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+            val buttonAndTextVisibleState = remember { mutableStateOf(false) }
 
             MainContainer(
                 mainState = model,
@@ -171,6 +147,39 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
                             )
                             cameraComponent?.setServerURL(serverUrl)
                             cameraComponent!!.startPreview()
+
+                            cameraComponent.cameraCaptureListener =
+                                object : ICameraCaptureListener {
+                                    override fun onLivenessError(e: Throwable) {
+                                        if (e is ConnectionException) {
+                                            Log.d(
+                                                "terra",
+                                                "Network error. Please check you connection ${e.localizedMessage}"
+                                            )
+                                        }
+                                        if (e is ServerResponseException || e is JsonFormatException) {
+                                            Log.d(
+                                                "terra",
+                                                "ServerResponseException ${e.localizedMessage}"
+                                            )
+                                        }
+                                        if (e is CameraException) {
+                                            Log.d("terra", "Error initializing camera")
+                                        }
+                                    }
+
+                                    override fun onLivenessFailed(result: LivenessResult) {
+                                        Log.d("onLivenessFailed", "onLivenessFailed")
+                                    }
+
+                                    override fun onLivenessPassed(result: LivenessResult) {
+                                        buttonAndTextVisibleState.value = true
+                                    }
+
+                                    override fun onUpdateOverlay(direction: Direction, hint: Hint) {
+
+                                    }
+                                }
 
                             val accessToken = registrationPreferences.accessToken
                             val personId = registrationPreferences.personId
@@ -219,27 +228,39 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
                         elevation = 0.dp,
                     )
 
-                    PrimaryButton(
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomCenter)
-                            .padding(
-                                horizontal = Deps.Spacing.standardMargin,
-                                vertical = Deps.Spacing.standardMargin
-                            ),
-                        text = "Продолжить",
-                        color = ComposeColors.Green,
-                        onClick = {
-                             // TODO переход на экран секретных вопросов
+                    ) {
 
-                            /*val data = context.loadFile("scanned_file")
+                        AnimatedVisibility(
+                            visible = buttonAndTextVisibleState.value,
+                            enter = fadeIn(animationSpec = tween(100))
+                        ) {
+
+                            PrimaryButton(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(
+                                        horizontal = Deps.Spacing.standardMargin,
+                                        vertical = Deps.Spacing.standardMargin
+                                    ),
+                                text = "Продолжить",
+                                color = ComposeColors.Green,
+                                onClick = {
+                                    // TODO переход на экран секретных вопросов
+
+                                    /*val data = context.loadFile("scanned_file")
                             intent.verify(
                                 livenessResult = "real",
                                 sessionId = "sessionId",
                                 data = data
                             )*/
+                                }
+                            )
                         }
-                    )
+                    }
                 }
             }
         }

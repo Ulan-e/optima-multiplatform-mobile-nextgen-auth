@@ -49,7 +49,7 @@ import kz.verigram.veridoc.sdk.model.RecognitionMode
 import kz.verigram.veridoc.sdk.ui.CameraCaptureComponent
 import org.koin.androidx.compose.inject
 
-class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
+class DocumentScanActivity : AppCompatActivity() {
 
     private var cameraComponent: CameraCaptureComponent? = null
 
@@ -71,7 +71,6 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
                 }
             }
         }
-        cameraComponent?.setCameraCaptureListener(this)
         VeridocInitializer.init()
     }
 
@@ -91,7 +90,6 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
 
             val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-            val registrationPreferences: RegistrationPreferences by inject()
             val context = LocalContext.current
 
             val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
@@ -116,8 +114,23 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
                             cameraComponent?.setRecognitionMode(RecognitionMode.TWO_SIDED_DOCUMENT)
                             cameraComponent?.setDocumentType(DocumentType.KG_ID)
                             cameraComponent?.setIsGlareCheckNeeded(true)
-                            cameraComponent?.start()
+                            cameraComponent.setCameraCaptureListener(object : ICameraCaptureListener {
+                                override fun onErrorCallback(result: java.util.HashMap<String, String>) {
+                                    Log.d("tag", result.size.toString())
+                                }
 
+                                override fun onLogEventCallback(result: java.util.HashMap<String, String>) {
+                                    result.entries.forEach { (key, value) ->
+                                        Log.d("tag", " key-> $key value-> $value ")
+                                    }
+                                }
+
+                                override fun onSuccessCallback(result: java.util.HashMap<String, String>) {
+                                    buttonAndTextVisibleState.value = true
+                                }
+                            })
+
+                            cameraComponent?.start()
                             rootView
                         }
                     )
@@ -208,20 +221,6 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
                 }
             }
         }
-    }
-
-    override fun onErrorCallback(result: HashMap<String, String>) {
-        Log.d("tag", result.size.toString())
-    }
-
-    override fun onLogEventCallback(result: HashMap<String, String>) {
-        result.entries.forEach { (key, value) ->
-            Log.d("tag", " key-> $key value-> $value ")
-        }
-    }
-
-    override fun onSuccessCallback(result: HashMap<String, String>) {
-        //todo buttonAndTextVisibleState.value = true
     }
 
     override fun onStop() {
