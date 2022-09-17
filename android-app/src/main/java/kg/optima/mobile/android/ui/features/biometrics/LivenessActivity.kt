@@ -18,6 +18,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -28,9 +29,11 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.ui.startContent
+import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.theme.Theme
+import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarContent
@@ -137,10 +140,13 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
             val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
             val registrationPreferences: RegistrationPreferences by inject()
+            val context = LocalContext.current
+            val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
             MainContainer(
                 mainState = model,
                 contentModifier = Modifier.fillMaxSize(),
+                infoState = bottomSheetState.value,
                 contentHorizontalAlignment = Alignment.Start,
             ) {
                 Box(
@@ -148,20 +154,17 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
                         .fillMaxSize(),
                 ) {
 
-
                     AndroidView(
                         modifier = Modifier.fillMaxSize(),
                         factory = { context ->
-                            val myView =
-                                LayoutInflater.from(context)
-                                    .inflate(R.layout.activity_liveness, null, false)
-                            val cameraComponent =
-                                myView.findViewById<CameraCaptureComponent>(R.id.camera_capture_component)
+                            val rootView = LayoutInflater
+                                .from(context)
+                                .inflate(R.layout.activity_liveness, null, false)
+                            val cameraComponent = rootView
+                                .findViewById<CameraCaptureComponent>(R.id.camera_capture_component)
                             cameraComponent?.setConfig(
                                 readTextFile(
-                                    context.resources.openRawResource(
-                                        R.raw.liveness_config_ru
-                                    )
+                                    context.resources.openRawResource(R.raw.liveness_config_ru)
                                 )
                             )
                             cameraComponent?.setServerURL(serverUrl)
@@ -169,9 +172,8 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
 
                             val accessToken = registrationPreferences.accessToken
                             val personId = registrationPreferences.personId
-                            val sessionId =
-                                cameraComponent.startProcessing(accessToken, personId)
-                            myView
+                            val sessionId = cameraComponent.startProcessing(accessToken, personId)
+                            rootView
                         }
                     )
 
@@ -198,7 +200,12 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
                         text = "Продолжить",
                         color = ComposeColors.Green,
                         onClick = {
-                            intent.verify(livenessResult = "real", sessionId = "sessionId")
+                            val data = context.loadFile("scanned_file")
+                            intent.verify(
+                                livenessResult = "real",
+                                sessionId = "sessionId",
+                                data = data
+                            )
                         }
                     )
                 }

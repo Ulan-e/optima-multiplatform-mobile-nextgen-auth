@@ -19,7 +19,6 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
 
     private lateinit var binding: ActivityDocumentScanBinding
     private val tag = DocumentScanActivity::class.java.simpleName
-    private val filename = "scanned_file"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +76,7 @@ class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
     }
 
     private fun saveDocumentContent(content: HashMap<String, String>?) {
-        content?.let { data -> saveFile(filename = filename, data = data) }
+        content?.let { data -> saveFile(filename = "scanned_file", data = data) }
     }
 
     private fun setupCameraCaptureComponent() {

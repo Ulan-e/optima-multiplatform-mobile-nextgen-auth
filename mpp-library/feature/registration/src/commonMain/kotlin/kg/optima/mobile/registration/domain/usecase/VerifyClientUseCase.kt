@@ -24,11 +24,12 @@ class VerifyClientUseCase(
             personId = registrationPreferences.personId!!,
 
             // Получить и отправить отсканированные данные паспорта
-            documentData = VerifyClientRequest(mapOf())
+            documentData = VerifyClientRequest(model.data)
         ).map { response ->
             VerifyClientEntity(
-                success = true,
-                hash = response.data?.hash
+                success = response.isSuccess,
+                hash = response.data?.hash,
+                message = response.message
             )
         }.onSuccess {
             registrationPreferences.accessToken
@@ -37,6 +38,7 @@ class VerifyClientUseCase(
 
     class Params(
         val sessionId: String,
-        val livenessResult: String
+        val livenessResult: String,
+        val data: Map<String, String>
     )
 }
