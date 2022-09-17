@@ -1,8 +1,10 @@
 package kg.optima.mobile.registration
 
 import kg.optima.mobile.base.di.Factory
-import kg.optima.mobile.registration.data.api.RegistrationApi
-import kg.optima.mobile.registration.data.api.RegistrationApiImpl
+import kg.optima.mobile.registration.data.api.registration.RegistrationApi
+import kg.optima.mobile.registration.data.api.registration.RegistrationApiImpl
+import kg.optima.mobile.registration.data.api.verification.VerificationApi
+import kg.optima.mobile.registration.data.api.verification.VerificationApiImpl
 import kg.optima.mobile.registration.data.repository.RegistrationRepository
 import kg.optima.mobile.registration.data.repository.RegistrationRepositoryImpl
 import kg.optima.mobile.registration.domain.CheckPhoneNumberUseCase
@@ -29,7 +31,13 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
 
     override val module: Module = module {
         factory<RegistrationApi> { RegistrationApiImpl(get()) }
-        factory<RegistrationRepository> { RegistrationRepositoryImpl(get()) }
+        factory<VerificationApi> { VerificationApiImpl(get()) }
+        factory<RegistrationRepository> {
+            RegistrationRepositoryImpl(
+                registrationApi = get(),
+                verificationApi = get()
+            )
+        }
 
         factory { CheckPhoneNumberUseCase(get()) }
         factory { CheckSmsCodeUseCase(get()) }

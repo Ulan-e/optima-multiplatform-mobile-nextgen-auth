@@ -50,4 +50,14 @@ abstract class NetworkClient {
 		headers(headers)
 		if (request != null) body = request
 	}
+
+	suspend inline fun<reified Response> get(
+		baseUrl: String,
+		path: String,
+		noinline headers: HeadersBuilder.() -> Unit,
+		params: StringMap
+	) : Response = httpClient.get("$baseUrl/$path"){
+		headers(headers)
+		params.forEach { parameter(it.key, it.value) }
+	}
 }
