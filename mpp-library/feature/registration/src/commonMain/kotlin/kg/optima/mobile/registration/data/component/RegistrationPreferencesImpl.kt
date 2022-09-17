@@ -29,10 +29,10 @@ class RegistrationPreferencesImpl(
             storageRepository.putString(RegistrationPreferences.SESSION_ID, value.orEmpty())
         }
 
-    override var livenessResult: String?
-        get() = storageRepository.getString(RegistrationPreferences.LIVENESS_RESULT)
+    override var hash: String?
+        get() = storageRepository.getString(RegistrationPreferences.HASH)
         set(value) {
-            storageRepository.putString(RegistrationPreferences.LIVENESS_RESULT, value.orEmpty())
+            storageRepository.putString(RegistrationPreferences.HASH, value.orEmpty())
         }
 
     override fun clearAll() {
@@ -40,6 +40,6 @@ class RegistrationPreferencesImpl(
         accessToken = null
         referenceId = null
         personId = null
-        livenessResult = null
+        hash = null
     }
 }

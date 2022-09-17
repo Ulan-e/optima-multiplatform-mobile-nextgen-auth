@@ -3,34 +3,37 @@ package kg.optima.mobile.android.ui.features.biometrics
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.view.isVisible
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
-import cafe.adriel.voyager.navigator.currentOrThrow
+import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
+import com.google.accompanist.insets.ProvideWindowInsets
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.android.ui.features.registration.PasswordScreen
-import kg.optima.mobile.android.ui.features.registration.self_confirm.SelfConfirmScreen
+import kg.optima.mobile.android.ui.startContent
 import kg.optima.mobile.android.utils.readTextFile
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.design_system.android.theme.Theme
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
+import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarContent
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
@@ -54,11 +57,23 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
 
     private var cameraComponent: CameraCaptureComponent? = null
 
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-
+            ProvideWindowInsets {
+                Theme.OptimaTheme {
+                    BottomSheetNavigator(
+                        sheetElevation = 0.dp,
+                        sheetBackgroundColor = Color.Transparent,
+                        sheetShape = RoundedCornerShape(16.dp, 16.dp),
+                        content = {
+                            Navigator(LivenessScreen)
+                        },
+                    )
+                }
+            }
         }
 
         cameraComponent?.cameraCaptureListener = this
@@ -107,62 +122,87 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
     companion object {
         const val serverUrl = "https://veritest.optima24.kg/vl/verilive"
     }
-}
 
-object LivenessScreen : Screen {
+    object LivenessScreen : Screen {
 
-    @Composable
-    override fun Content() {
-        val product = remember {
-            RegistrationFeatureFactory.create<LivenessIntent, LivenessState>()
-        }
+        @Composable
+        override fun Content() {
+            val product = remember {
+                RegistrationFeatureFactory.create<LivenessIntent, LivenessState>()
+            }
 
-        val intent = product.intent
-        val state = product.state
+            val intent = product.intent
+            val state = product.state
 
-        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+            val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-        val registrationPreferences: RegistrationPreferences by inject()
-        val navigator = LocalNavigator.currentOrThrow
+            val registrationPreferences: RegistrationPreferences by inject()
 
-        MainContainer(
-            mainState = model,
-            contentModifier = Modifier.fillMaxSize(),
-            toolbarInfo = ToolbarInfo(
-                navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
-            ),
-            contentHorizontalAlignment = Alignment.Start,
-        ) {
-            AndroidView(
-                modifier = Modifier.fillMaxSize(),
-                factory = { context ->
-                    val myView =
-                        LayoutInflater.from(context)
-                            .inflate(R.layout.activity_liveness, null, false)
-                    val cameraComponent =
-                        myView.findViewById<CameraCaptureComponent>(R.id.camera_capture_component)
-                    cameraComponent?.setConfig(readTextFile(context.resources.openRawResource(R.raw.liveness_config_ru)))
-                    cameraComponent?.setServerURL(LivenessActivity.serverUrl)
-                    cameraComponent!!.startPreview()
+            MainContainer(
+                mainState = model,
+                contentModifier = Modifier.fillMaxSize(),
+                contentHorizontalAlignment = Alignment.Start,
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                ) {
 
-                    val accessToken = registrationPreferences.accessToken
-                    val personId = registrationPreferences.personId
-                    val sessionId = cameraComponent.startProcessing(accessToken, personId)
-                    myView
-                },
-                update = { view -> }
-            )
 
-            PrimaryButton(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = Deps.Spacing.standardMargin),
-                text = "Согласен",
-                color = ComposeColors.Green,
-                onClick = {
-                    navigator.push(SelfConfirmScreen)
+                    AndroidView(
+                        modifier = Modifier.fillMaxSize(),
+                        factory = { context ->
+                            val myView =
+                                LayoutInflater.from(context)
+                                    .inflate(R.layout.activity_liveness, null, false)
+                            val cameraComponent =
+                                myView.findViewById<CameraCaptureComponent>(R.id.camera_capture_component)
+                            cameraComponent?.setConfig(
+                                readTextFile(
+                                    context.resources.openRawResource(
+                                        R.raw.liveness_config_ru
+                                    )
+                                )
+                            )
+                            cameraComponent?.setServerURL(serverUrl)
+                            cameraComponent!!.startPreview()
+
+                            val accessToken = registrationPreferences.accessToken
+                            val personId = registrationPreferences.personId
+                            val sessionId =
+                                cameraComponent.startProcessing(accessToken, personId)
+                            myView
+                        }
+                    )
+
+                    TopAppBar(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.Transparent)
+                            .align(Alignment.TopStart)
+                    ) {
+                        IconButton(onClick = { }) {
+                            Icon(Icons.Filled.Close, contentDescription = "Close")
+                        }
+                        Text("Сканирование лица", fontSize = 18.sp)
+                    }
+
+                    PrimaryButton(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.BottomCenter)
+                            .padding(
+                                horizontal = Deps.Spacing.standardMargin,
+                                vertical = Deps.Spacing.standardMargin
+                            ),
+                        text = "Продолжить",
+                        color = ComposeColors.Green,
+                        onClick = {
+                            intent.verify(livenessResult = "real", sessionId = "sessionId")
+                        }
+                    )
                 }
-            )
+            }
         }
     }
 }

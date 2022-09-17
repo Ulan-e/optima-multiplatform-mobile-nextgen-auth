@@ -9,8 +9,11 @@ import kg.optima.mobile.registration.data.repository.RegistrationRepository
 import kg.optima.mobile.registration.data.repository.RegistrationRepositoryImpl
 import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
 import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
+import kg.optima.mobile.registration.domain.usecase.VerifyClientUseCase
 import kg.optima.mobile.registration.presentation.agreement.AgreementIntent
 import kg.optima.mobile.registration.presentation.agreement.AgreementState
+import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
+import kg.optima.mobile.registration.presentation.liveness.LivenessState
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
@@ -41,6 +44,13 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
             )
         }
 
+        factory {
+            VerifyClientUseCase(
+                registrationRepository = get(),
+                registrationPreferences = get()
+            )
+        }
+
         factory { SmsCodeState() }
         factory { st -> SmsCodeIntent(st.get()) }
 
@@ -52,6 +62,8 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
 
         factory { SelfConfirmState() }
         factory { st -> SelfConfirmIntent(st.get()) }
-    }
 
+        factory { LivenessState() }
+        factory { st -> LivenessIntent(st.get()) }
+    }
 }

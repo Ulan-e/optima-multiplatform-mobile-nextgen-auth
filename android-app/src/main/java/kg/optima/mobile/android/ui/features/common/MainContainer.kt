@@ -29,8 +29,11 @@ fun MainContainer(
     mainState: State.StateModel?,
     infoState: BottomSheetInfo? = null,
     component: Root.Child.Component? = null,
-    toolbarInfo: ToolbarInfo = ToolbarInfo(),
-    contentModifier: Modifier = Modifier,
+    toolbarInfo: ToolbarInfo? = null,
+    contentModifier: Modifier = Modifier
+        .fillMaxSize()
+        .padding(all = Deps.Spacing.standardPadding)
+        .background(ComposeColors.Background),
     contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     content: @Composable ColumnScope.() -> Unit,
 ) {
@@ -85,15 +88,12 @@ fun MainContainer(
 
         Column(
             modifier = Modifier
-				.fillMaxSize()
-				.background(ComposeColors.Background)
+                .fillMaxSize()
+                .background(ComposeColors.Background)
         ) {
-            MainToolbar(toolbarInfo)
+            toolbarInfo?.let { MainToolbar(it) }
             Column(
-                modifier = contentModifier
-					.fillMaxSize()
-					.padding(all = Deps.Spacing.standardPadding)
-					.background(ComposeColors.Background),
+                modifier = contentModifier,
                 horizontalAlignment = contentHorizontalAlignment,
                 content = content,
             )
