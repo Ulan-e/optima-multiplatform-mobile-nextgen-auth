@@ -14,5 +14,5 @@ object Constants {
 	const val PASSWORD_LENGTH = 8
 	const val CONTROL_ANSWER_LENGTH = 5
 
-	const val SMS_CODE_TIMEOUT = 60
+	const val SMS_CODE_TIMEOUT: Int = 60
 }

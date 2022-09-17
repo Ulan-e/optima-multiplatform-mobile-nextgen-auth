@@ -28,6 +28,8 @@ import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
+import kg.optima.mobile.design_system.android.utils.resources.sp
+import kg.optima.mobile.resources.Headings
 import kg.optima.mobile.resources.images.MainImages
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -39,6 +41,7 @@ fun CodeInput(
 	length: Int = Constants.PIN_LENGTH,
 	value: String = "",
 	withKeyboard: Boolean = false,
+	showValue : Boolean = false,
 	isValid: Boolean = true,
 	onValueChanged: (String) -> Unit = {},
 	onInputCompleted: (String) -> Unit = {},
@@ -82,6 +85,7 @@ fun CodeInput(
 	) {
 		repeat(length) {
 			OtpCell(
+				showValue = showValue,
 				modifier = modifier.clickable {
 					if (withKeyboard) {
 						focusRequester.requestFocus()
@@ -94,6 +98,10 @@ fun CodeInput(
 					value.length > it -> CellStatus.Filled
 					else -> CellStatus.Empty
 				},
+				value = when {
+					value.length > it -> value[it].toString()
+					else -> null
+				}
 			)
 		}
 	}
@@ -101,6 +109,8 @@ fun CodeInput(
 
 @Composable
 private fun OtpCell(
+	showValue : Boolean,
+	value : String?,
 	modifier: Modifier = Modifier,
 	cellStatus: CellStatus,
 ) {
@@ -150,14 +160,25 @@ private fun OtpCell(
 					fontSize = Deps.TextSize.codeInputSymbol,
 					style = TextStyle(fontWeight = FontWeight.W200),
 				)
-				CellStatus.Filled -> Icon(
-					modifier = Modifier
-						.size(Deps.Size.pinDotSize)
-						.align(Alignment.Center),
-					painter = painterResource(id = MainImages.dot.resId()),
-					contentDescription = emptyString,
-					tint = ComposeColors.PrimaryBlack,
-				)
+				CellStatus.Filled ->
+					if (showValue) {
+						Text(modifier = Modifier
+							.align(Alignment.Center),
+							text = value ?: emptyString,
+							fontSize = Headings.H1.sp,
+							fontWeight = FontWeight.Medium
+						)
+					} else {
+						Icon(
+							modifier = Modifier
+								.size(Deps.Size.pinDotSize)
+								.align(Alignment.Center),
+							painter = painterResource(id = MainImages.dot.resId()),
+							contentDescription = emptyString,
+							tint = ComposeColors.PrimaryBlack,
+						)
+					}
+
 			}
 		}
 	}

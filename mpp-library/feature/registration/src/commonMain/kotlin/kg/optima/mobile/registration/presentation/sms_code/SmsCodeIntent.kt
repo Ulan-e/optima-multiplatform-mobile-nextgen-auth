@@ -29,8 +29,8 @@ class SmsCodeIntent(
 		}
 	}
 
-	fun smsCodeReRequest(phoneNumber: String) {
-		startTimeout()
+	fun smsCodeReRequest(timeout : Int, phoneNumber: String) {
+		startTimeout(timeout)
 		launchOperation {
 			checkPhoneNumberUseCase.execute(phoneNumber).map {
 				CheckSmsCodeInfo.ReRequest(it.success)
@@ -38,14 +38,13 @@ class SmsCodeIntent(
 		}
 	}
 
-	fun startTimeout() {
+	fun startTimeout(timeout : Int) {
+		var timer = timeout
 		launchOperation {
-			var timeout = 10
-			//TODO: timeout
-			while (timeout > 0) {
-				state.handle(CheckSmsCodeInfo.Timeout(timeout))
+			while (timer >= 0) {
+				state.handle(CheckSmsCodeInfo.Timeout(timer))
 				delay(1000)
-				timeout--
+				timer--
 			}
 			Either.Right(CheckSmsCodeInfo.EnableReRequest)
 		}
