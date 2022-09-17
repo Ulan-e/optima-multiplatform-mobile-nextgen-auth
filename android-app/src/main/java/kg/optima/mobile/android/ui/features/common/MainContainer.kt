@@ -1,9 +1,5 @@
 package kg.optima.mobile.android.ui.features.common
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,6 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.permissions.PermissionsController
 import kg.optima.mobile.android.ui.base.Router
 import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.base.presentation.State
@@ -43,6 +40,7 @@ fun MainContainer(
 	content: @Composable ColumnScope.() -> Unit,
 ) {
 	val router: Router by inject()
+	val permissionsController: PermissionsController by inject()
 
 	val navigator = LocalNavigator.currentOrThrow
 	val bottomSheetNavigator = LocalBottomSheetNavigator.current
@@ -89,7 +87,7 @@ fun MainContainer(
 									text = "Настройки",
 									composeColor = ComposeColor.composeColor(ComposeColors.Green),
 									onClickListener = ButtonView.OnClickListener.onClickListener {
-										context.openDeviceSettings()
+										permissionsController.openAppSettings()
 									}
 								),
 								ButtonView.Primary(
@@ -150,12 +148,4 @@ fun MainContainer(
 			)
 		}
 	}
-}
-
-fun Context.openDeviceSettings() {
-	val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-		.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-	val uri = Uri.fromParts("package", packageName, null)
-	intent.data = uri
-	startActivity(intent)
 }

@@ -27,7 +27,7 @@ abstract class Intent<in E>(
 	open fun pop() = state.pop()
 
 	open fun requestPermissions(permissions: List<Permission>) {
-		coroutineScope.launch {
+		coroutineScope.launch(handler) {
 			val acceptedPermissions: MutableList<Permission> = mutableListOf()
 			val customPermissionRequiredPermissions: MutableList<Permission> = mutableListOf()
 
