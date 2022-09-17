@@ -2,89 +2,230 @@ package kg.optima.mobile.android.ui.features.biometrics
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
+import android.view.LayoutInflater
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import kg.optima.mobile.android.utils.saveFile
-import kg.optima.mobile.databinding.ActivityDocumentScanBinding
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
+import com.google.accompanist.insets.ProvideWindowInsets
+import kg.optima.mobile.R
+import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.design_system.android.theme.Theme
+import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
+import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.registration.RegistrationFeatureFactory
+import kg.optima.mobile.registration.data.component.RegistrationPreferences
+import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
+import kg.optima.mobile.registration.presentation.liveness.LivenessState
+import kg.optima.mobile.resources.Headings
+import kz.verigram.veridoc.sdk.VeridocInitializer
 import kz.verigram.veridoc.sdk.dependency.ICameraCaptureListener
 import kz.verigram.veridoc.sdk.model.DocumentType
 import kz.verigram.veridoc.sdk.model.Language
 import kz.verigram.veridoc.sdk.model.RecognitionMode
-import kz.verigram.verilive.sdk.LivenessInitializer
+import kz.verigram.veridoc.sdk.ui.CameraCaptureComponent
+import org.koin.androidx.compose.inject
 
 class DocumentScanActivity : AppCompatActivity(), ICameraCaptureListener {
 
-    private lateinit var binding: ActivityDocumentScanBinding
-    private val tag = DocumentScanActivity::class.java.simpleName
+    private var cameraComponent: CameraCaptureComponent? = null
 
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDocumentScanBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        binding.btnBack.setOnClickListener {
-            // TODO Показать диалог
+        setContent {
+            ProvideWindowInsets {
+                Theme.OptimaTheme {
+                    BottomSheetNavigator(
+                        sheetElevation = 0.dp,
+                        sheetBackgroundColor = Color.Transparent,
+                        sheetShape = RoundedCornerShape(16.dp, 16.dp),
+                        content = {
+                            Navigator(DocumentScanScreen)
+                        },
+                    )
+                }
+            }
         }
-        setupCameraCaptureComponent()
-        setBtnContinueClickListener()
-    }
-
-    override fun onSuccessCallback(result: HashMap<String, String>) {
-        saveDocumentContent(content = result)
-        binding.btnContinue.isVisible = true
-        binding.textSuccess.isVisible = true
-        Log.d(tag, result.size.toString())
-    }
-
-    override fun onLogEventCallback(result: HashMap<String, String>) {
-        result.entries.forEach { (key, value) ->
-            Log.d(tag, " key-> $key value-> $value ")
-        }
-    }
-
-    override fun onErrorCallback(result: HashMap<String, String>) {
-        Log.d(tag, result.size.toString())
-    }
-
-    override fun onResume() {
-        super.onResume()
-        binding.cameraCaptureDoc.start()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        binding.cameraCaptureDoc.stop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        binding.cameraCaptureDoc.destroy()
+        cameraComponent?.setCameraCaptureListener(this)
+        VeridocInitializer.init()
     }
 
     override fun onBackPressed() {
         // TODO Показать диалог
     }
 
-    private fun setBtnContinueClickListener() {
-        binding.btnContinue.setOnClickListener {
-            LivenessInitializer.init()
-            startActivity(Intent(this, LivenessActivity::class.java))
+    object DocumentScanScreen : Screen {
+        @Composable
+        override fun Content() {
+            val product = remember {
+                RegistrationFeatureFactory.create<LivenessIntent, LivenessState>()
+            }
+
+            val intent = product.intent
+            val state = product.state
+
+            val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+
+            val registrationPreferences: RegistrationPreferences by inject()
+            val context = LocalContext.current
+
+            val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+            val buttonAndTextVisibleState = remember { mutableStateOf(false) }
+
+            MainContainer(
+                mainState = model,
+                infoState = bottomSheetState.value,
+                contentModifier = Modifier.fillMaxSize(),
+                contentHorizontalAlignment = Alignment.Start,
+            ) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    AndroidView(
+                        modifier = Modifier.fillMaxSize(),
+                        factory = { context ->
+                            val rootView = LayoutInflater.from(context)
+                                .inflate(R.layout.activity_document_scan, null, false)
+                            val cameraComponent = rootView
+                                .findViewById<CameraCaptureComponent>(R.id.camera_capture_doc)
+
+                            cameraComponent?.setLanguage(Language.RU)
+                            cameraComponent?.setRecognitionMode(RecognitionMode.TWO_SIDED_DOCUMENT)
+                            cameraComponent?.setDocumentType(DocumentType.KG_ID)
+                            cameraComponent?.setIsGlareCheckNeeded(true)
+                            cameraComponent?.start()
+
+                            rootView
+                        }
+                    )
+
+                    TopAppBar(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.TopStart),
+                        title = {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Сканирование паспорта",
+                                    fontSize = Headings.H3.px.sp,
+                                    maxLines = 1,
+                                    textAlign = TextAlign.Center,
+                                    color = ComposeColors.PrimaryWhite,
+                                )
+                            }
+                        },
+                        navigationIcon = {
+                            IconButton(onClick = {
+                                bottomSheetState.value = showBottomSheetDialog(
+                                    positiveButton = {},
+                                    negativeButton = { bottomSheetState.value = null }
+                                )
+                            }) {
+                                Icon(
+                                    imageVector = Icons.Filled.Close,
+                                    contentDescription = null,
+                                    tint = ComposeColors.PrimaryWhite,
+                                )
+                            }
+                        },
+                        actions = {
+                            Spacer(Modifier.width(64.dp))
+                        },
+                        backgroundColor = ComposeColors.PrimaryBlack,
+                        elevation = 0.dp,
+                    )
+
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.BottomCenter)
+                    ) {
+                        AnimatedVisibility(
+                            visible = buttonAndTextVisibleState.value,
+                            enter = fadeIn(animationSpec = tween(100))
+                        ) {
+                            Text(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(
+                                        start = Deps.Spacing.standardMargin,
+                                        end = Deps.Spacing.standardMargin,
+                                        bottom = 180.dp
+                                    ),
+                                text = "Готово!",
+                                fontSize = Headings.H3.px.sp,
+                                fontWeight = FontWeight.Bold,
+                                maxLines = 1,
+                                textAlign = TextAlign.Center,
+                                color = ComposeColors.Green,
+                            )
+
+                            PrimaryButton(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(
+                                        start = Deps.Spacing.standardMargin,
+                                        end = Deps.Spacing.standardMargin,
+                                        top = 94.dp
+                                    ),
+                                text = "Продолжить",
+                                color = ComposeColors.Green,
+                                onClick = {
+                                    val livenessIntent =
+                                        Intent(context, LivenessActivity::class.java)
+                                    context.startActivity(livenessIntent)
+                                }
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
 
-    private fun saveDocumentContent(content: HashMap<String, String>?) {
-        content?.let { data -> saveFile(filename = "scanned_file", data = data) }
+    override fun onErrorCallback(result: HashMap<String, String>) {
+        Log.d("tag", result.size.toString())
     }
 
-    private fun setupCameraCaptureComponent() {
-        binding.cameraCaptureDoc.apply {
-            setLanguage(Language.RU)
-            setRecognitionMode(RecognitionMode.TWO_SIDED_DOCUMENT)
-            setDocumentType(DocumentType.KG_ID)
-            setIsGlareCheckNeeded(true)
+    override fun onLogEventCallback(result: HashMap<String, String>) {
+        result.entries.forEach { (key, value) ->
+            Log.d("tag", " key-> $key value-> $value ")
         }
+    }
+
+    override fun onSuccessCallback(result: HashMap<String, String>) {
+        //todo buttonAndTextVisibleState.value = true
+    }
+
+    override fun onStop() {
+        cameraComponent?.stop()
+        super.onStop()
     }
 }

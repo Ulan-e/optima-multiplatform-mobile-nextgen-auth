@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -44,6 +45,7 @@ import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
 import kg.optima.mobile.registration.presentation.liveness.LivenessState
+import kg.optima.mobile.resources.Headings
 import kz.verigram.verilive.sdk.LivenessInitializer
 import kz.verigram.verilive.sdk.data.verification.entities.LivenessResult
 import kz.verigram.verilive.sdk.domain.CameraException
@@ -180,14 +182,42 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
                     TopAppBar(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(Color.Transparent)
-                            .align(Alignment.TopStart)
-                    ) {
-                        IconButton(onClick = { }) {
-                            Icon(Icons.Filled.Close, contentDescription = "Close")
-                        }
-                        Text("Сканирование лица", fontSize = 18.sp)
-                    }
+                            .align(Alignment.TopStart),
+                        title = {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Сканирование лица",
+                                    fontSize = Headings.H3.px.sp,
+                                    maxLines = 1,
+                                    textAlign = TextAlign.Center,
+                                    color = ComposeColors.PrimaryWhite,
+                                )
+                            }
+                        },
+                        navigationIcon = {
+                            IconButton(onClick = {
+                                bottomSheetState.value = showBottomSheetDialog(
+                                    positiveButton = {},
+                                    negativeButton = { bottomSheetState.value = null }
+                                )
+                            }) {
+                                Icon(
+                                    imageVector = Icons.Filled.Close,
+                                    contentDescription = null,
+                                    tint = ComposeColors.PrimaryWhite,
+                                )
+                            }
+                        },
+                        actions = {
+                            Spacer(Modifier.width(64.dp))
+                        },
+                        backgroundColor = ComposeColors.PrimaryBlack,
+                        elevation = 0.dp,
+                    )
 
                     PrimaryButton(
                         modifier = Modifier

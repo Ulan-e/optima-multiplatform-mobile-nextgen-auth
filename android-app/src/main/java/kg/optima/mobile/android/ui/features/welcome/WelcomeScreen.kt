@@ -87,9 +87,9 @@ object WelcomeScreen : BaseScreen {
 					),
                 text = "Зарегистрироваться",
                 onClick = {
-                    intent.register()
-                  //  LivenessInitializer.init()
-                  //  context.startActivity(Intent(context, LivenessActivity::class.java))
+                   // intent.register()
+                    LivenessInitializer.init()
+                    context.startActivity(Intent(context, LivenessActivity::class.java))
                 },
             )
             Text(
