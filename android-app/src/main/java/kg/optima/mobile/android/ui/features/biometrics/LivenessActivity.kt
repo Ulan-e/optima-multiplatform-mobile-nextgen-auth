@@ -200,12 +200,14 @@ class LivenessActivity : AppCompatActivity(), ICameraCaptureListener {
                         text = "Продолжить",
                         color = ComposeColors.Green,
                         onClick = {
-                            val data = context.loadFile("scanned_file")
+                             // TODO переход на экран секретных вопросов
+
+                            /*val data = context.loadFile("scanned_file")
                             intent.verify(
                                 livenessResult = "real",
                                 sessionId = "sessionId",
                                 data = data
-                            )
+                            )*/
                         }
                     )
                 }
