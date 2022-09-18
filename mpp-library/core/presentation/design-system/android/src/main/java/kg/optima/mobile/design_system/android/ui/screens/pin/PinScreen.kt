@@ -19,8 +19,7 @@ fun PinScreen(
 	actionCell: ActionCell,
 ) {
 	Column(
-		modifier = Modifier
-			.fillMaxSize(),
+		modifier = Modifier.fillMaxSize(),
 		horizontalAlignment = Alignment.CenterHorizontally,
 		verticalArrangement = Arrangement.Center,
 	) {
@@ -32,10 +31,8 @@ fun PinScreen(
 		)
 		Spacer(modifier = Modifier.weight(1f))
 		NumberPad(
-			modifier = Modifier.padding(
-				start = Deps.Spacing.numPadXMargin,
-				end = Deps.Spacing.numPadXMargin,
-			),
+			modifier = Modifier
+				.padding(horizontal = Deps.Spacing.numPadXMargin),
 			onClick = { type ->
 				when (type) {
 					is Cell.Img -> {
@@ -48,7 +45,8 @@ fun PinScreen(
 					is Cell.Num -> {
 						codeState.value = codeState.value + type.num
 					}
-					is Cell.Text -> Unit
+					is Cell.Text -> type.onClick(type)
+					else -> Unit
 				}
 			},
 			actionCell = actionCell.cell,

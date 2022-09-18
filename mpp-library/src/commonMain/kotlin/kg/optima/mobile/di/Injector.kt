@@ -14,7 +14,7 @@ object Injector {
 
 	private val commonModules: List<Module> = listOf(
 		NetworkFactory.module,
-		StorageFactory.module
+		StorageFactory.module,
 	)
 
 	private val featureModules: List<Module> = listOf(

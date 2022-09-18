@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import dev.icerock.moko.parcelize.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
@@ -23,11 +24,12 @@ import kg.optima.mobile.design_system.android.ui.input.InputField
 import kg.optima.mobile.design_system.android.ui.input.PasswordInput
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
+import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarContent
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 
-
+@Parcelize
 class LoginScreen(
 	private val nextScreenModel: ScreenModel,
 ) : BaseScreen {
@@ -65,7 +67,8 @@ class LoginScreen(
 		MainContainer(
 			mainState = model,
 			toolbarInfo = ToolbarInfo(
-				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
+				navigationIcon = NavigationIcon(onBackClick = { intent.pop() }),
+				content = ToolbarContent.Nothing,
 			),
 			contentModifier = Modifier.background(ComposeColors.Background),
 			contentHorizontalAlignment = Alignment.Start,

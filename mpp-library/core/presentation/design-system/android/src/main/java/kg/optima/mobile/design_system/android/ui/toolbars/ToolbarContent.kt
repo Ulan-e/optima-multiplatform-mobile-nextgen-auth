@@ -50,4 +50,9 @@ sealed interface ToolbarContent {
 			)
 		}
 	}
+
+	object Nothing : ToolbarContent {
+		override val view: @Composable () -> Unit = {}
+		override val modifier: Modifier = Modifier
+	}
 }

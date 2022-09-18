@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.welcome
 
+import androidx.compose.foundation.layout.*
 import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,12 +8,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.biometrics.LivenessActivity
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -26,10 +28,8 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
-import kz.verigram.verilive.sdk.LivenessInitializer
-import kz.verigram.verilive.sdk.data.verification.entities.LivenessResult
 
-
+@Parcelize
 object WelcomeScreen : BaseScreen {
 
     @Composable
@@ -52,9 +52,8 @@ object WelcomeScreen : BaseScreen {
             toolbarInfo = ToolbarInfo(navigationIcon = null),
         ) {
             Column(
-                modifier = Modifier
-                    .wrapContentSize()
-                    .weight(1f),
+				modifier = Modifier.weight(1f),
+				horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = "Добро пожаловать!",
@@ -85,25 +84,21 @@ object WelcomeScreen : BaseScreen {
 						top = Deps.Spacing.standardMargin,
 						bottom = Deps.Spacing.standardMargin,
 					),
-                text = "Зарегистрироваться",
-                onClick = {
-                    intent.register()
-                   // LivenessInitializer.init()
-                   // context.startActivity(Intent(context, LivenessActivity::class.java))
-                },
-            )
-            Text(
-                text = "Версия $appVersion",
-                fontSize = Headings.H6.sp,
-                color = ComposeColors.DescriptionGray,
-            )
-        }
-    }
+				text = "Зарегистрироваться",
+				onClick = { intent.register() },
+			)
+			Text(
+				text = "Версия $appVersion",
+				fontSize = Headings.H6.sp,
+				color = ComposeColors.DescriptionGray,
+			)
+		}
+	}
 }
 
 
 @Preview
 @Composable
 private fun WelcomeScreenPreview() {
-    WelcomeScreen.Content()
+	WelcomeScreen.Content()
 }

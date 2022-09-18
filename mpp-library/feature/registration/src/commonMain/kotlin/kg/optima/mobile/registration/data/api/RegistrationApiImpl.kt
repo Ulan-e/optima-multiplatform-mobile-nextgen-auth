@@ -30,7 +30,10 @@ class RegistrationApiImpl(
 //		)
 	}
 
-	override suspend fun checkSmsCode(codeCheckRequest: CodeCheckRequest, referenceId: String): BaseDto<CheckCodeDto> =
+	override suspend fun checkSmsCode(
+		codeCheckRequest: CodeCheckRequest,
+		referenceId: String
+	): BaseDto<CheckCodeDto> =
 		post(
 			path = "vl/check-code",
 			headers = {
@@ -61,6 +64,26 @@ class RegistrationApiImpl(
 				append("person-id", personId)
 			},
 			request = verifyClientRequest,
+		)
+
+	override suspend fun getQuestions(): BaseDto<List<QuestionDto>> =
+		post(
+			path = "api/registration/questions",
+			headers = {
+				append(HttpHeaders.AcceptLanguage, "ru-RU")
+				append(HttpHeaders.UserAgent, userAgent())
+			},
+			request = null,
+		)
+
+	override suspend fun register(registrationRequest: RegistrationRequest): BaseDto<String> =
+		post(
+			path = "vl/check-code",
+			headers = {
+				append(HttpHeaders.AcceptLanguage, "ru-RU")
+				append(HttpHeaders.UserAgent, userAgent())
+			},
+			request = registrationRequest,
 		)
 
 }

@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import kg.optima.mobile.registration.presentation.password.PasswordValidityModel
+import kg.optima.mobile.registration.presentation.create_password.validity.PasswordValidityModel
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.utils.resources.sp

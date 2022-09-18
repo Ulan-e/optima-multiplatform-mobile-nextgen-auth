@@ -1,12 +1,14 @@
 package kg.optima.mobile.registration.presentation.self_confirm
 
+import dev.icerock.moko.permissions.PermissionsController
 import kg.optima.mobile.base.presentation.Intent
 import kg.optima.mobile.registration.presentation.self_confirm.model.AnimationModel
 import kg.optima.mobile.registration.presentation.self_confirm.model.Res
 
 class SelfConfirmIntent(
-    override val state: SelfConfirmState
-) : Intent<SelfConfirmModel>() {
+    override val state: SelfConfirmState,
+    permissionsController: PermissionsController,
+) : Intent<SelfConfirmModel>(permissionsController = permissionsController) {
 
     fun onNext() = state.handle(SelfConfirmModel.NextScreen)
 

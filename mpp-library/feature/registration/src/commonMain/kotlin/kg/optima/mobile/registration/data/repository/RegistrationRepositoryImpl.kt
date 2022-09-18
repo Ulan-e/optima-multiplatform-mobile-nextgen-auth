@@ -9,10 +9,13 @@ import kg.optima.mobile.registration.data.api.model.CodeCheckRequest
 import kg.optima.mobile.registration.data.api.model.PhoneCheckRequest
 import kg.optima.mobile.registration.data.api.model.VerifyClientDto
 import kg.optima.mobile.registration.data.api.model.VerifyClientRequest
+import kg.optima.mobile.registration.data.api.model.RegistrationRequest
+
 
 class RegistrationRepositoryImpl(
 	private val registrationApi: RegistrationApi,
 ) : RegistrationRepository, BaseDataSource() {
+
 	override suspend fun checkPhoneNumber(phoneNumber: String) = apiCall {
 		registrationApi.checkPhoneNumber(PhoneCheckRequest(phoneNumber))
 	}
@@ -29,7 +32,6 @@ class RegistrationRepositoryImpl(
 		personId: String,
 		documentData: VerifyClientRequest
 	): Either<Failure, BaseDto<VerifyClientDto>> = apiCall {
-
 		registrationApi.verifyClient(
 			referenceId,
 			sessionId,
@@ -38,6 +40,19 @@ class RegistrationRepositoryImpl(
 			personId,
 			documentData
 		)
+	}
+
+	override suspend fun getQuestions() = apiCall {
+		registrationApi.getQuestions()
+	}
+
+	override suspend fun register(
+		hash: String,
+		hashPassword: String,
+		questionId: String,
+		answer: String
+	): Either<Failure, BaseDto<String>> = apiCall{
+		registrationApi.register(RegistrationRequest(hash, hashPassword, questionId, answer))
 	}
 
 }

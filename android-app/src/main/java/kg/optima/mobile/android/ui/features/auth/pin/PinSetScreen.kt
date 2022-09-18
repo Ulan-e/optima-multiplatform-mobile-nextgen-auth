@@ -1,6 +1,7 @@
 package kg.optima.mobile.android.ui.features.auth.pin
 
 import androidx.compose.runtime.*
+import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
@@ -12,6 +13,7 @@ import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
 import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
 import kg.optima.mobile.design_system.android.ui.screens.pin.headers.pinSetScreenHeader
 
+@Parcelize
 class PinSetScreen(
 	private val nextScreenModel: ScreenModel,
 ) : BaseScreen {

@@ -25,4 +25,10 @@ abstract class RegistrationApi(
 		personId: String,
 		verifyClientRequest: VerifyClientRequest
 	): BaseDto<VerifyClientDto>
+
+	abstract suspend fun getQuestions() : BaseDto<List<QuestionDto>>
+
+	abstract suspend fun register(
+		registrationRequest: RegistrationRequest
+	) : BaseDto<String>
 }

@@ -11,6 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.core.screen.Screen
+import dev.icerock.moko.permissions.Permission
+import dev.icerock.moko.permissions.PermissionsController
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
@@ -28,12 +30,12 @@ import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
 import kotlinx.coroutines.delay
+import org.koin.androidx.compose.inject
 import kz.verigram.veridoc.sdk.VeridocInitializer
 
 
 @Suppress("SameParameterValue")
 object SelfConfirmScreen : Screen {
-
 	@Composable
 	override fun Content() {
 		val product = remember {
@@ -46,7 +48,7 @@ object SelfConfirmScreen : Screen {
 
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-		var items by remember { mutableStateOf<List<FadeInAnimModel>>(listOf()) }
+		var items by remember { mutableStateOf<List<FadeInAnimModel>>(emptyList()) }
 		var buttonEnabled by remember { mutableStateOf(false) }
 
 		when (val selfConfirmStateModel = model) {
@@ -62,7 +64,7 @@ object SelfConfirmScreen : Screen {
 		}
 
 		MainContainer(
-			mainState = null,
+			mainState = model,
 			toolbarInfo = ToolbarInfo(
 				navigationIcon = NavigationIcon(onBackClick = { })
 			),

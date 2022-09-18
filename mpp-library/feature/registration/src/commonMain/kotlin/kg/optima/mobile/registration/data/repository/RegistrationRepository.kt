@@ -7,6 +7,7 @@ import kg.optima.mobile.registration.data.api.model.CheckCodeDto
 import kg.optima.mobile.registration.data.api.model.VerifyClientRequest
 import kg.optima.mobile.registration.data.api.model.PhoneCheckDto
 import kg.optima.mobile.registration.data.api.model.VerifyClientDto
+import kg.optima.mobile.registration.data.api.model.QuestionDto
 
 
 interface RegistrationRepository {
@@ -25,4 +26,13 @@ interface RegistrationRepository {
         personId: String,
         documentData: VerifyClientRequest
     ): Either<Failure, BaseDto<VerifyClientDto>>
+
+	suspend fun getQuestions(): Either<Failure, BaseDto<List<QuestionDto>>>
+
+	suspend fun register(
+		hash: String,
+		hashPassword: String,
+		questionId: String,
+		answer: String,
+	): Either<Failure, BaseDto<String>>
 }

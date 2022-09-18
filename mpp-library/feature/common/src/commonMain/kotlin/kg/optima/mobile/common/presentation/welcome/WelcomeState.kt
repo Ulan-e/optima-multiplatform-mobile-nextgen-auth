@@ -5,7 +5,7 @@ import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
 import kg.optima.mobile.feature.main.BottomNavScreenModel
-import kg.optima.mobile.feature.register.RegistrationScreenModel
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 class WelcomeState : State<WelcomeEntity>() {
 

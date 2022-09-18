@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonSecondaryType
-import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
@@ -31,14 +30,17 @@ fun SecondaryButton(
 				color = Color.Companion.Transparent,
 				shape = RoundedCornerShape(Deps.cornerRadius * 2)
 			),
-		border = BorderStroke(width = Deps.borderStroke, color = buttonType.color),
+		border = BorderStroke(
+			width = Deps.borderStroke,
+			color = buttonType.composeColor.colorParameter.color
+		),
 		enabled = enabled,
 		onClick = onClick,
 	) {
 		Text(
 			text = text,
 			fontSize = fontSize.sp,
-			color = buttonType.color,
+			color = buttonType.composeColor.colorParameter.color,
 		)
 	}
 }

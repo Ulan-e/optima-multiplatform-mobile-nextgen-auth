@@ -4,6 +4,8 @@ plugins {
     id("com.android.library")
 
     kotlin("plugin.serialization")
+    id("kotlinx-serialization")
+    id("kotlin-parcelize")
 }
 
 version = "1.0"
@@ -28,6 +30,7 @@ kotlin {
             dependencies {
                 implementation(project(":mpp-library:core"))
                 implementation(libs.kotlinSerialization)
+                implementation("com.arkivanov.essenty:parcelable:0.6.0")
             }
         }
         val commonTest by getting {

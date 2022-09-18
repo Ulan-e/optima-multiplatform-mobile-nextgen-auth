@@ -12,7 +12,7 @@ fun MainContent(mainComponent: MainComponent) {
 
 	mainComponent.items.filterIsInstance<MainScreenModel>().forEach {
 		val screen = when (it) {
-			is MainScreenModel.Main -> MainScreen(mainComponent)
+			is MainScreenModel.Main -> MainScreen(/*mainComponent*/)
 		}
 		screens.add(screen)
 	}

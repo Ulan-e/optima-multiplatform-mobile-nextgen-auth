@@ -1,4 +1,4 @@
-package kg.optima.mobile.registration.presentation.password
+package kg.optima.mobile.registration.presentation.create_password.validity
 
 import kg.optima.mobile.core.common.Constants
 
@@ -18,6 +18,10 @@ object PasswordValidator {
 				isValid = (password.length >= Constants.PASSWORD_LENGTH)
 			)
 		)
+	}
+
+	fun compare(password: String, repassword: String): Boolean {
+		return password.compareTo(repassword) == 0
 	}
 
 	private fun checkNumber(password: String): Boolean {
