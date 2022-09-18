@@ -11,7 +11,6 @@ import kg.optima.mobile.registration.data.api.model.PhoneCheckRequest
 import kg.optima.mobile.registration.data.api.model.RegistrationRequest
 import kg.optima.mobile.registration.data.api.verification.VerificationApi
 
-
 class RegistrationRepositoryImpl(
     private val registrationApi: RegistrationApi,
     private val verificationApi: VerificationApi
@@ -23,8 +22,7 @@ class RegistrationRepositoryImpl(
 
     override suspend fun checkSmsCode(
         phoneNumber: String,
-        smsCode: String, referenceId:
-        String
+        smsCode: String, referenceId: String
     ): Either<Failure, BaseDto<CheckCodeDto>> = apiCall {
         verificationApi.checkSmsCode(CodeCheckRequest(phoneNumber, smsCode), referenceId)
     }
