@@ -12,6 +12,12 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+    targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
+        binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework> {
+            isStatic = false
+        }
+    }
+
     cocoapods {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
@@ -25,7 +31,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.ktorClient)
-                implementation("com.arkivanov.essenty:parcelable:0.6.0")
+                api("com.arkivanov.essenty:lifecycle:0.6.0")
                 api("com.soywiz.korlibs.krypto:krypto:2.7.0")
             }
         }

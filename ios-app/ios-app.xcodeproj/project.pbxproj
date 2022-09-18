@@ -436,6 +436,7 @@
 			baseConfigurationReference = B37F2F2726E0C5FE0054DB95 /* ios-app.dev-debug.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 			};
 			name = "dev-debug";
 		};
@@ -444,6 +445,7 @@
 			baseConfigurationReference = B37F2F2A26E0C6330054DB95 /* ios-app.dev-release.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = "dev-release";
@@ -479,6 +481,7 @@
 			baseConfigurationReference = B37F2F2926E0C6290054DB95 /* ios-app.stage-debug.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 			};
 			name = "stage-debug";
 		};
@@ -497,6 +500,7 @@
 			baseConfigurationReference = B37F2F2826E0C60B0054DB95 /* ios-app.prod-debug.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 			};
 			name = "prod-debug";
 		};
@@ -515,6 +519,7 @@
 			baseConfigurationReference = B37F2F2B26E0C6580054DB95 /* ios-app.prod-release.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = "prod-release";
@@ -534,6 +539,7 @@
 			baseConfigurationReference = B37F2F2C26E0C6720054DB95 /* ios-app.stage-release.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = "stage-release";

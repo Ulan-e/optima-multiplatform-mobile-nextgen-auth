@@ -8,6 +8,7 @@ class CreatePasswordState : State<CreatePasswordModel>() {
 		when (entity) {
 			is CreatePasswordModel.Validate -> CreatePasswordStateModel.ValidationResult(entity.list)
 			is CreatePasswordModel.Comparison -> CreatePasswordStateModel.ComparisonResult(entity.matches)
+			CreatePasswordModel.Submit -> Unit
 		}
 	}
 

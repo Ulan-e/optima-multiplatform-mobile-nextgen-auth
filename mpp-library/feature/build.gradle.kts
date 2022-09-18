@@ -30,7 +30,7 @@ kotlin {
             dependencies {
                 implementation(project(":mpp-library:core"))
                 implementation(libs.kotlinSerialization)
-                implementation("com.arkivanov.essenty:parcelable:0.6.0")
+                api("com.arkivanov.essenty:lifecycle:0.6.0")
             }
         }
         val commonTest by getting {
