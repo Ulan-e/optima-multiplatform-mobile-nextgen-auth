@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.registration.sms_otp
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -52,8 +53,11 @@ class OtpScreen(
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
 		when (val model = model) {
-			is SmsCodeState.SmsCodeStateModel.InvalidCodeError -> {
-				errorState.value = model.error
+			is State.StateModel.Error.BaseError -> {
+				codeState.value = emptyString
+				//TODO: mockup
+//				errorState.value = model.error
+				errorState.value = "1234"
 				if (triesCountState.value <= 0) {
 					bottomSheetState.value = BottomSheetInfo(
 						content = {
@@ -81,8 +85,6 @@ class OtpScreen(
 			}
 			is SmsCodeState.SmsCodeStateModel.Timeout -> {
 				timeoutState.value = model.timeout
-			}
-			is State.StateModel.Error.BaseError -> {
 			}
 		}
 
@@ -121,10 +123,13 @@ class OtpScreen(
 				value = codeState.value,
 				showValue = true,
 				onValueChanged = {
+					if (errorState.value != emptyString) {
+					errorState.value = emptyString
+				}
 					if (triesCountState.value > 0) {
 						codeState.value = it
-						errorState.value = emptyString
 					}
+
 				},
 				onInputCompleted = {
 					if (triesCountState.value > 0) {
@@ -133,10 +138,11 @@ class OtpScreen(
 					}
 				},
 				withKeyboard = true,
-				isValid = (errorState.value == emptyString),
+				showKeyboardPermanently = true,
+				isValid = (errorState.value != Constants.OTP_INVALID_ERROR_CODE),
 			)
 
-			if (errorState.value.isNotEmpty()) {
+			if (errorState.value == Constants.OTP_INVALID_ERROR_CODE) {
 				Row(
 					modifier = Modifier.align(Alignment.CenterHorizontally)
 				) {
@@ -157,6 +163,7 @@ class OtpScreen(
 						color = ComposeColors.DescriptionGray
 					)
 				}
+
 			}
 			Spacer(modifier = Modifier.weight(1f))
 			PrimaryButton(

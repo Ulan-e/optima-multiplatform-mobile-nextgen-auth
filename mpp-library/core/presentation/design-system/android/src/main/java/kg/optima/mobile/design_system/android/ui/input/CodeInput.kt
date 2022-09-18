@@ -43,6 +43,7 @@ fun CodeInput(
 	inputEnabled: Boolean = true,
 	withKeyboard: Boolean = false,
 	showValue : Boolean = false,
+	showKeyboardPermanently : Boolean = false,
 	isValid: Boolean = true,
 	onValueChanged: (String) -> Unit = {},
 	onInputCompleted: (String) -> Unit = {},
@@ -59,6 +60,9 @@ fun CodeInput(
 				onInputCompleted(value)
 			}
 		}
+		if (showKeyboardPermanently) {
+			keyboard?.show()
+		}
 	}
 
 	TextField(
@@ -72,7 +76,6 @@ fun CodeInput(
 					onValueChanged(it)
 				}
 				if (it.length >= length) {
-					keyboard?.hide()
 					onInputCompleted(it)
 				}
 			}

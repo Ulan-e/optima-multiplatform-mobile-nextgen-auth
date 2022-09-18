@@ -15,4 +15,5 @@ object Constants {
 	const val CONTROL_ANSWER_LENGTH = 5
 
 	const val SMS_CODE_TIMEOUT: Int = 60
+	const val OTP_INVALID_ERROR_CODE: String = "1234"
 }

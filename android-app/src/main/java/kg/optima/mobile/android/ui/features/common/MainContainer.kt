@@ -109,7 +109,7 @@ fun MainContainer(
 			is State.StateModel.Error -> {
 				// TODO process error
 				when (val errorState = mainState) {
-					is State.StateModel.Error.BaseError -> bottomSheetNavigator.show(
+					is State.StateModel.Error.ApiError -> bottomSheetNavigator.show(
 						info = BottomSheetInfo(
 							title = errorState.error,
 							buttons = listOf(

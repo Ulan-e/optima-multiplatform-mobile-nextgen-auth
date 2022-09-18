@@ -1,6 +1,7 @@
 package kg.optima.mobile.registration.presentation.sms_code
 
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 class SmsCodeState : State<CheckSmsCodeInfo>() {
@@ -12,15 +13,14 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
                     val screenModel = RegistrationScreenModel.SelfConfirm
                     StateModel.Navigate(screenModel)
                 } else {
-                    SmsCodeStateModel.InvalidCodeError()
-//                    StateModel.Error.BaseError(entity.message)
+                    StateModel.Error.BaseError(Constants.OTP_INVALID_ERROR_CODE)
                 }
             }
             is CheckSmsCodeInfo.ReRequest ->
                 if (entity.success) {
                     SmsCodeStateModel.EnableReRequest(false)
                 } else {
-                    SmsCodeStateModel.InvalidCodeError()
+                    StateModel.Error.BaseError("Не удалось запросить новый смс-код.")
                 }
             is CheckSmsCodeInfo.Timeout ->
                 SmsCodeStateModel.Timeout(entity.timeout)
@@ -38,10 +38,6 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
 
         class EnableReRequest(
             val enabled : Boolean
-        ) : SmsCodeStateModel
-
-        class InvalidCodeError(
-            val error : String = "Неверный Код."
         ) : SmsCodeStateModel
     }
 
