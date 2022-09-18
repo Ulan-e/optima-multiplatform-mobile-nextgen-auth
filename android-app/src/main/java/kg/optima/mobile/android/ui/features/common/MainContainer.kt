@@ -14,6 +14,7 @@ import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import dev.icerock.moko.permissions.PermissionsController
 import kg.optima.mobile.android.ui.base.Router
+import kg.optima.mobile.android.ui.features.welcome.WelcomeScreen
 import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
@@ -49,7 +50,13 @@ fun MainContainer(
 
 	if (!navigator.canPop) {
 		val activity = LocalContext.current.asActivity()
-		BackHandler { activity?.finish() }
+		BackHandler {
+			if (navigator.lastItem != WelcomeScreen) {
+				navigator.replace(WelcomeScreen)
+			} else {
+				activity?.finish()
+			}
+		}
 	}
 
 	Box(modifier = modifier.fillMaxSize()) {

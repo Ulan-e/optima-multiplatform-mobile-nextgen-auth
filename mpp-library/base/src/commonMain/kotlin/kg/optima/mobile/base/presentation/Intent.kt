@@ -4,6 +4,7 @@ import dev.icerock.moko.permissions.*
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.error.Failure
+import kg.optima.mobile.core.navigation.ScreenModel
 import kotlinx.coroutines.*
 import org.koin.core.component.KoinComponent
 
@@ -23,6 +24,10 @@ abstract class Intent<in E>(
 	}
 
 	protected abstract val state: State<E>
+
+	open fun nextScreenModel(nextScreenModel: ScreenModel) {
+		state.setStateModel(State.StateModel.Navigate(nextScreenModel))
+	}
 
 	open fun pop() = state.pop()
 

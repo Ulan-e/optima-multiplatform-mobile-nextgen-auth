@@ -16,7 +16,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 	@Composable
 	override fun compose(screenModel: RegistrationScreenModel): Screen {
 		return when (screenModel) {
-			RegistrationScreenModel.Agreement -> SelfConfirmScreen
+			RegistrationScreenModel.Agreement -> AgreementScreen
 			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
 			is RegistrationScreenModel.AcceptCode -> SmsCodeScreen(
 				phoneNumber = screenModel.phoneNumber,
