@@ -10,8 +10,6 @@ import kg.optima.mobile.registration.data.repository.RegistrationRepositoryImpl
 import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
 import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
 import kg.optima.mobile.registration.domain.usecase.VerifyClientUseCase
-import kg.optima.mobile.registration.domain.CheckPhoneNumberUseCase
-import kg.optima.mobile.registration.domain.CheckSmsCodeUseCase
 import kg.optima.mobile.registration.domain.GetQuestionsUseCase
 import kg.optima.mobile.registration.domain.RegistrationUseCase
 import kg.optima.mobile.registration.presentation.agreement.AgreementIntent
@@ -24,8 +22,8 @@ import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
 import kg.optima.mobile.registration.presentation.control_question.ControlQuestionIntent
 import kg.optima.mobile.registration.presentation.control_question.ControlQuestionState
-import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
+import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.sms_code.SmsCodeIntent
 import kg.optima.mobile.registration.presentation.sms_code.SmsCodeState
 import org.koin.core.component.KoinComponent
@@ -39,29 +37,11 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
         factory<RegistrationRepository> { RegistrationRepositoryImpl(get()) }
         factory<RegistrationPreferences> { RegistrationPreferencesImpl(get()) }
 
-        factory { CheckPhoneNumberUseCase(get()) }
-        factory { CheckSmsCodeUseCase(get()) }
+        factory { CheckPhoneNumberUseCase(get(), get()) }
+        factory { CheckSmsCodeUseCase(get(), get()) }
+        factory { VerifyClientUseCase(get(), get()) }
         factory { GetQuestionsUseCase(get()) }
         factory { RegistrationUseCase(get()) }
-        factory {
-            CheckPhoneNumberUseCase(
-                registrationRepository = get(),
-                registrationPreferences = get()
-            )
-        }
-        factory {
-            CheckSmsCodeUseCase(
-                registrationRepository = get(),
-                registrationPreferences = get()
-            )
-        }
-
-        factory {
-            VerifyClientUseCase(
-                registrationRepository = get(),
-                registrationPreferences = get()
-            )
-        }
 
         factory { SmsCodeState() }
         factory { st -> SmsCodeIntent(st.get()) }
@@ -73,7 +53,6 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
         factory { st -> PhoneNumberIntent(st.get()) }
 
         factory { SelfConfirmState() }
-        factory { st -> SelfConfirmIntent(st.get()) }
         factory { st -> SelfConfirmIntent(st.get(), get()) }
 
         factory { ControlQuestionState() }

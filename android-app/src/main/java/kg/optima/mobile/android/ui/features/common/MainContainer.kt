@@ -34,10 +34,8 @@ fun MainContainer(
     infoState: BottomSheetInfo? = null,
     component: Root.Child.Component? = null,
     toolbarInfo: ToolbarInfo? = null,
-    contentModifier: Modifier = Modifier
-        .fillMaxSize()
-        .padding(all = Deps.Spacing.standardPadding)
-        .background(ComposeColors.Background),
+	scrollable: Boolean = false,
+    contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
     contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     content: @Composable ColumnScope.() -> Unit,
 ) {
@@ -138,7 +136,6 @@ fun MainContainer(
 			val columnModifier = contentModifier
 				.fillMaxSize()
 				.weight(1f, false)
-				.padding(all = Deps.Spacing.standardPadding)
 				.background(ComposeColors.Background)
 			if (scrollable)
 				columnModifier.verticalScroll(rememberScrollState())

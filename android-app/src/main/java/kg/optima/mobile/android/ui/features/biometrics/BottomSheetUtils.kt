@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.features.biometrics
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
@@ -29,14 +28,22 @@ fun showBottomSheetDialog(
         },
         buttons = listOf(
             ButtonView.Primary(
-                modifier = Modifier.fillMaxWidth(),
+                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                    true
+                ),
                 text = "Остановить процесс",
-                onClick = { positiveButton.invoke() },
+                onClickListener = ButtonView.OnClickListener.onClickListener {
+                    positiveButton.invoke()
+                }
             ),
-            ButtonView.Transparent(
-                modifier = Modifier.fillMaxWidth(),
+            ButtonView.Primary(
+                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                    true
+                ),
                 text = "Отмена",
-                onClick = { negativeButton.invoke() },
+                onClickListener = ButtonView.OnClickListener.onClickListener {
+                    negativeButton.invoke()
+                }
             )
         )
     )
