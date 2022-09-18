@@ -2,6 +2,9 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+
+    id("kotlinx-serialization")
+    id("kotlin-parcelize")
 }
 
 version = "1.0"
@@ -12,9 +15,11 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-    targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
-        binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework> {
-            isStatic = false
+    targets.apply {
+        withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
+            binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework> {
+                isStatic = false
+            }
         }
     }
 
@@ -26,12 +31,12 @@ kotlin {
             baseName = "core"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(libs.ktorClient)
-                api("com.arkivanov.essenty:lifecycle:0.6.0")
+                implementation("com.arkivanov.decompose:decompose:0.8.0")
                 api("com.soywiz.korlibs.krypto:krypto:2.7.0")
             }
         }
