@@ -21,7 +21,7 @@ class LivenessIntent(
                     data = data
                 )
             ).map {
-                LivenessInfo(passed = true, it.message)
+                LivenessInfo(passed = true, message = it.message)
             }.onSuccess { livenessInfo ->
                 state.handle(livenessInfo)
             }

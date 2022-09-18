@@ -1,9 +1,7 @@
 package kg.optima.mobile.android.ui.features.biometrics
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.AnimatedVisibility
@@ -14,8 +12,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,16 +28,13 @@ import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import com.google.accompanist.insets.ProvideWindowInsets
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.android.ui.startContent
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.theme.Theme
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
-import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
-import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarContent
-import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
+import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.registration.RegistrationFeatureFactory
@@ -96,10 +89,6 @@ class LivenessActivity : AppCompatActivity() {
 
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
-
     companion object {
         const val serverUrl = "https://veritest.optima24.kg/vl/verilive"
     }
@@ -118,8 +107,12 @@ class LivenessActivity : AppCompatActivity() {
             val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
             val registrationPreferences: RegistrationPreferences by inject()
+            val context = LocalContext.current
+
             val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
-            val buttonAndTextVisibleState = remember { mutableStateOf(false) }
+            val btnContinueVisibility = remember { mutableStateOf(false) }
+            val livenessSessionId = remember { mutableStateOf("") }
+            val livenessResult = remember { mutableStateOf("") }
 
             MainContainer(
                 mainState = model,
@@ -127,71 +120,14 @@ class LivenessActivity : AppCompatActivity() {
                 infoState = bottomSheetState.value,
                 contentHorizontalAlignment = Alignment.Start,
             ) {
-                Box(
+                Column(
                     modifier = Modifier
-                        .fillMaxSize(),
+                        .fillMaxSize()
+                        .background(Color.Transparent)
+                        .weight(1f)
                 ) {
-
-                    AndroidView(
-                        modifier = Modifier.fillMaxSize(),
-                        factory = { context ->
-                            val rootView = LayoutInflater
-                                .from(context)
-                                .inflate(R.layout.activity_liveness, null, false)
-                            val cameraComponent = rootView
-                                .findViewById<CameraCaptureComponent>(R.id.camera_capture_component)
-                            cameraComponent?.setConfig(
-                                readTextFile(
-                                    context.resources.openRawResource(R.raw.liveness_config_ru)
-                                )
-                            )
-                            cameraComponent?.setServerURL(serverUrl)
-                            cameraComponent!!.startPreview()
-
-                            cameraComponent.cameraCaptureListener =
-                                object : ICameraCaptureListener {
-                                    override fun onLivenessError(e: Throwable) {
-                                        if (e is ConnectionException) {
-                                            Log.d(
-                                                "terra",
-                                                "Network error. Please check you connection ${e.localizedMessage}"
-                                            )
-                                        }
-                                        if (e is ServerResponseException || e is JsonFormatException) {
-                                            Log.d(
-                                                "terra",
-                                                "ServerResponseException ${e.localizedMessage}"
-                                            )
-                                        }
-                                        if (e is CameraException) {
-                                            Log.d("terra", "Error initializing camera")
-                                        }
-                                    }
-
-                                    override fun onLivenessFailed(result: LivenessResult) {
-                                        Log.d("onLivenessFailed", "onLivenessFailed")
-                                    }
-
-                                    override fun onLivenessPassed(result: LivenessResult) {
-                                        buttonAndTextVisibleState.value = true
-                                    }
-
-                                    override fun onUpdateOverlay(direction: Direction, hint: Hint) {
-
-                                    }
-                                }
-
-                            val accessToken = registrationPreferences.accessToken
-                            val personId = registrationPreferences.personId
-                            val sessionId = cameraComponent.startProcessing(accessToken, personId)
-                            rootView
-                        }
-                    )
-
                     TopAppBar(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.TopStart),
+                        modifier = Modifier.fillMaxWidth(),
                         title = {
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
@@ -210,8 +146,25 @@ class LivenessActivity : AppCompatActivity() {
                         navigationIcon = {
                             IconButton(onClick = {
                                 bottomSheetState.value = showBottomSheetDialog(
-                                    positiveButton = {},
-                                    negativeButton = { bottomSheetState.value = null }
+                                    title = "Вы действительно хотите \nостановить идентификацию?",
+                                    subTitle = "Идентификация не закончена. \nПроцесс будет остановлен и вы окажетесь \nна начальном экране",
+                                    positiveButtonView = ButtonView.Primary(
+                                        modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                                            true
+                                        ),
+                                        text = "Остановить процесс",
+                                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                                        }
+                                    ),
+                                    negativeButtonView = ButtonView.Transparent(
+                                        modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                                            true
+                                        ),
+                                        text = "Остановить процесс",
+                                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                                            bottomSheetState.value = null
+                                        }
+                                    )
                                 )
                             }) {
                                 Icon(
@@ -221,42 +174,148 @@ class LivenessActivity : AppCompatActivity() {
                                 )
                             }
                         },
-                        actions = {
-                            Spacer(Modifier.width(64.dp))
-                        },
+                        actions = { Spacer(Modifier.width(64.dp)) },
                         backgroundColor = ComposeColors.PrimaryBlack,
                         elevation = 0.dp,
                     )
 
+                    AndroidView(modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(10f),
+                        factory = { context ->
+                            val rootView = LayoutInflater.from(context)
+                                .inflate(R.layout.activity_liveness, null, false)
+                            val cameraComponent =
+                                rootView.findViewById<CameraCaptureComponent>(R.id.camera_capture_component)
+                            cameraComponent?.setConfig(
+                                readTextFile(
+                                    context.resources.openRawResource(
+                                        R.raw.liveness_config_ru
+                                    )
+                                )
+                            )
+                            cameraComponent?.setServerURL(serverUrl)
+                            cameraComponent!!.startPreview()
+
+                            cameraComponent.cameraCaptureListener =
+                                object : ICameraCaptureListener {
+                                    override fun onLivenessError(e: Throwable) {
+                                        if (e is ConnectionException) {
+                                            bottomSheetState.value = showBottomSheetDialog(
+                                                title = "Отсутствует интернет \nсоединение",
+                                                subTitle = "Проверьте наличие интернета \nна Вашем устройстве",
+                                                positiveButtonView = ButtonView.Primary(
+                                                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                                                        true
+                                                    ),
+                                                    text = "Повторить попытку",
+                                                    onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                        // TODO retry
+                                                    }
+                                                ),
+                                            )
+                                        }
+                                        if (e is ServerResponseException || e is JsonFormatException) {
+                                            bottomSheetState.value = showBottomSheetDialog(
+                                                title = "Процесс идентификации \nостановлен",
+                                                subTitle = "ServerResponseException ${e.localizedMessage}",
+                                                positiveButtonView = ButtonView.Primary(
+                                                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                                                        true
+                                                    ),
+                                                    text = "Понятно",
+                                                    onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                        bottomSheetState.value = null
+                                                    }
+                                                ),
+                                            )
+                                        }
+                                        if (e is CameraException) {
+                                            bottomSheetState.value = showBottomSheetDialog(
+                                                title = "Нельзя пройти \nподтверждение личности\n без доступа к камере",
+                                                positiveButtonView = ButtonView.Primary(
+                                                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                                                        true
+                                                    ),
+                                                    text = "Понятно",
+                                                    onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                        // TODO  retry
+                                                    }
+                                                ),
+                                            )
+                                        }
+                                    }
+
+                                    override fun onLivenessFailed(result: LivenessResult) {
+                                        bottomSheetState.value = showBottomSheetDialog(
+                                            title = "Что-то пошло не так",
+                                            subTitle = "Решите свой вопрос через нашу заботливую \nподдержку прямо сейчас",
+                                            positiveButtonView = ButtonView.Primary(
+                                                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                                                    true
+                                                ),
+                                                text = "Связаться с банком",
+                                                onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                    // TODO  retry
+                                                }
+                                            ),
+                                            negativeButtonView = ButtonView.Transparent(
+                                                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                                                    true
+                                                ),
+                                                text = "Связаться с банком",
+                                                onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                    bottomSheetState.value = null
+                                                }
+                                            )
+                                        )
+                                    }
+
+                                    override fun onLivenessPassed(result: LivenessResult) {
+                                        btnContinueVisibility.value = true
+                                        result.status?.let { livenessResult.value = it }
+                                    }
+
+                                    override fun onUpdateOverlay(direction: Direction, hint: Hint) {
+
+                                    }
+                                }
+
+                            val accessToken = registrationPreferences.accessToken
+                            val personId = registrationPreferences.personId
+                            val sessionId = cameraComponent.startProcessing(accessToken, personId)
+                            livenessSessionId.value = sessionId
+                            rootView
+                        })
+
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .align(Alignment.BottomCenter)
+                            .weight(2f)
+                            .background(ComposeColors.PrimaryBlack),
                     ) {
-
                         AnimatedVisibility(
-                            visible = buttonAndTextVisibleState.value,
+                            visible = btnContinueVisibility.value,
                             enter = fadeIn(animationSpec = tween(100))
                         ) {
-
-                            PrimaryButton(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(
-                                        horizontal = Deps.Spacing.standardMargin,
-                                        vertical = Deps.Spacing.standardMargin
-                                    ),
+                            PrimaryButton(modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    start = Deps.Spacing.standardMargin,
+                                    end = Deps.Spacing.standardMargin,
+                                    top = 44.dp
+                                ),
                                 text = "Продолжить",
                                 color = ComposeColors.Green,
                                 onClick = {
                                     // TODO переход на экран секретных вопросов
 
-                                    /*val data = context.loadFile("scanned_file")
-                            intent.verify(
-                                livenessResult = "real",
-                                sessionId = "sessionId",
-                                data = data
-                            )*/
+                                    val data = context.loadFile("scanned_file")
+                                    intent.verify(
+                                        livenessResult = livenessResult.value,
+                                        sessionId = livenessSessionId.value,
+                                        data = data
+                                    )
                                 }
                             )
                         }

@@ -11,40 +11,83 @@ import kg.optima.mobile.design_system.android.values.Deps.Spacing.subheaderMargi
 import kg.optima.mobile.resources.Headings
 
 fun showBottomSheetDialog(
-    positiveButton: () -> Unit,
-    negativeButton: () -> Unit,
+    title: String,
+    subTitle: String? = null,
+    positiveButtonView: ButtonView? = null,
+    negativeButtonView: ButtonView? = null,
 ): BottomSheetInfo {
 
-    return BottomSheetInfo(
-        title = "Вы действительно хотите \nостановить идентификацию?",
-        content = {
-            Text(
-                modifier = Modifier.padding(subheaderMargin),
-                text = "Идентификация не закончена. \nПроцесс " +
-                        "будет остановлен и вы окажетесь \nна начальном экране",
-                fontSize = Headings.H4.px.sp,
-                textAlign = TextAlign.Center
-            )
-        },
-        buttons = listOf(
-            ButtonView.Primary(
-                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                    true
+    when {
+        positiveButtonView != null && negativeButtonView != null -> {
+            return BottomSheetInfo(
+                title = title,
+                content = {
+                    if (subTitle != null) {
+                        Text(
+                            modifier = Modifier.padding(subheaderMargin),
+                            text = subTitle,
+                            fontSize = Headings.H4.px.sp,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                },
+                buttons = listOf(
+                    positiveButtonView,
+                    negativeButtonView
                 ),
-                text = "Остановить процесс",
-                onClickListener = ButtonView.OnClickListener.onClickListener {
-                    positiveButton.invoke()
-                }
-            ),
-            ButtonView.Primary(
-                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                    true
-                ),
-                text = "Отмена",
-                onClickListener = ButtonView.OnClickListener.onClickListener {
-                    negativeButton.invoke()
-                }
             )
-        )
-    )
+        }
+        positiveButtonView != null -> {
+            return BottomSheetInfo(
+                title = title,
+                content = {
+                    if (subTitle != null) {
+                        Text(
+                            modifier = Modifier.padding(subheaderMargin),
+                            text = subTitle,
+                            fontSize = Headings.H4.px.sp,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                },
+                buttons = listOf(
+                    positiveButtonView,
+                ),
+            )
+        }
+        negativeButtonView != null -> {
+            return BottomSheetInfo(
+                title = title,
+                content = {
+                    if (subTitle != null) {
+                        Text(
+                            modifier = Modifier.padding(subheaderMargin),
+                            text = subTitle,
+                            fontSize = Headings.H4.px.sp,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                },
+                buttons = listOf(
+                    negativeButtonView,
+                ),
+            )
+        }
+        else -> {
+            return BottomSheetInfo(
+                title = title,
+                content = {
+                    if (subTitle != null) {
+                        Text(
+                            modifier = Modifier.padding(subheaderMargin),
+                            text = subTitle,
+                            fontSize = Headings.H4.px.sp,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                },
+                buttons = listOf(),
+            )
+        }
+    }
 }

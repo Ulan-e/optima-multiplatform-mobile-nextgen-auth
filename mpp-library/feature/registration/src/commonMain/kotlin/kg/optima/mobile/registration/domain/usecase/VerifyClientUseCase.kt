@@ -22,8 +22,6 @@ class VerifyClientUseCase(
             livenessResult = model.livenessResult,
             accessToken = registrationPreferences.accessToken!!,
             personId = registrationPreferences.personId!!,
-
-            // Получить и отправить отсканированные данные паспорта
             documentData = VerifyClientRequest(model.data)
         ).map { response ->
             VerifyClientEntity(

@@ -49,7 +49,9 @@ object AgreementScreen : BaseScreen {
 
 		MainContainer(
 			mainState = model,
-			contentModifier = Modifier.fillMaxSize(),
+			contentModifier = Modifier
+				.fillMaxSize()
+				.padding(all = Deps.Spacing.standardPadding),
 			toolbarInfo = ToolbarInfo(
 				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
 			),
