@@ -6,4 +6,14 @@
     <string name="token_hint">API token</string>
     <string name="language_hint">Language code</string>
     <string name="retry_btn">Retry</string>
+
+    <string name="continue_" >Продолжить</string>
+    <string name="start" >Начать</string>
+    <string name="face_scanning">Сканирование лица</string>
+    <string name="document_scanning">Сканирование паспорта</string>
+    <string name="ready">Готово</string>
+    <string name="cancel">Отменить</string>
+    <string name="are_u_sure_exit">Вы действительно хотите выйти?</string>
+    <string name="identification_is_not_finished">Идентификация не закончена. Процесс будет остановлен и вы будете перенапралены на главный экран.</string>
+    <string name="exit">Выйти</string>
 </resources>

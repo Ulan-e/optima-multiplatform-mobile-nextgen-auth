@@ -10,10 +10,14 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
         google()
+        jcenter()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+
+        flatDir{
+            dirs("libs")
+        }
     }
 }
-
 includeBuild("build-logic")
 
 include(":android-app")

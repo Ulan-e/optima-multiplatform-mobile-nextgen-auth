@@ -1,6 +1,9 @@
 package kg.optima.mobile.android.ui.features.welcome
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -61,8 +64,8 @@ object WelcomeScreen : BaseScreen {
             }
             WelcomeScreenButtonBlock(
                 modifier = Modifier
-					.wrapContentSize()
-					.weight(3f),
+                    .wrapContentSize()
+                    .weight(3f),
             )
             PrimaryButton(
                 modifier = Modifier.fillMaxWidth(),
@@ -71,11 +74,11 @@ object WelcomeScreen : BaseScreen {
             )
             TransparentButton(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(
-						top = Deps.Spacing.standardMargin,
-						bottom = Deps.Spacing.standardMargin,
-					),
+                    .fillMaxWidth()
+                    .padding(
+                        top = Deps.Spacing.standardMargin,
+                        bottom = Deps.Spacing.standardMargin,
+                    ),
                 text = "Зарегистрироваться",
                 onClick = { intent.register() },
             )

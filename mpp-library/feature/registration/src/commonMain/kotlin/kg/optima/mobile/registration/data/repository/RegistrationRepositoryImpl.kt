@@ -8,6 +8,8 @@ import kg.optima.mobile.registration.data.api.model.CheckCodeDto
 import kg.optima.mobile.registration.data.api.registration.RegistrationApi
 import kg.optima.mobile.registration.data.api.model.CodeCheckRequest
 import kg.optima.mobile.registration.data.api.model.PhoneCheckRequest
+import kg.optima.mobile.registration.data.api.model.VerifyClientDto
+import kg.optima.mobile.registration.data.api.model.VerifyClientRequest
 import kg.optima.mobile.registration.data.api.model.RegistrationRequest
 import kg.optima.mobile.registration.data.api.verification.VerificationApi
 
@@ -26,6 +28,24 @@ class RegistrationRepositoryImpl(
     ): Either<Failure, BaseDto<CheckCodeDto>> = apiCall {
         verificationApi.checkSmsCode(CodeCheckRequest(phoneNumber, smsCode), referenceId)
     }
+
+	override suspend fun verifyClient(
+		referenceId: String,
+		sessionId: String,
+		livenessResult: String,
+		accessToken: String,
+		personId: String,
+		documentData: VerifyClientRequest
+	): Either<Failure, BaseDto<VerifyClientDto>> = apiCall {
+		registrationApi.verifyClient(
+			referenceId,
+			sessionId,
+			livenessResult,
+			accessToken,
+			personId,
+			documentData
+		)
+	}
 
     override suspend fun getQuestions() = apiCall {
         registrationApi.getQuestions()
