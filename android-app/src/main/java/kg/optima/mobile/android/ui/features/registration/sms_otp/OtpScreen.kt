@@ -61,15 +61,7 @@ class OtpScreen(
 				errorState.value = "1234"
 				if (triesCountState.value <= 0) {
 					bottomSheetState.value = BottomSheetInfo(
-						content = {
-							Text(
-								text = "Вы ввели код неверно несколько раз. Попробуйте запросить новый код",
-								textAlign = TextAlign.Center,
-								fontSize = Headings.H1.sp,
-								fontWeight = FontWeight.Medium,
-								lineHeight = Deps.TextSize.bottomSheetLineHeight
-							)
-						},
+						title = "Вы ввели код неверно несколько раз. Попробуйте запросить новый код",
 						buttons = listOf(
 							ButtonView.Primary(
 								text = "Закрыть",

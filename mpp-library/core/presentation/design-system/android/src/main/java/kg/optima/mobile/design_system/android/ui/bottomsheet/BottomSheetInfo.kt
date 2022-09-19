@@ -7,7 +7,7 @@ import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 
 @Parcelize
 class BottomSheetInfo(
-	val title: String? = null,
+	val title: String,
 	val description: String? = null,
 	val content: @Composable () -> Unit = {},
 	val buttons: List<ButtonView>,
