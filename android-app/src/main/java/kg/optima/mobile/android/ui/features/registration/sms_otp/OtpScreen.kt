@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.registration.sms_otp
 
+import android.text.format.DateUtils
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -71,7 +72,7 @@ class OtpScreen(
 						},
 						buttons = listOf(
 							ButtonView.Primary(
-								text = "Повторить попытку",
+								text = "Закрыть",
 								onClickListener = ButtonView.OnClickListener.onClickListener {
 									bottomSheetState.value = null
 								},
@@ -94,12 +95,15 @@ class OtpScreen(
 				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
 			),
 			infoState = bottomSheetState.value,
+			scrollable = true,
 			contentHorizontalAlignment = Alignment.Start,
 		) {
+
+			Spacer(modifier = Modifier.weight(1f))
+
 			Column(
 				modifier = Modifier
 					.fillMaxWidth()
-					.padding(top = Deps.Spacing.bigMarginTop)
 					.align(Alignment.CenterHorizontally),
 			) {
 				TitleTextField(text = "Введите код подтверждения")
@@ -165,17 +169,19 @@ class OtpScreen(
 				}
 
 			}
-			Spacer(modifier = Modifier.weight(1f))
+			Spacer(modifier = Modifier.weight(2f))
+
 			PrimaryButton(
 				modifier = Modifier.fillMaxWidth(),
 				text = buttonTextFormatter(timeoutState.value),
 				color = ComposeColors.Green,
 				onClick = {
-					intent.smsCodeReRequest(timeout, phoneNumber)
 					triesCountState.value = 3
 					buttonIsEnabledState.value = false
 					codeState.value = emptyString
 					errorState.value = emptyString
+					intent.smsCodeReRequest(timeout, phoneNumber)
+
 				},
 				enabled = buttonIsEnabledState.value,
 			)
@@ -201,8 +207,9 @@ class OtpScreen(
 		return when {
 			time == 0 -> "Отправить повторно"
 			time <= 60 -> "Запросить через $time сек."
-			time in 61..3599 -> "Запросить через ${time / 60}:${time % 60}"
-			else -> "Запросить через ${time / 3600}:${time / 60}:${time % 60}"
+			else -> "Запросить через ${DateUtils.formatElapsedTime(time.toLong())}"
+//			time in 61..3599 -> "Запросить через ${time / 60}:${time % 60}"
+//			else -> "Запросить через ${time / 3600}:${time / 60}:${time % 60}"
 		}
 	}
 
