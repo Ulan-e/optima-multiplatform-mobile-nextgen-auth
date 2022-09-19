@@ -77,14 +77,8 @@ abstract class State<in E>(
 		) : StateModel
 
 		class CustomPermissionRequired(
+			val text: String,
 			val permissions: List<Permission>
-		) : StateModel
-
-		class RequestPermissionResult(
-			val title: String,
-			val description: String? = null,
-			val acceptedPermissions: List<Permission>,
-			val customPermissionRequiredPermissions: List<Permission>,
 		) : StateModel
 
 		sealed interface Error : StateModel {

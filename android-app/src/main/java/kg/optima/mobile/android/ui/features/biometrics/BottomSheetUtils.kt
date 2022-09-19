@@ -21,7 +21,7 @@ fun showBottomSheetDialog(
         positiveButtonView != null && negativeButtonView != null -> {
             return BottomSheetInfo(
                 title = title,
-                content = {
+                composableContent = BottomSheetInfo.ComposableContent.composableContent {
                     if (subTitle != null) {
                         Text(
                             modifier = Modifier.padding(subheaderMargin),
@@ -40,7 +40,7 @@ fun showBottomSheetDialog(
         positiveButtonView != null -> {
             return BottomSheetInfo(
                 title = title,
-                content = {
+                composableContent = BottomSheetInfo.ComposableContent.composableContent {
                     if (subTitle != null) {
                         Text(
                             modifier = Modifier.padding(subheaderMargin),
@@ -58,7 +58,7 @@ fun showBottomSheetDialog(
         negativeButtonView != null -> {
             return BottomSheetInfo(
                 title = title,
-                content = {
+                composableContent = BottomSheetInfo.ComposableContent.composableContent {
                     if (subTitle != null) {
                         Text(
                             modifier = Modifier.padding(subheaderMargin),
@@ -76,7 +76,7 @@ fun showBottomSheetDialog(
         else -> {
             return BottomSheetInfo(
                 title = title,
-                content = {
+                composableContent = BottomSheetInfo.ComposableContent.composableContent {
                     if (subTitle != null) {
                         Text(
                             modifier = Modifier.padding(subheaderMargin),

@@ -15,7 +15,6 @@ import kg.optima.mobile.resources.Headings
 import kotlinx.parcelize.IgnoredOnParcel
 
 sealed interface ButtonView : Parcelable {
-	val modifierParameters: ModifierParameters
 	val enabled: Boolean
 	val text: String
 	val fontSize: Headings
@@ -25,7 +24,6 @@ sealed interface ButtonView : Parcelable {
 
 	@Parcelize
 	class Primary(
-		override val modifierParameters: ModifierParameters = ModifierParameters.Default,
 		override val enabled: Boolean = true,
 		override val text: String,
 		override val fontSize: Headings = Headings.H4,
@@ -34,13 +32,19 @@ sealed interface ButtonView : Parcelable {
 	) : ButtonView {
 		@IgnoredOnParcel
 		override val button: @Composable () -> Unit = {
-			PrimaryButton(modifierParameters.modifier, enabled, text, fontSize, composeColor.colorParameter.color, onClickListener.onClick)
+			PrimaryButton(
+				modifier = Modifier.fillMaxWidth(),
+				enabled = enabled,
+				text = text,
+				fontSize = fontSize,
+				color = composeColor.colorParameter.color,
+				onClick = onClickListener.onClick
+			)
 		}
 	}
 
 	@Parcelize
 	class Secondary(
-		override val modifierParameters: ModifierParameters = ModifierParameters.Default,
 		override val enabled: Boolean = true,
 		override val text: String,
 		override val fontSize: Headings = Headings.H4,
@@ -50,7 +54,7 @@ sealed interface ButtonView : Parcelable {
 		@IgnoredOnParcel
 		override val button: @Composable () -> Unit = {
 			SecondaryButton(
-				modifier = modifierParameters.modifier,
+				modifier = Modifier.fillMaxWidth(),
 				enabled = enabled,
 				text = text,
 				fontSize = fontSize,
@@ -62,7 +66,6 @@ sealed interface ButtonView : Parcelable {
 
 	@Parcelize
 	class Transparent(
-		override val modifierParameters: ModifierParameters = ModifierParameters.Default,
 		override val enabled: Boolean = true,
 		override val text: String,
 		override val fontSize: Headings = Headings.H4,
@@ -70,28 +73,14 @@ sealed interface ButtonView : Parcelable {
 	) : ButtonView {
 		@IgnoredOnParcel
 		override val button: @Composable () -> Unit = {
-			TransparentButton(modifierParameters.modifier, enabled, text, fontSize, onClickListener.onClick)
+			TransparentButton(
+				modifier = Modifier.fillMaxWidth(),
+				enabled = enabled,
+				text = text,
+				fontSize = fontSize,
+				onClick = onClickListener.onClick
+			)
 		}
-	}
-
-	interface ModifierParameters : Parcelable {
-		companion object {
-			val Default: ModifierParameters = modifierParameters(true)
-
-			fun modifierParameters(fillMaxWidth: Boolean): ModifierParameters = object : ModifierParameters {
-				override val fillMaxWidth: Boolean = fillMaxWidth
-				override fun describeContents(): Int = 0
-				override fun writeToParcel(p0: Parcel?, p1: Int) = Unit
-			}
-		}
-		val fillMaxWidth: Boolean get() = true
-		val modifier: Modifier
-			get() {
-				val modifier = Modifier
-				if (fillMaxWidth) modifier.fillMaxWidth()
-
-				return modifier
-			}
 	}
 
 	interface OnClickListener : Parcelable {

@@ -39,7 +39,7 @@ fun BottomSheet(
 					fontSize = Headings.H4.sp,
 				)
 			}
-			bottomSheetInfo.content()
+			bottomSheetInfo.composableContent.content()
 			Spacer(modifier = Modifier.padding(top = Deps.Spacing.spacing))
 			bottomSheetInfo.buttons.forEach { view -> view.button() }
 		}

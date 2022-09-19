@@ -68,18 +68,12 @@ object DocumentScanScreen : Screen {
                 title = "Вы действительно хотите \nостановить идентификацию?",
                 subTitle = "Идентификация не закончена. \nПроцесс будет остановлен и вы окажетесь \nна начальном экране",
                 positiveButtonView = ButtonView.Primary(
-                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                        true
-                    ),
                     text = "Остановить процесс",
                     onClickListener = ButtonView.OnClickListener.onClickListener {
                         context.navigateTo(RegistrationScreenModel.SelfConfirm)
                     }
                 ),
                 negativeButtonView = ButtonView.Transparent(
-                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                        true
-                    ),
                     text = "Отмена",
                     onClickListener = ButtonView.OnClickListener.onClickListener {
                         bottomSheetState.value = null
