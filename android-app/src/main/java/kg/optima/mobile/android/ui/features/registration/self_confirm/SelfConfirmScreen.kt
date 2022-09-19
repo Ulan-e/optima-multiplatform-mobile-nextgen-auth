@@ -14,6 +14,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import dev.icerock.moko.permissions.Permission
 import dev.icerock.moko.permissions.PermissionsController
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
+import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
@@ -91,7 +92,7 @@ object SelfConfirmScreen : Screen {
 				color = ComposeColors.Green,
 				onClick = {
 					VeridocInitializer.init()
-					context.startActivity(Intent(context, DocumentScanActivity::class.java))
+					context.navigateTo(DocumentScanActivity())
 				}
 			)
 		}

@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.welcome
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -8,10 +9,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
+import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
+import kg.optima.mobile.android.ui.features.biometrics.LivenessActivity
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -47,8 +51,8 @@ object WelcomeScreen : BaseScreen {
             toolbarInfo = ToolbarInfo(navigationIcon = null),
         ) {
             Column(
-				modifier = Modifier.weight(1f),
-				horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = "Добро пожаловать!",
@@ -74,26 +78,26 @@ object WelcomeScreen : BaseScreen {
             )
             TransparentButton(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(
-						top = Deps.Spacing.standardMargin,
-						bottom = Deps.Spacing.standardMargin,
-					),
-				text = "Зарегистрироваться",
-				onClick = { intent.register() },
-			)
-			Text(
-				text = "Версия $appVersion",
-				fontSize = Headings.H6.sp,
-				color = ComposeColors.DescriptionGray,
-			)
-		}
-	}
+                    .fillMaxWidth()
+                    .padding(
+                        top = Deps.Spacing.standardMargin,
+                        bottom = Deps.Spacing.standardMargin,
+                    ),
+                text = "Зарегистрироваться",
+                onClick = { intent.register() },
+            )
+            Text(
+                text = "Версия $appVersion",
+                fontSize = Headings.H6.sp,
+                color = ComposeColors.DescriptionGray,
+            )
+        }
+    }
 }
 
 
 @Preview
 @Composable
 private fun WelcomeScreenPreview() {
-	WelcomeScreen.Content()
+    WelcomeScreen.Content()
 }

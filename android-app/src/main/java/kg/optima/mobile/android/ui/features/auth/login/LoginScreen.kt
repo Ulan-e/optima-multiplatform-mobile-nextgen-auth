@@ -70,7 +70,9 @@ class LoginScreen(
 				navigationIcon = NavigationIcon(onBackClick = { intent.pop() }),
 				content = ToolbarContent.Nothing,
 			),
-			contentModifier = Modifier.background(ComposeColors.Background),
+			contentModifier = Modifier
+				.padding(all = Deps.Spacing.standardPadding)
+				.background(ComposeColors.Background),
 			contentHorizontalAlignment = Alignment.Start,
 		) {
 			TitleTextField(

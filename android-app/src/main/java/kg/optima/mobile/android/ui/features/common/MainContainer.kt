@@ -29,11 +29,11 @@ import org.koin.androidx.compose.inject
 
 @Composable
 fun MainContainer(
-    modifier: Modifier = Modifier,
-    mainState: State.StateModel?,
-    infoState: BottomSheetInfo? = null,
-    component: Root.Child.Component? = null,
-    toolbarInfo: ToolbarInfo? = null,
+	modifier: Modifier = Modifier,
+	mainState: State.StateModel?,
+	infoState: BottomSheetInfo? = null,
+	component: Root.Child.Component? = null,
+	toolbarInfo: ToolbarInfo? = ToolbarInfo(),
 	scrollable: Boolean = false,
     contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
     contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,

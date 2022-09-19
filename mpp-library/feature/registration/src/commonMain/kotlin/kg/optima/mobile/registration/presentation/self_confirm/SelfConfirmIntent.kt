@@ -36,7 +36,7 @@ private val items = listOf(
     AnimationModel(
         delayMillis = 3000,
         res = Res.Glasses,
-        text = "Отсутствие очков или друких аксессуаров на лице",
+        text = "Отсутствие очков или других аксессуаров на лице",
     ),
     AnimationModel(
         delayMillis = 4000,
