@@ -8,10 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.core.screen.Screen
-import dev.icerock.moko.permissions.Permission
-import dev.icerock.moko.permissions.PermissionsController
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
@@ -28,7 +25,6 @@ import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
 import kotlinx.coroutines.delay
-import org.koin.androidx.compose.inject
 
 
 @Suppress("SameParameterValue")
@@ -85,9 +81,7 @@ object SelfConfirmScreen : Screen {
 				enabled = buttonEnabled,
 				color = ComposeColors.Green,
 				onClick = {
-					val permissions = listOf(Permission.CAMERA, Permission.STORAGE)
-					intent.requestPermissions(permissions)
-					intent.requestPermissions(permissions)
+
 				}
 			)
 		}

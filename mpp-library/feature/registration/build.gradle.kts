@@ -30,8 +30,6 @@ kotlin {
                 implementation(project(":mpp-library:core:data:network"))
                 implementation(project(":mpp-library:core:data:storage"))
                 implementation(project(":mpp-library:feature"))
-
-                api(libs.mokoPermissions)
             }
         }
         val commonTest by getting {

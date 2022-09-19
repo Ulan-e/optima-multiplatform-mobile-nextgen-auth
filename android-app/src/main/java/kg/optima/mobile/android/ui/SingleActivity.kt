@@ -23,7 +23,7 @@ class SingleActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		val nextScreenModel = null//intent.getParcelableExtra<ScreenModel>(NEXT_SCREEN_MODEL)
+		val nextScreenModel = intent.getParcelableExtra<ScreenModel>(NEXT_SCREEN_MODEL)
 
 		setContent {
 			ProvideWindowInsets {
@@ -32,9 +32,7 @@ class SingleActivity : AppCompatActivity() {
 						sheetElevation = 0.dp,
 						sheetBackgroundColor = Color.Transparent,
 						sheetShape = RoundedCornerShape(16.dp, 16.dp),
-						content = {
-							StartContent(nextScreenModel)
-						},
+						content = { StartContent(nextScreenModel) },
 					)
 				}
 			}

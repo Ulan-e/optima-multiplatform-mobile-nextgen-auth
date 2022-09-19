@@ -12,7 +12,6 @@ import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import dev.icerock.moko.permissions.PermissionsController
 import kg.optima.mobile.android.ui.base.Router
 import kg.optima.mobile.android.ui.features.welcome.WelcomeScreen
 import kg.optima.mobile.android.utils.asActivity
@@ -41,12 +40,9 @@ fun MainContainer(
 	content: @Composable ColumnScope.() -> Unit,
 ) {
 	val router: Router by inject()
-	val permissionsController: PermissionsController by inject()
 
 	val navigator = LocalNavigator.currentOrThrow
 	val bottomSheetNavigator = LocalBottomSheetNavigator.current
-
-	val context = LocalContext.current
 
 	if (!navigator.canPop) {
 		val activity = LocalContext.current.asActivity()
@@ -76,40 +72,6 @@ fun MainContainer(
 			}
 			is State.StateModel.Pop -> {
 				navigator.pop()
-			}
-			is State.StateModel.RequestPermissionResult -> {
-				val customPermissionRequiredPermissions =
-					mainState.customPermissionRequiredPermissions
-
-				if (customPermissionRequiredPermissions.isNotEmpty()) {
-					bottomSheetNavigator.show(
-						info = BottomSheetInfo(
-							title = mainState.title,
-							description = mainState.description,
-							buttons = listOf(
-								ButtonView.Primary(
-									modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-										true
-									),
-									text = "Настройки",
-									composeColor = ComposeColor.composeColor(ComposeColors.Green),
-									onClickListener = ButtonView.OnClickListener.onClickListener {
-										permissionsController.openAppSettings()
-									}
-								),
-								ButtonView.Primary(
-									modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-										true
-									),
-									text = "Отмена",
-									onClickListener = ButtonView.OnClickListener.onClickListener {
-										bottomSheetNavigator.pop()
-									}
-								),
-							)
-						)
-					)
-				}
 			}
 			is State.StateModel.Error -> {
 				// TODO process error
@@ -155,4 +117,5 @@ fun MainContainer(
 			)
 		}
 	}
+
 }
