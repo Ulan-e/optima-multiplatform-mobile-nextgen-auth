@@ -3,8 +3,8 @@ package kg.optima.mobile.registration.presentation.sms_code
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.Intent
-import kg.optima.mobile.registration.domain.CheckPhoneNumberUseCase
-import kg.optima.mobile.registration.domain.CheckSmsCodeUseCase
+import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
+import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
 import kotlinx.coroutines.delay
 import org.koin.core.component.inject
 
@@ -21,11 +21,15 @@ class SmsCodeIntent(
 		referenceId: String,
 	) {
 		launchOperation {
-			checkSmsCodeUseCase.execute(CheckSmsCodeUseCase.Params(
-				phoneNumber = phoneNumber,
-				verificationCode = smsCode,
-				referenceId = referenceId
-			)).map { CheckSmsCodeInfo.Check(it) }
+			checkSmsCodeUseCase.execute(
+				CheckSmsCodeUseCase.Params(
+					phoneNumber = phoneNumber,
+					verificationCode = smsCode,
+					referenceId = referenceId
+				)
+			).map {
+				CheckSmsCodeInfo.Check(success = it.success)
+			}
 		}
 	}
 

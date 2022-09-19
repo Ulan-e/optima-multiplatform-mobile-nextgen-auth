@@ -17,6 +17,15 @@ abstract class RegistrationApi(
 		referenceId: String
 	) : BaseDto<CheckCodeDto>
 
+	abstract suspend fun verifyClient(
+		referenceId: String,
+		sessionId: String,
+		livenessResult: String,
+		accessToken: String,
+		personId: String,
+		verifyClientRequest: VerifyClientRequest
+	): BaseDto<VerifyClientDto>
+
 	abstract suspend fun getQuestions() : BaseDto<List<QuestionDto>>
 
 	abstract suspend fun register(

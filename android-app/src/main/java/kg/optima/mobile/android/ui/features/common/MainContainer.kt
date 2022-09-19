@@ -35,9 +35,9 @@ fun MainContainer(
 	component: Root.Child.Component? = null,
 	toolbarInfo: ToolbarInfo? = ToolbarInfo(),
 	scrollable: Boolean = false,
-	contentModifier: Modifier = Modifier,
-	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
-	content: @Composable ColumnScope.() -> Unit,
+    contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
+    contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+    content: @Composable ColumnScope.() -> Unit,
 ) {
 	val router: Router by inject()
 
@@ -105,7 +105,6 @@ fun MainContainer(
 			val columnModifier = contentModifier
 				.fillMaxSize()
 				.weight(1f, false)
-				.padding(all = Deps.Spacing.standardPadding)
 				.background(ComposeColors.Background)
 			if (scrollable)
 				columnModifier.verticalScroll(rememberScrollState())

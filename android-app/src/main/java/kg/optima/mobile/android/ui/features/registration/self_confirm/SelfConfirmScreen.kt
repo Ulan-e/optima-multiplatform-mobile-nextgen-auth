@@ -8,7 +8,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.core.screen.Screen
+import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
+import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
@@ -25,6 +28,7 @@ import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
 import kotlinx.coroutines.delay
+import kz.verigram.veridoc.sdk.VeridocInitializer
 
 
 @Suppress("SameParameterValue")
@@ -36,6 +40,8 @@ object SelfConfirmScreen : Screen {
 		}
 		val intent = product.intent
 		val state = product.state
+
+		val context = LocalContext.current
 
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
@@ -81,7 +87,8 @@ object SelfConfirmScreen : Screen {
 				enabled = buttonEnabled,
 				color = ComposeColors.Green,
 				onClick = {
-
+					VeridocInitializer.init()
+					context.navigateTo(DocumentScanActivity())
 				}
 			)
 		}

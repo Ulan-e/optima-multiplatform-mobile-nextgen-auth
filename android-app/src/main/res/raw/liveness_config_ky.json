@@ -1,0 +1,62 @@
+{
+  "lang": "custom",
+  "recordVideo": true,
+  "videoBitrate": 250000,
+  "render": {
+    "oval": true,
+    "ovalType": "oval",
+    "ovalRingColor": {
+      "default": "#F5F542",
+      "actionSuccess": "#00F500",
+      "actionFailure": "#F50000",
+      "sessionSuccess": "#00F500",
+      "sessionFailure": "#F50000"
+    },
+    "ovalWidth": 2.0,
+    "overlay": true,
+    "overlayColor": {
+      "default": "#2F4F4F"
+    },
+    "overlayTransparency": {
+      "default": 0.70
+    },
+    "arrow": true,
+    "arrowColor": {
+      "default": "#F0F0F0"
+    },
+    "arrowProgressColor": {
+      "default": "#404040"
+    },
+    "hint": true,
+    "hintTextColor": {
+      "default": "#C8C9CC"
+    },
+    "hintFontType": "Arial",
+    "hintUseProgressiveFontSize": true,
+    "hintProgressiveFontSizeMultiplier": 1.0,
+    "hintFontSize": 18,
+    "hintCloudColor": {
+      "default": "#00000000"
+    }
+  },
+  "hints": {
+    "noHint": "",
+    "noFace": "Сиз көрүнбөй жатасыз",
+    "badLight": "Жарыгыңызды түзүңүз",
+    "closer": "Жакындагыла",
+    "away": "Алыс болуңуз",
+    "closerToCenter": "Экрандын ортосуна жакыныраак",
+    "targetLeft": "Акырын башыңызды солго буруңуз",
+    "targetRight": "Акырын башыңызды оңго буруңуз",
+    "targetCenter": "Түз караңыз",
+    "lookWait": "Түз карап, күтө туруңуз",
+    "sessionSuccess": "Даяр!",
+    "sessionFailure": "Идентификациядан өтпөй калдыңыз",
+    "sessionError": "Ката кетти. Кайталап көрүңүз",
+    "waitForProcessing": "Күтө туруңуз, иштетүү жүрүп жатат."
+  },
+  "bestframe": {
+    "maxWidth": 500,
+    "maxHeight": 400
+  }
+}
