@@ -2,7 +2,7 @@ package kg.optima.mobile.registration.presentation.control_question
 
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.Intent
-import kg.optima.mobile.registration.domain.GetQuestionsUseCase
+import kg.optima.mobile.registration.domain.usecase.GetQuestionsUseCase
 import kg.optima.mobile.registration.presentation.control_question.model.Question
 import org.koin.core.component.inject
 

@@ -30,7 +30,7 @@ class VerifyClientUseCase(
                 message = response.message
             )
         }.onSuccess {
-            registrationPreferences.accessToken
+            registrationPreferences.hash = it.hash
         }
     }
 

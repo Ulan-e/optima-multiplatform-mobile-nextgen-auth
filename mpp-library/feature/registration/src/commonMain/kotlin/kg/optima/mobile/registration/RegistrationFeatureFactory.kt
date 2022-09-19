@@ -1,8 +1,6 @@
 package kg.optima.mobile.registration
 
 import kg.optima.mobile.base.di.Factory
-import kg.optima.mobile.registration.data.api.RegistrationApi
-import kg.optima.mobile.registration.data.api.RegistrationApiImpl
 import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kg.optima.mobile.registration.data.component.RegistrationPreferencesImpl
 import kg.optima.mobile.registration.data.api.registration.RegistrationApi
@@ -14,8 +12,8 @@ import kg.optima.mobile.registration.data.repository.RegistrationRepositoryImpl
 import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
 import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
 import kg.optima.mobile.registration.domain.usecase.VerifyClientUseCase
-import kg.optima.mobile.registration.domain.GetQuestionsUseCase
-import kg.optima.mobile.registration.domain.RegistrationUseCase
+import kg.optima.mobile.registration.domain.usecase.GetQuestionsUseCase
+import kg.optima.mobile.registration.domain.usecase.RegistrationUseCase
 import kg.optima.mobile.registration.presentation.agreement.AgreementIntent
 import kg.optima.mobile.registration.presentation.agreement.AgreementState
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
@@ -39,9 +37,7 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
     override val module: Module = module {
         factory<RegistrationApi> { RegistrationApiImpl(get()) }
         factory<VerificationApi> { VerificationApiImpl(get()) }
-        factory<RegistrationRepository> {
-            RegistrationRepositoryImpl(registrationApi = get(), verificationApi = get())
-        }
+        factory<RegistrationRepository> { RegistrationRepositoryImpl(get(), get()) }
         factory<RegistrationPreferences> { RegistrationPreferencesImpl(get()) }
 
         factory { CheckPhoneNumberUseCase(get(), get()) }

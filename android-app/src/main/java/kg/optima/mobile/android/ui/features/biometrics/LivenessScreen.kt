@@ -24,11 +24,14 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.R
+import kg.optima.mobile.android.ui.SingleActivity
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
+import kg.optima.mobile.base.presentation.Intent
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
@@ -66,10 +69,42 @@ object LivenessScreen : Screen {
 
         val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-        val registrationPreferences: RegistrationPreferences by inject()
+        val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
         val context = LocalContext.current
 
-        val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+        when(val livenessModel = model){
+            is LivenessState.LivenessModel.Passed -> {
+                bottomSheetState.value = showBottomSheetDialog(
+                    title = livenessModel.message,
+                    positiveButtonView = ButtonView.Primary(
+                        modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                            true
+                        ),
+                        text = "Продолжить",
+                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                            context.navigateTo(RegistrationScreenModel.ControlQuestion)
+                        }
+                    ),
+                )
+            }
+            is LivenessState.LivenessModel.Failed -> {
+                bottomSheetState.value = showBottomSheetDialog(
+                    title = livenessModel.message,
+                    positiveButtonView = ButtonView.Primary(
+                        modifierParameters = ButtonView.ModifierParameters.modifierParameters(
+                            true
+                        ),
+                        text = "Повторить попытку",
+                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                             context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                        }
+                    ),
+                )
+            }
+        }
+
+        val registrationPreferences: RegistrationPreferences by inject()
+
         val btnContinueVisibility = remember { mutableStateOf(false) }
         val livenessSessionId = remember { mutableStateOf("") }
         val livenessResult = remember { mutableStateOf("") }
@@ -275,12 +310,9 @@ object LivenessScreen : Screen {
                             text = "Продолжить",
                             color = ComposeColors.Green,
                             onClick = {
-                                /*val nextIntent = Intent(context, SingleActivity::class.java)
-                                nextIntent.putExtra(
-                                    SingleActivity.NEXT_SCREEN_MODEL,
-                                    RegistrationScreenModel.ControlQuestion
-                                )
-                                context.startActivity(nextIntent)*/
+                               // context.navigateTo(RegistrationScreenModel.ControlQuestion)
+
+                              // отправка данных для верификации клиента
 
                                 val data = context.loadFile("scanned_file")
                                 intent.verify(

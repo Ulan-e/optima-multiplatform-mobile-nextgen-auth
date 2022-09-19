@@ -3,7 +3,7 @@ package kg.optima.mobile.registration.presentation.create_password
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.Intent
 import kg.optima.mobile.core.common.CryptographyUtils
-import kg.optima.mobile.registration.domain.RegistrationUseCase
+import kg.optima.mobile.registration.domain.usecase.RegistrationUseCase
 import kg.optima.mobile.registration.presentation.create_password.validity.PasswordValidator
 import org.koin.core.component.inject
 

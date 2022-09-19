@@ -37,7 +37,7 @@ class RegistrationRepositoryImpl(
 		personId: String,
 		documentData: VerifyClientRequest
 	): Either<Failure, BaseDto<VerifyClientDto>> = apiCall {
-		registrationApi.verifyClient(
+		verificationApi.verifyClient(
 			referenceId,
 			sessionId,
 			livenessResult,
