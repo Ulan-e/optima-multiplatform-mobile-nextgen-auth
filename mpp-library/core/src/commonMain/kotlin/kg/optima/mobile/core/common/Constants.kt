@@ -13,7 +13,7 @@ object Constants {
 
 	const val PASSWORD_LENGTH = 8
 	const val CONTROL_ANSWER_LENGTH = 5
+	const val OTP_MAX_TRIES = 3
 
-	const val SMS_CODE_TIMEOUT: Int = 60
 	const val OTP_INVALID_ERROR_CODE: String = "1234"
 }

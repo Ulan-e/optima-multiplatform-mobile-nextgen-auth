@@ -14,11 +14,18 @@ sealed interface CheckSmsCodeInfo {
 		val message: String = emptyString,
 	) : CheckSmsCodeInfo
 
-	class Timeout(
+	class TimeLeft(
 		val timeout: Int
 	) : CheckSmsCodeInfo
 
 	object EnableReRequest : CheckSmsCodeInfo
+
+	class TriesData(
+		val tryCount: Int,
+		val timeLeft: Int,
+	) : CheckSmsCodeInfo
+
+	object TryDataSaved : CheckSmsCodeInfo
 
 
 }

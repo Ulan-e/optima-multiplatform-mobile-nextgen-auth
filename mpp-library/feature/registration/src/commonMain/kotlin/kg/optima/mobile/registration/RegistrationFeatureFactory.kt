@@ -3,12 +3,12 @@ package kg.optima.mobile.registration
 import kg.optima.mobile.base.di.Factory
 import kg.optima.mobile.registration.data.api.RegistrationApi
 import kg.optima.mobile.registration.data.api.RegistrationApiImpl
+import kg.optima.mobile.registration.data.component.RegistrationPreferences
+import kg.optima.mobile.registration.data.component.RegistrationPreferencesImpl
 import kg.optima.mobile.registration.data.repository.RegistrationRepository
 import kg.optima.mobile.registration.data.repository.RegistrationRepositoryImpl
-import kg.optima.mobile.registration.domain.CheckPhoneNumberUseCase
-import kg.optima.mobile.registration.domain.CheckSmsCodeUseCase
-import kg.optima.mobile.registration.domain.GetQuestionsUseCase
-import kg.optima.mobile.registration.domain.RegistrationUseCase
+import kg.optima.mobile.registration.domain.*
+import kg.optima.mobile.registration.domain.model.SaveTriesDataUseCase
 import kg.optima.mobile.registration.presentation.agreement.AgreementIntent
 import kg.optima.mobile.registration.presentation.agreement.AgreementState
 import kg.optima.mobile.registration.presentation.create_password.CreatePasswordIntent
@@ -30,11 +30,14 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
     override val module: Module = module {
         factory<RegistrationApi> { RegistrationApiImpl(get()) }
         factory<RegistrationRepository> { RegistrationRepositoryImpl(get()) }
+        factory<RegistrationPreferences> { RegistrationPreferencesImpl(get()) }
 
         factory { CheckPhoneNumberUseCase(get()) }
         factory { CheckSmsCodeUseCase(get()) }
         factory { GetQuestionsUseCase(get()) }
         factory { RegistrationUseCase(get()) }
+        factory { GetTriesDataUseCase(get()) }
+        factory { SaveTriesDataUseCase(get()) }
 
         factory { SmsCodeState() }
         factory { st -> SmsCodeIntent(st.get()) }

@@ -8,7 +8,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
@@ -48,12 +47,16 @@ class OtpScreen(
 
 		val codeState = remember { mutableStateOf(emptyString) }
 		val buttonIsEnabledState = remember { mutableStateOf(false) }
-		val timeoutState = remember { intent.startTimeout(timeout); mutableStateOf(timeout) }
+		val timeLeftState = remember { mutableStateOf(timeout) }
 		val errorState = remember { mutableStateOf(emptyString) }
-		val triesCountState = remember { mutableStateOf(3) }
+		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
+		val reRequestsCountState = remember { mutableStateOf(0) }
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
 		when (val model = model) {
+			is State.StateModel.Initial -> {
+				intent.getTriesData(phoneNumber, System.currentTimeMillis())
+			}
 			is State.StateModel.Error.BaseError -> {
 				codeState.value = emptyString
 				//TODO: mockup
@@ -73,11 +76,23 @@ class OtpScreen(
 					)
 				}
 			}
+			SmsCodeState.SmsCodeStateModel.ReRequest -> {
+				triesCountState.value = Constants.OTP_MAX_TRIES
+				buttonIsEnabledState.value = false
+				codeState.value = emptyString
+				errorState.value = emptyString
+			}
 			is SmsCodeState.SmsCodeStateModel.EnableReRequest -> {
 				buttonIsEnabledState.value = model.enabled
 			}
-			is SmsCodeState.SmsCodeStateModel.Timeout -> {
-				timeoutState.value = model.timeout
+			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {
+				timeLeftState.value = model.timeLeft
+			}
+			is SmsCodeState.SmsCodeStateModel.TriesData -> {
+				Log.d("STATE_TEST", "${model.tryCount} tries")
+				timeLeftState.value = model.timeLeft
+				reRequestsCountState.value = model.tryCount
+				intent.startTimeout(timeLeftState.value)
 			}
 		}
 
@@ -165,14 +180,10 @@ class OtpScreen(
 
 			PrimaryButton(
 				modifier = Modifier.fillMaxWidth(),
-				text = buttonTextFormatter(timeoutState.value),
+				text = buttonTextFormatter(timeLeftState.value),
 				color = ComposeColors.Green,
 				onClick = {
-					triesCountState.value = 3
-					buttonIsEnabledState.value = false
-					codeState.value = emptyString
-					errorState.value = emptyString
-					intent.smsCodeReRequest(timeout, phoneNumber)
+					intent.smsCodeReRequest(triesCountState.value, phoneNumber, System.currentTimeMillis())
 
 				},
 				enabled = buttonIsEnabledState.value,

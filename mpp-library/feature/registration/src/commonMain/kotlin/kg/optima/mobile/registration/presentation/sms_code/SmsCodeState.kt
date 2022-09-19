@@ -22,18 +22,28 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
                 } else {
                     StateModel.Error.BaseError("Не удалось запросить новый смс-код.")
                 }
-            is CheckSmsCodeInfo.Timeout ->
-                SmsCodeStateModel.Timeout(entity.timeout)
+            is CheckSmsCodeInfo.TimeLeft ->
+                SmsCodeStateModel.TimeLeft(entity.timeout)
             CheckSmsCodeInfo.EnableReRequest -> SmsCodeStateModel.EnableReRequest(true)
+            is CheckSmsCodeInfo.TriesData -> SmsCodeStateModel.TriesData(entity.tryCount, entity.timeLeft)
+            CheckSmsCodeInfo.TryDataSaved -> TODO()
         }
         setStateModel(stateModel)
     }
 
     sealed interface SmsCodeStateModel : StateModel {
+
         object ReRequest : SmsCodeStateModel
 
-        class Timeout(
-            val timeout: Int
+        object TryDataSaved : SmsCodeStateModel
+
+        class TimeLeft(
+            val timeLeft: Int
+        ) : SmsCodeStateModel
+
+        class TriesData(
+            val tryCount: Int,
+            val timeLeft: Int
         ) : SmsCodeStateModel
 
         class EnableReRequest(
