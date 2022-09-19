@@ -53,7 +53,7 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
         factory { st -> PhoneNumberIntent(st.get()) }
 
         factory { SelfConfirmState() }
-        factory { st -> SelfConfirmIntent(st.get(), get()) }
+        factory { st -> SelfConfirmIntent(st.get()) }
 
         factory { ControlQuestionState() }
         factory { st -> ControlQuestionIntent(st.get()) }

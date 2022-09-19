@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.features.registration.self_confirm
 
-import android.content.Intent
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -11,8 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.core.screen.Screen
-import dev.icerock.moko.permissions.Permission
-import dev.icerock.moko.permissions.PermissionsController
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
@@ -31,7 +28,6 @@ import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
 import kotlinx.coroutines.delay
-import org.koin.androidx.compose.inject
 import kz.verigram.veridoc.sdk.VeridocInitializer
 
 
