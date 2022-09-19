@@ -79,18 +79,12 @@ object LivenessScreen : Screen {
                 title = "Вы действительно хотите \nостановить идентификацию?",
                 subTitle = "Идентификация не закончена. \nПроцесс будет остановлен и вы окажетесь \nна начальном экране",
                 positiveButtonView = ButtonView.Primary(
-                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                        true
-                    ),
                     text = "Остановить процесс",
                     onClickListener = ButtonView.OnClickListener.onClickListener {
                         context.navigateTo(RegistrationScreenModel.SelfConfirm)
                     }
                 ),
                 negativeButtonView = ButtonView.Transparent(
-                    modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                        true
-                    ),
                     text = "Отмена",
                     onClickListener = ButtonView.OnClickListener.onClickListener {
                         bottomSheetState.value = null
@@ -172,9 +166,6 @@ object LivenessScreen : Screen {
                                             title = "Отсутствует интернет \nсоединение",
                                             subTitle = "Проверьте наличие интернета \nна Вашем устройстве",
                                             positiveButtonView = ButtonView.Primary(
-                                                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                                                    true
-                                                ),
                                                 text = "Повторить попытку",
                                                 onClickListener = ButtonView.OnClickListener.onClickListener {
                                                     bottomSheetState.value = null
@@ -187,9 +178,6 @@ object LivenessScreen : Screen {
                                             title = "Процесс идентификации \nостановлен",
                                             subTitle = "ServerResponseException ${e.localizedMessage}",
                                             positiveButtonView = ButtonView.Primary(
-                                                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                                                    true
-                                                ),
                                                 text = "Понятно",
                                                 onClickListener = ButtonView.OnClickListener.onClickListener {
                                                     bottomSheetState.value = null
@@ -201,9 +189,6 @@ object LivenessScreen : Screen {
                                         bottomSheetState.value = showBottomSheetDialog(
                                             title = "Нельзя пройти \nподтверждение личности\n без доступа к камере",
                                             positiveButtonView = ButtonView.Primary(
-                                                modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                                                    true
-                                                ),
                                                 text = "Понятно",
                                                 onClickListener = ButtonView.OnClickListener.onClickListener {
                                                     context.navigateTo(RegistrationScreenModel.SelfConfirm)
@@ -218,18 +203,12 @@ object LivenessScreen : Screen {
                                         title = "Что-то пошло не так",
                                         subTitle = "Решите свой вопрос через нашу заботливую \nподдержку прямо сейчас",
                                         positiveButtonView = ButtonView.Primary(
-                                            modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                                                true
-                                            ),
                                             text = "Связаться с банком",
                                             onClickListener = ButtonView.OnClickListener.onClickListener {
                                                 // TODO  retry
                                             }
                                         ),
                                         negativeButtonView = ButtonView.Transparent(
-                                            modifierParameters = ButtonView.ModifierParameters.modifierParameters(
-                                                true
-                                            ),
                                             text = "Отмена",
                                             onClickListener = ButtonView.OnClickListener.onClickListener {
                                                 bottomSheetState.value = null

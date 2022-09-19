@@ -39,7 +39,11 @@ abstract class Intent<in E>(
 
 	open fun customPermissionRequired(permissions: List<Permission>) {
 		coroutineScope.launch(handler) {
-			state.setStateModel(State.StateModel.CustomPermissionRequired(permissions))
+			state.setStateModel(State.StateModel.CustomPermissionRequired(
+				text = "Чтобы вы могли зарегистрироваться приложению нужен " +
+						"доступ к ${permissions.text()}",
+				permissions = permissions,
+			))
 		}
 	}
 
@@ -58,7 +62,7 @@ abstract class Intent<in E>(
 	}
 
 	fun List<Permission>.text(): String {
-		return StringBuilder("к ").apply {
+		return StringBuilder().apply {
 			this@text.forEach { permission ->
 				append(permission.text)
 				if (permission != this@text.last()) append(", ")
