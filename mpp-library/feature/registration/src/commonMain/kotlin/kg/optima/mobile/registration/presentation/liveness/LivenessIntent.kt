@@ -1,6 +1,7 @@
 package kg.optima.mobile.registration.presentation.liveness
 
 import kg.optima.mobile.base.data.model.map
+import kg.optima.mobile.base.data.model.onFailure
 import kg.optima.mobile.base.data.model.onSuccess
 import kg.optima.mobile.base.presentation.Intent
 import kg.optima.mobile.registration.domain.usecase.VerifyClientUseCase
@@ -24,6 +25,8 @@ class LivenessIntent(
                 LivenessInfo(passed = true, message = it.message)
             }.onSuccess { livenessInfo ->
                 state.handle(livenessInfo)
+            }.onFailure {
+                state.handle(LivenessInfo(false, it.message))
             }
         }
     }

@@ -5,10 +5,23 @@ import kg.optima.mobile.base.presentation.State
 class LivenessState : State<LivenessInfo>() {
 
     override fun handle(entity: LivenessInfo) {
-        if (entity.passed) {
-            setStateModel(StateModel.Error.BaseError(entity.message))
+        val stateModel: StateModel = if (entity.passed) {
+            LivenessModel.Passed(entity.message)
         } else {
-            setStateModel(StateModel.Pop)
+            LivenessModel.Failed(entity.message)
         }
+        setStateModel(stateModel)
+    }
+
+    sealed interface LivenessModel : StateModel {
+        val message: String
+
+        class Passed(
+            override val message: String
+        ) : LivenessModel
+
+        class Failed(
+            override val message: String
+        ) : LivenessModel
     }
 }
