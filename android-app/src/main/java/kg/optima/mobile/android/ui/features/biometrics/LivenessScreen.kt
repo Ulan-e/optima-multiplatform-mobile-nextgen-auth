@@ -11,10 +11,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
@@ -36,6 +33,7 @@ import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
@@ -59,6 +57,7 @@ object LivenessScreen : Screen {
 
     private const val serverUrl = "https://veritest.optima24.kg/vl/verilive"
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
         val product = remember {
@@ -79,6 +78,40 @@ object LivenessScreen : Screen {
         val btnContinueEnability = remember { mutableStateOf(true) }
         val livenessSessionId = remember { mutableStateOf("") }
         val livenessResult = remember { mutableStateOf("") }
+
+        when (val livenessModel = model) {
+            is LivenessState.LivenessModel.Passed -> {
+                state.setStateModel(State.StateModel.Initial)
+
+                bottomSheetState.value = BottomSheetInfo(
+                    title = livenessModel.message,
+                    buttons = listOf(
+                        ButtonView.Primary(
+                            text = "Продолжить",
+                            composeColor = ComposeColor.composeColor(ComposeColors.Green),
+                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                                context.navigateTo(RegistrationScreenModel.ControlQuestion)
+                            }
+                        )
+                    )
+                )
+            }
+            is LivenessState.LivenessModel.Failed -> {
+                bottomSheetState.value = BottomSheetInfo(
+                    title = "errorState.error",
+                    buttons = listOf(
+                        ButtonView.Primary(
+                            text = "Повторить попытку",
+                            composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
+                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                                context.navigateTo(LivenessActivity())
+                            }
+                        )
+                    )
+                )
+            }
+        }
+
 
         val onBack = {
             bottomSheetState.value = showBottomSheetDialog(
@@ -130,7 +163,7 @@ object LivenessScreen : Screen {
             mainState = model,
             contentModifier = Modifier.fillMaxSize(),
             toolbarInfo = null,
-            infoState = bottomSheetState.value,
+            sheetInfo = bottomSheetState.value,
             contentHorizontalAlignment = Alignment.Start,
         ) {
 

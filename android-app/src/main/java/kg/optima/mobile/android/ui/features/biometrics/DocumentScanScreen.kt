@@ -8,10 +8,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
@@ -47,6 +44,7 @@ import kz.verigram.veridoc.sdk.ui.CameraCaptureComponent
 
 object DocumentScanScreen : Screen {
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
         val product = remember {
@@ -84,7 +82,7 @@ object DocumentScanScreen : Screen {
 
         MainContainer(
             mainState = model,
-            infoState = bottomSheetState.value,
+            sheetInfo = bottomSheetState.value,
             toolbarInfo = null,
             contentModifier = Modifier.fillMaxSize(),
             contentHorizontalAlignment = Alignment.Start,

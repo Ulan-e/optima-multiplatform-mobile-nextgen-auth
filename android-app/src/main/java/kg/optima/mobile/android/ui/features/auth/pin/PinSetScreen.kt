@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.auth.pin
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
@@ -17,6 +18,7 @@ import kg.optima.mobile.design_system.android.ui.screens.pin.headers.pinSetScree
 class PinSetScreen(
 	private val nextScreenModel: ScreenModel,
 ) : BaseScreen {
+	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
 		val product = remember {

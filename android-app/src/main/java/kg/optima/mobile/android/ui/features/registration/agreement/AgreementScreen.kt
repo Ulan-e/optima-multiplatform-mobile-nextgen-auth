@@ -4,11 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -17,9 +16,11 @@ import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.SecondaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonSecondaryType
+import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
@@ -37,6 +38,7 @@ import kg.optima.mobile.resources.images.RegistrationImages
 @Parcelize
 object AgreementScreen : BaseScreen {
 
+	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
 		val product = remember {
@@ -47,14 +49,23 @@ object AgreementScreen : BaseScreen {
 
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
+		val infoState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+
 		MainContainer(
 			mainState = model,
 			contentModifier = Modifier
 				.fillMaxSize()
 				.padding(all = Deps.Spacing.standardPadding),
+			sheetInfo = infoState.value,
 			toolbarInfo = ToolbarInfo(
 				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
 			),
+			onSheetStateChanged = {
+				when (it) {
+					ModalBottomSheetValue.Hidden -> intent.pop()
+					else -> Unit
+				}
+			},
 			contentHorizontalAlignment = Alignment.Start,
 		) {
 			Column(
@@ -122,7 +133,26 @@ object AgreementScreen : BaseScreen {
 				buttonType = ButtonSecondaryType.Main(
 					composeColor = ComposeColor.composeColor(ComposeColors.PrimaryBlack)
 				),
-				onClick = { intent.pop() }
+				onClick = {
+					infoState.value = BottomSheetInfo(
+						title = "Вы можете проконсультироваться и зарегистрироваться в ближайшем отделении банка",
+						buttons = listOf(
+							ButtonView.Primary(
+								text = "Отделение",
+								onClickListener = ButtonView.OnClickListener.onClickListener {
+									// TODO
+								}
+							),
+							ButtonView.Transparent(
+								text = "Закрыть",
+								onClickListener = ButtonView.OnClickListener.onClickListener {
+									infoState.value = null
+								}
+							)
+						)
+					)
+//					intent.pop()
+				}
 			)
 		}
 	}

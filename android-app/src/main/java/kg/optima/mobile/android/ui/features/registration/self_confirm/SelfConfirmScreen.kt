@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -13,7 +14,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.android.ui.features.common.PermissionController
+import kg.optima.mobile.android.ui.base.permission.PermissionController
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
@@ -35,6 +36,7 @@ import kz.verigram.veridoc.sdk.VeridocInitializer
 
 @Suppress("SameParameterValue")
 object SelfConfirmScreen : Screen {
+	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
 		val product = remember {
