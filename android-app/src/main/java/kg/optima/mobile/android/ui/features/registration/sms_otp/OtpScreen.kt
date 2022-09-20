@@ -57,10 +57,9 @@ class OtpScreen(
 			is State.StateModel.Initial -> {
 				intent.getTriesData(phoneNumber, System.currentTimeMillis())
 			}
+
 			is State.StateModel.Error.BaseError -> {
 				codeState.value = emptyString
-				//TODO: mockup
-//				errorState.value = model.error
 				errorState.value = "1234"
 				if (triesCountState.value <= 0) {
 					bottomSheetState.value = BottomSheetInfo(
@@ -183,7 +182,7 @@ class OtpScreen(
 				text = buttonTextFormatter(timeLeftState.value),
 				color = ComposeColors.Green,
 				onClick = {
-					intent.smsCodeReRequest(triesCountState.value, phoneNumber, System.currentTimeMillis())
+					intent.smsCodeReRequest(reRequestsCountState.value, phoneNumber, System.currentTimeMillis())
 
 				},
 				enabled = buttonIsEnabledState.value,

@@ -1,6 +1,7 @@
 package kg.optima.mobile.registration.presentation.sms_code
 
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.registration.presentation.sms_code.utils.Timeouts
 
 sealed interface CheckSmsCodeInfo {
 
@@ -23,7 +24,14 @@ sealed interface CheckSmsCodeInfo {
 	class TriesData(
 		val tryCount: Int,
 		val timeLeft: Int,
-	) : CheckSmsCodeInfo
+	) : CheckSmsCodeInfo {
+		companion object {
+			val FIRST_TRY = TriesData(
+				tryCount = 1,
+				timeLeft = Timeouts.get(1).timeout
+			)
+		}
+	}
 
 	object TryDataSaved : CheckSmsCodeInfo
 

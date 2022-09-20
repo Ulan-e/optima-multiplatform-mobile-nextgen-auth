@@ -8,12 +8,15 @@ class OtpTriesModel(
     val phoneNumber: String,
     val tryCount: Int,
     val tryTime: Long,
+)
+
+@Serializable
+class OtpTriesModelList(
+    val list: List<OtpTriesModel>
 ) {
     companion object {
-        val NO_TRIES = OtpTriesModel(
-            phoneNumber = emptyString,
-            tryCount = 0,
-            tryTime = 0
+        val NO_TRIES = OtpTriesModelList(
+            list = listOf()
         )
     }
 }

@@ -8,7 +8,7 @@ import kg.optima.mobile.registration.data.component.RegistrationPreferencesImpl
 import kg.optima.mobile.registration.data.repository.RegistrationRepository
 import kg.optima.mobile.registration.data.repository.RegistrationRepositoryImpl
 import kg.optima.mobile.registration.domain.*
-import kg.optima.mobile.registration.domain.model.SaveTriesDataUseCase
+import kg.optima.mobile.registration.domain.SaveTriesDataUseCase
 import kg.optima.mobile.registration.presentation.agreement.AgreementIntent
 import kg.optima.mobile.registration.presentation.agreement.AgreementState
 import kg.optima.mobile.registration.presentation.create_password.CreatePasswordIntent

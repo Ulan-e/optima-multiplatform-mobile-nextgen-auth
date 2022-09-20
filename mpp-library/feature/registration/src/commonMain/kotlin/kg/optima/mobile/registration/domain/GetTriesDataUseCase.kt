@@ -9,11 +9,11 @@ import kg.optima.mobile.registration.domain.model.utils.toOtpTriesEntity
 
 class GetTriesDataUseCase(
     private val registrationPreferences: RegistrationPreferences
-) : BaseUseCase<GetTriesDataUseCase.Params, OtpTriesEntity>() {
+) : BaseUseCase<GetTriesDataUseCase.Params, List<OtpTriesEntity>>() {
 
-    override suspend fun execute(model: Params): Either<Failure, OtpTriesEntity> =
+    override suspend fun execute(model: Params): Either<Failure, List<OtpTriesEntity>> =
         Either.Right(
-            registrationPreferences.otpTriesModel.toOtpTriesEntity()
+            registrationPreferences.otpTriesModelList.toOtpTriesEntity()
         )
 
     object Params
