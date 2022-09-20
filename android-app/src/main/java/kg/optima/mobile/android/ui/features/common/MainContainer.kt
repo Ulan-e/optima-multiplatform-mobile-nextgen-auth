@@ -53,6 +53,7 @@ fun MainContainer(
 	scrollable: Boolean = false,
 	contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
 	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+	onSheetStateChanged: (ModalBottomSheetValue) -> Unit = {},
 	content: @Composable ColumnScope.() -> Unit,
 ) {
 	val router: Router by inject()
@@ -64,7 +65,7 @@ fun MainContainer(
 	val coroutineScope = rememberCoroutineScope()
 	val sheetState = rememberModalBottomSheetState(
 		initialValue = ModalBottomSheetValue.Hidden,
-		confirmStateChange = { it != ModalBottomSheetValue.HalfExpanded }
+		confirmStateChange = { onSheetStateChanged(it); it != ModalBottomSheetValue.HalfExpanded }
 	)
 	val sheetInfoState = remember { mutableStateOf(sheetInfo) }
 
@@ -78,18 +79,11 @@ fun MainContainer(
 		coroutineScope.launch { sheetState.hide() }
 	}
 
-	BackHandler {
-		when {
-			sheetState.isVisible -> {
-				coroutineScope.launch { sheetState.hide() }
-			}
-			!navigator.canPop -> {
-				if (navigator.lastItem != WelcomeScreen) {
-					navigator.replace(WelcomeScreen)
-				} else {
-					activity?.finish()
-				}
-			}
+	BackHandler(!navigator.canPop) {
+		if (navigator.lastItem != WelcomeScreen) {
+			navigator.replace(WelcomeScreen)
+		} else {
+			activity?.finish()
 		}
 	}
 

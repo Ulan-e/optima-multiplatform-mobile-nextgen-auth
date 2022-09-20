@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,6 +31,7 @@ import kg.optima.mobile.resources.Headings
 @Parcelize
 object WelcomeScreen : BaseScreen {
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
         val product = remember {

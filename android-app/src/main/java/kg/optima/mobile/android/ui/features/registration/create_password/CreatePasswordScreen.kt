@@ -3,6 +3,7 @@ package kg.optima.mobile.android.ui.features.registration.create_password
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -35,6 +36,7 @@ class CreatePasswordScreen(
 	val answer: String,
 ) : Screen {
 
+	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
 		val product = remember {
