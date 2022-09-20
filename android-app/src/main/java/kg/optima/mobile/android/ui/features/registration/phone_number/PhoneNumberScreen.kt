@@ -3,6 +3,7 @@ package kg.optima.mobile.android.ui.features.registration.phone_number
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -27,6 +28,7 @@ import kg.optima.mobile.resources.Headings
 
 object PhoneNumberScreen : Screen {
 
+	@OptIn(ExperimentalMaterialApi::class)
 	@Suppress("NAME_SHADOWING")
 	@Composable
 	override fun Content() {

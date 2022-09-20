@@ -4,6 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,6 +20,7 @@ import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.SecondaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonSecondaryType
+import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
 import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
@@ -35,6 +38,7 @@ import kg.optima.mobile.resources.images.RegistrationImages
 @Parcelize
 object AgreementScreen : BaseScreen {
 
+	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
 		val product = remember {
@@ -56,12 +60,16 @@ object AgreementScreen : BaseScreen {
 			toolbarInfo = ToolbarInfo(
 				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
 			),
+			onSheetStateChanged = {
+				when (it) {
+					ModalBottomSheetValue.Hidden -> intent.pop()
+					else -> Unit
+				}
+			},
 			contentHorizontalAlignment = Alignment.Start,
 		) {
 			Column(
-				modifier = Modifier
-					.weight(1f)
-					.verticalScroll(rememberScrollState()),
+				modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()),
 				verticalArrangement = Arrangement.Center
 			) {
 				TitleTextField(text = "Обратите внимание!")
@@ -125,7 +133,26 @@ object AgreementScreen : BaseScreen {
 				buttonType = ButtonSecondaryType.Main(
 					composeColor = ComposeColor.composeColor(ComposeColors.PrimaryBlack)
 				),
-				onClick = { intent.pop() }
+				onClick = {
+					infoState.value = BottomSheetInfo(
+						title = "Вы можете проконсультироваться и зарегистрироваться в ближайшем отделении банка",
+						buttons = listOf(
+							ButtonView.Primary(
+								text = "Отделение",
+								onClickListener = ButtonView.OnClickListener.onClickListener {
+									// TODO
+								}
+							),
+							ButtonView.Transparent(
+								text = "Закрыть",
+								onClickListener = ButtonView.OnClickListener.onClickListener {
+									infoState.value = null
+								}
+							)
+						)
+					)
+//					intent.pop()
+				}
 			)
 		}
 	}

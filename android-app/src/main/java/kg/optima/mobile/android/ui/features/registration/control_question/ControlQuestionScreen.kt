@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -35,7 +36,7 @@ class ControlQuestionScreen(
 	private val hashCode: String,
 ) : Screen {
 
-	@OptIn(ExperimentalComposeUiApi::class)
+	@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterialApi::class)
 	@Suppress("NAME_SHADOWING")
 	@Composable
 	override fun Content() {
