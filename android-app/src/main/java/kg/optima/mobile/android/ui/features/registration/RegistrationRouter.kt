@@ -20,7 +20,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 			RegistrationScreenModel.Agreement -> AgreementScreen
 			is RegistrationScreenModel.Offerta -> OfferScreen(screenModel.url)
 			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
-			is RegistrationScreenModel.AcceptCode -> SmsCodeScreen(
+			is RegistrationScreenModel.AcceptCode -> OtpScreen(
 				phoneNumber = screenModel.phoneNumber,
 				timeout = screenModel.timeout,
 				referenceId = screenModel.referenceId,

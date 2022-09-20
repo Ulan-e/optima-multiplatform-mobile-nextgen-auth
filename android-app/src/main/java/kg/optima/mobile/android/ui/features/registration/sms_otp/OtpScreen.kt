@@ -2,6 +2,7 @@ package kg.optima.mobile.android.ui.features.registration.sms_otp
 
 import android.text.format.DateUtils
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -35,6 +36,7 @@ class OtpScreen(
 	private val referenceId: String,
 ) : BaseScreen {
 
+	@OptIn(ExperimentalMaterialApi::class)
 	@Suppress("NAME_SHADOWING")
 	@Composable
 	override fun Content() {
@@ -50,7 +52,7 @@ class OtpScreen(
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
 		val reRequestsCountState = remember { mutableStateOf(0) }
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
-		var referenceId = remember { mutableStateOf(referenceId) }
+		val referenceId = remember { mutableStateOf(referenceId) }
 
 		when (val model = model) {
 			is State.StateModel.Initial -> {
@@ -78,7 +80,11 @@ class OtpScreen(
 				triesCountState.value = Constants.OTP_MAX_TRIES
 				codeState.value = emptyString
 				errorState.value = emptyString
-				intent.saveTriesData(reRequestsCountState.value, phoneNumber, System.currentTimeMillis())
+				intent.saveTriesData(
+					reRequestsCountState.value,
+					phoneNumber,
+					System.currentTimeMillis()
+				)
 			}
 			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {
 				timeLeftState.value = model.timeLeft
@@ -90,6 +96,21 @@ class OtpScreen(
 				} else {
 					timeLeftState.value = model.timeLeft
 					intent.startTimer(model.timeLeft)
+					if (referenceId.value == emptyString) {
+						triesCountState.value = 0
+						bottomSheetState.value = BottomSheetInfo(
+							title = "Истек срок действия смс-кода. Пожалуйста, запросите новый код",
+							buttons = listOf(
+								ButtonView.Primary(
+									text = "Закрыть",
+									onClickListener = ButtonView.OnClickListener.onClickListener {
+										bottomSheetState.value = null
+									},
+								)
+							)
+						)
+					}
+
 				}
 
 			}
@@ -100,7 +121,7 @@ class OtpScreen(
 			toolbarInfo = ToolbarInfo(
 				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
 			),
-			infoState = bottomSheetState.value,
+			sheetInfo = bottomSheetState.value,
 			scrollable = true,
 			contentHorizontalAlignment = Alignment.Start,
 		) {
@@ -134,8 +155,8 @@ class OtpScreen(
 				showValue = true,
 				onValueChanged = {
 					if (errorState.value != emptyString) {
-					errorState.value = emptyString
-				}
+						errorState.value = emptyString
+					}
 					if (triesCountState.value > 0) {
 						codeState.value = it
 					}
@@ -152,25 +173,14 @@ class OtpScreen(
 				isValid = (errorState.value != Constants.OTP_INVALID_ERROR_CODE),
 			)
 
-			if (errorState.value != emptyString) {
-				var redText = emptyString; var greyText = emptyString
-				when (errorState.value) {
-					Constants.OTP_INVALID_ERROR_CODE -> {
-						redText = "Неверный Код. "
-						greyText = "Осталось попыток: ${triesCountState.value}"
-					}
-					Constants.OTP_NO_TRIES -> {
-						redText = "Старый код недействителен. "
-						greyText = "Пожалуйста, запросите новый код."
-					}
-				}
+			if (errorState.value == Constants.OTP_INVALID_ERROR_CODE) {
 				Row(
 					modifier = Modifier.align(Alignment.CenterHorizontally)
 				) {
 					Text(
 						modifier = Modifier
 							.padding(vertical = Deps.Spacing.standardMargin),
-						text = redText,
+						text = "Неверный Код. ",
 						fontSize = Headings.H4.sp,
 						fontWeight = FontWeight.Normal,
 						color = ComposeColors.PrimaryRed
@@ -178,7 +188,7 @@ class OtpScreen(
 					Text(
 						modifier = Modifier
 							.padding(vertical = Deps.Spacing.standardMargin),
-						text = greyText,
+						text = "Осталось попыток: ${triesCountState.value}",
 						fontSize = Headings.H4.sp,
 						fontWeight = FontWeight.Normal,
 						color = ComposeColors.DescriptionGray

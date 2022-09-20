@@ -3,11 +3,11 @@ package kg.optima.mobile.registration.presentation.sms_code
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.Intent
-import kg.optima.mobile.registration.domain.CheckPhoneNumberUseCase
-import kg.optima.mobile.registration.domain.CheckSmsCodeUseCase
 import kg.optima.mobile.registration.domain.GetTriesDataUseCase
 import kg.optima.mobile.registration.domain.SaveTriesDataUseCase
 import kg.optima.mobile.registration.domain.model.OtpTriesEntity
+import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
+import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
 import kg.optima.mobile.registration.presentation.sms_code.utils.Timeouts
 import kotlinx.coroutines.delay
 import org.koin.core.component.inject
@@ -35,7 +35,7 @@ class SmsCodeIntent(
 					verificationCode = smsCode,
 					referenceId = referenceId
 				)
-			).map { CheckSmsCodeInfo.OtpCheck(it) }
+			).map { CheckSmsCodeInfo.OtpCheck(it.success) }
 		}
 	}
 

@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.common
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -159,7 +160,7 @@ private fun processError(
 ) {
 	// TODO process error
 	when (errorState) {
-		is State.StateModel.Error.BaseError -> onSheetStateChanged(
+		is State.StateModel.Error.ApiError -> onSheetStateChanged(
 			BottomSheetInfo(
 				title = errorState.error,
 				buttons = listOf(
