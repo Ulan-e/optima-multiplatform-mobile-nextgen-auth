@@ -73,7 +73,7 @@ object LivenessScreen : Screen {
         val livenessSessionId = remember { mutableStateOf("") }
         val livenessResult = remember { mutableStateOf("") }
 
-        when(val livenessModel = model){
+        when (val livenessModel = model) {
             is LivenessState.LivenessModel.Passed -> {
                 state.setStateModel(State.StateModel.Initial)
 
@@ -92,11 +92,11 @@ object LivenessScreen : Screen {
             }
             is LivenessState.LivenessModel.Failed -> {
                 bottomSheetState.value = BottomSheetInfo(
-                    title ="errorState.error",
+                    title = "errorState.error",
                     buttons = listOf(
                         ButtonView.Primary(
                             text = "Повторить попытку",
-                            composeColor = ComposeColor.composeColor(ComposeColors. PrimaryRed),
+                            composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
                                 context.navigateTo(LivenessActivity())
                             }
