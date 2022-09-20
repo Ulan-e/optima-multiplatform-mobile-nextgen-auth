@@ -45,35 +45,34 @@ class SmsCodeIntent(
 		} else {
 			tryCount + 1
 		}
-		val newTimeLeft = Timeouts.get(tryCount + 1).timeout
-//		startTimeout(newTimeLeft)
-		launchOperation {
-			val oldNumberData = loadedTriesData.findLast { it.phoneNumber == phoneNumber }
-			val saveData = mutableListOf<OtpTriesEntity>()
-			if (oldNumberData == null) {
-				saveData.addAll(loadedTriesData)
-				saveData.add(
-					OtpTriesEntity(
+		val newTimeLeft = Timeouts.get(newCount).timeout
+		val oldNumberData = loadedTriesData.findLast { it.phoneNumber == phoneNumber }
+		val saveData = mutableListOf<OtpTriesEntity>()
+		if (oldNumberData == null) {
+			saveData.addAll(loadedTriesData)
+			saveData.add(
+				OtpTriesEntity(
+					phoneNumber = phoneNumber,
+					tryCount = newCount,
+					tryTime = currentTime
+				)
+			)
+		} else {
+			loadedTriesData.map {
+				if (it.phoneNumber == oldNumberData.phoneNumber) {
+					saveData.add(OtpTriesEntity(
 						phoneNumber = phoneNumber,
 						tryCount = newCount,
 						tryTime = currentTime
-					)
-				)
-			} else {
-				loadedTriesData.map {
-					if (it.phoneNumber == oldNumberData.phoneNumber) {
-						saveData.add(OtpTriesEntity(
-							phoneNumber = phoneNumber,
-							tryCount = newCount,
-							tryTime = currentTime
-						))
-					} else {
-						saveData.add(it)
-					}
+					))
+				} else {
+					saveData.add(it)
 				}
 			}
+		}
+		launchOperation {
 			saveTriesDataUseCase.execute(
-				SaveTriesDataUseCase.Params(loadedTriesData)
+				SaveTriesDataUseCase.Params(saveData)
 			).map {
 				CheckSmsCodeInfo.TriesData(
 					tryCount = newCount,
@@ -106,16 +105,16 @@ class SmsCodeIntent(
 				loadedTriesData = it
 				val savedTryData = it.findLast { it.phoneNumber == currentPhoneNumber }
 				if (savedTryData != null) {
-					val timePast = ((currentTime - savedTryData.tryTime) / 1000).toInt()
+					val timePast = Timeouts.get(savedTryData.tryCount).timeout - ((currentTime - savedTryData.tryTime) / 1000).toInt()
 					val actualTryData = if (timePast >= Timeouts.FOURTH.timeout) {
 						CheckSmsCodeInfo.TriesData.FIRST_TRY
 					} else {
 						CheckSmsCodeInfo.TriesData(
 							tryCount = savedTryData.tryCount,
-							timeLeft = if (timePast <= Timeouts.get(savedTryData.tryCount).timeout) {
-								timePast
-							} else {
+							timeLeft = if (timePast <= 0) {
 								0
+							} else {
+								timePast
 							}
 						)
 					}

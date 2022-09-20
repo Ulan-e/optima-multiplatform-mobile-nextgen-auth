@@ -8,10 +8,12 @@ class RegistrationPreferencesImpl(
 ) : RegistrationPreferences {
 
 	override var otpTriesModelList: OtpTriesModelList
-		get() = storageRepository.getObject(
-			OtpTriesModelList.serializer(),
-			RegistrationPreferences.OTP_TRIES
-		) ?: OtpTriesModelList.NO_TRIES
+		get() {
+			return storageRepository.getObject(
+				OtpTriesModelList.serializer(),
+				RegistrationPreferences.OTP_TRIES
+			) ?: OtpTriesModelList.NO_TRIES
+		}
 		set(value) = storageRepository.putObject(
 			value,
 			OtpTriesModelList.serializer(),

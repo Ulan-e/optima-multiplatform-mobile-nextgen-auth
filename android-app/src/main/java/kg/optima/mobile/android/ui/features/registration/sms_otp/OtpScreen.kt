@@ -88,10 +88,12 @@ class OtpScreen(
 				timeLeftState.value = model.timeLeft
 			}
 			is SmsCodeState.SmsCodeStateModel.TriesData -> {
-				Log.d("STATE_TEST", "${model.tryCount} tries")
 				timeLeftState.value = model.timeLeft
 				reRequestsCountState.value = model.tryCount
 				intent.startTimeout(timeLeftState.value)
+				if (timeLeftState.value == 0) {
+					intent.smsCodeReRequest(reRequestsCountState.value, phoneNumber, System.currentTimeMillis())
+				}
 			}
 		}
 
