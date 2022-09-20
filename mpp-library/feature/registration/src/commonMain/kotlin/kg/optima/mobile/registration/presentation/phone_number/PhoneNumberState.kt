@@ -11,17 +11,13 @@ class PhoneNumberState : State<CheckPhoneNumberInfo>() {
 		val stateModel: StateModel = when (entity) {
 			is CheckPhoneNumberInfo.Validation ->
 				PhoneNumberStateModel.ValidateResult(entity.success, entity.message)
-			is CheckPhoneNumberInfo.Check -> {
-				if (entity.success) {
-					val screenModel = RegistrationScreenModel.AcceptCode(
-						phoneNumber = entity.phoneNumber,
-						timeout = 0,
-						referenceId = entity.referenceId,
-					)
-					StateModel.Navigate(screenModel)
-				} else {
-					StateModel.Error.BaseError("Неверный номер телефона!")
-				}
+			is CheckPhoneNumberInfo.PhoneNumber -> {
+				val screenModel = RegistrationScreenModel.AcceptCode(
+					phoneNumber = entity.phoneNumber,
+					timeout = 60,
+					referenceId = "",
+				)
+				StateModel.Navigate(screenModel)
 			}
 		}
 

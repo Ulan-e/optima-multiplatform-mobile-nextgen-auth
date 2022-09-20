@@ -15,5 +15,6 @@ object Constants {
 	const val CONTROL_ANSWER_LENGTH = 5
 	const val OTP_MAX_TRIES = 3
 
-	const val OTP_INVALID_ERROR_CODE: String = "1234"
+	const val OTP_INVALID_ERROR_CODE: String = "111"
+	const val OTP_NO_TRIES: String = "222"
 }

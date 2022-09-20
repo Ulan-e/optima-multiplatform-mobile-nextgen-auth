@@ -8,7 +8,7 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
 
     override fun handle(entity: CheckSmsCodeInfo) {
         val stateModel: StateModel = when (entity) {
-            is CheckSmsCodeInfo.Check -> {
+            is CheckSmsCodeInfo.OtpCheck -> {
                 if (entity.success) {
                     val screenModel = RegistrationScreenModel.SelfConfirm
                     StateModel.Navigate(screenModel)
@@ -16,9 +16,9 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
                     StateModel.Error.BaseError(Constants.OTP_INVALID_ERROR_CODE)
                 }
             }
-            is CheckSmsCodeInfo.ReRequest ->
+            is CheckSmsCodeInfo.Check ->
                 if (entity.success) {
-                    SmsCodeStateModel.ReRequest
+                    SmsCodeStateModel.Request(entity.referenceId)
                 } else {
                     StateModel.Error.BaseError("Не удалось запросить новый смс-код.")
                 }
@@ -32,7 +32,9 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
 
     sealed interface SmsCodeStateModel : StateModel {
 
-        object ReRequest : SmsCodeStateModel
+        class Request(
+            val referenceId: String,
+        ) : SmsCodeStateModel
 
         object TryDataSaved :SmsCodeStateModel
 

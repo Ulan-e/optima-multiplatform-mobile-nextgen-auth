@@ -1,7 +1,6 @@
 package kg.optima.mobile.android.ui.features.registration.sms_otp
 
 import android.text.format.DateUtils
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -51,6 +50,7 @@ class OtpScreen(
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
 		val reRequestsCountState = remember { mutableStateOf(0) }
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+		var referenceId = remember { mutableStateOf(referenceId) }
 
 		when (val model = model) {
 			is State.StateModel.Initial -> {
@@ -58,7 +58,7 @@ class OtpScreen(
 			}
 			is State.StateModel.Error.BaseError -> {
 				codeState.value = emptyString
-				errorState.value = "1234"
+				errorState.value = Constants.OTP_INVALID_ERROR_CODE
 				if (triesCountState.value <= 0) {
 					bottomSheetState.value = BottomSheetInfo(
 						title = "Вы ввели код неверно несколько раз. Попробуйте запросить новый код",
@@ -73,7 +73,8 @@ class OtpScreen(
 					)
 				}
 			}
-			SmsCodeState.SmsCodeStateModel.ReRequest -> {
+			is SmsCodeState.SmsCodeStateModel.Request -> {
+				referenceId.value = model.referenceId
 				triesCountState.value = Constants.OTP_MAX_TRIES
 				codeState.value = emptyString
 				errorState.value = emptyString
@@ -83,9 +84,14 @@ class OtpScreen(
 				timeLeftState.value = model.timeLeft
 			}
 			is SmsCodeState.SmsCodeStateModel.TriesData -> {
-				timeLeftState.value = model.timeLeft
 				reRequestsCountState.value = model.tryCount
-				intent.startTimer(model.timeLeft)
+				if (model.tryCount == 0) {
+					intent.smsCodeRequest(phoneNumber)
+				} else {
+					timeLeftState.value = model.timeLeft
+					intent.startTimer(model.timeLeft)
+				}
+
 			}
 		}
 
@@ -138,7 +144,7 @@ class OtpScreen(
 				onInputCompleted = {
 					if (triesCountState.value > 0) {
 						triesCountState.value--
-						intent.smsCodeEntered(phoneNumber, it, referenceId)
+						intent.smsCodeEntered(phoneNumber, it, referenceId.value)
 					}
 				},
 				withKeyboard = true,
@@ -146,14 +152,25 @@ class OtpScreen(
 				isValid = (errorState.value != Constants.OTP_INVALID_ERROR_CODE),
 			)
 
-			if (errorState.value == Constants.OTP_INVALID_ERROR_CODE) {
+			if (errorState.value != emptyString) {
+				var redText = emptyString; var greyText = emptyString
+				when (errorState.value) {
+					Constants.OTP_INVALID_ERROR_CODE -> {
+						redText = "Неверный Код. "
+						greyText = "Осталось попыток: ${triesCountState.value}"
+					}
+					Constants.OTP_NO_TRIES -> {
+						redText = "Старый код недействителен. "
+						greyText = "Пожалуйста, запросите новый код."
+					}
+				}
 				Row(
 					modifier = Modifier.align(Alignment.CenterHorizontally)
 				) {
 					Text(
 						modifier = Modifier
 							.padding(vertical = Deps.Spacing.standardMargin),
-						text = "Неверный Код. ",
+						text = redText,
 						fontSize = Headings.H4.sp,
 						fontWeight = FontWeight.Normal,
 						color = ComposeColors.PrimaryRed
@@ -161,13 +178,12 @@ class OtpScreen(
 					Text(
 						modifier = Modifier
 							.padding(vertical = Deps.Spacing.standardMargin),
-						text = "Осталось попыток: ${triesCountState.value}",
+						text = greyText,
 						fontSize = Headings.H4.sp,
 						fontWeight = FontWeight.Normal,
 						color = ComposeColors.DescriptionGray
 					)
 				}
-
 			}
 			Spacer(modifier = Modifier.weight(2f))
 
@@ -176,7 +192,7 @@ class OtpScreen(
 				text = buttonTextFormatter(timeLeftState.value),
 				color = ComposeColors.Green,
 				onClick = {
-					intent.smsCodeReRequest(phoneNumber)
+					intent.smsCodeRequest(phoneNumber)
 				},
 				enabled = (timeLeftState.value == 0),
 			)

@@ -35,14 +35,14 @@ class SmsCodeIntent(
 					verificationCode = smsCode,
 					referenceId = referenceId
 				)
-			).map { CheckSmsCodeInfo.Check(it) }
+			).map { CheckSmsCodeInfo.OtpCheck(it) }
 		}
 	}
 
-	fun smsCodeReRequest(phoneNumber: String) {
+	fun smsCodeRequest(phoneNumber: String) {
 		launchOperation {
 			checkPhoneNumberUseCase.execute(phoneNumber).map {
-				CheckSmsCodeInfo.ReRequest(it.success)
+				CheckSmsCodeInfo.Check(it.success, it.referenceId)
 			}
 		}
 	}
@@ -93,7 +93,7 @@ class SmsCodeIntent(
 	fun startTimer(timeout: Int) {
 		var timer = timeout
 		launchOperation {
-			while (timer >= 0) {
+			while (timer > 0) {
 				state.handle(CheckSmsCodeInfo.TimeLeft(timer))
 				delay(1000)
 				timer--
