@@ -97,7 +97,7 @@ object LivenessScreen : Screen {
             mainState = model,
             contentModifier = Modifier.fillMaxSize(),
             toolbarInfo = null,
-            infoState = bottomSheetState.value,
+            sheetInfo = bottomSheetState.value,
             contentHorizontalAlignment = Alignment.Start,
         ) {
 

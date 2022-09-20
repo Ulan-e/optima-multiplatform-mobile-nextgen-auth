@@ -98,10 +98,9 @@ dependencies {
     val mokoResourcesVersion = "0.20.1"
     implementation("dev.icerock.moko:resources-compose:$mokoResourcesVersion")
 
-    val voyagerVersion = "1.0.0-beta15"
+    val voyagerVersion = "1.0.0-rc02"
     implementation("cafe.adriel.voyager:voyager-core:$voyagerVersion")
-    implementation ("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
-    implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+    implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
 
     implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
     implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")

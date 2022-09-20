@@ -84,7 +84,7 @@ object DocumentScanScreen : Screen {
 
         MainContainer(
             mainState = model,
-            infoState = bottomSheetState.value,
+            sheetInfo = bottomSheetState.value,
             toolbarInfo = null,
             contentModifier = Modifier.fillMaxSize(),
             contentHorizontalAlignment = Alignment.Start,

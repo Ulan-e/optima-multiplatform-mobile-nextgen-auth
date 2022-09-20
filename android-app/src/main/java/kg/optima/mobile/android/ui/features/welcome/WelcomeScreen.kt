@@ -43,7 +43,7 @@ object WelcomeScreen : BaseScreen {
 
         MainContainer(
             mainState = model,
-            infoState = bottomSheetState.value,
+            sheetInfo = bottomSheetState.value,
             toolbarInfo = ToolbarInfo(navigationIcon = null),
         ) {
             Column(

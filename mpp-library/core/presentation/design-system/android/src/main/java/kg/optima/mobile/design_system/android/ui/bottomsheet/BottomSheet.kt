@@ -2,6 +2,7 @@ package kg.optima.mobile.design_system.android.ui.bottomsheet
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +14,18 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
+
+@Composable
+fun InfoBottomSheet(
+	bottomSheetInfo: BottomSheetInfo?,
+	modifier: Modifier = Modifier,
+) {
+	if (bottomSheetInfo != null) {
+		BottomSheet(bottomSheetInfo = bottomSheetInfo, modifier = modifier)
+	} else {
+		Spacer(modifier = Modifier.height(Deps.Size.minimal))
+	}
+}
 
 @Composable
 fun BottomSheet(
