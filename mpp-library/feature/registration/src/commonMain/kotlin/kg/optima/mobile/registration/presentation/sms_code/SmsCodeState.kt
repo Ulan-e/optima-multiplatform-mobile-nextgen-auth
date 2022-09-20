@@ -1,46 +1,50 @@
 package kg.optima.mobile.registration.presentation.sms_code
 
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 class SmsCodeState : State<CheckSmsCodeInfo>() {
 
     override fun handle(entity: CheckSmsCodeInfo) {
         val stateModel: StateModel = when (entity) {
-            is CheckSmsCodeInfo.Check -> {
+            is CheckSmsCodeInfo.OtpCheck -> {
                 if (entity.success) {
                     val screenModel = RegistrationScreenModel.SelfConfirm
                     StateModel.Navigate(screenModel)
                 } else {
-                    SmsCodeStateModel.InvalidCodeError()
+                    StateModel.Error.BaseError(Constants.OTP_INVALID_ERROR_CODE)
                 }
             }
-            is CheckSmsCodeInfo.ReRequest ->
+            is CheckSmsCodeInfo.Check ->
                 if (entity.success) {
-                    SmsCodeStateModel.EnableReRequest(false)
+                    SmsCodeStateModel.Request(entity.referenceId)
                 } else {
-                    SmsCodeStateModel.InvalidCodeError()
+                    StateModel.Error.BaseError("Не удалось запросить новый смс-код.")
                 }
-            is CheckSmsCodeInfo.Timeout ->
-                SmsCodeStateModel.Timeout(entity.timeout)
-            CheckSmsCodeInfo.EnableReRequest -> SmsCodeStateModel.EnableReRequest(true)
+            is CheckSmsCodeInfo.TimeLeft -> SmsCodeStateModel.TimeLeft(entity.timeout)
+            is CheckSmsCodeInfo.TriesData -> SmsCodeStateModel.TriesData(entity.tryCount, entity.timeLeft)
+
+            CheckSmsCodeInfo.TryDataSaved -> SmsCodeStateModel.TryDataSaved
         }
         setStateModel(stateModel)
     }
 
     sealed interface SmsCodeStateModel : StateModel {
-        object ReRequest : SmsCodeStateModel
 
-        class Timeout(
-            val timeout: Int
+        class Request(
+            val referenceId: String,
         ) : SmsCodeStateModel
 
-        class EnableReRequest(
-            val enabled : Boolean
+        object TryDataSaved :SmsCodeStateModel
+
+        class TimeLeft(
+            val timeLeft: Int
         ) : SmsCodeStateModel
 
-        class InvalidCodeError(
-            val error : String = "Неверный Код."
+        class TriesData(
+            val tryCount: Int,
+            val timeLeft: Int
         ) : SmsCodeStateModel
     }
 

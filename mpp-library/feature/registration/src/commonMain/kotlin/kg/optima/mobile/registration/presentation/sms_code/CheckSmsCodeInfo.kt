@@ -2,20 +2,32 @@ package kg.optima.mobile.registration.presentation.sms_code
 
 sealed interface CheckSmsCodeInfo {
 
-	class ReRequest(
-		val success: Boolean,
-		//TODO timeout
-	) : CheckSmsCodeInfo
-
 	class Check(
 		val success: Boolean,
+		val referenceId: String,
 	) : CheckSmsCodeInfo
 
-	class Timeout(
+	class OtpCheck(
+		val success: Boolean,
+	) : CheckSmsCodeInfo
+
+	class TimeLeft(
 		val timeout: Int
 	) : CheckSmsCodeInfo
 
-	object EnableReRequest : CheckSmsCodeInfo
+	class TriesData(
+		val tryCount: Int,
+		val timeLeft: Int,
+	) : CheckSmsCodeInfo {
+		companion object {
+			val FIRST_TRY = TriesData(
+				tryCount = 0,
+				timeLeft = 0
+			)
+		}
+	}
+
+	object TryDataSaved : CheckSmsCodeInfo
 
 
 }

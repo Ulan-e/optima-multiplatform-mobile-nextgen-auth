@@ -56,6 +56,9 @@ object Deps {
 	object TextSize {
 		val pinBtnText get() = 32.sp
 		val codeInputSymbol get() = 40.sp
+
+		val lineHeightSmall get() = 17.sp
+		val bottomSheetLineHeight get() = 29.sp
 	}
 
 	val cornerRadius get() = 8.dp

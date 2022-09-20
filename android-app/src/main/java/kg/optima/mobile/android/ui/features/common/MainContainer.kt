@@ -166,7 +166,7 @@ private fun processError(
 ) {
 	// TODO process error
 	when (errorState) {
-		is State.StateModel.Error.BaseError -> onSheetStateChanged(
+		is State.StateModel.Error.ApiError -> onSheetStateChanged(
 			BottomSheetInfo(
 				title = errorState.error,
 				buttons = listOf(

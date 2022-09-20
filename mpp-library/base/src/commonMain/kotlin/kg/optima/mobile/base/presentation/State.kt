@@ -86,6 +86,8 @@ abstract class State<in E>(
 			val error: String
 
 			class BaseError(override val error: String) : Error
+
+			class ApiError(override val error: String) : Error
 		}
 	}
 }
