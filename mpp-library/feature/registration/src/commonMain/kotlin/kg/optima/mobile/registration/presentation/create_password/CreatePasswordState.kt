@@ -14,6 +14,11 @@ class CreatePasswordState : State<CreatePasswordModel>() {
                 clientId = entity.clientId!!,
                 message = entity.message
             )
+			/*CreatePasswordModel.Submit -> StateModel.Navigate(
+				screenModel = RegistrationScreenModel.AnketaForm(
+					url = "https://docs.google.com/forms/d/10xKZzz7I2N0kJQjsseCa2-5QNAwL9O-DNnnX4RRwP9U/edit"
+				)
+			)*/
         }
     }
 

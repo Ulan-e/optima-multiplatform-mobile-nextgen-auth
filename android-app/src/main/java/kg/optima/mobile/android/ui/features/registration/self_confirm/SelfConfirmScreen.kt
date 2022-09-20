@@ -78,7 +78,7 @@ object SelfConfirmScreen : Screen {
 				}
 			},
 			toolbarInfo = ToolbarInfo(
-				navigationIcon = NavigationIcon(onBackClick = { })
+				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
 			),
 			contentHorizontalAlignment = Alignment.Start,
 		) {
