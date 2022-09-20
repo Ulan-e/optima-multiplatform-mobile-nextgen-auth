@@ -9,6 +9,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetLayout
@@ -17,7 +18,9 @@ import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -90,7 +93,10 @@ fun MainContainer(
 	onSheetStateChanged(sheetInfo)
 
 	ModalBottomSheetLayout(
+		sheetBackgroundColor = Color.Transparent,
+		sheetElevation = 0.dp,
 		sheetContent = { InfoBottomSheet(bottomSheetInfo = sheetInfoState.value) },
+		sheetShape = RoundedCornerShape(Deps.cornerRadius),
 		sheetState = sheetState,
 	) {
 		Box(modifier = modifier.fillMaxSize()) {

@@ -57,7 +57,8 @@ abstract class State<in E>(
 //        }
 	}
 
-	internal fun pop() = setStateModel(StateModel.Pop)
+	internal fun pop() =
+		setStateModel(StateModel.Pop)
 
 	abstract fun handle(entity: E)
 

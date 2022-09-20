@@ -27,7 +27,8 @@ abstract class Intent<in E>(
 		state.setStateModel(State.StateModel.Navigate(nextScreenModel))
 	}
 
-	open fun pop() = state.pop()
+	open fun pop() =
+		state.pop()
 
 	fun requestPermission(permission: Permission) = requestPermissions(listOf(permission))
 

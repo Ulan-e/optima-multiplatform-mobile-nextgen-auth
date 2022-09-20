@@ -149,6 +149,7 @@ object AgreementScreen : BaseScreen {
 								text = "Закрыть",
 								onClickListener = ButtonView.OnClickListener.onClickListener {
 									infoState.value = null
+									intent.pop()
 								}
 							)
 						)
