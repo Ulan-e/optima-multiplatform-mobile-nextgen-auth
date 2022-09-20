@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
+import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -26,6 +27,7 @@ import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.resources.Headings
 
 @Parcelize
@@ -43,8 +45,6 @@ object WelcomeScreen : BaseScreen {
         val model by state.stateFlow.collectAsState(initial = null)
 
         val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
-
-        val context = LocalContext.current
 
         MainContainer(
             mainState = model,
