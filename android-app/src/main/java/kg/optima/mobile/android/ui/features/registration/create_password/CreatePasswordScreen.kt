@@ -94,8 +94,8 @@ class CreatePasswordScreen(
             TitleTextField(text = "Создание пароля")
             PasswordOutlineInput(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(top = Deps.Spacing.spacing),
+                    .fillMaxWidth()
+                    .padding(top = Deps.Spacing.spacing),
                 passwordState = passwordState,
                 hint = "Пароль",
                 onValueChange = {
@@ -120,16 +120,16 @@ class CreatePasswordScreen(
             )
             Text(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(top = Deps.Spacing.swiperTopMargin),
+                    .fillMaxWidth()
+                    .padding(top = Deps.Spacing.swiperTopMargin),
                 text = "Пароль для входа в приложение",
                 color = ComposeColors.DescriptionGray,
                 fontSize = Headings.H5.sp,
             )
             PasswordOutlineInput(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(top = Deps.Spacing.spacing),
+                    .fillMaxWidth()
+                    .padding(top = Deps.Spacing.spacing),
                 passwordState = rePasswordState,
                 onValueChange = {
                     if (
@@ -163,47 +163,54 @@ class CreatePasswordScreen(
                 text = "Продолжить",
                 color = ComposeColors.Green,
                 enabled = buttonEnabled.value,
-            ) {
-                bottomSheetState.value = BottomSheetInfo(
-                    title = "Поздравляем! \nВы зарегистрированы в Optima24",
-                    composableContent = BottomSheetInfo.ComposableContent.composableContent {
-                        Text(
-                            modifier = Modifier.padding(top = Deps.Spacing.standardMargin),
-                            text = "Ваш Client ID",
-                            fontSize = Headings.H4.px.sp,
-                            color = ComposeColors.PrimaryBlack,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            modifier = Modifier.padding(top = 6.dp),
-                            text = "123456",
-                            fontSize = 34.sp,
-                            color = ComposeColors.Green,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            modifier = Modifier.padding(top = 12.dp),
-                            text = "Запомните его. Он является вашим \nлогином для входа \nв \"Optima24\"",
-                            fontSize = Headings.H4.px.sp,
-                            textAlign = TextAlign.Center
-                        )
-                    },
-                    buttons = listOf(
-                        ButtonView.Primary(
-                            text = "Готово",
-                            onClickListener = ButtonView.OnClickListener.onClickListener {
-                                intent.submit(
-                                    hash = hash,
-                                    password = passwordState.value,
-                                    questionId = questionId,
-                                    answer = answer
-                                )
-                            },
-                            composeColor = ComposeColor.composeColor(ComposeColors.Green)
-                        )
+                onClick = {
+                    intent.submit(
+                        hash = hash,
+                        password = passwordState.value,
+                        questionId = questionId,
+                        answer = answer
                     )
-                )
-            }
+                    /*bottomSheetState.value = BottomSheetInfo(
+                        title = "Поздравляем! \nВы зарегистрированы в Optima24",
+                        composableContent = BottomSheetInfo.ComposableContent.composableContent {
+                            Text(
+                                modifier = Modifier.padding(top = Deps.Spacing.standardMargin),
+                                text = "Ваш Client ID",
+                                fontSize = Headings.H4.px.sp,
+                                color = ComposeColors.PrimaryBlack,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                modifier = Modifier.padding(top = 6.dp),
+                                text = "123456",
+                                fontSize = 34.sp,
+                                color = ComposeColors.Green,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                modifier = Modifier.padding(top = 12.dp),
+                                text = "Запомните его. Он является вашим \nлогином для входа \nв \"Optima24\"",
+                                fontSize = Headings.H4.px.sp,
+                                textAlign = TextAlign.Center
+                            )
+                        },
+                        buttons = listOf(
+                            ButtonView.Primary(
+                                text = "Готово",
+                                onClickListener = ButtonView.OnClickListener.onClickListener {
+                                    intent.submit(
+                                        hash = hash,
+                                        password = passwordState.value,
+                                        questionId = questionId,
+                                        answer = answer
+                                    )
+                                },
+                                composeColor = ComposeColor.composeColor(ComposeColors.Green)
+                            )
+                        )
+                    )*/
+                }
+            )
         }
     }
 }

@@ -37,7 +37,12 @@ class CreatePasswordIntent(
 					questionId = questionId,
 					answer = answer
 				)
-			).map { CreatePasswordModel.Submit }
+			).map {
+				CreatePasswordModel.Register(
+					message = it.message,
+					clientId = it.clientId
+				)
+			}
 		}
 	}
 }

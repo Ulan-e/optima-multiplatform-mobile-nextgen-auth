@@ -34,133 +34,137 @@ import kg.optima.mobile.registration.presentation.control_question.model.Questio
 import kg.optima.mobile.resources.Headings
 
 class ControlQuestionScreen(
-	private val hashCode: String,
+    private val hashCode: String,
 ) : Screen {
 
-	@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterialApi::class)
-	@Suppress("NAME_SHADOWING")
-	@Composable
-	override fun Content() {
-		val product =
-			remember { RegistrationFeatureFactory.create<ControlQuestionIntent, ControlQuestionState>() }
-		val intent = product.intent
-		val state = product.state
+    @OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterialApi::class)
+    @Suppress("NAME_SHADOWING")
+    @Composable
+    override fun Content() {
+        val product =
+            remember { RegistrationFeatureFactory.create<ControlQuestionIntent, ControlQuestionState>() }
+        val intent = product.intent
+        val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-		val answerInputText = remember { mutableStateOf(emptyString) }
-		val buttonEnabled = remember { mutableStateOf(false) }
-		val questionChecked = remember { mutableStateOf(false) }
-		val validationChecked = remember { mutableStateOf(false) }
-		val dropDownExpandedState = remember { mutableStateOf(false) }
-		val items = remember {
-			intent.getQuestions()
-			mutableStateOf(DropDownItemsList(list = listOf<DropDownItemModel<Question>>()))
-		}
-		val maxSize = 20
+        val answerInputText = remember { mutableStateOf(emptyString) }
+        val buttonEnabled = remember { mutableStateOf(false) }
+        val questionChecked = remember { mutableStateOf(false) }
+        val validationChecked = remember { mutableStateOf(false) }
+        val dropDownExpandedState = remember { mutableStateOf(false) }
+        val items = remember {
+            intent.getQuestions()
+            mutableStateOf(DropDownItemsList(list = listOf<DropDownItemModel<Question>>()))
+        }
+        val maxSize = 20
 
-		val keyboardController = LocalSoftwareKeyboardController.current
-		BackHandler(enabled = true, onBack = {})
+        val keyboardController = LocalSoftwareKeyboardController.current
+        BackHandler(enabled = true, onBack = {})
 
-		when (val model = model) {
-			ControlQuestionState.ControlQuestionModel.ShowQuestions -> {
-				dropDownExpandedState.value = true
-			}
-			ControlQuestionState.ControlQuestionModel.HideQuestions -> {
-				dropDownExpandedState.value = false
-			}
-			is ControlQuestionState.ControlQuestionModel.SetQuestion -> {
-				items.value = items.value.copy(
-					selectedItemIndex = items.value.list.indexOf(
-						DropDownItemModel(model.question.question, model.question)
-					)
-				)
-				dropDownExpandedState.value = false
-			}
-			is ControlQuestionState.ControlQuestionModel.ValidateResult ->
-				validationChecked.value = model.success
-			is ControlQuestionState.ControlQuestionModel.GetQuestions -> {
-				val newList = mutableListOf<DropDownItemModel<Question>>()
-				model.questions.map {
-					newList.add(DropDownItemModel(it.question, it))
-				}
-				items.value = DropDownItemsList(newList)
-			}
-		}
+        when (val model = model) {
+            ControlQuestionState.ControlQuestionModel.ShowQuestions -> {
+                dropDownExpandedState.value = true
+            }
+            ControlQuestionState.ControlQuestionModel.HideQuestions -> {
+                dropDownExpandedState.value = false
+            }
+            is ControlQuestionState.ControlQuestionModel.SetQuestion -> {
+                items.value = items.value.copy(
+                    selectedItemIndex = items.value.list.indexOf(
+                        DropDownItemModel(model.question.question, model.question)
+                    )
+                )
+                dropDownExpandedState.value = false
+                buttonEnabled.value = validationChecked.value && questionChecked.value
+            }
+            is ControlQuestionState.ControlQuestionModel.ValidateResult -> {
+                validationChecked.value = model.success
+                buttonEnabled.value = validationChecked.value && questionChecked.value
+            }
 
-		if(validationChecked.value && questionChecked.value) buttonEnabled.value = true
+            is ControlQuestionState.ControlQuestionModel.GetQuestions -> {
+                val newList = mutableListOf<DropDownItemModel<Question>>()
+                model.questions.map {
+                    newList.add(DropDownItemModel(it.question, it))
+                }
+                items.value = DropDownItemsList(newList)
+            }
+        }
 
-		MainContainer(
-			mainState = model,
-			toolbarInfo = ToolbarInfo(
-				navigationIcon = null
-			),
-			contentHorizontalAlignment = Alignment.Start,
-		) {
-			Column(
-				modifier = Modifier
+        if (validationChecked.value && questionChecked.value) buttonEnabled.value = true
+
+        MainContainer(
+            mainState = model,
+            toolbarInfo = ToolbarInfo(
+                navigationIcon = null
+            ),
+            contentHorizontalAlignment = Alignment.Start,
+        ) {
+            Column(
+                modifier = Modifier
 					.weight(1f)
 					.fillMaxSize(),
-				horizontalAlignment = Alignment.CenterHorizontally,
-			) {
-				TitleTextField(
-					modifier = Modifier.padding(vertical = Deps.Spacing.numPadXMargin),
-					text = "Выберите контрольный вопрос",
-				)
-				DropDownList(
-					items = items.value,
-					expanded = dropDownExpandedState.value,
-					onItemSelected = {
-						intent.setQuestion(it)
-						questionChecked.value = true
-					},
-					onExpandClick = { intent.showQuestions() },
-					onDismiss = { intent.hideQuestions() },
-					modifier = Modifier.fillMaxWidth(),
-					keyboardController = keyboardController
-				)
-				Text(
-					text = "Контрольный вопрос необходим \nдля подтверждения личности",
-					color = ComposeColors.DescriptionGray,
-					fontSize = Headings.H5.sp,
-					modifier = Modifier
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                TitleTextField(
+                    modifier = Modifier.padding(vertical = Deps.Spacing.numPadXMargin),
+                    text = "Выберите контрольный вопрос",
+                )
+                DropDownList(
+                    items = items.value,
+                    expanded = dropDownExpandedState.value,
+                    onItemSelected = {
+                        intent.setQuestion(it)
+                        questionChecked.value = true
+                    },
+                    onExpandClick = { intent.showQuestions() },
+                    onDismiss = { intent.hideQuestions() },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardController = keyboardController
+                )
+                Text(
+                    text = "Контрольный вопрос необходим \nдля подтверждения личности",
+                    color = ComposeColors.DescriptionGray,
+                    fontSize = Headings.H5.sp,
+                    modifier = Modifier
 						.fillMaxWidth()
 						.padding(
 							top = Deps.Spacing.swiperTopMargin,
 							bottom = Deps.Spacing.standardPadding
 						),
-				)
-				InputField(
-					keyboardType = KeyboardType.Email,
-					maxLength = 20,
-					hint = "Ответ",
-					valueState = answerInputText,
-					onValueChange = {
-						if (it.length <= maxSize) {
-							intent.onValueChanged(it)
-							answerInputText.value = it
-						}
-					}
-				)
-			}
+                )
+                InputField(
+                    keyboardType = KeyboardType.Email,
+                    maxLength = 20,
+                    hint = "Ответ",
+                    valueState = answerInputText,
+                    onValueChange = {
+                        if (it.length <= maxSize) {
+                            intent.onValueChanged(it)
+                            answerInputText.value = it
+                        }
+                    }
+                )
+            }
 
-			PrimaryButton(
-				modifier = Modifier
-					.fillMaxWidth(),
-				text = "Продолжить",
-				color = ComposeColors.Green,
-				onClick = {
-					if (items.value.list.isNotEmpty()) {
-						intent.confirm(
-							hashCode = hashCode,
-							questionId = items.value.selectedItem!!.entity.questionId,
-							answer = answerInputText.value
-						)
-					}
-				},
-				enabled = buttonEnabled.value,
-			)
-		}
-	}
+            PrimaryButton(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                text = "Продолжить",
+                color = ComposeColors.Green,
+                onClick = {
+                    if (items.value.list.isNotEmpty()) {
+                        intent.confirm(
+                            hashCode = hashCode,
+                            questionId = items.value.selectedItem!!.entity.questionId,
+                            answer = answerInputText.value
+                        )
+                    }
+                },
+                enabled = buttonEnabled.value,
+            )
+        }
+    }
 
 }

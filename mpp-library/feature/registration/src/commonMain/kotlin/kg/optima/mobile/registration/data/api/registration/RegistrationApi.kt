@@ -13,5 +13,7 @@ abstract class RegistrationApi(
 
     abstract suspend fun getQuestions(): BaseDto<List<QuestionDto>>
 
-    abstract suspend fun register(registrationRequest: RegistrationRequest): BaseDto<String>
+    abstract suspend fun register(
+        registrationRequest: RegistrationRequest
+    ): BaseDto<RegisterClientDto>
 }

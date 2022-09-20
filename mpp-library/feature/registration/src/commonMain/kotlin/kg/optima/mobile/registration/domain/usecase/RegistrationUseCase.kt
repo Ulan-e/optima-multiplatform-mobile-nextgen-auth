@@ -6,16 +6,23 @@ import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.error.Failure
 import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kg.optima.mobile.registration.data.repository.RegistrationRepository
+import kg.optima.mobile.registration.domain.model.RegisterClientEntity
 
 class RegistrationUseCase(
 	private val preferences: RegistrationPreferences,
 	private val repository: RegistrationRepository
-) : BaseUseCase<RegistrationUseCase.Params, Boolean>() {
+) : BaseUseCase<RegistrationUseCase.Params, RegisterClientEntity>() {
 
-	override suspend fun execute(model: Params): Either<Failure, Boolean> {
+	override suspend fun execute(model: Params): Either<Failure, RegisterClientEntity> {
 		val hash = preferences.hash ?: ""
 		return repository.register(hash, model.hashPassword, model.questionId, model.answer)
-			.map { true }
+			.map { response ->
+				RegisterClientEntity(
+					success = response.isSuccess,
+					message = response.message,
+					clientId = response.data?.clientId
+				)
+			}
 	}
 
 	class Params(

@@ -94,7 +94,6 @@ fun InputOutlinedField(
         value = valueState.value,
         isError = errorState.value.isError,
         onValueChange = {
-            //todo изменена длина пароля на 50 символов. В константе Constants.MAX_LENGTH_INPUT задано число 50 вместо 999
             if (onValueChange != null && it.length <= maxLength) {
                 onValueChange.invoke(it)
             } else if (it.length <= maxLength) {

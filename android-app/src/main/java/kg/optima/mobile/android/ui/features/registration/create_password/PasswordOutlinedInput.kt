@@ -23,7 +23,6 @@ import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.images.MainImages
 
-
 @SuppressLint("ResourceType")
 @Composable
 fun PasswordOutlineInput(
