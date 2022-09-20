@@ -92,8 +92,6 @@ class ControlQuestionScreen(
             }
         }
 
-        if (validationChecked.value && questionChecked.value) buttonEnabled.value = true
-
         MainContainer(
             mainState = model,
             toolbarInfo = ToolbarInfo(
@@ -162,7 +160,7 @@ class ControlQuestionScreen(
                         )
                     }
                 },
-                enabled = buttonEnabled.value,
+                enabled = true,
             )
         }
     }

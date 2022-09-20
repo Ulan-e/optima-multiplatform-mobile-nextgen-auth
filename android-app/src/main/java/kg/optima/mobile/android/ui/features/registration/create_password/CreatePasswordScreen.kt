@@ -164,13 +164,13 @@ class CreatePasswordScreen(
                 color = ComposeColors.Green,
                 enabled = buttonEnabled.value,
                 onClick = {
-                    intent.submit(
+                    /*intent.submit(
                         hash = hash,
                         password = passwordState.value,
                         questionId = questionId,
                         answer = answer
-                    )
-                    /*bottomSheetState.value = BottomSheetInfo(
+                    )*/
+                    bottomSheetState.value = BottomSheetInfo(
                         title = "Поздравляем! \nВы зарегистрированы в Optima24",
                         composableContent = BottomSheetInfo.ComposableContent.composableContent {
                             Text(
@@ -182,7 +182,7 @@ class CreatePasswordScreen(
                             )
                             Text(
                                 modifier = Modifier.padding(top = 6.dp),
-                                text = "123456",
+                                text = "907490",
                                 fontSize = 34.sp,
                                 color = ComposeColors.Green,
                                 fontWeight = FontWeight.Bold
@@ -208,7 +208,7 @@ class CreatePasswordScreen(
                                 composeColor = ComposeColor.composeColor(ComposeColors.Green)
                             )
                         )
-                    )*/
+                    )
                 }
             )
         }
