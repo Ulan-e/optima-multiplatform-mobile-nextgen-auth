@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.arkivanov.essenty.parcelable.Parcelize
@@ -40,6 +41,8 @@ object WelcomeScreen : BaseScreen {
         val model by state.stateFlow.collectAsState(initial = null)
 
         val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+
+        val context = LocalContext.current
 
         MainContainer(
             mainState = model,

@@ -32,6 +32,7 @@ import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
@@ -73,6 +74,40 @@ object LivenessScreen : Screen {
         val btnContinueVisibility = remember { mutableStateOf(false) }
         val livenessSessionId = remember { mutableStateOf("") }
         val livenessResult = remember { mutableStateOf("") }
+
+        when(val livenessModel = model){
+            is LivenessState.LivenessModel.Passed -> {
+                state.setStateModel(State.StateModel.Initial)
+
+                bottomSheetState.value = BottomSheetInfo(
+                    title = livenessModel.message,
+                    buttons = listOf(
+                        ButtonView.Primary(
+                            text = "Продолжить",
+                            composeColor = ComposeColor.composeColor(ComposeColors.Green),
+                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                                context.navigateTo(RegistrationScreenModel.ControlQuestion)
+                            }
+                        )
+                    )
+                )
+            }
+            is LivenessState.LivenessModel.Failed -> {
+                bottomSheetState.value = BottomSheetInfo(
+                    title ="errorState.error",
+                    buttons = listOf(
+                        ButtonView.Primary(
+                            text = "Повторить попытку",
+                            composeColor = ComposeColor.composeColor(ComposeColors. PrimaryRed),
+                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                                context.navigateTo(LivenessActivity())
+                            }
+                        )
+                    )
+                )
+            }
+        }
+
 
         val onBack = {
             bottomSheetState.value = showBottomSheetDialog(
