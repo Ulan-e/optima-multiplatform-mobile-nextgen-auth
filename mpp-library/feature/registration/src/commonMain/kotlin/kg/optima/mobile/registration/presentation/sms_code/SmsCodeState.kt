@@ -18,12 +18,11 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
             }
             is CheckSmsCodeInfo.ReRequest ->
                 if (entity.success) {
-                    SmsCodeStateModel.EnableReRequest(false)
+                    SmsCodeStateModel.ReRequest
                 } else {
                     StateModel.Error.BaseError("Не удалось запросить новый смс-код.")
                 }
             is CheckSmsCodeInfo.TimeLeft -> SmsCodeStateModel.TimeLeft(entity.timeout)
-            CheckSmsCodeInfo.EnableReRequest -> SmsCodeStateModel.EnableReRequest(true)
             is CheckSmsCodeInfo.TriesData -> SmsCodeStateModel.TriesData(entity.tryCount, entity.timeLeft)
 
             CheckSmsCodeInfo.TryDataSaved -> SmsCodeStateModel.TryDataSaved
@@ -44,10 +43,6 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
         class TriesData(
             val tryCount: Int,
             val timeLeft: Int
-        ) : SmsCodeStateModel
-
-        class EnableReRequest(
-            val enabled : Boolean
         ) : SmsCodeStateModel
     }
 

@@ -39,7 +39,15 @@ class SmsCodeIntent(
 		}
 	}
 
-	fun smsCodeReRequest(tryCount: Int, phoneNumber: String, currentTime: Long) {
+	fun smsCodeReRequest(phoneNumber: String) {
+		launchOperation {
+			checkPhoneNumberUseCase.execute(phoneNumber).map {
+				CheckSmsCodeInfo.ReRequest(it.success)
+			}
+		}
+	}
+
+	fun saveTriesData(tryCount: Int, phoneNumber: String, currentTime: Long) {
 		val newCount = if (tryCount >= 4) {
 			1
 		} else {
@@ -80,14 +88,9 @@ class SmsCodeIntent(
 				)
 			}
 		}
-		launchOperation {
-			checkPhoneNumberUseCase.execute(phoneNumber).map {
-				CheckSmsCodeInfo.ReRequest(it.success)
-			}
-		}
 	}
 
-	fun startTimeout(timeout: Int) {
+	fun startTimer(timeout: Int) {
 		var timer = timeout
 		launchOperation {
 			while (timer >= 0) {
@@ -95,7 +98,7 @@ class SmsCodeIntent(
 				delay(1000)
 				timer--
 			}
-			Either.Right(CheckSmsCodeInfo.EnableReRequest)
+			Either.Right(CheckSmsCodeInfo.TimeLeft(timer))
 		}
 	}
 

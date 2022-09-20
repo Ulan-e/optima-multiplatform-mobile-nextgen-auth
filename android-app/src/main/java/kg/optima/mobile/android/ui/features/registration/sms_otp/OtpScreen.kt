@@ -46,7 +46,6 @@ class OtpScreen(
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
 		val codeState = remember { mutableStateOf(emptyString) }
-		val buttonIsEnabledState = remember { mutableStateOf(false) }
 		val timeLeftState = remember { mutableStateOf(timeout) }
 		val errorState = remember { mutableStateOf(emptyString) }
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
@@ -57,7 +56,6 @@ class OtpScreen(
 			is State.StateModel.Initial -> {
 				intent.getTriesData(phoneNumber, System.currentTimeMillis())
 			}
-
 			is State.StateModel.Error.BaseError -> {
 				codeState.value = emptyString
 				errorState.value = "1234"
@@ -77,12 +75,9 @@ class OtpScreen(
 			}
 			SmsCodeState.SmsCodeStateModel.ReRequest -> {
 				triesCountState.value = Constants.OTP_MAX_TRIES
-				buttonIsEnabledState.value = false
 				codeState.value = emptyString
 				errorState.value = emptyString
-			}
-			is SmsCodeState.SmsCodeStateModel.EnableReRequest -> {
-				buttonIsEnabledState.value = model.enabled
+				intent.saveTriesData(reRequestsCountState.value, phoneNumber, System.currentTimeMillis())
 			}
 			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {
 				timeLeftState.value = model.timeLeft
@@ -90,10 +85,7 @@ class OtpScreen(
 			is SmsCodeState.SmsCodeStateModel.TriesData -> {
 				timeLeftState.value = model.timeLeft
 				reRequestsCountState.value = model.tryCount
-				intent.startTimeout(timeLeftState.value)
-				if (timeLeftState.value == 0) {
-					intent.smsCodeReRequest(reRequestsCountState.value, phoneNumber, System.currentTimeMillis())
-				}
+				intent.startTimer(model.timeLeft)
 			}
 		}
 
@@ -184,10 +176,9 @@ class OtpScreen(
 				text = buttonTextFormatter(timeLeftState.value),
 				color = ComposeColors.Green,
 				onClick = {
-					intent.smsCodeReRequest(reRequestsCountState.value, phoneNumber, System.currentTimeMillis())
-
+					intent.smsCodeReRequest(phoneNumber)
 				},
-				enabled = buttonIsEnabledState.value,
+				enabled = (timeLeftState.value == 0),
 			)
 
 		}

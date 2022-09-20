@@ -19,8 +19,6 @@ sealed interface CheckSmsCodeInfo {
 		val timeout: Int
 	) : CheckSmsCodeInfo
 
-	object EnableReRequest : CheckSmsCodeInfo
-
 	class TriesData(
 		val tryCount: Int,
 		val timeLeft: Int,
