@@ -66,22 +66,33 @@ fun <T> DropDownList(
 		) {
 			Text(
 				modifier = Modifier
-					.align(Alignment.Center)
-					.offset(y = (4).dp)
-					.fillMaxWidth()
+					.fillMaxWidth(0.9f)
 					.requiredHeightIn(min = Deps.Size.buttonHeight)
-					.padding(Deps.Spacing.pinCellXMargin),
+					.align(Alignment.Center)
+					.clickable(
+						indication = null,
+						interactionSource = remember { MutableInteractionSource() }
+					) {
+						keyboardController?.hide()
+						onExpandClick.invoke()
+					}
+					.padding(vertical = Deps.Spacing.pinCellXMargin),
 				text = items.selectedItem?.title ?: "",
-				color = ComposeColors.PrimaryDisabledGray,
 				fontSize = Headings.H4.sp,
-				fontWeight = FontWeight.W500
+				fontWeight = FontWeight.W500,
+				color = if (items.selectedItem?.title == "Контрольный вопрос") {
+					ComposeColors.DescriptionGray
+				} else {
+					ComposeColors.PrimaryDisabledGray
+				}
 			)
 
-			Icon(icon, contentDescription = "icon", modifier = Modifier
-				.align(Alignment.CenterEnd)
-				.size(Deps.Size.dropDownIconSize)
-				.padding(Deps.Spacing.marginFromInput)
-				)
+			Icon(
+				icon, contentDescription = "icon", modifier = Modifier
+					.align(Alignment.CenterEnd)
+					.size(Deps.Size.dropDownIconSize)
+					.padding(end = Deps.Spacing.standardPadding)
+			)
 
 			MaterialTheme(
 				colors = MaterialTheme.colors.copy(surface = ComposeColors.WhiteF5),
@@ -93,30 +104,38 @@ fun <T> DropDownList(
 					onDismissRequest = onDismiss
 				) {
 					items.list.forEach { selectedOption ->
-						DropdownMenuItem(
-							modifier = Modifier
-								.width(with(LocalDensity.current) { contentWidth.width.toDp() }),
-							onClick = {
-								onItemSelected(selectedOption.entity)
+						if (selectedOption.title != "Контрольный вопрос") {
+							DropdownMenuItem(
+								modifier = Modifier
+									.width(with(LocalDensity.current) { contentWidth.width.toDp() }),
+								onClick = {
+									onItemSelected(selectedOption.entity)
+								}
+							) {
+								Text(
+									modifier = Modifier
+										.fillMaxWidth()
+										.padding(horizontal = Deps.Spacing.standardPadding),
+									text = selectedOption.title,
+									fontSize = Headings.H4.sp,
+									fontWeight = FontWeight.W500,
+									color = ComposeColors.PrimaryDisabledGray
+								)
 							}
-						) {
-							Text(
-								text = selectedOption.title,
-								fontSize = Headings.H4.sp,
-								fontWeight = FontWeight.W500,
-								color = ComposeColors.PrimaryDisabledGray)
+							Divider(
+								thickness = Deps.Spacing.minPadding,
+								color = Color(0xFF999BA3),
+								modifier = Modifier
+									.fillMaxWidth()
+									.padding(
+										horizontal = Deps.Spacing.standardPadding,
+										vertical = Deps.Spacing.marginFromInput
+									),
+							)
 						}
-						Divider(
-							thickness = Deps.Spacing.minPadding,
-							color = Color(0xFFF1F1F2),
-							modifier = Modifier
-								.fillMaxWidth()
-								.padding(horizontal = Deps.Spacing.standardPadding),
-						)
 					}
 				}
 			}
 		}
 	}
-
 }

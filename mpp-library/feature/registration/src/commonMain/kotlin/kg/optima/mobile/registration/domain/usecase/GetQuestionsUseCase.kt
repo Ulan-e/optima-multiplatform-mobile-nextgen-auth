@@ -13,16 +13,7 @@ class GetQuestionsUseCase(
 ) : BaseUseCase<Unit, QuestionsListEntity>() {
 
 	override suspend fun execute(model: Unit): Either<Failure, QuestionsListEntity> {
-
-		// TODO мок воспросы
-		val result = mutableListOf(
-			QuestionEntity("Какие 5 последних цифр вашей кредитной карты?", "1"),
-			QuestionEntity("Как звали вашего лучшего друга детства?", "2"),
-			QuestionEntity("Какое имя вашей бабушки? ", "3"),
-			QuestionEntity("Какая кличка вашего животного?", "4"),
-			QuestionEntity("Какая кличка вашего животного?", "5"),
-			QuestionEntity("Ваш любимый цвет?", "6")
-		)
+		val result = mutableListOf<QuestionEntity>()
 		var success = true
 		registrationRepository.getQuestions().map {
 			it.data?.map {

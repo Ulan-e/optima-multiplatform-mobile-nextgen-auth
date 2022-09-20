@@ -1,10 +1,6 @@
 package kg.optima.mobile.android.ui.features.biometrics
 
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -112,7 +108,6 @@ object LivenessScreen : Screen {
             }
         }
 
-
         val onBack = {
             bottomSheetState.value = showBottomSheetDialog(
                 title = "Вы действительно хотите \nостановить идентификацию?",
@@ -130,33 +125,6 @@ object LivenessScreen : Screen {
                     }
                 )
             )
-        }
-
-        when (val livenessModel = model) {
-            is LivenessState.LivenessModel.Passed -> {
-                bottomSheetState.value = BottomSheetInfo(
-                    title = livenessModel.message,
-                    buttons = listOf(
-                        ButtonView.Primary(
-                            text = "Настройки",
-                            onClickListener = ButtonView.OnClickListener.onClickListener {
-                                onBack()
-                            }
-                        ),
-                    )
-                )
-            }
-            is LivenessState.LivenessModel.Failed -> {
-                bottomSheetState.value = showBottomSheetDialog(
-                    title = livenessModel.message,
-                    positiveButtonView = ButtonView.Primary(
-                        text = "Повторить попытку",
-                        onClickListener = ButtonView.OnClickListener.onClickListener {
-                            context.navigateTo(RegistrationScreenModel.SelfConfirm)
-                        }
-                    ),
-                )
-            }
         }
 
         MainContainer(
@@ -319,9 +287,9 @@ object LivenessScreen : Screen {
                             text = "Продолжить",
                             color = ComposeColors.Green,
                             onClick = {
-                               // context.navigateTo(RegistrationScreenModel.ControlQuestion)
+                                // context.navigateTo(RegistrationScreenModel.ControlQuestion)
 
-                              // отправка данных для верификации клиента
+                                // отправка данных для верификации клиента
 
                                 val data = context.loadFile("scanned_file")
                                 intent.verify(

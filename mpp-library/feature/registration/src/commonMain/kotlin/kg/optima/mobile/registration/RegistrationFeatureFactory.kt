@@ -44,7 +44,7 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
         factory { CheckSmsCodeUseCase(get(), get()) }
         factory { VerifyClientUseCase(get(), get()) }
         factory { GetQuestionsUseCase(get()) }
-        factory { RegistrationUseCase(get()) }
+        factory { RegistrationUseCase(get(), get()) }
 
         factory { SmsCodeState() }
         factory { st -> SmsCodeIntent(st.get()) }

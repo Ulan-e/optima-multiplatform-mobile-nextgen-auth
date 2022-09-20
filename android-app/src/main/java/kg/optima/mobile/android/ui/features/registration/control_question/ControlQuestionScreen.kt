@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.registration.control_question
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.input.KeyboardType
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
@@ -21,7 +23,6 @@ import kg.optima.mobile.design_system.android.ui.dropdown_list.DropDownItemsList
 import kg.optima.mobile.design_system.android.ui.dropdown_list.DropDownList
 import kg.optima.mobile.design_system.android.ui.input.InputField
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
-import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
@@ -49,13 +50,17 @@ class ControlQuestionScreen(
 
 		val answerInputText = remember { mutableStateOf(emptyString) }
 		val buttonEnabled = remember { mutableStateOf(false) }
+		val questionChecked = remember { mutableStateOf(false) }
+		val validationChecked = remember { mutableStateOf(false) }
 		val dropDownExpandedState = remember { mutableStateOf(false) }
 		val items = remember {
 			intent.getQuestions()
 			mutableStateOf(DropDownItemsList(list = listOf<DropDownItemModel<Question>>()))
 		}
+		val maxSize = 20
 
 		val keyboardController = LocalSoftwareKeyboardController.current
+		BackHandler(enabled = true, onBack = {})
 
 		when (val model = model) {
 			ControlQuestionState.ControlQuestionModel.ShowQuestions -> {
@@ -72,9 +77,8 @@ class ControlQuestionScreen(
 				)
 				dropDownExpandedState.value = false
 			}
-
-			is ControlQuestionState.ControlQuestionModel.ValidateResult -> buttonEnabled.value =
-				model.success
+			is ControlQuestionState.ControlQuestionModel.ValidateResult ->
+				validationChecked.value = model.success
 			is ControlQuestionState.ControlQuestionModel.GetQuestions -> {
 				val newList = mutableListOf<DropDownItemModel<Question>>()
 				model.questions.map {
@@ -84,18 +88,19 @@ class ControlQuestionScreen(
 			}
 		}
 
+		if(validationChecked.value && questionChecked.value) buttonEnabled.value = true
+
 		MainContainer(
 			mainState = model,
 			toolbarInfo = ToolbarInfo(
-				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
+				navigationIcon = null
 			),
 			contentHorizontalAlignment = Alignment.Start,
 		) {
 			Column(
 				modifier = Modifier
 					.weight(1f)
-					.fillMaxSize()
-					.padding(all = Deps.Spacing.standardPadding),
+					.fillMaxSize(),
 				horizontalAlignment = Alignment.CenterHorizontally,
 			) {
 				TitleTextField(
@@ -107,6 +112,7 @@ class ControlQuestionScreen(
 					expanded = dropDownExpandedState.value,
 					onItemSelected = {
 						intent.setQuestion(it)
+						questionChecked.value = true
 					},
 					onExpandClick = { intent.showQuestions() },
 					onDismiss = { intent.hideQuestions() },
@@ -125,19 +131,22 @@ class ControlQuestionScreen(
 						),
 				)
 				InputField(
+					keyboardType = KeyboardType.Email,
+					maxLength = 20,
 					hint = "Ответ",
 					valueState = answerInputText,
 					onValueChange = {
-						intent.onValueChanged(it)
-						answerInputText.value = it
+						if (it.length <= maxSize) {
+							intent.onValueChanged(it)
+							answerInputText.value = it
+						}
 					}
 				)
 			}
 
 			PrimaryButton(
 				modifier = Modifier
-					.fillMaxWidth()
-					.padding(Deps.Spacing.standardPadding),
+					.fillMaxWidth(),
 				text = "Продолжить",
 				color = ComposeColors.Green,
 				onClick = {
@@ -148,7 +157,6 @@ class ControlQuestionScreen(
 							answer = answerInputText.value
 						)
 					}
-
 				},
 				enabled = buttonEnabled.value,
 			)
