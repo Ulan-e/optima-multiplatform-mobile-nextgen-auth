@@ -19,6 +19,7 @@ object ComposeColors {
 	val SystemGreen: Color get() = Colors.SystemGreen.toComposeColor()
 	val DescriptionGray: Color get() = Colors.DescriptionGray.toComposeColor()
 	val WhiteF5: Color get() = Colors.WhiteF5.toComposeColor()
+	val DarkGray: Color get() = Colors.DarkGray.toComposeColor()
 
 	val OpaquedLightGray80: Color get() = PrimaryLightGray.copy(alpha = 0.8f)
 	val OpaquedDisabledGray: Color get() = DescriptionGray.copy(alpha = 0.08f)

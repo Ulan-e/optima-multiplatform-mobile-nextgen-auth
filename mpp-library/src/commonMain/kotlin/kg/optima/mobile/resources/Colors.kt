@@ -22,6 +22,7 @@ object Colors {
 	val Orange: ColorResource.Single = MR.colors.orange
 	val Green: ColorResource.Single = MR.colors.green
 	val SystemGreen: ColorResource.Single = MR.colors.systemGreen
+	val DarkGray: ColorResource.Single = MR.colors.dark
 	val DescriptionGray: ColorResource.Single = MR.colors.descriptionGray
 	val WhiteF5: ColorResource.Single = MR.colors.white_f5
 }

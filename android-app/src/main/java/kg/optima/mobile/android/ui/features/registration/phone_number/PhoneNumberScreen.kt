@@ -3,10 +3,12 @@ package kg.optima.mobile.android.ui.features.registration.phone_number
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
@@ -27,6 +29,7 @@ import kg.optima.mobile.resources.Headings
 
 object PhoneNumberScreen : Screen {
 
+	@OptIn(ExperimentalMaterialApi::class)
 	@Suppress("NAME_SHADOWING")
 	@Composable
 	override fun Content() {
@@ -60,7 +63,9 @@ object PhoneNumberScreen : Screen {
 				modifier = Modifier.padding(top = Deps.Spacing.subheaderMargin),
 				text = "Номер телефона будет использоваться для переводов, " +
 						"и отправки SMS-кода для подтверждения некоторых операций",
+				color = ComposeColors.DarkGray,
 				fontSize = Headings.H5.sp,
+				fontWeight = FontWeight.Medium,
 			)
 			PhoneNumberTextField(
 				modifier = Modifier

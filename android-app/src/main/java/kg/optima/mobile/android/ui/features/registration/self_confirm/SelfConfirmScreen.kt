@@ -4,14 +4,19 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.core.screen.Screen
-import dev.icerock.moko.permissions.Permission
+import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
+import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.permission.PermissionController
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnimModel
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -26,10 +31,12 @@ import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
 import kotlinx.coroutines.delay
+import kz.verigram.veridoc.sdk.VeridocInitializer
 
 
 @Suppress("SameParameterValue")
 object SelfConfirmScreen : Screen {
+	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
 		val product = remember {
@@ -37,6 +44,8 @@ object SelfConfirmScreen : Screen {
 		}
 		val intent = product.intent
 		val state = product.state
+
+		val context = LocalContext.current
 
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
@@ -57,8 +66,19 @@ object SelfConfirmScreen : Screen {
 
 		MainContainer(
 			mainState = model,
+			permissionController = {
+				when (it) {
+					PermissionController.State.Accepted -> {
+						VeridocInitializer.init()
+						context.navigateTo(DocumentScanActivity())
+					}
+					is PermissionController.State.DeniedAlways -> {
+						intent.customPermissionRequired(it.permissions)
+					}
+				}
+			},
 			toolbarInfo = ToolbarInfo(
-				navigationIcon = NavigationIcon(onBackClick = { })
+				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
 			),
 			contentHorizontalAlignment = Alignment.Start,
 		) {
@@ -81,10 +101,7 @@ object SelfConfirmScreen : Screen {
 				text = "Начать",
 				enabled = buttonEnabled,
 				color = ComposeColors.Green,
-				onClick = {
-					val permissions = listOf(Permission.CAMERA, Permission.STORAGE)
-					intent.requestPermissions(permissions)
-				}
+				onClick = { intent.requestPermission(Permission.Camera) }
 			)
 		}
 	}

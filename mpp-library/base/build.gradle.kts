@@ -47,8 +47,6 @@ kotlin {
                 implementation(libs.ktorClient)
                 implementation(libs.ktorClientLogging)
                 implementation(libs.ktorClientSerialization)
-
-                implementation(libs.mokoPermissions)
             }
         }
         val commonTest by getting {
@@ -95,7 +93,4 @@ android {
         minSdk = 23
         targetSdk = 32
     }
-}
-dependencies {
-    implementation(project(mapOf("path" to ":mpp-library:core")))
 }

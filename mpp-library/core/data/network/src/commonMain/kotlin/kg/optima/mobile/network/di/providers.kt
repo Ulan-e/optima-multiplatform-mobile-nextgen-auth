@@ -35,7 +35,7 @@ fun provideJson() = Json {
     encodeDefaults = true
 }
 
-private const val TIME_OUT = 30000L
+private const val TIME_OUT = 60000L
 fun provideHttpClient(
     kotlinxSerializer: KotlinxSerializer,
     httpLogger: Logger = KtorLogger(),

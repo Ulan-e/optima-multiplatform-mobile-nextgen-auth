@@ -44,6 +44,28 @@ class RegistrationApiImpl(
 			request = codeCheckRequest,
 		)
 
+	override suspend fun verifyClient(
+		referenceId: String,
+		sessionId: String,
+		livenessResult: String,
+		accessToken: String,
+		personId: String,
+		verifyClientRequest: VerifyClientRequest
+	): BaseDto<VerifyClientDto> =
+		post(
+			path = "vl/verify-client",
+			headers = {
+				append(HttpHeaders.AcceptLanguage, "ru-RU")
+				append(HttpHeaders.UserAgent, userAgent())
+				append("reference-id", referenceId)
+				append("session-id", sessionId)
+				append("liveness-result", livenessResult)
+				append("access-token", accessToken)
+				append("person-id", personId)
+			},
+			request = verifyClientRequest,
+		)
+
 	override suspend fun getQuestions(): BaseDto<List<QuestionDto>> =
 		post(
 			path = "api/registration/questions",

@@ -3,13 +3,22 @@ package kg.optima.mobile.registration.presentation.agreement
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
-class AgreementState : State<AgreementInfo>() {
+class AgreementState : State<AgreementModel>() {
 
-	override fun handle(entity: AgreementInfo) {
-		if (entity.confirmed) {
-			setStateModel(StateModel.Navigate(RegistrationScreenModel.EnterPhone))
-		} else {
-			setStateModel(StateModel.Pop)
+	override fun handle(entity: AgreementModel) {
+		val stateModel = when (entity) {
+			is AgreementModel.AgreementInfo -> {
+				if (entity.confirmed) {
+					StateModel.Navigate(RegistrationScreenModel.EnterPhone)
+				} else {
+					StateModel.Pop
+				}
+			}
+			is AgreementModel.Offerta -> StateModel.Navigate(
+				screenModel = RegistrationScreenModel.Offerta(entity.url)
+			)
 		}
+
+		setStateModel(stateModel)
 	}
 }

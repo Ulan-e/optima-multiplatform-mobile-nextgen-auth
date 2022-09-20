@@ -13,6 +13,12 @@ buildscript {
         mavenCentral()
         google()
         gradlePluginPortal()
+
+        jcenter()
+
+        flatDir {
+            dirs("libs")
+        }
     }
 
     dependencies {

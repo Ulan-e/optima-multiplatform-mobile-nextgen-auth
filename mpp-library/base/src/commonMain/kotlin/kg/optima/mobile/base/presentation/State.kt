@@ -1,7 +1,7 @@
 package kg.optima.mobile.base.presentation
 
 import co.touchlab.stately.concurrency.AtomicReference
-import dev.icerock.moko.permissions.Permission
+import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.core.error.Failure
 import kg.optima.mobile.core.navigation.ScreenModel
 import kotlinx.coroutines.*
@@ -72,11 +72,13 @@ abstract class State<in E>(
 
 		object Pop : StateModel
 
-		class RequestPermissionResult(
-			val title: String,
-			val description: String? = null,
-			val acceptedPermissions: List<Permission>,
-			val customPermissionRequiredPermissions: List<Permission>,
+		class RequestPermissions(
+			val permissions: List<Permission>
+		) : StateModel
+
+		class CustomPermissionRequired(
+			val text: String,
+			val permissions: List<Permission>
 		) : StateModel
 
 		sealed interface Error : StateModel {

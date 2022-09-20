@@ -3,6 +3,7 @@ package kg.optima.mobile.android.ui.features.registration
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.features.common.OfferScreen
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
 import kg.optima.mobile.android.ui.features.registration.control_question.ControlQuestionScreen
 import kg.optima.mobile.android.ui.features.registration.create_password.CreatePasswordScreen
@@ -13,23 +14,25 @@ import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
-    @Composable
-    override fun compose(screenModel: RegistrationScreenModel): Screen {
-        return when (screenModel) {
-            RegistrationScreenModel.Agreement -> AgreementScreen
-            RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
-            is RegistrationScreenModel.AcceptCode -> OtpScreen(
-                phoneNumber = screenModel.phoneNumber,
-                timeout = screenModel.timeout,
-                referenceId = screenModel.referenceId,
-            )
-            RegistrationScreenModel.SelfConfirm -> SelfConfirmScreen
-            RegistrationScreenModel.ControlQuestion -> ControlQuestionScreen(emptyString)
-            is RegistrationScreenModel.CreatePassword -> CreatePasswordScreen(
-                hash = screenModel.hash,
-                questionId = screenModel.questionId,
-                answer = screenModel.answer
-            )
-        }
-    }
+	@Composable
+	override fun compose(screenModel: RegistrationScreenModel): Screen {
+		return when (screenModel) {
+			RegistrationScreenModel.Agreement -> AgreementScreen
+			is RegistrationScreenModel.Offerta -> OfferScreen(screenModel.url)
+			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
+			is RegistrationScreenModel.AcceptCode -> SmsCodeScreen(
+				phoneNumber = screenModel.phoneNumber,
+				timeout = screenModel.timeout,
+				referenceId = screenModel.referenceId,
+			)
+			RegistrationScreenModel.SelfConfirm -> SelfConfirmScreen
+			RegistrationScreenModel.ControlQuestion -> ControlQuestionScreen("hashCode")
+			is RegistrationScreenModel.CreatePassword -> CreatePasswordScreen(
+				hash = screenModel.hash,
+				questionId = screenModel.questionId,
+				answer = screenModel.answer
+			)
+			is RegistrationScreenModel.AnketaForm -> FormScreen(screenModel.url)
+		}
+	}
 }

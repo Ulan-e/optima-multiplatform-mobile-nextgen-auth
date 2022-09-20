@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +35,7 @@ class LoginScreen(
 	private val nextScreenModel: ScreenModel,
 ) : BaseScreen {
 
+	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
 		val product = remember {
@@ -70,7 +72,9 @@ class LoginScreen(
 				navigationIcon = NavigationIcon(onBackClick = { intent.pop() }),
 				content = ToolbarContent.Nothing,
 			),
-			contentModifier = Modifier.background(ComposeColors.Background),
+			contentModifier = Modifier
+				.padding(all = Deps.Spacing.standardPadding)
+				.background(ComposeColors.Background),
 			contentHorizontalAlignment = Alignment.Start,
 		) {
 			TitleTextField(
