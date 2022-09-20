@@ -3,6 +3,7 @@ package kg.optima.mobile.android.ui.features.registration
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.features.common.OfferScreen
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
 import kg.optima.mobile.android.ui.features.registration.create_password.CreatePasswordScreen
 import kg.optima.mobile.android.ui.features.registration.phone_number.PhoneNumberScreen
@@ -17,6 +18,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 	override fun compose(screenModel: RegistrationScreenModel): Screen {
 		return when (screenModel) {
 			RegistrationScreenModel.Agreement -> AgreementScreen
+			is RegistrationScreenModel.Offerta -> OfferScreen(screenModel.url)
 			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
 			is RegistrationScreenModel.AcceptCode -> SmsCodeScreen(
 				phoneNumber = screenModel.phoneNumber,
@@ -30,6 +32,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 				questionId = screenModel.questionId,
 				answer = screenModel.answer
 			)
+			is RegistrationScreenModel.AnketaForm -> FormScreen(screenModel.url)
 		}
 	}
 }

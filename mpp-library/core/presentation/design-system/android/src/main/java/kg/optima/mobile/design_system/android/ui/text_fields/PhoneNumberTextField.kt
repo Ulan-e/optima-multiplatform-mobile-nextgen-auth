@@ -3,6 +3,7 @@ package kg.optima.mobile.design_system.android.ui.text_fields
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -11,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
@@ -47,6 +49,7 @@ fun PhoneNumberTextField(
 			focusedIndicatorColor = ComposeColors.PrimaryWhite,
 			unfocusedIndicatorColor = ComposeColors.PrimaryWhite,
 		),
+		textStyle = LocalTextStyle.current.copy(fontWeight = FontWeight.Medium)
 	)
 }
 

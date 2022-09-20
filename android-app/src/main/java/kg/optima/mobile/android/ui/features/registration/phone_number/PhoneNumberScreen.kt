@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
@@ -62,7 +63,9 @@ object PhoneNumberScreen : Screen {
 				modifier = Modifier.padding(top = Deps.Spacing.subheaderMargin),
 				text = "Номер телефона будет использоваться для переводов, " +
 						"и отправки SMS-кода для подтверждения некоторых операций",
+				color = ComposeColors.DarkGray,
 				fontSize = Headings.H5.sp,
+				fontWeight = FontWeight.Medium,
 			)
 			PhoneNumberTextField(
 				modifier = Modifier
