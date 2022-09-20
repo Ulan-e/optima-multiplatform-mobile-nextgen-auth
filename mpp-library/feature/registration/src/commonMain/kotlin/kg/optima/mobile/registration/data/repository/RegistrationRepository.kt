@@ -3,11 +3,7 @@ package kg.optima.mobile.registration.data.repository
 import kg.optima.mobile.base.data.model.BaseDto
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.core.error.Failure
-import kg.optima.mobile.registration.data.api.model.CheckCodeDto
-import kg.optima.mobile.registration.data.api.model.VerifyClientRequest
-import kg.optima.mobile.registration.data.api.model.PhoneCheckDto
-import kg.optima.mobile.registration.data.api.model.VerifyClientDto
-import kg.optima.mobile.registration.data.api.model.QuestionDto
+import kg.optima.mobile.registration.data.api.model.*
 
 
 interface RegistrationRepository {
@@ -34,5 +30,5 @@ interface RegistrationRepository {
 		hashPassword: String,
 		questionId: String,
 		answer: String,
-	): Either<Failure, BaseDto<String>>
+	): Either<Failure, BaseDto<RegisterClientDto>>
 }

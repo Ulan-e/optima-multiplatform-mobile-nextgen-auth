@@ -65,11 +65,13 @@ object LivenessScreen : Screen {
 
         val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-        val registrationPreferences: RegistrationPreferences by inject()
         val context = LocalContext.current
 
         val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+        val registrationPreferences: RegistrationPreferences by inject()
+
         val btnContinueVisibility = remember { mutableStateOf(false) }
+        val btnContinueEnability = remember { mutableStateOf(true) }
         val livenessSessionId = remember { mutableStateOf("") }
         val livenessResult = remember { mutableStateOf("") }
 
@@ -106,7 +108,6 @@ object LivenessScreen : Screen {
             }
         }
 
-
         val onBack = {
             bottomSheetState.value = showBottomSheetDialog(
                 title = "Вы действительно хотите \nостановить идентификацию?",
@@ -134,9 +135,7 @@ object LivenessScreen : Screen {
             contentHorizontalAlignment = Alignment.Start,
         ) {
 
-            BackHandler {
-                onBack()
-            }
+            BackHandler { onBack() }
 
             Column(
                 modifier = Modifier
@@ -284,15 +283,13 @@ object LivenessScreen : Screen {
                                 end = Deps.Spacing.standardMargin,
                                 top = 44.dp
                             ),
+                            enabled = btnContinueEnability.value,
                             text = "Продолжить",
                             color = ComposeColors.Green,
                             onClick = {
-                                /*val nextIntent = Intent(context, SingleActivity::class.java)
-                                nextIntent.putExtra(
-                                    SingleActivity.NEXT_SCREEN_MODEL,
-                                    RegistrationScreenModel.ControlQuestion
-                                )
-                                context.startActivity(nextIntent)*/
+                                // context.navigateTo(RegistrationScreenModel.ControlQuestion)
+
+                                // отправка данных для верификации клиента
 
                                 val data = context.loadFile("scanned_file")
                                 intent.verify(
