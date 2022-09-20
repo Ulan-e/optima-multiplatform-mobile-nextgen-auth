@@ -30,6 +30,8 @@ kotlin {
                 implementation(project(":mpp-library:core:data:network"))
                 implementation(project(":mpp-library:core:data:storage"))
                 implementation(project(":mpp-library:feature"))
+
+                implementation("io.insert-koin:koin-core:3.1.4")
             }
         }
         val commonTest by getting {

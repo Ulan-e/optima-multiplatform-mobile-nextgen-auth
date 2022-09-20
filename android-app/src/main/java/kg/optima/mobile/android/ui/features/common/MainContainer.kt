@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -21,13 +20,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import kg.optima.mobile.android.ui.base.Router
 import kg.optima.mobile.android.ui.base.permission.PermissionController
-import kg.optima.mobile.android.ui.features.welcome.WelcomeScreen
 import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.presentation.permissions.Permission
@@ -63,7 +59,6 @@ fun MainContainer(
 
 	val context = LocalContext.current
 	val activity = context.asActivity()
-	val navigator = LocalNavigator.currentOrThrow
 
 	val coroutineScope = rememberCoroutineScope()
 	val sheetState = rememberModalBottomSheetState(
@@ -72,7 +67,7 @@ fun MainContainer(
 	)
 	val sheetInfoState = remember { mutableStateOf(sheetInfo) }
 
-	val onSheetStateChanged: (BottomSheetInfo?) -> Unit = {
+	val onChangeSheetState: (BottomSheetInfo?) -> Unit = {
 		coroutineScope.launch {
 			if (it != null) sheetState.show() else sheetState.hide()
 			sheetInfoState.value = it
@@ -82,15 +77,15 @@ fun MainContainer(
 		coroutineScope.launch { sheetState.hide() }
 	}
 
-	BackHandler(!navigator.canPop) {
-		if (navigator.lastItem != WelcomeScreen) {
-			navigator.replace(WelcomeScreen)
-		} else {
-			activity?.finish()
-		}
-	}
+//	BackHandler(!navigator.canPop) {
+//		if (navigator.lastItem != WelcomeScreen) {
+//			navigator.replace(WelcomeScreen)
+//		} else {
+//			activity?.finish()
+//		}
+//	}
 
-	onSheetStateChanged(sheetInfo)
+	onChangeSheetState(sheetInfo)
 
 	ModalBottomSheetLayout(
 		sheetBackgroundColor = Color.Transparent,
@@ -109,12 +104,13 @@ fun MainContainer(
 					router.push(mainState.screenModels)
 				}
 				is State.StateModel.Pop -> {
-					navigator.pop()
+//					component?.pop()
+					router.popLast()
 				}
 				is State.StateModel.Error -> {
 					processError(
 						errorState = mainState,
-						onSheetStateChanged = onSheetStateChanged,
+						onSheetStateChanged = onChangeSheetState,
 						onBottomSheetHidden = onBottomSheetHidden,
 					)
 				}
@@ -128,7 +124,7 @@ fun MainContainer(
 					customPermissionRequired(
 						customPermissionRequired = mainState,
 						context = context,
-						onSheetStateChanged = onSheetStateChanged,
+						onSheetStateChanged = onChangeSheetState,
 						onBottomSheetHidden = onBottomSheetHidden,
 					)
 				}

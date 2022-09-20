@@ -138,14 +138,16 @@ class OtpScreen(
 					modifier = Modifier.padding(top = Deps.Spacing.colElementMargin),
 					text = "Вводя код из SMS вы подписываете оферту, " +
 							"подтверждая свое согласие\nМы отправили SMS на номер:",
-					fontSize = Headings.H4.sp,
-					fontWeight = FontWeight.Normal,
+					fontSize = Headings.H5.sp,
+					fontWeight = FontWeight.Medium,
+					lineHeight = Deps.TextSize.lineHeight,
 					color = ComposeColors.DescriptionGray
 				)
 				Text(
+					modifier = Modifier.padding(top = Deps.Spacing.minPadding * 2),
 					text = phoneFormatter(phoneNumber),
-					fontSize = Headings.H2.sp,
-					fontWeight = FontWeight.Normal,
+					fontSize = Headings.H5.sp,
+					fontWeight = FontWeight.Bold,
 				)
 			}
 

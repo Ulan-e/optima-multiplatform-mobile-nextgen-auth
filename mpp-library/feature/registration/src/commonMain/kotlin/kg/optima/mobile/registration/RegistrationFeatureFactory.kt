@@ -9,6 +9,8 @@ import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kg.optima.mobile.registration.data.component.RegistrationPreferencesImpl
 import kg.optima.mobile.registration.data.repository.RegistrationRepository
 import kg.optima.mobile.registration.data.repository.RegistrationRepositoryImpl
+import kg.optima.mobile.registration.domain.GetTriesDataUseCase
+import kg.optima.mobile.registration.domain.SaveTriesDataUseCase
 import kg.optima.mobile.registration.domain.usecase.*
 import kg.optima.mobile.registration.presentation.agreement.AgreementIntent
 import kg.optima.mobile.registration.presentation.agreement.AgreementState
@@ -18,6 +20,8 @@ import kg.optima.mobile.registration.presentation.create_password.CreatePassword
 import kg.optima.mobile.registration.presentation.create_password.CreatePasswordState
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
 import kg.optima.mobile.registration.presentation.liveness.LivenessState
+import kg.optima.mobile.registration.presentation.offer.OfferIntent
+import kg.optima.mobile.registration.presentation.offer.OfferState
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
@@ -40,16 +44,18 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
 		factory { CheckSmsCodeUseCase(get(), get()) }
 		factory { VerifyClientUseCase(get(), get()) }
 		factory { GetQuestionsUseCase(get()) }
-        factory { RegistrationUseCase(get()) }
-        factory { GetTriesDataUseCase(get()) }
-        factory { SaveTriesDataUseCase(get()) }
-        factory { RegistrationUseCase(get(), get()) }
+		factory { GetTriesDataUseCase(get()) }
+		factory { SaveTriesDataUseCase(get()) }
+		factory { RegistrationUseCase(get(), get()) }
+
+		factory { AgreementState() }
+		factory { st -> AgreementIntent(st.get()) }
 
 		factory { SmsCodeState() }
 		factory { st -> SmsCodeIntent(st.get()) }
 
-		factory { AgreementState() }
-		factory { st -> AgreementIntent(st.get()) }
+		factory { OfferState() }
+		factory { st -> OfferIntent(st.get()) }
 
 		factory { PhoneNumberState() }
 		factory { st -> PhoneNumberIntent(st.get()) }
