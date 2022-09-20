@@ -84,9 +84,6 @@ class CreatePasswordScreen(
         MainContainer(
             mainState = model,
             sheetInfo = bottomSheetState.value,
-            toolbarInfo = ToolbarInfo(
-                navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
-            ),
             scrollable = true,
             contentHorizontalAlignment = Alignment.Start,
         ) {

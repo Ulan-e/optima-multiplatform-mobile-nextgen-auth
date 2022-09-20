@@ -118,9 +118,6 @@ class OtpScreen(
 
 		MainContainer(
 			mainState = model,
-			toolbarInfo = ToolbarInfo(
-				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
-			),
 			sheetInfo = bottomSheetState.value,
 			scrollable = true,
 			contentHorizontalAlignment = Alignment.Start,

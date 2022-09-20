@@ -44,13 +44,13 @@ class OfferScreen(
 			toolbarInfo = null,
 			contentModifier = Modifier.fillMaxSize(),
 			contentHorizontalAlignment = Alignment.Start,
-		) {
+		) { onBack ->
 			AndroidView(modifier = Modifier.fillMaxSize(), factory = { context ->
 				LayoutInflater.from(context).inflate(R.layout.offer_layout, null, false).apply {
 						val imageClose = findViewById<ImageView>(R.id.iv_close)
 						val imageShare = findViewById<ImageView>(R.id.iv_share)
 
-						imageClose.setOnClickListener { intent.pop() }
+						imageClose.setOnClickListener { onBack() }
 						imageShare.setOnClickListener {
 							val targetIntent = Intent(Intent.ACTION_SEND).apply {
 								type = "text/plain"

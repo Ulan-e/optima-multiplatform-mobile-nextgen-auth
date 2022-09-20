@@ -20,6 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import kg.optima.mobile.android.ui.base.Router
@@ -32,6 +34,7 @@ import kg.optima.mobile.design_system.android.ui.bottomsheet.InfoBottomSheet
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
 import kg.optima.mobile.design_system.android.ui.toolbars.MainToolbar
+import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
@@ -39,6 +42,8 @@ import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.navigation.root.Root
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.inject
+
+typealias PopLast = () -> Unit
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -52,18 +57,22 @@ fun MainContainer(
 	scrollable: Boolean = false,
 	contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
 	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
-	onSheetStateChanged: (ModalBottomSheetValue) -> Unit = {},
-	content: @Composable ColumnScope.() -> Unit,
+	onSheetStateChanged: (ModalBottomSheetValue, PopLast) -> Unit = { _, _ -> },
+	content: @Composable ColumnScope.(PopLast) -> Unit,
 ) {
 	val router: Router by inject()
 
+	val navigator = LocalNavigator.currentOrThrow
 	val context = LocalContext.current
 	val activity = context.asActivity()
 
 	val coroutineScope = rememberCoroutineScope()
 	val sheetState = rememberModalBottomSheetState(
 		initialValue = ModalBottomSheetValue.Hidden,
-		confirmStateChange = { onSheetStateChanged(it); it != ModalBottomSheetValue.HalfExpanded }
+		confirmStateChange = {
+			onSheetStateChanged(it) { navigator.pop() }
+			it != ModalBottomSheetValue.HalfExpanded
+		}
 	)
 	val sheetInfoState = remember { mutableStateOf(sheetInfo) }
 
@@ -105,7 +114,7 @@ fun MainContainer(
 				}
 				is State.StateModel.Pop -> {
 //					component?.pop()
-					router.popLast()
+//					router.popLast()
 				}
 				is State.StateModel.Error -> {
 					processError(
@@ -135,7 +144,13 @@ fun MainContainer(
 					.fillMaxSize()
 					.background(ComposeColors.Background)
 			) {
-				if (toolbarInfo != null) MainToolbar(toolbarInfo)
+				if (toolbarInfo != null) {
+					MainToolbar(toolbarInfo.copy(
+						navigationIcon = (toolbarInfo.navigationIcon ?: NavigationIcon()).copy(
+							onBackClick = { navigator.pop() }
+						)
+					))
+				}
 				val columnModifier = contentModifier
 					.fillMaxSize()
 					.weight(1f, false)
@@ -146,7 +161,7 @@ fun MainContainer(
 				Column(
 					modifier = columnModifier,
 					horizontalAlignment = contentHorizontalAlignment,
-					content = content,
+					content = { content { navigator.pop() } },
 				)
 			}
 		}
