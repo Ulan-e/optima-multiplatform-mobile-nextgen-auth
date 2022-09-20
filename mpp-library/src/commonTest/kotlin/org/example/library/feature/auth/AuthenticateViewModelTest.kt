@@ -10,7 +10,7 @@ import io.ktor.client.engine.mock.respondOk
 import io.ktor.client.request.forms.FormDataContent
 import kg.optima.mobile.createSharedFactory
 import kg.optima.mobile.feature.auth.di.AuthFactory
-import kg.optima.mobile.feature.auth.presentation.AuthViewModel
+import org.example.library.feature.auth.presentation.AuthViewModel
 import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals

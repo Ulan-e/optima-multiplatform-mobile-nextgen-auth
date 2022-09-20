@@ -15,4 +15,6 @@ sealed interface CreatePasswordModel {
         val message: String,
         val clientId: String?
     ) : CreatePasswordModel
+
+    object RegistrationDone : CreatePasswordModel
 }

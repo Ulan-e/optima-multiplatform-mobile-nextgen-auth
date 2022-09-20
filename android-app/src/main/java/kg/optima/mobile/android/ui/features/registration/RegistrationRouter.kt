@@ -31,7 +31,6 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 				questionId = screenModel.questionId,
 				answer = screenModel.answer
 			)
-			is RegistrationScreenModel.AnketaForm -> FormScreen(screenModel.url)
 		}
 	}
 }

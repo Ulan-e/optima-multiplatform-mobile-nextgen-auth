@@ -30,6 +30,8 @@ abstract class State<in E>(
 		coroutineScope.launch { _stateFlow.emit(newState) }
 	}
 
+	fun init() = setStateModel(StateModel.Initial)
+
 	internal fun setLoading() = setStateModel(StateModel.Loading)
 
 	// TODO perform error

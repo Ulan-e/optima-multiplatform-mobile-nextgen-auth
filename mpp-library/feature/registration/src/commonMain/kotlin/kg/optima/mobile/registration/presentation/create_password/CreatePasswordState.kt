@@ -2,6 +2,7 @@ package kg.optima.mobile.registration.presentation.create_password
 
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
+import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.presentation.create_password.validity.PasswordValidityModel
 
 class CreatePasswordState : State<CreatePasswordModel>() {
@@ -14,11 +15,7 @@ class CreatePasswordState : State<CreatePasswordModel>() {
                 clientId = entity.clientId!!,
                 message = entity.message
             )
-			/*CreatePasswordModel.Submit -> StateModel.Navigate(
-				screenModel = RegistrationScreenModel.AnketaForm(
-					url = "https://docs.google.com/forms/d/10xKZzz7I2N0kJQjsseCa2-5QNAwL9O-DNnnX4RRwP9U/edit"
-				)
-			)*/
+            CreatePasswordModel.RegistrationDone -> StateModel.Navigate(WelcomeScreenModel.Welcome)
         }
     }
 
@@ -34,6 +31,6 @@ class CreatePasswordState : State<CreatePasswordModel>() {
         class RegisterResult(
             val clientId: String,
             val message: String,
-        )
+        ) : CreatePasswordStateModel
     }
 }

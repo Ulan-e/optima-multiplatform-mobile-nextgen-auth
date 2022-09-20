@@ -2,6 +2,7 @@ package kg.optima.mobile.android.ui.features.registration.self_confirm
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
@@ -10,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
@@ -77,10 +79,11 @@ object SelfConfirmScreen : Screen {
 					}
 				}
 			},
+			scrollable = true,
 			contentHorizontalAlignment = Alignment.Start,
 		) {
+			Spacer(modifier = Modifier.weight(1f).heightIn(0.dp, Deps.Spacing.bigMarginTop))
 			TitleTextField(
-				modifier = Modifier.padding(top = Deps.Spacing.bigMarginTop),
 				text = "Подтверждение личности",
 			)
 			Text(
