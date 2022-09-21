@@ -62,15 +62,13 @@ fun MainContainer(
 	contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
 	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
 	onSheetStateChanged: (ModalBottomSheetValue, PopLast) -> Unit = { _, _ -> },
-	onDestroyActivity: () -> Unit = {},
-	content: @Composable ColumnScope.(PopLast) -> Unit
+	content: @Composable ColumnScope.(PopLast) -> Unit,
 ) {
 	val router: Router by inject()
 
 	val navigator = LocalNavigator.currentOrThrow
 	val context = LocalContext.current
 	val activity = context.asActivity()
-	val lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
 
 	val coroutineScope = rememberCoroutineScope()
 	val sheetState = rememberModalBottomSheetState(
@@ -90,23 +88,6 @@ fun MainContainer(
 	}
 	val onBottomSheetHidden: () -> Unit = {
 		coroutineScope.launch { sheetState.hide() }
-	}
-
-	DisposableEffect(Unit) {
-		val observer = LifecycleEventObserver { _, event ->
-			when (event) {
-				Lifecycle.Event.ON_STOP, Lifecycle.Event.ON_DESTROY -> {
-					onDestroyActivity()
-				}
-				else -> {
-					// TODO another lifecycle methods
-				}
-			}
-		}
-		lifecycleOwner.lifecycle.addObserver(observer)
-		onDispose {
-			lifecycleOwner.lifecycle.removeObserver(observer)
-		}
 	}
 
 //	BackHandler(!navigator.canPop) {

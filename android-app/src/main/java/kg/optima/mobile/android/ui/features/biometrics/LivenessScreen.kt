@@ -118,22 +118,6 @@ object LivenessScreen : Screen {
             }
         }
 
-        val onFinishLiveness = {
-            bottomSheetState.value = BottomSheetInfo(
-                title = "Процесс идентификации остановлен",
-                description = "Процесс прохождения идентификации должен быть непрерывным. Сворачивание или переключение на другие приложения прервет процесс",
-                buttons = listOf(
-                    ButtonView.Primary(
-                        text = "Понятно",
-                        composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
-                        onClickListener = ButtonView.OnClickListener.onClickListener {
-                            intent.pop()
-                        }
-                    )
-                )
-            )
-        }
-
         val onBack = {
             bottomSheetState.value = BottomSheetInfo(
                 title = "Вы действительно хотите \nостановить идентификацию?",
@@ -161,8 +145,7 @@ object LivenessScreen : Screen {
             contentModifier = Modifier.fillMaxSize(),
             toolbarInfo = null,
             sheetInfo = bottomSheetState.value,
-            contentHorizontalAlignment = Alignment.Start,
-            onDestroyActivity = onFinishLiveness
+            contentHorizontalAlignment = Alignment.Start
         ) {
 
             BackHandler { onBack() }
