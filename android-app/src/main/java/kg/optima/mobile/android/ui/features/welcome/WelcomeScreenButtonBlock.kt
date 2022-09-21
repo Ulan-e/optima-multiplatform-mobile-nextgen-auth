@@ -52,8 +52,8 @@ fun WelcomeScreenButtonBlock(
 			verticalArrangement = Arrangement.spacedBy(40.dp)
 		) {
 			Button(
-				imageResId = MainImages.bell.resId(),
-				text = "Уведомления",
+				imageResId = MainImages.ellipse.resId(),
+				text = "Языки",
 			) {
 
 			}

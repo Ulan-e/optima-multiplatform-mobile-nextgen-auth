@@ -5,6 +5,7 @@ import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.core.error.Failure
 import kg.optima.mobile.core.navigation.ScreenModel
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -20,7 +21,7 @@ abstract class State<in E>(
 	/**
 	 * Common state for each screen. Use with sealed classes.
 	 */
-	private val _stateFlow = MutableSharedFlow<StateModel?>()
+	private val _stateFlow = MutableSharedFlow<StateModel?>(replay = 1, onBufferOverflow = BufferOverflow.DROP_LATEST)
 	val stateFlow: SharedFlow<StateModel?> = _stateFlow.asSharedFlow()
 
 	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
@@ -29,14 +30,12 @@ abstract class State<in E>(
 		coroutineScope.launch { _stateFlow.emit(newState) }
 	}
 
-	internal fun setLoading() {
-		_stateFlow.tryEmit(StateModel.Loading)
-	}
+	fun init() = setStateModel(StateModel.Initial)
+
+	internal fun setLoading() = setStateModel(StateModel.Loading)
 
 	// TODO perform error
-	internal suspend fun setError(error: StateModel.Error) {
-		_stateFlow.emit(error)
-	}
+	internal fun setError(error: StateModel.Error) = setStateModel(error)
 
 	// TODO perform error
 	internal fun setError(failure: Failure) {
@@ -85,6 +84,8 @@ abstract class State<in E>(
 			val error: String
 
 			class BaseError(override val error: String) : Error
+
+			class ApiError(override val error: String) : Error
 		}
 	}
 }

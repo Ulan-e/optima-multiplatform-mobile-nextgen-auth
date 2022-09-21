@@ -77,8 +77,7 @@ object LivenessScreen : Screen {
 
         when (val livenessModel = model) {
             is LivenessState.LivenessModel.Passed -> {
-                state.setStateModel(State.StateModel.Initial)
-
+                state.init()
                 bottomSheetState.value = BottomSheetInfo(
                     title = livenessModel.message,
                     buttons = listOf(

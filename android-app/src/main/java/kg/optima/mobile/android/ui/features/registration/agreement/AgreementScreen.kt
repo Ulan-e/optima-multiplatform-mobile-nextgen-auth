@@ -24,8 +24,6 @@ import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonSecondaryTy
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.text_fields.AnnotatedText
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
-import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
-import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.resId
@@ -59,19 +57,18 @@ object AgreementScreen : BaseScreen {
 				.fillMaxSize()
 				.padding(all = Deps.Spacing.standardPadding),
 			sheetInfo = infoState.value,
-			toolbarInfo = ToolbarInfo(
-				navigationIcon = NavigationIcon(onBackClick = { intent.pop() })
-			),
-			onSheetStateChanged = {
-				when (it) {
-					ModalBottomSheetValue.Hidden -> intent.pop()
+			onSheetStateChanged = { state, onBack ->
+				when (state) {
+					ModalBottomSheetValue.Hidden -> onBack()
 					else -> Unit
 				}
 			},
 			contentHorizontalAlignment = Alignment.Start,
-		) {
+		) { onBack ->
 			Column(
-				modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()),
+				modifier = Modifier
+					.weight(1f)
+					.verticalScroll(rememberScrollState()),
 				verticalArrangement = Arrangement.Center
 			) {
 				TitleTextField(text = "Обратите внимание!")
@@ -149,6 +146,7 @@ object AgreementScreen : BaseScreen {
 								text = "Закрыть",
 								onClickListener = ButtonView.OnClickListener.onClickListener {
 									infoState.value = null
+									onBack()
 								}
 							)
 						)

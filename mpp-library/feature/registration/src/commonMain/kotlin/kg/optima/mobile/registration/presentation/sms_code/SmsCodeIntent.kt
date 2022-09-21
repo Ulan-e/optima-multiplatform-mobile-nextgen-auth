@@ -3,8 +3,12 @@ package kg.optima.mobile.registration.presentation.sms_code
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.Intent
+import kg.optima.mobile.registration.domain.GetTriesDataUseCase
+import kg.optima.mobile.registration.domain.SaveTriesDataUseCase
+import kg.optima.mobile.registration.domain.model.OtpTriesEntity
 import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
 import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
+import kg.optima.mobile.registration.presentation.sms_code.utils.Timeouts
 import kotlinx.coroutines.delay
 import org.koin.core.component.inject
 
@@ -14,6 +18,10 @@ class SmsCodeIntent(
 
 	private val checkSmsCodeUseCase: CheckSmsCodeUseCase by inject()
 	private val checkPhoneNumberUseCase: CheckPhoneNumberUseCase by inject()
+	private val getTriesDataUseCase: GetTriesDataUseCase by inject()
+	private val saveTriesDataUseCase: SaveTriesDataUseCase by inject()
+
+	private var loadedTriesData = listOf<OtpTriesEntity>()
 
 	fun smsCodeEntered(
 		phoneNumber: String,
@@ -27,31 +35,97 @@ class SmsCodeIntent(
 					verificationCode = smsCode,
 					referenceId = referenceId
 				)
-			).map {
-				CheckSmsCodeInfo.Check(success = it.success)
-			}
+			).map { CheckSmsCodeInfo.OtpCheck(it.success) }
 		}
 	}
 
-	fun smsCodeReRequest(phoneNumber: String) {
-		startTimeout()
+	fun smsCodeRequest(phoneNumber: String) {
 		launchOperation {
 			checkPhoneNumberUseCase.execute(phoneNumber).map {
-				CheckSmsCodeInfo.ReRequest(it.success)
+				CheckSmsCodeInfo.Check(it.success, it.referenceId)
 			}
 		}
 	}
 
-	fun startTimeout() {
-		launchOperation {
-			var timeout = 10
-			//TODO: timeout
-			while (timeout > 0) {
-				state.handle(CheckSmsCodeInfo.Timeout(timeout))
-				delay(1000)
-				timeout--
+	fun saveTriesData(tryCount: Int, phoneNumber: String, currentTime: Long) {
+		val newCount = if (tryCount >= 4) {
+			1
+		} else {
+			tryCount + 1
+		}
+		val newTimeLeft = Timeouts.get(newCount).timeout
+		val oldNumberData = loadedTriesData.findLast { it.phoneNumber == phoneNumber }
+		val saveData = mutableListOf<OtpTriesEntity>()
+		if (oldNumberData == null) {
+			saveData.addAll(loadedTriesData)
+			saveData.add(
+				OtpTriesEntity(
+					phoneNumber = phoneNumber,
+					tryCount = newCount,
+					tryTime = currentTime
+				)
+			)
+		} else {
+			loadedTriesData.map {
+				if (it.phoneNumber == oldNumberData.phoneNumber) {
+					saveData.add(OtpTriesEntity(
+						phoneNumber = phoneNumber,
+						tryCount = newCount,
+						tryTime = currentTime
+					))
+				} else {
+					saveData.add(it)
+				}
 			}
-			Either.Right(CheckSmsCodeInfo.EnableReRequest)
+		}
+		launchOperation {
+			saveTriesDataUseCase.execute(
+				SaveTriesDataUseCase.Params(saveData)
+			).map {
+				CheckSmsCodeInfo.TriesData(
+					tryCount = newCount,
+					timeLeft = newTimeLeft
+				)
+			}
+		}
+	}
+
+	fun startTimer(timeout: Int) {
+		var timer = timeout
+		launchOperation {
+			while (timer > 0) {
+				state.handle(CheckSmsCodeInfo.TimeLeft(timer))
+				delay(1000)
+				timer--
+			}
+			Either.Right(CheckSmsCodeInfo.TimeLeft(timer))
+		}
+	}
+
+	fun getTriesData(currentPhoneNumber: String, currentTime: Long) {
+		launchOperation {
+			getTriesDataUseCase.execute(GetTriesDataUseCase.Params).map {
+				loadedTriesData = it
+				val savedTryData = it.findLast { it.phoneNumber == currentPhoneNumber }
+				if (savedTryData != null) {
+					val timePast = Timeouts.get(savedTryData.tryCount).timeout - ((currentTime - savedTryData.tryTime) / 1000).toInt()
+					val actualTryData = if (timePast >= Timeouts.FOURTH.timeout) {
+						CheckSmsCodeInfo.TriesData.FIRST_TRY
+					} else {
+						CheckSmsCodeInfo.TriesData(
+							tryCount = savedTryData.tryCount,
+							timeLeft = if (timePast <= 0) {
+								0
+							} else {
+								timePast
+							}
+						)
+					}
+					actualTryData
+				} else {
+					CheckSmsCodeInfo.TriesData.FIRST_TRY
+				}
+			}
 		}
 	}
 

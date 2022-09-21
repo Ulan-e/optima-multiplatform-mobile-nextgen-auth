@@ -1,8 +1,4 @@
-/*
- * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
-
-package kg.optima.mobile.feature.auth.presentation
+package org.example.library.feature.auth.presentation
 
 import dev.icerock.moko.errors.handler.ExceptionHandler
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher

@@ -4,7 +4,7 @@ import kg.optima.mobile.base.presentation.Intent
 import kg.optima.mobile.base.presentation.State
 
 class AgreementIntent(
-	override val state: State<AgreementModel>
+	override val state: AgreementState
 ) : Intent<AgreementModel>() {
 
 	fun confirm() {

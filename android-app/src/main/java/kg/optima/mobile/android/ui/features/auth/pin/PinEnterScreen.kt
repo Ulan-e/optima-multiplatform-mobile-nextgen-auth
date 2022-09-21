@@ -58,10 +58,10 @@ class PinEnterScreen(
 		MainContainer(
 			mainState = model,
 			toolbarInfo = null,
-		) {
+		) { onBack ->
 			PinScreen(
 				header = enterPinScreenHeader(
-					onCloseClick = { intent.pop() },
+					onCloseClick = { onBack() },
 					onLogoutClick = {},
 				),
 				codeState = codeState,

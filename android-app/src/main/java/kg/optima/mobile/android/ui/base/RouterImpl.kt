@@ -59,4 +59,11 @@ object RouterImpl : Router {
 		}
 		return screens
 	}
+
+	@SuppressLint("ComposableNaming")
+	@Composable
+	override fun popLast() {
+		val navigator = LocalNavigator.currentOrThrow
+		navigator.pop()
+	}
 }

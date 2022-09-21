@@ -17,8 +17,8 @@ import kg.optima.mobile.resources.Headings
 
 @Composable
 fun InfoBottomSheet(
-	bottomSheetInfo: BottomSheetInfo?,
 	modifier: Modifier = Modifier,
+	bottomSheetInfo: BottomSheetInfo?,
 ) {
 	if (bottomSheetInfo != null) {
 		BottomSheet(bottomSheetInfo = bottomSheetInfo, modifier = modifier)

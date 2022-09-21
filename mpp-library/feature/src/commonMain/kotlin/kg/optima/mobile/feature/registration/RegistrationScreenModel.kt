@@ -32,9 +32,4 @@ sealed interface RegistrationScreenModel : ScreenModel {
 		val questionId: String = "",
 		val answer: String = "",
 	) : RegistrationScreenModel
-
-	@Parcelize
-	class AnketaForm(
-		val url: String
-	) : RegistrationScreenModel
 }

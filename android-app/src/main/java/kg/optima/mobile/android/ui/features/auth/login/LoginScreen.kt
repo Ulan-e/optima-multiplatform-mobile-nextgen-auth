@@ -68,10 +68,7 @@ class LoginScreen(
 
 		MainContainer(
 			mainState = model,
-			toolbarInfo = ToolbarInfo(
-				navigationIcon = NavigationIcon(onBackClick = { intent.pop() }),
-				content = ToolbarContent.Nothing,
-			),
+			toolbarInfo = ToolbarInfo(content = ToolbarContent.Nothing),
 			contentModifier = Modifier
 				.padding(all = Deps.Spacing.standardPadding)
 				.background(ComposeColors.Background),

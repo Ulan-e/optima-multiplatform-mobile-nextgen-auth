@@ -4,16 +4,13 @@ import kg.optima.mobile.base.utils.emptyString
 
 sealed interface CheckPhoneNumberInfo {
 
-	val success: Boolean
-
 	class Validation(
-		override val success: Boolean,
+		val success: Boolean,
 		val message: String = emptyString,
 	) : CheckPhoneNumberInfo
 
-	class Check(
-		override val success: Boolean,
+	class PhoneNumber(
 		val phoneNumber: String,
-		val referenceId: String,
 	) : CheckPhoneNumberInfo
+
 }
