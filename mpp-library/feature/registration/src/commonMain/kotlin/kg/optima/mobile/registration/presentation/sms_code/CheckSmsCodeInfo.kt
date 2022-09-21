@@ -4,7 +4,6 @@ sealed interface CheckSmsCodeInfo {
 
 	class Check(
 		val success: Boolean,
-		val referenceId: String,
 	) : CheckSmsCodeInfo
 
 	class OtpCheck(

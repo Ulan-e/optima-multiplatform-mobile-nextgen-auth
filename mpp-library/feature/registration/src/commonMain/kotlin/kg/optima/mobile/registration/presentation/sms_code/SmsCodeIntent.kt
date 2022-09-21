@@ -15,6 +15,8 @@ class SmsCodeIntent(
 	private val checkSmsCodeUseCase: CheckSmsCodeUseCase by inject()
 	private val checkPhoneNumberUseCase: CheckPhoneNumberUseCase by inject()
 
+	private var timeLeft = 0L
+
 	fun smsCodeEntered(
 		phoneNumber: String,
 		smsCode: String,
@@ -34,13 +36,15 @@ class SmsCodeIntent(
 	fun smsCodeRequest(phoneNumber: String) {
 		launchOperation {
 			checkPhoneNumberUseCase.execute(phoneNumber).map {
-				CheckSmsCodeInfo.Check(it.success, it.referenceId)
+				timeLeft = it.timeLeft
+				startTimer(timeLeft)
+				CheckSmsCodeInfo.Check(it.success)
 			}
 		}
 	}
 
-	fun startTimer(timeout: Int) {
-		var timer = timeout
+	fun startTimer(timeLeft: Long) {
+		var timer = (timeLeft / 1000).toInt()
 		launchOperation {
 			while (timer > 0) {
 				state.handle(CheckSmsCodeInfo.TimeLeft(timer))

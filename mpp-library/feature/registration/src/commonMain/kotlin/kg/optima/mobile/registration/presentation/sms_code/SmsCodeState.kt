@@ -18,7 +18,7 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
             }
             is CheckSmsCodeInfo.Check ->
                 if (entity.success) {
-                    SmsCodeStateModel.Request(entity.referenceId)
+                    SmsCodeStateModel.Request
                 } else {
                     StateModel.Error.BaseError("Не удалось запросить новый смс-код.")
                 }
@@ -29,9 +29,7 @@ class SmsCodeState : State<CheckSmsCodeInfo>() {
 
     sealed interface SmsCodeStateModel : StateModel {
 
-        class Request(
-            val referenceId: String,
-        ) : SmsCodeStateModel
+        object Request : SmsCodeStateModel
 
         class TimeLeft(
             val timeLeft: Int

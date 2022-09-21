@@ -21,7 +21,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
 			is RegistrationScreenModel.AcceptCode -> OtpScreen(
 				phoneNumber = screenModel.phoneNumber,
-				timeout = screenModel.timeout,
+				timeLeft = screenModel.timeLeft,
 				referenceId = screenModel.referenceId,
 			)
 			RegistrationScreenModel.SelfConfirm -> SelfConfirmScreen

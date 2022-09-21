@@ -19,8 +19,6 @@ import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.input.CodeInput
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
-import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
-import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
@@ -32,7 +30,7 @@ import kg.optima.mobile.resources.Headings
 @Parcelize
 class OtpScreen(
 	private val phoneNumber: String,
-	private val timeout: Int,
+	private val timeLeft: Long,
 	private val referenceId: String,
 ) : BaseScreen {
 
@@ -47,14 +45,14 @@ class OtpScreen(
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
 		val codeState = remember { mutableStateOf(emptyString) }
-		val timeLeftState = remember { mutableStateOf(timeout) }
+		val timeLeftState = remember { mutableStateOf(0) }
 		val errorState = remember { mutableStateOf(emptyString) }
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
-		val referenceId = remember { mutableStateOf(referenceId) }
 
 		when (val model = model) {
 			is State.StateModel.Initial -> {
+				intent.startTimer(timeLeft)
 			}
 			is State.StateModel.Error -> {
 				codeState.value = emptyString
@@ -74,7 +72,6 @@ class OtpScreen(
 				}
 			}
 			is SmsCodeState.SmsCodeStateModel.Request -> {
-				referenceId.value = model.referenceId
 				triesCountState.value = Constants.OTP_MAX_TRIES
 				codeState.value = emptyString
 				errorState.value = emptyString
@@ -132,7 +129,7 @@ class OtpScreen(
 				onInputCompleted = {
 					if (triesCountState.value > 0) {
 						triesCountState.value--
-						intent.smsCodeEntered(phoneNumber, it, referenceId.value)
+						intent.smsCodeEntered(phoneNumber, it, referenceId)
 					}
 				},
 				withKeyboard = true,
