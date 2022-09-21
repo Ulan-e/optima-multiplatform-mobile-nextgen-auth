@@ -12,7 +12,7 @@ object Constants {
 	const val PHONE_NUMBER_MASK = "$PHONE_NUMBER_CODE(000) 000 000"
 
 	const val PASSWORD_LENGTH = 8
-	const val CONTROL_ANSWER_LENGTH = 5
+	const val CONTROL_ANSWER_LENGTH = 1
 	const val OTP_MAX_TRIES = 3
 
 	const val OTP_INVALID_ERROR_CODE: String = "111"

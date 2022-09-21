@@ -33,6 +33,7 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
+import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
@@ -93,13 +94,19 @@ object LivenessScreen : Screen {
             }
             is LivenessState.LivenessModel.Failed -> {
                 bottomSheetState.value = BottomSheetInfo(
-                    title = "errorState.error",
+                    title = livenessModel.message,
                     buttons = listOf(
                         ButtonView.Primary(
-                            text = "Повторить попытку",
+                            text = "Связаться с банком",
                             composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(LivenessActivity())
+                                context.navigateTo(WelcomeScreenModel.Welcome)
+                            }
+                        ),
+                        ButtonView.Transparent(
+                            text = "Отмена",
+                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                                context.navigateTo(WelcomeScreenModel.Welcome)
                             }
                         )
                     )
@@ -108,20 +115,23 @@ object LivenessScreen : Screen {
         }
 
         val onBack = {
-            bottomSheetState.value = showBottomSheetDialog(
+            bottomSheetState.value = BottomSheetInfo(
                 title = "Вы действительно хотите \nостановить идентификацию?",
-                subTitle = "Идентификация не закончена. \nПроцесс будет остановлен и вы окажетесь \nна начальном экране",
-                positiveButtonView = ButtonView.Primary(
-                    text = "Остановить процесс",
-                    onClickListener = ButtonView.OnClickListener.onClickListener {
-                        context.navigateTo(RegistrationScreenModel.SelfConfirm)
-                    }
-                ),
-                negativeButtonView = ButtonView.Transparent(
-                    text = "Отмена",
-                    onClickListener = ButtonView.OnClickListener.onClickListener {
-                        bottomSheetState.value = null
-                    }
+                description = "Идентификация не закончена. \nПроцесс будет остановлен и вы окажетесь \nна начальном экране",
+                buttons = listOf(
+                    ButtonView.Primary(
+                        text = "Остановить процесс",
+                        composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
+                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                            context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                        }
+                    ),
+                    ButtonView.Transparent(
+                        text = "Отмена",
+                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                            bottomSheetState.value = null
+                        }
+                    )
                 )
             )
         }
@@ -182,9 +192,7 @@ object LivenessScreen : Screen {
                         val cameraComponent =
                             rootView.findViewById<CameraCaptureComponent>(R.id.camera_capture_component)
                         cameraComponent?.setConfig(
-                            readTextFile(
-                                context.resources.openRawResource(R.raw.liveness_config_ru)
-                            )
+                            readTextFile(context.resources.openRawResource(R.raw.liveness_config_ru))
                         )
                         cameraComponent?.setServerURL(serverUrl)
                         cameraComponent!!.startPreview()
@@ -193,57 +201,70 @@ object LivenessScreen : Screen {
                             object : ICameraCaptureListener {
                                 override fun onLivenessError(e: Throwable) {
                                     if (e is ConnectionException) {
-                                        bottomSheetState.value = showBottomSheetDialog(
+                                        bottomSheetState.value = BottomSheetInfo(
                                             title = "Отсутствует интернет \nсоединение",
-                                            subTitle = "Проверьте наличие интернета \nна Вашем устройстве",
-                                            positiveButtonView = ButtonView.Primary(
-                                                text = "Повторить попытку",
-                                                onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                    bottomSheetState.value = null
-                                                }
-                                            ),
+                                            description = "Проверьте наличие интернета \nна Вашем устройстве",
+                                            buttons = listOf(
+                                                ButtonView.Primary(
+                                                    text = "Повторить попытку",
+                                                    composeColor = ComposeColor.composeColor(
+                                                        ComposeColors.PrimaryRed
+                                                    ),
+                                                    onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                        bottomSheetState.value = null
+                                                    }
+                                                )
+                                            )
                                         )
                                     }
                                     if (e is ServerResponseException || e is JsonFormatException) {
-                                        bottomSheetState.value = showBottomSheetDialog(
+                                        bottomSheetState.value = BottomSheetInfo(
                                             title = "Процесс идентификации \nостановлен",
-                                            subTitle = "ServerResponseException ${e.localizedMessage}",
-                                            positiveButtonView = ButtonView.Primary(
-                                                text = "Понятно",
-                                                onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                    bottomSheetState.value = null
-                                                }
-                                            ),
+                                            description = "ServerResponseException ${e.localizedMessage}",
+                                            buttons = listOf(
+                                                ButtonView.Primary(
+                                                    text = "Повторить попытку",
+                                                    composeColor = ComposeColor.composeColor(
+                                                        ComposeColors.PrimaryRed
+                                                    ),
+                                                    onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                        context.navigateTo(LivenessActivity())
+                                                    }
+                                                )
+                                            )
                                         )
                                     }
                                     if (e is CameraException) {
-                                        bottomSheetState.value = showBottomSheetDialog(
+                                        bottomSheetState.value = BottomSheetInfo(
                                             title = "Нельзя пройти \nподтверждение личности\n без доступа к камере",
-                                            positiveButtonView = ButtonView.Primary(
-                                                text = "Понятно",
-                                                onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                    context.navigateTo(RegistrationScreenModel.SelfConfirm)
-                                                }
-                                            ),
+                                            buttons = listOf(
+                                                ButtonView.Primary(
+                                                    text = "Повторить попытку",
+                                                    composeColor = ComposeColor.composeColor(
+                                                        ComposeColors.PrimaryRed
+                                                    ),
+                                                    onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                        context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                                                    }
+                                                )
+                                            )
                                         )
                                     }
                                 }
 
                                 override fun onLivenessFailed(result: LivenessResult) {
-                                    bottomSheetState.value = showBottomSheetDialog(
-                                        title = "Что-то пошло не так",
-                                        subTitle = "Решите свой вопрос через нашу заботливую \nподдержку прямо сейчас",
-                                        positiveButtonView = ButtonView.Primary(
-                                            text = "Связаться с банком",
-                                            onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                // TODO  retry
-                                            }
-                                        ),
-                                        negativeButtonView = ButtonView.Transparent(
-                                            text = "Отмена",
-                                            onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                bottomSheetState.value = null
-                                            }
+                                    bottomSheetState.value = BottomSheetInfo(
+                                        title = "Недостаточное совпадение фото",
+                                        buttons = listOf(
+                                            ButtonView.Primary(
+                                                text = "Повторить попытку",
+                                                composeColor = ComposeColor.composeColor(
+                                                    ComposeColors.PrimaryRed
+                                                ),
+                                                onClickListener = ButtonView.OnClickListener.onClickListener {
+                                                    context.navigateTo(LivenessActivity())
+                                                }
+                                            )
                                         )
                                     )
                                 }
@@ -286,10 +307,6 @@ object LivenessScreen : Screen {
                             text = "Продолжить",
                             color = ComposeColors.Green,
                             onClick = {
-                                // context.navigateTo(RegistrationScreenModel.ControlQuestion)
-
-                                // отправка данных для верификации клиента
-
                                 val data = context.loadFile("scanned_file")
                                 intent.verify(
                                     livenessResult = livenessResult.value,

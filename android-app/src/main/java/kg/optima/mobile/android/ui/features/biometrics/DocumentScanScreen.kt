@@ -29,9 +29,11 @@ import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
+import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
 import kg.optima.mobile.registration.presentation.liveness.LivenessState
@@ -62,20 +64,23 @@ object DocumentScanScreen : Screen {
         val btnContinueVisibility = remember { mutableStateOf(false) }
 
         val onBack = {
-            bottomSheetState.value = showBottomSheetDialog(
+            bottomSheetState.value = BottomSheetInfo(
                 title = "Вы действительно хотите \nостановить идентификацию?",
-                subTitle = "Идентификация не закончена. \nПроцесс будет остановлен и вы окажетесь \nна начальном экране",
-                positiveButtonView = ButtonView.Primary(
-                    text = "Остановить процесс",
-                    onClickListener = ButtonView.OnClickListener.onClickListener {
-                        context.navigateTo(RegistrationScreenModel.SelfConfirm)
-                    }
-                ),
-                negativeButtonView = ButtonView.Transparent(
-                    text = "Отмена",
-                    onClickListener = ButtonView.OnClickListener.onClickListener {
-                        bottomSheetState.value = null
-                    }
+                description = "Идентификация не закончена. \nПроцесс будет остановлен и вы окажетесь \nна начальном экране",
+                buttons = listOf(
+                    ButtonView.Primary(
+                        text = "Остановить процесс",
+                        composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
+                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                            context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                        }
+                    ),
+                    ButtonView.Transparent(
+                        text = "Отмена",
+                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                            bottomSheetState.value = null
+                        }
+                    )
                 )
             )
         }

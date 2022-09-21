@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.registration.self_confirm
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -14,9 +15,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
-import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.ui.base.permission.PermissionController
+import kg.optima.mobile.android.ui.features.biometrics.LivenessActivity
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
@@ -28,93 +29,134 @@ import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
 import kotlinx.coroutines.delay
 import kz.verigram.veridoc.sdk.VeridocInitializer
-
+import kz.verigram.verilive.sdk.LivenessInitializer
 
 @Suppress("SameParameterValue")
 object SelfConfirmScreen : Screen {
-	@OptIn(ExperimentalMaterialApi::class)
-	@Composable
-	override fun Content() {
-		val product = remember {
-			RegistrationFeatureFactory.create<SelfConfirmIntent, SelfConfirmState>()
-		}
-		val intent = product.intent
-		val state = product.state
+    @OptIn(ExperimentalMaterialApi::class)
+    @Composable
+    override fun Content() {
+        val product = remember {
+            RegistrationFeatureFactory.create<SelfConfirmIntent, SelfConfirmState>()
+        }
+        val intent = product.intent
+        val state = product.state
 
-		val context = LocalContext.current
+        val context = LocalContext.current
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
-		var items by remember { mutableStateOf<List<FadeInAnimModel>>(emptyList()) }
-		var buttonEnabled by remember { mutableStateOf(false) }
+        var items by remember { mutableStateOf<List<FadeInAnimModel>>(emptyList()) }
+        var buttonEnabled by remember { mutableStateOf(false) }
 
-		when (val selfConfirmStateModel = model) {
-			is State.StateModel.Initial ->
-				intent.fadeAnimationModels()
-			is SelfConfirmState.SelfConfirmStateModel.AnimationModels ->
-				items = selfConfirmStateModel.models.toUiModel()
-		}
+        // при полной идентификации true, при быстрой идентификации false
+        val identificationMode by remember { mutableStateOf(true) }
 
-		LaunchedEffect(key1 = !buttonEnabled) {
-			delay(6000)
-			buttonEnabled = true
-		}
+        when (identificationMode) {
+            true -> {
+                when (val selfConfirmStateModel = model) {
+                    is State.StateModel.Initial ->
+                        intent.fadeAnimationModels()
+                    is SelfConfirmState.SelfConfirmStateModel.AnimationModels -> items =
+                        selfConfirmStateModel.models.toUiModel()
+                }
+            }
+            false -> {
+                when (val selfConfirmStateModel = model) {
+                    is State.StateModel.Initial ->
+                        intent.fadeAnimationModelsShort()
+                    is SelfConfirmState.SelfConfirmStateModel.AnimationModels -> items =
+                        selfConfirmStateModel.models.toUiModel()
+                }
+            }
+        }
 
-		MainContainer(
-			mainState = model,
-			permissionController = {
-				when (it) {
-					PermissionController.State.Accepted -> {
-						VeridocInitializer.init()
-						context.navigateTo(DocumentScanActivity())
-					}
-					is PermissionController.State.DeniedAlways -> {
-						intent.customPermissionRequired(it.permissions)
-					}
-				}
-			},
-			scrollable = true,
-			contentHorizontalAlignment = Alignment.Start,
-		) {
-			Spacer(modifier = Modifier.weight(1f).heightIn(0.dp, Deps.Spacing.bigMarginTop))
-			TitleTextField(
-				text = "Подтверждение личности",
-			)
-			Text(
-				modifier = Modifier.padding(top = Deps.Spacing.marginFromTitle),
-				text = "Для прохождении онлайн идентификации необходимо:",
-				fontSize = Headings.H3.sp,
-			)
-			IconTextFields(
-				modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 2),
-				items = items,
-			)
-			Spacer(modifier = Modifier.weight(1f))
-			PrimaryButton(
-				modifier = Modifier.fillMaxWidth(),
-				text = "Начать",
-				enabled = buttonEnabled,
-				color = ComposeColors.Green,
-				onClick = { intent.requestPermission(Permission.Camera) }
-			)
-		}
-	}
+        LaunchedEffect(key1 = !buttonEnabled) {
+            buttonEnabled = when (identificationMode) {
+                true -> {
+                    delay(6000)
+                    true
+                }
+                false -> {
+                    delay(1500)
+                    true
+                }
+            }
+        }
 
-	@Composable
-	private fun IconTextFields(
-		modifier: Modifier = Modifier,
-		items: List<FadeInAnimModel>,
-	) {
-		LazyColumn(modifier = modifier.fillMaxWidth()) {
-			items(items.size) {
-				FadeInAnim(items[it])
-			}
-		}
-	}
+        MainContainer(
+            mainState = model,
+            permissionController = {
+                when (it) {
+                    PermissionController.State.Accepted -> {
+                        when (identificationMode) {
+                            true -> {
+                                VeridocInitializer.init()
+                                context.startActivity(
+                                    Intent(
+                                        context,
+                                        DocumentScanActivity::class.java
+                                    )
+                                )
+                            }
+                            false -> {
+                                LivenessInitializer.init()
+                                context.startActivity(Intent(context, LivenessActivity::class.java))
+                            }
+                        }
+                    }
+                    is PermissionController.State.DeniedAlways -> {
+                        intent.customPermissionRequired(it.permissions)
+                    }
+                }
+            },
+            toolbarInfo = ToolbarInfo(
+                navigationIcon = NavigationIcon(onBackClick = {
+                    intent.nextScreenModel(RegistrationScreenModel.EnterPhone)
+                })
+            ),
+            contentHorizontalAlignment = Alignment.Start,
+        ) {
+            TitleTextField(
+                modifier = Modifier.padding(top = Deps.Spacing.bigMarginTop),
+                text = "Подтверждение личности",
+            )
+            Text(
+                modifier = Modifier.padding(top = Deps.Spacing.marginFromTitle),
+                text = "Для прохождении онлайн идентификации необходимо:",
+                fontSize = Headings.H3.sp,
+            )
+            IconTextFields(
+                modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 2),
+                items = items,
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            PrimaryButton(
+                modifier = Modifier.fillMaxWidth(),
+                text = "Начать",
+                enabled = buttonEnabled,
+                color = ComposeColors.Green,
+                onClick = { intent.requestPermission(Permission.Camera) }
+            )
+        }
+    }
+
+    @Composable
+    private fun IconTextFields(
+        modifier: Modifier = Modifier,
+        items: List<FadeInAnimModel>,
+    ) {
+        LazyColumn(modifier = modifier.fillMaxWidth()) {
+            items(items.size) {
+                FadeInAnim(items[it])
+            }
+        }
+    }
 }

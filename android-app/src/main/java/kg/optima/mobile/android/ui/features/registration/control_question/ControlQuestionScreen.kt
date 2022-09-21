@@ -101,8 +101,8 @@ class ControlQuestionScreen(
         ) {
             Column(
                 modifier = Modifier
-					.weight(1f)
-					.fillMaxSize(),
+                    .weight(1f)
+                    .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 TitleTextField(
@@ -126,11 +126,11 @@ class ControlQuestionScreen(
                     color = ComposeColors.DescriptionGray,
                     fontSize = Headings.H5.sp,
                     modifier = Modifier
-						.fillMaxWidth()
-						.padding(
-							top = Deps.Spacing.swiperTopMargin,
-							bottom = Deps.Spacing.standardPadding
-						),
+                        .fillMaxWidth()
+                        .padding(
+                            top = Deps.Spacing.swiperTopMargin,
+                            bottom = Deps.Spacing.standardPadding
+                        ),
                 )
                 InputField(
                     keyboardType = KeyboardType.Email,
@@ -160,7 +160,7 @@ class ControlQuestionScreen(
                         )
                     }
                 },
-                enabled = true,
+                enabled = buttonEnabled.value,
             )
         }
     }
