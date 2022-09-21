@@ -25,7 +25,6 @@ import kg.optima.mobile.design_system.android.utils.resources.resId
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.resources.Headings
-import kg.optima.mobile.resources.Typography
 import kg.optima.mobile.resources.images.MainImages
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -41,6 +40,7 @@ fun <T> DropDownList(
 ) {
 
 	var contentWidth by remember { mutableStateOf(Size.Zero) }
+	var selected = remember { mutableStateOf(false) }
 
 	val icon = if (expanded) painterResource(id = MainImages.arrowUp.resId())
 	else painterResource(id = MainImages.arrowDown.resId())
@@ -66,7 +66,7 @@ fun <T> DropDownList(
 		) {
 			Text(
 				modifier = Modifier
-					.fillMaxWidth(0.9f)
+					.fillMaxWidth(0.8f)
 					.requiredHeightIn(min = Deps.Size.buttonHeight)
 					.align(Alignment.Center)
 					.clickable(
@@ -77,10 +77,10 @@ fun <T> DropDownList(
 						onExpandClick.invoke()
 					}
 					.padding(vertical = Deps.Spacing.pinCellXMargin),
-				text = items.selectedItem?.title ?: "",
+				text = if(selected.value){items.selectedItem!!.title} else {"Контрольный вопрос"},
 				fontSize = Headings.H4.sp,
 				fontWeight = FontWeight.W500,
-				color = if (items.selectedItem?.title == "Контрольный вопрос") {
+				color = if (!selected.value) {
 					ComposeColors.DescriptionGray
 				} else {
 					ComposeColors.PrimaryDisabledGray
@@ -103,13 +103,14 @@ fun <T> DropDownList(
 					expanded = expanded,
 					onDismissRequest = onDismiss
 				) {
-					items.list.forEach { selectedOption ->
+					items.list.forEachIndexed { i, selectedOption ->
 						if (selectedOption.title != "Контрольный вопрос") {
 							DropdownMenuItem(
 								modifier = Modifier
 									.width(with(LocalDensity.current) { contentWidth.width.toDp() }),
 								onClick = {
 									onItemSelected(selectedOption.entity)
+									selected.value = true
 								}
 							) {
 								Text(
@@ -122,16 +123,18 @@ fun <T> DropDownList(
 									color = ComposeColors.PrimaryDisabledGray
 								)
 							}
-							Divider(
-								thickness = Deps.Spacing.minPadding,
-								color = Color(0xFF999BA3),
-								modifier = Modifier
-									.fillMaxWidth()
-									.padding(
-										horizontal = Deps.Spacing.standardPadding,
-										vertical = Deps.Spacing.marginFromInput
-									),
-							)
+							if (i != items.list.lastIndex) {
+								Divider(
+									thickness = Deps.Spacing.minPadding,
+									color = Color(0xFF999BA3),
+									modifier = Modifier
+										.fillMaxWidth()
+										.padding(
+											horizontal = Deps.Spacing.standardPadding,
+											vertical = Deps.Spacing.marginFromInput
+										),
+								)
+							}
 						}
 					}
 				}
