@@ -146,7 +146,7 @@ fun MainContainer(
 			) {
 				if (toolbarInfo != null) {
 					MainToolbar(toolbarInfo.copy(
-						navigationIcon = (toolbarInfo.navigationIcon ?: NavigationIcon()).copy(
+						navigationIcon = toolbarInfo.navigationIcon?.copy(
 							onBackClick = { navigator.pop() }
 						)
 					))
