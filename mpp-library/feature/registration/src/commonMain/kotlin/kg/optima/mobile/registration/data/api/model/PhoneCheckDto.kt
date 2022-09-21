@@ -13,4 +13,7 @@ data class PhoneCheckDto(
 
     @SerialName("date")
     val date: String?,
+
+    @SerialName("ms")
+    val timeLeft: Long?,
 )

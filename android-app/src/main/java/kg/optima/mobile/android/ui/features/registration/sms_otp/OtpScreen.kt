@@ -19,8 +19,6 @@ import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.input.CodeInput
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
-import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
-import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
@@ -32,7 +30,7 @@ import kg.optima.mobile.resources.Headings
 @Parcelize
 class OtpScreen(
 	private val phoneNumber: String,
-	private val timeout: Int,
+	private val timeLeft: Long,
 	private val referenceId: String,
 ) : BaseScreen {
 
@@ -47,27 +45,27 @@ class OtpScreen(
 		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
 
 		val codeState = remember { mutableStateOf(emptyString) }
-		val timeLeftState = remember { mutableStateOf(timeout) }
+		val timeLeftState = remember { mutableStateOf(0) }
 		val errorState = remember { mutableStateOf(emptyString) }
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
-		val reRequestsCountState = remember { mutableStateOf(0) }
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
-		val referenceId = remember { mutableStateOf(referenceId) }
 
 		when (val model = model) {
 			is State.StateModel.Initial -> {
-				intent.getTriesData(phoneNumber, System.currentTimeMillis())
+				intent.startTimer(timeLeft, System.currentTimeMillis())
 			}
-			is State.StateModel.Error.BaseError -> {
+			is State.StateModel.Error -> {
 				codeState.value = emptyString
 				errorState.value = Constants.OTP_INVALID_ERROR_CODE
 				if (triesCountState.value <= 0) {
+					intent.pauseTimer()
 					bottomSheetState.value = BottomSheetInfo(
 						title = "Вы ввели код неверно несколько раз. Попробуйте запросить новый код",
 						buttons = listOf(
 							ButtonView.Primary(
 								text = "Закрыть",
 								onClickListener = ButtonView.OnClickListener.onClickListener {
+									intent.startTimer(timeLeft, System.currentTimeMillis())
 									bottomSheetState.value = null
 								},
 							)
@@ -76,43 +74,12 @@ class OtpScreen(
 				}
 			}
 			is SmsCodeState.SmsCodeStateModel.Request -> {
-				referenceId.value = model.referenceId
 				triesCountState.value = Constants.OTP_MAX_TRIES
 				codeState.value = emptyString
 				errorState.value = emptyString
-				intent.saveTriesData(
-					reRequestsCountState.value,
-					phoneNumber,
-					System.currentTimeMillis()
-				)
 			}
 			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {
 				timeLeftState.value = model.timeLeft
-			}
-			is SmsCodeState.SmsCodeStateModel.TriesData -> {
-				reRequestsCountState.value = model.tryCount
-				if (model.tryCount == 0) {
-					intent.smsCodeRequest(phoneNumber)
-				} else {
-					timeLeftState.value = model.timeLeft
-					intent.startTimer(model.timeLeft)
-					if (referenceId.value == emptyString) {
-						triesCountState.value = 0
-						bottomSheetState.value = BottomSheetInfo(
-							title = "Истек срок действия смс-кода. Пожалуйста, запросите новый код",
-							buttons = listOf(
-								ButtonView.Primary(
-									text = "Закрыть",
-									onClickListener = ButtonView.OnClickListener.onClickListener {
-										bottomSheetState.value = null
-									},
-								)
-							)
-						)
-					}
-
-				}
-
 			}
 		}
 
@@ -164,7 +131,7 @@ class OtpScreen(
 				onInputCompleted = {
 					if (triesCountState.value > 0) {
 						triesCountState.value--
-						intent.smsCodeEntered(phoneNumber, it, referenceId.value)
+						intent.smsCodeEntered(phoneNumber, it, referenceId)
 					}
 				},
 				withKeyboard = true,
@@ -201,7 +168,7 @@ class OtpScreen(
 				text = buttonTextFormatter(timeLeftState.value),
 				color = ComposeColors.Green,
 				onClick = {
-					intent.smsCodeRequest(phoneNumber)
+					intent.smsCodeRequest(phoneNumber, System.currentTimeMillis())
 				},
 				enabled = (timeLeftState.value == 0),
 			)
@@ -225,11 +192,9 @@ class OtpScreen(
 
 	private fun buttonTextFormatter(time: Int): String {
 		return when {
-			time == 0 -> "Отправить повторно"
+			time <= 0 -> "Отправить повторно"
 			time <= 60 -> "Запросить через $time сек."
 			else -> "Запросить через ${DateUtils.formatElapsedTime(time.toLong())}"
-//			time in 61..3599 -> "Запросить через ${time / 60}:${time % 60}"
-//			else -> "Запросить через ${time / 3600}:${time / 60}:${time % 60}"
 		}
 	}
 
