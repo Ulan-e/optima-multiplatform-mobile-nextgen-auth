@@ -50,15 +50,13 @@ class OtpScreen(
 		val timeLeftState = remember { mutableStateOf(timeout) }
 		val errorState = remember { mutableStateOf(emptyString) }
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
-		val reRequestsCountState = remember { mutableStateOf(0) }
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 		val referenceId = remember { mutableStateOf(referenceId) }
 
 		when (val model = model) {
 			is State.StateModel.Initial -> {
-				intent.getTriesData(phoneNumber, System.currentTimeMillis())
 			}
-			is State.StateModel.Error.BaseError -> {
+			is State.StateModel.Error -> {
 				codeState.value = emptyString
 				errorState.value = Constants.OTP_INVALID_ERROR_CODE
 				if (triesCountState.value <= 0) {
@@ -80,39 +78,9 @@ class OtpScreen(
 				triesCountState.value = Constants.OTP_MAX_TRIES
 				codeState.value = emptyString
 				errorState.value = emptyString
-				intent.saveTriesData(
-					reRequestsCountState.value,
-					phoneNumber,
-					System.currentTimeMillis()
-				)
 			}
 			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {
 				timeLeftState.value = model.timeLeft
-			}
-			is SmsCodeState.SmsCodeStateModel.TriesData -> {
-				reRequestsCountState.value = model.tryCount
-				if (model.tryCount == 0) {
-					intent.smsCodeRequest(phoneNumber)
-				} else {
-					timeLeftState.value = model.timeLeft
-					intent.startTimer(model.timeLeft)
-					if (referenceId.value == emptyString) {
-						triesCountState.value = 0
-						bottomSheetState.value = BottomSheetInfo(
-							title = "Истек срок действия смс-кода. Пожалуйста, запросите новый код",
-							buttons = listOf(
-								ButtonView.Primary(
-									text = "Закрыть",
-									onClickListener = ButtonView.OnClickListener.onClickListener {
-										bottomSheetState.value = null
-									},
-								)
-							)
-						)
-					}
-
-				}
-
 			}
 		}
 
@@ -228,8 +196,6 @@ class OtpScreen(
 			time == 0 -> "Отправить повторно"
 			time <= 60 -> "Запросить через $time сек."
 			else -> "Запросить через ${DateUtils.formatElapsedTime(time.toLong())}"
-//			time in 61..3599 -> "Запросить через ${time / 60}:${time % 60}"
-//			else -> "Запросить через ${time / 3600}:${time / 60}:${time % 60}"
 		}
 	}
 
