@@ -19,6 +19,8 @@ class CheckPhoneNumberUseCase(
 			CheckPhoneEntity(
 				success = it.isSuccess,
 				referenceId = it.data?.refId.orEmpty(),
+				timeLeft = it.data?.timeLeft ?: 0L
+
 			)
 		}.onSuccess {
 			registrationPreferences.referenceId = it.referenceId

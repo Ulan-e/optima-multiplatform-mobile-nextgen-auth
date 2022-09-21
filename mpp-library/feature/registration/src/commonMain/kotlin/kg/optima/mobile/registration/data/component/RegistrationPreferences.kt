@@ -1,7 +1,5 @@
 package kg.optima.mobile.registration.data.component
 
-import kg.optima.mobile.registration.data.model.otp_tries.OtpTriesModelList
-
 interface RegistrationPreferences {
 
     companion object {
@@ -10,7 +8,6 @@ interface RegistrationPreferences {
         const val PERSON_ID = "person_id"
         const val SESSION_ID = "session_id"
         const val HASH = "hash"
-		const val OTP_TRIES = "OTP_TRIES"
     }
 
     var accessToken: String?
@@ -21,6 +18,5 @@ interface RegistrationPreferences {
 
     fun clearAll()
 
-	var otpTriesModelList: OtpTriesModelList
 
 }

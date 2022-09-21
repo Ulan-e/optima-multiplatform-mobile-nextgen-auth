@@ -15,9 +15,9 @@ sealed interface RegistrationScreenModel : ScreenModel {
 
 	@Parcelize
 	class AcceptCode(
-		val phoneNumber: String,
-		val timeout: Int,
-		val referenceId: String,
+        val phoneNumber: String,
+        val timeLeft: Long,
+        val referenceId: String,
 	) : RegistrationScreenModel
 
 	@Parcelize
