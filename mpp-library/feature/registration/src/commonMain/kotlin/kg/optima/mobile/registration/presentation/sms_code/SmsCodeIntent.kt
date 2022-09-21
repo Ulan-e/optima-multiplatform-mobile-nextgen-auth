@@ -16,6 +16,9 @@ class SmsCodeIntent(
 	private val checkPhoneNumberUseCase: CheckPhoneNumberUseCase by inject()
 
 	private var timeLeft = 0L
+	private var finishTime = 0L
+	private var timer = 0
+	private var timerPaused = false
 
 	fun smsCodeEntered(
 		phoneNumber: String,
@@ -33,18 +36,30 @@ class SmsCodeIntent(
 		}
 	}
 
-	fun smsCodeRequest(phoneNumber: String) {
+	fun smsCodeRequest(phoneNumber: String, currentTime: Long) {
 		launchOperation {
 			checkPhoneNumberUseCase.execute(phoneNumber).map {
 				timeLeft = it.timeLeft
-				startTimer(timeLeft)
+				startTimer(timeLeft, currentTime)
 				CheckSmsCodeInfo.Check(it.success)
 			}
 		}
 	}
 
-	fun startTimer(timeLeft: Long) {
-		var timer = (timeLeft / 1000).toInt()
+	fun pauseTimer() {
+		timer = 0
+		timerPaused = true
+	}
+
+	fun startTimer(timeLeft: Long, currentTime: Long) {
+		if (timerPaused) {
+			timerPaused = false
+			val timeLeftAfterPause = if ((finishTime - currentTime) > 0L) { finishTime - currentTime } else { 0L }
+			timer = (timeLeftAfterPause / 1000).toInt()
+		} else {
+			finishTime = currentTime + timeLeft
+			timer = (timeLeft / 1000).toInt()
+		}
 		launchOperation {
 			while (timer > 0) {
 				state.handle(CheckSmsCodeInfo.TimeLeft(timer))
@@ -54,4 +69,16 @@ class SmsCodeIntent(
 			Either.Right(CheckSmsCodeInfo.TimeLeft(timer))
 		}
 	}
+
+//	fun startTimer(timeLeft: Long) {
+//		var timer = (timeLeft / 1000).toInt()
+//		launchOperation {
+//			while (timer > 0) {
+//				state.handle(CheckSmsCodeInfo.TimeLeft(timer))
+//				delay(1000)
+//				timer--
+//			}
+//			Either.Right(CheckSmsCodeInfo.TimeLeft(timer))
+//		}
+//	}
 }

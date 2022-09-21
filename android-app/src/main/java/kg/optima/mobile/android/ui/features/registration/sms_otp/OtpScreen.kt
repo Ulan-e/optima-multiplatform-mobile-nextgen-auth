@@ -52,18 +52,20 @@ class OtpScreen(
 
 		when (val model = model) {
 			is State.StateModel.Initial -> {
-				intent.startTimer(timeLeft)
+				intent.startTimer(timeLeft, System.currentTimeMillis())
 			}
 			is State.StateModel.Error -> {
 				codeState.value = emptyString
 				errorState.value = Constants.OTP_INVALID_ERROR_CODE
 				if (triesCountState.value <= 0) {
+					intent.pauseTimer()
 					bottomSheetState.value = BottomSheetInfo(
 						title = "Вы ввели код неверно несколько раз. Попробуйте запросить новый код",
 						buttons = listOf(
 							ButtonView.Primary(
 								text = "Закрыть",
 								onClickListener = ButtonView.OnClickListener.onClickListener {
+									intent.startTimer(timeLeft, System.currentTimeMillis())
 									bottomSheetState.value = null
 								},
 							)
@@ -166,7 +168,7 @@ class OtpScreen(
 				text = buttonTextFormatter(timeLeftState.value),
 				color = ComposeColors.Green,
 				onClick = {
-					intent.smsCodeRequest(phoneNumber)
+					intent.smsCodeRequest(phoneNumber, System.currentTimeMillis())
 				},
 				enabled = (timeLeftState.value == 0),
 			)
@@ -190,7 +192,7 @@ class OtpScreen(
 
 	private fun buttonTextFormatter(time: Int): String {
 		return when {
-			time == 0 -> "Отправить повторно"
+			time <= 0 -> "Отправить повторно"
 			time <= 60 -> "Запросить через $time сек."
 			else -> "Запросить через ${DateUtils.formatElapsedTime(time.toLong())}"
 		}
