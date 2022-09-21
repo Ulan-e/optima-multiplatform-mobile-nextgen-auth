@@ -24,7 +24,7 @@ class CreatePasswordIntent(
     }
 
     fun register(hash: String, password: String, questionId: String, answer: String) {
-        launchOperation(false) {
+        launchOperation {
             registrationUseCase.execute(
                 RegistrationUseCase.Params(
                     hash = hash,
@@ -33,13 +33,16 @@ class CreatePasswordIntent(
                     answer = answer
                 )
             ).map {
+                println(" ulanbek ${it.success}")
                 if (it.success) {
                     CreatePasswordModel.RegisterSuccess(
                         message = it.message,
                         clientId = it.clientId
                     )
                 } else {
-                    CreatePasswordModel.RegisterFailed(message = it.message)
+                    CreatePasswordModel.RegisterFailed(
+                        message = it.message
+                    )
                 }
             }
         }

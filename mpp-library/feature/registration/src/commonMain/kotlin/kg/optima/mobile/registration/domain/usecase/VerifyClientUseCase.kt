@@ -25,7 +25,7 @@ class VerifyClientUseCase(
             documentData = VerifyClientRequest(model.data)
         ).map { response ->
             VerifyClientEntity(
-                success = response.isSuccess,
+                success = response.success,
                 hash = response.data?.hash,
                 message = response.message
             )

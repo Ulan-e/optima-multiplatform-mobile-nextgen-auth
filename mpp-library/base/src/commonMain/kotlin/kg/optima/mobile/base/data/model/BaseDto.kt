@@ -12,7 +12,7 @@ class BaseDto<T>(
     val data: T? = null,
 
     @SerialName("success")
-    val isSuccess: Boolean = false,
+    val success: Boolean = false,
 
     @SerialName("message")
     val message: String,

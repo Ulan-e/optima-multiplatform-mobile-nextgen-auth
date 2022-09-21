@@ -69,7 +69,7 @@ class CreatePasswordScreen(
 
         val context = LocalContext.current
 
-        Log.d("terra", "model ${model.toString()}")
+        Log.d("terra", "register model ${model.toString()}")
 
         when (val createPasswordStateModel = model) {
             is CreatePasswordState.CreatePasswordStateModel.ValidationResult -> {

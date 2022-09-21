@@ -24,7 +24,7 @@ class GetQuestionsUseCase(
 					)
 				)
 			}
-			success = it.isSuccess
+			success = it.success
 		}
 		return Either.Right(QuestionsListEntity(success,result))
 	}

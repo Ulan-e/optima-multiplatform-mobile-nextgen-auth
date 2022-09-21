@@ -6,11 +6,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 class RegisterClientDto(
     @SerialName("client_id")
-    val clientId: String,
+    val clientId: String?,
 
     @SerialName("phone_number")
-    val phoneNumber: String,
+    val phoneNumber: String?,
 
     @SerialName("verification_passed")
-    val verificationPassed: Boolean,
+    val verificationPassed: Boolean?,
 )

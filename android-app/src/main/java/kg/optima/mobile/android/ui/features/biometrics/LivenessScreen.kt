@@ -77,9 +77,28 @@ object LivenessScreen : Screen {
         val livenessSessionId = remember { mutableStateOf("") }
         val livenessResult = remember { mutableStateOf("") }
 
-        Log.d("terra", "model ${model.toString()}")
-
         when (val livenessModel = model) {
+            is State.StateModel.Error.BaseError -> {
+                state.init()
+                bottomSheetState.value = BottomSheetInfo(
+                    title = "Пользователь с таким ID уже зарегистрирован в Optima24. Пожалуйста, попробуйте снова или обратитесь в Банк.",
+                    buttons = listOf(
+                        ButtonView.Primary(
+                            text = "Связаться с банком",
+                            composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
+                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                                // context.navigateTo(WelcomeScreenModel.Welcome)
+                            }
+                        ),
+                        ButtonView.Transparent(
+                            text = "Отмена",
+                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                                context.navigateTo(WelcomeScreenModel.Welcome)
+                            }
+                        )
+                    )
+                )
+            }
             is LivenessState.LivenessModel.Passed -> {
                 state.init()
                 bottomSheetState.value = BottomSheetInfo(
@@ -90,27 +109,6 @@ object LivenessScreen : Screen {
                             composeColor = ComposeColor.composeColor(ComposeColors.Green),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
                                 context.navigateTo(RegistrationScreenModel.ControlQuestion)
-                            }
-                        )
-                    )
-                )
-            }
-            is LivenessState.LivenessModel.Failed -> {
-                state.init()
-                bottomSheetState.value = BottomSheetInfo(
-                    title = livenessModel.message,
-                    buttons = listOf(
-                        ButtonView.Primary(
-                            text = "Связаться с банком",
-                            composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
-                            onClickListener = ButtonView.OnClickListener.onClickListener {
-                               // context.navigateTo(WelcomeScreenModel.Welcome)
-                            }
-                        ),
-                        ButtonView.Transparent(
-                            text = "Отмена",
-                            onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(WelcomeScreenModel.Welcome)
                             }
                         )
                     )
