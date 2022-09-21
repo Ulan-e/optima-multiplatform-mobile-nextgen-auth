@@ -11,9 +11,13 @@ sealed interface CreatePasswordModel {
         val matches: Boolean
     ) : CreatePasswordModel
 
-    class Register(
+    class RegisterSuccess(
         val message: String,
         val clientId: String?
+    ) : CreatePasswordModel
+
+    class RegisterFailed(
+        val message: String
     ) : CreatePasswordModel
 
     object RegistrationDone : CreatePasswordModel

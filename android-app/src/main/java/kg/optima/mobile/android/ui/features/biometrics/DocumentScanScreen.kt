@@ -63,6 +63,22 @@ object DocumentScanScreen : Screen {
         val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
         val btnContinueVisibility = remember { mutableStateOf(false) }
 
+        val onFinishLiveness = {
+            bottomSheetState.value = BottomSheetInfo(
+                title = "Процесс идентификации остановлен",
+                description = "Процесс прохождения идентификации должен быть непрерывным. Сворачивание или переключение на другие приложения прервет процесс",
+                buttons = listOf(
+                    ButtonView.Primary(
+                        text = "Понятно",
+                        composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
+                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                            intent.pop()
+                        }
+                    )
+                )
+            )
+        }
+
         val onBack = {
             bottomSheetState.value = BottomSheetInfo(
                 title = "Вы действительно хотите \nостановить идентификацию?",
@@ -91,18 +107,14 @@ object DocumentScanScreen : Screen {
             toolbarInfo = null,
             contentModifier = Modifier.fillMaxSize(),
             contentHorizontalAlignment = Alignment.Start,
+            onDestroyActivity = onFinishLiveness
         ) {
 
             BackHandler {
                 onBack()
             }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Transparent)
-                    .weight(1f)
-            ) {
+            Column {
                 TopAppBar(
                     modifier = Modifier.fillMaxWidth(),
                     title = {

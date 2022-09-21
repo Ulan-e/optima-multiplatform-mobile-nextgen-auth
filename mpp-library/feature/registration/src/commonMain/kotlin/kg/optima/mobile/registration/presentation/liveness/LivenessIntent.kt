@@ -22,7 +22,7 @@ class LivenessIntent(
                     data = data
                 )
             ).map {
-                LivenessInfo(passed = true, message = it.message)
+                LivenessInfo(passed = it.success, message = it.message)
             }
         }
     }

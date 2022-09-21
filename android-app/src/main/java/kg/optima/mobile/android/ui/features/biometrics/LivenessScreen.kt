@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.biometrics
 
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
@@ -76,6 +77,8 @@ object LivenessScreen : Screen {
         val livenessSessionId = remember { mutableStateOf("") }
         val livenessResult = remember { mutableStateOf("") }
 
+        Log.d("terra", "model ${model.toString()}")
+
         when (val livenessModel = model) {
             is LivenessState.LivenessModel.Passed -> {
                 state.init()
@@ -93,6 +96,7 @@ object LivenessScreen : Screen {
                 )
             }
             is LivenessState.LivenessModel.Failed -> {
+                state.init()
                 bottomSheetState.value = BottomSheetInfo(
                     title = livenessModel.message,
                     buttons = listOf(
@@ -100,7 +104,7 @@ object LivenessScreen : Screen {
                             text = "Связаться с банком",
                             composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(WelcomeScreenModel.Welcome)
+                               // context.navigateTo(WelcomeScreenModel.Welcome)
                             }
                         ),
                         ButtonView.Transparent(
@@ -112,6 +116,22 @@ object LivenessScreen : Screen {
                     )
                 )
             }
+        }
+
+        val onFinishLiveness = {
+            bottomSheetState.value = BottomSheetInfo(
+                title = "Процесс идентификации остановлен",
+                description = "Процесс прохождения идентификации должен быть непрерывным. Сворачивание или переключение на другие приложения прервет процесс",
+                buttons = listOf(
+                    ButtonView.Primary(
+                        text = "Понятно",
+                        composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
+                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                            intent.pop()
+                        }
+                    )
+                )
+            )
         }
 
         val onBack = {
@@ -142,16 +162,12 @@ object LivenessScreen : Screen {
             toolbarInfo = null,
             sheetInfo = bottomSheetState.value,
             contentHorizontalAlignment = Alignment.Start,
+            onDestroyActivity = onFinishLiveness
         ) {
 
             BackHandler { onBack() }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Transparent)
-                    .weight(1f)
-            ) {
+            Column {
                 TopAppBar(
                     modifier = Modifier.fillMaxWidth(),
                     title = {
