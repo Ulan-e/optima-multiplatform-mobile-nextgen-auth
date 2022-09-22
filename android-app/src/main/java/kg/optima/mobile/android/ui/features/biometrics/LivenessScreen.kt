@@ -26,6 +26,7 @@ import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
@@ -303,7 +304,7 @@ object LivenessScreen : Screen {
                             text = "Продолжить",
                             color = ComposeColors.Green,
                             onClick = {
-                                val data = context.loadFile("scanned_file")
+                                val data = context.loadFile(Constants.DOCUMENT_FILE_NAME)
                                 intent.verify(
                                     livenessResult = livenessResult.value,
                                     sessionId = livenessSessionId.value,

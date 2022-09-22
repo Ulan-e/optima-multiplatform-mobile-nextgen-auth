@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.features.biometrics
 
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
@@ -25,6 +24,7 @@ import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigat
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.saveFile
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.core.common.Constants.DOCUMENT_FILE_NAME
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
@@ -144,18 +144,18 @@ object DocumentScanScreen : Screen {
                         cameraComponent.setCameraCaptureListener(object : ICameraCaptureListener {
                             override fun onErrorCallback(result: HashMap<String, String>) {
                                 result.entries.forEach { (key, value) ->
-                                    Log.d("veridoc", "k $key v $value ")
+                                    println("scan document key $key value $value ")
                                 }
                             }
 
                             override fun onLogEventCallback(result: HashMap<String, String>) {
                                 result.entries.forEach { (key, value) ->
-                                    Log.d("veridoc", "k $key v $value ")
+                                    println("scan document key $key value $value ")
                                 }
                             }
 
                             override fun onSuccessCallback(result: HashMap<String, String>) {
-                                context.saveFile(filename = "scanned_file", data = result)
+                                context.saveFile(filename = DOCUMENT_FILE_NAME, data = result)
                                 btnContinueVisibility.value = true
                             }
                         })
