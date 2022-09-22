@@ -131,13 +131,41 @@ fun MainContainer(
 				)
 			}
 
-			when (mainState) {
-				is State.StateModel.Loading -> {
-					CircularProgress(modifier = Modifier.align(Alignment.Center))
+
+
+			Column(
+				modifier = Modifier
+					.fillMaxSize()
+					.background(ComposeColors.Background)
+			) {
+				if (toolbarInfo != null) {
+					MainToolbar(toolbarInfo.copy(
+						navigationIcon = toolbarInfo.navigationIcon?.copy(
+							onBackClick = { navigator.pop() }
+						)
+					))
 				}
+				val columnModifier = contentModifier
+					.fillMaxSize()
+					.weight(1f, false)
+					.background(ComposeColors.Background)
+				if (scrollable)
+					columnModifier.verticalScroll(rememberScrollState())
+
+				Column(
+					modifier = columnModifier,
+					horizontalAlignment = contentHorizontalAlignment,
+					content = { content { navigator.pop() } },
+				)
+			}
+
+			when (mainState) {
 				is State.StateModel.Navigate -> {
 //                component?.addAll(mainState.screenModels)
 					router.push(mainState.screenModels)
+				}
+				is State.StateModel.Loading -> {
+					CircularProgress(modifier = Modifier.align(Alignment.Center))
 				}
 				is State.StateModel.Pop -> {
 //					component?.pop()
@@ -164,32 +192,7 @@ fun MainContainer(
 						onBottomSheetHidden = onBottomSheetHidden,
 					)
 				}
-			}
 
-			Column(
-				modifier = Modifier
-					.fillMaxSize()
-					.background(ComposeColors.Background)
-			) {
-				if (toolbarInfo != null) {
-					MainToolbar(toolbarInfo.copy(
-						navigationIcon = toolbarInfo.navigationIcon?.copy(
-							onBackClick = { navigator.pop() }
-						)
-					))
-				}
-				val columnModifier = contentModifier
-					.fillMaxSize()
-					.weight(1f, false)
-					.background(ComposeColors.Background)
-				if (scrollable)
-					columnModifier.verticalScroll(rememberScrollState())
-
-				Column(
-					modifier = columnModifier,
-					horizontalAlignment = contentHorizontalAlignment,
-					content = { content { navigator.pop() } },
-				)
 			}
 		}
 	}

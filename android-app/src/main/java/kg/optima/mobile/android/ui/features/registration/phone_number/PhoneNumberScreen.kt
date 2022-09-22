@@ -43,7 +43,7 @@ object PhoneNumberScreen : Screen {
 		var phoneNumber by remember { mutableStateOf(emptyString) }
 		var buttonEnabled by remember { mutableStateOf(false) }
 
-
+		Log.d("PHONE_STATE", model.toString())
 		when (val model = model) {
 			is PhoneNumberState.PhoneNumberStateModel.ValidateResult -> {
 				buttonEnabled = model.success
