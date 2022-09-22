@@ -5,18 +5,60 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class LoginResponse(
-	@SerialName("access_token")
-	val accessToken: String,
+	@SerialName("AccessToken")
+	val accessToken: String?,
 
-	@SerialName("expires_in")
-	val expiresIn: Int,
+	@SerialName("StartDateTime")
+	val startDateTime: String?,
 
-	@SerialName("refresh_token")
-	val refreshToken: String,
+	@SerialName("LastUpdate")
+	val lastUpdate: String?,
 
-	@SerialName("refresh_expires_in")
-	val refreshTokenExpiresIn: Int,
+	@SerialName("User")
+	val userInfo: UserInfo,
 
-	@SerialName("session_state")
-	val sessionState: String,
+	@SerialName("Duration")
+	val sessionDuration: Int,
+)
+
+@Serializable
+class UserInfo(
+	@SerialName("Id")
+	val id: String?,
+
+	@SerialName("BankId")
+	val bankId: String?,
+
+	@SerialName("FirstName")
+	val firstName: String?,
+
+	@SerialName("LastName")
+	val lastName: String?,
+
+	@SerialName("MiddleName")
+	val middleName: String?,
+
+	@SerialName("FullName")
+	val fullName: String?,
+
+	@SerialName("Idn")
+	val idn: String?,
+
+	@SerialName("Sex")
+	val sex: String?,
+
+	@SerialName("Login")
+	val login: String?,
+
+	@SerialName("Address")
+	val address: String?,
+
+	@SerialName("AutoEncrypt")
+	val autoEncrypt: Boolean,
+
+	@SerialName("MobilePhoneNumber")
+	val phoneNumber: String?,
+
+	@SerialName("ImageHash")
+	val imageHash: String?,
 )

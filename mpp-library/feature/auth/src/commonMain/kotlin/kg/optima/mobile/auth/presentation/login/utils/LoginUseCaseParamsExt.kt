@@ -9,6 +9,7 @@ fun LoginIntent.SignInInfo.toUseCaseModel(): LoginUseCase.Params {
 		is LoginIntent.SignInInfo.Password -> LoginUseCase.Params.Password(
 			clientId = model.clientId,
 			password = model.password,
+			smsCode = model.smsCode,
 		)
 		is LoginIntent.SignInInfo.Pin -> LoginUseCase.Params.Pin(model.pin)
 	}

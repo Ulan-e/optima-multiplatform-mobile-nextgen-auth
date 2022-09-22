@@ -8,11 +8,6 @@ class LoginState(
 	private val nextScreenModel: ScreenModel,
 ) : State<LoginModel>() {
 
-	sealed interface LoginStateModel : StateModel {
-		object ShowBiometry : LoginStateModel
-		class ClientId(val clientId: String?) : LoginStateModel
-	}
-
 	override fun handle(entity: LoginModel) {
 		val state = when (entity) {
 			is LoginModel.Success ->
@@ -24,5 +19,10 @@ class LoginState(
 		}
 
 		setStateModel(state)
+	}
+
+	sealed interface LoginStateModel : StateModel {
+		object ShowBiometry : LoginStateModel
+		class ClientId(val clientId: String?) : LoginStateModel
 	}
 }

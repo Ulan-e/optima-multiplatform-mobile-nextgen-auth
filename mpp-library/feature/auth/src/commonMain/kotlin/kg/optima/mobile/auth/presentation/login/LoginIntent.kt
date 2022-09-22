@@ -42,6 +42,7 @@ class LoginIntent(
 		class Password(
 			val clientId: String,
 			val password: String,
+			val smsCode: String? = null,
 		) : SignInInfo
 
 		class Pin(
