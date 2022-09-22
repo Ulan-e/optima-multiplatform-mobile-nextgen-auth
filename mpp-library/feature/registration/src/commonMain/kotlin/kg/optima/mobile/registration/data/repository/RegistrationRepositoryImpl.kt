@@ -51,7 +51,7 @@ class RegistrationRepositoryImpl(
         hashPassword: String,
         questionId: String,
         answer: String
-    ): Either<Failure, BaseDto<RegisterClientDto>> = apiCall {
+    ): Either<Failure, BaseDto<ClientDetailsDto>> = apiCall {
         registrationApi.register(RegistrationRequest(hash, hashPassword, questionId, answer))
     }
 
