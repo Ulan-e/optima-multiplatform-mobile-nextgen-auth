@@ -50,7 +50,6 @@ class OtpScreen(
 		val errorState = remember { mutableStateOf(emptyString) }
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
-		Log.d("TRIES_STATE", triesCountState.value.toString())
 
 		when (val model = model) {
 			is State.StateModel.Initial -> {
