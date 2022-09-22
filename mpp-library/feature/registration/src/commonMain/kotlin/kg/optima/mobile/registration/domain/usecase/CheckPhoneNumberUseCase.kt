@@ -17,7 +17,7 @@ class CheckPhoneNumberUseCase(
 	override suspend fun execute(model: String): Either<Failure, CheckPhoneEntity> {
 		return registrationRepository.checkPhoneNumber(model).map {
 			CheckPhoneEntity(
-				success = it.isSuccess,
+				success = it.success,
 				referenceId = it.data?.refId.orEmpty(),
 				timeLeft = it.data?.timeLeft ?: 0L
 

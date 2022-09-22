@@ -50,7 +50,7 @@ fun Context.loadFile(filename: String): Map<String, String> {
         fileInputStream.close()
         fileData
     } catch (exception: Exception) {
-        Log.d(tag, "Error while reading file ${exception.localizedMessage}")
+        println("Error while reading file ${exception.localizedMessage}")
         mutableMapOf()
     }
 }

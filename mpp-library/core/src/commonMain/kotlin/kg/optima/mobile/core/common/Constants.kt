@@ -17,4 +17,6 @@ object Constants {
 
 	const val OTP_INVALID_ERROR_CODE: String = "111"
 	const val OTP_NO_TRIES: String = "222"
+
+	const val DOCUMENT_FILE_NAME = "scanned_file"
 }

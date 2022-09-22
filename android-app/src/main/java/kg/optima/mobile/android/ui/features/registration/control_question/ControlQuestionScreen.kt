@@ -1,10 +1,7 @@
 package kg.optima.mobile.android.ui.features.registration.control_question
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -13,6 +10,8 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
@@ -99,53 +98,48 @@ class ControlQuestionScreen(
             ),
             contentHorizontalAlignment = Alignment.Start,
         ) {
-            Column(
+            Spacer(modifier = Modifier.weight(1f))
+            TitleTextField(
+                modifier = Modifier.padding(vertical = Deps.Spacing.numPadXMargin),
+                text = "Выберите контрольный вопрос",
+            )
+            DropDownList(
+                items = items.value,
+                expanded = dropDownExpandedState.value,
+                onItemSelected = {
+                    intent.setQuestion(it)
+                    questionChecked.value = true
+                },
+                onExpandClick = { intent.showQuestions() },
+                onDismiss = { intent.hideQuestions() },
+                modifier = Modifier.fillMaxWidth(),
+                keyboardController = keyboardController
+            )
+            Text(
+                text = "Контрольный вопрос необходим \nдля подтверждения личности",
+                color = ComposeColors.DescriptionGray,
+                fontSize = Headings.H5.sp,
+                lineHeight = 17.sp,
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                TitleTextField(
-                    modifier = Modifier.padding(vertical = Deps.Spacing.numPadXMargin),
-                    text = "Выберите контрольный вопрос",
-                )
-                DropDownList(
-                    items = items.value,
-                    expanded = dropDownExpandedState.value,
-                    onItemSelected = {
-                        intent.setQuestion(it)
-                        questionChecked.value = true
-                    },
-                    onExpandClick = { intent.showQuestions() },
-                    onDismiss = { intent.hideQuestions() },
-                    modifier = Modifier.fillMaxWidth(),
-                    keyboardController = keyboardController
-                )
-                Text(
-                    text = "Контрольный вопрос необходим \nдля подтверждения личности",
-                    color = ComposeColors.DescriptionGray,
-                    fontSize = Headings.H5.sp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = Deps.Spacing.swiperTopMargin,
-                            bottom = Deps.Spacing.standardPadding
-                        ),
-                )
-                InputField(
-                    keyboardType = KeyboardType.Email,
-                    maxLength = 20,
-                    hint = "Ответ",
-                    valueState = answerInputText,
-                    onValueChange = {
-                        if (it.length <= maxSize) {
-                            intent.onValueChanged(it)
-                            answerInputText.value = it
-                        }
+                    .fillMaxWidth()
+                    .padding(
+                        top = Deps.Spacing.swiperTopMargin,
+                        bottom = Deps.Spacing.standardPadding
+                    ),
+            )
+            InputField(
+                keyboardType = KeyboardType.Email,
+                maxLength = 20,
+                hint = "Ответ",
+                valueState = answerInputText,
+                onValueChange = {
+                    if (it.length <= maxSize) {
+                        intent.onValueChanged(it)
+                        answerInputText.value = it
                     }
-                )
-            }
-
+                }
+            )
+            Spacer(modifier = Modifier.weight(2f))
             PrimaryButton(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -164,5 +158,4 @@ class ControlQuestionScreen(
             )
         }
     }
-
 }
