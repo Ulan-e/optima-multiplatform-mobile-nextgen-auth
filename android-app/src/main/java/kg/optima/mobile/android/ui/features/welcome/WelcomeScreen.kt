@@ -1,9 +1,6 @@
 package kg.optima.mobile.android.ui.features.welcome
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -55,6 +52,9 @@ object WelcomeScreen : BaseScreen {
                 modifier = Modifier.weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+
+                Spacer(Modifier.weight(1f).widthIn(Deps.Spacing.colElementMargin,Deps.Spacing.bigMarginTop))
+
                 Text(
                     text = "Добро пожаловать!",
                     fontSize = Headings.H1.sp,
@@ -70,7 +70,7 @@ object WelcomeScreen : BaseScreen {
             WelcomeScreenButtonBlock(
                 modifier = Modifier
                     .wrapContentSize()
-                    .weight(3f),
+                    .weight(2f),
             )
             PrimaryButton(
                 modifier = Modifier.fillMaxWidth(),

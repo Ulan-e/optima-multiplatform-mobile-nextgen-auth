@@ -1,6 +1,7 @@
 package kg.optima.mobile.android.ui.features.registration.sms_otp
 
 import android.text.format.DateUtils
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
@@ -73,7 +74,7 @@ class OtpScreen(
 					)
 				}
 			}
-			is SmsCodeState.SmsCodeStateModel.Request -> {
+			SmsCodeState.SmsCodeStateModel.Request -> {
 				triesCountState.value = Constants.OTP_MAX_TRIES
 				codeState.value = emptyString
 				errorState.value = emptyString

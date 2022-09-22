@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.registration.phone_number
 
+import android.util.Log
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -42,6 +43,7 @@ object PhoneNumberScreen : Screen {
 		var phoneNumber by remember { mutableStateOf(emptyString) }
 		var buttonEnabled by remember { mutableStateOf(false) }
 
+		Log.d("PHONE_STATE", model.toString())
 		when (val model = model) {
 			is PhoneNumberState.PhoneNumberStateModel.ValidateResult -> {
 				buttonEnabled = model.success
