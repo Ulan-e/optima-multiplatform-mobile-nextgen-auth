@@ -17,7 +17,7 @@ class RegistrationApiImpl(
             }
         )
 
-    override suspend fun register(registrationRequest: RegistrationRequest): BaseDto<RegisterClientDto> =
+    override suspend fun register(registrationRequest: RegistrationRequest): BaseDto<ClientDetailsDto> =
         post(
             path = "api/registration/remoteRegisterUser",
             headers = {
