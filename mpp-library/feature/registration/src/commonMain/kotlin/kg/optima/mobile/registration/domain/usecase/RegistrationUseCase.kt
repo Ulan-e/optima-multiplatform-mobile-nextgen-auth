@@ -18,9 +18,8 @@ class RegistrationUseCase(
 		return repository.register(hash, model.hashPassword, model.questionId, model.answer)
 			.map { response ->
 				RegisterClientEntity(
-					code = response.code,
 					success = response.success,
-					message = response.message,
+					message = response.message ?: "",
 					clientId = response.data?.clientId
 				)
 			}

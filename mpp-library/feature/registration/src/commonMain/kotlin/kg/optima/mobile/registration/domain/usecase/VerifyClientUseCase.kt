@@ -27,7 +27,7 @@ class VerifyClientUseCase(
             VerifyClientEntity(
                 success = response.success,
                 hash = response.data?.hash,
-                message = response.message
+                message = response.message ?: ""
             )
         }.onSuccess {
             registrationPreferences.hash = it.hash

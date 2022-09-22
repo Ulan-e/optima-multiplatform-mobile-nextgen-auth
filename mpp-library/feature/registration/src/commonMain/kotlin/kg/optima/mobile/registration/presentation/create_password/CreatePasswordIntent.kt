@@ -33,7 +33,6 @@ class CreatePasswordIntent(
                     answer = answer
                 )
             ).map {
-                println(" ulanbek ${it.success}")
                 if (it.success) {
                     CreatePasswordModel.RegisterSuccess(
                         message = it.message,

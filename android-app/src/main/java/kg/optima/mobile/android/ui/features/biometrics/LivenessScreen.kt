@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.features.biometrics
 
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
@@ -14,7 +13,6 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -24,6 +22,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
 import kg.optima.mobile.base.presentation.State
@@ -34,7 +33,6 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
-import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
@@ -93,7 +91,7 @@ object LivenessScreen : Screen {
                         ButtonView.Transparent(
                             text = "Отмена",
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(WelcomeScreenModel.Welcome)
+                                //  context.navigateTo(WelcomeScreenModel.Welcome)
                             }
                         )
                     )
@@ -109,6 +107,7 @@ object LivenessScreen : Screen {
                             composeColor = ComposeColor.composeColor(ComposeColors.Green),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
                                 context.navigateTo(RegistrationScreenModel.ControlQuestion)
+                                context.asActivity()?.finish()
                             }
                         )
                     )

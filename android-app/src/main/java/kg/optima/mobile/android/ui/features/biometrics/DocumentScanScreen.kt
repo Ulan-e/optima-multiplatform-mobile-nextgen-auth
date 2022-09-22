@@ -14,7 +14,6 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -33,7 +32,6 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
-import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
 import kg.optima.mobile.registration.presentation.liveness.LivenessState

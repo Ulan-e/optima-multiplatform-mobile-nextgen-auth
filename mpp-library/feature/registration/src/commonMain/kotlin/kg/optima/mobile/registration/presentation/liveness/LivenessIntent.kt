@@ -14,7 +14,7 @@ class LivenessIntent(
     private val verifyClientUseCase: VerifyClientUseCase by inject()
 
     fun verify(sessionId: String, livenessResult: String, data: Map<String, String>) {
-        launchOperation {
+        launchOperation(false) {
             verifyClientUseCase.execute(
                 model = VerifyClientUseCase.Params(
                     sessionId = sessionId,

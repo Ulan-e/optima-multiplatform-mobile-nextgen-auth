@@ -9,11 +9,11 @@ class BaseDto<T>(
     val code: Int,
 
     @SerialName("data")
-    val data: T? = null,
+    val data: T?,
 
     @SerialName("success")
     val success: Boolean = false,
 
     @SerialName("message")
-    val message: String,
+    val message: String?,
 )
