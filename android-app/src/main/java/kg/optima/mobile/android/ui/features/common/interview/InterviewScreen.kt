@@ -4,19 +4,25 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
+import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
+import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
+import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.interview.InterviewIntent
 import kg.optima.mobile.registration.presentation.interview.InterviewState
@@ -41,7 +47,7 @@ class InterviewScreen(
 
 		MainContainer(
 			mainState = model,
-//			toolbarInfo = null,
+			toolbarInfo = null,
 			contentModifier = Modifier.fillMaxSize(),
 			contentHorizontalAlignment = Alignment.Start,
 		) {
@@ -53,6 +59,24 @@ class InterviewScreen(
 						.background(ComposeColors.Background),
 					horizontalAlignment = Alignment.Start
 				) {
+
+					Row(
+						modifier = Modifier.width(56.dp),
+						horizontalArrangement = Arrangement.Start,
+						verticalAlignment = Alignment.CenterVertically
+					) {
+						IconButton(
+							modifier = Modifier.padding(start = 20.dp),
+							onClick = { intent.navigate() }
+						) {
+							Icon(
+								painter = painterResource(id = R.drawable.ic_arrow_back),
+								contentDescription = null,
+								tint = ComposeColors.PrimaryDisabledGray,
+							)
+						}
+					}
+
 					AndroidView(modifier = Modifier.fillMaxSize(), factory = { context ->
 						WebView(context).apply {
 							layoutParams = ViewGroup.LayoutParams(
