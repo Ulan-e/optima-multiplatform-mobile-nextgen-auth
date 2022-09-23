@@ -20,7 +20,7 @@ class RegistrationUseCase(
 				RegisterClientEntity(
 					success = response.success,
 					message = response.message ?: "",
-					clientId = response.data?.clientId
+					clientId = response.data?.clientDetailsDto?.clientId
 				)
 			}
 	}

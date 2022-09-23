@@ -30,5 +30,5 @@ interface RegistrationRepository {
 		hashPassword: String,
 		questionId: String,
 		answer: String,
-	): Either<Failure, BaseDto<RegisterClientDto>>
+	): Either<Failure, BaseDto<ClientDetailsDto>>
 }

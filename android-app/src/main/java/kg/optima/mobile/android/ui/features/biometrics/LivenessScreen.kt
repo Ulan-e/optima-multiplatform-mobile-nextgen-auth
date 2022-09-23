@@ -22,7 +22,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
 import kg.optima.mobile.base.presentation.State
@@ -34,6 +33,7 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
+import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
@@ -80,19 +80,19 @@ object LivenessScreen : Screen {
             is State.StateModel.Error.BaseError -> {
                 state.init()
                 bottomSheetState.value = BottomSheetInfo(
-                    title = "Пользователь с таким ID уже зарегистрирован в Optima24. Пожалуйста, попробуйте снова или обратитесь в Банк.",
+                    title = "Сервис временно недоступен. Пожалуйста, попробуйте позже или обратитесь в Банк.",
                     buttons = listOf(
                         ButtonView.Primary(
                             text = "Связаться с банком",
                             composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                // context.navigateTo(WelcomeScreenModel.Welcome)
+                                intent.navigate(RegistrationScreenModel.BankContacts)
                             }
                         ),
                         ButtonView.Transparent(
                             text = "Отмена",
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                //  context.navigateTo(WelcomeScreenModel.Welcome)
+                                intent.navigate(WelcomeScreenModel.Welcome)
                             }
                         )
                     )
@@ -101,14 +101,13 @@ object LivenessScreen : Screen {
             is LivenessState.LivenessModel.Passed -> {
                 state.init()
                 bottomSheetState.value = BottomSheetInfo(
-                    title = livenessModel.message,
+                    title = livenessModel.message ?: "",
                     buttons = listOf(
                         ButtonView.Primary(
                             text = "Продолжить",
                             composeColor = ComposeColor.composeColor(ComposeColors.Green),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(RegistrationScreenModel.ControlQuestion)
-                                context.asActivity()?.finish()
+                                intent.navigate(RegistrationScreenModel.ControlQuestion)
                             }
                         )
                     )
@@ -125,7 +124,7 @@ object LivenessScreen : Screen {
                         text = "Остановить процесс",
                         composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                         onClickListener = ButtonView.OnClickListener.onClickListener {
-                            context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                            intent.navigate(RegistrationScreenModel.SelfConfirm)
                         }
                     ),
                     ButtonView.Transparent(
@@ -241,7 +240,7 @@ object LivenessScreen : Screen {
                                                         ComposeColors.PrimaryRed
                                                     ),
                                                     onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                        context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                                                        intent.navigate(RegistrationScreenModel.SelfConfirm)
                                                     }
                                                 )
                                             )

@@ -57,8 +57,8 @@ object AgreementScreen : BaseScreen {
 				.fillMaxSize()
 				.padding(all = Deps.Spacing.standardPadding),
 			sheetInfo = infoState.value,
-			onSheetStateChanged = { state, onBack ->
-				when (state) {
+			onSheetStateChanged = { sheetState, onBack ->
+				when (sheetState) {
 					ModalBottomSheetValue.Hidden -> onBack()
 					else -> Unit
 				}

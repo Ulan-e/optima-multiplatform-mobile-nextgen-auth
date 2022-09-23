@@ -15,11 +15,11 @@ class PhoneNumberState : State<CheckPhoneNumberInfo>() {
                     val screenModel = RegistrationScreenModel.AcceptCode(
                         phoneNumber = entity.phoneNumber,
                         timeLeft = entity.timeLeft,
-                        referenceId = entity.referenceId,
+                        referenceId = entity.referenceId
                     )
                     StateModel.Navigate(screenModel)
                 } else {
-                    StateModel.Error.BaseError("Неверный номер телефона!")
+                    StateModel.Error.BaseError(entity.message)
                 }
             }
         }
