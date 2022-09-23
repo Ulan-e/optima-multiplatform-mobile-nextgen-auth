@@ -20,13 +20,15 @@ class PhoneNumberIntent(
     }
 
     fun phoneNumberEntered(number: String) {
-        launchOperation {
+        launchOperation(false) {
             checkPhoneNumberUseCase.execute(number).map {
                 CheckPhoneNumberInfo.Check(
                     success = it.success,
                     referenceId = it.referenceId,
                     phoneNumber = number,
-                    timeLeft = it.timeLeft)
+                    timeLeft = it.timeLeft,
+                    message = it.message ?: ""
+                )
             }
         }
     }

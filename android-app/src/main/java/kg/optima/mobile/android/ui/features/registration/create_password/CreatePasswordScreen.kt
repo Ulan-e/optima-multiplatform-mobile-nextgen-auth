@@ -83,6 +83,13 @@ class CreatePasswordScreen(
                     composableContent = BottomSheetInfo.ComposableContent.composableContent {
                         Text(
                             modifier = Modifier.padding(top = Deps.Spacing.standardMargin),
+                            text = "Поздравляем! Вы зарегистрированы в Optima24",
+                            fontSize = Headings.H2.px.sp,
+                            color = ComposeColors.PrimaryBlack,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            modifier = Modifier.padding(top = Deps.Spacing.standardMargin),
                             text = "Ваш Client ID",
                             fontSize = Headings.H4.px.sp,
                             color = ComposeColors.PrimaryBlack,

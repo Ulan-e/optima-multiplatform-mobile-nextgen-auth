@@ -194,11 +194,13 @@ private fun processError(
 	}
 }
 
+private var customRationaleRequest = CustomRationale.FIRST_REQUEST
+
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 private fun requestPermission(
 	requestPermissionState: State.StateModel.RequestPermissions,
-	permissionController: PermissionController?
+	permissionController: PermissionController?,
 ) {
 	val permissionsState = rememberMultiplePermissionsState(
 		requestPermissionState.permissions.map {
@@ -208,24 +210,35 @@ private fun requestPermission(
 			}
 		}
 	)
-	if (permissionsState.allPermissionsGranted) {
-		permissionController?.requestPermissionResult(PermissionController.State.Accepted)
-	} else {
-		if (permissionsState.shouldShowRationale) {
-			var canRequested = true
-			LaunchedEffect(key1 = canRequested) {
-				canRequested = false
-				permissionsState.launchMultiplePermissionRequest()
+
+	when {
+		permissionsState.allPermissionsGranted -> {
+			permissionController?.requestPermissionResult(PermissionController.State.Accepted)
+		}
+		else -> {
+			if (permissionsState.shouldShowRationale && CustomRationale.THIRD_REQUEST == customRationaleRequest) {
+				LaunchedEffect(key1 = Unit) {
+					permissionsState.launchMultiplePermissionRequest()
+					customRationaleRequest = CustomRationale.FOURTH_REQUEST
+				}
+			} else {
+				if (CustomRationale.FIRST_REQUEST == customRationaleRequest) {
+					LaunchedEffect(key1 = Unit) {
+						permissionsState.launchMultiplePermissionRequest()
+						customRationaleRequest = CustomRationale.SECOND_REQUEST
+					}
+				} else {
+					customRationaleRequest = if (customRationaleRequest == CustomRationale.SECOND_REQUEST) CustomRationale.THIRD_REQUEST
+					else CustomRationale.FOURTH_REQUEST
+					permissionController?.requestPermissionResult(
+						PermissionController.State.DeniedAlways(
+							permissions = requestPermissionState.permissions
+						)
+					)
+				}
 			}
-		} else {
-			permissionController?.requestPermissionResult(
-				PermissionController.State.DeniedAlways(
-					permissions = requestPermissionState.permissions
-				)
-			)
 		}
 	}
-
 }
 
 @Composable
@@ -257,4 +270,8 @@ private fun customPermissionRequired(
 			)
 		)
 	)
+}
+
+private enum class CustomRationale {
+	FIRST_REQUEST, SECOND_REQUEST, THIRD_REQUEST, FOURTH_REQUEST,
 }

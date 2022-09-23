@@ -17,7 +17,6 @@ class RegistrationUseCase(
 		val hash = preferences.hash ?: ""
 		return repository.register(hash, model.hashPassword, model.questionId, model.answer)
 			.map { response ->
-				println("ulanbek ${response.data?.clientDetailsDto.toString()}")
 				RegisterClientEntity(
 					success = response.success,
 					message = response.message ?: "",

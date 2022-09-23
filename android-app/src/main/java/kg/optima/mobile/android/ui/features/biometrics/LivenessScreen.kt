@@ -34,6 +34,7 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
+import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.data.component.RegistrationPreferences
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
@@ -86,13 +87,13 @@ object LivenessScreen : Screen {
                             text = "Связаться с банком",
                             composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                // context.navigateTo(WelcomeScreenModel.Welcome)
+                                context.navigateTo(WelcomeScreenModel.Welcome)
                             }
                         ),
                         ButtonView.Transparent(
                             text = "Отмена",
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                //  context.navigateTo(WelcomeScreenModel.Welcome)
+                                context.navigateTo(WelcomeScreenModel.Welcome)
                             }
                         )
                     )
