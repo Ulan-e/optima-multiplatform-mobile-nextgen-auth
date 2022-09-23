@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
 import kg.optima.mobile.android.ui.features.common.bankContacts.BankContacts
+import kg.optima.mobile.android.ui.features.common.interview.InterviewScreen
 import kg.optima.mobile.android.ui.features.common.offer.OfferScreen
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
 import kg.optima.mobile.android.ui.features.registration.control_question.ControlQuestionScreen
@@ -14,25 +15,27 @@ import kg.optima.mobile.android.ui.features.registration.sms_otp.OtpScreen
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
-	@Composable
-	override fun compose(screenModel: RegistrationScreenModel): Screen {
-		return when (screenModel) {
-			RegistrationScreenModel.Agreement -> AgreementScreen
-			is RegistrationScreenModel.Offerta -> OfferScreen(screenModel.url)
-			RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
-			is RegistrationScreenModel.AcceptCode -> OtpScreen(
-				phoneNumber = screenModel.phoneNumber,
-				timeLeft = screenModel.timeLeft,
-				referenceId = screenModel.referenceId,
-			)
-			RegistrationScreenModel.SelfConfirm -> SelfConfirmScreen
-			RegistrationScreenModel.ControlQuestion -> ControlQuestionScreen("hashCode")
-			is RegistrationScreenModel.CreatePassword -> CreatePasswordScreen(
-				hash = screenModel.hash,
-				questionId = screenModel.questionId,
-				answer = screenModel.answer
-			)
+    @Composable
+    override fun compose(screenModel: RegistrationScreenModel): Screen {
+        return when (screenModel) {
+            RegistrationScreenModel.Agreement -> AgreementScreen
+            is RegistrationScreenModel.Offerta -> OfferScreen(screenModel.url)
+            RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
+            is RegistrationScreenModel.AcceptCode -> OtpScreen(
+                phoneNumber = screenModel.phoneNumber,
+                timeLeft = screenModel.timeLeft,
+                referenceId = screenModel.referenceId,
+            )
+            RegistrationScreenModel.SelfConfirm -> SelfConfirmScreen
+            RegistrationScreenModel.ControlQuestion -> ControlQuestionScreen("hashCode")
+            is RegistrationScreenModel.CreatePassword -> CreatePasswordScreen(
+                hash = screenModel.hash,
+                questionId = screenModel.questionId,
+                answer = screenModel.answer
+            )
+
 			RegistrationScreenModel.BankContacts -> BankContacts
-		}
-	}
+            RegistrationScreenModel.Interview -> InterviewScreen("https://docs.google.com/forms/d/10xKZzz7I2N0kJQjsseCa2-5QNAwL9O-DNnnX4RRwP9U")
+        }
+    }
 }

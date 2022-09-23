@@ -35,4 +35,7 @@ sealed interface RegistrationScreenModel : ScreenModel {
 
 	@Parcelize
 	object BankContacts: RegistrationScreenModel
+
+	@Parcelize
+	object Interview : RegistrationScreenModel
 }
