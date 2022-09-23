@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.features.registration.create_password
 
-import android.util.Log
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -30,7 +29,6 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.create_password.CreatePasswordIntent
@@ -86,7 +84,8 @@ class CreatePasswordScreen(
                             text = "Поздравляем! Вы зарегистрированы в Optima24",
                             fontSize = Headings.H2.px.sp,
                             color = ComposeColors.PrimaryBlack,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
                         )
                         Text(
                             modifier = Modifier.padding(top = Deps.Spacing.standardMargin),

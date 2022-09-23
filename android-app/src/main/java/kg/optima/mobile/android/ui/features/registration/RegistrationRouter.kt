@@ -3,6 +3,7 @@ package kg.optima.mobile.android.ui.features.registration
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.features.common.bankContacts.BankContacts
 import kg.optima.mobile.android.ui.features.common.offer.OfferScreen
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
 import kg.optima.mobile.android.ui.features.registration.control_question.ControlQuestionScreen
@@ -31,6 +32,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
 				questionId = screenModel.questionId,
 				answer = screenModel.answer
 			)
+			RegistrationScreenModel.BankContacts -> BankContacts
 		}
 	}
 }

@@ -22,7 +22,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
 import kg.optima.mobile.base.presentation.State
@@ -87,13 +86,13 @@ object LivenessScreen : Screen {
                             text = "Связаться с банком",
                             composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(WelcomeScreenModel.Welcome)
+                                intent.navigate(RegistrationScreenModel.BankContacts)
                             }
                         ),
                         ButtonView.Transparent(
                             text = "Отмена",
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(WelcomeScreenModel.Welcome)
+                                intent.navigate(WelcomeScreenModel.Welcome)
                             }
                         )
                     )
@@ -102,14 +101,13 @@ object LivenessScreen : Screen {
             is LivenessState.LivenessModel.Passed -> {
                 state.init()
                 bottomSheetState.value = BottomSheetInfo(
-                    title = livenessModel.message,
+                    title = livenessModel.message ?: "",
                     buttons = listOf(
                         ButtonView.Primary(
                             text = "Продолжить",
                             composeColor = ComposeColor.composeColor(ComposeColors.Green),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(RegistrationScreenModel.ControlQuestion)
-                                context.asActivity()?.finish()
+                                intent.navigate(RegistrationScreenModel.ControlQuestion)
                             }
                         )
                     )
@@ -126,7 +124,7 @@ object LivenessScreen : Screen {
                         text = "Остановить процесс",
                         composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                         onClickListener = ButtonView.OnClickListener.onClickListener {
-                            context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                            intent.navigate(RegistrationScreenModel.SelfConfirm)
                         }
                     ),
                     ButtonView.Transparent(
@@ -209,7 +207,7 @@ object LivenessScreen : Screen {
                                                         ComposeColors.PrimaryRed
                                                     ),
                                                     onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                        bottomSheetState.value = null
+                                                        intent.navigate(RegistrationScreenModel.BankContacts)
                                                     }
                                                 )
                                             )
@@ -242,7 +240,7 @@ object LivenessScreen : Screen {
                                                         ComposeColors.PrimaryRed
                                                     ),
                                                     onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                        context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                                                        intent.navigate(RegistrationScreenModel.SelfConfirm)
                                                     }
                                                 )
                                             )

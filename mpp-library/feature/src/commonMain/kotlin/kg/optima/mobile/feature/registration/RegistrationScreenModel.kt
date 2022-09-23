@@ -32,4 +32,7 @@ sealed interface RegistrationScreenModel : ScreenModel {
 		val questionId: String = "",
 		val answer: String = "",
 	) : RegistrationScreenModel
+
+	@Parcelize
+	object BankContacts: RegistrationScreenModel
 }
