@@ -81,7 +81,7 @@ object LivenessScreen : Screen {
             is State.StateModel.Error.BaseError -> {
                 state.init()
                 bottomSheetState.value = BottomSheetInfo(
-                    title = "Пользователь с таким ID уже зарегистрирован в Optima24. Пожалуйста, попробуйте снова или обратитесь в Банк.",
+                    title = "Сервис временно недоступен. Пожалуйста, попробуйте позже или обратитесь в Банк.",
                     buttons = listOf(
                         ButtonView.Primary(
                             text = "Связаться с банком",

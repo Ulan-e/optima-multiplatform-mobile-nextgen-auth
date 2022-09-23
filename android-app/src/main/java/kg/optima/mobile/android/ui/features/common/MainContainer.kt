@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -68,6 +69,11 @@ fun MainContainer(
     val navigator = LocalNavigator.currentOrThrow
     val context = LocalContext.current
     val activity = context.asActivity()
+
+    val focusManager = LocalFocusManager.current
+    if (sheetInfo != null) {
+        focusManager.clearFocus()
+    }
 
     val coroutineScope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState(
@@ -128,8 +134,8 @@ fun MainContainer(
         Box(contentAlignment = Alignment.Center) {
             Column(
                 modifier = Modifier
-					.fillMaxSize()
-					.background(ComposeColors.Background)
+                    .fillMaxSize()
+                    .background(ComposeColors.Background)
             ) {
                 if (toolbarInfo != null) {
                     MainToolbar(toolbarInfo.copy(
@@ -139,9 +145,9 @@ fun MainContainer(
                     ))
                 }
                 val columnModifier = contentModifier
-					.fillMaxSize()
-					.weight(1f, false)
-					.background(ComposeColors.Background)
+                    .fillMaxSize()
+                    .weight(1f, false)
+                    .background(ComposeColors.Background)
                 if (scrollable)
                     columnModifier.verticalScroll(rememberScrollState())
 
