@@ -13,8 +13,8 @@ class CreatePasswordIntent(
 
     private val registrationUseCase: RegistrationUseCase by inject()
 
-    fun validate(password: String) {
-        val model = CreatePasswordModel.Validate(PasswordValidator.validate(password))
+    fun validate(password: String, repassword: String) {
+        val model = CreatePasswordModel.Validate(PasswordValidator.validate(password, repassword))
         state.handle(model)
     }
 

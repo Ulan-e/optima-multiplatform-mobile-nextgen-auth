@@ -42,7 +42,7 @@ fun InputOutlinedField(
     title: String = "",
     hint: String = "",
     enabled: Boolean = true,
-    keyboardType: KeyboardType = KeyboardType.Text,
+    keyboardType: KeyboardType = KeyboardType.Ascii,
     imeAction: ImeAction = ImeAction.Done,
     maxLength: Int = Constants.MAX_LENGTH_INPUT,
     singleLine: Boolean = true,

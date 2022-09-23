@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -66,6 +67,9 @@ class CreatePasswordScreen(
         val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
         val context = LocalContext.current
+        val focusManager = LocalFocusManager.current
+
+        LaunchedEffect(key1 = buttonEnabled) { focusManager.clearFocus()}
 
         when (val createPasswordStateModel = model) {
             is CreatePasswordState.CreatePasswordStateModel.ValidationResult -> {
@@ -136,14 +140,6 @@ class CreatePasswordScreen(
             }
         }
 
-        LaunchedEffect(key1 = buttonEnabled.value) {
-            if (buttonEnabled.value) {
-                outlineColor2.value = ComposeColors.Green
-            } else {
-                outlineColor2.value = Color.Transparent
-            }
-        }
-
         MainContainer(
             mainState = model,
             sheetInfo = bottomSheetState.value,
@@ -154,50 +150,60 @@ class CreatePasswordScreen(
             TitleTextField(text = "Создание пароля")
             PasswordOutlineInput(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(top = Deps.Spacing.spacing),
+                    .fillMaxWidth()
+                    .padding(top = Deps.Spacing.spacing),
                 passwordState = passwordState,
                 hint = "Пароль",
                 onValueChange = {
-                    passwordValidity.value = PasswordValidator.validate(it)
-                    intent.validate(it)
-                    if (
+                    passwordValidity.value = PasswordValidator.validate(it, rePasswordState.value)
+                    intent.validate(it, rePasswordState.value)
+                    if (passwordValidity.value.last().isValid) {
+                        outlineColor2.value = ComposeColors.Green
+                        buttonEnabled.value = true
+                    } else if (
                         passwordValidity.value.first().isValid &&
                         passwordValidity.value[1].isValid &&
-                        passwordValidity.value.last().isValid
+                        passwordValidity.value[2].isValid
                     ) {
+                        buttonEnabled.value = false
                         outlineColor.value = ComposeColors.Green
-                        buttonEnabled.value = passwordState.value == rePasswordState.value
                     } else {
                         outlineColor.value = Color.Transparent
                         buttonEnabled.value = false
                     }
-
                 },
                 errorState = errorState,
                 outlineColor = outlineColor.value
             )
             Text(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(top = Deps.Spacing.swiperTopMargin),
+                    .fillMaxWidth()
+                    .padding(top = Deps.Spacing.swiperTopMargin),
                 text = "Пароль для входа в приложение",
                 color = ComposeColors.DescriptionGray,
                 fontSize = Headings.H5.sp,
             )
             PasswordOutlineInput(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(top = Deps.Spacing.spacing),
+                    .fillMaxWidth()
+                    .padding(top = Deps.Spacing.spacing),
                 passwordState = rePasswordState,
                 onValueChange = {
-                    if (
+                    passwordValidity.value = PasswordValidator.validate(passwordState.value, it)
+                    intent.compare(passwordState.value, it)
+                    if (passwordState.value != it && it.isNotEmpty()) {
+                        outlineColor2.value = ComposeColors.PrimaryRed
+                        buttonEnabled.value = false
+                    } else if (
                         passwordValidity.value.first().isValid &&
                         passwordValidity.value[1].isValid &&
+                        passwordValidity.value[2].isValid &&
                         passwordValidity.value.last().isValid
                     ) {
-                        buttonEnabled.value = passwordState.value == rePasswordState.value
+                        outlineColor2.value = ComposeColors.Green
+                        buttonEnabled.value = true
                     } else {
+                        outlineColor2.value = Color.Transparent
                         buttonEnabled.value = false
                     }
                 },

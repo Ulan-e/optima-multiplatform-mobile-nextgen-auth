@@ -3,7 +3,8 @@ package kg.optima.mobile.registration.presentation.create_password.validity
 import kg.optima.mobile.core.common.Constants
 
 object PasswordValidator {
-	fun validate(password: String): List<PasswordValidityModel> {
+
+	fun validate(password: String, repassword: String): List<PasswordValidityModel> {
 		return mutableListOf(
 			PasswordValidityModel(
 				criteriaText = "Заглавные буквы",
@@ -16,6 +17,10 @@ object PasswordValidator {
 			PasswordValidityModel(
 				criteriaText = "Минимум 8 символов",
 				isValid = (password.length >= Constants.PASSWORD_LENGTH)
+			),
+			PasswordValidityModel(
+				criteriaText = "Пароль совпадает",
+				isValid = (compare(password, repassword))
 			)
 		)
 	}
