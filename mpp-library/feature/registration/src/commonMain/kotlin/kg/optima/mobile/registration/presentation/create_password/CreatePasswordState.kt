@@ -13,7 +13,7 @@ class CreatePasswordState : State<CreatePasswordModel>() {
             is CreatePasswordModel.Comparison -> CreatePasswordStateModel.ComparisonResult(entity.matches)
             is CreatePasswordModel.RegisterSuccess -> CreatePasswordStateModel.RegisterSuccessResult(entity.clientId, entity.message)
             is CreatePasswordModel.RegisterFailed -> CreatePasswordStateModel.RegisterFailedResult(entity.message)
-            CreatePasswordModel.RegistrationDone -> StateModel.Navigate(WelcomeScreenModel.Welcome)
+            CreatePasswordModel.RegistrationDone -> StateModel.Navigate(RegistrationScreenModel.Interview)
         }
         setStateModel(stateModel)
     }

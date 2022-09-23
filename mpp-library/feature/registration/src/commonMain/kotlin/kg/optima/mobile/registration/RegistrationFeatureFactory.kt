@@ -16,6 +16,8 @@ import kg.optima.mobile.registration.presentation.control_question.ControlQuesti
 import kg.optima.mobile.registration.presentation.control_question.ControlQuestionState
 import kg.optima.mobile.registration.presentation.create_password.CreatePasswordIntent
 import kg.optima.mobile.registration.presentation.create_password.CreatePasswordState
+import kg.optima.mobile.registration.presentation.interview.InterviewIntent
+import kg.optima.mobile.registration.presentation.interview.InterviewState
 import kg.optima.mobile.registration.presentation.liveness.LivenessIntent
 import kg.optima.mobile.registration.presentation.liveness.LivenessState
 import kg.optima.mobile.registration.presentation.offer.OfferIntent
@@ -67,5 +69,8 @@ object RegistrationFeatureFactory : Factory(), KoinComponent {
 
 		factory { LivenessState() }
 		factory { st -> LivenessIntent(st.get()) }
+
+		factory { InterviewState() }
+		factory { st -> InterviewIntent(st.get()) }
 	}
 }
