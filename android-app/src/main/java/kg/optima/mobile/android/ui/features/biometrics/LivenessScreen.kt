@@ -207,7 +207,7 @@ object LivenessScreen : Screen {
                                                         ComposeColors.PrimaryRed
                                                     ),
                                                     onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                        intent.navigate(RegistrationScreenModel.BankContacts)
+                                                        bottomSheetState.value = null
                                                     }
                                                 )
                                             )
