@@ -18,7 +18,7 @@ class AuthApiImpl(
 		path = path,
 		headers = {
 			append(HttpHeaders.AcceptLanguage, "ru-RU")
-			append(HttpHeaders.UserAgent, userAgent)
+//			append(HttpHeaders.UserAgent, userAgent)
 		},
 		request = request,
 	)

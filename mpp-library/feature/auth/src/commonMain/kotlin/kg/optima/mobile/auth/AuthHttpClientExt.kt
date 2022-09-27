@@ -1,48 +1,26 @@
-package kg.optima.mobile.network.di
+package kg.optima.mobile.auth
 
 import io.ktor.client.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
-import io.ktor.client.statement.*
 import io.ktor.http.*
-import io.ktor.utils.io.charsets.*
 import kg.optima.mobile.core.StringMap
-import kg.optima.mobile.network.client.NetworkClient
-import kg.optima.mobile.network.client.NetworkClientImpl
+import kg.optima.mobile.network.client.AuthHttpClient
+import kg.optima.mobile.network.di.getError
 import kg.optima.mobile.network.failure.NetworkFailure
 import kg.optima.mobile.network.header.DefaultHeader
 import kg.optima.mobile.network.logger.KtorLogger
-import kotlinx.serialization.json.Json
-
-fun provideNetworkClient(httpClient: HttpClient, json: Json): NetworkClient {
-	return NetworkClientImpl(httpClient, json)
-}
-
-fun provideSerializer() = KotlinxSerializer(
-	Json {
-		isLenient = true
-		ignoreUnknownKeys = true
-		explicitNulls = false
-	}
-)
-
-fun provideJson() = Json {
-	isLenient = true
-	prettyPrint = true
-	ignoreUnknownKeys = true
-	encodeDefaults = true
-}
 
 private const val TIME_OUT = 60000L
-fun provideHttpClient(
+fun provideAuthHttpClient(
 	kotlinxSerializer: KotlinxSerializer,
 	httpLogger: Logger = KtorLogger(),
 	networkFailure: NetworkFailure,
 	params: StringMap,
 ): HttpClient {
-	return HttpClient {
+	return AuthHttpClient.get {
 		install(JsonFeature) {
 			serializer = kotlinxSerializer
 			accept(ContentType.Application.FormUrlEncoded)
@@ -71,25 +49,5 @@ fun provideHttpClient(
 			level = LogLevel.ALL
 			logger = httpLogger
 		}
-	}
-}
-
-suspend fun getError(
-	error: ClientRequestException,
-	networkFailure: NetworkFailure,
-): Throwable {
-	return try {
-		when (error.response.status) {
-			HttpStatusCode.NotFound -> {
-				networkFailure.getNotFoundFailure()
-			}
-			else -> {
-				//        crashLogger.recordException(failure)
-				val errorResponse = error.response.readText(Charsets.UTF_8)
-				networkFailure.getBaseFailure(errorResponse)
-			}
-		}
-	} catch (e: Throwable) {
-		networkFailure.getUnknownException()
 	}
 }

@@ -1,5 +1,6 @@
 package kg.optima.mobile.auth
 
+import io.ktor.http.*
 import kg.optima.mobile.auth.data.api.AuthApi
 import kg.optima.mobile.auth.data.api.AuthApiImpl
 import kg.optima.mobile.auth.data.component.AuthPreferences
@@ -15,13 +16,33 @@ import kg.optima.mobile.auth.presentation.login.LoginState
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthState
 import kg.optima.mobile.base.di.Factory
+import kg.optima.mobile.network.client.AuthHttpClient
+import kg.optima.mobile.network.di.provideHttpClient
+import kg.optima.mobile.network.di.provideNetworkClient
+import kg.optima.mobile.network.failure.NetworkFailureImpl
 import org.koin.core.module.Module
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 object AuthFeatureFactory : Factory() {
 
 	override val module: Module = module {
-		factory<AuthApi> { AuthApiImpl(networkClient = get()) }
+		factory(qualifier = named("AuthHttpClient")) {
+			provideAuthHttpClient(
+				kotlinxSerializer = get(),
+				networkFailure = NetworkFailureImpl(json = get()),
+				params = mapOf(
+					HttpHeaders.UserAgent to "Optima24/2.10.3 (Android/12; Samsung SM-G991B/vbeb8u4kz7ooj99o)"
+				),
+			)
+		}
+		factory(qualifier = named("AuthNetworkClient")) {
+			provideNetworkClient(
+				httpClient = get(qualifier = named("AuthHttpClient")),
+				json = get(),
+			)
+		}
+		factory<AuthApi> { AuthApiImpl(networkClient = get(named("AuthNetworkClient"))) }
 		factory<AuthRepository> { AuthRepositoryImpl(authApi = get()) }
 		factory<AuthPreferences> {
 			AuthPreferencesImpl(storageRepository = get(), runtimeCache = get())

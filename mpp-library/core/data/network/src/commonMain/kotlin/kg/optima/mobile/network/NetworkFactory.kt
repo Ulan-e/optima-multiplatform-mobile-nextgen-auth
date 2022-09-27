@@ -7,6 +7,7 @@ import kg.optima.mobile.network.di.provideNetworkClient
 import kg.optima.mobile.network.di.provideSerializer
 import kg.optima.mobile.network.failure.NetworkFailureImpl
 import org.koin.core.module.Module
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 object NetworkFactory {
@@ -23,7 +24,7 @@ object NetworkFactory {
 				)
 			)
 		}
-		factory {
+		factory(qualifier = named("CommonNetworkClient")) {
 			provideNetworkClient(httpClient = get(), json = get())
 		}
 	}

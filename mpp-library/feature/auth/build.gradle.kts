@@ -16,6 +16,8 @@ dependencies {
 	commonMainImplementation("io.insert-koin:koin-core:3.1.4")
 	commonMainImplementation(libs.kotlinSerialization)
 	commonMainImplementation(libs.ktorClient)
+	commonMainImplementation(libs.ktorClientLogging)
+	commonMainImplementation(libs.ktorClientSerialization)
 
 	commonMainApi(libs.mokoMvvmLiveData)
 	commonMainApi(libs.mokoResources)
