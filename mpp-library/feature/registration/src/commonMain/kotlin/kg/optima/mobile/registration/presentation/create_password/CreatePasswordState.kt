@@ -8,15 +8,14 @@ import kg.optima.mobile.registration.presentation.create_password.validity.Passw
 class CreatePasswordState : State<CreatePasswordModel>() {
 
     override fun handle(entity: CreatePasswordModel) {
-        when (entity) {
+        val stateModel: StateModel = when (entity) {
             is CreatePasswordModel.Validate -> CreatePasswordStateModel.ValidationResult(entity.list)
             is CreatePasswordModel.Comparison -> CreatePasswordStateModel.ComparisonResult(entity.matches)
-            is CreatePasswordModel.Register -> CreatePasswordStateModel.RegisterResult(
-                clientId = entity.clientId!!,
-                message = entity.message
-            )
-            CreatePasswordModel.RegistrationDone -> StateModel.Navigate(WelcomeScreenModel.Welcome)
+            is CreatePasswordModel.RegisterSuccess -> CreatePasswordStateModel.RegisterSuccessResult(entity.clientId, entity.message)
+            is CreatePasswordModel.RegisterFailed -> CreatePasswordStateModel.RegisterFailedResult(entity.message)
+            CreatePasswordModel.RegistrationDone -> StateModel.Navigate(RegistrationScreenModel.Interview)
         }
+        setStateModel(stateModel)
     }
 
     sealed interface CreatePasswordStateModel : StateModel {
@@ -28,8 +27,12 @@ class CreatePasswordState : State<CreatePasswordModel>() {
             val matches: Boolean
         ) : CreatePasswordStateModel
 
-        class RegisterResult(
-            val clientId: String,
+        class RegisterSuccessResult(
+            val clientId: String?,
+            val message: String,
+        ) : CreatePasswordStateModel
+
+        class RegisterFailedResult(
             val message: String,
         ) : CreatePasswordStateModel
     }

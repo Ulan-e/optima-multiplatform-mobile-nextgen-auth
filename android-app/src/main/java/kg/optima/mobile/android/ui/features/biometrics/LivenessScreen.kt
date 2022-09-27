@@ -13,7 +13,6 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -26,6 +25,7 @@ import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
@@ -77,36 +77,37 @@ object LivenessScreen : Screen {
         val livenessResult = remember { mutableStateOf("") }
 
         when (val livenessModel = model) {
-            is LivenessState.LivenessModel.Passed -> {
+            is State.StateModel.Error.BaseError -> {
                 state.init()
                 bottomSheetState.value = BottomSheetInfo(
-                    title = livenessModel.message,
-                    buttons = listOf(
-                        ButtonView.Primary(
-                            text = "Продолжить",
-                            composeColor = ComposeColor.composeColor(ComposeColors.Green),
-                            onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(RegistrationScreenModel.ControlQuestion)
-                            }
-                        )
-                    )
-                )
-            }
-            is LivenessState.LivenessModel.Failed -> {
-                bottomSheetState.value = BottomSheetInfo(
-                    title = livenessModel.message,
+                    title = "Сервис временно недоступен. Пожалуйста, попробуйте позже или обратитесь в Банк.",
                     buttons = listOf(
                         ButtonView.Primary(
                             text = "Связаться с банком",
                             composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(WelcomeScreenModel.Welcome)
+                                intent.navigate(RegistrationScreenModel.BankContacts)
                             }
                         ),
                         ButtonView.Transparent(
                             text = "Отмена",
                             onClickListener = ButtonView.OnClickListener.onClickListener {
-                                context.navigateTo(WelcomeScreenModel.Welcome)
+                                intent.navigate(WelcomeScreenModel.Welcome)
+                            }
+                        )
+                    )
+                )
+            }
+            is LivenessState.LivenessModel.Passed -> {
+                state.init()
+                bottomSheetState.value = BottomSheetInfo(
+                    title = livenessModel.message ?: "",
+                    buttons = listOf(
+                        ButtonView.Primary(
+                            text = "Продолжить",
+                            composeColor = ComposeColor.composeColor(ComposeColors.Green),
+                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                                intent.navigate(RegistrationScreenModel.ControlQuestion)
                             }
                         )
                     )
@@ -123,7 +124,7 @@ object LivenessScreen : Screen {
                         text = "Остановить процесс",
                         composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
                         onClickListener = ButtonView.OnClickListener.onClickListener {
-                            context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                            intent.navigate(RegistrationScreenModel.SelfConfirm)
                         }
                     ),
                     ButtonView.Transparent(
@@ -141,17 +142,12 @@ object LivenessScreen : Screen {
             contentModifier = Modifier.fillMaxSize(),
             toolbarInfo = null,
             sheetInfo = bottomSheetState.value,
-            contentHorizontalAlignment = Alignment.Start,
+            contentHorizontalAlignment = Alignment.Start
         ) {
 
             BackHandler { onBack() }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Transparent)
-                    .weight(1f)
-            ) {
+            Column {
                 TopAppBar(
                     modifier = Modifier.fillMaxWidth(),
                     title = {
@@ -244,7 +240,7 @@ object LivenessScreen : Screen {
                                                         ComposeColors.PrimaryRed
                                                     ),
                                                     onClickListener = ButtonView.OnClickListener.onClickListener {
-                                                        context.navigateTo(RegistrationScreenModel.SelfConfirm)
+                                                        intent.navigate(RegistrationScreenModel.SelfConfirm)
                                                     }
                                                 )
                                             )
@@ -307,7 +303,7 @@ object LivenessScreen : Screen {
                             text = "Продолжить",
                             color = ComposeColors.Green,
                             onClick = {
-                                val data = context.loadFile("scanned_file")
+                                val data = context.loadFile(Constants.DOCUMENT_FILE_NAME)
                                 intent.verify(
                                     livenessResult = livenessResult.value,
                                     sessionId = livenessSessionId.value,

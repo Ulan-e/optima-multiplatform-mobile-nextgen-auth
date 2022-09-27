@@ -1,10 +1,7 @@
 package kg.optima.mobile.android.ui.features.registration.self_confirm
 
-import android.content.Intent
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
@@ -14,10 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
-import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.ui.base.permission.PermissionController
-import kg.optima.mobile.android.ui.features.biometrics.LivenessActivity
+import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
+import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
+import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
@@ -29,18 +26,17 @@ import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
+import kg.optima.mobile.registration.presentation.self_confirm.IdentificationMode
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
 import kotlinx.coroutines.delay
 import kz.verigram.veridoc.sdk.VeridocInitializer
-import kz.verigram.verilive.sdk.LivenessInitializer
 
-@Suppress("SameParameterValue")
 object SelfConfirmScreen : Screen {
-    @OptIn(ExperimentalMaterialApi::class)
+
+    @OptIn(ExperimentalMaterialApi::class, ExperimentalFoundationApi::class)
     @Composable
     override fun Content() {
         val product = remember {
@@ -56,39 +52,30 @@ object SelfConfirmScreen : Screen {
         var items by remember { mutableStateOf<List<FadeInAnimModel>>(emptyList()) }
         var buttonEnabled by remember { mutableStateOf(false) }
 
-        // при полной идентификации true, при быстрой идентификации false
-        val identificationMode by remember { mutableStateOf(true) }
+        val identificationMode by remember { mutableStateOf(IdentificationMode.FULL) }
 
-        when (identificationMode) {
-            true -> {
-                when (val selfConfirmStateModel = model) {
-                    is State.StateModel.Initial ->
-                        intent.fadeAnimationModels()
-                    is SelfConfirmState.SelfConfirmStateModel.AnimationModels -> items =
-                        selfConfirmStateModel.models.toUiModel()
-                }
-            }
-            false -> {
-                when (val selfConfirmStateModel = model) {
-                    is State.StateModel.Initial ->
-                        intent.fadeAnimationModelsShort()
-                    is SelfConfirmState.SelfConfirmStateModel.AnimationModels -> items =
-                        selfConfirmStateModel.models.toUiModel()
-                }
-            }
+        when (val selfConfirmStateModel = model) {
+            is State.StateModel.Initial -> intent.fadeAnimationModels(identificationMode)
+            is SelfConfirmState.SelfConfirmStateModel.AnimationModels ->
+                items = selfConfirmStateModel.models.toUiModel()
         }
 
         LaunchedEffect(key1 = !buttonEnabled) {
             buttonEnabled = when (identificationMode) {
-                true -> {
+                IdentificationMode.FULL -> {
                     delay(6000)
                     true
                 }
-                false -> {
+                IdentificationMode.SHORT -> {
                     delay(1500)
                     true
                 }
             }
+        }
+
+        LaunchedEffect(key1 = Unit) {
+            buttonEnabled = true
+            buttonEnabled = false
         }
 
         MainContainer(
@@ -96,21 +83,8 @@ object SelfConfirmScreen : Screen {
             permissionController = {
                 when (it) {
                     PermissionController.State.Accepted -> {
-                        when (identificationMode) {
-                            true -> {
-                                VeridocInitializer.init()
-                                context.startActivity(
-                                    Intent(
-                                        context,
-                                        DocumentScanActivity::class.java
-                                    )
-                                )
-                            }
-                            false -> {
-                                LivenessInitializer.init()
-                                context.startActivity(Intent(context, LivenessActivity::class.java))
-                            }
-                        }
+                        VeridocInitializer.init()
+                        context.navigateTo(DocumentScanActivity())
                     }
                     is PermissionController.State.DeniedAlways -> {
                         intent.customPermissionRequired(it.permissions)
@@ -118,33 +92,49 @@ object SelfConfirmScreen : Screen {
                 }
             },
             toolbarInfo = ToolbarInfo(
-                navigationIcon = NavigationIcon(onBackClick = {
-                    intent.nextScreenModel(RegistrationScreenModel.EnterPhone)
-                })
+                navigationIcon = NavigationIcon(onBackClick = { })
             ),
             contentHorizontalAlignment = Alignment.Start,
         ) {
-            TitleTextField(
-                modifier = Modifier.padding(top = Deps.Spacing.bigMarginTop),
-                text = "Подтверждение личности",
-            )
-            Text(
-                modifier = Modifier.padding(top = Deps.Spacing.marginFromTitle),
-                text = "Для прохождении онлайн идентификации необходимо:",
-                fontSize = Headings.H3.sp,
-            )
-            IconTextFields(
-                modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 2),
-                items = items,
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            PrimaryButton(
-                modifier = Modifier.fillMaxWidth(),
-                text = "Начать",
-                enabled = buttonEnabled,
-                color = ComposeColors.Green,
-                onClick = { intent.requestPermission(Permission.Camera) }
-            )
+            CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .verticalScroll(rememberScrollState())
+                    ) {
+                        Spacer(
+                            modifier = Modifier
+                                .weight(1f)
+                                .heightIn(0.dp, 96.dp)
+                        )
+                        TitleTextField(
+                            text = "Подтверждение личности",
+                        )
+                        Text(
+                            modifier = Modifier.padding(top = Deps.Spacing.marginFromTitle),
+                            text = "Для прохождении онлайн идентификации необходимо:",
+                            fontSize = Headings.H3.sp,
+                        )
+                        IconTextFields(
+                            modifier = Modifier.padding(vertical = Deps.Spacing.standardMargin * 2),
+                            items = items,
+                        )
+                        Spacer(modifier = Modifier.weight(2f))
+                    }
+                    PrimaryButton(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.BottomCenter),
+                        text = "Начать",
+                        enabled = buttonEnabled,
+                        color = ComposeColors.Green,
+                        onClick = {
+                            intent.requestPermission(Permission.Camera)
+                        },
+                    )
+                }
+            }
         }
     }
 
@@ -153,7 +143,12 @@ object SelfConfirmScreen : Screen {
         modifier: Modifier = Modifier,
         items: List<FadeInAnimModel>,
     ) {
-        LazyColumn(modifier = modifier.fillMaxWidth()) {
+        LazyColumn(
+            modifier = modifier
+                .fillMaxWidth()
+                .height(500.dp),
+            userScrollEnabled = false,
+        ) {
             items(items.size) {
                 FadeInAnim(items[it])
             }

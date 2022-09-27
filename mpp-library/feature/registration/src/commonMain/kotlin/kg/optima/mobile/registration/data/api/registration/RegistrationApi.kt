@@ -15,5 +15,5 @@ abstract class RegistrationApi(
 
     abstract suspend fun register(
         registrationRequest: RegistrationRequest
-    ): BaseDto<RegisterClientDto>
+    ): BaseDto<ClientDetailsDto>
 }

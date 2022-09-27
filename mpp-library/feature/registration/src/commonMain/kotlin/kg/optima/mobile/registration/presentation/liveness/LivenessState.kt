@@ -1,27 +1,26 @@
 package kg.optima.mobile.registration.presentation.liveness
 
 import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.core.navigation.ScreenModel
 
-class LivenessState : State<LivenessInfo>() {
+class LivenessState : State<LivenessState.LivenessModel>() {
 
-    override fun handle(entity: LivenessInfo) {
-        val stateModel: StateModel = if (entity.passed) {
-            LivenessModel.Passed(entity.message)
-        } else {
-            LivenessModel.Failed(entity.message)
+    override fun handle(entity: LivenessModel) {
+        val stateModel: StateModel = when (entity) {
+            is LivenessModel.Passed -> LivenessModel.Passed(entity.passed, entity.message)
+            is LivenessModel.NextScreen -> StateModel.Navigate(entity.screenModel)
         }
         setStateModel(stateModel)
     }
 
     sealed interface LivenessModel : StateModel {
-        val message: String
-
         class Passed(
-            override val message: String
+            val passed: Boolean,
+            val message: String?
         ) : LivenessModel
 
-        class Failed(
-            override val message: String
+        class NextScreen(
+            val screenModel: ScreenModel
         ) : LivenessModel
     }
 }

@@ -4,7 +4,6 @@ sealed interface CheckSmsCodeInfo {
 
 	class Check(
 		val success: Boolean,
-		val referenceId: String,
 	) : CheckSmsCodeInfo
 
 	class OtpCheck(
@@ -15,19 +14,6 @@ sealed interface CheckSmsCodeInfo {
 		val timeout: Int
 	) : CheckSmsCodeInfo
 
-	class TriesData(
-		val tryCount: Int,
-		val timeLeft: Int,
-	) : CheckSmsCodeInfo {
-		companion object {
-			val FIRST_TRY = TriesData(
-				tryCount = 0,
-				timeLeft = 0
-			)
-		}
-	}
-
-	object TryDataSaved : CheckSmsCodeInfo
 
 
 }
