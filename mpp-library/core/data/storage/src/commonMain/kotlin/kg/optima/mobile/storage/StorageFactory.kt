@@ -9,6 +9,6 @@ object StorageFactory {
     val module: Module = module {
         factory { Settings() }
         factory<StorageRepository> { StorageRepositoryImpl(get(), get()) }
-        factory { RuntimeCache() }
+//        factory { RuntimeCache() }
     }
 }

@@ -28,9 +28,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(":mpp-library:base"))
                 implementation(project(":mpp-library:core"))
+                implementation(project(":mpp-library:core:data:storage"))
+
                 implementation(libs.kotlinSerialization)
                 implementation("com.arkivanov.essenty:parcelable:0.6.0")
+                implementation("io.insert-koin:koin-core:3.1.4")
             }
         }
         val commonTest by getting {

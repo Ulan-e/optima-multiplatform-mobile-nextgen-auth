@@ -1,6 +1,6 @@
 package kg.optima.mobile.common.presentation.welcome
 
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
+import kg.optima.mobile.feature.auth.model.GrantType
 
 sealed interface WelcomeEntity {
 	class ClientInfo(

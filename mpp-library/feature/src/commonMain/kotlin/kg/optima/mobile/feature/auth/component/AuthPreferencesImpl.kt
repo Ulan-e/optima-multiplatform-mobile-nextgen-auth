@@ -1,4 +1,4 @@
-package kg.optima.mobile.auth.data.component
+package kg.optima.mobile.feature.auth.component
 
 import kg.optima.mobile.base.platform.PlatformDate
 import kg.optima.mobile.base.utils.emptyString
@@ -7,7 +7,7 @@ import kg.optima.mobile.storage.cache.RuntimeCache
 
 class AuthPreferencesImpl(
     private val storageRepository: StorageRepository,
-    private val runtimeCache: RuntimeCache,
+//    private val runtimeCache: RuntimeCache,
 ) : AuthPreferences {
 
     override var clientId: String?
@@ -59,7 +59,6 @@ class AuthPreferencesImpl(
         saveToken(null)
         clientId = null
         refreshToken = null
-        runtimeCache.setProfile(null)
     }
 
     override fun clear() {

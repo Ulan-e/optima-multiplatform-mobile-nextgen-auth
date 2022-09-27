@@ -27,9 +27,9 @@ kotlin {
                 implementation(project(":mpp-library:base"))
                 implementation(project(":mpp-library:core"))
                 implementation(project(":mpp-library:feature"))
-                implementation(project(":mpp-library:feature:auth"))
 
                 implementation("io.insert-koin:koin-core:3.1.4")
+                implementation(libs.coroutines)
             }
         }
         val commonTest by getting {

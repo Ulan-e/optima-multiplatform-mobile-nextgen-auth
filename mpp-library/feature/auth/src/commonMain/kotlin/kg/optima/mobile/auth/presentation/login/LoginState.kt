@@ -9,9 +9,16 @@ class LoginState(
 ) : State<LoginModel>() {
 
 	override fun handle(entity: LoginModel) {
-		val state = when (entity) {
-			is LoginModel.Success ->
-				StateModel.Navigate(nextScreenModel)
+		val state: StateModel = when (entity) {
+			is LoginModel.SignInResult -> when (entity) {
+				LoginModel.SignInResult.Error -> TODO()
+				is LoginModel.SignInResult.IncorrectData -> LoginStateModel.SignInResult.IncorrectData(
+					entity.message ?: "Неверный ID код или пароль"
+				)
+				LoginModel.SignInResult.SmsCodeRequired -> TODO()
+				is LoginModel.SignInResult.SuccessAuth -> StateModel.Navigate(nextScreenModel)
+				LoginModel.SignInResult.UserBlocked -> TODO()
+			}
 			is LoginModel.ClientId ->
 				LoginStateModel.ClientId(clientId = entity.id)
 			is LoginModel.Biometry ->
@@ -24,5 +31,9 @@ class LoginState(
 	sealed interface LoginStateModel : StateModel {
 		object ShowBiometry : LoginStateModel
 		class ClientId(val clientId: String?) : LoginStateModel
+
+		sealed interface SignInResult : LoginStateModel {
+			class IncorrectData(val message: String) : SignInResult
+		}
 	}
 }

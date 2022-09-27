@@ -1,4 +1,4 @@
-package kg.optima.mobile.auth.domain.usecase.login
+package kg.optima.mobile.feature.auth.model
 
 enum class GrantType(val method: String) {
 	Password("password"),

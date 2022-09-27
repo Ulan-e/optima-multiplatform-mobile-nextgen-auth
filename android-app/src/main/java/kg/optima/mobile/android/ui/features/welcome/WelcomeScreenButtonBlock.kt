@@ -24,11 +24,12 @@ import kg.optima.mobile.resources.images.MainImages
 @Composable
 fun WelcomeScreenButtonBlock(
 	modifier: Modifier,
+	verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
 ) {
 	Row(
 		modifier = modifier,
 		horizontalArrangement = Arrangement.spacedBy(64.dp),
-		verticalAlignment = Alignment.CenterVertically,
+		verticalAlignment = verticalAlignment,
 	) {
 		Column(
 			horizontalAlignment = Alignment.CenterHorizontally,

@@ -3,8 +3,6 @@ package kg.optima.mobile.auth
 import io.ktor.http.*
 import kg.optima.mobile.auth.data.api.AuthApi
 import kg.optima.mobile.auth.data.api.AuthApiImpl
-import kg.optima.mobile.auth.data.component.AuthPreferences
-import kg.optima.mobile.auth.data.component.AuthPreferencesImpl
 import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.auth.data.repository.AuthRepositoryImpl
 import kg.optima.mobile.auth.domain.usecase.biometry_auth.SetupBiometryUseCase
@@ -16,8 +14,6 @@ import kg.optima.mobile.auth.presentation.login.LoginState
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthState
 import kg.optima.mobile.base.di.Factory
-import kg.optima.mobile.network.client.AuthHttpClient
-import kg.optima.mobile.network.di.provideHttpClient
 import kg.optima.mobile.network.di.provideNetworkClient
 import kg.optima.mobile.network.failure.NetworkFailureImpl
 import org.koin.core.module.Module
@@ -44,9 +40,6 @@ object AuthFeatureFactory : Factory() {
 		}
 		factory<AuthApi> { AuthApiImpl(networkClient = get(named("AuthNetworkClient"))) }
 		factory<AuthRepository> { AuthRepositoryImpl(authApi = get()) }
-		factory<AuthPreferences> {
-			AuthPreferencesImpl(storageRepository = get(), runtimeCache = get())
-		}
 
 		//UseCases injection
 		factory { LoginUseCase(authRepository = get(), authPreferences = get()) }

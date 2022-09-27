@@ -1,4 +1,6 @@
-package kg.optima.mobile.auth.data.component
+package kg.optima.mobile.feature.auth.component
+
+import kg.optima.mobile.feature.auth.model.GrantType
 
 interface AuthPreferences {
 
@@ -23,10 +25,19 @@ interface AuthPreferences {
     var pin: String
     var biometry: String
 
+    val grantTypes: List<GrantType> get() {
+        val grantTypes = mutableListOf<GrantType>()
+        if (isAuthorized) {
+            grantTypes.add(GrantType.Password)
+            if (pin.isNotBlank()) grantTypes.add(GrantType.Pin)
+            if (biometry.isNotBlank()) grantTypes.add(GrantType.Biometry)
+        }
+        return grantTypes
+    }
+
     fun saveToken(token: String?)
 
     fun clearProfile()
 
     fun clear()
-
 }

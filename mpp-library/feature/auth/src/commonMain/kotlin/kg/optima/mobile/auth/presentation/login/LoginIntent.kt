@@ -1,7 +1,6 @@
 package kg.optima.mobile.auth.presentation.login
 
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
 import kg.optima.mobile.auth.presentation.login.utils.toUseCaseModel
@@ -24,17 +23,7 @@ class LoginIntent(
 
 	fun getClientId() {
 		launchOperation {
-			clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
-				LoginModel.ClientId(it.clientId)
-			}
-		}
-	}
-
-	fun showBiometry() {
-		launchOperation {
-			clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
-				LoginModel.Biometry(enabled = it.grantTypes.contains(GrantType.Biometry))
-			}
+			clientInfoUseCase.execute(ClientInfoUseCase.Params).map { LoginModel.ClientId(it) }
 		}
 	}
 
