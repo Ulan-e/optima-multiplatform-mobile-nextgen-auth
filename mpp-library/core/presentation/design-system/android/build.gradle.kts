@@ -68,7 +68,7 @@ dependencies {
 
 	implementation("androidx.biometric:biometric:1.1.0")
 
-	implementation("com.arkivanov.essenty:parcelable:0.6.0")
+	api("com.arkivanov.essenty:parcelable:0.6.0")
 
 	testImplementation("junit:junit:4.13.2")
 	androidTestImplementation("androidx.test.ext:junit:1.1.3")

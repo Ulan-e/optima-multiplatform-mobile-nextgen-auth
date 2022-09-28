@@ -54,8 +54,7 @@ dependencies {
     commonMainApi(libs.mokoCrashReportingCrashlytics)
     commonMainApi(libs.mokoCrashReportingNapier)
 
-    commonMainImplementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
-
+    commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")
 
     commonTestImplementation(libs.mokoTestCore)
     commonTestImplementation(libs.mokoMvvmTest)
@@ -79,6 +78,7 @@ val modules = listOf(
     projects.mppLibrary.base,
     projects.mppLibrary.core,
 //    projects.mppLibrary.feature.auth,
+    projects.mppLibrary.feature.registration,
 )
 
 framework {
