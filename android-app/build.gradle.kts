@@ -107,9 +107,6 @@ dependencies {
     implementation(files("libs/liveness-module-v1.13.4.aar"))
 
     implementation("androidx.activity:activity-ktx:1.5.1")
-    implementation("com.arkivanov.decompose:decompose:0.8.0")
-    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:0.8.0")
-}
 
     implementation("io.fotoapparat:fotoapparat:2.7.0")
     implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
