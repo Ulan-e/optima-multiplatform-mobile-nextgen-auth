@@ -94,6 +94,3 @@ android {
         targetSdk = 32
     }
 }
-dependencies {
-    implementation(project(mapOf("path" to ":mpp-library:core")))
-}

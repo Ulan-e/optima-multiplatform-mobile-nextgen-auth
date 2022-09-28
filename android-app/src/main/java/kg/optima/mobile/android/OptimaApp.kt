@@ -9,7 +9,6 @@ import kg.optima.mobile.android.ui.base.RouterImpl
 import kg.optima.mobile.di.Injector
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
-import org.koin.core.module.Module
 import org.koin.dsl.module
 
 class OptimaApp : Application() {
@@ -27,7 +26,7 @@ class OptimaApp : Application() {
 		}
 	}
 
-	private val navigationModule: Module = module {
+	private val navigationModule = module {
 		factory<Router> { RouterImpl }
 	}
 

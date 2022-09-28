@@ -4,8 +4,6 @@ import io.ktor.http.*
 import kg.optima.mobile.core.StringMap
 import kg.optima.mobile.network.client.NetworkClient
 import kotlinx.serialization.KSerializer
-import kotlin.reflect.KClass
-
 
 abstract class BaseApi(
 	val networkClient: NetworkClient,
@@ -33,5 +31,13 @@ abstract class BaseApi(
 		request: Request,
 	): V {
 		return networkClient.post(baseUrl, path, headers, request)
+	}
+
+	suspend inline fun <reified V> get(
+		path: String,
+		noinline headers: HeadersBuilder.() -> Unit,
+		params: StringMap = mapOf(),
+	): V {
+		return networkClient.get(baseUrl, path, headers, params)
 	}
 }

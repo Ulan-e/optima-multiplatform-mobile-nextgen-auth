@@ -14,10 +14,11 @@ abstract class Factory : KoinComponent {
 	abstract val module: Module
 
 	inline fun <reified I, reified S> create(
-		parameter: Any? = null,
+		stateParameter: Any? = null,
+		intentParameter: Any? = null
 	): Product<I, S> {
-		val state: S by inject { parametersOf(parameter) }
-		val intent: I by inject { parametersOf(state) }
+		val state: S by inject { parametersOf(stateParameter) }
+		val intent: I by inject { parametersOf(state, intentParameter) }
 		return Product(intent, state)
 	}
 

@@ -5,5 +5,7 @@ import kg.optima.mobile.core.navigation.ScreenModel
 
 sealed interface WelcomeScreenModel : ScreenModel {
 	@Parcelize
-	object Welcome : WelcomeScreenModel
+	object Welcome : WelcomeScreenModel {
+		override val dropBackStack: Boolean = true
+	}
 }

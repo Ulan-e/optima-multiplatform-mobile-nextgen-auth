@@ -21,75 +21,78 @@ import kg.optima.mobile.design_system.android.values.Deps
 
 @Composable
 fun PhoneNumberTextField(
-	modifier: Modifier,
-	phoneNumber: String,
-	singleLine: Boolean = true,
-	shape: RoundedCornerShape = RoundedCornerShape(Deps.Spacing.standardMargin),
-	onValueChange: (String) -> Unit,
-	backgroundColor: Color = ComposeColors.PrimaryLightGray,
+    modifier: Modifier,
+    phoneNumber: String,
+    singleLine: Boolean = true,
+    shape: RoundedCornerShape = RoundedCornerShape(Deps.Spacing.standardMargin),
+    onValueChange: (String) -> Unit,
+    backgroundColor: Color = ComposeColors.PrimaryLightGray,
 ) {
-	val focusManager = LocalFocusManager.current
+    val focusManager = LocalFocusManager.current
 
-	TextField(
-		modifier = modifier,
-		value = phoneNumber,
-		onValueChange = onValueChange,
-		singleLine = singleLine,
-		keyboardOptions = KeyboardOptions(
-			keyboardType = KeyboardType.Number,
-			imeAction = ImeAction.Done,
-		),
-		keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
-		visualTransformation = { text -> maskFilter(text) },
-		shape = shape,
-		colors = TextFieldDefaults.textFieldColors(
-			backgroundColor = backgroundColor,
-			focusedIndicatorColor = ComposeColors.PrimaryWhite,
-			unfocusedIndicatorColor = ComposeColors.PrimaryWhite,
-		),
-	)
+    TextField(
+        modifier = modifier,
+        value = phoneNumber,
+        onValueChange = { phone ->
+            if (phone.length <= Constants.PHONE_NUMBER_LENGTH)
+                onValueChange.invoke(phone.filter { it.isDigit() })
+        },
+        singleLine = singleLine,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Number,
+            imeAction = ImeAction.Done,
+        ),
+        keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+        visualTransformation = { text -> maskFilter(text) },
+        shape = shape,
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = backgroundColor,
+            focusedIndicatorColor = ComposeColors.PrimaryWhite,
+            unfocusedIndicatorColor = ComposeColors.PrimaryWhite,
+        ),
+    )
 }
 
 private fun maskFilter(text: AnnotatedString): TransformedText {
-	val trimmed = if (text.text.length >= Constants.PHONE_NUMBER_LENGTH) {
-		text.text.substring(0 until Constants.PHONE_NUMBER_LENGTH)
-	} else {
-		text.text
-	}
-	val annotatedString = AnnotatedString.Builder().run {
-		append(Constants.PHONE_NUMBER_CODE)
-		for (i in trimmed.indices) {
-			if (i == 0) append("(")
-			append(trimmed[i])
+    val trimmed = if (text.text.length >= Constants.PHONE_NUMBER_LENGTH) {
+        text.text.substring(0 until Constants.PHONE_NUMBER_LENGTH)
+    } else {
+        text.text
+    }
+    val annotatedString = AnnotatedString.Builder().run {
+        append(Constants.PHONE_NUMBER_CODE)
+        for (i in trimmed.indices) {
+            if (i == 0) append("(")
+            append(trimmed[i])
 
-			if (i == 2) append(")")
-			if (i % 3 == 2 && i != 8) append(" ")
-		}
-		pushStyle(style = SpanStyle(color = Color.LightGray))
-		val mask = Constants.PHONE_NUMBER_MASK
-		append(mask.takeLast(mask.length - length))
+            if (i == 2) append(")")
+            if (i % 3 == 2 && i != 8) append(" ")
+        }
+        pushStyle(style = SpanStyle(color = Color.LightGray))
+        val mask = Constants.PHONE_NUMBER_MASK
+        append(mask.takeLast(mask.length - length))
 
-		return@run this.toAnnotatedString()
-	}
+        return@run this.toAnnotatedString()
+    }
 
-	val creditCardOffsetTranslator = object : OffsetMapping {
-		override fun originalToTransformed(offset: Int): Int {
-			return when {
-				offset <= 3 -> offset + 6
-				offset <= 6 -> offset + 8
-				offset <= 9 -> offset + 9
-				else -> 18
-			}
-		}
+    val creditCardOffsetTranslator = object : OffsetMapping {
+        override fun originalToTransformed(offset: Int): Int {
+            return when {
+                offset <= 3 -> offset + 6
+                offset <= 6 -> offset + 8
+                offset <= 9 -> offset + 9
+                else -> 18
+            }
+        }
 
-		override fun transformedToOriginal(offset: Int): Int {
-			if (offset <= 5) return 0
-			if (offset <= 9) return offset - 6
-			if (offset <= 14) return offset - 8
-			if (offset <= 18) return offset - 9
-			return 9
-		}
-	}
+        override fun transformedToOriginal(offset: Int): Int {
+            if (offset <= 5) return 0
+            if (offset <= 9) return offset - 6
+            if (offset <= 14) return offset - 8
+            if (offset <= 18) return offset - 9
+            return 9
+        }
+    }
 
-	return TransformedText(annotatedString, creditCardOffsetTranslator)
+    return TransformedText(annotatedString, creditCardOffsetTranslator)
 }

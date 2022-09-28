@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.features.auth.pin
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import com.arkivanov.essenty.parcelable.Parcelize
@@ -22,6 +23,7 @@ class PinEnterScreen(
 	private val nextScreenModel: ScreenModel,
 ) : BaseScreen {
 
+	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
 		val product = remember {
@@ -56,10 +58,10 @@ class PinEnterScreen(
 		MainContainer(
 			mainState = model,
 			toolbarInfo = null,
-		) {
+		) { onBack ->
 			PinScreen(
 				header = enterPinScreenHeader(
-					onCloseClick = { intent.pop() },
+					onCloseClick = { onBack() },
 					onLogoutClick = {},
 				),
 				codeState = codeState,

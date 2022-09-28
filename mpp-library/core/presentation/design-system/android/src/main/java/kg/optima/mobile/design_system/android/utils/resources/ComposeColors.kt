@@ -12,12 +12,14 @@ object ComposeColors {
 	val PrimaryWhite: Color get() = Colors.PrimaryWhite.toComposeColor()
 	val PrimaryBlack: Color get() = Colors.PrimaryBlack.toComposeColor()
 	val PrimaryLightGray: Color get() = Colors.PrimaryLightGray.toComposeColor()
+	val Dark: Color get() = Colors.Dark.toComposeColor()
 
 	val Background: Color get() = Colors.SecondaryBackground.toComposeColor()
 	val Green: Color get() = Colors.Green.toComposeColor()
 	val SystemGreen: Color get() = Colors.SystemGreen.toComposeColor()
 	val DescriptionGray: Color get() = Colors.DescriptionGray.toComposeColor()
 	val WhiteF5: Color get() = Colors.WhiteF5.toComposeColor()
+	val DarkGray: Color get() = Colors.DarkGray.toComposeColor()
 
 	val OpaquedLightGray80: Color get() = PrimaryLightGray.copy(alpha = 0.8f)
 	val OpaquedDisabledGray: Color get() = DescriptionGray.copy(alpha = 0.08f)

@@ -1,6 +1,8 @@
 package kg.optima.mobile.design_system.android.ui.dropdown_list
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -18,6 +20,7 @@ import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
@@ -41,6 +44,7 @@ fun <T> DropDownList(
 ) {
 
 	var contentWidth by remember { mutableStateOf(Size.Zero) }
+	var selected = remember { mutableStateOf(false) }
 
 	val icon = if (expanded) painterResource(id = MainImages.arrowUp.resId())
 	else painterResource(id = MainImages.arrowDown.resId())
@@ -49,11 +53,14 @@ fun <T> DropDownList(
 		elevation = if (expanded) 4.dp else 0.dp,
 		shape = RoundedCornerShape(Deps.inputFieldCornerRadius),
 	) {
-		Box(
-			contentAlignment = Alignment.Center,
+		Row(
+			verticalAlignment = Alignment.CenterVertically,
 			modifier = modifier
 				.background(ComposeColors.OpaquedDisabledGray)
-				.fillMaxWidth()
+				.defaultMinSize(
+					minWidth = TextFieldDefaults.MinWidth,
+					minHeight = TextFieldDefaults.MinHeight
+				)
 				.onGloballyPositioned { coordinates ->
 					contentWidth = coordinates.size.toSize()
 				}
@@ -66,22 +73,34 @@ fun <T> DropDownList(
 		) {
 			Text(
 				modifier = Modifier
-					.align(Alignment.Center)
-					.offset(y = (4).dp)
-					.fillMaxWidth()
-					.requiredHeightIn(min = Deps.Size.buttonHeight)
-					.padding(Deps.Spacing.pinCellXMargin),
-				text = items.selectedItem?.title ?: "",
-				color = ComposeColors.PrimaryDisabledGray,
+					.weight(1f)
+					.padding(start = Deps.Spacing.standardMargin)
+					.clickable(
+						indication = null,
+						interactionSource = remember { MutableInteractionSource() }
+					) {
+						keyboardController?.hide()
+						onExpandClick.invoke()
+					},
+				text = if (selected.value) {
+					items.selectedItem!!.title
+				} else {
+					"Контрольный вопрос"
+				},
 				fontSize = Headings.H4.sp,
-				fontWeight = FontWeight.W500
+				fontWeight = FontWeight.W500,
+				color = if (!selected.value) {
+					ComposeColors.DescriptionGray
+				} else {
+					ComposeColors.PrimaryDisabledGray
+				}
 			)
-
-			Icon(icon, contentDescription = "icon", modifier = Modifier
-				.align(Alignment.CenterEnd)
-				.size(Deps.Size.dropDownIconSize)
-				.padding(Deps.Spacing.marginFromInput)
-				)
+			Icon(
+				icon, contentDescription = "icon",
+				modifier = Modifier
+					.size(Deps.Size.dropDownIconSize)
+					.padding(end = Deps.Spacing.standardMargin)
+			)
 
 			MaterialTheme(
 				colors = MaterialTheme.colors.copy(surface = ComposeColors.WhiteF5),
@@ -92,31 +111,40 @@ fun <T> DropDownList(
 					expanded = expanded,
 					onDismissRequest = onDismiss
 				) {
-					items.list.forEach { selectedOption ->
-						DropdownMenuItem(
-							modifier = Modifier
-								.width(with(LocalDensity.current) { contentWidth.width.toDp() }),
-							onClick = {
-								onItemSelected(selectedOption.entity)
+					items.list.forEachIndexed { i, selectedOption ->
+						if (selectedOption.title != "Контрольный вопрос") {
+							DropdownMenuItem(
+								modifier = Modifier
+									.width(with(LocalDensity.current) { contentWidth.width.toDp() }),
+								onClick = {
+									onItemSelected(selectedOption.entity)
+									selected.value = true
+								}
+							) {
+								Text(
+									modifier = Modifier
+										.fillMaxWidth()
+										.padding(end = Deps.Spacing.standardPadding),
+									text = selectedOption.title,
+									fontSize = Headings.H4.sp,
+									fontWeight = FontWeight.W500,
+									color = ComposeColors.PrimaryDisabledGray
+								)
 							}
-						) {
-							Text(
-								text = selectedOption.title,
-								fontSize = Headings.H4.sp,
-								fontWeight = FontWeight.W500,
-								color = ComposeColors.PrimaryDisabledGray)
+							if (i != items.list.lastIndex) {
+								Divider(
+									thickness = Deps.Spacing.minPadding,
+									color = Color(0xFF999BA3),
+									modifier = Modifier
+										.fillMaxWidth()
+										.padding(start = Deps.Spacing.standardMargin)
+										.padding(vertical = Deps.Spacing.minPadding * 4),
+								)
+							}
 						}
-						Divider(
-							thickness = Deps.Spacing.minPadding,
-							color = Color(0xFFF1F1F2),
-							modifier = Modifier
-								.fillMaxWidth()
-								.padding(horizontal = Deps.Spacing.standardPadding),
-						)
 					}
 				}
 			}
 		}
 	}
-
 }

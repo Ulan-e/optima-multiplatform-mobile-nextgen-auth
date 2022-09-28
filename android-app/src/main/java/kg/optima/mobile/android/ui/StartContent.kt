@@ -1,27 +1,26 @@
 package kg.optima.mobile.android.ui
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.*
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
-import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
-import cafe.adriel.voyager.transitions.SlideTransition
 import kg.optima.mobile.android.ui.base.Router
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.launch.LaunchIntent
 import kg.optima.mobile.common.presentation.launch.LaunchState
+import kg.optima.mobile.core.navigation.ScreenModel
 import org.koin.androidx.compose.inject
 
-
-@OptIn(ExperimentalAnimationApi::class)
 @Suppress("NAME_SHADOWING")
-val startContent: @Composable (bottomSheetNavigator: BottomSheetNavigator) -> Unit = {
+@Composable
+fun StartContent(screenModel: ScreenModel? = null) {
 	val product = remember {
 		CommonFeatureFactory.create<LaunchIntent, LaunchState>()
 	}
 	val state = product.state
-	val intent = product.intent
+	val intent = remember {
+		product.intent.also { if (screenModel != null) it.nextScreenModel(screenModel) }
+	}
 
 	val router: Router by inject()
 

@@ -1,7 +1,3 @@
-/*
- * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
-
 plugins {
     id("android-app-convention")
     id("kotlin-kapt")
@@ -89,7 +85,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("androidx.compose.ui:ui-tooling-preview:1.2.0")
 
-    val accompanistVersion = "0.19.0"
+    val accompanistVersion = "0.25.1"
     implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-insets:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
@@ -98,12 +94,20 @@ dependencies {
     val mokoResourcesVersion = "0.20.1"
     implementation("dev.icerock.moko:resources-compose:$mokoResourcesVersion")
 
-    val voyagerVersion = "1.0.0-beta15"
+    val voyagerVersion = "1.0.0-rc02"
     implementation("cafe.adriel.voyager:voyager-core:$voyagerVersion")
-    implementation ("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
-    implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+    implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
 
+    implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
+    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")
 
-    implementation("com.arkivanov.decompose:decompose:0.8.0")
-    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:0.8.0")
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
+
+    implementation(files("libs/veridoc-module-release-v1.16.1.aar"))
+    implementation(files("libs/liveness-module-v1.13.4.aar"))
+
+    implementation("androidx.activity:activity-ktx:1.5.1")
+
+    implementation("io.fotoapparat:fotoapparat:2.7.0")
+    implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
 }

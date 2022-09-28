@@ -8,13 +8,16 @@ sealed interface RegistrationScreenModel : ScreenModel {
 	object Agreement : RegistrationScreenModel
 
 	@Parcelize
+	class Offerta(val url: String) : RegistrationScreenModel
+
+	@Parcelize
 	object EnterPhone : RegistrationScreenModel
 
 	@Parcelize
 	class AcceptCode(
-		val phoneNumber: String,
-		val timeout: Int,
-		val referenceId: String,
+        val phoneNumber: String,
+        val timeLeft: Long,
+        val referenceId: String,
 	) : RegistrationScreenModel
 
 	@Parcelize
@@ -29,4 +32,10 @@ sealed interface RegistrationScreenModel : ScreenModel {
 		val questionId: String = "",
 		val answer: String = "",
 	) : RegistrationScreenModel
+
+	@Parcelize
+	object BankContacts: RegistrationScreenModel
+
+	@Parcelize
+	object Interview : RegistrationScreenModel
 }

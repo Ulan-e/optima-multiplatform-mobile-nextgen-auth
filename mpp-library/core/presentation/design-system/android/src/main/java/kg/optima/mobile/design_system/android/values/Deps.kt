@@ -43,6 +43,7 @@ object Deps {
 		val pinCellSize get() = 58.dp to 64.dp
 
 		val invisible get() = 0.dp
+		val minimal get() = 1.dp
 
 		val pinBtnSize get() = 75.dp
 		val pinDotSize get() = 10.dp
@@ -55,6 +56,8 @@ object Deps {
 	object TextSize {
 		val pinBtnText get() = 32.sp
 		val codeInputSymbol get() = 40.sp
+
+		val lineHeight get() = 17.sp
 	}
 
 	val cornerRadius get() = 8.dp

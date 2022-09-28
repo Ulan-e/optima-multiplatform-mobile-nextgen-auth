@@ -15,6 +15,7 @@ object MainImages : Images {
     val backspace get() = byFileName("img_backspace")
     val remove get() = byFileName("img_remove")
     val logout get() = byFileName("img_logout")
+    val ellipse get() = byFileName("img_ellipse")
 
     val fingerprint get() = byFileName("img_fingerprint")
 

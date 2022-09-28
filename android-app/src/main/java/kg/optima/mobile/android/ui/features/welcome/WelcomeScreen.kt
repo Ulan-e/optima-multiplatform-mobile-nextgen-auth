@@ -1,14 +1,17 @@
 package kg.optima.mobile.android.ui.features.welcome
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
+import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -21,11 +24,13 @@ import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.resources.Headings
 
 @Parcelize
 object WelcomeScreen : BaseScreen {
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
         val product = remember {
@@ -40,13 +45,16 @@ object WelcomeScreen : BaseScreen {
 
         MainContainer(
             mainState = model,
-            infoState = bottomSheetState.value,
+            sheetInfo = bottomSheetState.value,
             toolbarInfo = ToolbarInfo(navigationIcon = null),
         ) {
             Column(
                 modifier = Modifier.weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+
+                Spacer(Modifier.weight(1f).widthIn(Deps.Spacing.colElementMargin,Deps.Spacing.bigMarginTop))
+
                 Text(
                     text = "Добро пожаловать!",
                     fontSize = Headings.H1.sp,
@@ -61,8 +69,8 @@ object WelcomeScreen : BaseScreen {
             }
             WelcomeScreenButtonBlock(
                 modifier = Modifier
-					.wrapContentSize()
-					.weight(3f),
+                    .wrapContentSize()
+                    .weight(2f),
             )
             PrimaryButton(
                 modifier = Modifier.fillMaxWidth(),
@@ -71,11 +79,11 @@ object WelcomeScreen : BaseScreen {
             )
             TransparentButton(
                 modifier = Modifier
-					.fillMaxWidth()
-					.padding(
-						top = Deps.Spacing.standardMargin,
-						bottom = Deps.Spacing.standardMargin,
-					),
+                    .fillMaxWidth()
+                    .padding(
+                        top = Deps.Spacing.standardMargin,
+                        bottom = Deps.Spacing.standardMargin,
+                    ),
                 text = "Зарегистрироваться",
                 onClick = { intent.register() },
             )
