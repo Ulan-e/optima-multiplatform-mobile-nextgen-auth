@@ -5,7 +5,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent

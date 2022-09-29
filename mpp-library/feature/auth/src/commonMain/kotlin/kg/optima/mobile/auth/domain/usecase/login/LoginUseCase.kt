@@ -9,6 +9,8 @@ import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.common.CryptographyUtils
 import kg.optima.mobile.core.error.Failure
+import kg.optima.mobile.feature.auth.model.AuthOtpModel
+import kg.optima.mobile.feature.auth.model.SignInInfo
 import kg.optima.mobile.network.const.NetworkCode
 
 /* TODO
@@ -53,7 +55,12 @@ class LoginUseCase(
 					bankId = it.data?.userInfo?.bankId.orEmpty(),
 					accessToken = it.data?.accessToken.orEmpty(),
 				)
-				NetworkCode.SmsCodeRequired -> LoginModel.SignInResult.SmsCodeRequired
+				NetworkCode.SmsCodeRequired -> LoginModel.SignInResult.SmsCodeRequired(
+					AuthOtpModel(
+						phoneNumber = "+996 556 250 626",
+						signInInfo = SignInInfo(clientId, password, smsCode)
+					)
+				)
 				NetworkCode.IncorrectCodeOrPassword ->
 					LoginModel.SignInResult.IncorrectData(it.message)
 				NetworkCode.UserBlocked -> LoginModel.SignInResult.UserBlocked

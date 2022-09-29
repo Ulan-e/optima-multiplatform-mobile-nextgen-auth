@@ -1,16 +1,18 @@
-package kg.optima.mobile.android.ui.base
+package kg.optima.mobile.android.ui.base.routing
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kg.optima.mobile.android.ui.features.auth.AuthRouter
 import kg.optima.mobile.android.ui.features.BottomNavigationScreen
+import kg.optima.mobile.android.ui.features.auth.AuthRouter
+import kg.optima.mobile.android.ui.features.common.CommonRouter
 import kg.optima.mobile.android.ui.features.main.MainRouter
 import kg.optima.mobile.android.ui.features.registration.RegistrationRouter
 import kg.optima.mobile.android.ui.features.welcome.WelcomeRouter
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
+import kg.optima.mobile.feature.common.CommonScreenModel
 import kg.optima.mobile.feature.main.MainScreenModel
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.feature.welcome.WelcomeScreenModel
@@ -40,6 +42,10 @@ object RouterImpl : Router {
 				)
 				is AuthScreenModel -> RouteInfo(
 					screen = AuthRouter.compose(screenModel = it),
+					dropBackStack = it.dropBackStack
+				)
+				is CommonScreenModel -> RouteInfo(
+					screen = CommonRouter.compose(screenModel = it),
 					dropBackStack = it.dropBackStack
 				)
 				is MainScreenModel -> RouteInfo(

@@ -14,7 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
@@ -138,13 +138,13 @@ object AgreementScreen : BaseScreen {
 						buttons = listOf(
 							ButtonView.Primary(
 								text = "Отделение",
-								onClickListener = ButtonView.OnClickListener.onClickListener {
+								onClickListener = ButtonView.onClickListener {
 									// TODO
 								}
 							),
 							ButtonView.Transparent(
 								text = "Закрыть",
-								onClickListener = ButtonView.OnClickListener.onClickListener {
+								onClickListener = ButtonView.onClickListener {
 									infoState.value = null
 									onBack()
 								}

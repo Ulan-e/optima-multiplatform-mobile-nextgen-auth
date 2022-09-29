@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.base
+package kg.optima.mobile.android.ui.base.routing
 
 import cafe.adriel.voyager.core.screen.Screen
 

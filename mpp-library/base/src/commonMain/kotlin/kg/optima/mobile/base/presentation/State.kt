@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
 /**
- * [E] - Entity. In parameter, receiving from Domain,
+ * [E] - Entity. In parameter, receiving from Domain.
  **/
 abstract class State<in E>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
@@ -26,11 +26,12 @@ abstract class State<in E>(
 
 	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
 
+	/**
+	* To use only with intent.
+	**/
 	fun setStateModel(newState: @UnsafeVariance StateModel?) {
 		coroutineScope.launch { _stateFlow.emit(newState) }
 	}
-
-	fun init() = setStateModel(StateModel.Initial)
 
 	internal fun setLoading() = setStateModel(StateModel.Loading)
 
@@ -59,6 +60,8 @@ abstract class State<in E>(
 	internal fun pop() = setStateModel(StateModel.Pop)
 
 	abstract fun handle(entity: E)
+
+	fun init() = setStateModel(StateModel.Initial)
 
 	interface StateModel {
 		object Initial : StateModel

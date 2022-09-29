@@ -4,8 +4,8 @@ import android.app.Application
 import com.google.firebase.FirebaseApp
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kg.optima.mobile.BuildConfig
-import kg.optima.mobile.android.ui.base.Router
-import kg.optima.mobile.android.ui.base.RouterImpl
+import kg.optima.mobile.android.ui.base.routing.Router
+import kg.optima.mobile.android.ui.base.routing.RouterImpl
 import kg.optima.mobile.di.Injector
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules

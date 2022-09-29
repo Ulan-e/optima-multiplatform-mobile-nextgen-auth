@@ -62,7 +62,13 @@ abstract class Intent<in E>(
 		}
 	}
 
-	fun List<Permission>.text(): String {
+	private val Permission.text: String
+		get() = when (this) {
+			Permission.Camera -> "камере"
+			Permission.Storage -> "внутреннему хранилищу"
+		}
+
+	protected fun List<Permission>.text(): String {
 		return StringBuilder().apply {
 			this@text.forEach { permission ->
 				append(permission.text)
@@ -70,10 +76,4 @@ abstract class Intent<in E>(
 			}
 		}.toString()
 	}
-
-	val Permission.text: String
-		get() = when (this) {
-			Permission.Camera -> "камере"
-			Permission.Storage -> "внутреннему хранилищу"
-		}
 }

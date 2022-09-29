@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
@@ -115,7 +115,7 @@ class CreatePasswordScreen(
                     buttons = listOf(
                         ButtonView.Primary(
                             text = "Готово",
-                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                            onClickListener = ButtonView.onClickListener {
                                 intent.onRegistrationDone()
                             },
                             composeColor = ComposeColor.composeColor(ComposeColors.Green)
@@ -131,7 +131,7 @@ class CreatePasswordScreen(
                         ButtonView.Primary(
                             text = "На главную",
                             composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
-                            onClickListener = ButtonView.OnClickListener.onClickListener {
+                            onClickListener = ButtonView.onClickListener {
                                 context.navigateTo(WelcomeScreenModel.Welcome)
                             }
                         )

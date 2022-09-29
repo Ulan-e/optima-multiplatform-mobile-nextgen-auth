@@ -1,5 +1,7 @@
 package kg.optima.mobile.auth.presentation.login.model
 
+import kg.optima.mobile.feature.auth.model.AuthOtpModel
+
 sealed interface LoginModel {
 	sealed interface SignInResult : LoginModel {
 		class SuccessAuth(
@@ -8,7 +10,9 @@ sealed interface LoginModel {
 			val accessToken: String,
 		) : SignInResult
 
-		object SmsCodeRequired : SignInResult
+		class SmsCodeRequired(
+			val otpModel: AuthOtpModel
+		) : SignInResult
 
 		class IncorrectData(
 			val message: String?,

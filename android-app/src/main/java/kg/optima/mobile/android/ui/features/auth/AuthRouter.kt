@@ -6,6 +6,7 @@ import kg.optima.mobile.android.ui.FeatureRouter
 import kg.optima.mobile.android.ui.features.auth.login.LoginScreen
 import kg.optima.mobile.android.ui.features.auth.pin.PinEnterScreen
 import kg.optima.mobile.android.ui.features.auth.pin.PinSetScreen
+import kg.optima.mobile.android.ui.features.auth.sms.AuthSmsCodeScreen
 import kg.optima.mobile.feature.auth.AuthScreenModel
 
 object AuthRouter : FeatureRouter<AuthScreenModel> {
@@ -16,6 +17,8 @@ object AuthRouter : FeatureRouter<AuthScreenModel> {
 			is AuthScreenModel.PinEnter ->
 				PinEnterScreen(screenModel.showBiometry, screenModel.nextScreenModel)
 			is AuthScreenModel.PinSet -> PinSetScreen(screenModel.nextScreenModel)
+			is AuthScreenModel.SmsCode ->
+				AuthSmsCodeScreen(screenModel.otpModel, screenModel.nextScreenModel)
 		}
 	}
 

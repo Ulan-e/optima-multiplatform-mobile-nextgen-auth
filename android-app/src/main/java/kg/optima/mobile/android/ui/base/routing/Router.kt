@@ -1,8 +1,7 @@
-package kg.optima.mobile.android.ui.base
+package kg.optima.mobile.android.ui.base.routing
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
-import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.core.navigation.ScreenModel
 
 interface Router {

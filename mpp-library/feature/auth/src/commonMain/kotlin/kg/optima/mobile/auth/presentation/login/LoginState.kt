@@ -3,6 +3,7 @@ package kg.optima.mobile.auth.presentation.login
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.core.navigation.ScreenModel
+import kg.optima.mobile.feature.auth.AuthScreenModel
 
 class LoginState(
 	private val nextScreenModel: ScreenModel,
@@ -12,10 +13,12 @@ class LoginState(
 		val state: StateModel = when (entity) {
 			is LoginModel.SignInResult -> when (entity) {
 				LoginModel.SignInResult.Error -> TODO()
-				is LoginModel.SignInResult.IncorrectData -> LoginStateModel.SignInResult.IncorrectData(
-					entity.message ?: "Неверный ID код или пароль"
-				)
-				LoginModel.SignInResult.SmsCodeRequired -> TODO()
+				is LoginModel.SignInResult.IncorrectData ->
+					LoginStateModel.SignInResult.IncorrectData(
+						message = entity.message ?: "Неверный ID код или пароль"
+					)
+				is LoginModel.SignInResult.SmsCodeRequired ->
+					StateModel.Navigate(AuthScreenModel.SmsCode(nextScreenModel, entity.otpModel))
 				is LoginModel.SignInResult.SuccessAuth -> StateModel.Navigate(nextScreenModel)
 				LoginModel.SignInResult.UserBlocked -> TODO()
 			}

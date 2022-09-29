@@ -21,7 +21,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.android.utils.saveFile
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.core.common.Constants.DOCUMENT_FILE_NAME
@@ -69,13 +69,13 @@ object DocumentScanScreen : Screen {
                     ButtonView.Primary(
                         text = "Остановить процесс",
                         composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
-                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                        onClickListener = ButtonView.onClickListener {
                             context.navigateTo(RegistrationScreenModel.SelfConfirm)
                         }
                     ),
                     ButtonView.Transparent(
                         text = "Отмена",
-                        onClickListener = ButtonView.OnClickListener.onClickListener {
+                        onClickListener = ButtonView.onClickListener {
                             bottomSheetState.value = null
                         }
                     )

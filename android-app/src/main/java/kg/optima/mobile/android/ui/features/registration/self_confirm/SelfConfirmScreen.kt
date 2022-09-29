@@ -14,7 +14,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.base.permission.PermissionController
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim

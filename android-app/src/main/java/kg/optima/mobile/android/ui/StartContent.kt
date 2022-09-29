@@ -3,7 +3,7 @@ package kg.optima.mobile.android.ui
 import androidx.compose.runtime.*
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
-import kg.optima.mobile.android.ui.base.Router
+import kg.optima.mobile.android.ui.base.routing.Router
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.launch.LaunchIntent

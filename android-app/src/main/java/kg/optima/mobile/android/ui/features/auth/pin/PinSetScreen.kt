@@ -4,7 +4,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthState

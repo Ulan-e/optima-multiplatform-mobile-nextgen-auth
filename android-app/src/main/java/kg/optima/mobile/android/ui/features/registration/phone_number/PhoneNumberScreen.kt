@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.features.registration.phone_number
 
-import android.util.Log
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,7 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
@@ -59,7 +58,7 @@ object PhoneNumberScreen : Screen {
 						ButtonView.Primary(
 							text = "На главную",
 							composeColor = ComposeColor.composeColor(ComposeColors.Green),
-							onClickListener = ButtonView.OnClickListener.onClickListener {
+							onClickListener = ButtonView.onClickListener {
 								context.navigateTo(WelcomeScreenModel.Welcome)
 							}
 						)

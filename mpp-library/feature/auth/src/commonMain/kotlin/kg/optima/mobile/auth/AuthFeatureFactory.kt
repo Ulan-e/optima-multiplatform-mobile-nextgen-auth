@@ -13,6 +13,8 @@ import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthState
+import kg.optima.mobile.auth.presentation.sms.AuthSmsCodeIntent
+import kg.optima.mobile.auth.presentation.sms.AuthSmsCodeState
 import kg.optima.mobile.base.di.Factory
 import kg.optima.mobile.network.di.provideNetworkClient
 import kg.optima.mobile.network.failure.NetworkFailureImpl
@@ -28,7 +30,7 @@ object AuthFeatureFactory : Factory() {
 				kotlinxSerializer = get(),
 				networkFailure = NetworkFailureImpl(json = get()),
 				params = mapOf(
-					HttpHeaders.UserAgent to "Optima24/2.10.3 (Android/12; Samsung SM-G991B/vbeb8u4kz7ooj99o)"
+					HttpHeaders.UserAgent to "Optima24/2.10.3 (Android/12; OnePlus 8/in2010asdas)"
 				),
 			)
 		}
@@ -53,5 +55,8 @@ object AuthFeatureFactory : Factory() {
 
 		factory { next -> SetupAuthState(next.get()) }
 		factory { st -> SetupAuthIntent(st.get()) }
+
+		factory { next -> AuthSmsCodeState(next.get()) }
+		factory { st -> AuthSmsCodeIntent(st.get()) }
 	}
 }
