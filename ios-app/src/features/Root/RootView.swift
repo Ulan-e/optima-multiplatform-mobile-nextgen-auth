@@ -5,8 +5,15 @@
 import common
 import design
 import SwiftUI
+import UIKit
 
-struct SplashView: View {
+class RootViewController: UIHostingController<RootView> {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+struct RootView: View {
     @State var isActive: Bool = false
     @Binding var isLoad: Bool
 
@@ -15,8 +22,7 @@ struct SplashView: View {
         NavigationView {
             ZStack(alignment: .center) {
                 if !isActive {
-                    AppImages.getImage(.logoApp)
-                        .imageScale(.large)
+                    SplashViewController()
                 } else {
                     NavigationLink(destination: WelcomeView(isLoad: false), isActive: $isActive) {}
                 }
@@ -35,8 +41,18 @@ struct SplashView: View {
 //    }
 }
 
-struct SplashView_Previews: PreviewProvider {
+struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView(isLoad: .constant(false))
+        RootView(isLoad: .constant(false))
     }
+}
+
+struct SplashViewController: UIViewControllerRepresentable {
+    func makeUIViewController(context _: Context) -> some UIViewController {
+        let storyboard = UIStoryboard(name: "Root.storyboard", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(identifier: "RootViewController")
+        return controller
+    }
+
+    func updateUIViewController(_: UIViewControllerType, context _: Context) {}
 }

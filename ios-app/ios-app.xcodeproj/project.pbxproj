@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0837BDE328E4678F00359174 /* OptimaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0837BDE228E4678F00359174 /* OptimaApp.swift */; };
-		0837BDE528E5630400359174 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0837BDE428E5630400359174 /* SplashView.swift */; };
+		08C6581128E58DE9005EFE6D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6581028E58DE9005EFE6D /* RootView.swift */; };
+		08C6581428E58E01005EFE6D /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6581328E58E01005EFE6D /* RootRouter.swift */; };
+		08C6581728E59370005EFE6D /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6581928E59370005EFE6D /* Root.storyboard */; };
 		0E42E0F92701D4B500A0B283 /* icerock.swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 0E42E0F82701D4B500A0B283 /* icerock.swiftformat */; };
 		451D7B1A235845B100095112 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7B19235845B100095112 /* AppComponent.swift */; };
 		45D8D7FA26FB24AE00DD3A58 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D8D7F926FB24AE00DD3A58 /* Environment.swift */; };
@@ -30,7 +32,9 @@
 
 /* Begin PBXFileReference section */
 		0837BDE228E4678F00359174 /* OptimaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimaApp.swift; sourceTree = "<group>"; };
-		0837BDE428E5630400359174 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		08C6581028E58DE9005EFE6D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		08C6581328E58E01005EFE6D /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		08C6581828E59370005EFE6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Root.storyboard; sourceTree = "<group>"; };
 		0E42E0F82701D4B500A0B283 /* icerock.swiftformat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icerock.swiftformat; sourceTree = "<group>"; };
 		13691F762E9AAC790C1356F4 /* Pods-ios-app.dev-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-app.dev-release.xcconfig"; path = "Target Support Files/Pods-ios-app/Pods-ios-app.dev-release.xcconfig"; sourceTree = "<group>"; };
 		287627FF1F319065007FA12B /* Optima24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optima24.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +87,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08C6580F28E58DC6005EFE6D /* features */ = {
+			isa = PBXGroup;
+			children = (
+				08C6581228E58DEE005EFE6D /* Root */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		08C6581228E58DEE005EFE6D /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				08C6581028E58DE9005EFE6D /* RootView.swift */,
+				08C6581328E58E01005EFE6D /* RootRouter.swift */,
+				08C6581928E59370005EFE6D /* Root.storyboard */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		0E5748052660B2E800C9BCDB /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,12 +147,12 @@
 		45F47910219463C7003D25FA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				08C6580F28E58DC6005EFE6D /* features */,
 				0E5748052660B2E800C9BCDB /* Firebase */,
 				BDCC3692263E90A20097A176 /* Extensions */,
 				BDCC3688263E8CE10097A176 /* Common */,
 				45F47911219463C7003D25FA /* Resources */,
 				45F4791A219463C7003D25FA /* Assets.xcassets */,
-				0837BDE428E5630400359174 /* SplashView.swift */,
 				0837BDE228E4678F00359174 /* OptimaApp.swift */,
 				45D8D7F926FB24AE00DD3A58 /* Environment.swift */,
 				45F4791B219463C7003D25FA /* AppDelegate.swift */,
@@ -292,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C6581728E59370005EFE6D /* Root.storyboard in Resources */,
 				0E42E0F92701D4B500A0B283 /* icerock.swiftformat in Resources */,
 				45F4791E219463C7003D25FA /* Main.storyboard in Resources */,
 				45F4791D219463C7003D25FA /* LaunchScreen.storyboard in Resources */,
@@ -400,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C6581428E58E01005EFE6D /* RootRouter.swift in Sources */,
 				45F47922219463C7003D25FA /* AppDelegate.swift in Sources */,
 				4989F81C2747538300C6DCC0 /* BaseTabBarCoordinator.swift in Sources */,
 				BDCC3691263E8CE10097A176 /* BaseViewController.swift in Sources */,
@@ -413,13 +437,21 @@
 				BDCC369C263E98AA0097A176 /* AppCoordinator.swift in Sources */,
 				BDCC368F263E8CE10097A176 /* BaseCoordinator.swift in Sources */,
 				BDCC369A263E91840097A176 /* BaseCoordinator+Extensions.swift in Sources */,
-				0837BDE528E5630400359174 /* SplashView.swift in Sources */,
+				08C6581128E58DE9005EFE6D /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		08C6581928E59370005EFE6D /* Root.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08C6581828E59370005EFE6D /* Base */,
+			);
+			name = Root.storyboard;
+			sourceTree = "<group>";
+		};
 		45F47912219463C7003D25FA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
