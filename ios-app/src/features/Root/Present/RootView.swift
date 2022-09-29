@@ -7,9 +7,13 @@ import design
 import SwiftUI
 import UIKit
 
-class RootViewController: UIHostingController<RootView> {
+class RootViewController: UIViewController {
+    let contentView = UIHostingController(rootView: RootView(isLoad: .constant(false)))
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        addChild(contentView)
+        view.addSubview(contentView.view)
     }
 }
 
@@ -20,14 +24,14 @@ struct RootView: View {
     var body: some View {
 //        LoadingView(isShowing: isLoad) {
         NavigationView {
-            ZStack(alignment: .center) {
+            ZStack {
                 if !isActive {
                     SplashViewController()
                 } else {
                     NavigationLink(destination: WelcomeView(isLoad: false), isActive: $isActive) {}
                 }
             }
-            .padding()
+            .ignoresSafeArea(.all)
             .onAppear {
                 isLoad.toggle()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -37,20 +41,13 @@ struct RootView: View {
             }
         }
     }
-
 //    }
-}
-
-struct RootView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootView(isLoad: .constant(false))
-    }
 }
 
 struct SplashViewController: UIViewControllerRepresentable {
     func makeUIViewController(context _: Context) -> some UIViewController {
-        let storyboard = UIStoryboard(name: "Root.storyboard", bundle: Bundle.main)
-        let controller = storyboard.instantiateViewController(identifier: "RootViewController")
+        let storyboard = UIStoryboard(name: "Root", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(identifier: "Root")
         return controller
     }
 

@@ -98,11 +98,19 @@
 		08C6581228E58DEE005EFE6D /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				08C6581A28E598AA005EFE6D /* Present */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		08C6581A28E598AA005EFE6D /* Present */ = {
+			isa = PBXGroup;
+			children = (
 				08C6581028E58DE9005EFE6D /* RootView.swift */,
 				08C6581328E58E01005EFE6D /* RootRouter.swift */,
 				08C6581928E59370005EFE6D /* Root.storyboard */,
 			);
-			path = Root;
+			path = Present;
 			sourceTree = "<group>";
 		};
 		0E5748052660B2E800C9BCDB /* Firebase */ = {
