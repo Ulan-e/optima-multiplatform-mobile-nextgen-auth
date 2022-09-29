@@ -1,5 +1,3 @@
-
-
 plugins {
     id("android-app-convention")
     id("kotlin-kapt")

@@ -1,4 +1,11 @@
 PODS:
+  - authorization (0.1.0)
+  - biometric (0.1.0):
+    - design
+  - common (0.1.0):
+    - design
+    - registration
+  - design (0.1.0)
   - FirebaseCore (7.11.0):
     - FirebaseCoreDiagnostics (~> 7.4)
     - GoogleUtilities/Environment (~> 7.0)
@@ -39,13 +46,25 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - otp (0.1.0):
+    - biometric
+    - design
   - PromisesObjC (1.2.12)
+  - registration (0.1.0):
+    - design
+    - otp
   - SwiftFormat/CLI (0.49.7)
 
 DEPENDENCIES:
+  - authorization (from `DevPods/authorization`)
+  - biometric (from `DevPods/biometric`)
+  - common (from `DevPods/common`)
+  - design (from `DevPods/design`)
   - MCRCDynamicProxy (from `https://github.com/icerockdev/moko-crash-reporting.git`, tag `release/0.2.1`)
   - MCRCStaticReporter (from `https://github.com/icerockdev/moko-crash-reporting.git`, tag `release/0.2.1`)
   - MultiPlatformLibrary (from `../mpp-library`)
+  - otp (from `DevPods/otp`)
+  - registration (from `DevPods/registration`)
   - SwiftFormat/CLI (~> 0.49.4)
 
 SPEC REPOS:
@@ -61,6 +80,14 @@ SPEC REPOS:
     - SwiftFormat
 
 EXTERNAL SOURCES:
+  authorization:
+    :path: DevPods/authorization
+  biometric:
+    :path: DevPods/biometric
+  common:
+    :path: DevPods/common
+  design:
+    :path: DevPods/design
   MCRCDynamicProxy:
     :git: https://github.com/icerockdev/moko-crash-reporting.git
     :tag: release/0.2.1
@@ -69,6 +96,10 @@ EXTERNAL SOURCES:
     :tag: release/0.2.1
   MultiPlatformLibrary:
     :path: "../mpp-library"
+  otp:
+    :path: DevPods/otp
+  registration:
+    :path: DevPods/registration
 
 CHECKOUT OPTIONS:
   MCRCDynamicProxy:
@@ -79,6 +110,10 @@ CHECKOUT OPTIONS:
     :tag: release/0.2.1
 
 SPEC CHECKSUMS:
+  authorization: 6c678cd715851f948a7f1ac448e8d7ad28de77db
+  biometric: cde4efb0687fffe7ea8f3ef5df17e1c757c14337
+  common: f42e12aab2c20148a79f56dee27cbd9b493f70c9
+  design: 02b3ba7e539cd12f6b62216ec1f5b6baaf39ef03
   FirebaseCore: 907447d8917a4d3eb0cce2829c5a0ad21d90b432
   FirebaseCoreDiagnostics: 68ad972f99206cef818230f3f3179d52ccfb7f8c
   FirebaseCrashlytics: 272b675aa9d1e9bae1f9e1449fcc1f2cf6042806
@@ -89,9 +124,11 @@ SPEC CHECKSUMS:
   MCRCStaticReporter: cd86088a80da448449d07eb8d1f7c63420570ca2
   MultiPlatformLibrary: 91d3837ea2c0943e0713f98671a36913470ef412
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  otp: 7bdb92cde38c7345a86804291c75a9e8193bbeea
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  registration: c5c9cdc6499f7cf77a768bfa2d18efb2a302049d
   SwiftFormat: b70e3c776a74c67ce8bd140425a8c86d4a843759
 
-PODFILE CHECKSUM: 72d4a69272b0e5a25560d2fe2e575b7d08500b4b
+PODFILE CHECKSUM: 75cc9042cfd631e5dea9ebfca7077c6d0869f610
 
 COCOAPODS: 1.11.3

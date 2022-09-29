@@ -7,7 +7,7 @@ import MCRCStaticReporter
 import MultiPlatformLibrary
 import UIKit
 
-@UIApplicationMain
+// @UIApplicationMain
 class AppDelegate: NSObject, UIApplicationDelegate {
     var window: UIWindow?
 

@@ -16,6 +16,12 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+    targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
+        binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework> {
+            isStatic = false
+        }
+    }
+
     cocoapods {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
@@ -24,7 +30,7 @@ kotlin {
             baseName = "feature"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -33,7 +39,7 @@ kotlin {
                 implementation(project(":mpp-library:core:data:storage"))
 
                 implementation(libs.kotlinSerialization)
-                implementation("com.arkivanov.essenty:parcelable:0.6.0")
+                implementation("com.arkivanov.decompose:decompose:0.8.0")
                 implementation("io.insert-koin:koin-core:3.1.4")
             }
         }

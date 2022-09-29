@@ -3,20 +3,55 @@ source 'https://cdn.cocoapods.org/'
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
-use_frameworks!
-platform :ios, '12.0'
+platform :ios, '14.1'
 
-
+workspace 'ios-app.xcworkspace'
 project 'ios-app',
   'dev-release' => :release, 'stage-release' => :release,
   'dev-debug' => :debug, 'stage-debug' => :debug,
   'prod-debug' => :debug, 'prod-release' => :release
 
+use_frameworks!
+
 # workaround for https://github.com/CocoaPods/CocoaPods/issues/8073
 # need for correct invalidate of cache MultiPlatformLibrary.framework
+def design_pod
+ pod 'design', :path => 'DevPods/design'
+end
+
+def authorization_pod
+  pod 'authorization', :path => 'DevPods/authorization'
+end
+
+def common_pod
+  pod 'common', :path => 'DevPods/common'
+end
+
+def registration_pod
+  pod 'registration', :path => 'DevPods/registration'
+end
+
+def otp_pod
+  pod 'otp', :path => 'DevPods/otp'
+end
+
+def biometric_pod
+  pod 'biometric', :path => 'DevPods/biometric'
+end
+
+def dev_pods
+  design_pod
+  common_pod
+  authorization_pod
+  registration_pod
+  otp_pod
+  biometric_pod
+end
+
 install! 'cocoapods', :disable_input_output_paths => true
 
 target 'ios-app' do
+  dev_pods
   pod 'MultiPlatformLibrary', :path => '../mpp-library'
 #  pod 'MultiPlatformLibraryUnits/Core',
 #    :git => 'https://github.com/icerockdev/moko-units.git', :tag => 'release/0.7.0'
@@ -44,4 +79,51 @@ target 'ios-app' do
   # pod 'InfiniteLayout', :git => 'https://github.com/icerockdev/InfiniteLayout', :branch => 'master' # Infinite collection view layout
   # pod 'SSZipArchive', '~> 2.4.2'      # Zip format support
   # pod 'AssetImportKit', '~> 1.1.1'    # Import 3D model dynamically on SceneKit
+end
+
+target 'design_Example' do
+  use_frameworks!
+  project 'DevPods/design/Example/design.xcodeproj'
+
+  design_pod
+end
+
+target 'authorization_Example' do
+  use_frameworks!
+  project 'DevPods/authorization/Example/authorization.xcodeproj'
+
+  authorization_pod
+end
+
+target 'common_Example' do
+  use_frameworks!
+  project 'DevPods/common/Example/common.xcodeproj'
+
+  design_pod
+  common_pod
+end
+
+target 'registration_Example' do
+  use_frameworks!
+  project 'DevPods/registration/Example/registration.xcodeproj'
+  
+  registration_pod
+  design_pod
+end
+
+target 'otp_Example' do
+  use_frameworks!
+  project 'DevPods/otp/Example/otp.xcodeproj'
+  
+  otp_pod
+  design_pod
+  biometric_pod
+end
+
+target 'biometric_Example' do
+  use_frameworks!
+  project 'DevPods/biometric/Example/biometric.xcodeproj'
+
+  biometric_pod
+  design_pod
 end
