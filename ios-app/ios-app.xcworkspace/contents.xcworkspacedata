@@ -7,4 +7,22 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:DevPods/design/Example/design.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DevPods/authorization/Example/authorization.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DevPods/biometric/Example/biometric.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DevPods/common/Example/common.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DevPods/otp/Example/otp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DevPods/registration/Example/registration.xcodeproj">
+   </FileRef>
 </Workspace>

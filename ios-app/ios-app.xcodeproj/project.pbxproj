@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0837BDE328E4678F00359174 /* OptimaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0837BDE228E4678F00359174 /* OptimaApp.swift */; };
+		0837BDE528E5630400359174 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0837BDE428E5630400359174 /* SplashView.swift */; };
 		0E42E0F92701D4B500A0B283 /* icerock.swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 0E42E0F82701D4B500A0B283 /* icerock.swiftformat */; };
 		451D7B1A235845B100095112 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7B19235845B100095112 /* AppComponent.swift */; };
 		45D8D7FA26FB24AE00DD3A58 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D8D7F926FB24AE00DD3A58 /* Environment.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0837BDE228E4678F00359174 /* OptimaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimaApp.swift; sourceTree = "<group>"; };
+		0837BDE428E5630400359174 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		0E42E0F82701D4B500A0B283 /* icerock.swiftformat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icerock.swiftformat; sourceTree = "<group>"; };
 		13691F762E9AAC790C1356F4 /* Pods-ios-app.dev-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-app.dev-release.xcconfig"; path = "Target Support Files/Pods-ios-app/Pods-ios-app.dev-release.xcconfig"; sourceTree = "<group>"; };
 		287627FF1F319065007FA12B /* Optima24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optima24.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +130,8 @@
 				BDCC3688263E8CE10097A176 /* Common */,
 				45F47911219463C7003D25FA /* Resources */,
 				45F4791A219463C7003D25FA /* Assets.xcassets */,
+				0837BDE428E5630400359174 /* SplashView.swift */,
+				0837BDE228E4678F00359174 /* OptimaApp.swift */,
 				45D8D7F926FB24AE00DD3A58 /* Environment.swift */,
 				45F4791B219463C7003D25FA /* AppDelegate.swift */,
 				451D7B19235845B100095112 /* AppComponent.swift */,
@@ -265,11 +271,11 @@
 			};
 			buildConfigurationList = 287627FA1F319065007FA12B /* Build configuration list for PBXProject "ios-app" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				Base,
+				en,
 			);
 			mainGroup = 287627F61F319065007FA12B;
 			productRefGroup = 287628001F319065007FA12B /* Products */;
@@ -401,11 +407,13 @@
 				BDCC3698263E914B0097A176 /* UIViewController+Extensions.swift in Sources */,
 				9A69439D28509F78007FDC8B /* KeyboardAwareAnimatedConstraint.swift in Sources */,
 				451D7B1A235845B100095112 /* AppComponent.swift in Sources */,
+				0837BDE328E4678F00359174 /* OptimaApp.swift in Sources */,
 				45D8D7FA26FB24AE00DD3A58 /* Environment.swift in Sources */,
 				BDCC368E263E8CE10097A176 /* CoordinatorProtocol.swift in Sources */,
 				BDCC369C263E98AA0097A176 /* AppCoordinator.swift in Sources */,
 				BDCC368F263E8CE10097A176 /* BaseCoordinator.swift in Sources */,
 				BDCC369A263E91840097A176 /* BaseCoordinator+Extensions.swift in Sources */,
+				0837BDE528E5630400359174 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
