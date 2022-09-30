@@ -15,7 +15,7 @@ object NetworkFactory {
 	val module: Module = module {
 		factory { provideJson() }
         factory { provideSerializer() }
-		factory {
+		factory() {
 			provideHttpClient(
                 kotlinxSerializer = get(),
 				networkFailure = NetworkFailureImpl(json = get()),
@@ -24,7 +24,7 @@ object NetworkFactory {
 				)
 			)
 		}
-		factory(qualifier = named("CommonNetworkClient")) {
+		factory() {
 			provideNetworkClient(httpClient = get(), json = get())
 		}
 	}
