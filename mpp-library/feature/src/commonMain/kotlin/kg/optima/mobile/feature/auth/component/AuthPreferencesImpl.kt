@@ -14,10 +14,6 @@ class AuthPreferencesImpl(
         get() = storageRepository.getString(AuthPreferences.CLIENT_ID)
         set(value) = storageRepository.putString(AuthPreferences.CLIENT_ID, value.orEmpty())
 
-    override var refreshToken: String?
-        get() = storageRepository.getString(AuthPreferences.REFRESH_TOKEN)
-        set(value) = storageRepository.putString(AuthPreferences.REFRESH_TOKEN, value.orEmpty())
-
     override var isAuthorized: Boolean
         get() = storageRepository.getBoolean(AuthPreferences.AUTHORIZED, false)
         set(value) = storageRepository.putBoolean(AuthPreferences.AUTHORIZED, value)
@@ -29,9 +25,15 @@ class AuthPreferencesImpl(
         )
         set(value) = storageRepository.putString(AuthPreferences.DEVICE_ID, value)
 
-    override var token: String?
-        get() = storageRepository.getString(AuthPreferences.TOKEN)
-        set(value) = storageRepository.putString(AuthPreferences.TOKEN, value.orEmpty())
+    override var sessionData: SessionData?
+        get() = storageRepository.getObject(SessionData.serializer(), AuthPreferences.SESSION_DATA)
+        set(value) {
+            if (value != null) {
+                storageRepository.putObject(value, SessionData.serializer(), AuthPreferences.SESSION_DATA)
+            } else {
+                storageRepository.remove(AuthPreferences.SESSION_DATA)
+            }
+        }
 
     override var password: String
         get() = storageRepository.getString("PASSWORD", emptyString)
@@ -45,25 +47,17 @@ class AuthPreferencesImpl(
         get() = storageRepository.getString("Biometry", emptyString)
         set(value) = storageRepository.putString("Biometry", value)
 
-    override fun saveToken(token: String?) {
-//        clientId = if (token != null) {
-//            PlatformJWT.getParamByKey(token, JwtParameter.USER_ID)
-//        } else {
-//            null
-//        }
-        storageRepository.putString(AuthPreferences.TOKEN, token.orEmpty())
-    }
-
     override fun clearProfile() {
         isAuthorized = false
-        saveToken(null)
         clientId = null
-        refreshToken = null
+        sessionData = null
+        password = emptyString
+        pin = emptyString
+        biometry = emptyString
     }
 
     override fun clear() {
-        saveToken(null)
-        refreshToken = null
-        isAuthorized = false
+        clearProfile()
+        deviceId = emptyString
     }
 }

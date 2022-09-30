@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 class LoginResponse(
 	@SerialName("AccessToken")
-	val accessToken: String?,
+	val accessToken: String,
 
 	@SerialName("StartDateTime")
 	val startDateTime: String?,

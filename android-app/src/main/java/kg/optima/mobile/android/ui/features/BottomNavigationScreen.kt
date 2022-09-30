@@ -42,14 +42,15 @@ object BottomNavigationScreen : BaseScreen {
 	@Composable
 	override fun Content() {
 		val context = LocalContext.current
-		val root = RootComponent(context.asActivity()!!.defaultComponentContext())
+		val activity = context.asActivity()
+		val root = RootComponent(activity!!.defaultComponentContext())
 		val childStack by root.childStack.subscribeAsState()
 		val activeComponent = childStack.active.instance
 
 		val navigator = LocalNavigator.currentOrThrow
-		if (!navigator.canPop) {
-			val activity = LocalContext.current.asActivity()
-			BackHandler { activity?.finish() }
+
+		androidx.activity.compose.BackHandler {
+			if (!navigator.canPop) activity.finish() else navigator.pop()
 		}
 
 		Scaffold(

@@ -9,6 +9,7 @@ import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.common.CryptographyUtils
 import kg.optima.mobile.core.error.Failure
+import kg.optima.mobile.feature.auth.component.SessionData
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
 import kg.optima.mobile.feature.auth.model.SignInInfo
 import kg.optima.mobile.network.const.NetworkCode
@@ -49,18 +50,36 @@ class LoginUseCase(
 			smsCode = smsCode,
 		)
 		return authRepository.login(request).map {
+			authPreferences.clearProfile()
 			when (NetworkCode.byCode(it.code)) {
-				NetworkCode.Success -> LoginModel.SignInResult.SuccessAuth(
-					firstAuth = !authPreferences.isAuthorized,
-					bankId = it.data?.userInfo?.bankId.orEmpty(),
-					accessToken = it.data?.accessToken.orEmpty(),
-				)
-				NetworkCode.SmsCodeRequired -> LoginModel.SignInResult.SmsCodeRequired(
-					AuthOtpModel(
-						phoneNumber = "+996 556 250 626",
-						signInInfo = SignInInfo(clientId, password, smsCode)
+				NetworkCode.Success -> {
+					authPreferences.clientId = clientId
+					it.data?.let { data ->
+						authPreferences.password = password
+						authPreferences.sessionData = SessionData(
+							accessToken = data.accessToken,
+							startDateTime = data.startDateTime,
+							lastUpdate = data.lastUpdate,
+							sessionDuration = data.sessionDuration
+						)
+						authPreferences.isAuthorized = true
+
+						LoginModel.SignInResult.SuccessAuth(firstAuth = !authPreferences.isAuthorized)
+					} ?: run {
+						LoginModel.SignInResult.Error
+					}
+				}
+				NetworkCode.SmsCodeRequired -> {
+					authPreferences.clientId = clientId
+					authPreferences.isAuthorized = false
+
+					LoginModel.SignInResult.SmsCodeRequired(
+						AuthOtpModel(
+							phoneNumber = "+996 556 250 626",
+							signInInfo = SignInInfo(clientId, password, smsCode)
+						)
 					)
-				)
+				}
 				NetworkCode.IncorrectCodeOrPassword ->
 					LoginModel.SignInResult.IncorrectData(it.message)
 				NetworkCode.UserBlocked -> LoginModel.SignInResult.UserBlocked

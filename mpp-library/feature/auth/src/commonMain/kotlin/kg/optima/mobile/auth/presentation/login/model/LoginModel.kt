@@ -6,8 +6,6 @@ sealed interface LoginModel {
 	sealed interface SignInResult : LoginModel {
 		class SuccessAuth(
 			val firstAuth: Boolean,
-			val bankId: String,
-			val accessToken: String,
 		) : SignInResult
 
 		class SmsCodeRequired(

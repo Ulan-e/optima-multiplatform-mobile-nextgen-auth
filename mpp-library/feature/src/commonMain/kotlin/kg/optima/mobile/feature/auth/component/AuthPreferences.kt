@@ -9,17 +9,13 @@ interface AuthPreferences {
         const val CLIENT_ID = "USER_ID"
         const val DEVICE_ID = "DEVICE_ID"
         const val FIRST_START = "FIRST_START"
-        const val GEO = "GEO"
-        const val PROFILE_ID = "PROFILE_ID"
-        const val TOKEN = "TOKEN"
-        const val REFRESH_TOKEN = "REFRESH_TOKEN"
+        const val SESSION_DATA = "SESSION_DATA"
     }
 
     var clientId: String?
-    var refreshToken: String?
     var isAuthorized: Boolean
     var deviceId: String
-    var token: String?
+    var sessionData: SessionData?
 
     var password: String
     var pin: String
@@ -34,8 +30,6 @@ interface AuthPreferences {
         }
         return grantTypes
     }
-
-    fun saveToken(token: String?)
 
     fun clearProfile()
 
