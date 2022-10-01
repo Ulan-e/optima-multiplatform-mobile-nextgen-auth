@@ -38,10 +38,6 @@ dependencies {
     commonMainApi("com.soywiz.korlibs.krypto:krypto:2.7.0")
 }
 
-framework {
-    export(libs.multiplatformSettings)
-}
-
 cocoaPods {
     podsProject = file("../ios-app/Pods/Pods.xcodeproj")
 
