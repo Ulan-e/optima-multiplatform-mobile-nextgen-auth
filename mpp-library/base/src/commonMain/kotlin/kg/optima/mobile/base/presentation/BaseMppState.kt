@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 /**
  * [E] - Entity. In parameter, receiving from Domain,
  **/
-abstract class State<in E>(
+abstract class BaseMppState<in E>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) {
 	protected val stateValue: AtomicReference<@UnsafeVariance StateModel?> = AtomicReference(null)

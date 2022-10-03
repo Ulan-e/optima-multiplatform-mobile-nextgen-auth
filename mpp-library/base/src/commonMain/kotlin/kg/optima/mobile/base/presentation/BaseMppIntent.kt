@@ -10,7 +10,7 @@ import org.koin.core.component.KoinComponent
 /**
  * [E] - Entity, In parameter coming from Domain,
  **/
-abstract class Intent<in E>(
+abstract class BaseMppIntent<in E>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) : KoinComponent {
 
@@ -21,26 +21,26 @@ abstract class Intent<in E>(
 		println("State CoroutineExceptionHandler got $exception")
 	}
 
-	protected abstract val state: State<E>
+	protected abstract val mppState: BaseMppState<E>
 
 	open fun nextScreenModel(nextScreenModel: ScreenModel) {
-		state.setStateModel(State.StateModel.Navigate(nextScreenModel))
+		mppState.setStateModel(BaseMppState.StateModel.Navigate(nextScreenModel))
 	}
 
 	open fun pop() =
-		state.pop()
+		mppState.pop()
 
 	fun requestPermission(permission: Permission) = requestPermissions(listOf(permission))
 
 	open fun requestPermissions(permissions: List<Permission>) {
 		coroutineScope.launch(handler) {
-			state.setStateModel(State.StateModel.RequestPermissions(permissions))
+			mppState.setStateModel(BaseMppState.StateModel.RequestPermissions(permissions))
 		}
 	}
 
 	open fun customPermissionRequired(permissions: List<Permission>) {
 		coroutineScope.launch(handler) {
-			state.setStateModel(State.StateModel.CustomPermissionRequired(
+			mppState.setStateModel(BaseMppState.StateModel.CustomPermissionRequired(
 				text = "Чтобы вы могли зарегистрироваться приложению нужен " +
 						"доступ к ${permissions.text()}",
 				permissions = permissions,
@@ -53,11 +53,11 @@ abstract class Intent<in E>(
 		operation: suspend () -> Either<Failure, E>,
 	): Job {
 		return coroutineScope.launch(handler) {
-			if (withLoading) state.setLoading()
+			if (withLoading) mppState.setLoading()
 			delay(200)
 			operation().fold(
-				fnL = { err -> state.setError(State.StateModel.Error.BaseError(err.message)) },
-				fnR = { model -> state.handle(model) }
+				fnL = { err -> mppState.setError(BaseMppState.StateModel.Error.BaseError(err.message)) },
+				fnR = { model -> mppState.handle(model) }
 			)
 		}
 	}

@@ -1,7 +1,6 @@
 package kg.optima.mobile.android.ui.features.registration.sms_otp
 
 import android.text.format.DateUtils
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
@@ -12,7 +11,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
@@ -43,7 +42,7 @@ class OtpScreen(
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
 		val codeState = remember { mutableStateOf(emptyString) }
 		val timeLeftState = remember { mutableStateOf(0) }
@@ -52,10 +51,10 @@ class OtpScreen(
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
 		when (val model = model) {
-			is State.StateModel.Initial -> {
+			is BaseMppState.StateModel.Initial -> {
 				intent.startTimer(timeLeft, System.currentTimeMillis())
 			}
-			is State.StateModel.Error -> {
+			is BaseMppState.StateModel.Error -> {
 				codeState.value = emptyString
 				errorState.value = Constants.OTP_INVALID_ERROR_CODE
 				if (triesCountState.value <= 0) {

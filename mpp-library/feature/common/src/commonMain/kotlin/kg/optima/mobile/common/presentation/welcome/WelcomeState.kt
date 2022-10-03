@@ -1,13 +1,13 @@
 package kg.optima.mobile.common.presentation.welcome
 
 import kg.optima.mobile.auth.domain.usecase.login.GrantType
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
 import kg.optima.mobile.feature.main.BottomNavScreenModel
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
-class WelcomeState : State<WelcomeEntity>() {
+class WelcomeState : BaseMppState<WelcomeEntity>() {
 
 	override fun handle(entity: WelcomeEntity) {
 		val stateModel = when (entity) {

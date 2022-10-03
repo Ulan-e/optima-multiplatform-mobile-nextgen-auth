@@ -1,12 +1,12 @@
 package kg.optima.mobile.auth.presentation.setup_auth
 
 import kg.optima.mobile.auth.domain.usecase.pin_set.SetupAuthResult
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.navigation.ScreenModel
 
 class SetupAuthState(
 	private val nextScreenModel: ScreenModel,
-) : State<SetupAuthResult>() {
+) : BaseMppState<SetupAuthResult>() {
 
 	override fun handle(entity: SetupAuthResult) {
 		val state = when (entity) {

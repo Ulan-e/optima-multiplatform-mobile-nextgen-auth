@@ -29,7 +29,7 @@ import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import kg.optima.mobile.android.ui.base.Router
 import kg.optima.mobile.android.ui.base.permission.PermissionController
 import kg.optima.mobile.android.utils.asActivity
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.bottomsheet.InfoBottomSheet
@@ -50,19 +50,19 @@ typealias PopLast = () -> Unit
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainContainer(
-    modifier: Modifier = Modifier,
-    mainState: State.StateModel?,
-    sheetInfo: BottomSheetInfo? = null,
-    permissionController: PermissionController? = null,
-    component: Root.Child.Component? = null,
-    toolbarInfo: ToolbarInfo? = ToolbarInfo(),
-    scrollable: Boolean = false,
-    contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
-    contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
-    onSheetStateChanged: (ModalBottomSheetValue, PopLast) -> Unit = { _, _ -> },
-    sheetStatus: SheetStatus = SheetStatus.NOT_DISMISSIBLE,
-    sheetNavigationScreen: Screen? = null,
-    content: @Composable ColumnScope.(PopLast) -> Unit,
+	modifier: Modifier = Modifier,
+	mainState: BaseMppState.StateModel?,
+	sheetInfo: BottomSheetInfo? = null,
+	permissionController: PermissionController? = null,
+	component: Root.Child.Component? = null,
+	toolbarInfo: ToolbarInfo? = ToolbarInfo(),
+	scrollable: Boolean = false,
+	contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
+	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+	onSheetStateChanged: (ModalBottomSheetValue, PopLast) -> Unit = { _, _ -> },
+	sheetStatus: SheetStatus = SheetStatus.NOT_DISMISSIBLE,
+	sheetNavigationScreen: Screen? = null,
+	content: @Composable ColumnScope.(PopLast) -> Unit,
 ) {
     val router: Router by inject()
 
@@ -159,31 +159,31 @@ fun MainContainer(
             }
             Box(contentAlignment = Alignment.Center) {
                 when (mainState) {
-                    is State.StateModel.Loading -> {
+                    is BaseMppState.StateModel.Loading -> {
                         CircularProgress(modifier = Modifier.align(Alignment.Center))
                     }
-                    is State.StateModel.Navigate -> {
+                    is BaseMppState.StateModel.Navigate -> {
 //                component?.addAll(mainState.screenModels)
                         router.push(mainState.screenModels)
                     }
-                    is State.StateModel.Pop -> {
+                    is BaseMppState.StateModel.Pop -> {
 //					component?.pop()
 //					router.popLast()
                     }
-                    is State.StateModel.Error -> {
+                    is BaseMppState.StateModel.Error -> {
                         processError(
                             errorState = mainState,
                             onSheetStateChanged = onChangeSheetState,
                             onBottomSheetHidden = onBottomSheetHidden,
                         )
                     }
-                    is State.StateModel.RequestPermissions -> {
+                    is BaseMppState.StateModel.RequestPermissions -> {
                         requestPermission(
                             requestPermissionState = mainState,
                             permissionController = permissionController,
                         )
                     }
-                    is State.StateModel.CustomPermissionRequired -> {
+                    is BaseMppState.StateModel.CustomPermissionRequired -> {
                         customPermissionRequired(
                             customPermissionRequired = mainState,
                             context = context,
@@ -200,13 +200,13 @@ fun MainContainer(
 
 @Composable
 private fun processError(
-    errorState: State.StateModel.Error,
-    onSheetStateChanged: (sheetInfo: BottomSheetInfo?) -> Unit,
-    onBottomSheetHidden: () -> Unit,
+	errorState: BaseMppState.StateModel.Error,
+	onSheetStateChanged: (sheetInfo: BottomSheetInfo?) -> Unit,
+	onBottomSheetHidden: () -> Unit,
 ) {
     // TODO process error
     when (errorState) {
-        is State.StateModel.Error.ApiError -> onSheetStateChanged(
+        is BaseMppState.StateModel.Error.ApiError -> onSheetStateChanged(
             BottomSheetInfo(
                 title = errorState.error,
                 buttons = listOf(
@@ -228,8 +228,8 @@ private var customRationaleRequest = CustomRationale.FIRST_REQUEST
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 private fun requestPermission(
-    requestPermissionState: State.StateModel.RequestPermissions,
-    permissionController: PermissionController?,
+	requestPermissionState: BaseMppState.StateModel.RequestPermissions,
+	permissionController: PermissionController?,
 ) {
     val permissionsState = rememberMultiplePermissionsState(
         requestPermissionState.permissions.map {
@@ -273,10 +273,10 @@ private fun requestPermission(
 
 @Composable
 private fun customPermissionRequired(
-    customPermissionRequired: State.StateModel.CustomPermissionRequired,
-    context: Context,
-    onSheetStateChanged: (sheetInfo: BottomSheetInfo?) -> Unit,
-    onBottomSheetHidden: () -> Unit,
+	customPermissionRequired: BaseMppState.StateModel.CustomPermissionRequired,
+	context: Context,
+	onSheetStateChanged: (sheetInfo: BottomSheetInfo?) -> Unit,
+	onBottomSheetHidden: () -> Unit,
 ) {
     onSheetStateChanged(
         BottomSheetInfo(

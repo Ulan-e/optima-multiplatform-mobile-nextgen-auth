@@ -17,7 +17,7 @@ import androidx.core.content.ContextCompat.startActivity
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.offer.OfferIntent
 import kg.optima.mobile.registration.presentation.offer.OfferState
@@ -37,7 +37,7 @@ class OfferScreen(
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
 		MainContainer(
 			mainState = model,

@@ -15,7 +15,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.dropdown_list.DropDownItemModel
@@ -46,7 +46,7 @@ class ControlQuestionScreen(
         val intent = product.intent
         val state = product.state
 
-        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
         val answerInputText = remember { mutableStateOf(emptyString) }
         val buttonEnabled = remember { mutableStateOf(false) }

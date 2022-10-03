@@ -2,15 +2,15 @@ package kg.optima.mobile.registration.presentation.sms_code
 
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.base.presentation.Intent
+import kg.optima.mobile.base.presentation.BaseMppIntent
 import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
 import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
 import kotlinx.coroutines.delay
 import org.koin.core.component.inject
 
 class SmsCodeIntent(
-	override val state: SmsCodeState,
-) : Intent<CheckSmsCodeInfo>() {
+	override val mppState: SmsCodeState,
+) : BaseMppIntent<CheckSmsCodeInfo>() {
 
 	private val checkSmsCodeUseCase: CheckSmsCodeUseCase by inject()
 	private val checkPhoneNumberUseCase: CheckPhoneNumberUseCase by inject()
@@ -62,7 +62,7 @@ class SmsCodeIntent(
 		}
 		launchOperation {
 			while (timer > 0) {
-				state.handle(CheckSmsCodeInfo.TimeLeft(timer))
+				mppState.handle(CheckSmsCodeInfo.TimeLeft(timer))
 				delay(1000)
 				timer--
 			}

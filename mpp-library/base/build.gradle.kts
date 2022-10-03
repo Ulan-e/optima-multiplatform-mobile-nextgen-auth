@@ -10,14 +10,6 @@ plugins {
 
 version = "1.0"
 
-kotlin {
-    targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
-        binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework> {
-            isStatic = false
-        }
-    }
-}
-
 dependencies {
     commonMainImplementation(project(":mpp-library:core"))
     commonMainImplementation(project(":mpp-library:core:data:network"))

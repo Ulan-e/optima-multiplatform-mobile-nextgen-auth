@@ -24,7 +24,7 @@ import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigat
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -64,7 +64,7 @@ object LivenessScreen : Screen {
         val intent = product.intent
         val state = product.state
 
-        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
         val context = LocalContext.current
 
@@ -77,7 +77,7 @@ object LivenessScreen : Screen {
         val livenessResult = remember { mutableStateOf("") }
 
         when (val livenessModel = model) {
-            is State.StateModel.Error.BaseError -> {
+            is BaseMppState.StateModel.Error.BaseError -> {
                 state.init()
                 bottomSheetState.value = BottomSheetInfo(
                     title = "Сервис временно недоступен. Пожалуйста, попробуйте позже или обратитесь в Банк.",

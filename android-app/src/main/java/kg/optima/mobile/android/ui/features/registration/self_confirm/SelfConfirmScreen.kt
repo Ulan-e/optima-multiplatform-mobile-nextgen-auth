@@ -15,7 +15,7 @@ import kg.optima.mobile.android.ui.base.permission.PermissionController
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnimModel
@@ -47,7 +47,7 @@ object SelfConfirmScreen : Screen {
 
         val context = LocalContext.current
 
-        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
         var items by remember { mutableStateOf<List<FadeInAnimModel>>(emptyList()) }
         var buttonEnabled by remember { mutableStateOf(false) }
@@ -55,7 +55,7 @@ object SelfConfirmScreen : Screen {
         val identificationMode by remember { mutableStateOf(IdentificationMode.FULL) }
 
         when (val selfConfirmStateModel = model) {
-            is State.StateModel.Initial -> intent.fadeAnimationModels(identificationMode)
+            is BaseMppState.StateModel.Initial -> intent.fadeAnimationModels(identificationMode)
             is SelfConfirmState.SelfConfirmStateModel.AnimationModels ->
                 items = selfConfirmStateModel.models.toUiModel()
         }

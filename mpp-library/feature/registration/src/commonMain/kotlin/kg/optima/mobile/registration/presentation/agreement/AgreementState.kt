@@ -1,9 +1,9 @@
 package kg.optima.mobile.registration.presentation.agreement
 
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
-class AgreementState : State<AgreementModel>() {
+class AgreementState : BaseMppState<AgreementModel>() {
 
 	override fun handle(entity: AgreementModel) {
 		val stateModel = when (entity) {

@@ -9,16 +9,6 @@ plugins {
 
 version = "1.0"
 
-kotlin {
-    targets.apply {
-        withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
-            binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework> {
-                isStatic = false
-            }
-        }
-    }
-}
-
 dependencies {
     commonMainImplementation(libs.ktorClient)
     commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")

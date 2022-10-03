@@ -1,18 +1,18 @@
 package kg.optima.mobile.registration.presentation.self_confirm
 
-import kg.optima.mobile.base.presentation.Intent
+import kg.optima.mobile.base.presentation.BaseMppIntent
 import kg.optima.mobile.registration.presentation.self_confirm.model.AnimationModel
 import kg.optima.mobile.registration.presentation.self_confirm.model.Res
 
 class SelfConfirmIntent(
-    override val state: SelfConfirmState,
-) : Intent<SelfConfirmModel>() {
+	override val mppState: SelfConfirmState,
+) : BaseMppIntent<SelfConfirmModel>() {
 
-    fun onNext() = state.handle(SelfConfirmModel.NextScreen)
+    fun onNext() = mppState.handle(SelfConfirmModel.NextScreen)
 
     fun fadeAnimationModels(mode: IdentificationMode) = when (mode) {
-        IdentificationMode.SHORT -> state.handle(SelfConfirmModel.AnimationModels(itemsShort))
-        IdentificationMode.FULL -> state.handle(SelfConfirmModel.AnimationModels(items))
+        IdentificationMode.SHORT -> mppState.handle(SelfConfirmModel.AnimationModels(itemsShort))
+        IdentificationMode.FULL -> mppState.handle(SelfConfirmModel.AnimationModels(items))
     }
 }
 

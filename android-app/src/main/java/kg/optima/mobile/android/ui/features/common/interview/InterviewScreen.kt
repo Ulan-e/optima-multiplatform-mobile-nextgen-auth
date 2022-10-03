@@ -17,12 +17,9 @@ import androidx.compose.ui.viewinterop.AndroidView
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
-import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
-import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
-import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.interview.InterviewIntent
 import kg.optima.mobile.registration.presentation.interview.InterviewState
@@ -42,7 +39,7 @@ class InterviewScreen(
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 		val loadingState = remember { mutableStateOf(true) }
 
 		MainContainer(

@@ -1,23 +1,13 @@
 plugins {
-    kotlin("multiplatform")
     id("multiplatform-library-convention")
     id("detekt-convention")
+    id("dev.icerock.mobile.multiplatform.cocoapods")
 
     id("com.android.library")
     kotlin("plugin.serialization")
-
-    id("dev.icerock.mobile.multiplatform.ios-framework")
-    id("dev.icerock.mobile.multiplatform.cocoapods")
 }
 
 version = "1.0"
-
-kotlin {
-    android()
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-}
 
 dependencies {
     commonMainImplementation(project(":mpp-library:base"))
@@ -37,13 +27,6 @@ dependencies {
 
     commonMainApi("com.soywiz.korlibs.krypto:krypto:2.7.0")
 }
-
-cocoaPods {
-    podsProject = file("../ios-app/Pods/Pods.xcodeproj")
-
-    pod("MCRCDynamicProxy", onlyLink = true)
-}
-
 
 android {
     compileSdk = 32

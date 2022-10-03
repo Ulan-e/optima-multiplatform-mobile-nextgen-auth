@@ -3,12 +3,12 @@ package kg.optima.mobile.auth.presentation.setup_auth
 import kg.optima.mobile.auth.domain.usecase.biometry_auth.SetupBiometryUseCase
 import kg.optima.mobile.auth.domain.usecase.pin_set.PinSetUseCase
 import kg.optima.mobile.auth.domain.usecase.pin_set.SetupAuthResult
-import kg.optima.mobile.base.presentation.Intent
+import kg.optima.mobile.base.presentation.BaseMppIntent
 import org.koin.core.component.inject
 
 class SetupAuthIntent(
-	override val state: SetupAuthState,
-) : Intent<SetupAuthResult>() {
+	override val mppState: SetupAuthState,
+) : BaseMppIntent<SetupAuthResult>() {
 
 	private val pinSetUseCase: PinSetUseCase by inject()
 	private val setupBiometryUseCase: SetupBiometryUseCase by inject()

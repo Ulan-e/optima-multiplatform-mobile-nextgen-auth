@@ -1,13 +1,13 @@
 package kg.optima.mobile.registration.presentation.interview
 
-import kg.optima.mobile.base.presentation.Intent
+import kg.optima.mobile.base.presentation.BaseMppIntent
 
 class InterviewIntent(
-	override val state: InterviewState
-) : Intent<InterviewInfo>() {
+	override val mppState: InterviewState
+) : BaseMppIntent<InterviewInfo>() {
 
 	fun navigate() {
-		state.handle(InterviewInfo.toWelcomeScreen)
+		mppState.handle(InterviewInfo.toWelcomeScreen)
 	}
 
 }

@@ -2,12 +2,12 @@ package kg.optima.mobile.common.presentation.welcome
 
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.base.presentation.Intent
+import kg.optima.mobile.base.presentation.BaseMppIntent
 import org.koin.core.component.inject
 
 class WelcomeIntent(
-	override val state: WelcomeState,
-) : Intent<WelcomeEntity>() {
+	override val mppState: WelcomeState,
+) : BaseMppIntent<WelcomeEntity>() {
 
 	private val clientInfoUseCase: ClientInfoUseCase by inject()
 
@@ -24,6 +24,6 @@ class WelcomeIntent(
 	}
 
 	fun register() {
-		state.handle(WelcomeEntity.Register)
+		mppState.handle(WelcomeEntity.Register)
 	}
 }

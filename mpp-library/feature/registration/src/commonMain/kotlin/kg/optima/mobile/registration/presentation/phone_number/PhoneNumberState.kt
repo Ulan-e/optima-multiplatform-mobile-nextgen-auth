@@ -1,10 +1,10 @@
 package kg.optima.mobile.registration.presentation.phone_number
 
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
-class PhoneNumberState : State<CheckPhoneNumberInfo>() {
+class PhoneNumberState : BaseMppState<CheckPhoneNumberInfo>() {
 
     override fun handle(entity: CheckPhoneNumberInfo) {
         val stateModel: StateModel = when (entity) {

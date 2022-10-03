@@ -1,7 +1,7 @@
 package kg.optima.mobile.registration.presentation.offer
 
-import kg.optima.mobile.base.presentation.Intent
+import kg.optima.mobile.base.presentation.BaseMppIntent
 
 class OfferIntent(
-	override val state: OfferState
-) : Intent<Unit>()
+	override val mppState: OfferState
+) : BaseMppIntent<Unit>()

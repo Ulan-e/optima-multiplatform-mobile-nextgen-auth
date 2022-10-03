@@ -1,11 +1,11 @@
 package kg.optima.mobile.registration.presentation.control_question
 
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.registration.presentation.control_question.model.Question
 
-class ControlQuestionState : State<ControlQuestionInfo>() {
+class ControlQuestionState : BaseMppState<ControlQuestionInfo>() {
 
 	override fun handle(entity: ControlQuestionInfo) {
 		val stateModel: StateModel = when (entity) {

@@ -1,10 +1,10 @@
 package kg.optima.mobile.registration.presentation.sms_code
 
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
-class SmsCodeState : State<CheckSmsCodeInfo>() {
+class SmsCodeState : BaseMppState<CheckSmsCodeInfo>() {
 
     override fun handle(entity: CheckSmsCodeInfo) {
         val stateModel: StateModel = when (entity) {
