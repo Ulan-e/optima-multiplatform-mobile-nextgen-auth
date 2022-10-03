@@ -9,6 +9,7 @@ import SwiftUI
 import design
 import registration
 import biometric
+import MultiPlatformLibrary
 
 public struct WelcomeView: View {
     
