@@ -5,9 +5,8 @@ import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.core.error.Failure
 import kg.optima.mobile.core.navigation.ScreenModel
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
 /**
@@ -20,9 +19,18 @@ abstract class BaseMppState<in E>(
 
 	/**
 	 * Common state for each screen. Use with sealed classes.
+	 **/
+	private val _stateFlow = MutableSharedFlow<StateModel?>()
+
+	/**
+	 * For Android.
 	 */
-	private val _stateFlow = MutableSharedFlow<StateModel?>(replay = 1, onBufferOverflow = BufferOverflow.DROP_LATEST)
-	val stateFlow: SharedFlow<StateModel?> = _stateFlow.asSharedFlow()
+	val stateFlow: Flow<StateModel?> = _stateFlow.asSharedFlow()
+
+	/**
+	 * For iOS.
+	 */
+	val commonStateFlow: CommonFlow<StateModel?> = _stateFlow.asCommonFlow()
 
 	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
 
