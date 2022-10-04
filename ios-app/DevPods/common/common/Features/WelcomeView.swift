@@ -20,14 +20,14 @@ public struct WelcomeView: View {
     @State var showRegistration: Bool = false
     @State var isLoad: Bool = false
 
-    var product: FactoryProduct<WelcomeIntent, WelcomeState>
     var state: WelcomeState?
-    
+    var intent: WelcomeIntent?
+
     public init(isLoad: Bool = false) {
         self.isLoad = isLoad
-        
-        self.product = WelcomeFactory().create()
-        self.state = product.state
+
+        self.state = WelcomeState()
+        self.intent = WelcomeIntent(mppState: state)
     }
     
     public var body: some View {
@@ -72,7 +72,8 @@ public struct WelcomeView: View {
                     
                     NavigationLink(destination: DescriptionVerigramView(), isActive: $showLogin) {
                         RedButtonView(title: "Войти") { result in
-                            showLogin.toggle()
+//                            showLogin.toggle()
+                            intent?.checkIsAuthorized()
                         }
                     }
                     
@@ -105,12 +106,17 @@ public struct WelcomeView: View {
     private func observeState() {
         guard let state = self.state else { return }
         state.commonStateFlow.watch { state in
-//            switch(state) {
-//            case .none:
-//                
-//            case .some(_):
-//                
-//            }
+            if state is BaseMppStateStateModelInitial {
+                print("Init")
+            } else if state is BaseMppStateStateModelLoading {
+                print("Loading")
+                } else if state is BaseMppStateStateModelError {
+                    print("Error")
+                }
+            else {
+                print(state)
+            }
+
         }
     }
 }
