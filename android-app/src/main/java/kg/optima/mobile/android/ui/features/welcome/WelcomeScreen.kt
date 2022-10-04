@@ -15,6 +15,7 @@ import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigat
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.common.CommonFeatureFactory
+import kg.optima.mobile.common.presentation.welcome.WelcomeFactory
 import kg.optima.mobile.common.presentation.welcome.WelcomeIntent
 import kg.optima.mobile.common.presentation.welcome.WelcomeState
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
@@ -33,9 +34,7 @@ object WelcomeScreen : BaseScreen {
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
-        val product = remember {
-            CommonFeatureFactory.create<WelcomeIntent, WelcomeState>()
-        }
+        val product = remember { WelcomeFactory.create() }
         val state = product.state
         val intent = product.intent
 

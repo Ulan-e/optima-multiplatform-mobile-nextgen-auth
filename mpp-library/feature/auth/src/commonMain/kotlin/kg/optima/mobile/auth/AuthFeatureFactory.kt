@@ -18,7 +18,7 @@ import kg.optima.mobile.base.di.Factory
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object AuthFeatureFactory : Factory() {
+object AuthFeatureFactory : Factory {
 
 	override val module: Module = module {
 		factory<AuthApi> { AuthApiImpl(networkClient = get()) }

@@ -17,6 +17,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors

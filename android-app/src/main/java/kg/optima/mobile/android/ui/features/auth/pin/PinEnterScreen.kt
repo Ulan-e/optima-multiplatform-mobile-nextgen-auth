@@ -10,6 +10,7 @@ import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
+import kg.optima.mobile.base.di.createWithStateParam
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
@@ -27,7 +28,7 @@ class PinEnterScreen(
 	@Composable
 	override fun Content() {
 		val product = remember {
-			AuthFeatureFactory.create<LoginIntent, LoginState>(nextScreenModel)
+			AuthFeatureFactory.createWithStateParam<LoginIntent, LoginState>(nextScreenModel)
 		}
 		val state = product.state
 		val intent = product.intent

@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import kg.optima.mobile.android.ui.base.Router
+import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.launch.LaunchIntent

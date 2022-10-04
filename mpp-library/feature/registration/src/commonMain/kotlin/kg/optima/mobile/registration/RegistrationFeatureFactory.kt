@@ -32,7 +32,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object RegistrationFeatureFactory : Factory(), KoinComponent {
+object RegistrationFeatureFactory : Factory {
 
 	override val module: Module = module {
 		factory<RegistrationApi> { RegistrationApiImpl(get()) }

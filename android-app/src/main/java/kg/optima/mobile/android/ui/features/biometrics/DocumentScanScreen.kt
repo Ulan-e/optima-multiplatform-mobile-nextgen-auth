@@ -23,6 +23,7 @@ import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.features.common.MainContainer
 import kg.optima.mobile.android.utils.saveFile
+import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.common.Constants.DOCUMENT_FILE_NAME
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
