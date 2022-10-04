@@ -22,6 +22,14 @@ abstract class Factory : KoinComponent {
 		return Product(intent, state)
 	}
 
+	inline fun <reified I, reified S> create() = create<I, S>(null, null)
+
+	inline fun <reified I, reified S> createWithStateParam(stateParameter: Any? = null,) =
+		create<I, S>(stateParameter, null)
+
+	inline fun <reified I, reified S> createWithIntentParam(intentParameter: Any? = null) =
+		create<I, S>(null, intentParameter)
+
 	class Product<I, S>(
 		val intent: I,
 		val state: S,
