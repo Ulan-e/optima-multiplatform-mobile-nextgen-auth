@@ -4,6 +4,7 @@
 
 import common
 import design
+import MultiPlatformLibrary
 import SwiftUI
 import UIKit
 

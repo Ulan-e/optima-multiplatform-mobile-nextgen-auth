@@ -19,9 +19,15 @@ public struct WelcomeView: View {
     @State var showContact: Bool = false
     @State var showRegistration: Bool = false
     @State var isLoad: Bool = false
+
+    var product: FactoryProduct<WelcomeIntent, WelcomeState>
+    var state: WelcomeState?
     
     public init(isLoad: Bool = false) {
         self.isLoad = isLoad
+        
+        self.product = WelcomeFactory().create()
+        self.state = product.state
     }
     
     public var body: some View {
@@ -90,12 +96,27 @@ public struct WelcomeView: View {
                     NavigationItemView()
                 }
             }
+            .onAppear() {
+                observeState()
+            }
 //        }
+    }
+    
+    private func observeState() {
+        guard let state = self.state else { return }
+        state.commonStateFlow.watch { state in
+//            switch(state) {
+//            case .none:
+//                
+//            case .some(_):
+//                
+//            }
+        }
     }
 }
 
-struct WelcomView_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeView()
-    }
-}
+//struct WelcomView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WelcomeView(factory: SharedFactory)
+//    }
+//}
