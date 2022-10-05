@@ -40,7 +40,7 @@ import java.util.TimeZone;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import devlight.io.library.ntb.NavigationTabBar;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.AccountDetailsActivity;
 import kz.optimabank.optima24.activity.NavigationActivity;
 import kz.optimabank.optima24.activity.StatementActivity;

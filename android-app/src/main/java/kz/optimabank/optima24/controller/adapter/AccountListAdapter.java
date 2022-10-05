@@ -1,5 +1,12 @@
 package kz.optimabank.optima24.controller.adapter;
 
+import static kz.optimabank.optima24.utility.Constants.CARD;
+import static kz.optimabank.optima24.utility.Constants.CARD_ACCOUNT;
+import static kz.optimabank.optima24.utility.Constants.CREDIT_ACCOUNT;
+import static kz.optimabank.optima24.utility.Constants.CURRENT_ACCOUNT;
+import static kz.optimabank.optima24.utility.Constants.DEPOSIT_ACCOUNT;
+import static kz.optimabank.optima24.utility.Constants.IS_SHOW_TIP_DEF_CARD;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,19 +35,12 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.NavigationActivity;
 import kz.optimabank.optima24.model.gson.response.UserAccounts;
 import kz.optimabank.optima24.model.interfaces.OnItemClickListener;
 import kz.optimabank.optima24.utility.Constants;
 import kz.optimabank.optima24.utility.Utilities;
-
-import static kz.optimabank.optima24.utility.Constants.CARD;
-import static kz.optimabank.optima24.utility.Constants.CARD_ACCOUNT;
-import static kz.optimabank.optima24.utility.Constants.CREDIT_ACCOUNT;
-import static kz.optimabank.optima24.utility.Constants.CURRENT_ACCOUNT;
-import static kz.optimabank.optima24.utility.Constants.DEPOSIT_ACCOUNT;
-import static kz.optimabank.optima24.utility.Constants.IS_SHOW_TIP_DEF_CARD;
 
 public class AccountListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_HEADER = 0;

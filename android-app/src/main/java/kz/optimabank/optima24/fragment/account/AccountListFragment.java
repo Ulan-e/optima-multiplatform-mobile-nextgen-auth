@@ -66,7 +66,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.AccountDetailsActivity;
 import kz.optimabank.optima24.activity.InterfaceFormActivity;
 import kz.optimabank.optima24.activity.NavigationActivity;

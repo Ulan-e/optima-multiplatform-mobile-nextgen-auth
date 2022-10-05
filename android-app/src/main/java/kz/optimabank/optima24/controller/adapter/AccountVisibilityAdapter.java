@@ -1,9 +1,13 @@
 package kz.optimabank.optima24.controller.adapter;
 
+import static kz.optimabank.optima24.utility.Constants.CARD;
+import static kz.optimabank.optima24.utility.Constants.CARD_ACCOUNT;
+import static kz.optimabank.optima24.utility.Constants.CREDIT_ACCOUNT;
+import static kz.optimabank.optima24.utility.Constants.CURRENT_ACCOUNT;
+import static kz.optimabank.optima24.utility.Constants.DEPOSIT_ACCOUNT;
+
 import android.content.Context;
 import android.graphics.BitmapFactory;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -13,21 +17,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.model.gson.response.UserAccounts;
 import kz.optimabank.optima24.utility.Constants;
 import kz.optimabank.optima24.utility.Utilities;
-
-import static kz.optimabank.optima24.utility.Constants.CARD;
-import static kz.optimabank.optima24.utility.Constants.CARD_ACCOUNT;
-import static kz.optimabank.optima24.utility.Constants.CREDIT_ACCOUNT;
-import static kz.optimabank.optima24.utility.Constants.CURRENT_ACCOUNT;
-import static kz.optimabank.optima24.utility.Constants.DEPOSIT_ACCOUNT;
 
 /**
   Created by Timur on 05.07.2017.
