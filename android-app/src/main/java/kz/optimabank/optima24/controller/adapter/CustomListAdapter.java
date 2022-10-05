@@ -1,16 +1,17 @@
 package kz.optimabank.optima24.controller.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.model.interfaces.OnItemClickListener;
 
 public class CustomListAdapter extends RecyclerView.Adapter<CustomListAdapter.CustomViewHolder> {

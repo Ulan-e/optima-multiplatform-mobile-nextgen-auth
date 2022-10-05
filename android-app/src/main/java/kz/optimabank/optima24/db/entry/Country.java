@@ -3,14 +3,16 @@ package kz.optimabank.optima24.db.entry;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
+
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
   Created by Timur on 13.05.2017.
  */
 
-public class Country implements Serializable {
+public class Country extends RealmObject implements Serializable {
+    @PrimaryKey
     @SerializedName("AlphaCode")
     public String AlphaCode;
     @SerializedName("Name")

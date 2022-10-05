@@ -22,7 +22,7 @@ import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.NavigationActivity;
 import kz.optimabank.optima24.controller.adapter.ApplCreateAdapter;
 import kz.optimabank.optima24.controller.adapter.ApplHistoryDetailsAdapter;

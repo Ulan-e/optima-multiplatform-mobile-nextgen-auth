@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferences;
 import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferencesImpl;

@@ -18,10 +18,9 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/wocr_iv_flash_id"
-            style="@style/wocr_FlashButton"
+            style="@style/PrimaryButtonFilledStyle"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@drawable/wocr_ic_flash"
             tools:visibility="visible"
             tools:ignore="RtlHardcoded" />
 

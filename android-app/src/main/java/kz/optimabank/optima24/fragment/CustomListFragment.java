@@ -21,7 +21,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.NavigationActivity;
 import kz.optimabank.optima24.controller.adapter.CustomListAdapter;
 import kz.optimabank.optima24.model.interfaces.OnItemClickListener;

@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.model.base.BaseRegistrationResponse;
 import kz.optimabank.optima24.model.interfaces.RegistrationClient;

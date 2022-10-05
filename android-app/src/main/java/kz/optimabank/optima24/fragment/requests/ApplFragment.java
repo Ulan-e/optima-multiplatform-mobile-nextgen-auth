@@ -18,7 +18,7 @@ import java.util.LinkedList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.NavigationActivity;
 import kz.optimabank.optima24.controller.adapter.HistoryApplicationsTypesAdapter;
 import kz.optimabank.optima24.fragment.ATFFragment;

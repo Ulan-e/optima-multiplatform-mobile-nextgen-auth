@@ -18,7 +18,7 @@ import com.google.android.gms.common.api.CommonStatusCodes;
 import java.util.ArrayList;
 import java.util.List;
 
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.CardLimitActivity;
 import kz.optimabank.optima24.controller.adapter.SelectCardLimitAdapter;
 import kz.optimabank.optima24.databinding.FragmentCardLimitListBinding;

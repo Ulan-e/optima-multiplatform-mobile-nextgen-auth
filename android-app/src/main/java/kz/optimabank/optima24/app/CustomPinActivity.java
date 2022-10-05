@@ -6,7 +6,7 @@
 //import android.view.View;
 //import android.widget.TextView;
 //
-//import kz.optimabank.optima24.R;
+//import kg.optima.mobile.R;
 //import kz.optimabank.optima24.utility.LocaleUtils;
 //import rps.pincode.managers.AppLock;
 //import rps.pincode.managers.AppLockActivity;

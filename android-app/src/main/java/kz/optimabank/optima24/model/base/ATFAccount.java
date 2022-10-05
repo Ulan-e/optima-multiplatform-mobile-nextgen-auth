@@ -11,7 +11,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Date;
 
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.utility.Constants;
 

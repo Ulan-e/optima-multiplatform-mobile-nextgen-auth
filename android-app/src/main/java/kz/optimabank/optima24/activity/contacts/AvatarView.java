@@ -13,7 +13,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.Random;
 
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 
 public class AvatarView extends FrameLayout {
 

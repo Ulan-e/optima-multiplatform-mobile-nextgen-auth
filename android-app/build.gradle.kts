@@ -7,10 +7,13 @@ plugins {
 
     id("kotlinx-serialization")
     id("kotlin-parcelize")
+
+    id("io.realm.kotlin")
 }
 
 android {
     buildFeatures.viewBinding = true
+
 
     defaultConfig {
         applicationId = "kg.optima.mobile"
@@ -47,7 +50,8 @@ kapt {
 }
 
 dependencies {
-    implementation(libs.appCompat)
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
+
     implementation(libs.material)
     implementation(libs.recyclerView)
     implementation(libs.swipeRefreshLayout)
@@ -70,10 +74,19 @@ dependencies {
     implementation(project(":mpp-library:feature:common"))
     implementation(project(":mpp-library:feature:registration"))
 
+    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("androidx.activity:activity-ktx:1.5.1")
+    implementation("androidx.fragment:fragment:1.5.3")
+    implementation("androidx.lifecycle:lifecycle-process:2.5.1")
+    implementation("androidx.leanback:leanback:1.0.0")
+    implementation("androidx.multidex:multidex:2.0.1")
+    implementation("androidx.annotation:annotation:1.5.0")
+
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")
     implementation("io.insert-koin:koin-android:3.1.4")
     implementation("io.insert-koin:koin-androidx-compose:3.1.4")
+
 
     val composeVersion = "1.3.0-alpha01"
     implementation("androidx.compose.animation:animation:$composeVersion")
@@ -101,17 +114,12 @@ dependencies {
     implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
     implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")
 
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
-
-    implementation(files("libs/veridoc-module-release-v1.16.1.aar"))
-    implementation(files("libs/liveness-module-v1.13.4.aar"))
-
-    implementation("androidx.activity:activity-ktx:1.5.1")
-
     implementation("io.fotoapparat:fotoapparat:2.7.0")
     implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
 
-    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("io.realm.kotlin:library-base:1.2.0")
+
+
     implementation("com.google.android.material:material:1.6.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
@@ -126,8 +134,6 @@ dependencies {
     // UI
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.cardview:cardview:1.0.0")
-
-    implementation("androidx.fragment:fragment:1.4.0")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -153,19 +159,17 @@ dependencies {
     implementation("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
 
    // implementation("ir.beigirad:ZigzagView:1.2.0")
-    implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
+    // implementation("cards.pay:paycardsrecognizer:1.1.0")
+    implementation("io.realm.kotlin:library-base:1.2.0")
 
+    implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
     implementation("com.alibaba.android:ultraviewpager:1.0.7.7@aar")
     implementation("com.isseiaoki:simplecropview:1.1.7")
     implementation("com.akexorcist:RoundCornerProgressBar:2.0.3")
-  // implementation("cards.pay:paycardsrecognizer:1.1.0")
-
     implementation("me.leolin:ShortcutBadger:1.1.4@aar")
     implementation("com.jakewharton:butterknife:10.0.0")
     implementation("devlight.io:navigationtabbar:1.2.5")
     implementation("fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar")
-    implementation("androidx.leanback:leanback:1.0.0")
-    implementation("androidx.multidex:multidex:2.0.0")
     implementation("com.tubb.smrv:swipemenu-recyclerview:5.4.0")
     implementation("me.henrytao:smooth-app-bar-layout:25.3.1.0")
     implementation("com.nineoldandroids:library:2.4.0")
@@ -175,13 +179,9 @@ dependencies {
     implementation("com.wang.avi:library:2.1.3")//ПрогрессБар
     implementation("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
     implementation("com.redmadrobot:inputmask:2.3.0")  //Маска
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.legacy:legacy-support-v13:1.0.0")
-
     implementation("com.shuhart.stepview:stepview:1.5.1")
     implementation("org.greenrobot:eventbus:3.1.1")
-    implementation("androidx.lifecycle:lifecycle-process:2.2.0")
-    implementation("androidx.annotation:annotation:1.5.0")
     annotationProcessor("com.jakewharton:butterknife-compiler:10.0.0")
     implementation("com.uttampanchasara.pdfgenerator:pdfgenerator:1.3")
+    implementation("com.github.flavienlaurent.datetimepicker:library:0.0.2")
 }

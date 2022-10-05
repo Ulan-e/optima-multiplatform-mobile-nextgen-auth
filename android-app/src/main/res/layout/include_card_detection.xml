@@ -1,38 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<cards.pay.paycardsrecognizer.sdk.camera.widget.CameraPreviewLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/wocr_card_recognition_view"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="true"
-    tools:showIn="@layout/fragment_scan">
-
-    <SurfaceView
-        android:id="@+id/surface_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <kz.optimabank.optima24.scan.view.RPSCardDetectionStateView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"/>
-
-    <kz.optimabank.optima24.scan.view.CardDetection
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="@string/bring_the_card"
-        android:textColor="@android:color/white"
-        android:textSize="16dp"
-        android:textAlignment="center"
-        app:wocr_layout_cardAlignGravity="top|center_horizontal"
-        tools:ignore="SpUsage" />
-
-</cards.pay.paycardsrecognizer.sdk.camera.widget.CameraPreviewLayout>
+    xmlns:android="http://schemas.android.com/apk/res/android" />

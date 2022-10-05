@@ -1178,9 +1178,9 @@
     <string name="your_relationships_with_receiver">2. Бенефициар/акчаны алуучу менен Сиздин өз ара мамилеңиз кандай?</string>
     <string name="СurrencyExchange">Алмаштыруу</string>
     <string name="сalcul_comm">Алмаштыруунун эсеби</string>
-    <string name="_formatted_text_weekly">" %s в %s в %s"</string>
-    <string name="_formatted_text_monthly">" %s в %s-го числа в %s"</string>
-    <string name="_formatted_text_yearly">" %s %s в %s"</string>
+    <string name="_formatted_text_weekly" formatted="false"> %s в %s в %s</string>
+    <string name="_formatted_text_monthly" formatted="false"> %s в %s-го числа в %s</string>
+    <string name="_formatted_text_yearly" formatted="false"> %s %s в %s</string>
     <string name="kyrgyz_som">Кыргыз сому</string>
     <string name="bank_number_title">Банктын эсеби</string>
     <string name="choose_currency">Валютаны тандаңыз</string>

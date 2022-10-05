@@ -8,7 +8,7 @@ import android.nfc.NfcManager;
 import android.os.Vibrator;
 import android.util.Log;
 
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.PaymentResultActivity;
 
 

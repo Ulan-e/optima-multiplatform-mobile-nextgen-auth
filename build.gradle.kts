@@ -11,8 +11,7 @@ buildscript {
         mavenCentral()
         google()
         gradlePluginPortal()
-
-        jcenter()
+        maven { url = uri("https://plugins.gradle.org/m2/") }
 
         flatDir {
             dirs("libs")
@@ -29,6 +28,8 @@ buildscript {
         classpath(libs.firebaseCrashlyticsGradle)
         classpath(libs.googleServicesGradle)
         classpath(":build-logic")
+
+        classpath("io.realm.kotlin:gradle-plugin:1.2.0")
     }
 }
 

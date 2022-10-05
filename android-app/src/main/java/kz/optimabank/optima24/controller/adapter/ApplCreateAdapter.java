@@ -1,13 +1,12 @@
 package kz.optimabank.optima24.controller.adapter;
 
+import static kz.optimabank.optima24.utility.Constants.DATE_PICKER_TAG;
+import static kz.optimabank.optima24.utility.Constants.SELECT_ACCOUNT_FROM_REQUEST_CODE;
+import static kz.optimabank.optima24.utility.Constants.VIEW_DATE_FORMAT;
+import static kz.optimabank.optima24.utility.Utilities.getLayoutParamsForImageSize;
+
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,7 +21,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.fourmob.datetimepicker.date.DatePickerDialog;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.redmadrobot.inputmask.MaskedTextChangedListener;
 
@@ -38,7 +44,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.NavigationActivity;
 import kz.optimabank.optima24.activity.SelectAccountActivity;
 import kz.optimabank.optima24.fragment.CustomListFragment;
@@ -47,11 +53,6 @@ import kz.optimabank.optima24.model.base.ApplicationTypeDto;
 import kz.optimabank.optima24.model.gson.response.UserAccounts;
 import kz.optimabank.optima24.model.service.HistoryApllicationsImpl;
 import kz.optimabank.optima24.utility.Utilities;
-
-import static kz.optimabank.optima24.utility.Constants.DATE_PICKER_TAG;
-import static kz.optimabank.optima24.utility.Constants.SELECT_ACCOUNT_FROM_REQUEST_CODE;
-import static kz.optimabank.optima24.utility.Constants.VIEW_DATE_FORMAT;
-import static kz.optimabank.optima24.utility.Utilities.getLayoutParamsForImageSize;
 
 public class ApplCreateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = ApplCreateAdapter.class.getSimpleName();
@@ -673,7 +674,7 @@ public class ApplCreateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             int month = calendar.get(Calendar.MONTH);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
             final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
-            datePickerDialog.setStartDate(year, month, day);
+           // datePickerDialog.setStartDate(year, month, day);
             selectDateView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

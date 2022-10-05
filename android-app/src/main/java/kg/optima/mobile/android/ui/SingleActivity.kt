@@ -7,7 +7,6 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.theme.Theme
 
-
 class SingleActivity : AppCompatActivity() {
 
 	companion object {
