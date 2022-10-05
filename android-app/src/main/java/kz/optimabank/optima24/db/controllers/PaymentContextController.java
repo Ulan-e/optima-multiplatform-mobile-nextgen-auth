@@ -3,23 +3,38 @@ package kz.optimabank.optima24.db.controllers;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import io.realm.RealmResults;
-import kz.optimabank.optima24.R;
 import kz.optimabank.optima24.db.entry.Country;
 import kz.optimabank.optima24.db.entry.PaymentCategory;
 import kz.optimabank.optima24.db.entry.PaymentRegions;
 import kz.optimabank.optima24.db.entry.PaymentService;
+import kz.optimabank.optima24.room_db.repository.CountriesRepository;
+import kz.optimabank.optima24.room_db.repository.PaymentCategoryRepository;
+import kz.optimabank.optima24.room_db.repository.PaymentRegionsRepository;
+import kz.optimabank.optima24.room_db.repository.PaymentServiceRepository;
+import kz.optimabank.optima24.room_db.repository.impl.CountriesRepositoryImpl;
+import kz.optimabank.optima24.room_db.repository.impl.PaymentCategoryRepositoryImpl;
+import kz.optimabank.optima24.room_db.repository.impl.PaymentRegionsRepositoryImpl;
+import kz.optimabank.optima24.room_db.repository.impl.PaymentServiceRepositoryImpl;
 
 /**
-  Created by Timur on 14.04.2017.
+ * Created by Timur on 14.04.2017.
  */
 
-public class PaymentContextController extends DBController {
+public class PaymentContextController {
     private static PaymentContextController controller;
+    private PaymentServiceRepository serviceRepository;
+    private PaymentRegionsRepository regionsRepository;
+    private PaymentCategoryRepository categoryRepository;
+    private CountriesRepository countriesRepository;
 
     private PaymentContextController() {
         super();
+        serviceRepository = new PaymentServiceRepositoryImpl();
+        regionsRepository = new PaymentRegionsRepositoryImpl();
+        categoryRepository = new PaymentCategoryRepositoryImpl();
+        countriesRepository = new CountriesRepositoryImpl();
     }
 
     public static PaymentContextController getController() {
@@ -27,74 +42,67 @@ public class PaymentContextController extends DBController {
     }
 
     public void updatePaymentCategory(ArrayList<PaymentCategory> response) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(response);
-        mRealm.commitTransaction();
+        categoryRepository.insertAll(response);
     }
 
     public void updatePaymentService(ArrayList<PaymentService> response) {
-        mRealm.beginTransaction();
-        //mRealm.copyToRealmOrUpdate(response);
-        mRealm.insertOrUpdate(response);
-        mRealm.commitTransaction();
+        serviceRepository.insertAll(response);
     }
 
     public void updatePaymentRegions(ArrayList<PaymentRegions> response) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(response);
-        mRealm.commitTransaction();
+        regionsRepository.insertAll(response);
     }
 
     public void updatePaymentCountry(ArrayList<Country> response) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(response);
-        mRealm.commitTransaction();
+        countriesRepository.insertAll(response);
     }
 
     public ArrayList<PaymentCategory> getAllPaymentCategory() {
-        return new ArrayList<>(mRealm.where(PaymentCategory.class).findAll());
+        return (ArrayList<PaymentCategory>) categoryRepository.getAll();
+//        return new ArrayList<>(mRealm.where(PaymentCategory.class).findAll());
     }
 
     public ArrayList<PaymentRegions> getAllPaymentRegions() {
-        return new ArrayList<>(mRealm.where(PaymentRegions.class).findAll());
+        return (ArrayList<PaymentRegions>) regionsRepository.getAll();
+//        return new ArrayList<>(mRealm.where(PaymentRegions.class).findAll());
     }
 
     public ArrayList<Country> getAllPaymentCountryes() {
-        return new ArrayList<>(mRealm.where(Country.class).findAll());
+        return (ArrayList<Country>) countriesRepository.getAll();
+//        return new ArrayList<>(mRealm.where(Country.class).findAll());
     }
 
     public ArrayList<PaymentCategory> getPaymentCategory(Context context) {
-        ArrayList<PaymentCategory> paymentCategories = new ArrayList<>();
-
-        for(PaymentCategory paymentCategory : getAllPaymentCategory()) {
-            if(!paymentCategory.getName().toUpperCase().contains(context.getString(R.string.payment_fines).toUpperCase())) {
-                paymentCategories.add(paymentCategory);
-            }else{
-                paymentCategories.add(paymentCategory);
-            }
-        }
-
-        return paymentCategories;
+        return new ArrayList<>(getAllPaymentCategory());
     }
 
     public PaymentCategory getPaymentCategoryByServiceId(int serviceId) {
-        return mRealm.where(PaymentCategory.class).equalTo("id",serviceId).findFirst();
+        return categoryRepository.getById(serviceId);
+//        return mRealm.where(PaymentCategory.class).equalTo("id",serviceId).findFirst();
     }
 
     public ArrayList<PaymentService> getPaymentServiceByCategoryId(int id) {
-        return new ArrayList<> (mRealm.copyFromRealm
-                (mRealm.where(PaymentService.class).equalTo("paymentCategoryId",id).findAll()));
+        return (ArrayList<PaymentService>) serviceRepository.getAllById(id);
+//        return new ArrayList<> (mRealm.copyFromRealm
+//                (mRealm.where(PaymentService.class).equalTo("paymentCategoryId",id).findAll()));
     }
 
     public PaymentService getPaymentServiceById(int id) {
-        return mRealm.where(PaymentService.class).equalTo("id",id).findFirst();
+        return serviceRepository.getById(id);
+//        return mRealm.where(PaymentService.class).equalTo("id",id).findFirst();
     }
 
-    public RealmResults<PaymentService> getAllPaymentService() {
-        return mRealm.where(PaymentService.class).findAll();
+    public List<PaymentService> getAllPaymentService() {
+        return serviceRepository.getAll();
+//        return mRealm.where(PaymentService.class).findAll();
     }
 
     public PaymentService getPaymentServiceByExternalId(int id) {
-        return mRealm.where(PaymentService.class).equalTo("ExternalId",id).findFirst();
+        return serviceRepository.getById(id);
+        //   return mRealm.where(PaymentService.class).equalTo("ExternalId",id).findFirst();
+    }
+
+    public void close(){
+        serviceRepository.deleteAll();
     }
 }

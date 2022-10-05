@@ -529,46 +529,6 @@
     <string name="kzt">KZT</string>
     <string name="last_name">Атасынын аты</string>
     <string name="last_version_of_android_os">Androidдин акыркы версиясына чейин ОСту жаңыртууну сунуш кылабыз</string>
-    <string name="lb_control_display_fast_forward_multiplier">%1$dX</string>
-    <string name="lb_control_display_rewind_multiplier">%1$dX</string>
-    <string name="lb_date_separator">/</string>
-    <string name="lb_guidedaction_continue_title">Улантуу</string>
-    <string name="lb_guidedaction_finish_title">Бүтүрүү</string>
-    <string name="lb_media_player_error">"MediaPlayer'деги катанын коду: 1$d, кошумча: %2$d"</string>
-    <string name="lb_navigation_menu_contentDescription">Чабыттоо менюсу</string>
-    <string name="lb_onboarding_accessibility_next">Кийинки</string>
-    <string name="lb_onboarding_get_started">БАШТАДЫК</string>
-    <string name="lb_playback_controls_closed_captioning_disable">Жабык субтитрлерди өчүрүү</string>
-    <string name="lb_playback_controls_closed_captioning_enable">Жабык субтитрлерди иштетүү</string>
-    <string name="lb_playback_controls_fast_forward">Алдыга түрүү</string>
-    <string name="lb_playback_controls_fast_forward_multiplier">Алдыга түрүү %1$dX</string>
-    <string name="lb_playback_controls_hidden">Медиа файлды башкаруу жашырылган, көрүү үчүн d-pad көзөмөлдөө каражатын басыңыз</string>
-    <string name="lb_playback_controls_high_quality_disable">Жогорку сапатты өчүрүү</string>
-    <string name="lb_playback_controls_high_quality_enable">Жогорку сапатты иштетүү</string>
-    <string name="lb_playback_controls_more_actions">Дагы көнүгүүлөр</string>
-    <string name="lb_playback_controls_pause">Тындыруу</string>
-    <string name="lb_playback_controls_picture_in_picture">Сүрөт режиминде сүрөт киргизүү</string>
-    <string name="lb_playback_controls_play">Ойнотуу</string>
-    <string name="lb_playback_controls_repeat_all">Баарын кайталоо</string>
-    <string name="lb_playback_controls_repeat_none">Эч бирин кайталабоо</string>
-    <string name="lb_playback_controls_repeat_one">Бирөөнү кайталоо</string>
-    <string name="lb_playback_controls_rewind">Артка түрүү</string>
-    <string name="lb_playback_controls_rewind_multiplier">Артка түрүү %1$dX</string>
-    <string name="lb_playback_controls_shown">Медиа файлды башкаруу көрсөтүлдү</string>
-    <string name="lb_playback_controls_shuffle_disable">Аралаштырууну өчүрүү</string>
-    <string name="lb_playback_controls_shuffle_enable">Аралаштырууну иштетүү</string>
-    <string name="lb_playback_controls_skip_next">Кийинкини өткөрүп жиберүү</string>
-    <string name="lb_playback_controls_skip_previous">Мурункуну өткөрүп жиберүү</string>
-    <string name="lb_playback_controls_thumb_down">Жактырбоону тандоодон чыгаруу</string>
-    <string name="lb_playback_controls_thumb_down_outline">Жактырбоону тандоо</string>
-    <string name="lb_playback_controls_thumb_up">Жактырууну тандоодон чыгаруу</string>
-    <string name="lb_playback_controls_thumb_up_outline">Жактырууну тандоо</string>
-    <string name="lb_playback_time_separator">/</string>
-    <string name="lb_search_bar_hint">Издөө</string>
-    <string name="lb_search_bar_hint_speech">Издөө үчүн сүйлөңүз</string>
-    <string name="lb_search_bar_hint_with_title">%1$s издөө</string>
-    <string name="lb_search_bar_hint_with_title_speech">%1$s издөө үчүн сүйлөңүз</string>
-    <string name="lb_time_separator">:</string>
     <string name="license_agreement">"1. Алардын талаптары боюнча Казакстан Республикасынын Улуттук банкына жана укук коргоо органдарына которулган акча каражаттары жөнүндө маалымат берүүгө Банкка уруксат берем.
  2. Ушуну енен, каттоо күбөлүгүн, контракттын эсеп номерин, билдирүү  жөнүндө  күбөлүктү алууну талап кылган валюталык операцияларды жүргүзүү менен бул акча которуу  байланышпай тургандыгын тастыктайм.
 
@@ -1219,11 +1179,11 @@
     <string name="text_transfer_done">Котормо аткарылды</string>
     <string name="text_transfer_failed">Котормо аткарылбады</string>
     <string name="text_more_dots">Банктын сатып алуу курсу боюнча бардык валюталар боюнча сом менен жеткиликтүү калдык</string>
-    <string name="text_available_balance">Жеткиликтүү баланс<font color='#ED1C24'>*</font></string>
+    <string name="text_available_balance">Жеткиликтүү баланс *</string>
     <string name="text_amount_in_precess">Иштетилип жаткан сумма</string>
     <string name="text_amount_by_currency">Валюта боюнча</string>
-    <string name="text_available_balance_description"><font color='#ED1C24'>*</font>Жеткиликтүү баланс – бул суроо-талапты жөнөтүү учурундагы Банктын төлөм карталарын сатып алуу курсу боюнча валютадагы калдыктардын суммасы. Жеткиликтүү баланс көрсөтмө катары кызмат кылат. Валюта курстары өзгөргөндө, жеткиликтүү баланс өзгөрүшү мүмкүн.</string>
-    <string name="text_available_amount_in_process_description"><font color='#ED1C24'>*</font>Бардык валюталар боюнча сумманы эсептөө үчүн транзакция учурунда Банктын төлөм карталарын сатып алуу курсу колдонулат.</string>
+    <string name="text_available_balance_description">*Жеткиликтүү баланс – бул суроо-талапты жөнөтүү учурундагы Банктын төлөм карталарын сатып алуу курсу боюнча валютадагы калдыктардын суммасы. Жеткиликтүү баланс көрсөтмө катары кызмат кылат. Валюта курстары өзгөргөндө, жеткиликтүү баланс өзгөрүшү мүмкүн.</string>
+    <string name="text_available_amount_in_process_description"><font color="#ED1C24">*</font>Бардык валюталар боюнча сумманы эсептөө үчүн транзакция учурунда Банктын төлөм карталарын сатып алуу курсу колдонулат.</string>
     <string name="text_multiplicator_description">Мультипликатор – мультивалюталык карттардын катышуусу менен чет өлкөлүк валютада карттык операцияны жүргүзүүдө акча каражаттарын тосмолоодо колдонулуучу коэффициент жана ал сом менен жүргүзүлөт. Ошондой эле, мультивалюталык карттардан банкоматта жана POSто акча каражаттарын алууда мультипликатор колдонулат. Аткарылган операциялар боюнча акча каражаттарын акыркы эсептен чыгаруу операция жасалган күндөгү Банктын коммерциялык курсу боюнча жүргүзүлөт.</string>
     <string name="text_default_incoming_card_title">Негизги карта</string>
     <string name="text_default_incoming_card">Негизги карта - которууларды алуу үчүн демейки боюнча тандалган карта,

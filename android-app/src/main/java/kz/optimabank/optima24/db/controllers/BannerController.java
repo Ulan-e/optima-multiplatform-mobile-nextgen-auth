@@ -11,7 +11,7 @@ import kz.optimabank.optima24.model.base.Banner;
 import kz.optimabank.optima24.utility.BannersDirectoryNamePreferences;
 import kz.optimabank.optima24.utility.ImageDownloader;
 
-public class BannerController extends DBController {
+public class BannerController {
     private  static BannerController controller;
     private final String PRIMARY_KEY = "ImageName";
     private boolean isNeedDownload = false;
@@ -29,41 +29,42 @@ public class BannerController extends DBController {
     }
 
     public ArrayList<Banner> getAllBanners() {
-        return new ArrayList<>(getRealm().where(Banner.class).findAll());
+        return null;
+       // return new ArrayList<>(getRealm().where(Banner.class).findAll());
     }
 
     public void clearCache() {
         removeBannerDirectory();
-        getRealm().executeTransaction(realm -> realm.where(Banner.class).findAll().deleteAllFromRealm());
+        //getRealm().executeTransaction(realm -> realm.where(Banner.class).findAll().deleteAllFromRealm());
     }
 
     public void validateBanners(ArrayList<Banner> banners) {
-        getRealm().executeTransaction(bgRealm -> {
-            for (Banner banner : banners) {
-                Banner _banner = bgRealm.where(Banner.class)
-                        .equalTo(PRIMARY_KEY, banner.ImageName)
-                        .and()
-                        .equalTo("TargetUrl", banner.TargetUrl)
-                        .and()
-                        .equalTo("BannerUrl", banner.BannerUrl)
-                        .findFirst();
-                if (_banner == null) {
-                    isNeedDownload = true;
-                    break;
-                }
-            }
-        });
-
-        if (isNeedDownload) {
-            removeBannerDirectory();
-            getRealm().executeTransaction(realm -> {
-                realm.where(Banner.class).findAll().deleteAllFromRealm();
-                realm.insert(banners);
-            });
-            for (Banner banner : banners) {
-                ImageDownloader.getBannerImage(context, OptimaBank.getInstance().getOpenSessionHeader(null), banner.BannerUrl, banner.ImageName);
-            }
-        }
+//        getRealm().executeTransaction(bgRealm -> {
+//            for (Banner banner : banners) {
+//                Banner _banner = bgRealm.where(Banner.class)
+//                        .equalTo(PRIMARY_KEY, banner.ImageName)
+//                        .and()
+//                        .equalTo("TargetUrl", banner.TargetUrl)
+//                        .and()
+//                        .equalTo("BannerUrl", banner.BannerUrl)
+//                        .findFirst();
+//                if (_banner == null) {
+//                    isNeedDownload = true;
+//                    break;
+//                }
+//            }
+//        });
+//
+//        if (isNeedDownload) {
+//            removeBannerDirectory();
+//            getRealm().executeTransaction(realm -> {
+//                realm.where(Banner.class).findAll().deleteAllFromRealm();
+//                realm.insert(banners);
+//            });
+//            for (Banner banner : banners) {
+//                ImageDownloader.getBannerImage(context, OptimaBank.getInstance().getOpenSessionHeader(null), banner.BannerUrl, banner.ImageName);
+//            }
+//        }
     }
 
     public void removeBannerDirectory() {
@@ -79,4 +80,6 @@ public class BannerController extends DBController {
             }
         }
     }
+
+    public void close(){}
 }

@@ -2,15 +2,15 @@ package kz.optimabank.optima24.db.entry;
 
 import android.annotation.SuppressLint;
 
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-import io.realm.RealmObject;
-import io.realm.annotations.Ignore;
-import io.realm.annotations.PrimaryKey;
 import kz.optimabank.optima24.model.base.PushResponse;
 import kz.optimabank.optima24.utility.Constants;
 
@@ -18,7 +18,7 @@ import kz.optimabank.optima24.utility.Constants;
   Created by Timur on 14.01.2017.
  */
 
-public class Message extends RealmObject {
+public class Message {
     public static final int MESSAGE_FINANCE = 0;
     public static final int MESSAGE_AUTHORIZE = 1;
     public static final int MESSAGE_INFO = 2;

@@ -2,10 +2,12 @@ package kz.optimabank.optima24.db.entry;
 
 import java.util.Date;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
-public class DigitizedCard extends RealmObject{
+@Entity
+public class DigitizedCard{
     private String userPhone;
     private int code;
     private String number;

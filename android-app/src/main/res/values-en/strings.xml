@@ -53,10 +53,10 @@
     <string name="TransferForeignCurrencyToAnotherBank">Transfer foreign currency to another bank</string>
     <string name="TransferMoneyFromMasterToVisa">Transfer to Visa card</string>
     <string name="TransferMoneyFromVisaToMaster">Transfer to Mastercard</string>
-    <string name="TransferMoneyInsideBankFromAccountToAccount">"Transfer to account of bank's client"</string>
-    <string name="TransferMoneyInsideBankFromAccountToCard">"Transfer to card of bank's client"</string>
-    <string name="TransferMoneyInsideBankFromCardAccountToAccount">"Transfer to account of bank's client"</string>
-    <string name="TransferMoneyInsideBankFromCardAccountToCard">"Transfer to card of bank's client"</string>
+    <string name="TransferMoneyInsideBankFromAccountToAccount">"Transfer to account of banks client"</string>
+    <string name="TransferMoneyInsideBankFromAccountToCard">"Transfer to card of banks client"</string>
+    <string name="TransferMoneyInsideBankFromCardAccountToAccount">"Transfer to account of banks client"</string>
+    <string name="TransferMoneyInsideBankFromCardAccountToCard">"Transfer to card of banks client"</string>
     <string name="TransferMoneyInsideClientAccountToCard">Transfer between own account to card-account</string>
     <string name="TransferMoneyInsideClientAccounts">Transfer between own accounts</string>
     <string name="TransferMoneyInsideClientCardToAccount">Transfer between own card-account to account</string>
@@ -193,7 +193,7 @@
     <string name="begin_period">Start of period</string>
     <string name="begin_time">Start date</string>
     <string name="behind">for</string>
-    <string name="beneficiary_account">"Recipient's account"</string>
+    <string name="beneficiary_account">"Recipient\s account"</string>
     <string name="bic">BIC</string>
     <string name="block">Block</string>
     <string name="block_card">Block card</string>
@@ -403,7 +403,7 @@ by OptimaBank?"</string>
     <string name="euro">Euro</string>
     <string name="exception">"Data collection error. "</string>
     <string name="exception_data">Data collection error, please relaunch the application</string>
-    <string name="exception_mail">"Error, probably you don't have a messenger"</string>
+    <string name="exception_mail">"Error, probably you don\t have a messenger"</string>
     <string name="exception_password_wrong">Wrong phone number or password.</string>
     <string name="exception_skype">Error, probably you have not installed Skype</string>
     <string name="exchange">FX rates</string>
@@ -472,7 +472,7 @@ by OptimaBank?"</string>
     <string name="india">India</string>
     <string name="indonesia">Indonesia</string>
     <string name="initials_or_company_name">Full name and name of the company</string>
-    <string name="initials_or_name_recipient">Recipient\'s full name</string>
+    <string name="initials_or_name_recipient">Recipient\\s full name</string>
     <string name="initials_fullname_lastname">Full name</string>
     <string name="inn">BIN</string>
     <string name="input_card_from_number_fmt">Enter %1$s or %2$s card number of the beneficiary</string>
@@ -606,7 +606,7 @@ Due to floating som rate and possible changes of currency rates within a short t
     <string name="not_equals_password">password does not match</string>
     <string name="not_invoices">No payable receipt</string>
     <string name="not_limited">Unlimited</string>
-    <string name="not_notice">"You don't have notifications"</string>
+    <string name="not_notice">"You don\t have notifications"</string>
     <string name="not_now">Not now</string>
     <string name="note">Note!</string>
     <string name="nothing_find">Nothing found</string>
@@ -674,7 +674,7 @@ Due to floating som rate and possible changes of currency rates within a short t
     <string name="penalty_blank_ser">Series blank</string>
     <string name="penalty_blank_type">Blank type</string>
     <string name="penalty_date">Violation date</string>
-    <string name="penalty_doc_num">"Driver's license number"</string>
+    <string name="penalty_doc_num">"Driver\s license number"</string>
     <string name="penalty_info">Information about the fine</string>
     <string name="penalty_kbk">KBK</string>
     <string name="penalty_kno">KNO</string>
@@ -703,7 +703,7 @@ Due to floating som rate and possible changes of currency rates within a short t
     <string name="pound_sterling">Pound sterling</string>
     <string name="prev_counter_index">Previous indicators</string>
     <string name="prev_counter_index_date">Date of previous indicators</string>
-    <string name="priceSmsNotif">"The cost of the service is determined by the Bank's tariffs, depending on the chosen tariff plan SMS notifications are connected to the phone number specified by you when signing the Agreement with the Bank. To clarify the phone number, please contact the Bank's Call Center by dialling 2424 To enable or disable SMS notification service, switch the toggle to the desired position \"Enabled\" or \"Disabled\" and click Continue."</string>
+    <string name="priceSmsNotif">"The cost of the service is determined by the Bank\s tariffs, depending on the chosen tariff plan SMS notifications are connected to the phone number specified by you when signing the Agreement with the Bank. To clarify the phone number, please contact the Bank\s Call Center by dialling 2424 To enable or disable SMS notification service, switch the toggle to the desired position \"Enabled\" or \"Disabled\" and click Continue."</string>
     <string name="process_digitizing_card">Card digitizing in progress</string>
     <string name="profile_photo">Profile photo</string>
     <string name="profile_photo_update">Profile’s photo is successfully updated</string>
@@ -778,7 +778,7 @@ Due to floating som rate and possible changes of currency rates within a short t
  \u0009 • When sending a transfer to an"<b> individual</b> - choose the economy sector<b> «9»</b>"
  \u0009 • When sending a transfer to an"<b> entity</b> - choose the economy sector from<b> «1»</b> to<b> «8»</b>"
  \u0009 • Transfer in Russian rubles to the"<b> budgetary system of the Russian Federation</b>" through Optima24 is not sent.
- \u0009 • When sending a transfer under a"<b> contract, bill, invoice or other document</b>", you need to provide the original document to the Bank's outlet where you opened your bank account.
+ \u0009 • When sending a transfer under a"<b> contract, bill, invoice or other document</b>", you need to provide the original document to the Bank\s outlet where you opened your bank account.
  \u0009 • The bank has the right to request additional supporting documents.
  \u0009 • Transfer is sent out by the Bank"<b> within 1 business day</b>", time for crediting money may depend on the Bank receiving the transfer.
 
@@ -856,7 +856,6 @@ Due to floating som rate and possible changes of currency rates within a short t
     <string name="status_ok">Oк</string>
     <string name="status_online">Status: available</string>
     <string name="status_sms_notifications_not_determined">SMS notifications status has not been determined yet</string>
-    <string name="status_undefined" />
     <string name="session_continue">Resume session</string>
     <string name="session_end">Session finishing</string>
     <string name="session_end_attention_title">Attention! Session will be finished after</string>
@@ -907,7 +906,6 @@ Due to floating som rate and possible changes of currency rates within a short t
     <string name="t_continue">Continue</string>
     <string name="t_end">End</string>
     <string name="t_current_and_card_accounts">Optima24</string>
-    <string name="t_empty" />
     <string name="t_general_branch">main office</string>
     <string name="t_in_list">On list</string>
     <string name="t_loading">Loading data</string>
@@ -916,7 +914,7 @@ Due to floating som rate and possible changes of currency rates within a short t
     <string name="t_mediator_bank_cor_account">Correspondent account of intermediary is bank</string>
     <string name="t_mediator_bic">BIC intermediary bank</string>
     <string name="t_new_category">New category</string>
-    <string name="t_not_show_more">"Don't show again"</string>
+    <string name="t_not_show_more">"Don\t show again"</string>
     <string name="t_offline">does not work/not available at this time</string>
     <string name="t_on_map">On map</string>
     <string name="t_online">available</string>
@@ -1033,8 +1031,8 @@ repayment before the reporting date"</string>
     <string name="transfer_history_title">Transfer history</string>
     <string name="transfer_info">Transfer information</string>
     <string name="transfer_inner">Transfers inside bank</string>
-    <string name="transfer_inner_account">"To account of OptimaBank's client"</string>
-    <string name="transfer_inner_card">"To card of OptimaBank's client"</string>
+    <string name="transfer_inner_account">"To account of OptimaBank\s client"</string>
+    <string name="transfer_inner_card">"To card of OptimaBank\s client"</string>
     <string name="transfer_money">Transfer money</string>
     <string name="transfer_multi_card">Transfer with conversion within the card</string>
     <string name="transfer_number">Transfer number</string>
@@ -1107,7 +1105,7 @@ in soms"</string>
     <string name="wrong_card_type_from">Wrong type of source card selected</string>
     <string name="yes">yes</string>
     <string name="yes_ready">Yes, I am ready</string>
-    <string name="youNothingChoose">"You didn't choose anything"</string>
+    <string name="youNothingChoose">"You didn\t choose anything"</string>
     <string name="you_time_expired">Your time has been expired</string>
     <string name="your_device_is_rooted">Your device is running under root privileges, which makes use of Optima24 vulnerable to malware and threatens the security of your money. The Bank is not responsible for any possible damage.</string>
     <string name="your_relationships_with_receiver">2. What is your relationship with the beneficiary / money recipient?</string>
@@ -1157,14 +1155,14 @@ in soms"</string>
     <string name="text_paste">Paste</string>
 
     <string name="text_phone_number_in_profile">Your current phone number at Optima24</string>
-    <string name="text_more_dots">Available balance in KGS for all currencies at the Bank`s purchase rate.</string>
-    <string name="text_available_balance">Available balance<font color='#ED1C24'>*</font></string>
+    <string name="text_more_dots">Available balance in KGS for all currencies at the Banks purchase rate.</string>
+    <string name="text_available_balance">Available balance*</string>
     <string name="text_amount_by_currency">By currency</string>
-    <string name="text_available_balance_description"><font color='#ED1C24'>*</font>The available balance is the amount of balances broken down by currencies at the purchase rate for the Bank`s payment cards at the time of the request. The available balance serves as a guideline. When exchange rates change, the available balance may change.</string>
-    <string name="text_available_amount_in_process_description"><font color='#ED1C24'>*</font>To calculate the amount
-        for all currencies, the purchase rate for the Bank`s payment cards at the time of the transaction is used.</string>
+    <string name="text_available_balance_description">The available balance is the amount of balances broken down by currencies at the purchase rate for the Banks payment cards at the time of the request. The available balance serves as a guideline. When exchange rates change, the available balance may change.</string>
+    <string name="text_available_amount_in_process_description">*To calculate the amount
+        for all currencies, the purchase rate for the Banks payment cards at the time of the transaction is used.</string>
     <string name="text_multiplicator_description">A multiplier is a coefficient used when blocking funds when
-        conducting a card transaction in foreign currency with the participation of multicurrency cards and it is made in soms. Also, when withdrawing funds in ATM and POS from multicurrency cards, a multiplier is applied. The final write-off of funds for transactions performed is carried out at the Bank`s commercial rate on the day of the transaction.</string>
+        conducting a card transaction in foreign currency with the participation of multicurrency cards and it is made in soms. Also, when withdrawing funds in ATM and POS from multicurrency cards, a multiplier is applied. The final write-off of funds for transactions performed is carried out at the Banks commercial rate on the day of the transaction.</string>
 
     <string-array name="auto_payment_status">
         <item>Active</item>

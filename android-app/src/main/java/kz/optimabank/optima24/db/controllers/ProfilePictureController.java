@@ -6,7 +6,7 @@ import kz.optimabank.optima24.db.entry.ProfilePicture;
  * Created by Rasul on 23.04.2018.
  */
 
-public class ProfilePictureController extends DBController {
+public class ProfilePictureController {
 
     private static ProfilePictureController controller;
 
@@ -18,18 +18,25 @@ public class ProfilePictureController extends DBController {
     }
 
     public void addPicture(ProfilePicture profilePicture) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(profilePicture);
-        mRealm.commitTransaction();
+        return;
+//        mRealm.beginTransaction();
+//        mRealm.copyToRealmOrUpdate(profilePicture);
+//        mRealm.commitTransaction();
     }
 
     public void deletePicture(ProfilePicture profilePicture) {
-        mRealm.beginTransaction();
-        profilePicture.deleteFromRealm();
-        mRealm.commitTransaction();
+        return;
+//        mRealm.beginTransaction();
+//        profilePicture.deleteFromRealm();
+//        mRealm.commitTransaction();
     }
 
     public ProfilePicture getPictureByPhone(String phone) {
-        return mRealm.where(ProfilePicture.class).equalTo("phone", phone).findFirst();
+        return null;
+//        return mRealm.where(ProfilePicture.class).equalTo("phone", phone).findFirst();
+    }
+
+    public void close(){
+
     }
 }

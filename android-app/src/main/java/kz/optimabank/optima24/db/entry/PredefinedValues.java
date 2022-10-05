@@ -4,9 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-import io.realm.RealmObject;
-
-public class PredefinedValues extends RealmObject implements Serializable{
+public class PredefinedValues implements Serializable{
     @SerializedName("ExternalId")
     public String externalId;
     @SerializedName("Id")

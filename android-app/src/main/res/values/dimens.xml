@@ -14,7 +14,6 @@
     <dimen name="shadow_width">15dp</dimen>
     <dimen name="image_size">35dp</dimen>
 
-    <integer name="num_cols">1</integer>
     <dimen name="app_bar_height">300dp</dimen>
     <dimen name="search_app_bar_height">115dp</dimen>
 

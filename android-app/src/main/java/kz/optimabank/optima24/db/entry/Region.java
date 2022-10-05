@@ -2,13 +2,14 @@ package kz.optimabank.optima24.db.entry;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.realm.RealmObject;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 /**
  * Created by Жексенов on 14.11.2014.
  * <p/>
  */
-public class Region extends RealmObject {
+public class Region {
     //        private static final long serialVersionUID = 7367936263743995287L;
     @SerializedName("Alias")
     private String alias;

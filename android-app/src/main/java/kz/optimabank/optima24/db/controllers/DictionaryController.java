@@ -5,20 +5,33 @@ import java.util.ArrayList;
 import kz.optimabank.optima24.db.entry.Country;
 import kz.optimabank.optima24.db.entry.Dictionary;
 import kz.optimabank.optima24.db.entry.ForeignBank;
+import kz.optimabank.optima24.room_db.repository.CountriesRepository;
+import kz.optimabank.optima24.room_db.repository.DictionariesRepository;
+import kz.optimabank.optima24.room_db.repository.ForeignBankRepository;
+import kz.optimabank.optima24.room_db.repository.impl.CountriesRepositoryImpl;
+import kz.optimabank.optima24.room_db.repository.impl.DictionariesRepositoryImpl;
+import kz.optimabank.optima24.room_db.repository.impl.ForeignBankRepositoryImpl;
 
 /**
-  Created by Timur on 13.05.2017.
+ * Created by Timur on 13.05.2017.
  */
 
-public class DictionaryController extends DBController {
+public class DictionaryController {
     private static DictionaryController controller;
+
+    private DictionariesRepository dictionariesRepository;
+    private CountriesRepository countriesRepository;
+    private ForeignBankRepository foreignBankRepository;
 
     private DictionaryController() {
         super();
+        dictionariesRepository = new DictionariesRepositoryImpl();
+        countriesRepository = new CountriesRepositoryImpl();
+        foreignBankRepository = new ForeignBankRepositoryImpl();
     }
 
     public static DictionaryController getController() {
-        if(controller == null) {
+        if (controller == null) {
             return new DictionaryController();
         } else {
             return controller;
@@ -26,68 +39,64 @@ public class DictionaryController extends DBController {
     }
 
     public void updateDictionary(ArrayList<Dictionary> response) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(response);
-        mRealm.commitTransaction();
-        mRealm.close();
+        dictionariesRepository.insertAll(response);
     }
 
-    /*public void updateBicDictionary(ArrayList<Dictionary> response) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(mRealm.where(Dictionary.class).equalTo("type",0),response);
-
-        mRealm.where(Dictionary.class).equalTo("type",0).
-        mRealm.commitTransaction();
-        mRealm.close();
-    }*/
-
     public void updateCountries(ArrayList<Country> response) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(response);
-        mRealm.commitTransaction();
-        mRealm.close();
+        countriesRepository.insertAll(response);
     }
 
     public void updateForeignBanks(ArrayList<ForeignBank> response) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(response);
-        mRealm.commitTransaction();
-        mRealm.close();
+        foreignBankRepository.insertAll(response);
     }
 
     public ArrayList<Dictionary> getDictionaryKnp() {
-        return new ArrayList<> (mRealm.copyFromRealm(mRealm.where(Dictionary.class)
-                .equalTo("type",1).findAll()));
+        return (ArrayList<Dictionary>) dictionariesRepository.getAllByType(1);
+//        return new ArrayList<> (mRealm.copyFromRealm(mRealm.where(Dictionary.class)
+//                .equalTo("type",1).findAll()));
     }
 
     public ArrayList<Dictionary> getDictionaryVoCodes() {
-        return new ArrayList<> (mRealm.copyFromRealm(mRealm.where(Dictionary.class)
-                .equalTo("type",4).findAll()));
+        return (ArrayList<Dictionary>) dictionariesRepository.getAllByType(4);
+//        return new ArrayList<> (mRealm.copyFromRealm(mRealm.where(Dictionary.class)
+//                .equalTo("type",4).findAll()));
     }
 
     public ArrayList<Dictionary> getDictionaryBic() {
-        return new ArrayList<> (mRealm.copyFromRealm(mRealm.where(Dictionary.class)
-                .equalTo("type",0).findAll()));
+        return (ArrayList<Dictionary>) dictionariesRepository.getAllByType(0);
+//        return new ArrayList<> (mRealm.copyFromRealm(mRealm.where(Dictionary.class)
+//                .equalTo("type",0).findAll()));
     }
 
     public ArrayList<Dictionary> getCountriesForRegMastercard() {
-        return new ArrayList<> (mRealm.copyFromRealm(mRealm.where(Dictionary.class)
-                .equalTo("type",7).findAll()));
+        return (ArrayList<Dictionary>) dictionariesRepository.getAllByType(7);
+//        return new ArrayList<> (mRealm.copyFromRealm(mRealm.where(Dictionary.class)
+//                .equalTo("type",7).findAll()));
     }
 
     public Dictionary getKnpByCode(String code) {
-        return mRealm.where(Dictionary.class).equalTo("code",code).findFirst();
+        return dictionariesRepository.getByType(code);
+//        return mRealm.where(Dictionary.class).equalTo("code",code).findFirst();
     }
 
     public Dictionary getBicByCode(String code) {
-        return mRealm.where(Dictionary.class).equalTo("code",code).findFirst();
+        return dictionariesRepository.getByType(code);
+//        return mRealm.where(Dictionary.class).equalTo("code",code).findFirst();
     }
 
     public ArrayList<Country> getCountries() {
-        return new ArrayList<> (mRealm.where(Country.class).findAll());
+        return (ArrayList<Country>) countriesRepository.getAll();
+//        return new ArrayList<> (mRealm.where(Country.class).findAll());
     }
 
     public ArrayList<ForeignBank> getForeignBanks() {
-        return new ArrayList<>(mRealm.where(ForeignBank.class).findAll());
+        return (ArrayList<ForeignBank>) foreignBankRepository.getAll();
+//        return new ArrayList<>(mRealm.where(ForeignBank.class).findAll());
+    }
+
+    public void close(){
+        countriesRepository.delete();
+        dictionariesRepository.deleteAll();
+        foreignBankRepository.delete();
     }
 }

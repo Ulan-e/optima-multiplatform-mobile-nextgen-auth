@@ -5,14 +5,16 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 /**
  * Created by Rasul on 09.02.2018.
  */
 
-public class ForeignBank extends RealmObject implements Parcelable {
+@Entity
+public class ForeignBank implements Parcelable {
     @PrimaryKey
     @SerializedName("Id")
     public int id;

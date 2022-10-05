@@ -4,12 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-import io.realm.RealmObject;
-import io.realm.annotations.Ignore;
-import io.realm.annotations.PrimaryKey;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 import kz.optimabank.optima24.utility.Constants;
 
-public class Dictionary extends RealmObject implements Serializable {
+@Entity
+public class Dictionary implements Serializable {
     @PrimaryKey
     @SerializedName("Code")
     private String code;

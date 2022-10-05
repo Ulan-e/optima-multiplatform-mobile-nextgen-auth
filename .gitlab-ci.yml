@@ -1,7 +1,7 @@
 include:
-  - 'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.common.yml'
-  - 'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.ios.yml'
-  - 'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.android.yml'
+  - \'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.common.yml\'
+  - \'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.ios.yml\'
+  - \'https://gitlab.icerockdev.com/open-source/gitlab-ci-mobile/-/raw/master/.android.yml'
   - /testlab.yml
 
 stages:

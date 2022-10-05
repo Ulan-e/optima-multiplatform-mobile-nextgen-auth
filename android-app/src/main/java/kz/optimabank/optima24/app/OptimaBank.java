@@ -30,6 +30,7 @@ import java.util.Random;
 
 import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 import kg.optima.mobile.R;
+import kz.optimabank.optima24.room_db.AppDatabase;
 import kz.optimabank.optima24.utility.Constants;
 
 public class OptimaBank extends MultiDexApplication implements LifecycleObserver {
@@ -39,6 +40,7 @@ public class OptimaBank extends MultiDexApplication implements LifecycleObserver
     public static String NFC_TAG = "NFC_TAG";
     private int updateStatusCount = 0;
     private boolean isPayWithPin = false;
+    public AppDatabase appDatabase;
 
     @Override
     public void onCreate() {
@@ -60,6 +62,8 @@ public class OptimaBank extends MultiDexApplication implements LifecycleObserver
         built.setIndicatorsEnabled(true);
         built.setLoggingEnabled(true);
         Picasso.setSingletonInstance(built);
+
+        appDatabase = AppDatabase.getInstance(this);
 
 //        if(BuildConfig.DEBUG){
 //            Timber.plant(new Timber.DebugTree());

@@ -78,8 +78,6 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.5.1")
     implementation("androidx.fragment:fragment:1.5.3")
     implementation("androidx.lifecycle:lifecycle-process:2.5.1")
-    implementation("androidx.leanback:leanback:1.0.0")
-    implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.annotation:annotation:1.5.0")
 
     // Koin
@@ -160,7 +158,6 @@ dependencies {
 
    // implementation("ir.beigirad:ZigzagView:1.2.0")
     // implementation("cards.pay:paycardsrecognizer:1.1.0")
-    implementation("io.realm.kotlin:library-base:1.2.0")
 
     implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
     implementation("com.alibaba.android:ultraviewpager:1.0.7.7@aar")
@@ -184,4 +181,5 @@ dependencies {
     annotationProcessor("com.jakewharton:butterknife-compiler:10.0.0")
     implementation("com.uttampanchasara.pdfgenerator:pdfgenerator:1.3")
     implementation("com.github.flavienlaurent.datetimepicker:library:0.0.2")
+   // implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
 }

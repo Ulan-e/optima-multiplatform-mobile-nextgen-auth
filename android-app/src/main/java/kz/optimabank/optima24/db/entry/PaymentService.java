@@ -3,22 +3,22 @@ package kz.optimabank.optima24.db.entry;
 import android.annotation.TargetApi;
 import android.os.Build;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
 import kz.optimabank.optima24.model.base.PaymentServiceParameter;
 
 /**
   Created by Timyr on 21.04.2017.
  */
 
-@RealmClass
-public class PaymentService extends RealmObject implements Serializable {
+@Entity
+public class PaymentService implements Serializable {
     @PrimaryKey
     @SerializedName("Alias")
     public String alias;
@@ -37,7 +37,7 @@ public class PaymentService extends RealmObject implements Serializable {
     @SerializedName("PaymentCategoryId")
     public int paymentCategoryId;
     @SerializedName("Parameters")
-    public RealmList<PaymentServiceParameter> parameters;
+    public List<PaymentServiceParameter> parameters;
     @SerializedName("Fee")
     public double Fee;
     @SerializedName("IsInvoiceable")
@@ -45,13 +45,13 @@ public class PaymentService extends RealmObject implements Serializable {
     @SerializedName("IsPenalties")
     public boolean IsPenalties;
     @SerializedName("Regions")
-    public RealmList<Region> regions;
+    public List<Region> regions;
 
     public int getId() {
         return id;
     }
 
-    public RealmList<PaymentServiceParameter> getParameters() {
+    public List<PaymentServiceParameter> getParameters() {
         return parameters;
     }
 

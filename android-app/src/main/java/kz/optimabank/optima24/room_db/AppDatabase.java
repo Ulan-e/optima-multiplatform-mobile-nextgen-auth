@@ -7,7 +7,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import kz.optimabank.optima24.notifications.models.Notification;
+import kz.optimabank.optima24.room_db.daos.CardImageDao;
+import kz.optimabank.optima24.room_db.daos.CountryDao;
+import kz.optimabank.optima24.room_db.daos.DictionaryDao;
+import kz.optimabank.optima24.room_db.daos.ForeignBankDao;
 import kz.optimabank.optima24.room_db.daos.NotificationDao;
+import kz.optimabank.optima24.room_db.daos.PaymentCategoryDao;
+import kz.optimabank.optima24.room_db.daos.PaymentRegionsDao;
+import kz.optimabank.optima24.room_db.daos.PaymentServiceDao;
+import kz.optimabank.optima24.room_db.daos.ProfilePictureDao;
 
 @Database(entities = {Notification.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
@@ -17,6 +25,14 @@ public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;
 
     public abstract NotificationDao notificationDao();
+    public abstract CardImageDao cardImageDao();
+    public abstract CountryDao countryDao();
+    public abstract DictionaryDao dictionaryDao();
+    public abstract ForeignBankDao foreignBankDao();
+    public abstract PaymentCategoryDao paymentCategoryDao();
+    public abstract PaymentServiceDao paymentServiceDao();
+    public abstract PaymentRegionsDao paymentRegionsDao();
+    public abstract ProfilePictureDao profilePictureDao();
 
     public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {

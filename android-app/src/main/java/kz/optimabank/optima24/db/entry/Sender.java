@@ -1,14 +1,13 @@
 package kz.optimabank.optima24.db.entry;
 
-import io.realm.RealmObject;
-import io.realm.annotations.Ignore;
-import io.realm.annotations.PrimaryKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 /**
   Created by Timur on 14.01.2017.
  */
 
-public class Sender extends RealmObject {
+public class Sender {
     public static final int SENDER_SOUND = 0;
     public static final int SENDER_MUTE = 1;
     public static final int SENDER_BLOCK = 2;

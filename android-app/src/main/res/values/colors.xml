@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- GENERAL COLORS -->
     <color name="white">#ffffffff</color>
@@ -71,7 +71,7 @@
     <color name="warning_color">#f4511e</color>
     <color name="hint_color">#42000000</color>
     <color name="success_color">#009688</color>
-    <color name="test_color">#2f4267</color>
+    <color name="test_color" tools:ignore="PrivateResource">#2f4267</color>
     <color name="black">#000000</color>
     <color name="pre_black">#151515</color>
     <color name="tabBar">#00000000</color>
@@ -86,8 +86,8 @@
     <color name="seal_blue">#0470cb</color>
 
     <array name="swipe_refresh_color">
-        <item>@color/orange_atf</item>
-        <item>@color/blue_8_111_213</item>
+        <item>#ED1C24</item>
+        <item>#ED1C24</item>
     </array>
 
     <array name="avatar_placeholder_colors">

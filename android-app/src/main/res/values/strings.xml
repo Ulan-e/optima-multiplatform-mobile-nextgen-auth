@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="no_data">No data</string>
-    <string name="submit_btn">Submit</string>
-    <string name="token_hint">API token</string>
-    <string name="language_hint">Language code</string>
-    <string name="retry_btn">Retry</string>
+    <string name="no_data" translatable="false">No data</string>
+    <string name="submit_btn" translatable="false">Submit</string>
+    <string name="token_hint" translatable="false">API token</string>
+    <string name="language_hint" translatable="false">Language code</string>
+    <string name="retry_btn" translatable="false">Retry</string>
 
-    <string name="continue_" >Продолжить</string>
-    <string name="start" >Начать</string>
-    <string name="face_scanning">Сканирование лица</string>
-    <string name="document_scanning">Сканирование паспорта</string>
-    <string name="ready">Готово</string>
-    <string name="are_u_sure_exit">Вы действительно хотите выйти?</string>
-    <string name="identification_is_not_finished">Идентификация не закончена. Процесс будет остановлен и вы будете перенапралены на главный экран.</string>
+    <string name="continue_" translatable="false">Продолжить</string>
+    <string name="start" translatable="false">Начать</string>
+    <string name="face_scanning" translatable="false">Сканирование лица</string>
+    <string name="document_scanning" translatable="false">Сканирование паспорта</string>
+    <string name="ready" translatable="false">Готово</string>
+    <string name="are_u_sure_exit" translatable="false">Вы действительно хотите выйти?</string>
+    <string name="identification_is_not_finished" translatable="false">Идентификация не закончена. Процесс будет остановлен и вы будете перенапралены на главный экран.</string>
     <string name="exit">Выйти</string>
     
     <string name="ENEJKG22">ENEJKG22</string>
@@ -20,17 +20,17 @@
     <string name="AboutCard">О карте</string>
     <string name="BKS">BKS</string>
     <string name="CHINA">Китай</string>
-    <string name="CNY">¥</string>
+    <string name="CNY" translatable="false">¥</string>
     <string name="CRYPTOGRAPHY_ERROR">На платформе мобильных платежей возникла ошибка. Пожалуйста, повторите ваш запрос позднее, или свяжитесь со службой поддержки системы</string>
     <string name="Card_lock">Блокировка карты</string>
     <string name="Cash_withdrawal">Снятие наличныx в банкоматах</string>
     <string name="select_limit_type">Выберите тип лимита</string>
     <string name="limit_type">Тип лимита</string>
     <string name="DUPLICATE_PAYMENT_APP_INSTANCE_ID">Обнаружен дубликат мобильного приложения на сервере мобильных платежей. Пожалуйста, начните процесс регистрации с начала</string>
-    <string name="EUR">€</string>
+    <string name="EUR" translatable="false">€</string>
     <string name="FixCount">FixCount</string>
     <string name="FixSum">FixSum</string>
-    <string name="GBP">£</string>
+    <string name="GBP" translatable="false">£</string>
     <string name="INTERNAL_SERVICE_FAILURE">Некорректный формат запроса. Пожалуйста, проверьте доступность обновлений приложения на Google Play Market</string>
     <string name="INVALID_ELIGIBILITY_RECEIPT">Некорректный enrollment reference. Пожалуйста, повторите процесс оцифровки карты или свяжитесь с центром поддержки пользователей</string>
     <string name="INVALID_MPA_VERSION">Запрос к платформе мобильных платежей отклонён. Возможно, ваше мобильное приложение устарело и требует обновления. Пожалуйста, проверьте доступность обновлений приложения на Google Play Market</string>
@@ -62,7 +62,7 @@
     <string name="REGISTRATION_IN_PROGRESS">Запущен параллельный процесс регистрации: для устройства уже выполняется процесс регистрации на платформе мобильных платежей. Вы можете провести регистрацию позже</string>
     <string name="RESOURCE_NOT_FOUND">Сервис временно недоступен. Пожалуйста, повторите ваш запрос позднее</string>
     <string name="RNS_UNAVAILABLE">На платформе мобильных платежей возникла ошибка. Пожалуйста, повторите ваш запрос позднее, или свяжитесь со службой поддержки системы</string>
-    <string name="RUB">₽</string>
+    <string name="RUB" translatable="false">₽</string>
     <string name="SMS_alert">СМС/Пуш уведомления</string>
     <string name="ServiceId">ServiceId</string>
     <string name="ServiceName">ServiceName</string>
@@ -88,7 +88,7 @@
     <string name="UNKNOWN_CRDPRODUCT">Неизвестный тип карты получен от систем банка. Пожалуйста, свяжитесь с банком или повторите операцию позднее</string>
     <string name="UNKNOWN_HOST">Ошибка доступа к серверу мобильных платежей. Проверьте соединение с интернет</string>
     <string name="USA">США</string>
-    <string name="USD">$</string>
+    <string name="USD" translatable="false">$</string>
     <string name="VTS_COMMUNICATION_ERROR">Ошибка доступа к Visa Tokenization Service</string>
     <string name="VTS_ERROR">Ошибка работы с Visa Tokenization Service</string>
     <string name="VTS_INVALID_CARD">Ошибка доступа к данным Visa Tokenization Service. Пожалуйста, свяжитесь с банком</string>
@@ -108,37 +108,37 @@
     <string name="_t_fill_">Заполните поле</string>
     <string name="_t_fill_all_required_">Заполните все обязательные поля</string>
     <string name="_yes">Да</string>
-    <string name="abc_action_bar_home_description">Navigate home</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Navigate up</string>
-    <string name="abc_action_menu_overflow_description">More options</string>
-    <string name="abc_action_mode_done">Done</string>
-    <string name="abc_activity_chooser_view_see_all">See all</string>
-    <string name="abc_activitychooserview_choose_application">Choose an app</string>
-    <string name="abc_capital_off">OFF</string>
-    <string name="abc_capital_on">ON</string>
-    <string name="abc_font_family_body_1_material">sans-serif</string>
-    <string name="abc_font_family_body_2_material">sans-serif-medium</string>
-    <string name="abc_font_family_button_material">sans-serif-medium</string>
-    <string name="abc_font_family_caption_material">sans-serif</string>
-    <string name="abc_font_family_display_1_material">sans-serif</string>
-    <string name="abc_font_family_display_2_material">sans-serif</string>
-    <string name="abc_font_family_display_3_material">sans-serif</string>
-    <string name="abc_font_family_display_4_material">sans-serif-light</string>
-    <string name="abc_font_family_headline_material">sans-serif</string>
-    <string name="abc_font_family_menu_material">sans-serif</string>
-    <string name="abc_font_family_subhead_material">sans-serif</string>
-    <string name="abc_font_family_title_material">sans-serif-medium</string>
-    <string name="abc_search_hint">Search…</string>
-    <string name="abc_searchview_description_clear">Clear query</string>
-    <string name="abc_searchview_description_query">Search query</string>
-    <string name="abc_searchview_description_search">Search</string>
-    <string name="abc_searchview_description_submit">Submit query</string>
-    <string name="abc_searchview_description_voice">Voice search</string>
-    <string name="abc_shareactionprovider_share_with">Share with</string>
-    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
-    <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="abc_action_bar_home_description" translatable="false">Navigate home</string>
+    <string name="abc_action_bar_home_description_format" translatable="false">%1$s, %2$s</string>
+    <string name="abc_action_bar_home_subtitle_description_format" translatable="false">%1$s, %2$s, %3$s</string>
+    <string name="abc_action_bar_up_description" translatable="false">Navigate up</string>
+    <string name="abc_action_menu_overflow_description" translatable="false">More options</string>
+    <string name="abc_action_mode_done" translatable="false">Done</string>
+    <string name="abc_activity_chooser_view_see_all" translatable="false">See all</string>
+    <string name="abc_activitychooserview_choose_application" translatable="false">Choose an app</string>
+    <string name="abc_capital_off" translatable="false">OFF</string>
+    <string name="abc_capital_on" translatable="false">ON</string>
+    <string name="abc_font_family_body_1_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_body_2_material" translatable="false" >sans-serif-medium</string>
+    <string name="abc_font_family_button_material" translatable="false">sans-serif-medium</string>
+    <string name="abc_font_family_caption_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_display_1_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_display_2_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_display_3_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_display_4_material" translatable="false">sans-serif-light</string>
+    <string name="abc_font_family_headline_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_menu_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_subhead_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_title_material" translatable="false">sans-serif-medium</string>
+    <string name="abc_search_hint" translatable="false">Search…</string>
+    <string name="abc_searchview_description_clear" translatable="false">Clear query</string>
+    <string name="abc_searchview_description_query" translatable="false">Search query</string>
+    <string name="abc_searchview_description_search" translatable="false">Search</string>
+    <string name="abc_searchview_description_submit" translatable="false">Submit query</string>
+    <string name="abc_searchview_description_voice" translatable="false">Voice search</string>
+    <string name="abc_shareactionprovider_share_with" translatable="false">Share with</string>
+    <string name="abc_shareactionprovider_share_with_application" translatable="false">Share with %s</string>
+    <string name="abc_toolbar_collapse_description" translatable="false">Collapse</string>
     <string name="abonent_is_found">Абонент найден</string>
     <string name="card_number">Номер карты</string>
     <string name="acc_visi">Возможно Ваши карты и счета скрыты в настройках видимости. Чтобы изменить перейдите, пожалуйста, в раздел \"Настройки видимости счетов\"</string>
@@ -151,10 +151,10 @@
     <string name="account_number">Номер счета</string>
     <string name="account_number_">Номер счета:</string>
     <string name="account_number_from">Со счета</string>
-    <string name="will_be_written_off">будет списано</string>
-    <string name="account_number_to">на счет</string>
-    <string name="will_be_creditted">будет зачислено</string>
-    <string name="for_one">за 1</string>
+    <string name="will_be_written_off" translatable="false">будет списано</string>
+    <string name="account_number_to" translatable="false">на счет</string>
+    <string name="will_be_creditted" translatable="false">будет зачислено</string>
+    <string name="for_one" translatable="false">за 1</string>
     <string name="account_open">Открыт</string>
     <string name="account_or_card">Счет или карта оплаты</string>
     <string name="account_rename">Переименование счета</string>
@@ -180,7 +180,7 @@
     <string name="all_regions">Все регионы</string>
     <string name="all_templates">Все</string>
     <string name="allowed">Операции разрешены</string>
-    <string name="allowed_forbidden">Разрешить/Запретить</string>
+    <string name="allowed_forbidden" translatable="false">Разрешить/Запретить</string>
     <string name="alseco_account">Счет</string>
     <string name="alseco_owner_address">Адрес</string>
     <string name="alseco_owner_full_name">Ф.И.О <!--плательщика--></string>
@@ -192,11 +192,11 @@
     <string name="amount_of_indexes">Количество</string>
     <string name="amount_payments_day">Сумма платежей в сутки</string>
     <string name="amount_with_fee">Сумма с учетом комиссии</string>
-    <item name="ampm_circle_radius_multiplier" type="string">0.19</item>
+    <item name="ampm_circle_radius_multiplier" type="string" translatable="false">0.19</item>
     <string name="animals">Животные</string>
     <string name="answer">Ответ на вопрос</string>
     <string name="app_name">Optima24</string>
-    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="application_date">Дата подачи заявки:</string>
     <string name="application_date2">Дата подачи заявки</string>
     <string name="application_details">Детали заявки</string>
@@ -259,25 +259,25 @@
     <string name="bring_phone_to_reader">Поднесите смартфон к устройству чтения карт</string>
     <string name="bring_the_card">"Поднесите карту,
 чтобы отсканировать"</string>
-    <string name="button10_large_text">Отмена</string>
-    <string name="button11_large_text">0</string>
-    <string name="button1_large_text">1</string>
-    <string name="button2_large_text">2</string>
-    <string name="button2_small_text">ABC</string>
-    <string name="button3_large_text">3</string>
-    <string name="button3_small_text">DEF</string>
-    <string name="button4_large_text">4</string>
-    <string name="button4_small_text">GHI</string>
-    <string name="button5_large_text">5</string>
-    <string name="button5_small_text">JKL</string>
-    <string name="button6_large_text">6</string>
-    <string name="button6_small_text">MNO</string>
-    <string name="button7_large_text">7</string>
-    <string name="button7_small_text">PQRS</string>
-    <string name="button8_large_text">8</string>
-    <string name="button8_small_text">TUV</string>
-    <string name="button9_large_text">9</string>
-    <string name="button9_small_text">WXYZ</string>
+    <string name="button10_large_text" translatable="false">Отмена</string>
+    <string name="button11_large_text" translatable="false">0</string>
+    <string name="button1_large_text" translatable="false">1</string>
+    <string name="button2_large_text" translatable="false">2</string>
+    <string name="button2_small_text" translatable="false">ABC</string>
+    <string name="button3_large_text" translatable="false">3</string>
+    <string name="button3_small_text" translatable="false">DEF</string>
+    <string name="button4_large_text" translatable="false">4</string>
+    <string name="button4_small_text" translatable="false">GHI</string>
+    <string name="button5_large_text" translatable="false">5</string>
+    <string name="button5_small_text" translatable="false">JKL</string>
+    <string name="button6_large_text" translatable="false">6</string>
+    <string name="button6_small_text" translatable="false">MNO</string>
+    <string name="button7_large_text" translatable="false">7</string>
+    <string name="button7_small_text" translatable="false">PQRS</string>
+    <string name="button8_large_text" translatable="false">8</string>
+    <string name="button8_small_text" translatable="false">TUV</string>
+    <string name="button9_large_text" translatable="false">9</string>
+    <string name="button9_small_text" translatable="false">WXYZ</string>
     <string name="buy_bank">"Покупка
 Банком"</string>
     <string name="by">по</string>
@@ -326,7 +326,7 @@
     <string name="changes_history">История изменений</string>
     <string name="channel_name">Optima24</string>
     <string name="channel_description">Optima24 Notifications</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
+    <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="check_requisites">Для совершения операции проверьте указанные ранее реквизиты.</string>
     <string name="china_yuan">Китайский юань</string>
     <string name="choose">Выберите</string>
@@ -340,8 +340,8 @@
     <string name="choose_correct_date">Выберите актуальную дату</string>
     <string name="choose_region">Выберите регион</string>
     <string name="chooser_email">Выберите мессенджер</string>
-    <item name="circle_radius_multiplier" type="string">0.82</item>
-    <item name="circle_radius_multiplier_24HourMode" type="string">0.85</item>
+    <item name="circle_radius_multiplier" translatable="false" type="string">0.82</item>
+    <item name="circle_radius_multiplier_24HourMode" translatable="false" type="string">0.85</item>
     <string name="citizenship">Гражданство</string>
     <string name="city">Город</string>
     <string name="client_already_registered">Пользователь уже зарегистрирован в приложении Optima24, для дальнейшей работы с приложением пройдите процедуру авторизации или обратитесь в Контакт-центр по номеру 2424</string>
@@ -358,26 +358,26 @@
     <string name="closed_deposit">Данный депозит закрыт</string>
     <string name="cny">Китайский юань</string>
     <string name="code">Вход по коду</string>
-    <string name="code_expire">Ваш код истечет в течении &lt;font color=#d0021b>%1$s&lt;/font> минут!</string>
+    <string name="code_expire">Ваш код истечет в течении минут!</string>
     <string name="comment">Комментарий</string>
     <string name="comments">Комментарии</string>
-    <string name="common_google_play_services_enable_button">Enable</string>
-    <string name="common_google_play_services_enable_text">"%1$s won't work unless you enable Google Play services."</string>
-    <string name="common_google_play_services_enable_title">Enable Google Play services</string>
-    <string name="common_google_play_services_install_button">Install</string>
-    <string name="common_google_play_services_install_text">"%1$s won't run without Google Play services, which are missing from your device."</string>
-    <string name="common_google_play_services_install_title">Get Google Play services</string>
-    <string name="common_google_play_services_notification_ticker">Google Play services error</string>
-    <string name="common_google_play_services_unknown_issue">%1$s is having trouble with Google Play services. Please try again.</string>
-    <string name="common_google_play_services_unsupported_text">"%1$s won't run without Google Play services, which are not supported by your device."</string>
-    <string name="common_google_play_services_update_button">Update</string>
-    <string name="common_google_play_services_update_text">"%1$s won't run unless you update Google Play services."</string>
-    <string name="common_google_play_services_update_title">Update Google Play services</string>
-    <string name="common_google_play_services_updating_text">"%1$s won't run without Google Play services, which are currently updating."</string>
-    <string name="common_google_play_services_wear_update_text">New version of Google Play services needed. It will update itself shortly.</string>
-    <string name="common_open_on_phone">Open on phone</string>
-    <string name="common_signin_button_text">Sign in</string>
-    <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="common_google_play_services_enable_button" translatable="false">Enable</string>
+    <string name="common_google_play_services_enable_text" translatable="false">"%1$s wont work unless you enable Google Play services."</string>
+    <string name="common_google_play_services_enable_title" translatable="false">Enable Google Play services</string>
+    <string name="common_google_play_services_install_button" translatable="false">Install</string>
+    <string name="common_google_play_services_install_text" translatable="false">"%1$s wont run without Google Play services, which are missing from your device."</string>
+    <string name="common_google_play_services_install_title" translatable="false">Get Google Play services</string>
+    <string name="common_google_play_services_notification_ticker" translatable="false">Google Play services error</string>
+    <string name="common_google_play_services_unknown_issue" translatable="false">%1$s is having trouble with Google Play services. Please try again.</string>
+    <string name="common_google_play_services_unsupported_text" translatable="false">"%1$s wont run without Google Play services, which are not supported by your device."</string>
+    <string name="common_google_play_services_update_button" translatable="false">Update</string>
+    <string name="common_google_play_services_update_text" translatable="false">"%1$s wont run unless you update Google Play services."</string>
+    <string name="common_google_play_services_update_title" translatable="false">Update Google Play services</string>
+    <string name="common_google_play_services_updating_text" translatable="false">"%1$s wont run without Google Play services, which are currently updating."</string>
+    <string name="common_google_play_services_wear_update_text" translatable="false">New version of Google Play services needed. It will update itself shortly.</string>
+    <string name="common_open_on_phone" translatable="false">Open on phone</string>
+    <string name="common_signin_button_text" translatable="false">Sign in</string>
+    <string name="common_signin_button_text_long" translatable="false">Sign in with Google</string>
     <string name="commun_with_bank">Связь с банком</string>
     <string name="complete_full">Заполните все поля</string>
     <string name="comprosentation">Компрометация карты</string>
@@ -432,8 +432,8 @@
     <string name="current_counter_index_date">Дата текущих показателей</string>
     <string name="current_password">Текущий пароль</string>
     <string name="data_time">Данные на</string>
-    <string name="day_of_week_label_typeface">sans-serif-light</string>
-    <string name="day_picker_description">Month grid of days</string>
+    <string name="day_of_week_label_typeface" translatable="false">sans-serif-light</string>
+    <string name="day_picker_description" translatable="false">Month grid of days</string>
     <string name="dear_customer">Уважаемый клиент!</string>
     <string name="dear_customer_alert">Данная страна является страной с высоким риском мошенничества. ОАО «Оптима Банк» не рекомендует снимать ограничения для стран с повышенным риском мошенничества. Снимая ограничения Вы соглашаетесь, что осознаете высокую степень риска и подтверждаете своё решение. В случае снятия ограничения, «ОАО Оптима Банк» рекомендует по возвращению в Кыргызстан осуществить перевыпуск карты и ПИН-кода</string>
     <string name="debit">Списания</string>
@@ -447,7 +447,7 @@
     <string name="delete_template">Удалить шаблон платежа</string>
     <string name="delete_template_transfer">Удалить шаблон?</string>
     <string name="delete_transfer_template">Удалить шаблон перевода</string>
-    <string name="deleted_key">%1$s deleted</string>
+    <string name="deleted_key" translatable="false">%1$s deleted</string>
     <string name="deposit_account_amount">Сумма на депозите:</string>
     <string name="deposit_accounts">Депозиты</string>
     <string name="deposit_info">ИНФОРМАЦИЯ ПО ДЕПОЗИТУ</string>
@@ -478,17 +478,16 @@
     <string name="doc_num">Номер документа</string>
     <string name="done">Выполнен</string>
     <string name="done_">Готово</string>
-    <string name="done_label">Done</string>
+    <string name="done_label" translatable="false">Done</string>
     <string name="download_request">Скачать заявку</string>
     <string name="during_period">за период</string>
-    <string name="empty" />
     <string name="empty_list_view">Список пуст</string>
     <string name="enable_nfc">Включите NFC для продолжения</string>
     <string name="enabled">Включено</string>
     <string name="enabled2">Включены</string>
     <string name="end_period">Конец периода</string>
     <string name="end_period_cant">Конец периода не может быть раньше начала</string>
-    <string name="english">English</string>
+    <string name="english" translatable="false">English</string>
     <string name="enter">Вход</string>
     <string name="enter_into_ATF24">Войти в Optima24</string>
     <string name="enter_manually">Ввести вручную</string>
@@ -504,7 +503,7 @@
     <string name="error_wrong_format">неверный формат</string>
     <string name="establish">Установить</string>
     <string name="euro">Международный евро</string>
-    <string name="euro_">Euro</string>
+    <string name="euro_" translatable="false">Euro</string>
     <string name="exception">Возникла ошибка сбора данных.</string>
     <string name="exception_data">Возникла ошибка сбора данных,пожалуйста перезапустите приложение.</string>
     <string name="exception_mail">Возникла ошибка, возможно у вас нет мессенджера.</string>
@@ -516,8 +515,8 @@
     <string name="exiting_application">Выход из приложения</string>
     <string name="expenses">Затраты:</string>
     <string name="expire_date_to">Действительна до</string>
-    <string name="facebook">Facebook</string>
-    <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
+    <string name="facebook" translatable="false">Facebook</string>
+    <string name="fcm_fallback_notification_channel_label" translatable="false">Miscellaneous</string>
     <string name="fee">Комиссия</string>
     <string name="fee_type">Тип комиссии</string>
     <string name="female">Женский</string>
@@ -555,7 +554,7 @@
     <string name="history_service">Тип платежа</string>
     <string name="history_status">Статус оплаты</string>
     <string name="history_title">История операций</string>
-    <string name="hour_picker_description">Hours circular slider</string>
+    <string name="hour_picker_description" translatable="false">Hours circular slider</string>
     <string name="https">https</string>
     <string name="i_agree">подтверждаю согласие с вышеприведенными условиями!</string>
     <string name="i_agree_with_contract_and_policy">Я ознакомлен и присоединяюсь к Договору и Условиям конфиденциальности.</string>
@@ -573,7 +572,7 @@
     <string name="incorrect_code_operation">Неверный код подтверждения операции</string>
     <string name="incorrect_sms_code_confirmation">Неверный СМС-код подтверждения</string>
     <string name="incorrect_phone_number">Неправильный номер телефона</string>
-    <string name="incorrect_temp_password">Неверный временный пароль</string>
+    <string name="incorrect_temp_password" translatable="false">Неверный временный пароль</string>
     <string name="incorrect_password">Неверный пароль</string>
     <string name="india">Индия</string>
     <string name="indonesia">Индонезия</string>
@@ -586,7 +585,7 @@
     <string name="input_sms_to_register">Для завершения регистрации введите код подтверждения, отправленный вам по СМС.</string>
     <string name="input_sum_greater_than_0">Введите сумму больше нуля</string>
     <string name="input_sum">Введите сумму</string>
-    <string name="instagram">Instagram</string>
+    <string name="instagram" translatable="false">Instagram</string>
     <string name="installing_non_market_apps">Устройство допускает установку с неизвестных источников</string>
     <string name="interfaceLang">Язык интерфейса</string>
     <string name="internet_connection_error">Ошибка соединения</string>
@@ -595,69 +594,17 @@
     <string name="introduced">Ознакомлен</string>
     <string name="invoiceable">Подписки</string>
     <string name="is_visible">видимость</string>
-    <string name="item_is_selected">%1$s selected</string>
-    <string name="kazakh">Қазақша</string>
+    <string name="item_is_selected" translatable="false">%1$s selected</string>
+    <string name="kazakh" translatable="false">Қазақша</string>
     <string name="kazakhstan_tenge">Казахстанский тенге</string>
     <string name="knp_name">Введите название кода</string>
     <string name="kpp">КПП получателя</string>
-    <string name="kyrgyz">Кыргыз</string>
+    <string name="kyrgyz" translatable="false">Кыргыз</string>
     <string name="kyrgyz_som">Киргизский сом</string>
     <string name="kz">КЗ</string>
     <string name="kzt">KZT</string>
     <string name="last_name">Отчество</string>
     <string name="last_version_of_android_os">Рекомендуем обновить ОС до последней версии Android</string>
-    <string name="lb_control_display_fast_forward_multiplier">%1$dX</string>
-    <string name="lb_control_display_rewind_multiplier">%1$dX</string>
-    <string name="lb_date_separator">/</string>
-    <string name="lb_guidedaction_continue_title">Continue</string>
-    <string name="lb_guidedaction_finish_title">Finish</string>
-    <item name="lb_guidedactions_item_disabled_chevron_alpha" type="string">0.5</item>
-    <item name="lb_guidedactions_item_disabled_description_text_alpha" type="string">0.25</item>
-    <item name="lb_guidedactions_item_disabled_text_alpha" type="string">0.25</item>
-    <item name="lb_guidedactions_item_enabled_chevron_alpha" type="string">1.0</item>
-    <item name="lb_guidedactions_item_unselected_description_text_alpha" type="string">0.5</item>
-    <item name="lb_guidedactions_item_unselected_text_alpha" type="string">1.0</item>
-    <item name="lb_guidedactions_width_weight" type="string">0.71428573</item>
-    <item name="lb_guidedactions_width_weight_two_panels" type="string">1.1917808</item>
-    <item name="lb_guidedbuttonactions_width_weight" type="string">0.45</item>
-    <item name="lb_guidedstep_height_weight" type="string">2.0</item>
-    <item name="lb_guidedstep_height_weight_translucent" type="string">1.0</item>
-    <item name="lb_guidedstep_keyline" type="string">40.0</item>
-    <string name="lb_media_player_error">MediaPlayer error code %1$d extra %2$d</string>
-    <string name="lb_navigation_menu_contentDescription">Navigation menu</string>
-    <string name="lb_onboarding_accessibility_next">Next</string>
-    <string name="lb_onboarding_get_started">GET STARTED</string>
-    <string name="lb_playback_controls_closed_captioning_disable">Disable Closed Captioning</string>
-    <string name="lb_playback_controls_closed_captioning_enable">Enable Closed Captioning</string>
-    <string name="lb_playback_controls_fast_forward">Fast Forward</string>
-    <string name="lb_playback_controls_fast_forward_multiplier">Fast Forward %1$dX</string>
-    <string name="lb_playback_controls_hidden">Media controls hidden, press d-pad to show</string>
-    <string name="lb_playback_controls_high_quality_disable">Disable High Quality</string>
-    <string name="lb_playback_controls_high_quality_enable">Enable High Quality</string>
-    <string name="lb_playback_controls_more_actions">More Actions</string>
-    <string name="lb_playback_controls_pause">Pause</string>
-    <string name="lb_playback_controls_picture_in_picture">Enter Picture In Picture Mode</string>
-    <string name="lb_playback_controls_play">Play</string>
-    <string name="lb_playback_controls_repeat_all">Repeat All</string>
-    <string name="lb_playback_controls_repeat_none">Repeat None</string>
-    <string name="lb_playback_controls_repeat_one">Repeat One</string>
-    <string name="lb_playback_controls_rewind">Rewind</string>
-    <string name="lb_playback_controls_rewind_multiplier">Rewind %1$dX</string>
-    <string name="lb_playback_controls_shown">Media controls shown</string>
-    <string name="lb_playback_controls_shuffle_disable">Disable Shuffle</string>
-    <string name="lb_playback_controls_shuffle_enable">Enable Shuffle</string>
-    <string name="lb_playback_controls_skip_next">Skip Next</string>
-    <string name="lb_playback_controls_skip_previous">Skip Previous</string>
-    <string name="lb_playback_controls_thumb_down">Deselect Thumb Down</string>
-    <string name="lb_playback_controls_thumb_down_outline">Select Thumb Down</string>
-    <string name="lb_playback_controls_thumb_up">Deselect Thumb Up</string>
-    <string name="lb_playback_controls_thumb_up_outline">Select Thumb Up</string>
-    <string name="lb_playback_time_separator">/</string>
-    <string name="lb_search_bar_hint">Search</string>
-    <string name="lb_search_bar_hint_speech">Speak to search</string>
-    <string name="lb_search_bar_hint_with_title">Search %1$s</string>
-    <string name="lb_search_bar_hint_with_title_speech">Speak to search %1$s</string>
-    <string name="lb_time_separator">:</string>
     <string name="license_agreement">"1. Разрешаю Банку предоставлять информацию о проводимом переводе денег в правоохранительные органы и Национальный Банк КР по их требованию.
  2. Настоящим подтверждаю, что данный перевод денег не связан с осуществлением валютной операции, требующей получения регистрационного свидетельства, свидетельства об уведомлении, учетного номера контракта.
  3. Банк не несет ответственности за неверно или не полностью указанные Отправителем реквизиты Бенефициара. В случае возврата перевода по вине Клиента Банк зачисляет на счет Клиента сумму, возвращенную банком - корреспондентом (при наличии счета - Отправителя). Ответственность за предоставление недостоверных данных, отраженных в поручении на перевод денег возлагается на отправителя денег.
@@ -680,10 +627,10 @@
     <string name="limit_daySOM">Лимит в сутки (в сомах)</string>
     <string name="set_limit_start_date">Дата установки лимита</string>
     <string name="set_limit_end_date">Дата окончания лимита</string>
-    <string name="ATM_LIMIT_CASH_LIMIT">Обналичивание в АТМ и POS-терминалах</string>
-    <string name="MAGSTRIPE_INTERNATIONAL">Суточный лимит на операции по магнитной полосе за пределами КР</string>
-    <string name="RETAIL_CARD_PRESENT">Безналичные покупки через POS-терминалы</string>
-    <string name="CARD_NOT_PRESENT">Интернет-покупки / платежи</string>
+    <string name="ATM_LIMIT_CASH_LIMIT" translatable="false">Обналичивание в АТМ и POS-терминалах</string>
+    <string name="MAGSTRIPE_INTERNATIONAL" translatable="false">Суточный лимит на операции по магнитной полосе за пределами КР</string>
+    <string name="RETAIL_CARD_PRESENT" translatable="false">Безналичные покупки через POS-терминалы</string>
+    <string name="CARD_NOT_PRESENT" translatable="false">Интернет-покупки / платежи</string>
     <string name="limit_for_cash_withdrawal_outside_rk">Лимит на снятие наличных за пределами КР</string>
     <string name="limit_for_cash_withdrawal_rk">Лимит на снятие наличных в банкоматах по КР</string>
     <string name="limit_touch_id">Превышен лимит попыток авторизации с Touch ID</string>
@@ -736,7 +683,7 @@
     <string name="middle_name">Имя</string>
     <string name="min_balance">Неснижаемый остаток</string>
     <string name="min_payment">Сумма минимального платежа</string>
-    <string name="minute_picker_description">Minutes circular slider</string>
+    <string name="minute_picker_description" translatable="false">Minutes circular slider</string>
     <string name="mobile_operator_not_found">Мобильный оператор не найден, попробуйте повторно набрать номер абонента</string>
     <string name="mobile_phone">Мобильный телефон</string>
     <string name="money_from">Откуда снять деньги</string>
@@ -744,7 +691,7 @@
     <string name="monthly_payment">Ежемесячный платеж:</string>
     <string name="move_to_link">Для вxода перейдите по ссылке</string>
     <string name="movement_of_funds">Движения средств</string>
-    <string name="multi">MULTI</string>
+    <string name="multi" translatable="false">MULTI</string>
     <string name="name">Название</string>
     <string name="name_op_recipient">Название операции или получателя</string>
     <string name="need_agreement">Подтвердите согласие с условиями банка</string>
@@ -789,13 +736,13 @@
     <string name="notice4">Уведомление</string>
     <string name="empty_notifications_placeholder">У Вас пока нет уведомлений</string>
     <string name="now_you_can_enter_atf24">Теперь Вы можете войти в Optima24. Для входа перейти перейдите на страницу авторизации</string>
-    <string name="num">9595</string>
+    <string name="num" translatable="false">9595</string>
     <string name="number">Номер</string>
     <string name="number_attempt">Вы исчерпали количество попыток</string>
     <string name="number_of_days">Количество дней (начиная с сегодня)</string>
-    <item name="numbers_radius_multiplier_inner" type="string">0.6</item>
-    <item name="numbers_radius_multiplier_normal" type="string">0.81</item>
-    <item name="numbers_radius_multiplier_outer" type="string">0.83</item>
+    <item name="numbers_radius_multiplier_inner"  translatable="false" type="string">0.6</item>
+    <item name="numbers_radius_multiplier_normal" translatable="false" type="string">0.81</item>
+    <item name="numbers_radius_multiplier_outer" translatable="false" type="string">0.83</item>
     <string name="of">из</string>
     <string name="of_fmt">из %1$s</string>
     <string name="of_year">года</string>
@@ -808,7 +755,7 @@
     <string name="operation_success">Операция выполнена успешно</string>
     <string name="operations_from">Операции с</string>
     <string name="operations_to">по</string>
-    <string name="orb_search_action">Search Action</string>
+    <string name="orb_search_action" translatable="false">Search Action</string>
     <string name="other">Прочее</string>
     <string name="overpayment">Переплата</string>
     <string name="owner">Собственник:</string>
@@ -821,13 +768,9 @@
     <string name="password_hint">Длина пароля не может быть меньше 8 и больше 15 символов. Пароль должен содержать как буквы так и цифры. Будьте внимательны при вводе. Пароль чувствителен к регистру.</string>
     <string name="password_key">password_key</string>
     <string name="password_successful_changed">Пароль успешно изменен!</string>
-    <string name="password_toggle_content_description">Toggle password visibility</string>
+    <string name="password_toggle_content_description" translatable="false">Toggle password visibility</string>
     <string name="passwords_doesnt_match">Пароль не соответствует</string>
     <string name="past">Прошлые</string>
-    <string name="path_password_eye">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
-    <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
-    <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
-    <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
     <string name="pay_action">Оплатить</string>
     <string name="pay_again">Повторить платеж</string>
     <string name="pay_by_phone">Оплатить телефоном</string>
@@ -869,7 +812,7 @@
     <string name="penalty_sum">Сумма штрафа</string>
     <string name="penalty_type">Вид нарушения</string>
     <string name="penny">Пеня</string>
-    <string name="percent_symbol">%</string>
+    <string name="percent_symbol" translatable="false">%</string>
     <string name="period">Период</string>
     <string name="perpetual_deposit">Бессрочно</string>
     <string name="personal_account">Личный счет</string>
@@ -878,13 +821,6 @@
     <string name="phone_number">Номер телефона</string>
     <string name="photo_deleted">Фото удалено</string>
     <string name="photo_uploaded">Фото загружено</string>
-    <string name="pin_code_fingerprint_not_recognized">Fingerprint not recognized. Try again</string>
-    <string name="pin_code_fingerprint_success">Fingerprint recognized</string>
-    <string name="pin_code_fingerprint_text">Fingerprint</string>
-    <string name="pin_code_forgot_text">Forgot?</string>
-    <string name="pin_code_step_change">Enter your current %d-digit Pincode</string>
-    <string name="pin_code_step_create">Create a %d-digit Pincode</string>
-    <string name="pin_code_step_disable">Disable %d-digit Pincode</string>
     <string name="pin_code_step_enable_confirm">Введите код доступа еще раз</string>
     <string name="pin_code_step_unlock">Ввод кода доступа</string>
     <string name="please_confirm_contract_policy">Пожалуйста, подтвердите присоединение к Договору и Политике конфиденциальности.</string>
@@ -907,7 +843,7 @@
     <string name="q_delete_template">Удалить шаблон платежа?</string>
     <string name="q_logout">Выйти?</string>
     <string name="q_pay">Оплатить?</string>
-    <string name="radial_numbers_typeface">sans-serif</string>
+    <string name="radial_numbers_typeface" translatable="false">sans-serif</string>
     <string name="rate">Валюта</string>
     <!--RATE-->
     <string name="pc_courses">Курсы по платежным картам</string>
@@ -942,7 +878,7 @@
     <string name="reenter_password">Повтор ввода пароля</string>
     <string name="reference">Референс</string>
     <string name="refresh_app">Для корректной работы нужно обновить приложение</string>
-    <string name="reg_filter_regex3">[a-zA-Zа-яА-ЯёЁ \\-/()]+</string>
+    <string name="reg_filter_regex3" translatable="false">[a-zA-Zа-яА-ЯёЁ \\-/()]+</string>
     <string name="region">Регионы</string>
     <string name="region_or_type_operation">Выберите регион либо тип операции</string>
     <string name="region_selected">Выбран регион</string>
@@ -965,9 +901,9 @@
     <string name="requisites_intermediary_bank_hint">Банк посредник(обязательно для заполнения для сумм более 100 000$)</string>
     <string name="rotate">Вращать</string>
     <string name="rub">Российский рубль</string>
-    <string name="rub_filter_regex1">[a-zA-Zа-яА-Я0-9-/()., ]+</string>
-    <string name="rub_filter_regex2">[a-zA-Zа-яА-Я0-9-/() ]+</string>
-    <string name="russian">Русский</string>
+    <string name="rub_filter_regex1" translatable="false">[a-zA-Zа-яА-Я0-9-/()., ]+</string>
+    <string name="rub_filter_regex2" translatable="false">[a-zA-Zа-яА-Я0-9-/() ]+</string>
+    <string name="russian" translatable="false">Русский</string>
     <string name="russian_ruble">Российский рубль</string>
     <string name="s_attention">\u0009<b>Обратите внимание!</b>"
  \u0009 • При отправке перевода в пользу"<b> физического лица:</b> - выбрать сектор экономики<b> «9»</b>"
@@ -981,7 +917,7 @@
     <string name="sale_bank">"Продажа
 Банком"</string>
     <string name="same_account">Вы не можете сделать перевод в рамках одного карт-счета</string>
-    <string name="sans_serif">sans-serif</string>
+    <string name="sans_serif" translatable="false">sans-serif</string>
     <string name="save">Сохранить</string>
     <string name="save_auto_payment">Создать автоплатеж</string>
     <string name="save_changed_template">Сохранить изменения</string>
@@ -995,20 +931,20 @@
     <string name="search_by_address">Поиск по адресу</string>
     <string name="search_by_bic">По бику</string>
     <string name="search_by_service">Поиск по услугам</string>
-    <string name="search_menu_title">Search</string>
+    <string name="search_menu_title" translatable="false">Search</string>
     <string name="search_region">Введите название региона</string>
     <string name="seco_name">Введите сектор экономики</string>
     <string name="secret_question">Секретный вопрос</string>
     <string name="security">Безопасность</string>
     <string name="select_currency">Выберите валюту</string>
     <string name="select_date">Выберите дату</string>
-    <string name="select_day">Select month and day</string>
+    <string name="select_day" translatable="false">Select month and day</string>
     <string name="select_default_card">Выберите карту для оплаты</string>
-    <string name="select_hours">Select hours</string>
-    <string name="select_minutes">Select minutes</string>
+    <string name="select_hours" translatable="false">Select hours</string>
+    <string name="select_minutes" translatable="false">Select minutes</string>
     <string name="select_period">Выбор периода</string>
-    <string name="select_year">Select year</string>
-    <item name="selection_radius_multiplier" type="string">0.16</item>
+    <string name="select_year" translatable="false">Select year</string>
+    <item name="selection_radius_multiplier" translatable="false" type="string">0.16</item>
     <string name="sendSMS">На ваш номер было отправлено SMS</string>
     <string name="send_again">Отправить СМС еще раз</string>
     <string name="send_email">"Отравить
@@ -1055,13 +991,12 @@
     <string name="statement_date">Дата выписки:</string>
     <string name="status">Статус</string>
     <string name="status_">Статус:</string>
-    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="status_bar_notification_info_overflow" translatable="false">999+</string>
     <string name="status_false">не исполнен</string>
     <string name="status_offline">Статус: не работает/не доступен в данное время</string>
     <string name="status_ok">Ок</string>
     <string name="status_online">Статус: доступен</string>
     <string name="status_sms_notifications_not_determined">Состояние смс уведомлений еще не было определено</string>
-    <string name="status_undefined" />
     <string name="session_end">Завершение сеанса</string>
     <string name="session_end_attention_title">Внимание! Сеанс будет автоматически завершен через</string>
     <string name="Second1_timer">секунду</string>
@@ -1113,7 +1048,6 @@
     <string name="t_continue">Продолжить</string>
     <string name="t_end">Завершить</string>
     <string name="t_current_and_card_accounts">Optima24</string>
-    <string name="t_empty" />
     <string name="t_general_branch">главный офис</string>
     <string name="t_in_list">Списком</string>
     <string name="t_loading">Загрузка данных</string>
@@ -1137,9 +1071,9 @@
     <string name="t_working_time">Гравик работы и услуги</string>
     <string name="tariff">Тариф</string>
     <string name="tariffs">Тарифы</string>
-    <string name="teleph">8 8000 800 283</string>
-    <string name="telephAround">+996 (312) 90-59-59</string>
-    <string name="telephFreeStacionar">0-800-800-00-00</string>
+    <string name="teleph" translatable="false">8 8000 800 283</string>
+    <string name="telephAround" translatable="false">+996 (312) 90-59-59</string>
+    <string name="telephFreeStacionar" translatable="false">0-800-800-00-00</string>
     <string name="temp_password">Временный пароль</string>
     <string name="temp_password_has_send_to_phone">Временный пароль для входа в Optima24 выслан на ваш номер телефона</string>
     <string name="template_create_successfully">Шаблон успешно создан</string>
@@ -1153,7 +1087,7 @@
     <string name="template_rename">Переименование шаблона</string>
     <string name="template_updated_successfully">Шаблон успешно обновлен</string>
     <string name="templates">Шаблоны</string>
-    <string name="tenge_icon">₸</string>
+    <string name="tenge_icon" translatable="false">₸</string>
     <string name="test">Новости</string>
     <string name="test_message">Произошла непредвиденная ошибка, повторите операцию позже!</string>
     <string name="text_bic">БИК банка получателя</string>
@@ -1179,9 +1113,9 @@
     <string name="text_receiver_iin">ИНН/ИИН/БИН получателя</string>
     <string name="text_resident">Резидент КР</string>
     <string name="text_seco_code">Сектор экономики</string>
-    <item name="text_size_multiplier_inner" type="string">0.14</item>
-    <item name="text_size_multiplier_normal" type="string">0.17</item>
-    <item name="text_size_multiplier_outer" type="string">0.11</item>
+    <item name="text_size_multiplier_inner" translatable="false" type="string">0.14</item>
+    <item name="text_size_multiplier_normal" translatable="false" type="string">0.17</item>
+    <item name="text_size_multiplier_outer" translatable="false" type="string">0.11</item>
     <string name="text_sms_code">"Вам отправлен смс-код
 Введите смс код"</string>
     <string name="text_sms">Введите смс-код</string>
@@ -1200,8 +1134,8 @@
     <string name="theft_card">Кража карты</string>
     <string name="thx_request">Ваша заявка зарегистрирована под номером %1$s</string>
     <string name="time">Время</string>
-    <string name="time_placeholder">--</string>
-    <string name="time_separator">:</string>
+    <string name="time_placeholder" translatable="false">--</string>
+    <string name="time_separator" translatable="false">:</string>
     <string name="title_dialog">Touch ID для «Optima24»</string>
     <string name="to">Конец</string>
     <string name="to_">Куда</string>
@@ -1228,7 +1162,7 @@
     <string name="total_sum_not_valid">Недопустимая сумма операции</string>
     <string name="total_with_fee">С учетом комиссии</string>
     <string name="total_write_off">Итого списания</string>
-    <string name="touchId">TouchID</string>
+    <string name="touchId" translatable="false">TouchID</string>
     <string name="transfer_acc_acc">Перевод на счет</string>
     <string name="transfer_acc_acc_to_other_bank">Клиенту другого банка</string>
     <string name="transfer_acc_deposit">Пополнение депозита</string>
@@ -1276,7 +1210,7 @@
     <string name="transfers_from_card_to_card">Перевод с карты на карту</string>
     <string name="transfers_title">Переводы</string>
     <string name="translation_information">Информация по переводу</string>
-    <string name="twitter">Twitter</string>
+    <string name="twitter" translatable="false">Twitter</string>
     <string name="un_success_response">Неудачная попытка</string>
     <string name="unlimit">Без ограничений</string>
     <string name="unlock_device">Разблокировка устройства</string>
@@ -1286,7 +1220,7 @@
     <string name="update_text">Обновить статус автоплатежа?</string>
     <string name="usd">Доллар США</string>
     <string name="use_fingerprint_in_future">Использовать авторизацию по Touch ID в будущем</string>
-    <string name="use_fingerprint_to_authenticate_key">have_bool_key</string>
+    <string name="use_fingerprint_to_authenticate_key" translatable="false">have_bool_key</string>
     <string name="use_fingerprint_to_authenticate_title">Использовать авторизацию по Touch ID</string>
     <string name="use_imprint">Вход по Touch ID</string>
     <string name="user">Профиль</string>
@@ -1325,7 +1259,7 @@
     <string name="writing_out_account">Выписка по счету</string>
     <string name="writing_out_deposit">Выписка по депозиту</string>
     <string name="wrong_card_type_from">Неверно выбран тип карты списания</string>
-    <string name="year_picker_description">Year list</string>
+    <string name="year_picker_description" translatable="false">Year list</string>
     <string name="yes">да</string>
     <string name="yes_ready">Да, готов</string>
     <string name="youNothingChoose">Вы ничего не выбрали</string>
@@ -1334,7 +1268,7 @@
     <string name="your_relationships_with_receiver">2. Какие у Вас взаимоотношения с бенефициаром/получателем денег?</string>
     <string name="СurrencyExchange">Конвертация</string>
     <string name="сalcul_comm"><b>Расчет конвертации</b></string>
-    <string name="bank_number_title">Счёт №</string>
+    <string name="bank_number_title" translatable="false">Счёт №</string>
     <string name="choose_currency">Выберите валюту</string>
     <string name="share">"Поделиться "</string>
     <string name="export_pdf">Экспорт в PDF</string>
@@ -1342,10 +1276,10 @@
     <string name="how_share">Выберите способ экспорта</string>
     <string name="insufficient_funds">Недостаточно средств</string>
     <string name="cant_transfer_tovisa">Запрещено делать перевод на карту Visa другого банка</string>
-    <string name="bonuses_bank">Бонусы Оптимы Банка</string>
-    <string name="bonus_amount">Бонусный счёт</string>
-    <string name="scores_amount">123 балла</string>
-    <string name="products">Продукты</string>
+    <string name="bonuses_bank" translatable="false">Бонусы Оптимы Банка</string>
+    <string name="bonus_amount" translatable="false">Бонусный счёт</string>
+    <string name="scores_amount" translatable="false">123 балла</string>
+    <string name="products" translatable="false">Продукты</string>
     <string name="forbidden_transfer_to_account">Запрещено делать перевод на счёт</string>
     <string name="number_of_attempts">Количество оставшихся попыток :</string>
     <string name="reason_unblock_card">Разблокировать карту</string>
@@ -1355,7 +1289,7 @@
     <string name="title_input_sms_code">Введите код из SMS-сообщения</string>
     <string name="subtitle_sms_code_sent_to_phone">На указанный Вами номер отправлено SMS-сообщение.</string>
     <string name="input_receiver_card_number">Введите номер карты получателя</string>
-    <string name="input_receiver_phone_number">Введите номер телефона получателя</string>
+    <string name="input_receiver_phone_number" translatable="false">Введите номер телефона получателя</string>
 
     <string name="security_question">Контрольный вопрос</string>
     <string name="text_input_answer">Введите ответ</string>
@@ -1374,13 +1308,13 @@
     <string name="text_payment_is_done">Платеж выполнен</string>
     <string name="text_transfer_done">Перевод выполнен</string>
     <string name="text_transfer_failed">Перевод не выполнен</string>
-    <string name="text_transfer">Перевод </string>
+    <string name="text_transfer" translatable="false">Перевод </string>
     <string name="text_more_dots">Доступный остаток в сомах по всем валютам по курсу покупки Банка.</string>
-    <string name="text_available_balance">Доступный остаток<font color='#ED1C24'>*</font></string>
+    <string name="text_available_balance">Доступный остаток</string>
     <string name="text_amount_in_precess">Сумма в обработке</string>
     <string name="text_amount_by_currency">В разрезе валют</string>
-    <string name="text_available_balance_description"><font color='#ED1C24'>*</font>Доступный остаток - это сумма остатков в разрезе валют по курсу покупки по платежным картам Банка на момент запроса. Доступный остаток служит для ориентира. При изменении курсов валют доступный остаток может меняться.</string>
-    <string name="text_available_amount_in_process_description"><font color='#ED1C24'>*</font>Для расчета суммы по всем
+    <string name="text_available_balance_description">Доступный остаток - это сумма остатков в разрезе валют по курсу покупки по платежным картам Банка на момент запроса. Доступный остаток служит для ориентира. При изменении курсов валют доступный остаток может меняться.</string>
+    <string name="text_available_amount_in_process_description">Для расчета суммы по всем
         валютам используется курс покупки по платежным картам Банка на момент совершения операции.</string>
     <string name="text_multiplicator_description">Мультипликатор – это коэффициент, применяемый при блокировании денежных средств при проведении карточной операции в иностранной валюте с участием мультивалютных карт и оно производится в сомах. Также при снятии денежных средств в АТМ и POSах с мультивалютных карт применяется мультипликатор. Окончательное списание денежных средств по проведенным операциям выполняется по коммерческому курсу Банка на день проведения операции.</string>
 

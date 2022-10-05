@@ -9,13 +9,13 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Date;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 import kz.optimabank.optima24.utility.Constants;
 
-@RealmClass
-public class PaymentCategory extends RealmObject implements Serializable{
+@Entity
+public class PaymentCategory implements Serializable{
     public int code = Constants.ITEM_ID;
     public boolean isTemplate = false;
     public String headerName;

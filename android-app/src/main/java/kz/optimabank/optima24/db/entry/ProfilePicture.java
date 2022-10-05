@@ -1,13 +1,15 @@
 package kz.optimabank.optima24.db.entry;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 /**
  * Created by Rasul on 23.04.2018.
  */
 
-public class ProfilePicture extends RealmObject {
+@Entity
+public class ProfilePicture {
     @PrimaryKey
     public String phone;
     public byte[] picture;

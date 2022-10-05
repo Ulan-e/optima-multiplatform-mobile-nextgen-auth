@@ -2,16 +2,16 @@ package kz.optimabank.optima24.db.entry;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 /**
   Created by Максим on 01.08.2017.
  */
 
-@RealmClass
-public class PaymentRegions extends RealmObject {
+@Entity
+public class PaymentRegions {
     @PrimaryKey
     @SerializedName("Alias")
     private String alias;

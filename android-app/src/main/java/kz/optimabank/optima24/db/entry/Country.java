@@ -4,15 +4,16 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 /**
   Created by Timur on 13.05.2017.
  */
 
-public class Country extends RealmObject implements Serializable {
-    @PrimaryKey
+@Entity
+public class Country implements Serializable {
     @SerializedName("AlphaCode")
     public String AlphaCode;
     @SerializedName("Name")

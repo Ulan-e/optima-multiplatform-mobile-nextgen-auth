@@ -1,12 +1,10 @@
 package kz.optimabank.optima24.db.entry;
 
-import io.realm.RealmObject;
-
 /**
   Created by Timur on 13.01.2017.
  */
 
-public class DHKey extends RealmObject {
+public class DHKey {
     private byte[] key;
 
     public byte[] getKey() {
