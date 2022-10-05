@@ -20,8 +20,8 @@ public struct WelcomeView: View {
     @State var showRegistration: Bool = false
     @State var isLoad: Bool = false
 
-    var state: WelcomeState?
-    var intent: WelcomeIntent?
+    var state: WelcomeState
+    var intent: WelcomeIntent
 
     public init(isLoad: Bool = false) {
         self.isLoad = isLoad
@@ -73,7 +73,7 @@ public struct WelcomeView: View {
                     NavigationLink(destination: DescriptionVerigramView(), isActive: $showLogin) {
                         RedButtonView(title: "Войти") { result in
 //                            showLogin.toggle()
-                            intent?.checkIsAuthorized()
+                            intent.checkIsAuthorized()
                         }
                     }
                     
@@ -104,18 +104,31 @@ public struct WelcomeView: View {
     }
     
     private func observeState() {
-        guard let state = self.state else { return }
         state.commonStateFlow.watch { state in
-            if state is BaseMppStateStateModelInitial {
+            switch(state) {
+            case let x where x is BaseMppStateStateModelInitial:
                 print("Init")
-            } else if state is BaseMppStateStateModelLoading {
+            case let x where x is BaseMppStateStateModelLoading:
                 print("Loading")
-                } else if state is BaseMppStateStateModelError {
-                    print("Error")
-                }
-            else {
-                print(state)
+            case let x where x is BaseMppStateStateModelError:
+                print("Error")
+            case .none:
+                print("none")
+            case .some(let a):
+                print("some\(a)")
+            default:
+                print("Default")
             }
+//            if state is BaseMppStateStateModelInitial {
+//                print("Init")
+//            } else if state is BaseMppStateStateModelLoading {
+//                print("Loading")
+//                } else if state is BaseMppStateStateModelError {
+//                    print("Error")
+//                }
+//            else {
+//                print(state)
+//            }
 
         }
     }

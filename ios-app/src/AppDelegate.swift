@@ -21,6 +21,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         MokoFirebaseCrashlytics.setup()
 
+        Injector().doInitKoin()
+
         let antilog: Antilog?
         #if DEBUG
             antilog = DebugAntilog(defaultTag: "debug")
