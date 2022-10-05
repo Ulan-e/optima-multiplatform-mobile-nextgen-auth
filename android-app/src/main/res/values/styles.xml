@@ -29,4 +29,269 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">false</item>
     </style>
+    
+    <style name="SortButtonText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:colorBackground">@android:color/white</item>
+    </style>
+
+    <style name="MainTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+        <item name="colorPrimary">@color/blue_0_93_186</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/blue_0_93_186</item>
+        <!--<item name="material_drawer_background">@color/test_color</item>-->
+        <!--<item name="material_drawer_primary_text">@color/md_white_1000</item>-->
+        <item name="actionMenuTextColor">@color/blue_atf</item>
+        <item name="android:actionMenuTextColor">@color/blue_atf</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/blue_atf</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <!-- for upper TabLayout -->
+    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/orange_atf</item>
+        <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+    <style name="MyTabTextAppearance" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- for text into TabLayout -->
+    <style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/gray_atf_</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="TextViewTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="chartTextViewTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#595959</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Theme.Transparent" parent="android:Theme">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.TransparentForOreo" parent="android:Theme">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">@color/blue_0_93_186</item>
+        <item name="android:textColorSecondary">@color/blue_0_93_186</item>
+    </style>
+
+    <style name="payProgressBar" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/pay_progress_bar_horizontal</item>
+        <item name="android:minHeight">8dp</item>
+        <item name="android:maxHeight">18dp</item>
+    </style>
+
+    <style name="Theme.UnlockScreen" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+    <style name="custom_card_lock">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray_black_56_56_56</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">15dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">15dp</item>
+    </style>
+
+    <!-- стиль для ввода текста с рамкой -->
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/hint_color</item>
+        <item name="android:textSize">@dimen/button_text_size_17sp</item>
+        <item name="android:layout_marginStart">@dimen/margin_25dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_25dp</item>
+        <item name="boxStrokeColor">@color/gray</item>
+        <item name="hintTextColor">@color/gray</item>
+    </style>
+
+    <!-- стиль для красной кнопки -->
+    <style name="RedButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:background">@drawable/selector_button_enable</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginStart">@dimen/margin_25dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_25dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- стиль для ввода текста с нижней черточкой -->
+    <style name="TextInputLayoutNoBottomLine" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="boxBackgroundColor">@color/white</item>
+
+    </style>
+
+    <!-- тема для диалога -->
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <!-- стиль для кнопки отмены в диалоге  -->
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/red_atf</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <!-- стиль для кнопки соглашения в диалоге  -->
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/red_atf</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="SlidingDialogAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+
+    <style name="Text_18_main_black">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/gray_atf</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Text_18_main_white_bold">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text_18_main_black_bold">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Text_16_main_black">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Text_16_main_dark_gray">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_atf</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Text_15_main_gray">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/pre_black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+    <style name="Text_15_main_black_bold">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Text_15_main_light_gray">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/gray_atf_</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Text_16_main_green_bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_atf_</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Text_12_main_gray">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray_atf_</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- стиль для загрузки данных -->
+    <style name="ProgressDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/gray_126_126_126</item>
+        <item name="android:textSize">@dimen/text_size_15sp</item>
+        <item name="android:background">@drawable/bg_rounded_corners</item>
+        <item name="colorAccent">@color/red_atf</item>
+    </style>
+
+    <!-- стиль для загрузки данных -->
+    <style name="MainAlertDialogStyle" parent="AlertDialogTheme">
+        <item name="android:textColor">@color/gray_126_126_126</item>
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:background">@drawable/bg_rounded_corners</item>
+        <item name="colorAccent">@color/red_atf</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
