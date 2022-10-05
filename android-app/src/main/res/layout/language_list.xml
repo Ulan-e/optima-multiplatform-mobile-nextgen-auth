@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/gradient_toolbar"
+        app:layout_anchor="@id/lin_search"
+        app:layout_collapseMode="pin"
+        app:layout_collapseParallaxMultiplier="1.0"
+        app:navigationIcon="@drawable/arrow_left">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextViewTitle"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/RLKZ"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:layout_marginTop="15dp">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/lngKz"-->
+    <!--android:layout_width="35dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:src="@drawable/kazakhstan"-->
+    <!--android:visibility="gone"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/langKz"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginEnd="10dp"-->
+    <!--android:layout_toEndOf="@id/lngKz"-->
+    <!--android:ellipsize="end"-->
+    <!--android:maxLines="1"-->
+    <!--android:paddingEnd="10dp"-->
+    <!--android:paddingStart="10dp"-->
+    <!--android:text="@string/kazakh"-->
+    <!--android:textColor="@color/gray_black_56_56_56"-->
+    <!--android:textSize="18sp"/>-->
+
+    <!--</RelativeLayout>-->
+
+    <RadioGroup
+        android:id="@+id/rg_lang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RadioButton
+            android:id="@+id/rb_kz"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="10dp"
+            android:text="@string/kyrgyz"
+            android:textSize="18sp"/>
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#e7e7e7"/>
+
+        <RadioButton
+            android:id="@+id/rb_ru"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="10dp"
+            android:text="@string/russian"
+            android:textSize="18sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#e7e7e7"/>
+
+        <RadioButton
+            android:id="@+id/rb_en"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="10dp"
+            android:text="@string/english"
+            android:textSize="18sp"/>
+    </RadioGroup>
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/RLRU"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:layout_marginTop="15dp">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/lngRu"-->
+    <!--android:layout_width="35dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:src="@drawable/russia"-->
+    <!--android:visibility="gone"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/langRu"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginEnd="10dp"-->
+    <!--android:layout_toEndOf="@id/lngRu"-->
+    <!--android:ellipsize="end"-->
+    <!--android:maxLines="1"-->
+    <!--android:paddingEnd="10dp"-->
+    <!--android:paddingStart="10dp"-->
+    <!--android:text="@string/russian"-->
+    <!--android:textColor="@color/gray_black_56_56_56"-->
+    <!--android:textSize="18sp"/>-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:background="#e7e7e7"/>-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/RLEN"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:layout_marginTop="15dp">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/lngEn"-->
+    <!--android:layout_width="35dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:src="@drawable/united_states_of_america"-->
+    <!--android:visibility="gone"/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/langEn"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginEnd="10dp"-->
+    <!--android:layout_toEndOf="@id/lngEn"-->
+    <!--android:ellipsize="end"-->
+    <!--android:maxLines="1"-->
+    <!--android:paddingEnd="10dp"-->
+    <!--android:paddingStart="10dp"-->
+    <!--android:text="@string/english"-->
+    <!--android:textColor="@color/gray_black_56_56_56"-->
+    <!--android:textSize="18sp"/>-->
+
+    <!--</RelativeLayout>-->
+
+    <!--</LinearLayout>-->
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+             tools:context="kz.optimabank.optima24.fragment.registration.SendSMSFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_240_240_240"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/input_sms_to_register"
+            android:textColor="@color/gray_black_56_56_56"/>
+
+        <TextView
+            android:id="@+id/tv_countdown"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/code_expire"
+            android:textSize="16sp"
+            android:textColor="@color/gray_black_56_56_56"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_sms"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:inputType="textAutoComplete|number"
+            android:digits="0123456789"
+            android:maxLines="1"
+            android:maxLength="4"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:textColor="@color/gray_black_56_56_56"
+            android:textSize="18sp"
+            tools:text="1234"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_send_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/send_again"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:enabled="false"
+            android:textColor="@drawable/enable_disable_button"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            style="?android:attr/borderlessButtonStyle"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e7e7e7"/>
+
+    <TextView
+        android:id="@+id/tv_expired_error"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="16sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

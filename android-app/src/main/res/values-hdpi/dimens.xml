@@ -1,0 +1,5 @@
+<resources>
+    <!-- 480x800, 540x960 and nearer resolution -->
+    <dimen name="payment_card_width">300dp</dimen>
+    <dimen name="payment_card_height">190dp</dimen>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "348593336570",
+    "project_id": "optima24-prod",
+    "storage_bucket": "optima24-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348593336570:android:239201bb4876476b0b9943",
+        "android_client_info": {
+          "package_name": "kz.optimabank.optima24"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348593336570-va46pj8i1isj9g8bp8vkjta8a8rss0j9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuajL0LXWdcloP7wiTMdcPySb3dz4L_-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348593336570-va46pj8i1isj9g8bp8vkjta8a8rss0j9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

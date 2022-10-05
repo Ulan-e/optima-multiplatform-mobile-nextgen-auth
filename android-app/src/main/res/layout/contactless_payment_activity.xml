@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/card_color">
+
+    <kz.optimabank.optima24.utility.views.RippleBackground
+        android:id="@+id/ripple"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_above="@+id/lock_hint_tv"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="130dp"
+        app:rb_color="#d8d8d8"
+        app:rb_duration="4200"
+        app:rb_radius="35dp"
+        app:rb_rippleAmount="6"
+        app:rb_scale="6" />
+
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/cvFrame"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="23dp"-->
+        <!--android:layout_marginLeft="23dp">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/payment_card_height"-->
+            <!--android:id="@+id/imgCard"-->
+            <!--android:scaleType="fitCenter"-->
+            <!--android:src="@drawable/visa_classic_large_new"/>-->
+
+    <!--</android.support.v7.widget.CardView>-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/payment_card_height"
+        android:id="@+id/imgCard"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitCenter"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/visa_classic_optima"/>
+
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/cvFrame"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--app:cardCornerRadius="20dp">-->
+
+        <!--<FrameLayout-->
+            <!--android:id="@+id/fragment_content"-->
+            <!--android:layout_width="@dimen/payment_card_width"-->
+            <!--android:layout_height="@dimen/payment_card_height"-->
+            <!--android:background="@color/white" />-->
+
+    <!--</android.support.v7.widget.CardView>-->
+
+    <TextView
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/lock_hint_tv"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="@string/bring_phone_to_reader"
+        android:textAlignment="center"
+        android:layout_above="@+id/pbPayment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp" />
+
+    <ProgressBar
+        android:id="@+id/pbPayment"
+        style="@style/payProgressBar"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

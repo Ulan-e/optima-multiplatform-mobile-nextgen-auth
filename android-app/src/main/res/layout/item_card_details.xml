@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/account_amount"
+        android:layout_margin="@dimen/margin_10dp"
+        android:background="@drawable/bg_history_rounded_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingTop="20dp"
+            android:paddingRight="15dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_type"
+                    android:layout_width="35dp"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:id="@+id/tv_multi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/multi"
+                    android:textColor="@color/gray_180_180_180"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textview_account_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="Mastercard"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textview_account_balance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:gravity="right"
+                        android:text="10000 KZT"
+                        android:textColor="@color/blue_0_93_186"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:visibility="gone"
+                    app:rcBackgroundColor="@color/orange_61_246_121_37"
+                    app:rcBackgroundPadding="0dp"
+                    app:rcProgressColor="@color/orange_246_121_37" />
+
+                <TextView
+                    android:id="@+id/tv_extinguished_sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_19_136_52"
+                    android:visibility="gone"
+                    tools:text="4 700 T" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textview_account_number"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="23165646165461343211"
+                        android:textColor="@color/gray_180_180_180"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_card_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="zakryto"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_validate_ending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/exl_sign_red"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:text="@string/validate_ending_text"
+            android:textColor="@android:color/holo_red_light" />
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="25dp"
+            android:background="#e7e7e7" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

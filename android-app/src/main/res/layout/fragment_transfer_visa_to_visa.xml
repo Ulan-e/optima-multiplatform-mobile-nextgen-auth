@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue_0_93_186"
+        app:contentInsetStartWithNavigation="0dp"
+        app:navigationIcon="@drawable/arrow_left"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextAppearance="@style/TextViewTitle"
+        app:titleTextColor="@color/white" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/transfer_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title_transfer_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_240_240_240"
+                android:padding="@dimen/margin_15dp"
+                android:text="@string/money_from"
+                android:textColor="@color/gray_155_155_155"
+                android:textSize="@dimen/text_size_18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_sender_card_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:paddingHorizontal="@dimen/margin_15dp"
+                android:paddingVertical="@dimen/margin_20dp"
+                android:text="@string/card_number"
+                android:textSize="@dimen/text_size_18sp"
+                app:drawableEndCompat="@drawable/ic_button_dark_common_down"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_transfer_from" />
+
+            <include
+                android:id="@+id/layout_sender_card_details"
+                layout="@layout/layout_card_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_15dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_sender_card_number"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/title_transfer_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_240_240_240"
+                android:padding="@dimen/margin_15dp"
+                android:text="@string/money_to"
+                android:textColor="@color/gray_155_155_155"
+                android:textSize="@dimen/text_size_18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_sender_card_details" />
+
+            <EditText
+                android:id="@+id/edit_text_recipient_card_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_item_selector"
+                android:hint="@string/card_number"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="@dimen/margin_15dp"
+                android:paddingVertical="@dimen/margin_20dp"
+                android:textSize="@dimen/text_size_18sp"
+                app:layout_constraintEnd_toStartOf="@+id/scan_card_image_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_transfer_to" />
+
+            <ImageView
+                android:id="@+id/scan_card_image_view"
+                android:layout_width="@dimen/margin_40dp"
+                android:layout_height="@dimen/margin_40dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_5dp"
+                android:layout_marginEnd="@dimen/margin_20dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="@dimen/margin_5dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/edit_text_receiver_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/edit_text_recipient_card_number"
+                app:layout_constraintTop_toBottomOf="@+id/title_transfer_to"
+                app:srcCompat="@drawable/ic_button_dark_common_photo"
+                tools:ignore="ContentDescription,UnusedAttribute"
+                tools:visibility="visible" />
+
+            <EditText
+                android:id="@+id/edit_text_receiver_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/list_item_selector"
+                android:digits=".,-,abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                android:hint="@string/initials_fullname_lastname"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="textCapCharacters|textNoSuggestions"
+                android:maxLines="2"
+                android:paddingHorizontal="@dimen/margin_15dp"
+                android:paddingVertical="@dimen/margin_15dp"
+                android:textColor="@color/gray_black_56_56_56"
+                android:textSize="@dimen/text_size_18sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_recipient_card_number"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/text_hint_fio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_15dp"
+                android:text="@string/input_first_last_name_error"
+                android:textSize="@dimen/text_size_11sp"
+                android:textStyle="italic"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_receiver_name"
+                tools:visibility="visible" />
+
+            <kz.optimabank.optima24.utility.CustomEditText
+                android:id="@+id/edit_text_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_15dp"
+                android:autofillHints="no"
+                android:background="@drawable/list_item_selector"
+                android:digits="0123456789,."
+                android:hint="@string/sum"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:paddingVertical="@dimen/margin_20dp"
+                android:textColor="@color/gray_atf"
+                android:textSize="@dimen/text_size_18sp"
+                app:layout_constraintEnd_toStartOf="@+id/currency_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_hint_fio" />
+
+            <TextView
+                android:id="@+id/currency_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_20dp"
+                android:layout_marginVertical="@dimen/margin_15dp"
+                android:background="?attr/selectableItemBackground"
+                android:drawablePadding="3dp"
+                android:padding="4dp"
+                android:textColor="@color/gray_black_56_56_56"
+                android:textSize="@dimen/text_size_18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_hint_fio"
+                tools:src="@drawable/ic_button_dark_common_down"
+                tools:text="KGS"
+                tools:visibility="visible" />
+
+            <!-- расчет коммисии -->
+            <include
+                android:id="@+id/evaluate_fee_layout"
+                layout="@layout/layout_transfer_fee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_25dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_amount"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/title_transfer_visa_to_visa_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/margin_15dp"
+                android:text="@string/transfer_card_visa_to_visa_for_for_description"
+                android:textAlignment="center"
+                android:textColor="@color/gray_155_155_155"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/evaluate_fee_layout" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/margin_15dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginBottom="@dimen/margin_15dp"
+                android:background="@drawable/button_for_transfer"
+                android:text="@string/send_transfer"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size_17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_transfer_visa_to_visa_description" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="end"
+                app:constraint_referenced_ids="
+                edit_text_receiver_name, edit_text_amount,evaluate_fee_layout,
+                title_transfer_visa_to_visa_description, btn_transfer"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_recipient_card_number" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

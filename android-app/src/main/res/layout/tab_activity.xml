@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <kz.optimabank.optima24.app.NonSwipeableViewPager
+        android:id="@+id/vp_horizontal_ntb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.viewpagerindicator.UnderlinePageIndicator
+        android:id="@+id/indicator"
+        android:layout_height="2.5dp"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/cooLayNTB"
+        android:background="@color/gray_atf_"
+        app:selectedColor="@color/orange_atf"/>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/cooLayNTB"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="wrap_content">
+
+    <devlight.io.library.ntb.NavigationTabBar
+        android:id="@+id/ntb_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:ntb_scaled="true"
+        app:ntb_title_mode="all"
+        app:ntb_swiped="false"
+        app:ntb_titled="true"
+        app:ntb_bg_color="@color/tabBar"
+        app:ntb_active_color="@color/blue_0_93_186"
+        app:ntb_inactive_color="@color/gray_atf_" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

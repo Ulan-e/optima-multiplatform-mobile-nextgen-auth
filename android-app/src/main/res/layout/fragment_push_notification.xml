@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue_0_93_186"
+            app:navigationIcon="@drawable/arrow_left">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextViewTitle"
+                android:text="@string/push_notice" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/linAutoPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvAutoPay"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/create_auto_pay"
+                    android:layout_marginEnd="24dp"
+                    android:paddingRight="45dp"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:layout_centerVertical="true"
+                    android:layout_width="45dp"
+                    android:id="@+id/swAutoPay"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvAutoPay"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linSuccessAutoPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvSuccessAutoPay"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:minLines="2"
+                    android:paddingRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/success_auto_pay"
+                    android:layout_marginEnd="24dp"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:layout_centerVertical="true"
+                    android:layout_width="45dp"
+                    android:id="@+id/swSuccessAutoPay"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvSuccessAutoPay"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linCarryAutoPayment24Hours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCarryAutoPayment24Hours"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:minLines="2"
+                    android:paddingRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/carry_auto_payment_24hours"
+                    android:layout_marginEnd="24dp"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:layout_centerVertical="true"
+                    android:layout_width="45dp"
+                    android:id="@+id/swCarryAutoPayment24Hours"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvCarryAutoPayment24Hours"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linErrorAutoPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvErrorAutoPay"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/error_auto_pay"
+                    android:layout_marginEnd="24dp"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:layout_centerVertical="true"
+                    android:layout_width="45dp"
+                    android:id="@+id/swErrorAutoPay"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvErrorAutoPay"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linWidgetInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvWidgetInfo"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/widget_info"
+                    android:layout_marginEnd="24dp"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:layout_centerVertical="true"
+                    android:layout_width="45dp"
+                    android:id="@+id/swWidgetInfo"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvWidgetInfo"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/linNewReceipts"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:paddingBottom="20dp"-->
+                <!--android:paddingLeft="15dp"-->
+                <!--android:paddingRight="15dp"-->
+                <!--android:paddingTop="20dp"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvNewReceipts"-->
+                    <!--android:layout_marginStart="24dp"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:minLines="2"-->
+                    <!--android:paddingRight="45dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/list_item_selector"-->
+                    <!--android:text="@string/new_receipts"-->
+                    <!--android:layout_marginEnd="24dp"-->
+                    <!--android:textColor="@color/gray_black_56_56_56"-->
+                    <!--android:textSize="16sp" />-->
+
+                <!--<Switch-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_width="45dp"-->
+                    <!--android:id="@+id/swNewReceipts"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignEnd="@+id/tvNewReceipts"/>-->
+
+            <!--</RelativeLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="#e7e7e7" />-->
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/linNewFines"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:paddingBottom="20dp"-->
+                <!--android:paddingLeft="15dp"-->
+                <!--android:paddingRight="15dp"-->
+                <!--android:paddingTop="20dp"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvNewFines"-->
+                    <!--android:layout_marginStart="24dp"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:paddingRight="45dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/list_item_selector"-->
+                    <!--android:text="@string/new_fines"-->
+                    <!--android:layout_marginEnd="24dp"-->
+                    <!--android:textColor="@color/gray_black_56_56_56"-->
+                    <!--android:textSize="16sp" />-->
+
+                <!--<Switch-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_width="45dp"-->
+                    <!--android:id="@+id/swNewFines"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignEnd="@+id/tvNewFines"/>-->
+
+            <!--</RelativeLayout>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvNews"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/news"
+                    android:layout_marginEnd="24dp"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:layout_centerVertical="true"
+                    android:layout_width="45dp"
+                    android:id="@+id/swNews"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvNews"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linNeedReplenishSavingsAcc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvNeedReplenishSavingsAcc"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:minLines="2"
+                    android:paddingRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/need_replenish_savings_acc"
+                    android:layout_marginEnd="24dp"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:layout_centerVertical="true"
+                    android:layout_width="45dp"
+                    android:id="@+id/swNeedReplenishSavingsAcc"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvNeedReplenishSavingsAcc"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:padding="15dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/button_default"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

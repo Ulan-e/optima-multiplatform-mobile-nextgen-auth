@@ -1,0 +1,1294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ENEJKG22">ENEJKG22</string>
+    <string name="AP">Asia and Pacific region</string>
+    <string name="AboutCard">About card</string>
+    <string name="BKS">BKS</string>
+    <string name="CHINA">China</string>
+    <string name="CRYPTOGRAPHY_ERROR">Cloud payment platform has encountered internal error. Please, repeat your request later or contact wallet service provider</string>
+    <string name="Card_lock">Block card</string>
+    <string name="Cash_withdrawal">Cashing in ATMs</string>
+    <string name="select_limit_type">Select limit type</string>
+    <string name="limit_type">Limit type</string>
+    <string name="DUPLICATE_PAYMENT_APP_INSTANCE_ID">Server has reported duplicate payment instance. Please, restart registration process</string>
+    <string name="FixCount">FixCount</string>
+    <string name="KGS">с</string>
+    <string name="FixSum">FixSum</string>
+    <string name="INTERNAL_SERVICE_FAILURE">Invalid request format detected. Please check and update application to latest version</string>
+    <string name="INVALID_ELIGIBILITY_RECEIPT">Invalid enrollment reference. Please, restart digitization process or contact the call center</string>
+    <string name="INVALID_MPA_VERSION">Request to mobile payments platform denied. Your mobile app may need update. Please check available updates for the app on Google Play Market</string>
+    <string name="INVALID_TASK_ID">Data status error. Please try later.</string>
+    <string name="INVALID_TERMS_AND_CONDITIONS">Invalid Terms and Conditions reference. Please, contact the call center</string>
+    <string name="INVALID_TOKEN_STATUS">Your application or digitized card has been suspended or removed. Please, contact bank</string>
+    <string name="INVALID_TOKEN_UNIQUE_REFERENCE">Can not perform operations with specified card. Please, refresh cards list, contact bank or service provider.</string>
+    <string name="INVALID_WORKFLOW">Invalid messages workflow detected. If this error appears permanently, please reinstall mobile application</string>
+    <string name="InterfaceLanguage">Interface language</string>
+    <string name="Internet_limit_payments">Internet payments</string>
+    <string name="Internet_payments">Internet payments</string>
+    <string name="IsCounterService">IsCounterService</string>
+    <string name="LIMDom">Cash withdrawal in ATMs in the territory of Kyrgyzstan</string>
+    <string name="LIMVAcq">Cash withdrawal at ATMs outside of Kyrgyzstan</string>
+    <string name="LastCount">LastCount</string>
+    <string name="LastCountDate">LastCountDate</string>
+    <string name="Limits">Limits</string>
+    <string name="M1000">More than 1000 meters</string>
+    <string name="M500">Not more than 500 meters</string>
+    <string name="Mm1000">Not more than 1000 meters</string>
+    <string name="NONEMV">Indonesia, Nepal, India, Japan</string>
+    <string name="NO_ACTIVE_SESSION">Requesting new secure session…</string>
+    <string name="NO_CARDS_AVAILABLE">No cards available. Please, select another card type or contact bank</string>
+    <string name="PAN_ALREADY_DIGITIZED">Card has been already digitized in your wallet. Please, check that or contact bank</string>
+    <string name="PrevCount">PrevCount</string>
+    <string name="PrevCountDate">PrevCountDate</string>
+    <string name="REGISTRATION_EXPIRED">Registration process has timed out. Please, restart process</string>
+    <string name="REGISTRATION_IN_PROGRESS">Duplicate registration process is running for the same device address. Please, try again later</string>
+    <string name="RESOURCE_NOT_FOUND">Service temporary unavailable. Please, repeat your request later</string>
+    <string name="RNS_UNAVAILABLE">Cloud payment platform has encountered error. Please, repeat your request later or contact wallet service provider</string>
+    <string name="SMS_alert">SMS/Push notifications</string>
+    <string name="ServiceId">ServiceId</string>
+    <string name="ServiceName">ServiceName</string>
+    <string name="THAILAND">Thailand</string>
+    <string name="session_ended">Your session has expired</string>
+    <string name="TransferConversionInsideMultiCurrencyCard">Conversion within a multicurrency card</string>
+    <string name="TransferForeignCurrencyToAnotherBank">Transfer foreign currency to another bank</string>
+    <string name="TransferMoneyFromMasterToVisa">Transfer to Visa card</string>
+    <string name="TransferMoneyFromVisaToMaster">Transfer to Mastercard</string>
+    <string name="TransferMoneyInsideBankFromAccountToAccount">"Transfer to account of bank's client"</string>
+    <string name="TransferMoneyInsideBankFromAccountToCard">"Transfer to card of bank's client"</string>
+    <string name="TransferMoneyInsideBankFromCardAccountToAccount">"Transfer to account of bank's client"</string>
+    <string name="TransferMoneyInsideBankFromCardAccountToCard">"Transfer to card of bank's client"</string>
+    <string name="TransferMoneyInsideClientAccountToCard">Transfer between own account to card-account</string>
+    <string name="TransferMoneyInsideClientAccounts">Transfer between own accounts</string>
+    <string name="TransferMoneyInsideClientCardToAccount">Transfer between own card-account to account</string>
+    <string name="TransferMoneyInsideClientCards">Transfer between own cards</string>
+    <string name="TransferMoneyInsideClientDepositToAccount">Transfer between own deposit to account</string>
+    <string name="TransferMoneyInsideClientDepositToCard">Transfer between own deposit to card-account</string>
+    <string name="TransferMoneyMasterCardToMasterCard">Transfer to Mastercard</string>
+    <string name="TransferMoneyToAnotherBank">Transfer to client of another bank</string>
+    <string name="TransferMoneyToDeposit">Replenish a deposit</string>
+    <string name="TransferMoneyToOutsideCard">Transfer to Visa card</string>
+    <string name="UNKNOWN_CRDPRODUCT">Bank has returned unknown card type. Please, contact bank or try again later</string>
+    <string name="UNKNOWN_HOST">Mobile payments server access error. Please check Internet connection</string>
+    <string name="USA">USA</string>
+    <string name="VTS_COMMUNICATION_ERROR">Can not call Visa Tokenization Service</string>
+    <string name="VTS_ERROR">Can not call Visa Tokenization Service</string>
+    <string name="VTS_INVALID_CARD">Invalid token in request specified. Please, contact bank</string>
+    <string name="VTS_INVALID_PARAMETERS">Bank or Visa Tokenization Service has rejected request. Please, contact bank and check card status</string>
+    <string name="VTS_OPERATIONS_NOT_ALLOWED">Bank or Visa Tokenization Service has rejected request. Please, contact bank and check card status</string>
+    <string name="VTS_SERVICE_ERROR">Can not call Visa Tokenization Service. Please, contact bank and check card status</string>
+    <string name="VTS_TEMP_ERROR">Can not call Visa Tokenization Service</string>
+    <string name="_7">+7</string>
+    <string name="_formatted_text_monthly" formatted="false">%s on %s at %s</string>
+    <string name="_formatted_text_weekly" formatted="false">%s in %s in %s</string>
+    <string name="_formatted_text_yearly" formatted="false">%s %s in %s</string>
+    <string name="_no">No</string>
+    <string name="_t_choose_branch">Choose from the list</string>
+    <string name="_t_choose_service">Select a service from the list</string>
+    <string name="_t_choose_transfer_type">Select the type of translation</string>
+    <string name="_t_fill_">Fill</string>
+    <string name="_t_fill_all_required_">Fill in all mandatory fields</string>
+    <string name="_yes">Yes</string>
+    <string name="abonent_is_found">Abonent is found</string>
+    <string name="acc_visi">Perhaps your cards and accounts are hidden in visibility settings. To change, please go to the section \"Account visibility settings\"</string>
+    <string name="account_amount">Amount on the account:</string>
+    <string name="account_blocked">Blocked</string>
+    <string name="account_card_number">Card/account number</string>
+    <string name="card_number">Card number</string>
+    <string name="account_currency">Account currency</string>
+    <string name="account_details">Details</string>
+    <string name="account_is_blocked">Blocked</string>
+    <string name="account_number">Account number</string>
+    <string name="account_number_">Account number:</string>
+    <string name="account_number_from">From account</string>
+    <string name="account_open">Opened</string>
+    <string name="account_or_card">Account or payment card</string>
+    <string name="account_rename">Account rename</string>
+    <string name="account_schedule">Schedule</string>
+    <string name="account_settings">Settings</string>
+    <string name="account_statement">Statement</string>
+    <string name="accounts">Accounts</string>
+    <string name="access_to_contacts">To access your contacts, go to Settings - Application - Optima24 - Permission - Contacts (ON)</string>
+    <string name="accumulated">Accumulated</string>
+    <string name="acorn">Acorn</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_nfc_payment_settings_info">Select Optima24 app as the main payment source</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="activation_confirm">Do you want the card activated?</string>
+    <string name="activation_contactless">Switching contactless payment on</string>
+    <string name="add_subscription">Add subscription</string>
+    <string name="additional_invoice_info">Additional information</string>
+    <string name="agreement">Agreement</string>
+    <string name="alert_error">Error</string>
+    <string name="alert_info">Information</string>
+    <string name="alert_you_sure">Do you want to block this card?</string>
+    <string name="alert_you_sure_service">Do you want to enable this service?</string>
+    <string name="all_country">All countries</string>
+    <string name="all_regions">All regions</string>
+    <string name="all_templates">All</string>
+    <string name="allowed">Operations allowed</string>
+    <string name="alseco_account">Account</string>
+    <string name="alseco_owner_address">Address</string>
+    <string name="alseco_owner_full_name"><!--Payer -->Full name</string>
+    <string name="alseco_personal_code">Personal account number</string>
+    <string name="alseco_total_amount">Total payable under the statement:</string>
+    <string name="american_dollar">US dollar</string>
+    <string name="amount">Amount</string>
+    <string name="amount_conversion">Conversion amount</string>
+    <string name="amount_of_indexes">Number</string>
+    <string name="amount_payments_day">Amount of payments per day</string>
+    <string name="amount_with_fee">Payable amount with fee</string>
+    <string name="animals">Animals</string>
+    <string name="answer">Answer to secret question</string>
+    <string name="app_name">Optima24</string>
+    <string name="application_date">Application date:</string>
+    <string name="application_date2">Date of application</string>
+    <string name="application_details">Application details</string>
+    <string name="application_language">Interface language</string>
+    <string name="application_number">Application number:</string>
+    <string name="application_number2">Application number</string>
+    <string name="application_status">Application status:</string>
+    <string name="applications">Applications</string>
+    <string name="applications_catalog">Applications catalog</string>
+    <string name="applications_history">Applications history</string>
+    <string name="at_you">You have</string>
+    <string name="atf24">Optima 24</string>
+    <string name="atf_news">Optima24 news</string>
+    <string name="atm">ATM</string>
+    <string name="branches_and_terminals_atm">ATMs, branches, terminals</string>
+    <string name="attempt_atf">Remained attempts</string>
+    <string name="attention">Attention!</string>
+    <string name="authorize">Authorize</string>
+    <string name="auto_make_active">Proceed</string>
+    <string name="auto_make_stop">Stop</string>
+    <string name="auto_pay_add">AutoPayment added</string>
+    <string name="auto_pay_update">AutoPayment update</string>
+    <string name="auto_payment">Autopayment</string>
+    <string name="auto_payment_activ">Active</string>
+    <string name="auto_payment_activ2">Works</string>
+    <string name="auto_payment_date">Date</string>
+    <string name="auto_payment_days">Days</string>
+    <string name="auto_payment_deleted">Auto payment successful deleted</string>
+    <string name="auto_payment_out_of_count">Quantity: 0</string>
+    <string name="auto_payment_period">Periodicity</string>
+    <string name="auto_payment_start_date">Date of first payment</string>
+    <string name="auto_payment_stop">Stop</string>
+    <string name="auto_payment_stop_by_manager">"Stop by
+        manager"</string>
+    <string name="auto_payment_time">Time</string>
+    <string name="auto_payment_type_can_be_only_monthly">Periodicity can only be monthly</string>
+    <string name="auto_payment_write_off_type">Type of debit</string>
+    <string name="auto_template_exists">Autopayment with the given parameters is already saved</string>
+    <string name="auto_template_name">Auto-payment</string>
+    <string name="auto_templates">AutoPayments</string>
+    <string name="available">Available</string>
+    <string name="back">back</string>
+    <string name="back_">Back</string>
+    <string name="background_mode_atf24">Background mode Optima24</string>
+    <string name="bank">Bank</string>
+    <string name="bank_contacts">Bank contacts</string>
+    <string name="bank_name">Enter bank name</string>
+    <string name="bank_of_name">Optima Bank JSC</string>
+    <string name="bank_recipient">Beneficiary bank</string>
+    <string name="before">to</string>
+    <string name="begin_period">Start of period</string>
+    <string name="begin_time">Start date</string>
+    <string name="behind">for</string>
+    <string name="beneficiary_account">"Recipient's account"</string>
+    <string name="bic">BIC</string>
+    <string name="block">Block</string>
+    <string name="block_card">Block card</string>
+    <string name="blocked_amount">Blocked amount</string>
+    <string name="text_amount_in_precess">Аmount in processing</string>
+    <string name="branch">Office</string>
+    <string name="branches">Offices</string>
+    <string name="bring_phone_to_reader">Place the smartphone over the card reader</string>
+    <string name="bring_the_card">"Bring the card,
+closer for scanning"</string>
+    <string name="buy_bank">Bank buys</string>
+    <string name="by">to</string>
+    <string name="calc_param1">Residents</string>
+    <string name="calc_param2">Heated area</string>
+    <string name="call_center_text">call-center</string>
+    <string name="call_skype">Skype call</string>
+    <string name="call_whatsApp">Send a message in WhatsApp</string>
+    <string name="cancel">Cancel</string>
+    <string name="cancel_app">Cancel the application</string>
+    <string name="cancel_request">Enter comment to cancellation</string>
+    <string name="cancellation_confirmation_question">Do you want to cancel application?</string>
+    <string name="cancellation_reason_hint">Write the reason for canceling the application…</string>
+    <string name="capitalization">Capitalization</string>
+    <string name="capitalization2">Capitalization:</string>
+    <string name="card">Card</string>
+    <string name="card_accounts">Cards</string>
+    <string name="card_and_accounts">Accounts and Cards</string>
+    <string name="card_debt">Outstanding on card</string>
+    <string name="card_digitization_error">Error digitizing the card</string>
+    <string name="card_for_payment">Card for payment</string>
+    <string name="card_is_blocked">Blocked</string>
+    <string name="card_is_closed">Closed</string>
+    <string name="card_limit">Card limit</string>
+    <string name="card_not_defined">Unknown beneficiary’s card type</string>
+    <string name="card_rename">Card rename</string>
+    <string name="card_writing_out">Card statement</string>
+    <string name="cards">Cards</string>
+    <string name="cards_deposits_credits">Cards / Credits / Deposits</string>
+    <string name="carry_auto_payment_24hours">Auto-payment in 24 hours</string>
+    <string name="cash_out">Payment of cash</string>
+    <string name="cash_out_input">Payment and acceptance of cash</string>
+    <string name="cat">Cat</string>
+    <string name="change">Change</string>
+    <string name="change_card_status">Card status changed</string>
+    <string name="change_number_acc">Current account rename</string>
+    <string name="change_number_card">Card rename</string>
+    <string name="change_number_credit">Loan rename</string>
+    <string name="change_number_depoz">Deposite rename</string>
+    <string name="change_number_nakop">Savings account rename</string>
+    <string name="change_number_wish">Goal rename</string>
+    <string name="change_password">Change password</string>
+    <string name="change_template">Change payment transferModel</string>
+    <string name="change_transfer_template">Change transfer transferModel</string>
+    <string name="changes_history">History of changes</string>
+    <string name="channel_name">Optima24</string>
+    <string name="channel_description">Optima24 Notifications</string>
+    <string name="check_requisites">Check the details indicated earlier to make a transaction</string>
+    <string name="china_yuan">Chinese yuan</string>
+    <string name="choose">Select</string>
+    <string name="choose_account">Choose account</string>
+    <string name="choose_account_toast">Choose an account</string>
+    <string name="choose_action">Choose action</string>
+    <string name="choose_card">Choose card</string>
+    <string name="choose_card_for_payment">Selecting card for payment</string>
+    <string name="choose_card_to_payment">Choose account</string>
+    <string name="choose_card_toast">Choose a card</string>
+    <string name="choose_correct_date">Select the current date</string>
+    <string name="choose_region">"Choose a region "</string>
+    <string name="chooser_email">Choose a messenger</string>
+    <string name="citizenship">Citizenship</string>
+    <string name="city">City</string>
+    <string name="client_already_registered">The user is registered in Optima24, to proceed please authorize or contact the Call Center</string>
+    <string name="client_already_registered_generic_error">User already registered in Optima24. For further usage of application you should pass to authorization screen or contact Call-center by calling 2424</string>
+    <string name="client_has_blocked">The user is registered in Optima24. The profile is blocked, please contact the Call Center</string>
+    <string name="client_not_found">Client not found</string>
+    <string name="client_with_idn_has_already_exist">"Unfortunately, the system cannot register you.
+Such IIN number has already been registered."</string>
+    <string name="client_with_number_has_already_exist">"Unfortunately, the system cannot register you.
+Such telephone number has already been registered."</string>
+    <string name="close_date">Closing date</string>
+    <string name="closed_account">This account is closed</string>
+    <string name="closed_card">Card is closed</string>
+    <string name="closed_deposit">This deposit is closed</string>
+    <string name="cny">Chinese yuan</string>
+    <string name="code">Login by code</string>
+    <string name="code_expire">Your code will expire in &lt;font color=#d0021b>%1$s&lt;/font> minutes!</string>
+    <string name="comment">Comment</string>
+    <string name="comments">Comments</string>
+    <string name="commun_with_bank">Contact the bank</string>
+    <string name="complete_full">Fill in all the fields</string>
+    <string name="comprosentation">Compromentation of card</string>
+    <string name="conclusion_date">Agreement date:</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_change_default_card">Would you like to change the card for payment?</string>
+    <string name="confirm_default_card">Select card for payment and press “Confirm”</string>
+    <string name="confirm_password">Confirm the password</string>
+    <string name="confirmation_requisites">Confirmation of requisites</string>
+    <string name="connect">Connect</string>
+    <string name="connect_to_atf24">"Connect to Optima24 "</string>
+    <string name="connect_with_bank">Contact the bank</string>
+    <string name="consumption">Consumption</string>
+    <string name="contact_bank">Contact the bank</string>
+    <string name="contact_center">Call Center</string>
+    <string name="contract">Contract</string>
+    <string name="contract_number">Contract number</string>
+    <string name="contract_number_">Agreement No.</string>
+    <string name="contragent_address">Beneficiary address</string>
+    <string name="contragent_country">Recipient’s country of residence</string>
+    <string name="contragent_register_country">Beneficiary country</string>
+    <string name="conversion_rate">Conversion rate</string>
+    <string name="convert">Convert</string>
+    <string name="convert_currency">Convert currency</string>
+    <string name="costs">Expenses</string>
+    <string name="costs_30_days">Expenses for 30 days</string>
+    <string name="costs_month_days">For current month</string>
+    <string name="count_trank_day">Number of operations (per day)</string>
+    <string name="countries_name">Enter country name</string>
+    <string name="country">Country</string>
+    <string name="create">Create</string>
+    <string name="create_auto_pay">Create auto-payment</string>
+    <string name="create_template">Create template</string>
+    <string name="create_template_">Create template</string>
+    <string name="create_template_payment">Create payment transferModel</string>
+    <string name="credit_account">Account for admission</string>
+    <string name="credited">Credited</string>
+    <string name="currency">Transaction currency</string>
+    <string name="currency_">Transaction currency:</string>
+    <string name="currency_balances">Currency balances</string>
+    <string name="current">Current</string>
+    <string name="current_account_type">Current account</string>
+    <string name="current_accounts">Accounts</string>
+    <string name="current_accounts_tek">Current accounts</string>
+    <string name="current_accounts_type">Current accounts</string>
+    <string name="current_card_accounts">Card account</string>
+    <string name="current_card_closed">Card account is closed</string>
+    <string name="current_cards_accounts">Card accounts</string>
+    <string name="current_cards_accounts_cards">Card accounts/Cards</string>
+    <string name="current_counter_index">Current indicators</string>
+    <string name="current_counter_index_date">Date of current indicators</string>
+    <string name="current_password">Current password</string>
+    <string name="data_time">Data as of</string>
+    <string name="dear_customer">Dear customer!</string>
+    <string name="dear_customer_alert">Choosen country is a fraud high risk country. Optima Bank JSC recommends to you does not disable limits for countries with high risk of fraud. Disabling the limits You are agree, that you understand high risks and confirm your decision. In case of limits disabling, Optima Bank JSC recommends to reissue your payment card and PIN-code right after returning to Kyrgyzstan.</string>
+    <string name="debit">Charges</string>
+    <string name="debit_account">Choose account to make payment</string>
+    <string name="debt">Debt</string>
+    <string name="debt_">Debt:</string>
+    <string name="debt_sum">Amount of debt</string>
+    <string name="delete_auto_payment">Delete autopayment</string>
+    <string name="delete_auto_template">Remove automatic payment?</string>
+    <string name="delete_subscription">Delete subscription</string>
+    <string name="delete_template">Delete payment transferModel</string>
+    <string name="delete_template_transfer">Delete transferModel?</string>
+    <string name="delete_transfer_template">Delete transfer transferModel</string>
+    <string name="deposit_account_amount">Amount on the account:</string>
+    <string name="deposit_accounts">Deposits</string>
+    <string name="deposit_info">INFORMATION ON DEPOSIT</string>
+    <string name="deposit_name">Deposit name</string>
+    <string name="deposit_rate">Rate</string>
+    <string name="deposit_rate_">Rate:</string>
+    <string name="deposit_rename">Deposit rename</string>
+    <string name="deposites">Deposits</string>
+    <string name="details">Account details</string>
+    <string name="details_balance">Balans:</string>
+    <string name="start_balance">Balance at the starting date</string>
+    <string name="end_balance">Balance at the ending date</string>
+    <string name="details_cardholder">Owner:</string>
+    <string name="details_expire_date">Validate through:</string>
+    <string name="details_number">Number:</string>
+    <string name="device_status">Device status</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="digital_world_ATFBank">"Are you ready to
+join Digital world
+by OptimaBank?"</string>
+    <string name="digitization_info">Card digitalizing will help to pay for purchases with your phone, you just need to place the phone to contactless terminal</string>
+    <string name="disabled">Disabled</string>
+    <string name="disabled2">Disabled</string>
+    <string name="do_not_use_code_more">Disable authorization by code?</string>
+    <string name="do_not_use_code_more_switch">Use login code</string>
+    <string name="do_not_use_fingerprint_more">Disable authorization by Touch ID ?</string>
+    <string name="do_not_use_fingerprint_more_switch">Use Touch ID</string>
+    <string name="doc_num">Document number</string>
+    <string name="done">Performed</string>
+    <string name="done_">Done</string>
+    <string name="download_request">Download application form</string>
+    <string name="during_period">for the period</string>
+    <string name="empty_list_view">The list is empty</string>
+    <string name="enable_nfc">Switch NFC on to proceed</string>
+    <string name="enabled">Enabled</string>
+    <string name="enabled2">Enabled</string>
+    <string name="end_period">End of period</string>
+    <string name="end_period_cant">End of period cannot be before the start of period</string>
+    <string name="enter">Login</string>
+    <string name="enter_into_ATF24">Log in to Optima24</string>
+    <string name="enter_manually">Enter manually</string>
+    <string name="entry_using_login_code">Sign in with login and password</string>
+    <string name="error_auto_pay">Auto-payment error</string>
+    <string name="error_card_brand">Unknown beneficiary’s card type</string>
+    <string name="error_contactless_payment">Error processing payment</string>
+    <string name="error_empty">empty field</string>
+    <string name="error_large_sum">Entered amount is more than available balance</string>
+    <string name="error_number_of_characters">Excessive number of characters</string>
+    <string name="error_register_client">Could not register client</string>
+    <string name="error_wrong_date">not earlier than the current date</string>
+    <string name="error_wrong_format">wrong format</string>
+    <string name="establish">Set</string>
+    <string name="euro">Euro</string>
+    <string name="exception">"Data collection error. "</string>
+    <string name="exception_data">Data collection error, please relaunch the application</string>
+    <string name="exception_mail">"Error, probably you don't have a messenger"</string>
+    <string name="exception_password_wrong">Wrong phone number or password.</string>
+    <string name="exception_skype">Error, probably you have not installed Skype</string>
+    <string name="exchange">FX rates</string>
+    <string name="exchange_rates">FX rates</string>
+    <string name="exist_subscription">This subscription has already been added</string>
+    <string name="exit">Exit</string>
+    <string name="exiting_application">Exit application</string>
+    <string name="expenses">Costs:</string>
+    <string name="expire_date_to">Valid through</string>
+    <string name="fee">Fee</string>
+    <string name="fee_type">Type of commission</string>
+    <string name="female">Female</string>
+    <string name="filter">Filter</string>
+    <string name="fingerprint_description">Confirm fingerprint to continue</string>
+    <string name="fingerprint_hint">Use Touch ID</string>
+    <string name="fingerprint_not_recognized">Not recognized. Try again</string>
+    <string name="fingerprint_success">Recognized</string>
+    <string name="first_name">Last name</string>
+    <string name="fitsamat">fitsamat</string>
+    <string name="fixed_payment">Fixed payment</string>
+    <string name="fixed_payments">Fixed payments</string>
+    <string name="for_half_year">For half year</string>
+    <string name="for_month">For month</string>
+    <string name="for_three_month">For three months</string>
+    <string name="for_week">For week</string>
+    <string name="forbidden">Operations prohibited</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="free_by_KZ_at_mobile">Short number for Beeline, MegaCom and О! clients</string>
+    <string name="free_by_KZ_at_teleph">Free across Kazakhstan from landline phone</string>
+    <string name="free_by_KZ_at_telephAround">24/7 support for cardholders</string>
+    <string name="free_by_KZ_at_telephStacionar">Toll free line</string>
+    <string name="free_call_station_text">toll free line within Kazakhstan from landline phones</string>
+    <string name="free_call_text">toll free line within Kazakhstan from cell phones</string>
+    <string name="from">Start</string>
+    <string name="from_">From</string>
+    <string name="from_currency">From currency</string>
+    <string name="general_category">General category</string>
+    <string name="general_settings">General</string>
+    <string name="get_balance">Check debt</string>
+    <string name="get_balans">Get balance</string>
+    <string name="hint_how_to_add_template">You can add templates on menu \"Payments\" and \"Transfers\"</string>
+    <string name="history_amount">Amount</string>
+    <string name="history_date">Date</string>
+    <string name="history_service">Payment type</string>
+    <string name="history_status">Payment status</string>
+    <string name="history_title">Transactions history</string>
+    <string name="https">https</string>
+    <string name="i_agree">I confirm acceptance of the above terms and conditions!</string>
+    <string name="i_agree_with_contract_and_policy">I agree and join to the Agreement and Confidentiality Policy</string>
+    <string name="i_approve">3. Hereby I certify that this transaction is carried out on my behalf and at my expense, and that the transfer is not related to the illegal activity or concealment from taxation. I promise to provide the necessary information at the request of OptimaBank JSC and foreign Banks if you have additional questions about this transaction.</string>
+    <string name="iin">TIN</string>
+    <string name="in">in</string>
+    <string name="inATM">In ATMs</string>
+    <string name="in_from_account">in currency write-off</string>
+    <string name="in_total">Total</string>
+    <string name="in_trade_and_service_enterprises">In trade and service outlets:</string>
+    <string name="including_commission">Including fee</string>
+    <string name="amount_including_commission">Amount including fee</string>
+    <string name="incorrect_card_number">Incorrect card number</string>
+    <string name="incorrect_beneficiary_number">Incorrect beneficiary account</string>
+    <string name="incorrect_code_operation">Incorrect confirmation code</string>
+    <string name="incorrect_sms_code_confirmation">Incorrect SMS confirmation code</string>
+    <string name="incorrect_phone_number">Incorrect phone number</string>
+    <string name="incorrect_temp_password">Incorrect temporary password</string>
+    <string name="incorrect_password">Incorrect password</string>
+    <string name="india">India</string>
+    <string name="indonesia">Indonesia</string>
+    <string name="initials_or_company_name">Full name and name of the company</string>
+    <string name="initials_or_name_recipient">Recipient\'s full name</string>
+    <string name="initials_fullname_lastname">Full name</string>
+    <string name="inn">BIN</string>
+    <string name="input_card_from_number_fmt">Enter %1$s or %2$s card number of the beneficiary</string>
+    <string name="input_first_last_name_error">Beneficiary field shall contain First Name and Last Name in Latin letters divided by a space.</string>
+    <string name="input_sms_to_register">To complete registration enter confirmation code sent to you via SMS</string>
+    <string name="input_sum_greater_than_0">Enter amount greater than zero</string>
+    <string name="input_sum">Enter amount</string>
+    <string name="installing_non_market_apps">The device allows the installation from unknown sources</string>
+    <string name="interfaceLang">Interface language</string>
+    <string name="internet_connection_error">Connection error</string>
+    <string name="internet_switched_off">Check your Internet connection</string>
+    <string name="introduce_new">Enter new card/account</string>
+    <string name="introduced">Read and Understood</string>
+    <string name="invoiceable">Subscription</string>
+    <string name="is_visible">visibility</string>
+    <string name="kazakhstan_tenge">Kazakh tenge</string>
+    <string name="knp_name">Enter code name</string>
+    <string name="kpp">Purpose code</string>
+    <string name="kyrgyz_som">Kyrgyz som</string>
+    <string name="kz">KZ</string>
+    <string name="kzt">KZT</string>
+    <string name="last_name">Patronymic</string>
+    <string name="last_version_of_android_os">We recommend to upgrade the OS to the latest version of Android</string>
+    <string name="license_agreement">"1. Hereby I authorize the Bank to provide with information about money transfers law bodies and National Bank of the Kyrgyz Republic upon their request.
+ 2. I hereby confirm that this money transfer is not related to execution of currency operation requiring receipt of registration certificate, notification certificate or contract account number.
+ 3. The Bank bears no liability for details of the Beneficiary indicated incorrectly or incompletely by the Sender. In case of return of transfer due to the guilt of the Customer, the Bank transfers the amount returned by the correspondent bank to the Customer account (subject to presence of Sender account). Responsibility for provision of invalid data reflected in the money transfer order is placed on sender.
+ 4. I hereby confirm that this payment and/or money transfer is not related to financing of terrorist or extremist activity and other abetting terrorism or extremism.
+ 5. I hereby confirm that this operation is made on my behalf and at my expense, that this transfer is not related to unlawful activity or tax evasion. In case of additional questions regarding this operation, I undertake to provide requisite information upon request of OptimaBank JSC and foreign banks."</string>
+    <string name="limitAPC">Limit on payment using Asia and Pacific chip</string>
+    <string name="limitAPM">Limit on payment using Asia and Pacific magnetic stripe</string>
+    <string name="limitAPR">Limit on payment showing Asia and Pacific card</string>
+    <string name="limitCHINAC">Limit on payment using China chip</string>
+    <string name="limitCHINAM">Limit on payment using China magnetic stripe</string>
+    <string name="limitCHINAR">Limit on payment showing China card</string>
+    <string name="limitTHAILANDC">Limit on payment using Thailand chip</string>
+    <string name="limitTHAILANDM">Limit on payment using Thailand magnetic stripe</string>
+    <string name="limitTHAILANDR">Limit on payment showing Thailand card</string>
+    <string name="limitUSAC">Limit on payment using USA chip</string>
+    <string name="limitUSAM">Limit on payment using USA magnetic stripe</string>
+    <string name="limitUSAR">Limit on payment showing USA card</string>
+    <string name="limit_dayKZT">Total limit (с)</string>
+    <string name="limit_dayUSD">Limit per day (USD)</string>
+    <string name="limit_daySOM">Daily limit (in soms)</string>
+    <string name="set_limit_start_date">Start date</string>
+    <string name="set_limit_end_date">End date</string>
+    <string name="limit_for_cash_withdrawal_outside_rk">Limit on cash withdrawal in ATMs outside Kyrgyzstan</string>
+    <string name="limit_for_cash_withdrawal_rk">Limit on cash withdrawal in ATMs within Kyrgyzstan</string>
+    <string name="limit_touch_id">You exceeded the limit of authorization attempts</string>
+    <string name="limits_info">Information on limits</string>
+    <string name="loading">Loading…</string>
+    <string name="loan_accounts">Loans</string>
+    <string name="loan_amount">Payment sum</string>
+    <string name="loan_card">Current balance</string>
+    <string name="loan_date">Payment date</string>
+    <string name="loan_debt">Balance owed</string>
+    <string name="loan_debt_sum">Debt sum</string>
+    <string name="loan_end_date">"End date of
+loan"</string>
+    <string name="loan_graphic">Repayment schedule</string>
+    <string name="loan_info">LOAN INFORMATION</string>
+    <string name="loan_interest">Interest</string>
+    <string name="loan_is_closed">Closed</string>
+    <string name="loan_name">Loan name</string>
+    <string name="loan_next_date">Next payment date:</string>
+    <string name="loan_next_pay_sum">Next payment sum:</string>
+    <string name="loan_rename">Credit rename</string>
+    <string name="loan_schedule">Repayment schedule</string>
+    <string name="loan_start_date">Start date of loan</string>
+    <string name="loan_sum">Loan amount</string>
+    <string name="loans">Loans</string>
+    <string name="lock">Block</string>
+    <string name="lock_card_hint">You are about to block the payment card</string>
+    <string name="lock_hint">After blocking the card, you will NOT be able to use it to withdraw money and make payments in the retail network and on the Internet. You can unblock the card in the Optima24 Internet banking or by filling out the corresponding application at the Bank’s branch, if you are sure that the card data did not get to unauthorized persons. Otherwise, it is recommended to reissue it.</string>
+    <string name="login">Login</string>
+    <string name="login_key">login_key</string>
+    <string name="logout">Logout</string>
+    <string name="lost_card">Loss of card</string>
+    <string name="m_attention">"Dear Customer!
+Due to floating som rate and possible changes of currency rates within a short time, - when conversion transactions are made, the amount gets blocked at the rate of NB KR. Actual debit is performed at the rate of the Bank as at the moment of unblocking and completion of transaction."</string>
+    <string name="main">Home</string>
+    <string name="main_debt_sum">Principal debt</string>
+    <string name="main_office_address">Panfilov st. 98A</string>
+    <string name="make_card_account_visible_first">First make visible the card account</string>
+    <string name="male">Male</string>
+    <string name="manual">Manual</string>
+    <string name="many_attempts">You have made too many attempts</string>
+    <string name="map">Map</string>
+    <string name="max_limit_dayKZT">Max amount of one operation (с)</string>
+    <string name="menu">Menu</string>
+    <string name="message_title">Message</string>
+    <string name="meters">meters</string>
+    <string name="meters_data">Counter reading</string>
+    <string name="middle_name">Name</string>
+    <string name="min_balance">Minimum balance</string>
+    <string name="min_payment">Minimum payment</string>
+    <string name="mobile_operator_not_found">Mobile operator not found, try enter number again</string>
+    <string name="mobile_phone">Mobile phone</string>
+    <string name="money_from">Where to withdraw money</string>
+    <string name="money_to">Transfer to</string>
+    <string name="monthly_payment">Monthly payment:</string>
+    <string name="move_to_link">To login follow the link</string>
+    <string name="movement_of_funds">Flows of funds</string>
+    <string name="name">Name</string>
+    <string name="name_op_recipient">Name of operation or recipient</string>
+    <string name="need_agreement">Confirm your agreement with the terms of the bank</string>
+    <string name="need_fill_field_fmt">Please fill in the field %1$s</string>
+    <string name="need_replenish_savings_acc">Need to top up savings account</string>
+    <string name="nepal">Nepal</string>
+    <string name="net_payments">Internet payments</string>
+    <string name="new_fines">New penalties</string>
+    <string name="new_fingerprint_enrolled_description">A new fingerprint was added to this device, so your password is required.</string>
+    <string name="new_password">New password</string>
+    <string name="new_receipts">New statements</string>
+    <string name="news">News</string>
+    <string name="news_bank">Bank news</string>
+    <string name="next">Next</string>
+    <string name="next_payment">Next payment:</string>
+    <string name="next_row">""</string>
+    <string name="Cancel">no</string>
+    <string name="no_accounts">No accounts</string>
+    <string name="non_contact_payments">Contactless payments</string>
+    <string name="non_contact_payments_n">Contactless payments</string>
+    <string name="noncontact_payments">Contactless payments</string>
+    <string name="not_available">This function is notr available</string>
+    <string name="not_chosen_card">Choose a card to make payment</string>
+    <string name="not_data">No data</string>
+    <string name="not_data_fmt">No data for the period %1$s - %2$s</string>
+    <string name="not_digitized_card">You do not have digitized cards. Please authorize in the app and digitize the card you need</string>
+    <string name="not_done">Not performed</string>
+    <string name="not_enough_balance">Insufficient funds in the account</string>
+    <string name="not_equals_password">password does not match</string>
+    <string name="not_invoices">No payable receipt</string>
+    <string name="not_limited">Unlimited</string>
+    <string name="not_notice">"You don't have notifications"</string>
+    <string name="not_now">Not now</string>
+    <string name="note">Note!</string>
+    <string name="nothing_find">Nothing found</string>
+    <string name="notice">Notifications</string>
+    <string name="notice1">notifications</string>
+    <string name="notice2">notifications</string>
+    <string name="notice3">notification</string>
+    <string name="notice4">Notification</string>
+    <string name="empty_notifications_placeholder">You have no notifications yet</string>
+    <string name="now_you_can_enter_atf24">Now you can enter Optima24. To enter please go to authorization page.</string>
+    <string name="number">Number</string>
+    <string name="number_attempt">You have exhausted the number of attempts</string>
+    <string name="number_of_days">Number of days (from today)</string>
+    <string name="of">from</string>
+    <string name="of_fmt">from %1$s</string>
+    <string name="of_year">year</string>
+    <string name="off">from</string>
+    <string name="offices_and_atms">Offices and ATMs</string>
+    <string name="on_internet">on the internet</string>
+    <string name="online_applications">Online-applications</string>
+    <string name="open_date">Openning date</string>
+    <string name="operation_number">Operation number</string>
+    <string name="operation_success">Operation successfully executed</string>
+    <string name="operations_from">Operations from</string>
+    <string name="operations_to">to</string>
+    <string name="other">Other</string>
+    <string name="overpayment">Overpayment</string>
+    <string name="owner">Owner:</string>
+    <string name="paid">Paid:</string>
+    <string name="paid_by_both">separate</string>
+    <string name="paid_by_both_hint">When choosing a separate fee option, sender pays a fee for the services of his/her bank, and beneficiary pays fees for the services of all other banks (correspondent bank, intermediary bank, beneficiary is bank)</string>
+    <string name="paid_by_receiver">at the cost of the consignee</string>
+    <string name="paid_by_sender">at the cost of the consignor</string>
+    <string name="password">Password</string>
+    <string name="password_hint">The password can not be less than 8 and more than 15 symbols.The password must contain both letters and numbers. Be careful when you type. Passwords are case sensitive.</string>
+    <string name="password_key">password_key</string>
+    <string name="password_successful_changed">Password successfully changed!</string>
+    <string name="passwords_doesnt_match">Password does not match</string>
+    <string name="past">Past</string>
+    <string name="pay_action">Make payment</string>
+    <string name="pay_again">Repeat payment</string>
+    <string name="pay_by_phone">Pay using your mobile phone</string>
+    <string name="pay_debt">Pay debt</string>
+    <string name="pay_service">Payment service</string>
+    <string name="payed">Paid</string>
+    <string name="payment_accepted_for_processing">Payment is taken for processing</string>
+    <string name="payment_amount">Payment for the amount</string>
+    <string name="payment_confirmation">Confirm payment</string>
+    <string name="payment_date">Operation date</string>
+    <string name="payment_fines">penalty</string>
+    <string name="payment_format_hint">Input format:</string>
+    <string name="payment_info">Payment information</string>
+    <string name="payment_services">Payment service</string>
+    <string name="payment_sum">Payment sum</string>
+    <string name="payment_code">Payment code</string>
+    <string name="payments">Payments</string>
+    <string name="payments_history">History</string>
+    <string name="payments_history_title">Payment history</string>
+    <string name="payments_list">List</string>
+    <string name="payments_without_reg">Payments without registration</string>
+    <string name="payments_without_registration">Payments without registration</string>
+    <string name="penalty">Fine</string>
+    <string name="penalty_auto_num">Car number</string>
+    <string name="penalty_blank_num">Blank number</string>
+    <string name="penalty_blank_ser">Series blank</string>
+    <string name="penalty_blank_type">Blank type</string>
+    <string name="penalty_date">Violation date</string>
+    <string name="penalty_doc_num">"Driver's license number"</string>
+    <string name="penalty_info">Information about the fine</string>
+    <string name="penalty_kbk">KBK</string>
+    <string name="penalty_kno">KNO</string>
+    <string name="penalty_knp">KNP</string>
+    <string name="penalty_location">Violation place</string>
+    <string name="penalty_number">Fine number</string>
+    <string name="penalty_person">Violator</string>
+    <string name="penalty_person_idn">Violator IDN</string>
+    <string name="penalty_sum">Fine amount</string>
+    <string name="penalty_type">Violation type</string>
+    <string name="penny">Penny</string>
+    <string name="period">Period</string>
+    <string name="perpetual_deposit">indefinitely</string>
+    <string name="personal_account">Personal account</string>
+    <string name="personal_data">Personal information</string>
+    <string name="phone">XXX XXX XX XX</string>
+    <string name="phone_number">Phone number</string>
+    <string name="photo_deleted">Photo has been deleted</string>
+    <string name="photo_uploaded">Photo has been uploaded</string>
+    <string name="pin_code_step_enable_confirm">Enter access code once again</string>
+    <string name="pin_code_step_unlock">Enter access code</string>
+    <string name="please_confirm_contract_policy">Please, confirm joining to the Agreement and Confidentiality Policy</string>
+    <string name="pond">Ocean</string>
+    <string name="pos_terminal_pay">Payment in POS-terminals</string>
+    <string name="postal_code">Post code</string>
+    <string name="pound_sterling">Pound sterling</string>
+    <string name="prev_counter_index">Previous indicators</string>
+    <string name="prev_counter_index_date">Date of previous indicators</string>
+    <string name="priceSmsNotif">"The cost of the service is determined by the Bank's tariffs, depending on the chosen tariff plan SMS notifications are connected to the phone number specified by you when signing the Agreement with the Bank. To clarify the phone number, please contact the Bank's Call Center by dialling 2424 To enable or disable SMS notification service, switch the toggle to the desired position \"Enabled\" or \"Disabled\" and click Continue."</string>
+    <string name="process_digitizing_card">Card digitizing in progress</string>
+    <string name="profile_photo">Profile photo</string>
+    <string name="profile_photo_update">Profile’s photo is successfully updated</string>
+    <string name="public_service">Utility payments</string>
+    <string name="purchase_done">Purchase successful</string>
+    <string name="purchases">Purchases</string>
+    <string name="push_notice">Push notifications</string>
+    <string name="q_delete">Delete transferModel?</string>
+    <string name="q_delete_subscription">Delete subscription?</string>
+    <string name="q_delete_template">Delete payment transferModel?</string>
+    <string name="q_logout">Logout?</string>
+    <string name="q_pay">To pay?</string>
+    <string name="rate">Currency</string>
+    <!--RATE-->
+    <string name="pc_courses">Pay card rates</string>
+    <string name="cash_courses">Cash rates</string>
+    <string name="cashless_courses">Cashless rates</string>
+    <string name="nbrk_courses">NBKR rates</string>
+
+    <string name="rate_title">Exchange rates</string>
+    <string name="rate_update_date">Currency exchange rate for operations in Optima24. For date</string>
+    <string name="re_new_password">Re-enter password</string>
+    <string name="read_phone_state_text">Without access to the phone identifier or SIM card, the application may not work correctly. Would you like to provide access?</string>
+    <string name="reason_block_card">REASON FOR BLOCKING</string>
+    <string name="reason_block_card_hint">Reason for blocking</string>
+    <string name="reason_card_lock">Indicate the reason for blocking</string>
+    <string name="reccuring_payment_time">Time of repeated payment</string>
+    <string name="receipt">Receipt</string>
+    <string name="receipt_">Receipt:</string>
+    <string name="receipt_date">Invoice date</string>
+    <string name="receipt_expire_date">Pay up to</string>
+    <string name="receipt_expire_date_">Pay up to:</string>
+    <string name="receipt_number">Receipt number</string>
+    <string name="receiver">Recipient</string>
+    <string name="receiver_name">Receiver name</string>
+    <string name="receivers_address">Address of the recipient</string>
+    <string name="receivers_bank_bic">BIC of the beneficiary bank</string>
+    <string name="receivers_bank_cor_account">Correspondent account of beneficiary is bank</string>
+    <string name="receivers_bank_name">Name of the bank recipient</string>
+    <string name="receivers_country">Recipient country</string>
+    <string name="receivers_country_choose">Choose the country</string>
+    <string name="receivers_name_hint">Name of recipient shown on the card</string>
+    <string name="recharge">Incomes</string>
+    <string name="reenter_password">Re-enter password</string>
+    <string name="reference">Reference</string>
+    <string name="refresh_app">Update the app for correct operation</string>
+    <string name="region">Region</string>
+    <string name="region_or_type_operation">Choose a country or type of transaction</string>
+    <string name="region_selected">Selected region</string>
+    <string name="register">Registration</string>
+    <string name="register_client">Register client</string>
+    <string name="registration">Registration</string>
+    <string name="regular_payment">Regular payment</string>
+    <string name="remain_pay">Left to pay:</string>
+    <string name="remainder">Minimum balance:</string>
+    <string name="remuneration">Reward</string>
+    <string name="repeat_payment">Repeat payment</string>
+    <string name="repeat_time">Time of repeated payment</string>
+    <string name="replenish">Refill</string>
+    <string name="replenish_deposit">Replenish a deposit</string>
+    <string name="replenishment">credits</string>
+    <string name="requests">Applications</string>
+    <string name="requisites">Details</string>
+    <string name="requisites_intermediary_bank">Intermediary bank requisites</string>
+    <string name="requisites_intermediary_bank_hint">Intermediary bank (mandatory for sums over 100 000$)</string>
+    <string name="rotate">Rotate</string>
+    <string name="rub">Russian ruble</string>
+    <string name="rub_filter_regex1">[a-zA-Zа-яА-Я0-9-/()., ]+</string>
+    <string name="rub_filter_regex2">[a-zA-Zа-яА-Я0-9-/() ]+</string>
+    <string name="russian_ruble">Russian ruble</string>
+    <string name="s_attention">\u0009<b>Attention!</b>"
+ \u0009 • When sending a transfer to an"<b> individual</b> - choose the economy sector<b> «9»</b>"
+ \u0009 • When sending a transfer to an"<b> entity</b> - choose the economy sector from<b> «1»</b> to<b> «8»</b>"
+ \u0009 • Transfer in Russian rubles to the"<b> budgetary system of the Russian Federation</b>" through Optima24 is not sent.
+ \u0009 • When sending a transfer under a"<b> contract, bill, invoice or other document</b>", you need to provide the original document to the Bank's outlet where you opened your bank account.
+ \u0009 • The bank has the right to request additional supporting documents.
+ \u0009 • Transfer is sent out by the Bank"<b> within 1 business day</b>", time for crediting money may depend on the Bank receiving the transfer.
+
+"<b> !</b> Transfer can be made on a business day (other than days-off and holidays) from<b> 9:00 am</b> till<b> 6:00 pm</b> (Astana time).</string>
+    <string name="sale_bank">Bank sells</string>
+    <string name="same_account">You can not make a transfer between cards linked to one card account</string>
+    <string name="save">Save</string>
+    <string name="save_auto_payment">Create AutoPayment</string>
+    <string name="save_changed_template">Save changes</string>
+    <string name="save_login">Save login</string>
+    <string name="save_template">Save transferModel</string>
+    <string name="save_template_name">Template name</string>
+    <string name="scan">Scan</string>
+    <string name="screen_locked_setting_info">To proceed, please set password, pin- code or graphic token in security settings</string>
+    <string name="search">Search</string>
+    <string name="search_bank_name">By Name</string>
+    <string name="search_by_address">Search by address</string>
+    <string name="search_by_bic">By BIC</string>
+    <string name="search_by_service">Search by service</string>
+    <string name="search_region">Enter region name</string>
+    <string name="seco_name">Enter economy sector</string>
+    <string name="secret_question">Secret question</string>
+    <string name="security">Security</string>
+    <string name="select_currency">Choose currency</string>
+    <string name="select_date">Choose a date</string>
+    <string name="select_default_card">Select the card for payment</string>
+    <string name="select_period">Choose period</string>
+    <string name="sendSMS">SMS was sent to your phone number</string>
+    <string name="send_again">Send again</string>
+    <string name="send_email">Email a bill</string>
+    <string name="send_messaage">Send a message</string>
+    <string name="send_transfer">Send a transfer</string>
+    <string name="sender_address">Sender address</string>
+    <string name="sender_city">Sender city</string>
+    <string name="sender_country">Sebder country</string>
+    <string name="sender_name">Sender name</string>
+    <string name="service_name">Service provider</string>
+    <string name="setting">Settings</string>
+    <string name="settings">Account settings</string>
+    <string name="settings_not_chosen">Region not selected</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_visibility">Visibility settings</string>
+    <string name="settings_visibility_title">Visibility settings</string>
+    <string name="show">Show</string>
+    <string name="show_all">Show all</string>
+    <string name="sign_in">Sign in</string>
+    <string name="simple_ime">Simple IME</string>
+    <string name="skype_download">You have no installed Skype application. Install WhatsApp?</string>
+    <string name="sms">SMS</string>
+    <string name="smsNotif">This is a simple and convenient sms-service, alloing to get information about all card transactions. The system will automatically inform you by SMS about the debit and credit transaction on your account, thus providing full control over all transactions performed.</string>
+    <string name="sms_code_confirmation">SMS- verification code</string>
+    <string name="sms_confirm">To confirm operation, please specify confirmation code, sent by SMS.</string>
+    <string name="sms_input_info_30_secs">Next SMS will be available in 30 seconds. If you have any problems with entering, please contact Call Center at 2424.</string>
+    <string name="sms_input_info_5_minutes">Next SMS will be available in 5 minutes. If you have any problems with entering, please contact the Call Center on 2424</string>
+    <string name="sms_input_info_60_secs">Next SMS will be available in 60 seconds. If you have any problems with entering, please contact Call Center at 2424.</string>
+    <string name="sms_input_info_five_hours">Next SMS will be available in 5 hours. If you have any problems with entering, please contact Call Center at 2424.</string>
+    <string name="sms_input_info_one_hour">Next SMS will be available in 1 hour. If you have any problems with entering, please contact Call Center at 2424.</string>
+    <string name="sms_notif">Informing by SMS/Push about all transactions on your account. The cost of the service is determined by the Bank’s tariffs.</string>
+    <string name="space">\\s</string>
+    <string name="state">State</string>
+    <string name="state_1">New</string>
+    <string name="state_2">Sent</string>
+    <string name="state_3">Processed by the Bank</string>
+    <string name="state_4">Deferred</string>
+    <string name="state_5">Completed</string>
+    <string name="state_6">Declined</string>
+    <string name="state_7">Cancelled</string>
+    <string name="state_99">Error</string>
+    <string name="statement">Account statement</string>
+    <string name="statement_date">Statement date:</string>
+    <string name="status">Status</string>
+    <string name="status_">Status:</string>
+    <string name="status_false">not performed</string>
+    <string name="status_offline">Status: does not work/not available at this time</string>
+    <string name="status_ok">Oк</string>
+    <string name="status_online">Status: available</string>
+    <string name="status_sms_notifications_not_determined">SMS notifications status has not been determined yet</string>
+    <string name="status_undefined" />
+    <string name="session_continue">Resume session</string>
+    <string name="session_end">Session finishing</string>
+    <string name="session_end_attention_title">Attention! Session will be finished after</string>
+    <string name="Second1_timer">sesond</string>
+    <string name="Second2_timer">second</string>
+    <string name="Second3_timer">seconds</string>
+    <string name="status_warning">Status: reduced functionality mode</string>
+    <string name="subscription_name">Subscription name</string>
+    <string name="subscriptions_not_found">Subscriptions not found</string>
+    <string name="subtype_en_US">English (US)</string>
+    <string name="success_auto_pay">Successful auto-payment</string>
+    <string name="success_digitized">Card digitizing successful</string>
+    <string name="success_reference">Reference:</string>
+    <string name="success_registration">Successful registration!</string>
+    <string name="sum">Amount</string>
+    <string name="sum_to_payment">Amount to payment</string>
+    <string name="sum_with_fee">Amount to payment with fee</string>
+    <string name="amount_to_payment">Amount to payment</string>
+    <string name="suspend_confirm">Do you want the card suspended?</string>
+    <string name="suspend_contactless">Switching contactless payment off</string>
+    <string name="swift_fee_account">Commission debiting Account</string>
+    <string name="switch_off">Disable</string>
+    <string name="switch_on">Enable</string>
+    <string name="t_app_restart">Application will be restarted</string>
+    <string name="t_application">Application</string>
+    <string name="t_apps_type">Applications type</string>
+    <string name="t_atm">ATMs</string>
+    <string name="terminals">Terminals</string>
+    <string name="terminal">Terminal</string>
+    <string name="t_atm_on_map">ATM on map</string>
+    <string name="t_attention">"Limit (on the Bank is exchange rate) for one calendar month:
+ Amount of one transaction within RK: 2,500 $
+ Amount of one transaction outside RK: 2,500 $
+ Number of transactions per day within RK: 5
+ Number of transactions per day outside RK: 5
+ Number of transactions for 4 days: 20
+ Total number of transactions for 4 days: 10,000$
+ A number of countries and banks may restrict their cardholders to execute this transaction (Columbia, USA, etc.). The list of countries is also established by the rules of payment system and may vary."</string>
+    <string name="t_attention_">ATTENTION!</string>
+    <string name="t_branch">Branches</string>
+    <string name="t_branch_address">Branch address</string>
+    <string name="t_branch_on_map">Branch on map</string>
+    <string name="t_can_read_sms">can read sms</string>
+    <string name="t_cash_in">Issuing and receiving cash</string>
+    <string name="t_cash_in_not">Issue of cash</string>
+    <string name="t_confirm_payment">Are you confirm payment?</string>
+    <string name="t_confirm_payment_with_sum">Do you confirm the payment for the amount</string>
+    <string name="t_continue">Continue</string>
+    <string name="t_end">End</string>
+    <string name="t_current_and_card_accounts">Optima24</string>
+    <string name="t_empty" />
+    <string name="t_general_branch">main office</string>
+    <string name="t_in_list">On list</string>
+    <string name="t_loading">Loading data</string>
+    <string name="t_mediator_bank">Name of intermediary bank</string>
+    <string name="t_mediator_bank_account">Account number</string>
+    <string name="t_mediator_bank_cor_account">Correspondent account of intermediary is bank</string>
+    <string name="t_mediator_bic">BIC intermediary bank</string>
+    <string name="t_new_category">New category</string>
+    <string name="t_not_show_more">"Don't show again"</string>
+    <string name="t_offline">does not work/not available at this time</string>
+    <string name="t_on_map">On map</string>
+    <string name="t_online">available</string>
+    <string name="t_parameter">Parameter</string>
+    <string name="t_payments_by_region">Payment by region</string>
+    <string name="t_payments_title">Payment service</string>
+    <string name="t_potential_danger_apps">This device contains potentially dangerous applications for banking:</string>
+    <string name="t_send">Send</string>
+    <string name="t_status">Status</string>
+    <string name="t_terminal_address">ATM address</string>
+    <string name="t_warning">reduced functionality mode</string>
+    <string name="t_working_time">Work schedule and services</string>
+    <string name="tariff">Tariff</string>
+    <string name="tariffs">Tariffs</string>
+    <string name="temp_password">Temporary password</string>
+    <string name="temp_password_has_send_to_phone">Temporary password to enter Optima24 is sent to your mobile phone</string>
+    <string name="template_create_successfully">Template created successfully</string>
+    <string name="template_deleted_successfully">Template deleted</string>
+    <string name="template_error">This template contains incorrect data</string>
+    <string name="template_errorMessage">You will be redirected back</string>
+    <string name="template_errorMessage2">You need to edit data. You will be redirected back.</string>
+    <string name="template_exists">Template with the given parameters is already saved</string>
+    <string name="template_name">Template name</string>
+    <string name="template_rename">Template rename</string>
+    <string name="template_updated_successfully">Template updated</string>
+    <string name="templates">Templates</string>
+    <string name="test">News</string>
+    <string name="test_message">Something went wrong</string>
+    <string name="text_bic">BIC code of beneficiary bank</string>
+    <string name="text_bic_mediator">BIC of intermediary bank</string>
+    <string name="text_transfer_type">Transfer type</string>
+    <string name="transfer_type_cleering">Clearing</string>
+    <string name="transfer_type_gross">GROSS</string>
+    <string name="text_delete_btn">Delete</string>
+    <string name="text_from_account">Debit account</string>
+    <string name="text_from_account_account">Account for debiting</string>
+    <string name="text_from_card">From card</string>
+    <string name="text_from_card_account">Debit card</string>
+    <string name="text_google_play_service">To work with the cards you need to install Google Play Service</string>
+    <string name="text_knp">Purpose of transfer</string>
+    <string name="text_knp_hint">Specify transfer purpose (for what) and base (number, date of contract, document, invoice)</string>
+    <string name="text_knp_hint_interbank">Transfer assignment (purpose, based on what, No. and date of agreement / contract)</string>
+    <string name="text_knp_code">Transfer purpose code</string>
+    <string name="text_payment_code">Payment code</string>
+    <string name="text_not_resident">Kyrgyzstan non-resident</string>
+    <string name="text_password">Password</string>
+    <string name="text_receiver">Recipient</string>
+    <string name="text_receiver_acc_number">Recipient account number</string>
+    <string name="text_receiver_iin">Beneficiary Identity Number</string>
+    <string name="text_resident">Resident</string>
+    <string name="text_seco_code">Economy type</string>
+    <string name="text_sms_code">"We send an SMS-code
+Enter the SMS-code"</string>
+    <string name="text_sms">Enter the SMS-code</string>
+    <string name="sms_code">SMS-code</string>
+    <string name="text_sum">Amount</string>
+    <string name="text_tel_number">Mobile number</string>
+    <string name="text_to_account_account">Account for crediting</string>
+    <string name="text_to_card">Card number for admission</string>
+    <string name="text_to_card_account">Card for crediting</string>
+    <string name="text_to_deposit">To deposit</string>
+    <string name="text_transfer_to_other_bank">To client of other bank</string>
+    <string name="text_writing_out">Specify the period for which you want to receive the report</string>
+    <string name="thanks">Thank you!</string>
+    <string name="the_value_should_be_number_up_to_19_digits">The value should be a number up to 19 digits</string>
+    <string name="the_value_should_be_number_uper_to_0">The value should be a number and and more than 0</string>
+    <string name="theft_card">Theft of card</string>
+    <string name="thx_request">Your application is registered by %1$s number</string>
+    <string name="time">Time</string>
+    <string name="title_dialog">Touch ID for «Optima24»</string>
+    <string name="to">End</string>
+    <string name="to_">To</string>
+    <string name="to_contract">Agreement</string>
+    <string name="to_currency">To currency</string>
+    <string name="to_payment">To payment</string>
+    <string name="to_policy">Confidentiality Policy</string>
+    <string name="to_use_imprint">You need to set up Imprint for using fingerprint authentication. Would you like to open settings page?</string>
+    <string name="toast_empty_history">No data for this period</string>
+    <string name="toast_empty_payments">No payment services</string>
+    <string name="toast_empty_schedule">No repayment schedule</string>
+    <string name="toast_empty_statement">No operations found during the period</string>
+    <string name="toast_empty_templates">No templates</string>
+    <string name="toast_empty_transfer_history">No transfer for this period</string>
+    <string name="too_many_attempts">Fingerprint scanner is temporarily unavailable. Use login and password</string>
+    <string name="total">Totall bill</string>
+    <string name="total_admission">Total income</string>
+    <string name="total_debt_text">"Total debt at card today for
+repayment before the reporting date"</string>
+    <string name="total_fee">Total fee</string>
+    <string name="total_multi">Total</string>
+    <string name="total_service_">Total for service:</string>
+    <string name="total_sum_not_valid">Invalid transaction amount</string>
+    <string name="total_with_fee">Totall bill with fee</string>
+    <string name="total_write_off">Total write-offs</string>
+    <string name="transfer_acc_acc">To account</string>
+    <string name="transfer_acc_acc_to_other_bank">To client of other bank</string>
+    <string name="transfer_acc_deposit">Replenish a deposit</string>
+    <string name="transfer_accounts">Transfers</string>
+    <string name="transfer_action">Transfer</string>
+    <string name="transfer_amount">Transfer for the amount</string>
+    <string name="transfer_card">Transfer to account/card</string>
+    <string name="transfer_card_visa_to_visa_for_item">VISA2VISA instant transfers</string>
+    <string name="transfer_card_elcard_to_elcard_for_item">"Элкарт на Элкарт" transfers</string>
+    <string name="transfer_card_visa_to_visa_for_for_description">Transfers to VISA cards of foreign banks and Kyrgyz&#160;banks</string>
+    <string name="transfer_card_elcard_to_elcard_for_for_description">Transfers to Elcart cards of Kyrgyz&#160;banks</string>
+    <string name="transfer_card_visa_to_visa_for_for_error">Transfers of this type are only available to VISA cards. Please check the recipient’s card number</string>
+    <string name="transfer_card_elcart_to_elcart_for_for_error">Transfers of this type are only available to Elcart
+        cards.
+        Please check the recipient’s card number</string>
+    <string name="transfer_card_elcard_for_error">Enter Elkart card number</string>
+    <string name="transfer_confirm">Confirm transfer</string>
+    <string name="transfer_confirmation">Transfer confirmation</string>
+    <string name="transfer_further">Continue</string>
+    <string name="transfer_history_title">Transfer history</string>
+    <string name="transfer_info">Transfer information</string>
+    <string name="transfer_inner">Transfers inside bank</string>
+    <string name="transfer_inner_account">"To account of OptimaBank's client"</string>
+    <string name="transfer_inner_card">"To card of OptimaBank's client"</string>
+    <string name="transfer_money">Transfer money</string>
+    <string name="transfer_multi_card">Transfer with conversion within the card</string>
+    <string name="transfer_number">Transfer number</string>
+    <string name="transfer_state">Executed</string>
+    <string name="transfer_state_false">Rejected</string>
+    <string name="transfer_state_true">Processed</string>
+    <string name="transfer_sum">Transfer amount</string>
+    <string name="transfer_swift">Interbank in currency</string>
+    <string name="transfer_swift_tenge">Interbank in soms</string>
+    <string name="transfer_swift_tengeN">"Interbank transfer
+in soms"</string>
+    <string name="transfer_target">1. For what purpose is carried out free money transfer?</string>
+    <string name="transfer_tenge_info">\u0009This type of transfer<b> does not envisage</b>" payment of taxes, other obligatory payments, customs payments, penalties and fines.
+ \u0009Transfer is sent out by the Bank within"<b> 1 business day</b>, time for crediting money may depend on the Bank receiving the transfer.</string>
+    <string name="transfer_title">Transfer</string>
+    <string name="transfer_type">Operation</string>
+    <string name="transfer_visa_to_visa">Visa to visa</string>
+    <string name="transfers">Transfers</string>
+    <string name="transfers_and_payments_title">"Payments and transfers "</string>
+    <string name="transfers_from_card_to_card">Card-to-card transfer</string>
+    <string name="transfers_title">Transfers</string>
+    <string name="translation_information">Transfer information</string>
+    <string name="un_success_response">Unsuccessful attempt</string>
+    <string name="unlimit">Unlimited</string>
+    <string name="unlock_device">Unlock device screen</string>
+    <string name="unlock_phone_for_payment">Unlock device screen for payment</string>
+    <string name="update">Update</string>
+    <string name="update_page">Please, reload page to see changes</string>
+    <string name="update_text">Update auto-payment status?</string>
+    <string name="usd">US dollar</string>
+    <string name="use_fingerprint_in_future">Use fingerprint in the future</string>
+    <string name="use_fingerprint_to_authenticate_key">have_bool_key</string>
+    <string name="use_fingerprint_to_authenticate_title">Use Touch ID</string>
+    <string name="use_imprint">Login by Touch ID</string>
+    <string name="user">Profile</string>
+    <string name="using_the_chip_of_the_payment_card">Using a chip of a payment card:</string>
+    <string name="using_the_magnetic_strip_of_the_payment_card">Using a magnetic stripe of a payment card:</string>
+    <string name="utilities">Utility payments</string>
+    <string name="validate_end">Card validity has expired</string>
+    <string name="validate_ending_text">Your card expires this month</string>
+    <string name="validation">Validity</string>
+    <string name="validation_">Validity period:</string>
+    <string name="plus_sign">+</string>
+    <string name="vendor_name">Enter supplier name</string>
+    <string name="visa_attention">\u0009<b>Attention!</b>"
+ Worldwide transfers to Visa/Mastercard payment cards*.
+
+ The service is available 24/7.
+
+ • Maximum amount of operations per calendar month:"<b> 10 000$;</b>"
+ • Maximum number of operations per calendar month:"<b> 20 operations;</b>"
+ • Maximum amount of one operation per day:"<b> 2 500$;</b>"
+ • Maximum number of operations per day:"<b> 5 operations.</b>"
+
+ *A number of countries and banks may restrict their cardholders to execute this transaction (Columbia, USA, etc.). The list of countries is also established by the rules of payment system and may vary."</string>
+    <string name="visibility_account">Visibility of accounts</string>
+    <string name="vo_code">VO code</string>
+    <string name="we_are_in_social_networks">Follow us on social networks</string>
+    <string name="whatsapp_download">You have no installed WhatsApp application. Install WhatsApp?</string>
+    <string name="widget_info">Information about vidgets</string>
+    <string name="wish">Purposes</string>
+    <string name="wish_text">Left/Total</string>
+    <string name="with">from</string>
+    <string name="with_physical_presentation_of_payment_card">With actual showing of a payment card:</string>
+    <string name="work_time">Work time</string>
+    <string name="working_time">Work schedule:</string>
+    <string name="write_off">debits</string>
+    <string name="writing_out_account">Account statement</string>
+    <string name="writing_out_deposit">Deposit statement</string>
+    <string name="wrong_card_type_from">Wrong type of source card selected</string>
+    <string name="yes">yes</string>
+    <string name="yes_ready">Yes, I am ready</string>
+    <string name="youNothingChoose">"You didn't choose anything"</string>
+    <string name="you_time_expired">Your time has been expired</string>
+    <string name="your_device_is_rooted">Your device is running under root privileges, which makes use of Optima24 vulnerable to malware and threatens the security of your money. The Bank is not responsible for any possible damage.</string>
+    <string name="your_relationships_with_receiver">2. What is your relationship with the beneficiary / money recipient?</string>
+    <string name="СurrencyExchange">Conversion</string>
+    <string name="сalcul_comm"><b>Conversion calculation</b></string>
+    <string name="choose_currency">Choose currency</string>
+    <string name="share">"Share"</string>
+    <string name="export_pdf">Export to PDF</string>
+    <string name="export_doc">Export to DOC</string>
+    <string name="how_share">Select export method</string>
+    <string name="insufficient_funds">Insufficient funds</string>
+    <string name="cant_transfer_tovisa">It is forbidden to make a transfer to a Visa card of another bank</string>
+    <string name="forbidden_transfer_to_account">It is forbidden to make a transfer to the account</string>
+    <string name="number_of_attempts">Remaining number of attempts :</string>
+    <string name="reason_unblock_card">Unblock the card</string>
+    <string name="reason_temporary_blocking">Временная блокировка</string>
+    <string name="reason_compromising_data">After blocking the card due to “Data compromise (card data leakage)” or “Card theft”, you will NOT be able to use it to withdraw money and make payments in the retail network and on the Internet. You can unblock the card by filling out the appropriate application at the branch of the Bank, if you are sure that the card data did not get to unauthorized persons. Otherwise, it is recommended to reissue it.</string>
+    <string name="label_sms_code_sent">An SMS message has been sent to the number you specified. \nEnter code from SMS</string>
+    <string name="title_input_sms_code">Enter code from SMS</string>
+    <string name="subtitle_sms_code_sent_to_phone">An SMS message has been sent to the number you specified.</string>
+    <string name="input_receiver_card_number">Input receiver card number</string>
+
+    <string name="security_question">Security question</string>
+    <string name="text_input_answer">Enter your answer</string>
+    <string name="text_input_new_password">Enter new password</string>
+    <string name="text_input_password_confirmation">Enter password confirmation</string>
+    <string name="text_accept_agreement">I have read and accept this agreement</string>
+    <string name="text_error_loading_pdf_file">Error loading PDF file</string>
+    <string name="text_these_question_helps_to_restore_the_account">These questions will help you identify when recovering your password</string>
+    <string name="text_sub_description_input_password">no less than 8 and no more than 15 characters and MUST contain both letters and numbers.</string>
+    <string name="text_receipt_on_operation">Operation check</string>
+    <string name="text_operation_time">Operation time</string>
+    <string name="text_show_receipt">Show receipt</string>
+    <string name="text_share">Share</string>
+    <string name="text_in_process">In processing</string>
+    <string name="text_payment_in_process">Payment in processing</string>
+    <string name="text_payment_is_done">Payment performed</string>
+    <string name="text_transfer_done">Transfer performed</string>
+    <string name="text_transfer_failed">Transfer failed</string>
+    <string name="text_default_incoming_card_title">Main card</string>
+    <string name="text_default_incoming_card">The card selected by default is a card account for receiving transfers sent by a phone number within the Bank.</string>
+    <string name="text_default_incoming_card_tip">Main card - the card selected by default for receiving transfers. If you want to change, choose another card.</string>
+
+    <string name="transfer_phone_number">Transfers by phone number</string>
+    <string name="text_select_contacts">Contacts</string>
+    <string name="phone_number_requesites">Transfer details</string>
+    <string name="text_paste">Paste</string>
+
+    <string name="text_phone_number_in_profile">Your current phone number at Optima24</string>
+    <string name="text_more_dots">Available balance in KGS for all currencies at the Bank`s purchase rate.</string>
+    <string name="text_available_balance">Available balance<font color='#ED1C24'>*</font></string>
+    <string name="text_amount_by_currency">By currency</string>
+    <string name="text_available_balance_description"><font color='#ED1C24'>*</font>The available balance is the amount of balances broken down by currencies at the purchase rate for the Bank`s payment cards at the time of the request. The available balance serves as a guideline. When exchange rates change, the available balance may change.</string>
+    <string name="text_available_amount_in_process_description"><font color='#ED1C24'>*</font>To calculate the amount
+        for all currencies, the purchase rate for the Bank`s payment cards at the time of the transaction is used.</string>
+    <string name="text_multiplicator_description">A multiplier is a coefficient used when blocking funds when
+        conducting a card transaction in foreign currency with the participation of multicurrency cards and it is made in soms. Also, when withdrawing funds in ATM and POS from multicurrency cards, a multiplier is applied. The final write-off of funds for transactions performed is carried out at the Bank`s commercial rate on the day of the transaction.</string>
+
+    <string-array name="auto_payment_status">
+        <item>Active</item>
+        <item>Stopped</item>
+        <item>Stopped by manager</item>
+        <item>Amount equals 0</item>
+    </string-array>
+    <string-array name="auto_payment_times">
+        <item>00:00</item>
+        <item>01:00</item>
+        <item>02:00</item>
+        <item>03:00</item>
+        <item>04:00</item>
+        <item>05:00</item>
+        <item>06:00</item>
+        <item>07:00</item>
+        <item>08:00</item>
+        <item>09:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+        <item>19:00</item>
+        <item>20:00</item>
+        <item>21:00</item>
+        <item>22:00</item>
+        <item>23:00</item>
+    </string-array>
+    <string-array name="auto_payment_type">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </string-array>
+    <string-array name="auto_payment_type_agb">
+        <item>Fixed amount</item>
+        <item>Manual amount</item>
+    </string-array>
+    <string-array name="auto_payment_type_invoice">
+        <item>Manual amount</item>
+    </string-array>
+    <string-array name="auto_payment_week_days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+    <string-array name="edit_photo_items">
+        <item>Choose from gallery</item>
+        <item>Take a picture</item>
+        <item>Delete current</item>
+    </string-array>
+    <string-array name="empty_accounts">
+        <item>You do not have active accounts and cards</item>
+        <item>You do not have active cards</item>
+        <item>You do not have active accounts</item>
+        <item>You do not have active loans</item>
+        <item>You do not have active deposites</item>
+    </string-array>
+    <string-array name="languages">
+        <item>Русский</item>
+        <item>Кыргыз</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="month">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="month_for_date">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="transfer_history_status">
+        <item>In the process of editing</item>
+        <item>In the process of signing</item>
+        <item>In the process of delivery</item>
+        <item>Delivered</item>
+        <item>Accepted</item>
+        <item>Processing</item>
+        <item>Deferred</item>
+        <item>Withdrawn</item>
+        <item>Deleted</item>
+        <item>Double</item>
+        <item>Document processing error</item>
+    </string-array>
+
+    <string-array name="transfer_history_seal_status">
+        <item>Transfer in the process of editing</item>
+        <item>Transfer in the process of signing</item>
+        <item>Transfer in the process of delivery</item>
+        <item>Transfer delivered</item>
+        <item>Transfer accepted</item>
+        <item>Transfer processing</item>
+        <item>Transfer deferred</item>
+        <item>Transfer withdrawn</item>
+        <item>Transfer deleted</item>
+        <item>Transfer double</item>
+        <item>Transfer document processing error</item>
+    </string-array>
+</resources>

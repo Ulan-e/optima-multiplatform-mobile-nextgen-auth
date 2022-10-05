@@ -1,0 +1,1256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--checking device-->
+  <string name="your_device_is_rooted">Сіздің құрылғыңыз root супер қолданушының құқықтарымен жұмыс жасауда, бұл  ATF24-ті пайдалануды зиян келтіретін БҚ-ға осал етеді және сіздің ақшаңыздың сақталуына қауіп төндіреді. Банк мүмкін болатын зиянға жауапкершілік алмайды. </string>
+  
+  <string name="installing_non_market_apps">Құрылғы белгісіз жерден орнатуға мүмкіндік береді</string>
+  <string name="last_version_of_android_os">Біз Android ОЖ соңғы нұсқасына жаңарту ұсынамыз</string>
+  <string name="update_page">Өзгертулерді көру үшін бетті жаңартыңыз</string>
+  <string name="to_use_imprint">Саусақ іздерімен аутентификациялау үшін қауіпсіздік баптауларында Imprint баптау қажет. Баптауларды ашу қажет пе? </string>
+  <string name="read_phone_state_text">Телефонның идентификаторына немесе SIM картаға қолжетімділік болмаған жағдайда қосымша дұрыс жұмыс жасамауы мүмкін. Қолжетімділікті беру қажет пе? </string>
+  <string name="t_attention_">Назар аударыңыз!</string>
+  <string name="attention">Назар аударыңыз!</string>
+  <string name="t_not_show_more">Бұдан кейін көрсетпеу</string>
+  <string name="t_potential_danger_apps">Бұл құрылғыда банкинг үшін әлеуетті қауіпті қосымшалар бар:</string>
+  <string name="t_can_read_sms">SMS оқи алады</string>
+  <string name="q_logout">Шығу?</string>
+  <string name="device_status">Құрылғы күйі</string>
+  <string name="back">артқа</string>
+  <string name="background_mode_atf24">АТФ24 фондық режимі</string>
+  <string name="fitsamat">fitsamat</string>
+  <string name="https">https</string>
+  <string name="BKS">BKS</string>
+  <string name="total_multi">Барлығы</string>
+  <string name="purchases">Сатып алулар</string>
+  <string name="exiting_application">Қосымшадан шығу</string>
+  <string name="exit">Шығу</string>
+  <string name="pond">Мұхит</string>
+  <string name="cat">Мысық</string>
+  <string name="acorn">Емен жаңғағы</string>
+  <!--Card block-->
+  <string name="reason_block_card">Бұғаттау себебі</string>
+  <string name="reason_block_card_hint">Тежеудің себебі</string>
+  <string name="reason_card_lock">Тежеудің себебін көрсетіңіз</string>
+  <string name="lost_card">Картаның жоғалуы</string>
+  <string name="theft_card">Картаның ұрлануы</string>
+  <string name="comprosentation">Картаның жариялануы</string>
+  <string name="block">Бұғаттау</string>
+  <string name="un_success_response">Сәтсіз әрекет</string>
+  <string name="expire_date_to">Жарамдылық мерзімі: </string>
+  <!-- GENERAL -->
+  <string name="app_name">Optima24</string>
+  <string name="KGS">с</string>
+
+
+
+  <string name="connect_to_atf24">ATF24-ке  қосылу </string>
+  <string name="non_contact_payments_n">Контактысыз төлемдер </string>
+  <string name="payments_without_registration">Тіркеусіз төлемдер</string>
+  <string name="connect_with_bank">Банкпен байланысу</string>
+  <string name="test_message">Бір жерден қателік кетті</string>
+  <string name="template_error">Бұл шаблондағы  мәліметтер дұрыс емес</string>
+  <string name="template_errorMessage">Сіз кейінге қайта бағытталатын боласыз</string>
+  <string name="template_errorMessage2">Сізге мәліметтерді түзету қажет. Сіз кейінге қайта бағытталатын боласыз.</string>
+  <string name="refresh_app">Дұрыс жұмыс жасау үшін қосымшаны жаңарту қажет. </string>
+  <string name="validate_ending_text">Сіздің карточкаңыздың қолданыс мерзімі ағымдағы айда аяқталады</string>
+  <string name="validate_end">картаның  әрекет ету мерзімі аяқталған</string>
+  <string name="session_ended">Сеансыңыздын мөөнөтү бүттү</string>
+  <string name="t_loading">Деректер жүктелуде</string>
+  <string name="complete_full">Барлық өрістерді толтырыңыз</string>
+  <string name="t_general_branch">бас кеңсе</string>
+  <string name="action_refresh">Жаңарту</string>
+  <string name="update">Жаңарту</string>
+  <string name="card_and_accounts">Шоттар мен карталар</string>
+  <string name="login">Логин</string>
+  <string name="password">Пароль</string>
+  <string name="enter">Кіру</string>
+  <string name="enter_into_ATF24">ATF24-ке кіру</string>
+  <string name="save_login">Логинді сақтау</string>
+  
+  <string name="code">Код бойынша кіру</string>
+  <string name="use_imprint">Touch ID бойынша кіру</string>
+  <string name="fingerprint_description">Confirm fingerprint to continue</string>
+  <string name="fingerprint_not_recognized">Анықталмады. Қайталап көріңіз</string>
+  <string name="many_attempts">Іс-әрекеттер саны тым көп</string>
+  <string name="fingerprint_success">Анықталды</string>
+  <string name="sign_in">Sign in</string>
+  <string name="purchase_done">Операция орындалды</string>
+  <string name="new_fingerprint_enrolled_description">Touch ID бойынша авторизациялауға арналған жаңа деректер құрылғыға қосылатын болады, құрылғы үшін өзіңіздің құпиясөзіңізді көрсетіңіз.</string>
+  <string name="use_fingerprint_in_future">Touch ID бойынша авторизацияны болашақта қолдану</string>
+  <string name="do_not_use_fingerprint_more">Touch ID бойынша қосылуды өшіруді растайсызба?</string>
+  <string name="do_not_use_fingerprint_more_switch">Тouch ID пайдалану</string>
+  <string name="do_not_use_code_more">Код бойынша қосылуды өшіруді растайсызба?</string>
+  <string name="do_not_use_code_more_switch">Кіруге арналған кодты пайдалану</string>
+  <string name="title_dialog">«Optima24» үшін Touch ID</string>
+  <string name="pin_code_step_unlock">Қолжетімділік кодын енгізу</string>
+  <string name="pin_code_step_enable_confirm">Қолжетімділік кодын тағы да енгізіңіз</string>
+  <string name="use_fingerprint_to_authenticate_title">Touch ID бойынша авторизацияны қолдану</string>
+  <string name="use_fingerprint_to_authenticate_key" translatable="false">have_bool_key</string> // НЕ ПЕРЕВОДИТЬ!!!
+  <string name="too_many_attempts">Саусақ іздерінің сканері уақытша қолжетімсіз. Логин мен парольді қолданыңыз</string>
+  <string name="login_key">login_key</string>
+  <string name="password_key">password_key</string>
+  <string name="chooser_email">Мессенджер таңдаңыз</string>
+  <string name="fingerprint_hint">Тouch ID пайдалану</string>
+  <string name="payments">Төлемдер</string>
+  <string name="on_internet">ғаламторда</string>
+  <string name="exception_mail">Қателік кетті, сізде мессенджер жоқ болуы мүмкін</string>
+  <string name="exception_data">Мәліметтерді жинауда қателік кетті, өтінеміз қосымшаны қайта қосыңыз</string>
+  <string name="exception">Мәліметтерді жинауда қателік кетті </string>
+  <string name="exception_password_wrong">Телефон нөмірі немесе құпиясөз дұрыс емес</string>
+  <string name="all_templates">Барлығы</string>
+  <string name="loading">Жүктеу…</string>
+  <string name="_7">+7</string>
+  <string name="error_wrong_format">қате формат</string>
+  <string name="error_wrong_date">ағымдағы күннен ерте емес</string>
+  <string name="error_number_of_characters">Рұқсат етілмейтін символдар саны</string>
+  <string name="not_equals_password">парольдер сәйкес емес</string>
+  <string name="error_empty">бос өріс</string>
+  <string name="alert_error">Қате</string>
+  <string name="alert_info">Ақпарат</string>
+  <string name="kzt">KZT</string>
+  <string name="text_tel_number">Ұялы телефон номері</string>
+  <string name="text_password">Пароль</string>
+  <string name="forgot_password">Забыли пароль?</string>
+  <string name="free_call_text">Қазақстан бойынша сіздің мобильді операторыңыздан қоңырау шалу тегін</string>
+  <string name="free_call_station_text">Қазақстан бойынша  қала телефондарынан қоңырау шалу тегін</string>
+  <string name="call_center_text">сall-орталық</string>
+  <string name="card_is_blocked">Бөгеттелген</string>
+  <string name="account_is_blocked">Бөгеттелген</string>
+  <string name="card_is_closed">Жабылған</string>
+  <string name="loan_is_closed">Жабылған</string>
+  <string name="operations_from">Oперациялар уақыты</string>
+  <string name="operations_to"></string>
+  <string name="empty_list_view">Тізім бос</string>
+  <string name="attempt_atf">Қалған іс-әрекет саны</string>
+  <string name="number_attempt">Сіздің іс-әрекеттер жасау мүмкіндігіңіз аяқталды</string>
+  <string name="entry_using_login_code">Логин мен парольдің көмегімен кіру</string>
+  <string name="limit_touch_id">Touch ID - мен авторизациялау әрекеттері лимитінен асып кетті</string>
+  <string name="total_debt_text">Есепті күнге дейін өтеу үшін \nкарта бойынша жалпы қарыз</string>
+  <string name="text_writing_out">Есепті алатын кезеңді көрсетіңіз</string>
+  <string name="transfers_and_payments_title">Төлемдер мен аударымдар</string>
+  <string name="transfers_from_card_to_card">Картадан картаға аудару</string>
+  <string name="show_all">Барлығын көрсету</string>
+  <string name="not_data">Мәліметтер жоқ</string>
+  <string name="not_data_fmt">%1$s - %2$s кезеңі бойынша мәліметтер жоқ</string>
+  
+  
+  
+  
+  
+  <string name="in"></string>
+  
+  <string name="bank_of_name">\"АТФБанк\" АҚ</string>
+  <string name="of_year">жылы</string>
+  <string name="of"></string>
+  <string name="of_fmt">%1$s ден</string>
+  <string name="select_period">Кезеңді таңдау</string>
+  <string name="period">Кезең</string>
+  <string name="note">Назар аударыңыз!</string>
+  <string name="main">Басты</string>
+  <string name="before">-</string>
+  <string name="behind">ішінде</string>
+  <string name="off"></string>
+  <!-- ACCOUNTS -->
+  <string name="t_current_and_card_accounts">АТF24</string>
+  <string name="current_accounts">Шоттар</string>
+  <string name="current_accounts_tek">Ағымдағы шоттар</string>
+  <string name="current_accounts_type">Ағымдағы шоттар</string>
+  <string name="current_account_type">Ағымдағы шот</string>
+  <string name="current_card_accounts">Карточкалық шот</string>
+  <string name="current_cards_accounts">Карточкалық шоттар</string>
+  <string name="current_cards_accounts_cards">Карточкалық шоттар/Карталар</string>
+  <string name="current_card_closed">Жүйелік қате</string>
+  <string name="deposit_accounts">Депозиттер</string>
+  <string name="card_accounts">Карталар</string>
+  <string name="loan_accounts">Кредиттер</string>
+  <string name="account_details">Детали</string>
+  <string name="account_statement">Толығырақ</string>
+  <string name="account_settings">Баптаулар</string>
+  <string name="account_schedule">График</string>
+  <string name="no_accounts">Шоттар жоқ</string>
+  <string name="available">Қолжетімді сома</string>
+  <string name="AboutCard">Карта туралы</string>
+  <string name="Limits">Лимиттер</string>
+  <string name="card_writing_out">Карта бойынша есеп</string>
+  <string name="transfer_money">Ақша аудару</string>
+  <string name="deposit_info">Депозит бойынша ақпарат</string>
+  <string name="deposit_name">Депозиттің атауы</string>
+  <string name="contract">Келісім</string>
+  <string name="validation">Жарамдылық мерзімі</string>
+  <string name="account_currency">Шот валютасы</string>
+  <string name="deposit_rate">Бағам</string>
+  <string name="capitalization">Капитализация</string>
+  <string name="min_balance">Азаймайтын калдық</string>
+  <string name="replenish_deposit">Депозит толтыру</string>
+  <string name="loan_info">Кредит бойынша ақпарат</string>
+  <string name="loan_name">Кредиттің атауы</string>
+  <string name="contract_number">Келісім нөмірі</string>
+  <string name="loan_sum">Несие сомасы</string>
+  <string name="loan_debt_sum">Қарыз сомасы</string>
+  <string name="loan_start_date">Несие басталу куні</string>
+  <string name="loan_end_date">Несие аяқталу куні</string>
+  <string name="loan_next_date">Кезекті төлем күні:</string>
+  <string name="loan_next_pay_sum">Кезекті төлем \nсомасы:</string>
+  <string name="loan_graphic">Өтеу кестесі</string>
+  <string name="remuneration">Сыйақы</string>
+  <string name="payment_sum">Төлем сомасы</string>
+  <string name="same_account">Сіз бір карт-шот аумағында аударым жасай алмайсыз</string>
+  <string name="costs_30_days">30 күнге шығындар</string>
+  <string name="costs_month_days">Ағымдағы ай үшін</string>
+  <string name="wish">Мақсаттар</string>
+  <string name="wish_text">Қалғаны/Барлығы</string>
+  <string name="next_payment">Келесі төлем:</string>
+  <string name="personal_account">Жеке шот</string>
+  <string name="requisites">Деректемелер</string>
+  <string name="SMS_alert">Смс хабарлама</string>
+  <string name="Cash_withdrawal">Банкоматтан қолма-қол ақша алу</string>
+  <string name="Internet_payments">Интернет төлемдер</string>
+  <string name="Internet_limit_payments">Интернет төлемдер</string>
+  <string name="net_payments">Интернет төлемдер</string>
+  <string name="pos_terminal_pay">POS-терминалдарда төлем жасау</string>
+    <string name="all_country">Барлық елдер</string>
+    <string name="india">Үндістан</string>
+    <string name="nepal">Непал</string>
+    <string name="indonesia">Индонезия</string>
+    <string name="number_of_days">Күндер саны (бүгіннен бастап)</string>
+    <string name="establish">Орнату</string>
+    <string name="allowed">Операциялар рұқсат етілген</string>
+    <string name="forbidden">Операциялар рұқсат етілмеген</string>
+    <string name="max_limit_dayKZT">Операцияның шекті суммасы (₸)</string>
+    <string name="dear_customer">Құрметті клиент!</string>
+    <string name="unlimit">Шектелмеген</string>
+    <string name="the_value_should_be_number_up_to_19_digits">Мән 19 цифрға дейінгі сан болуы керек</string>
+  <string name="the_value_should_be_number_uper_to_0">Мән 0 ден үлкен сан болуы керек</string>
+    <string name="dear_customer_alert">Таңдалған ел -  алаяқтықтың жоғары қаупі бар ел.
+    «АТФБанк» АҚ алаяқтық қаупі жоғары елдер үшін шектеулерді алып тастауды ұсынбайды. Шектеулерді алып тастау арқылы Сіз жоғары тәуекел дәрежесі туралы білетіндігіңізге және шешіміңізді растағаныңызға келісесіз.
+    Шектеулерді алып тастаған жағдайда «АТФБанк» АҚ Қазақстанға оралғаннан кейін картаны және ПИН-кодты қайта шығаруға кеңес береді ».
+    </string>
+  <string name="Card_lock">Картаны тежеу</string>
+  <string name="account_blocked">Тежелген</string>
+  <string name="account_open">Ашылған</string>
+  <string name="with"></string>
+  <string name="by">-</string>
+  <string name="bank_recipient">Алушы банкі</string>
+  <string name="beneficiary_account">Төлемді алушының шоты </string>
+  <string name="bic">БСК</string>
+  <string name="ENEJKG22">ENEJKG22</string>
+  <string name="replenish">Толықтыру</string>
+  
+  <string name="name">Атауы</string>
+
+    <string name="wrong_card_type_from">Дебеттік карта қате таңдалды</string>
+    <string name="input_sum_greater_than_0">Нөлден жоғары соманы енгізіңіз</string>
+    <string name="input_sum">Cоманы енгізіңіз</string>
+    <string name="error_contactless_payment">Төлем кезінде қате пайда болды</string>
+    <string name="download_request">Өтінімді жүктеу</string>
+  
+  
+  <!-- DETAILS -->
+  <string name="details">Шот туралы мәліметтер</string>
+  <string name="details_number">Нөмір:</string>
+  <string name="details_cardholder">Иеленуші:</string>
+  <string name="details_expire_date">Жарамдылық мерзімі:</string>
+  <string name="details_balance">Бірлік:</string>
+  <string name="perpetual_deposit">шектелмеген</string>
+  <string name="account_amount">Шоттағы сома:</string>
+  <string name="deposit_account_amount">Депозиттегі сома:</string>
+  <string name="status_">Статус:</string>
+  <string name="account_number_">Шоттың нөмірі:</string>
+  <string name="deposit_rate_">Мөлшерлеме:</string>
+  <string name="validation_">Әрекет ету мерзімі:</string>
+  <string name="open_date">Ашылған күні</string>
+  <string name="close_date">Жасалған күні:</string>
+  <string name="remainder">Төмендемейтін қалдық:</string>
+  <string name="remain_pay">Төлеуге тиіс қалдық:</string>
+  <string name="monthly_payment">Ай сайынғы төлем:</string>
+  <string name="capitalization2">Капиталдандыру:</string>
+  <string name="paid">Төленген:</string>
+  <string name="setting">Баптаулар</string>
+  <string name="blocked_amount">Тежелген сома</string>
+  <string name="card_debt">Карта бойынша берешек</string>
+  <string name="card_limit">Карта бойынша лимит</string>
+  <string name="accumulated">Жинақталғаны</string>
+  <string name="currency_balances">Валюталық қалдықтар</string>
+  <string name="convert_currency">Валютаны айырбастау</string>
+  <string name="convert">Айырбастау</string>
+  <string name="closed_account">Бұл шот жабылған</string>
+  <string name="closed_deposit">Бұл депозит жабылған</string>
+  <string name="closed_card">Карта жабылған</string>
+  <!-- STATEMENT -->
+  <string name="statement">Шот бойынша үзінді көшірме</string>
+  <string name="writing_out_deposit">Депозит бойынша үзінді көшірме</string>
+  <string name="writing_out_account">Шот бойынша үзінді көшірме</string>
+  <string name="from">Бастауы</string>
+  <string name="to">Соңы</string>
+  <string name="show">Көрсету</string>
+  <string name="time">Уақыты</string>
+  <string name="transfer_sum">Аударым сомасы</string>
+  <string name="transfer_number">Аударым нөмірі</string>
+  <string name="main_debt_sum">Негізгі қарызы</string>
+  <string name="pay_service">Қызметтерді төлеу</string>
+  <string name="toast_empty_statement">Көрсетілген кезеңде операциялар табылмады</string>
+  <string name="debit">Есептен шығарулар</string>
+  <string name="recharge">Толықтырулар</string>
+  <!-- SETTINGS -->
+  <string name="settings">Шот баптаулары</string>
+  <string name="commun_with_bank">Банкпен байланыс</string>
+  <string name="region">Өңір</string>
+  <string name="contact_center">Байланыс орталығы</string>
+  <string name="call_skype">Скайп арқылы қоңырау шалу</string>
+  <string name="movement_of_funds">Қаражаттар қозғалысы</string>
+  <string name="create_auto_pay">Автотөлемді жасау</string>
+  <string name="success_auto_pay">Автотөлемді сәтті жүргізу</string>
+  <string name="carry_auto_payment_24hours">Автотөлемді 24 сағаттан соң жүргізу</string>
+  <string name="error_auto_pay">Автотөлемді жүргізудегі қателік</string>
+  <string name="widget_info">Виджеттер бойынша ақпарат</string>
+  <string name="new_receipts">Жаңа түбіртектер</string>
+  <string name="need_replenish_savings_acc">Жинақ шотын толықтыру қажеттілігі</string>
+  <string name="new_fines">Жаңа айыппұлдар</string>
+  <string name="news_bank">Банк жаңалықтары</string>
+  <string name="send_messaage">Хабарлама жіберу</string>
+  <string name="region_or_type_operation">Елді немесе операцияның типін таңдаңыз</string>
+  <string name="choose_region">Өңірді таңдаңыз</string>
+  <string name="USA">АҚШ</string>
+  <string name="AP">Азия-тынық мұхиты аймағы</string>
+  <string name="CHINA">Қытай</string>
+  <string name="THAILAND">Таиланд</string>
+  <string name="LIMDom">ҚР аумағындағы банкоматтарда қолма-қолма ақша алу</string>
+  <string name="LIMVAcq">ҚР аумағынан тыс жерлердегі банкоматтардан қолма-қол ақша алу</string>
+  <string name="NONEMV">Индонезия, Непал, Индия, Жапония</string>
+  <string name="end_period_cant">Кезеңнің соңы бастауынан ерте болуы мүмкін емес</string>
+  <string name="begin_period">Кезеңнің басталуы</string>
+  <string name="during_period">кезең бойынша</string>
+  <string name="limit_for_cash_withdrawal_rk">ҚР бойынша банкоматтардан қолма-қол ақша  шешу бойынша лимит</string>
+  <string name="limit_for_cash_withdrawal_outside_rk">ҚР тыс жерлерде қолма-қол ақша  шешу лимиті</string>
+  <string name="limitUSAC">USA чибі бойынша төлемге лимит</string>
+  <string name="limitUSAM">USA магнитті лентасы бойынша төлемге лимит</string>
+  <string name="limitUSAR">USA картасын ұсыну арқылы төлемге лимит</string>
+  <string name="limitAPC">Азия-Тынық мұхит аймағы чибі бойынша төлемге лимит</string>
+  <string name="limitAPM">Азия-Тынық мұхит аймағы магнитті лентасы бойынша төлемге лимит</string>
+  <string name="limitAPR">Азия-Тынық мұхит аймағы картасын  ұсыну арқылы төлемге лимит</string>
+  <string name="limitCHINAC">CHINA чипі бойынша төлемге лимит</string>
+  <string name="limitCHINAM">CHINA магнитті лентасы бойынша төлемге лимит</string>
+  <string name="limitCHINAR">CHINA картасын ұсыну арқылы  төлемге лимит</string>
+  <string name="limitTHAILANDC">THAILAND чибі бойынша төлемге лимит</string>
+  <string name="limitTHAILANDM">THAILAND магнитті лентасы бойынша төлемге лимит</string>
+  <string name="limitTHAILANDR">THAILAND картасын  ұсыну арқылы төлемге лимит</string>
+  <string name="not_limited">Шектеусіз</string>
+  <string name="disabled2">Өшірілген</string>
+  <string name="enabled2">Қосылған</string>
+  <string name="end_period">Кезең соңы</string>
+  <string name="free_by_KZ_at_mobile">Қазақстан бойынша ұялыдан тегін</string>
+  <string name="free_by_KZ_at_teleph">Қазақстан бойынша қала телефонынан тегін</string>
+  <string name="free_by_KZ_at_telephAround">Карточка ұстаушыларға тәулік бойы қолдау көрсету</string>
+  <string name="in_trade_and_service_enterprises">Сауда-сервистік мекемелерде:</string>
+  <string name="using_the_magnetic_strip_of_the_payment_card">Төлем карточкасының магниттік жолағын пайдалану арқылы: </string>
+  <string name="using_the_chip_of_the_payment_card">Төлем карточкасының  чибін пайдалану арқылы:</string>
+  <string name="with_physical_presentation_of_payment_card">Төлем карточкасын іс жүзінде ұсыну арқылы:</string>
+  <string name="application_language">Интерфейс тілі</string>
+  <string name="t_app_restart">Қосымша қайта қосылады</string>
+  <string name="settings_visibility">Көріну баптаулары</string>
+  <string name="settings_not_chosen">Аймақ таңдалмады</string>
+  <string name="current_password">Ағымдағы құпия сөз</string>
+  <string name="new_password">Жаңа құпия сөз</string>
+  <string name="re_new_password">Жаңа құпия сөзді қайталаңыз</string>
+  <string name="block_card">Картаны бөгеттеу</string>
+  <string name="password_hint">Құпия сөздің ұзындығы 8-ден кем және 15 белгіден артық болмайды. Құпия сөз әріптер мен сандардан тұру керек. Енгізген кезде мұқият болыңыз. Құпия сөз регистрге сезімтал болады.</string>
+  <string name="lock_hint">Картаны тежеген соң сіз оны ақша шешу үшін де, сауда желілері мен интернет желілерінде төлемдер жасау үшін де пайдалана алмайсыз. Картаны сіз тек тиісті өтінішті толтыру арқылы ғана тежеуден шығара аласыз.</string>
+  <string name="priceSmsNotif">Сервистің құны таңдалған тарифтік жоспарға байланысты Банк тарифтерімен анықталады                                                                                                                                                                  SMS-хабарлама Банкпен Шарт жасаған кезде сіз көрсеткен телефон нөміріне қосылады. Телефон нөмірін нақтылау үшін 2424 телефоны бойынша Банктің байланыс орталығына хабарласыңыз                                                                                          SMS-хабарлама  қызметін қосу немесе өшіру үшін тумблерді \"Қосылған\" немесе \"Өшірілген\" қажетті күйіне келтіріңіз және \"Жалғастыру\" тетігін басыңыз.</string>
+  <string name="lock_card_hint">Сіз төлем картасын тежегіңіз келіп тұр ма?</string>
+  <string name="smsNotif">Бұл  карта бойынша барлық операциялар туралы ақпарат алуға мүмкіндік беретін қарапайым әрі ыңғайлы  sms-сервис. Жүйе автоматты түрде  сіздің шотыңыз бойынша шығыс және кіріс операциялар туралы  сізге SMS хабарлама түрінде ақпарат береді, бұл барлық жүргізілген операцияларға толық бақылау жасауды қамтамасыз етуге мүмкіндік береді.</string>
+  <string name="visibility_account">Шоттарды көру мүмкіндігі</string>
+  <string name="sms_notif">Сіздің шотыңыз бойынша шығыс және кіріс операциялар туралы SMS хабарлама түрінде ақпараттандыру.</string>
+  <string name="enabled">Қосылған</string>
+  <string name="disabled">Өшірілген</string>
+  <string name="push_notice">Push хабарлама</string>
+  <string name="limits_info">Лимиттер туралы ақпарат</string>
+  <string name="general_settings">Жалпы</string>
+  <string name="lock">Тежеу </string>
+  <string name="inATM">Банкоматтарда</string>
+  <string name="we_are_in_social_networks">Біз әлеуметтік желілердеміз</string>
+  <string name="limit_dayUSD">Тәулік ішіндегі лимит (USD)</string>
+  <string name="limit_dayKZT">Барлық лимит (₸)</string>
+  <string name="count_trank_day">Тәулік ішіндегі транзакциялар саны</string>
+  <string name="security">Қауіпсіздік</string>
+  <string name="change_password">Құпия сөзді ауыстыру</string>
+  <string name="search_region">Өңірдің атауын енгізіңіз</string>
+  <string name="region_selected">Өңір таңдалды</string>
+  <string name="amount_payments_day">Тәулік ішіндегі төлем сомасы</string>
+  <string name="status_sms_notifications_not_determined">Смс хабарламаның жайы әлі анықталмаған</string>
+  <string-array name="languages">
+    <item>Русский</item>
+    <item>Қазақ</item>
+    <item>English</item>
+  </string-array>
+  <!-- SCHEDULE -->
+  <string name="loan_schedule">Өтеу кестесі</string>
+  <string name="toast_empty_schedule">Өтеу кестесі жоқ</string>
+  <string name="loan_date">Төлем күні</string>
+  <string name="loan_amount">Төлем сомасы</string>
+  <string name="loan_debt">Қарыз қалдығы</string>
+  <string name="loan_card">Картадағы қалдық</string>
+  <string name="loan_interest">Пайыздар</string>
+  <!-- RENAME -->
+  <string name="account_rename">Шот атауын өзгерту</string>
+  <string name="card_rename">Карта атауын өзгерту</string>
+  <string name="loan_rename">Кредит атауын өзгерту</string>
+  <string name="deposit_rename">Депозит атауын өзгерту</string>
+  <string name="template_rename">Үлгі атауын өзгерту</string>
+  <string name="save">Сақтау</string>
+  <string name="call_whatsApp">WhatsApp-қа хабарлама жіберу</string>
+  <string name="save_auto_payment">Автотөлемді сақтау</string>
+  <string name="auto_payment_start_date">Бірінші төлем күні</string>
+  <string name="auto_payment_period">Кезеңділік</string>
+  <string name="auto_payment_write_off_type">Есептен шығару типі</string>
+  <string name="auto_payment_days">Күндер</string>
+  <string name="auto_payment_date">Күні</string>
+  <string name="auto_payment_time">Уақыты</string>
+  <string name="auto_payment_activ">Белсенді</string>
+  <string name="auto_payment_activ2">Жұмыс істеп тұр</string>
+  <string name="auto_payment_stop">Тоқтатылған</string>
+  <string name="auto_make_stop">Тоқтату</string>
+  <string name="auto_make_active">Іске қосу</string>
+  <string name="auto_payment_stop_by_manager">Менеджермен\nтоқтатылған</string>
+  <string name="auto_payment_out_of_count">Саны 0-ге тең</string>
+  <string name="cancel">Бас тарту</string>
+  <string name="dialog_cancel">Болдырмау</string>
+  <string name="select_date">Күнді таңдаңыз</string>
+  <!--transfer type-->
+  <string name="TransferMoneyToDeposit">Депозитті толтыру</string>
+  <string name="TransferMoneyInsideClientCards">Өз карталары арасындағы аударым</string>
+  <string name="TransferMoneyInsideClientAccounts">Өз шоттары арасындағы аударым</string>
+  <string name="TransferMoneyInsideClientCardToAccount">Өз карталық шотынан шотқа аударым</string>
+  <string name="TransferMoneyInsideClientAccountToCard">Өз шотынан шотқа аударым</string>
+  <string name="TransferMoneyInsideBankFromAccountToCard">АТФБанк клиентінің картасына аударым</string>
+  <string name="TransferMoneyInsideBankFromCardAccountToCard">АТФБанк клиентінің картасына аударым</string>
+  <string name="TransferMoneyInsideBankFromAccountToAccount">АТФБанк клиентінің шотына аударым</string>
+  <string name="TransferMoneyInsideBankFromCardAccountToAccount">АТФБанк клиентінің шотына аударым</string>
+  <string name="TransferMoneyToAnotherBank">Өзге банк клиентіне аударым</string>
+  <string name="TransferMoneyToOutsideCard">Visa картасына аударым </string>
+  <string name="TransferMoneyMasterCardToMasterCard">Mastercard картасына аударым жасау</string>
+  <string name="TransferForeignCurrencyToAnotherBank">Өзге ел валютасында аударым</string>
+  <string name="СurrencyExchange">Конвертация</string>
+  <string name="TransferMoneyInsideClientDepositToAccount">Өз депозит шотынан шотқа аударым</string>
+  <string name="TransferMoneyInsideClientDepositToCard">Өз депозит шотынан карталық шотқа аударым</string>
+  <string name="TransferMoneyFromVisaToMaster">Mastercard картасына жасалатын аударым</string>
+  <string name="TransferMoneyFromMasterToVisa">Visa картасына жасалатын аударым</string>
+  <string name="TransferConversionInsideMultiCurrencyCard">Мультивалюталық картаның ішіндегі айырбастау</string>
+  <string name="test">Жаңалықтар</string>
+  <!-- PAYMENTS -->
+  <string name="payments_list">Тізімі</string>
+  <string name="payments_history">Тарихы</string>
+  <string name="t_payments_title">Қызметті төлеу</string>
+  <string name="t_payments_by_region">Аймақ бойынша төлем</string>
+  <string name="search_by_service">Қызмет бойынша іздеу</string>
+  <string name="search">Іздеу</string>
+  <string name="toast_empty_history">Бұл кезеңде мәліметтер жоқ</string>
+  <string name="history_date">Күні</string>
+  <string name="history_amount">Cомасы</string>
+  <string name="history_service">Төлем түрі</string>
+  <string name="history_status">Төлем күйі</string>
+  <string name="toast_empty_payments">Төлем қызметі жоқ</string>
+  <string name="pay_action">Төлеу</string>
+  <string name="pay_again">Төлемді қайталау</string>
+  <string name="confirm">Растау</string>
+  <string name="get_balance">Берешекті білу</string>
+  <string name="fee">Комиссия</string>
+  <string name="doc_num">Құжат нөмірі</string>
+  <string name="create_template_payment">Төлем үлгісін жасау</string>
+  <string name="delete_template">Төлем үлгісін жою</string>
+  <string name="delete_auto_payment">Автотөлемді тоқтату</string>
+  <string name="delete_transfer_template">Аударым үлгісін жою</string>
+  <string name="change_template">Төлем үлгісін өзгерту</string>
+  <string name="save_changed_template">Өзгерістерді сақтау</string>
+  <string name="change_transfer_template">Аударым үлгісін өзгерту</string>
+  <string name="template_name">Үлгі атауы</string>
+  <string name="sms_code_confirmation">СМС-растау коды</string>
+  <string name="sendSMS">Сіздің нөміріңізге SMS жіберілген</string>
+  <string name="payment_confirmation">Төлемді растау</string>
+  <string name="status">Мәртебесі</string>
+  <string name="status_ok">Ок</string>
+  <string name="status_false">орындалмаған</string>
+  <string name="debt_sum">Берешек сомасы</string>
+  <string name="get_balans">Балансты білу</string>
+  <string name="invoiceable">Жазылымдар</string>
+  <string name="payment_format_hint">Енгізу форматы: </string>
+  <string name="abonent_is_found">Абонент табылды</string>
+  <string name="operation_success">Операция сәтті орындалды</string>
+  <string name="template_exists">Берілген параметрлері бар үлгі қазірдің өзінде сақталған</string>
+  <string name="auto_template_exists">Берілген параметрлері бар үлгі қазірдің өзінде сақталған</string>
+  <string name="template_deleted_successfully">Үлгі сәтті жойылды</string>
+  <string name="template_updated_successfully">Үлгі сәтті жаңартылды</string>
+  <string name="update_text">Автотөлемнің статусын жаңарту қажет пе?</string>
+  <string name="create">Құру</string>
+  <string name="auto_pay_add">Автотөлем қосылды</string>
+  <string name="auto_pay_update">Автотөлем өңделді</string>
+  <string name="other">Басқалар</string>
+  <string name="utilities">Коммуналдық төлемдер</string>
+  <string name="vendor_name">Жеткізушінің атауын енгізіңіз</string>
+  <string name="payment_amount">Мына сомаға төлем жасау</string>
+  <string name="template_create_successfully">Шаблон сәтті жасалды</string>
+  <string name="t_confirm_payment_with_sum">Сіз мына сомадағы төлемді растайсыз ба?</string>
+  <string name="payment_fines">айыппұл</string>
+  <string name="public_service">Коммуналды</string>
+  <!-- TEMPLATES -->
+  <string name="toast_empty_templates">Үлгілер жоқ</string>
+  <string name="choose_action">Әрекетті таңдаңыз</string>
+  <string name="action_delete">Жою</string>
+  <string name="save_template">Үлгіні сақтау</string>
+  <string name="save_template_name">Үлгі атауы</string>
+  <string name="reccuring_payment_time">Қайталап төлеудің уақыты</string>
+  <string name="repeat_time">Қайталап төлеудің уақыты</string>
+  <string name="begin_time">Басталу күні</string>
+  <string name="repeat_payment">Төлемді қайталау</string>
+  <string name="delete_template_transfer">Үлгіні жою?</string>
+  <string name="delete_auto_template">Автотөлемді өшіру қажет пе?</string>
+  <string name="change">Өзгерту</string>
+  <string name="switch_off">Өшіру</string>
+  <string name="switch_on">Қосу</string>
+  <string name="hint_how_to_add_template">Үлгіні мәзірде \"Төлемдер\" мен \"Аударымдарда\" қоса аласыз</string>
+  <string name="create_template_">Шаблонды құру</string>
+  <string name="confirmation_requisites">Деректемелерді растау</string>
+  <string name="check_requisites">Операцияларды аяқтау үшін алдында көрсетілген деректемелерді тексеріңіз.</string>
+  <string name="number">Нөмір</string>
+  <!-- TRANSFERS -->
+  <string name="t_empty"></string>
+  <string name="error_large_sum">Енгізілген сома қолжетімді қалдықтан артық</string>
+  <string name="from_currency">Валютадан</string>
+  <string name="to_currency">Валютаға</string>
+  <string name="data_time">жағдай бойынша деректер</string>
+  <string name="phone_number">Телефон нөмірі</string>
+  <string name="phone">XXX XXX XX XX</string>
+  <string name="choose_account">Шотты таңдаңыз </string>
+  <string name="choose_card">Картаны таңдаңыз </string>
+  <string name="transfer_title">Аударым</string>
+  <string name="transfer_accounts">Аудару</string>
+  <string name="transfer_card">Картаға/шотқа аударым жасау</string>
+  <string name="transfer_card_visa_to_visa_for_item">VISA2VISA тез которуулары</string>
+  <string name="transfer_card_visa_to_visa_for_for_description">Чет элдик банктардын жана КРдагы банктардын VISA карттарына&#160;которуулар</string>
+  <string name="transfer_card_visa_to_visa_for_for_error">Бул типтеги которуулар VISA карттарына гана жеткиликтүү. Алуучунун карта номерин текшергиле</string>
+  <string name="transfer_multi_card">Карта ішінде айырбастау арқылы жасалатын аударым</string>
+  <string name="transfer_acc_acc">Шоты аударым жасау</string>
+  <string name="transfer_acc_acc_to_other_bank">Өзге банк клиентіне аударым</string>
+  <string name="transfer_visa_to_visa">Visa to visa</string>
+  <string name="transfer_swift_tengeN">Теңгедегі \nбанкаралық</string>
+  <string name="transfer_swift_tenge">Теңгедегі банкаралық аударым</string>
+  <string name="transfer_swift">Валютадағы банкаралық аударым</string>
+  <string name="transfer_acc_deposit">Депозитті толтыру</string>
+  <string name="transfer_inner">Банк ішіндегі аударым</string>
+  <string name="transfer_inner_card">АТФбанк клиентінің картасына</string>
+  <string name="transfer_inner_account">АТФбанк клиентінің шотына</string>
+  <string name="debit_account">Есептен шығару шоты</string>
+  <string name="text_from_card">Картадан</string>
+  <string name="text_to_card">Алушы картасының номірі</string>
+  <string name="receiver_name">Алушының аты-жөні</string>
+  <string name="text_to_deposit">Депозитке</string>
+  <string name="credit_account">Алушы шоты</string>
+  <string name="amount">Сомасы</string>
+  <string name="currency_">Транзакцияның валютасы:</string>
+  <string name="currency">Транзакция валютасы</string>
+  <string name="select_currency">Валютаны таңдаңыз</string>
+  <string name="amount_with_fee">Комиссия ескерілген сома</string>
+  <string name="transfer_action">Аудару</string>
+  <string name="transfer_further">Бұдан әрі</string>
+  <string name="success_reference">Референс:</string>
+  <string name="toast_empty_transfer_history">Таңдалған кезеңде аударым жоқ</string>
+  <string name="text_receiver">Алушы</string>
+  <string name="text_receiver_acc_number">Алушы шот нөмірі</string>
+  <string name="text_receiver_iin">Алушының ЖСН/БСН</string>
+  <string name="text_bic">Алушының банк БСК</string>
+  <string name="text_bic_mediator">Делдал банктің БСК</string>
+  <string name="text_seco_code">Экономика секторы</string>
+  <string name="text_knp_code">Аударымның тағайындалу коды</string>
+  <string name="text_knp">Аударым мақсаты</string>
+  <string name="text_sum">Сомасы</string>
+  <string name="kazakhstan_tenge">Қазақстан теңгесі</string>
+  <string name="american_dollar">Америка доллары</string>
+  <string name="russian_ruble">Ресей рублі</string>
+  <string name="pound_sterling">Фунт стерлинг</string>
+  <string name="china_yuan">Қытай юаны</string>
+  
+  <string name="scan">Сканерлеу</string>
+  <string name="send_transfer">Аударымды жіберу</string>
+  <string name="knp_name">Кодтың атауын енгізіңіз</string>
+  <string name="bank_name">Банктің атауын енгізіңіз</string>
+  <string name="countries_name">Елдің атауын енгізіңіз</string>
+  <string name="seco_name">Экономика секторын енгізіңіз</string>
+  <string name="text_resident">Резидент</string>
+  <string name="text_not_resident">ҚР бейрезиденті</string>
+  <string name="news">Жаңалықтар</string>
+  <string name="atf_news">ATF24 жаңалықтары</string>
+  <string name="transfers_title">Аударымдар</string>
+  <string name="text_from_account">Есептен шығару шоты</string>
+  <string name="text_from_card_account">Есептен шығару картасы</string>
+  <string name="text_to_card_account">Есепке алу картасы</string>
+  <string name="text_from_account_account">Есептен шығару шоты</string>
+  <string name="text_to_account_account">Есептеу картасы</string>
+  <string name="text_transfer_to_other_bank">Өзге банк клиентіне аударым</string>
+  <string name="m_attention">Құрметті клиент!\nТеңге бағамының құбылмалылығына және қысқа уақыт ішінде валюталық бағамдардың өзгеру ықтималдығына байланысты -  айырбастау операцияларын жүргізу барысында ҚР ҰБ бағамы бойынша сома оқшауланады. Іс жүзінде есептен шығару Банктің оқшаулаудан босату және оперцияны аяқтау уақытындағы бағамы бойынша жүзеге асырылады.</string>
+  <string name="transfer_confirmation">Аударымды растау</string>
+  <string name="transfer_amount">Аударым сомасы</string>
+  <string name="transfer_confirm">Аударымды растау</string>
+  <string name="introduce_new">Жаңа картаны/шотты енгізу</string>
+  <string name="amount_conversion">Айырбастау сомасы</string>
+  <string name="conversion_rate">Айырбастау бағамы</string>
+  <string name="transfer_tenge_info">
+    \t<b>Назар аударыңыз!</b> \n
+    \tАударымның бұл түрі салықтарды, өзге міндетті төлемдерді, кедендік төлемдерді, өсімпұлдар мен айыппұлдарды төлеуге арналмаған.\n
+    \tАударым Банктен <b>1 жұмыс күні</b> ішінде жіберіледі, ақшаның түсу мерзімі аударымды алушы Банкке байланысты болуы мүмкін.
+  </string>
+  <!--transfer swift-->
+  <string name="kz">ҚЗ</string>
+  <string name="rub_filter_regex1" formatted="false">[a-zA-Zа-яА-Я0-9-/()., ]+</string>
+  <string name="rub_filter_regex2" formatted="false">[a-zA-Zа-яА-Я0-9-/() ]+</string>
+  <string name="receivers_country">Алушы елі</string>
+  <string name="receivers_country_choose">Елді таңдаңыз</string>
+  <string name="receivers_address">Алушы мекенжайы</string>
+  <string name="receivers_bank_name">Алушы банктің атауы</string>
+  <string name="t_mediator_bank">Делдал банктің атауы</string>
+  <string name="t_mediator_bic">Делдал банк БСК көрсетіңіз</string>
+  <string name="t_mediator_bank_account">Есепшот</string>
+  <string name="t_mediator_bank_cor_account">Делдал банктің корреспонденттік шоты </string>
+  <string name="receivers_bank_bic">Алушы банктің БСК</string>
+  <string name="receivers_bank_cor_account">Алушы банктің корреспонденттік шоты </string>
+  <string name="fee_type">Комиссия түрі</string>
+  <string name="swift_fee_account">Комиссияны есептен шығару шоты</string>
+  <string name="paid_by_sender">Жөнелтуші есебінен</string>
+  <string name="paid_by_receiver">Алушы есебінен</string>
+  <string name="paid_by_both">Бөлiп төлеу</string>
+  <string name="transfer_target">1. Қандай мақсатпен ақысыз ақша аударымы жүзеге асырылады?</string>
+  <string name="your_relationships_with_receiver">2. Бенефициармен /ақша алушымен өзара қарым-қатынастарыңыз қандай?</string>
+  <string name="i_approve">3. Осы операция менің атымнан және менің есебімнен жүргізілетінін және аударым заңсыз қызметпен немесе салық  салудан жасырумен байланысты еместігін  осы арқылы растаймын. Осы операция бойынша қосымша сұрақтар туындаған жағдайда «АТФБанк» АҚ және шетелдік Банктерге сұранымы бойынша қажетті ақпаратты беруге міндетті.</string>
+  <string name="i_agree">жоғарыда көрсетілген талартармен келісетіндігімді растаймын!</string>
+  <string name="license_agreement">
+    1. Банктің жүргізілетін ақша аударымы туралы ақпаратты талап етулері бойынша құқық қорғау органдарына және Ұлттық Банкке беруіне рұқсат беремін.\n
+    2. Осы арқылы осы ақша аударымының тіркеу куәлігін, хабарлама туралы куәлікті, келісімшарттың есептік нөмірін алуды талап ететін валюталық операцияны жүргізумен байланысты емес екендігін растаймын.\n
+    3. Банк Жіберушінің Бенефициар деректемелерін дұрыс көрсетпендігі немесе толық көрсетпегендігі үшін жауапкершілік алмайды. Ақша аударымы Клиенттің кінәсінен кері қайтарылған жағдайда, Банк Клиенттің шотына корреспондент банк қайтарған соманы есепке алады (Жіберушінің шоты болатын болса). Ақша аударымы туралы тапсырмада көрсетілген деректердің қате көрсетілгендігі үшін жауапкершілік ақша жіберушісіне жүктеледі.\n
+    4. Осы төлем және (немесе) ақша аударымының террористік немесе экстремистік қызметті қаржыландырумен және терроризм немесе экстремизмге қандай да бір өзге жолмен көмектесумен байланысты емес екендігін растаймын.\n
+    5. Осы арқылы осы операцияның менің атымнан және менің есебімнен жүргізіліп жатқандығын, аударымның заңсыз қызметпен немесе салық салуды қысқартумен байланысты еместігін растаймын. Осы операция бойынша қосымша сұрақтар туындаған жағдайда, "АТФБанк" АҚ және шетел Банктерінің сұратуы бойынша қажетті ақпаратты ұсынуға міндеттенемін.
+  </string>
+  <string name="paid_by_both_hint">Бөлек комиссияны таңдау кезінде жөнелтуші өз банкінің қызметі үшін комиссия төлейді, алушы барлық қаған банктердің (корреспондент банк, делдал банк, алушы банк) қызметтері үшін комиссия төлейді</string>
+  <string name="choose">Таңдаңыз</string>
+  <string name="need_agreement">Банк талаптарымен келісетіндігіңізді растаңыз</string>
+  <string name="search_by_bic">БИК бойынша</string>
+  <string name="search_bank_name">Aтауы бойынша</string>
+  <string name="inn">ЖСН</string>
+  <string name="kpp">КПП</string>
+  <string name="vo_code">VO код</string>
+  <string name="t_attention">
+
+    Бір күнтізбелік ай үшін лимит (Банк бағамы бойынша):\n
+    ҚР аумағындағы бір операция сомасы: 2500 $\n
+    ҚР-нан тыс жерлердегі бір операция сомасы: 2500 $\n
+    ҚР аумағындағы бір тәуліктегі операциялар саны: 5\n
+    ҚР-нан тыс жерлердегі бір тәуліктегі операциялар саны: 5\n
+    4 күн ішіндегі операциялар саны: 20\n
+    4 күн ішіндегі операциялардың жалпы сомасы: 10 000$\n
+    Бірқатар елдер мен банктер осы операцияны жүргізудегі өз карточкаларының иеленушілерін шектей алады (Колумбия, АҚШ және т.б.). Мұндай елдер тізімі төлем жүйесінің ережелерімен белгіленеді және өзгеруі мүмкін.
+  </string>
+  <string name="s_attention">
+    \tНазар аударыңыз! \n
+    \t • <b>Жеке тұлғаның</b> пайдасына аударымды жіберу кезінде <b>«9»</b> экономика секторын таңдау қажет. \n
+    \t • <b>Заңды тұлғаның</b> пайдасына аударымды жіберу кезінде  <b>«1»</b> мен <b>«8»</b> аралығындағы экономика секторын таңдау қажет.\n
+    \t • АТФ24 арқылы <b>Ресей Федерациясының бюджеттік жүйесіне</b> ресей рублінде аударым жіберу жүргізілмейді.\n
+    \t • <b>Шарт, инвойс және басқа құжаттар</b> бойынша аударым жіберу кезінде, банктік шот ашылған Банк бөлімшесіне құжаттың түпнұсқасын беру қажет.\n
+    \t • Банк қосымша растаушы құжаттарды сұратуға құқылы.\n
+    \t • Аударым Банктен <b>1 жұмыс күні ішінде жіберіледі</b>, ақшаның түсу мерзімі аударымды алушы Банкке байланысты болуы мүмкін.\n
+    \n
+    <b>!</b> Аударымды Астана қ. уақытымен сағат <b>9-00</b>-ден бастап <b>18-00</b>-ге дейін жұмыс күні (демалыс және мереке күндерін қоспағанда) ресімдеуге болады.
+  </string>
+  <string name="visa_attention">
+    \tНазар аударыңыз! \n
+    Visa/Mastercard төлем карталары арқылы бүкіл әлем бойынша аударымдарды жүзеге асыру*.\n
+    \n
+    Бұл қызмет тәулік бойына қол жетімді.\n
+    \n
+    • Бір күнтізбелік айдағы операциялардың ең жоғары сомасы: 10 000$;\n
+    • Бір күнтізбелік айдағы операциялардың ең жоғары саны: 20 операция;\n
+    • Тәулігіне бір операцияның ең жоғары сомасы: 2500$;\n
+    • Тәулігіне операциялардың ең жоғары саны: 5 операция.\n
+    \n
+    *Бірқатар елдер мен банктер осы операцияны жүргізудегі өз карточкаларының иеленушілерін шектей алады (Колумбия, АҚШ және т.б.). Мұндай елдер тізімі төлем жүйесінің ережелерімен белгіленеді және өзгеруі мүмкін.
+  </string>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <string name="sender_name">Аударушы аты-жөні</string>
+  <string name="sender_city">Аударушы қаласы</string>
+  <string name="sender_country">Жіберушінің елі</string>
+  <string name="sender_address">Аударушы мекен-жайы</string>
+  <string name="contragent_country">Алушының елі</string>
+  <string name="contragent_address">Алушының мекенжайы </string>
+  <string name="receivers_name_hint">Картада көрсетілген алушы аты-жөні</string>
+  <string name="in_from_account">есептелетін шот валютасы</string>
+  <!-- rates-->
+  <string name="rate">Валюта</string>
+  <string name="exchange_rates">Валюта бағамы</string>
+  <string name="buy_bank">Банктің\nсатып алуы</string>
+  <string name="sale_bank">Банктің\nсатуы</string>
+  <string name="usd">АҚШ доллары</string>
+  <string name="euro">Халықаралық еуро</string>
+  <string name="rub">Ресей рублі</string>
+  <string name="cny">Қытай юаны</string>
+  <string name="rate_update_date">АТФ24-те валюта айырбастау мен операциялар жүргізуге арналған бағам. Мәліметтер</string>
+  <string name="exchange">Бағамдар</string>
+  <!--invoice able payments-->
+  <string name="current_counter_index">Ағымдағы көрсеткіштер</string>
+  <string name="current_counter_index_date">Ағымдағы көрсеткіштер күні</string>
+  <string name="prev_counter_index">Алдыңғы көрсеткіштер</string>
+  <string name="prev_counter_index_date">Алдыңғы көрсеткіштер күні</string>
+  <string name="amount_of_indexes">Саны</string>
+  <string name="tariff">Тариф</string>
+  <string name="in_total">Барлығы</string>
+  <string name="debt">Берешек</string>
+  <string name="debt_">Берешек:</string>
+  <string name="overpayment">Артық төлем</string>
+  <string name="penny">Өсімпұлдар</string>
+  <string name="to_payment">Төлеймін</string>
+  <string name="credited">Есептелінді</string>
+  <string name="total">Барлығы шот барлығы</string>
+  <string name="total_with_fee">Комиссия қоса есептегенде</string>
+  <string name="not_invoices">Төленбеген түбіртек жоқ</string>
+  <string name="choose_card_to_payment">Есептен шығару шотын таңдаңыз</string>
+  <string name="delete_subscription">Жазылуды жою</string>
+  <string name="q_delete_subscription">Жазылуды жою?</string>
+  <string name="q_delete_template">Төлем үлгісін жою?</string>
+  <string name="q_delete">Үлгіні жою?</string>
+  <string name="q_pay">Төлем?</string>
+  <string name="t_continue">Жалғастыру</string>
+  <string name="_no">Жоқ</string>
+  <string name="add_subscription">Жазылым қосу</string>
+  <string name="exist_subscription">Жазылым қосылып қойған</string>
+  <string name="t_confirm_payment">Төлемді растайсыз ба?</string>
+  <string name="total_sum_not_valid">Жарамсыз операция сомасы</string>
+  <string name="meters_data">Есептегіштердің көрсеткіштері</string>
+  <string name="current">Ағымдағы</string>
+  <string name="past">Осыған дейінгі</string>
+  <string name="consumption">Жұмсау</string>
+  <string name="tariffs">Тарифтер</string>
+  <string name="pay_debt">Борышты төлеу</string>
+  <string name="penalty">Өсімпұл</string>
+  <string name="total_service_">Қызмет үшін барлығы:</string>
+  <!--to send invoice conteiner item-->
+  <string name="FixSum">FixSum</string>
+  <string name="LastCount">LastCount</string>
+  <string name="FixCount">FixCount</string>
+  <string name="IsCounterService">IsCounterService</string>
+  <string name="PrevCountDate">PrevCountDate</string>
+  <string name="LastCountDate">LastCountDate</string>
+  <string name="ServiceId">ServiceId</string>
+  <string name="PrevCount">PrevCount</string>
+  <string name="ServiceName">ServiceName</string>
+  <string name="fixed_payment">Тұрақты төлем</string>
+  <string name="next_row">\n</string>
+  <string name="space">\\s</string>
+  <!--history-->
+  <string name="payment_date">Операция күні</string>
+  <string name="service_name">Қызмет көрсетуші</string>
+  <string name="account_or_card">Шот немесе\nтөлем картасы</string>
+  <string name="sum">Сомасы</string>
+  <string name="sum_to_payment">Төлем сомасы</string>
+  <string name="sum_with_fee">Комиссия есептелген төлем сомасы</string>
+  <string name="operation_number">Операция нөмірі</string>
+  <string name="for_week">Апта бойынша</string>
+  <string name="for_month">Ай бойынша</string>
+  <string name="for_three_month">Үш ай үшін</string>
+  <string name="for_half_year">Жарты жыл үшін</string>
+  <string name="t_parameter">Параметрі</string>
+  <string name="calc_param1">Тұрғындар саны</string>
+  <string name="calc_param2">Жылыту аумағы</string>
+  <string name="not_done">Орындалмаған</string>
+  <string name="done">Орындалған</string>
+  <string name="including_commission">Комиссияларды қосқанда</string>
+  <string name="payment_info">Төлем туралы ақпарат</string>
+  <string name="transfer_info">Аударым туралы ақпарат</string>
+  <string name="receiver">Алушы</string>
+  <string name="card">Карта</string>
+  <string name="reference">Референс</string>
+  <string name="transfer_type">Операция</string>
+  <!--alseco owner info-->
+  <string name="owner">Иеленуші:</string>
+  <string name="subscription_name">Жазылым атауы</string>
+  <string name="receipt">Түбіртек</string>
+  <string name="receipt_number">Түбіртек нөмірі</string>
+  <string name="receipt_date">Шот күні</string>
+  <string name="receipt_expire_date">Төлеу керек</string>
+  <string name="receipt_expire_date_">Төлеу керек:</string>
+  <string name="alseco_owner_full_name"><!--Төлеушінің -->Толық аты-жөні</string>
+  <string name="alseco_owner_address">Мекен-жай</string>
+  <string name="alseco_personal_code">Жеке шот нөмірі</string>
+  <string name="payed">Төленді</string>
+  <string name="additional_invoice_info">Қосымша ақпарат</string>
+  <string name="alseco_account">Шот</string>
+  <string name="contract_number_">Шарт №:</string>
+  <string name="receipt_">Түбіртек:</string>
+  <string name="statement_date">Үзінді күні:</string>
+  <string name="alseco_total_amount">Түбіртек бойынша төленуі тиіс жиынтық сома:</string>
+  <string name="fixed_payments">Тұрақты төлемдер</string>
+  <!--penalty payment-->
+  <string name="penalty_info">Айыппұл туралы ақпарат</string>
+  <string name="penalty_date">Бұзушылық күні</string>
+  <string name="penalty_type">Бұзушылық түрі</string>
+  <string name="penalty_location">Бұзушылық орны</string>
+  <string name="penalty_person">Бұзушы</string>
+  <string name="penalty_doc_num">Жүргізуші куәлігінің нөмірі</string>
+  <string name="penalty_auto_num">Автокөлік нөмірі</string>
+  <string name="penalty_blank_num">Бланк нөмірі</string>
+  <string name="penalty_blank_ser">Бланка сериясы</string>
+  <string name="penalty_blank_type">Бланка түрі</string>
+  <string name="penalty_knp">КНП</string>
+  <string name="penalty_kbk">КБК</string>
+  <string name="penalty_kno">КНО</string>
+  <string name="penalty_person_idn">Құқық бұзушының ЖСН</string>
+  <string name="penalty_sum">Айыппұл көлемі</string>
+  <string name="penalty_number">Айыппұл нөмірі</string>
+  <string name="not_chosen_card">Есептен шығару картасын таңдаңыз</string>
+  <string name="text_sms_code">Сізге смс код жіберілді\nСмс кодты енгізіңіз</string>
+  <string name="not_enough_balance">Шотта қаржы жеткіліксіз</string>
+  <!--settings visibility-->
+  <string name="settings_visibility_title">Көріну баптаулары</string>
+  <string name="is_visible">көріну</string>
+  <string name="yes">ия</string>
+  <string name="_yes">Ия</string>
+  <string name="Cancel">жоқ</string>
+  <string name="status_undefined"></string>
+  <string name="text_delete_btn">Жою</string>
+  <string name="main_office_address">Панфилов көшесі, 98А</string>
+  <string name="make_card_account_visible_first">Алдымен карточкалық шотты көрінетіндей етіңіз</string>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!--service points-->
+  <string name="text_google_play_service">Картамен жұмыс жасау үшін Google Play Service орнатуыңыз керек</string>
+  <string name="t_terminal_address">Банкомат мекен-жайы</string>
+  <string name="t_branch_address">Бөлімше мекен-жайы</string>
+  <string name="t_working_time">Жұмыс кестесі және қызмет көрсету</string>
+  <string name="working_time">Жұмыс кестесі: </string>
+  <string name="t_status">Статус</string>
+  <string name="status_online">Статус:  қолжетімді</string>
+  <string name="status_offline">Статус: қазіргі уақытта жұмыс істемейді/қолжетімсіз</string>
+  <string name="status_warning">Статус: шектеулі функционалдық режим</string>
+  <string name="t_online">қолжетімді</string>
+  <string name="t_offline">қазіргі уақытта жұмыс істемейді/қолжетімсіз</string>
+  <string name="t_warning">шектеулі функционалдық режим</string>
+  <string name="not_available">Бұл функционал қолжетімді емес</string>
+  <string name="t_on_map">Кескінде</string>
+  <string name="t_in_list">Тізімде</string>
+  <string name="t_cash_in">Қолма-қол ақша беру мен қабылдау</string>
+  <string name="t_cash_in_not">Қолма-қол ақша беру</string>
+  <string name="t_branch_on_map">Бөлімше кескінде</string>
+  <string name="t_atm_on_map">Банкомат кескінде</string>
+  <string name="map">Карта</string>
+  <string name="transfer_state_true">Қабылданды</string>
+  <string name="transfer_state_false">Бас тартылды</string>
+  <string name="transfer_state">Орындалды</string>
+  <string name="meters"> метр</string>
+  <string name="search_by_address">Мекен-жай б/а іздеу</string>
+  <string name="work_time">Жұмыс уақыты</string>
+  <string name="cash_out">Қолма-қол ақша беру</string>
+  <string name="cash_out_input">Қолма-қол ақша беру және қабылдау</string>
+  <string name="filter">Фильтр</string>
+  <string name="regular_payment">Тұрақты төлем</string>
+  <string name="min_payment">Ең төменгі төлем</string>
+  <string name="simple_ime">Simple IME</string>
+  <string name="subtype_en_US">English (US)</string>
+  <string name="choose_account_toast">Есептен шығару шотын таңдаңыз</string>
+  <string name="choose_card_toast">Есептен шығару картасын таңдаңыз</string>
+  <string-array name="empty_accounts">
+    <item>Сізде қолданыстағы шоттар мен карталар жоқ</item>
+    <item>Сізде қолданыстағы карталар жоқ</item>
+    <item>Сізде қолданыстағы шоттар жоқ</item>
+    <item>Сізде қолданыстағы кредиттер жоқ</item>
+    <item>Сізде қолданыстағы депозиттер жоқ</item>
+  </string-array>
+  <!--menu-->
+  <string name="atf24">ATF 24</string>
+  <string name="cards">Карталар</string>
+  <string name="user">Профиль</string>
+  <string name="loans">Кредиттер</string>
+  <string name="deposites">Депозиттер</string>
+  <string name="accounts">Шоттар</string>
+  <string name="payment_services">Қызметтерді төлеу</string>
+  <string name="transfers">Аудару</string>
+  <string name="templates">Үлгілер</string>
+  <string name="auto_templates">Автотөлемдер</string>
+  <string name="auto_template_name">Автотөлем атауы</string>
+  <string name="payments_history_title">Төлемдер тарихы</string>
+  <string name="transfer_history_title">Аударымдар тарихы</string>
+  <string name="rate_title">Валюта бағамы</string>
+  <string name="applications">Өтініштер</string>
+  <string name="t_atm">Банкоматтар</string>
+  <string name="t_branch">Бөлімшелер</string>
+  <string name="bank_contacts">Банк байланыс телефондары</string>
+  <string name="settings_title">Баптаулар</string>
+  <string name="message_title">Хабарлама</string>
+  <string name="logout">Шығу</string>
+  <string name="total_admission">Түсімдер жиыны</string>
+  <string name="total_write_off">Шығындар жиыны</string>
+  <string name="total_fee">Комиссия жиыны</string>
+  <string name="internet_connection_error">Қосылу қатесі</string>
+  <string name="internet_switched_off">Интернетпен қосылуды тексеріңіз</string>
+  <!-- application -->
+  <string name="applications_catalog">Өтініштер каталогы</string>
+  <string name="applications_history">Өтініштер тарихы</string>
+  <string name="general_category">Жалпы категория</string>
+  <string name="t_apps_type">Өтініш түрлері</string>
+  <string name="connect">Қосу</string>
+  <string name="t_new_category">Жаңа санат</string>
+  <string name="t_send">Жіберу</string>
+  <string name="application_number2">Өтінімнің нөмірі</string>
+  <string name="application_date2">Өтінімнің күні</string>
+  <string name="cancel_request">Тоқтатудың себебін енгізіңіз</string>
+  <string name="t_application">Өтініш</string>
+  <string name="menu">Мәзір</string>
+  <string name="state_1">Жаңа</string>
+  <string name="state_2">Жіберілген</string>
+  <string name="state_3">Банктің қарауында</string>
+  <string name="state_4">Кейінге қалдырылған</string>
+  <string name="state_5">Аяқталған</string>
+  <string name="state_6">Қабылданбаған</string>
+  <string name="state_7">Күші жойылған</string>
+  <string name="state_99">Қателік  </string>
+  <string name="male">Ер</string>
+  <string name="female">Әйел</string>
+  <string name="cancel_app">Өтінішті кері алу</string>
+  <string name="changes_history">Өзгерістер тарихы</string>
+  <string name="comments">Пікірлер</string>
+  <string name="comment">Пікір</string>
+  <string name="application_number">Өтінім нөмірі:</string>
+  <string name="application_date">Өтініш беру уақыты:</string>
+  <string name="application_status">Өтінім статусы:</string>
+  <string name="alert_you_sure">Сіз нақты осы картаны тежегіңіз келе ме?</string>
+  <string name="alert_you_sure_service">Сіз шынымен осы қызметті қосуды қалайсыз ба?</string>
+  <string name="cancellation_confirmation_question">Өтінімнен бас тартқыңыз келе ме?</string>
+  <string name="cancellation_reason_hint">State the reason for cancelling the application</string>
+  <string name="_t_fill_all_required_">Барлық міндетті жиектерді толтырыңыз</string>
+  <string name="_t_fill_">Толтыру</string>
+  <string name="_t_choose_branch">Тізімнен таңдаңыз</string>
+  <string name="_t_choose_service">Тізімнен қызметті таңдаңыз</string>
+  <string name="_t_choose_transfer_type">Аударымның түрін таңдаңыз</string>
+  <string name="auto_payment_type_can_be_only_monthly">Кезеңділік тек ай сайынғы бола алады</string>
+  <string-array name="auto_payment_type">
+    <item>Күн сайын</item>
+    <item>Апта сайын</item>
+    <item>Ай сайын</item>
+  </string-array>
+  <string-array name="auto_payment_type_invoice">
+    <item>Ұсынылған сома</item>
+  </string-array>
+  <string-array name="auto_payment_type_agb">
+    <item>Тұрақты сома</item>
+    <item>Ұсынылған сома</item>
+  </string-array>
+  <string-array name="auto_payment_week_days">
+    <item>Дүйсенбі</item>
+    <item>Сейсенбі</item>
+    <item>Сәрсенбі</item>
+    <item>Бейсенбі</item>
+    <item>Жұма</item>
+    <item>Сенбі</item>
+    <item>Жексенбі</item>
+  </string-array>
+  <string-array name="transfer_history_status">
+    <item>Редакциялауда</item>
+    <item>Қол қойылуда</item>
+    <item>Жеткізілуде</item>
+    <item>Жеткізілді</item>
+    <item>Қабылданды</item>
+    <item>Өңделуде</item>
+    <item>Кейінге қалдырылған</item>
+    <item>Кері қайтарылған</item>
+    <item>Өшірілген</item>
+    <item>Қосарлы</item>
+    <item>Құжатты өңдеу қателігі</item>
+  </string-array>
+  <string-array name="auto_payment_times">
+    <item>00:00</item>
+    <item>01:00</item>
+    <item>02:00</item>
+    <item>03:00</item>
+    <item>04:00</item>
+    <item>05:00</item>
+    <item>06:00</item>
+    <item>07:00</item>
+    <item>08:00</item>
+    <item>09:00</item>
+    <item>10:00</item>
+    <item>11:00</item>
+    <item>12:00</item>
+    <item>13:00</item>
+    <item>14:00</item>
+    <item>15:00</item>
+    <item>16:00</item>
+    <item>17:00</item>
+    <item>18:00</item>
+    <item>19:00</item>
+    <item>20:00</item>
+    <item>21:00</item>
+    <item>22:00</item>
+    <item>23:00</item>
+  </string-array>
+  <string-array name="auto_payment_status">
+    <item>Белсенді</item>
+    <item>Тоқтатылды</item>
+    <item>Менеджер тоқтатты</item>
+    <item>Саны 0-ге тең</item>
+  </string-array>
+  <string-array name="month">
+    <item>Қаңтар</item>
+    <item>Ақпан</item>
+    <item>Наурыз</item>
+    <item>Сәуір</item>
+    <item>Мамыр</item>
+    <item>Маусым</item>
+    <item>Шілде</item>
+    <item>Тамыз</item>
+    <item>Қыркүйек</item>
+    <item>Қазан</item>
+    <item>Қараша</item>
+    <item>Желтоқсан</item>
+  </string-array>
+  <string name="_formatted_text_weekly" formatted="false">% да</string>
+  <string name="_formatted_text_monthly" formatted="false">.... күні % бен</string>
+  <string name="_formatted_text_yearly" formatted="false">% бен</string>
+  <string name="auto_payment">Автотөлем</string>
+  <string name="subscriptions_not_found">Қолдар табылмады</string>
+  <string name="auto_payment_deleted">Автотөлем сәтті жойылды</string>
+  <string name="mobile_operator_not_found">Мобильді оператор табылмады, нөмірді қайта теріп көріңіз</string>
+  <string name="atm">Банкомат</string>
+  <string name="branch">Бөлімше</string>
+  <string name="branches">Офистер</string>
+  <string name="money_from">Ақша қайдан шешілді</string>
+  <string name="money_to">Қайда аудару қажет</string>
+  <string name="account_card_number">Картаның/шоттың нөмірі</string>
+  <string name="card_number">Картаның нөмірі</string>
+  <string name="account_number">Шоттың нөмірі</string>
+  <string name="initials_or_company_name">Аты-жөні немесе Компанияның атауы</string>
+  <string name="citizenship">Азаматтығы</string>
+  <string name="iin">ЖСН</string>
+  <string name="bank">Банк</string>
+  <string name="sms">СМС</string>
+  <string name="sms_confirm">Операцияны аяқтау үшін сізге СМС арқылы жіберілген растау кодын енгізіңіз.</string>
+  <string name="send_again">Тағы бір рет жіберу</string>
+  <string name="create_template">Шаблон жасау</string>
+  <string name="send_email">Түбіртекті  email-ге жіберу</string>
+  <string name="history_title">Операциялар тарихы</string>
+  <string name="from_"></string>
+  <string name="to_">-</string>
+  <!-- profile -->
+  <string name="personal_data">Жеке мәліметтер</string>
+  <string name="at_you">Сізде</string>
+  <string name="notice1">хабарламалар</string>
+  <string name="notice2">хабарламаларды</string>
+  <string name="notice3">хабарлама</string>
+  <string name="notice4">Хабарлама</string>
+  <string name="notice">Хабарламалар</string>
+  <string name="contact_bank">Банкпен байланысу</string>
+  <string name="not_notice">Сізде хабарлама жоқ</string>
+  <string name="youNothingChoose">Сіз ештеңе таңдамадыңыз</string>
+  <string name="InterfaceLanguage">Интерфейстің тілі</string>
+  
+  
+  
+  
+  <string name="interfaceLang">Интерфейстің тілі</string>
+  <string name="requests">Өтінімдер</string>
+  <string name="M500">500 метрден алыс емес</string>
+  <string name="Mm1000">1000 метрден алыс емес</string>
+  <string name="M1000">1000 метрден көп</string>
+  <string name="exception_skype">Қателік кетті, сізде  Skype орнатылмаған болуы мүмкін .</string>
+  <string name="expenses">Шығындар:</string>
+  <string name="all_regions">Барлық өңірлер</string>
+  <string name="animals">Жануарлар</string>
+  <string name="replenishment">толықтыру бойынша</string>
+  <string name="write_off">есептен шығару бойынша</string>
+  <string name="change_number_card">Картаның атын өзгерту</string>
+  <string name="change_number_acc">Ағымдағы шоттың атын өзгерту</string>
+  <string name="change_number_depoz">Депозиттің атын өзгерту</string>
+  <string name="change_number_nakop">Жинақтау шотының атын өзгерту</string>
+  <string name="change_number_wish">Мақсаттың атын өзгерту</string>
+  <string name="change_number_credit">Кредиттің атын өзгерту</string>
+  <string name="acc_visi">Сіздің карталарыңыз және шоттарыңыз көріну баптауларында жасырылған болуы мүмкін. Өзгерту үшін \"Шоттардың көріну баптаулары\" бөліміне өтуіңізді сұраймыз.</string>
+  <string name="costs">Шығындар</string>
+  <string name="сalcul_comm"><b>Конвертацияға есептеу</b></string>
+  <string name="requisites_intermediary_bank">Аралық банк реквизиттері</string>
+  <string name="translation_information">Аударма бойынша ақпарат</string>
+  <string name="error_card_brand">Алушы картасының анықталмаған түрі</string>
+  <string name="input_card_from_number_fmt">%1$s немесе %2$s төлем жүйесінің алушысының карта нөмірін енгізіңіз</string>
+  <string name="country">Ел</string>
+  <string name="state">Ауданы</string>
+  <string name="city">Қала</string>
+  <string name="postal_code">Иднекс</string>
+  <string name="register_client">Клиент тіркеу</string>
+  <string name="card_not_defined">Алушы картасының анықталмаған түрі</string>
+  <string name="thanks">Рахмет!</string>
+  <string name="error_register_client">Клиентті тіркеу мүмкін болмады</string>
+  <string name="input_first_last_name_error">Алушының жолында латын әріптерімен, бір бос орынмен бөлінген Аты мен Тегі көрсетілуі керек.</string>
+  <string name="nothing_find">Еш нәрсе табылмады</string>
+  <string-array name="month_for_date">
+    <item>Қаңтар</item>
+    <item>Ақпан</item>
+    <item>Наурыз</item>
+    <item>Сәуір</item>
+    <item>Мамыр</item>
+    <item>Маусым</item>
+    <item>Шілде</item>
+    <item>Тамыз</item>
+    <item>Қыркүйек</item>
+    <item>Қазан</item>
+    <item>Қараша</item>
+    <item>Желтоқсан</item>
+  </string-array>
+  <string name="application_details">Өтінім мәліметтері </string>
+  <string name="conclusion_date">Жасалған күні:</string>
+  <string name="incorrect_card_number">Карта нөмірі дұрыс емес</string>
+  <string name="bring_the_card">Сканерлеу үшін,\nкартасы жақындатыңыз</string>
+  <string name="enter_manually">Қолмен енгізу</string>
+  <string name="offices_and_atms">Офистер мен Банкоматтар</string>
+  <string name="done_">Дайын</string>
+    <string name="cards_deposits_credits">Карталар / Кредиттер / Депозиттер</string>
+  <string name="registration">Тіркелу</string>
+  <string name="register">Тіркелу</string>
+  <string name="mobile_phone">Ұялы телефон</string>
+  <string name="thx_request">Сіздің өтініміңіз %1$s нөмірімен тіркелді</string>
+  <string name="online_applications">Онлайн-өтінімдер</string>
+
+  <!--Registration-->
+  <string name="please_confirm_contract_policy">Өтінеміз, Шарт пен Құпиялылық туралы саясатқа қосылатындығыңызды растаңыз.</string>
+  <string name="i_agree_with_contract_and_policy">Мен танысып шықтым және Шарт пен Құпиялылық туралы саясатқа қосыламын.</string>
+  <string name="to_contract">Шарт</string>
+  <string name="to_policy">Құпиялылық туралы саясатқа</string>
+  <string name="input_sms_to_register">Тіркеуді аяқтау үшін сізге СМС арқылы жіберілген растау кодын енгізіңіз.</string>
+  <string name="code_expire">Сіздің кодыңыздың уақыты <![CDATA[<font color=#d0021b>%1$s</font>]]> минут ішінде аяқталады!</string>
+  <string name="sms_input_info_30_secs">Келесі SMS жіберу 30 секундтан кейін қолжетімді. Егер енгізумен проблема туындаған болса, Байланыс-орталығына 2424 нөміріне хабарласыңыз.</string>
+  <string name="sms_input_info_60_secs">Келесі SMS жіберу 60 секундтан кейін қолжетімді. Егер енгізумен проблема туындаған болса, Байланыс-орталығына 2424 нөміріне хабарласыңыз.</string>
+  <string name="sms_input_info_5_minutes">Келесі SMS жіберу 5 минуттан кейін қолжетімді. Егер енгізумен проблема туындаған болса, Байланыс-орталығына 2424 нөміріне хабарласыңыз.</string>
+  <string name="sms_input_info_one_hour">Келесі SMS жіберу 1 сағаттан кейін қолжетімді. Егер енгізумен проблема туындаған болса, Байланыс-орталығына 2424 нөміріне хабарласыңыз.</string>
+  <string name="sms_input_info_five_hours">Келесі SMS жіберу 5 сағаттан кейін қолжетімді. Егер енгізумен проблема туындаған болса, Байланыс-орталығына 2424 нөміріне хабарласыңыз.</string>
+  <string name="success_registration">Тіркелу сәтті өтті!</string>
+  <string name="move_to_link">Кіру үшін сілтеме арқылы өтіңіз</string>
+  <string name="temp_password_has_send_to_phone">ATF24-ке кіруге арналған уақытша пароль сіздің телефон нөміріңізге жіберілді.</string>
+  <string name="now_you_can_enter_atf24">Енді Сіз ATF24-ке кіре аласыз. Кіру үшін авторизациялау бетіне өтіңіз.</string>
+  <string name="authorize">Авторизациялаудан өту</string>
+  <string name="client_already_registered">Пайдаланушы ATF24 қосымшасында тіркеліп қойған, қосымшамен әрі қарай жұмыс істеу үшін авторизациялау процедурасынан өтіңіз немесе call center-ге хабарласыңыз</string>
+  <string name="client_with_number_has_already_exist">Өкінішке орай, сіз тіркеле алмайсыз.\nМұндай телефон нөмірі осының алдында тіркеліп қойған.</string>
+  <string name="client_with_idn_has_already_exist">Өкінішке орай, сіз тіркеле алмайсыз.\nМұндай ЖСН нөмірі осының алдында тіркеліп қойған.</string>
+  <string name="incorrect_code_operation">Операцияны растау коды дұрыс емес</string>
+  <string name="first_name">Тегі</string>
+  <string name="middle_name">Аты</string>
+  <string name="last_name">Әкесінің аты</string>
+  <string name="secret_question">Құпия сұрақ</string>
+  <string name="answer">Сұраққа жауап</string>
+  <string name="reenter_password">Парольді қайта енгізу</string>
+  <string name="need_fill_field_fmt">%1$s жолды толтыру керек</string>
+  <string name="passwords_doesnt_match">Пароль сәйкес келмейді</string>
+  <string name="client_has_blocked">Пайдаланушы ATF24 қосымшасында тіркеліп қойған. Қазіргі уақытта пайдаланушының есептік жазбасы тежеліп тұр, өтінеміз, call center-ге хабарласыңыз</string>
+  <string name="temp_password">Уақытша пароль</string>
+  <string name="confirm_password">Парольді растау</string>
+  <string name="password_successful_changed">Пароль сәтті өзгертілді!</string>
+  <string name="you_time_expired">Сiздiң уақытыңыз аяқталды</string>
+  <string name="client_not_found">Клиент табылмады</string>
+  <string name="incorrect_temp_password">Уақытша пароль дұрыс емес</string>
+  <string name="incorrect_phone_number">Телефон нөмірі қате</string>
+  <string name="name_op_recipient">Операция немесе алушының аты</string>
+  <string name="next">Бұдан әрі</string>
+    <string name="profile_photo">Профиль суреті</string>
+    <string-array name="edit_photo_items">
+        <item>Галереядан таңдау</item>
+        <item>Суретке түсіру</item>
+        <item>Суретті өшіру</item>
+    </string-array>
+    <string name="photo_uploaded">Сурет жүктелді</string>
+    <string name="photo_deleted">Сурет өшірілді</string>
+  <string name="whatsapp_download">WhatsApp қосымшасы орнатылмаған. Орнату қажетпе?</string>
+  <string name="skype_download">Skype қосымшасы орнатылмаған. Орнату қажетпе?</string>
+  <string name="back_">Артқа</string>
+  <string name="action_nfc_payment_settings_info">ATF24 қосымшасын төлем жасаудың негізгі құралы ретінде таңдаңыз</string>
+  <string name="enable_nfc">Жалғастыру үшін NFC қосыңыз</string>
+  <string name="INTERNAL_SERVICE_FAILURE">Сұратудың форматы дұрыс емес. Өтінеміз, Google Play Market-те қосымшаның жаңаруының қолжетімділігін тексеріңіз.</string>
+  <string name="CRYPTOGRAPHY_ERROR">Мобильді төлемдер форматында қателік орын алды. Өтінеміз, сұратуыңызды кейінірек қайталаңыз немесе жүйені қолдау қызметімен байланысыңыз.</string>
+  <string name="NO_ACTIVE_SESSION">Сервермен байланысудың қолжетімді сеансы жоқ.</string>
+  <string name="RESOURCE_NOT_FOUND">Сервис уақытша жұмыс істемейді. Өтінеміз, сұратуыңызды кейінірек қайталаңыз.</string>
+  <string name="RNS_UNAVAILABLE">Мобильді төлемдер форматында қателік орын алды. Өтінеміз, сұратуыңызды кейінірек қайталаңыз немесе жүйені қолдау қызметімен байланысыңыз.</string>
+  <string name="INVALID_WORKFLOW">Мәліметтерді өңдеу реттілігінде қате туындады. Егер осы хабарлама үнемі шықса, өтінеміз, қосымшаны қайта орнатыңыз.</string>
+  <string name="INVALID_TOKEN_STATUS">Сіздің қосымшаңыз тежелген немесе цифрланған карта тоқтатылған. Өтінеміз, банкпен хабарласыңыз.</string>
+  <string name="INVALID_TASK_ID">Деректердің жай-күйі туралы мәлімет алудағы қателік. Процедураны кейінірек қайталап көріңіз.</string>
+  <string name="INVALID_MPA_VERSION">Мобильді төлемдер платформасына сұрату орындалмады. Мүмкін, сіздің мобильді қосымшаңыз ескірген және жаңартуды талап етеді. Өтінеміз, Google Play Market-те қосымшаның жаңаруының қолжетімділігін тексеріңіз.</string>
+  <string name="UNKNOWN_HOST">Мобильді төлемдер серверіне қолжетімділікте қателік орын алды. Интернетпен байланысуды тексеріңіз.</string>
+  <string name="REGISTRATION_IN_PROGRESS"> Тіркеудің параллельді процесі іске қосылған: құрылғы үшін мобильді төлемдер платформасында тіркеу процесі орындалып жатыр. Сіз тіркеуді кейінірек жүргізе аласыз.</string>
+  <string name="REGISTRATION_EXPIRED">Мобильді төлемдер серверінде тіркеу уақыты яқталды. Өтінеміз, процесті басынан бастап рындаңыз.</string>
+  <string name="DUPLICATE_PAYMENT_APP_INSTANCE_ID">Мобильді төлемдер серверінде мобильді қосымшалардың телқұжаты табылды. Өтінеміз, тіркеу процесін басынан бастаңыз.</string>
+  <string name="VTS_COMMUNICATION_ERROR">Visa Tokenization Service қолжетімділікте қателік орын алды.</string>
+  <string name="VTS_TEMP_ERROR">Visa Tokenization Service ішкі қателік орын алды.</string>
+  <string name="VTS_INVALID_PARAMETERS">Visa Tokenization Service-де сұратуды өңдеуден бас тартылды. Өтінеміз, банкпен байланысыңыз және картаның мәртебесін тексеріңіз.</string>
+  <string name="VTS_OPERATIONS_NOT_ALLOWED">Visa Tokenization Service-де сұратуды өңдеуден бас тартылды. Өтінеміз, банкпен байланысыңыз және картаның мәртебесін тексеріңіз.</string>
+  <string name="VTS_SERVICE_ERROR">Visa Tokenization Service-те ішкі қателік орын алды.</string>
+  <string name="VTS_INVALID_CARD">Visa Tokenization Service мәліметтеріне қолжетімділікте қателік орын алды. Өтінеміз, банкпен хабарласыңыз.</string>
+  <string name="VTS_ERROR">Visa Tokenization Service-пен жұмыста қателік болды.</string>
+  <string name="UNKNOWN_CRDPRODUCT">Картаның белгісіз типі банк жүйесінен алынған. Өтінеміз, банкпен байланысыңыз немесе операцияны кейінірек қайталаңыз.</string>
+  <string name="NO_CARDS_AVAILABLE">Қолжетімді карта жоқ. Өтінеміз, картаның басқа типін таңдаңыз немесе банкпен хабарласыңыз.</string>
+  <string name="INVALID_TOKEN_UNIQUE_REFERENCE">Осы токенмен операцияны орындау мүмкін емес. Өтінеміз, карта тізімін жаңартыңыз, банкпен немесе қызмет көрсету провайдерімен байланысыңыз.</string>
+  <string name="INVALID_ELIGIBILITY_RECEIPT">enrollment reference дұрыс емес. Өтінеміз, картаны цифрлау процесін қайталыңыз немесе пайдаланушыларды қолдау орталығымен байланысыңыз.</string>
+  <string name="INVALID_TERMS_AND_CONDITIONS">Шарттың талаптарына қате сілтеме. Цифрлауды кейінірек қайталаңыз немесе қолдау қызметімен байланысыңыз.</string>
+  <string name="PAN_ALREADY_DIGITIZED">Сіздің мобильді әмияныңызда карта цифрланған. Өтінеміз, картаңыздың мәртебесін тексеріңіз немесе банкпен байланысыңыз.</string>
+  <string name="pay_by_phone">Телефондарға төлем жасау</string>
+  <string name="bring_phone_to_reader">Смартфонды картаны оқитын құрылғыға жақындатыңыз</string>
+  <string name="agreement">Келісім</string>
+  <string name="confirm_default_card">Төлем жасайтын картаны таңдаңыз да «Растау» басыңыз</string>
+  <string name="manual">Нұсқаулық</string>
+  <string name="choose_card_for_payment">Төлем жасау үшін картаны таңдаңыз</string>
+  <string name="activation_contactless">Контактісіз төлем жасауды қосыңыз</string>
+  <string name="suspend_contactless">Контактісіз төлемді ажыратыңыз</string>
+  <string name="activation_confirm">Картаны іске қосу керек пе?</string>
+  <string name="digitization_info">Картаны цифрлау Сізге смартфоныңыз арқылы саудаға төлем жасауға мүмкіндік береді, смартфонды контактісіз терминалға жақындатсаңыз болғаны.</string>
+  <string name="suspend_confirm">Картаны тоқтату қажет пе?</string>
+  <string name="screen_locked_setting_info">Жалғастыру үшін қауіпсіздік баптауларына пароль, pin - код немесе графикалық кілтті орнатыңыз.</string>
+  <string name="non_contact_payments">Контактысыз төлемдер</string>
+  <string name="introduced">Таныстым</string>
+  <string name="select_default_card">Төлем жасауға арналған картаны таңдаңыз</string>
+  <string name="confirm_change_default_card">Төлем жасауға арналған картаны ауыстырғыңыз келе ме?</string>
+  <string name="process_digitizing_card">Картаны цифрлау процесі</string>
+  <string name="digital_world_ATFBank"> АТФБанктің Digital\nәлеміне кіруге\nдайынсыз ба?</string>
+  <string name="yes_ready">Иә, дайынмын</string>
+  <string name="not_now">Қазір емес</string>
+  <string name="success_digitized">Сіздің карта сәтті түрде цифрланды</string>
+  <string name="not_digitized_card">Сізде цифрланған карта жоқ. Өтінеміз, қосымшада авторизациядан өтіңіз және сізге қажет картаны цифрлаңыз.</string>
+  <string name="card_for_payment">Төлем карточкасы</string>
+  <string name="card_digitization_error">Картаны цифрлау қатесі</string>
+  <string name="change_card_status">Картаның деңгейі өзгертілген</string>
+  <string name="payment_accepted_for_processing">Төлем өңделуге қабылданды</string>
+  <string name="rotate">Айналдыру</string>
+    <string name="payments_without_reg">Тіркелусіз төлемдер</string>
+    <string name="noncontact_payments">Байланыссыз төлемдер</string>
+    <string name="client_already_registered_generic_error">Пайдаланушы ATF24 қосымшасында тіркелген, өтініммен ары қарай жұмыс істеу үшін, авторизациялау процедурасынан өтіңіз немесе 2424   Байланыс орталығына хабарласыңыз.</string>
+    <string name="unlock_device">Құрылғыны блоктан шешіңіз</string>
+    <string name="unlock_phone_for_payment">Төлем жүргізу үшін телефонды блоктан шешіңіз</string>
+    <string name="channel_name">ATF24</string>
+  <string name="choose_currency" >валютаны таңдаңыз</string>
+    <string name="share">"бөлісу"</string>
+  <string name="export_pdf">PDF форматында экспорттау</string>
+  <string name="export_doc">PDF форматында экспорттау</string>
+  <string name="how_share" >Экспорт кылуу жолун таңдаңыз</string>
+  <string name="insufficient_funds">Каражатыңыз жетишсиз</string>
+    <string name="cant_transfer_tovisa">Башка банктын Visa картасына которуу мүмкүн эмес</string>
+  <string name="label_sms_code_sent">Сиз көрсөткөн номерге SMS жөнөтүлдү.\nSMSтеги кодту жазыңыз</string>
+
+</resources>

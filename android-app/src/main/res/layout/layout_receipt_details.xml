@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ir.beigirad.zigzagview.ZigzagView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:zigzagBackgroundColor="@color/white"
+    android:forceDarkAllowed="false"
+    app:zigzagElevation="8dp"
+    app:zigzagHeight="7dp"
+    app:zigzagPaddingContent="@dimen/margin_3dp"
+    app:zigzagShadowAlpha="0.9"
+    app:zigzagSides="top|bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_15dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/opt_logo_112" />
+
+        <TextView
+            android:id="@+id/title_receipt"
+            style="@style/Text_18_main_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/text_receipt_on_operation"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/title_operation_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_7dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/text_operation_time"
+            android:textColor="@color/gray_180_180_180"
+            android:textSize="@dimen/text_size_13sp" />
+
+        <TextView
+            android:id="@+id/text_operation_time"
+            style="@style/Text_16_main_dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="-------"
+            tools:text="21.12.2021 13:00" />
+
+        <TextView
+            android:id="@+id/title_receipt_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/receipt_"
+            android:textColor="@color/gray_180_180_180"
+            android:textSize="@dimen/text_size_13sp" />
+
+        <TextView
+            android:id="@+id/text_receipt_number"
+            style="@style/Text_16_main_dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="-------"
+            tools:text="#34759834435" />
+
+        <TextView
+            android:id="@+id/title_sender_card_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/text_from_card"
+            android:textColor="@color/gray_180_180_180"
+            android:textSize="@dimen/text_size_13sp" />
+
+        <TextView
+            android:id="@+id/text_sender_card_number"
+            style="@style/Text_16_main_dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="-------"
+            tools:text="4169 5853 4586 3333" />
+
+        <TextView
+            android:id="@+id/title_recipient_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/text_receiver"
+            android:textColor="@color/gray_180_180_180"
+            android:textSize="@dimen/text_size_13sp" />
+
+        <TextView
+            android:id="@+id/text_recipient_name"
+            style="@style/Text_16_main_dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="-------"
+            tools:text="Асанов Асан" />
+
+        <TextView
+            android:id="@+id/title_recipient_card_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/card_number"
+            android:textColor="@color/gray_180_180_180"
+            android:textSize="@dimen/text_size_13sp" />
+
+        <TextView
+            android:id="@+id/text_recipient_card_number"
+            style="@style/Text_16_main_dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="-------"
+            tools:text="4169 5365 2345 5435" />
+
+        <TextView
+            android:id="@+id/title_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/amount"
+            android:textColor="@color/gray_180_180_180"
+            android:textSize="@dimen/text_size_13sp" />
+
+        <TextView
+            android:id="@+id/text_amount"
+            style="@style/Text_16_main_dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="------"
+            tools:text="1000 0.0 KGS" />
+
+        <TextView
+            android:id="@+id/title_fee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="@string/fee"
+            android:textColor="@color/gray_180_180_180"
+            android:textSize="@dimen/text_size_13sp" />
+
+        <TextView
+            android:id="@+id/text_fee"
+            style="@style/Text_16_main_dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="0.00 KGS"
+            tools:text="Асанов Асан" />
+
+        <include
+            android:id="@+id/seal_layout"
+            layout="@layout/layout_receipt_seal"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/margin_10dp" />
+    </LinearLayout>
+</ir.beigirad.zigzagview.ZigzagView>

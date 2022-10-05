@@ -1,0 +1,1174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue_0_93_186"
+            app:navigationIcon="@drawable/arrow_left">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextViewTitle"
+                android:text="@string/Cash_withdrawal" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="15dp">
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/regLiner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_240_240_240"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/country"
+                    android:textColor="@color/gray_155_155_155"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/linChooseCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linSpinnerReg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvSpinnerReg"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:hint="@string/receivers_country_choose"
+                        android:textSize="18sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            app:srcCompat="@drawable/ic_button_dark_common_down" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:id="@+id/linLimitGeneral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white_240_240_240"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linTypeLin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white_240_240_240"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/limit_type"
+                        android:textColor="@color/gray_155_155_155"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linSetLimitType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:paddingRight="15dp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:hint="@string/select_limit_type">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvLimitType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/list_item_selector"
+                            android:editable="false"
+                            android:maxLines="3"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:paddingRight="@dimen/margin_10dp"
+                            android:maxLength="200"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilLimitDaySOM"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/limit_daySOM">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edLimitDaySOM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/list_item_selector"
+                            android:inputType="number"
+                            android:maxLines="2"
+                            android:maxLength="19"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <LinearLayout
+                    android:id="@+id/linLimitStartDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:paddingRight="15dp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:hint="@string/set_limit_start_date">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvLimitStartDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/list_item_selector"
+                            android:editable="false"
+                            android:maxLines="3"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:maxLength="200"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            app:srcCompat="@drawable/ic_button_dark_common_down" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linLimitEndDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:paddingRight="15dp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:hint="@string/set_limit_end_date">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvLimitEndDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/list_item_selector"
+                            android:editable="false"
+                            android:maxLines="3"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:maxLength="200"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            app:srcCompat="@drawable/ic_button_dark_common_down" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/firstLin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white_240_240_240"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_margin="15dp"
+                            android:id="@+id/firstTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/allowed_forbidden"
+                            android:textColor="@color/gray_155_155_155"
+                            android:textSize="18sp" />
+
+                        <Switch
+                            android:id="@+id/SWfirst"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:gravity="end" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linLayF"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/linSpinnerLimitDayATM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/edSpinnerLimitDayATMHint"
+                                style="@style/TextInputLayoutNoBottomLine"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginStart="7dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="0.3"
+                                android:hint="@string/limit_dayKZT">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edSpinnerLimitDayATM"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/list_item_selector"
+                                    android:inputType="number"
+                                    android:maxLines="2"
+                                    android:maxLength="19"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:textColor="@color/gray_155_155_155"
+                                    android:textSize="18sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/separatorEtReceiverNameATM"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#e7e7e7" />
+
+                        <LinearLayout
+                            android:id="@+id/linMaxSumDayATM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/edMaxSumDayATMHint"
+                                style="@style/TextInputLayoutNoBottomLine"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginStart="7dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="0.3"
+                                android:hint="@string/max_limit_dayKZT">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edMaxSumDayATM"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/list_item_selector"
+                                    android:inputType="number"
+                                    android:maxLines="2"
+                                    android:maxLength="19"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:textColor="@color/gray_155_155_155"
+                                    android:textSize="18sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <!--<EditText
+                            android:id="@+id/etReceiverCountATM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/count_trank_day"
+                            android:maxLines="1"
+                            android:inputType="number"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />-->
+
+                            <include layout="@layout/layout_line" />
+
+                            <LinearLayout
+                                android:id="@+id/linSpinnerBeginATM"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tvSpinnerBeginATMHint"
+                                    style="@style/TextInputLayoutNoBottomLine"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="7dp"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_weight="0.3"
+                                    android:hint="@string/number_of_days">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/tvSpinnerBeginATM"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/list_item_selector"
+                                        android:clickable="true"
+                                        android:editable="false"
+                                        android:inputType="number"
+                                        android:maxLines="2"
+                                        android:maxLength="15"
+                                        android:textColor="@color/gray_155_155_155"
+                                        android:textSize="18sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                                <!--<LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent">
+
+                                    <ImageView
+                                        android:layout_width="17dp"
+                                        android:layout_height="17dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                </LinearLayout>-->
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                        <include layout="@layout/layout_line" />
+
+                        <!--<LinearLayout
+                            android:id="@+id/linSpinnerEndATM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/tvSpinnerEndATMHint"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginTop="5dp"
+                                android:hint="@string/end_period"
+                                android:layout_marginStart="7dp"
+                                android:layout_weight="0.3">
+
+                                <android.support.design.widget.TextInputEditText
+                                    android:clickable="true"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:textSize="18sp"
+                                    android:editable="false"
+                                    android:background="@drawable/list_item_selector"
+                                    android:maxLines="2"
+                                    android:paddingBottom="10dp"
+                                    android:paddingTop="10dp"
+                                    android:textColor="@color/gray_155_155_155"
+                                    android:id="@+id/tvSpinnerEndATM" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="10dp"
+                                    app:srcCompat="@drawable/ic_button_dark_common_down" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    <include layout="@layout/layout_line" />-->
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linReceiverCountATM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etReceiverCountATMHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/count_trank_day">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etReceiverCountATM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/list_item_selector"
+                            android:inputType="number"
+                            android:maxLines="2"
+                            android:maxLength="9"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/secondLin"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white_240_240_240"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/secondTV"
+                            android:layout_weight="1"
+                            android:text="@string/using_the_magnetic_strip_of_the_payment_card"
+                            android:textColor="@color/gray_155_155_155"
+                            android:textSize="18sp" />
+
+                        <Switch
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:checked="false"
+                            android:id="@+id/SWsecond"
+                            android:gravity="end"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linSpinnerLimitDayPred"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/edSpinnerLimitDayPredHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="@string/limit_dayUSD"
+                            android:layout_marginStart="7dp"
+                            android:layout_weight="0.3">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/edSpinnerLimitDayPred"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/list_item_selector"
+                                android:inputType="number"
+                                android:maxLines="2"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/gray_155_155_155"
+                                android:textSize="18sp" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        &lt;!&ndash;<EditText
+                            android:id="@+id/edSpinnerLimitDayPred"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/list_item_selector"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                            android:hint="@string/limit_dayUSD"
+                            android:inputType="number"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp"
+                            android:textSize="18sp" />&ndash;&gt;
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/separatorEtReceiverName"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e7e7e7" />
+
+                    <LinearLayout
+                        android:id="@+id/linField2BAPred"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/etReceiverCountPredHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="@string/count_trank_day"
+                            android:layout_marginStart="7dp"
+                            android:layout_weight="0.3">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/etReceiverCountPred"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/list_item_selector"
+                                android:inputType="number"
+                                android:maxLines="2"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/gray_155_155_155"
+                                android:textSize="18sp" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        &lt;!&ndash;<EditText
+                            android:id="@+id/etReceiverCountPred"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/count_trank_day"
+                            android:maxLines="1"
+                            android:inputType="number"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />&ndash;&gt;
+
+                    <include layout="@layout/layout_line" />
+
+                        <LinearLayout
+                            android:id="@+id/linSpinnerBeginPred"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/tvSpinnerBeginPredHint"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginTop="5dp"
+                                android:hint="@string/begin_period"
+                                android:layout_marginStart="7dp"
+                                android:layout_weight="0.3">
+
+                                <android.support.design.widget.TextInputEditText
+                                    android:clickable="true"
+                                    android:editable="false"
+                                    android:background="@drawable/list_item_selector"
+                                    android:maxLines="2"
+                                    android:paddingBottom="10dp"
+                                    android:paddingTop="10dp"
+                                    android:textColor="@color/gray_155_155_155"
+                                    android:id="@+id/tvSpinnerBeginPred"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:textSize="18sp" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            &lt;!&ndash;<TextView
+                                android:id="@+id/tvSpinnerBeginPred"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:hint="@string/begin_period"
+                                android:textSize="18sp" />&ndash;&gt;
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="10dp"
+                                    app:srcCompat="@drawable/ic_button_dark_common_down" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <include layout="@layout/layout_line" />
+
+                        <LinearLayout
+                            android:id="@+id/linSpinnerEndPred"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/tvSpinnerEndPredHint"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginTop="5dp"
+                                android:hint="@string/end_period"
+                                android:layout_marginStart="7dp"
+                                android:layout_weight="0.3">
+
+                                <android.support.design.widget.TextInputEditText
+                                    android:clickable="true"
+                                    android:editable="false"
+                                    android:background="@drawable/list_item_selector"
+                                    android:maxLines="2"
+                                    android:paddingBottom="10dp"
+                                    android:paddingTop="10dp"
+                                    android:textColor="@color/gray_155_155_155"
+                                    android:id="@+id/tvSpinnerEndPred"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:textSize="18sp" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            &lt;!&ndash;<TextView
+                                android:id="@+id/tvSpinnerEndPred"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:hint="@string/end_period"
+                                android:textSize="18sp" />&ndash;&gt;
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="10dp"
+                                    app:srcCompat="@drawable/ic_button_dark_common_down" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/thirdLin"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white_240_240_240"
+                            android:orientation="horizontal"
+                            android:padding="15dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/thirdTV"
+                                android:layout_weight="1"
+                                android:text="@string/using_the_magnetic_strip_of_the_payment_card"
+                                android:textColor="@color/gray_155_155_155"
+                                android:textSize="18sp" />
+
+                            <Switch
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:checked="false"
+                                android:id="@+id/SWthird"
+                                android:gravity="end"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linSpinnerLimitDayThird"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/edSpinnerLimitDayThirdHint"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginTop="5dp"
+                                android:hint="@string/limit_dayUSD"
+                                android:layout_marginStart="7dp"
+                                android:layout_weight="0.3">
+
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/edSpinnerLimitDayThird"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/list_item_selector"
+                                    android:inputType="number"
+                                    android:maxLines="2"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingTop="10dp"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/gray_155_155_155"
+                                    android:textSize="18sp" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            &lt;!&ndash;<EditText
+                                android:id="@+id/edSpinnerLimitDayThird"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/list_item_selector"
+                                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                                android:hint="@string/limit_dayUSD"
+                                android:inputType="number"
+                                android:maxLength="20"
+                                android:maxLines="1"
+                                android:paddingBottom="20dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingTop="20dp"
+                                android:textSize="18sp" />&ndash;&gt;
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/separatorEtReceiverNameThird"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#e7e7e7" />
+
+                        <LinearLayout
+                            android:id="@+id/linField2BAThird"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/etReceiverCountThirdHint"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginTop="5dp"
+                                android:hint="@string/count_trank_day"
+                                android:layout_marginStart="7dp"
+                                android:layout_weight="0.3">
+
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/etReceiverCountThird"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/list_item_selector"
+                                    android:inputType="number"
+                                    android:maxLines="2"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingTop="10dp"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/gray_155_155_155"
+                                    android:textSize="18sp" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            &lt;!&ndash;<EditText
+                                android:id="@+id/etReceiverCountThird"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/count_trank_day"
+                                android:maxLines="1"
+                                android:inputType="number"
+                                android:paddingBottom="20dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingTop="20dp"
+                                android:textColor="@color/gray_black_56_56_56"
+                                android:textSize="18sp" />&ndash;&gt;
+
+                        <include layout="@layout/layout_line" />
+
+                            <LinearLayout
+                                android:id="@+id/linSpinnerBeginThird"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:baselineAligned="false"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/tvSpinnerBeginThirdHint"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="7dp"
+                                    android:layout_marginTop="5dp"
+                                    android:hint="@string/begin_period"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_weight="0.3">
+
+                                    <android.support.design.widget.TextInputEditText
+                                        android:clickable="true"
+                                        android:editable="false"
+                                        android:background="@drawable/list_item_selector"
+                                        android:maxLines="2"
+                                        android:paddingBottom="10dp"
+                                        android:paddingTop="10dp"
+                                        android:textColor="@color/gray_155_155_155"
+                                        android:id="@+id/tvSpinnerBeginThird"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:textSize="18sp" />
+
+                                </android.support.design.widget.TextInputLayout>
+
+                                &lt;!&ndash;<TextView
+                                    android:id="@+id/tvSpinnerBeginThird"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:hint="@string/begin_period"
+                                    android:textSize="18sp" />&ndash;&gt;
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent">
+
+                                    <ImageView
+                                        android:layout_width="17dp"
+                                        android:layout_height="17dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        <include layout="@layout/layout_line" />
+
+                            <LinearLayout
+                                android:id="@+id/linSpinnerEndThird"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:baselineAligned="false"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:id="@+id/tvSpinnerEndThirdHint"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="7dp"
+                                    android:layout_marginTop="5dp"
+                                    android:hint="@string/end_period"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_weight="0.3">
+
+                                    <android.support.design.widget.TextInputEditText
+                                        android:clickable="true"
+                                        android:editable="false"
+                                        android:background="@drawable/list_item_selector"
+                                        android:maxLines="2"
+                                        android:paddingBottom="10dp"
+                                        android:paddingTop="10dp"
+                                        android:textColor="@color/gray_155_155_155"
+                                        android:id="@+id/tvSpinnerEndThird"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:textSize="18sp" />
+
+                                </android.support.design.widget.TextInputLayout>
+
+                                &lt;!&ndash;<TextView
+                                    android:id="@+id/tvSpinnerEndThird"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:hint="@string/end_period"
+                                    android:textSize="18sp" />&ndash;&gt;
+
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent">
+
+                                    <ImageView
+                                        android:layout_width="17dp"
+                                        android:layout_height="17dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        <include layout="@layout/layout_line" />
+
+
+                        </LinearLayout>
+
+                </LinearLayout>-->
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/button_default"
+                    android:text="@string/establish"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

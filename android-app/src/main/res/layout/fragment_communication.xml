@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue_0_93_186"
+            app:navigationIcon="@drawable/arrow_left">
+
+            <TextView
+                style="@style/TextViewTitle"
+                android:text="@string/commun_with_bank"
+                android:id="@+id/tvTitle" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="15dp">
+
+            <EditText
+                android:id="@+id/edTemplateName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/list_item_selector"
+                android:hint="@string/save_template_name"
+                android:maxLines="1"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_240_240_240"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_center"
+                    android:textColor="@color/gray_155_155_155"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/linMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imMobile"
+                        app:srcCompat="@drawable/ic_button_dark_common_mobile"
+                        android:layout_centerVertical="true"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvMobile"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/imMobile"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/list_item_selector"
+                        android:hint="@string/free_by_KZ_at_mobile"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvMobileNum"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/tvMobile"
+                        android:layout_toEndOf="@+id/imMobile"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/list_item_selector"
+                        android:text="@string/num"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <!--<View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <RelativeLayout
+                    android:id="@+id/linTeleph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imTeleph"
+                        app:srcCompat="@drawable/ic_button_dark_common_phonecall"
+                        android:layout_centerVertical="true"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvTeleph"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/imTeleph"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/list_item_selector"
+                        android:hint="@string/free_by_KZ_at_teleph"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTelephNum"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/tvTeleph"
+                        android:layout_toEndOf="@+id/imTeleph"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/list_item_selector"
+                        android:text="@string/teleph"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <RelativeLayout
+                    android:id="@+id/linTelephAround"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imTelephAround"
+                        app:srcCompat="@drawable/ic_button_dark_common_phonecall"
+                        android:layout_centerVertical="true"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvTelephAround"
+                        android:layout_marginLeft="24dp"
+                        android:layout_toEndOf="@+id/imTelephAround"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/free_by_KZ_at_telephAround"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTelephNumAround"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/tvTelephAround"
+                        android:layout_toEndOf="@+id/imTelephAround"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:text="@string/telephAround"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <RelativeLayout
+                    android:id="@+id/linFreeStacionar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imFreeStacionar"
+                        app:srcCompat="@drawable/ic_button_dark_common_phonecall"
+                        android:layout_centerVertical="true"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvFreeStacionar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:layout_toEndOf="@+id/imFreeStacionar"
+                        android:gravity="top"
+                        android:hint="@string/free_by_KZ_at_telephStacionar"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTelephFreeStacionar"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/tvFreeStacionar"
+                        android:layout_toEndOf="@+id/imFreeStacionar"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:text="@string/telephFreeStacionar"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+
+                <!--<RelativeLayout
+                    android:id="@+id/linSkype"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imSkype"
+                        app:srcCompat="@drawable/ic_button_dark_common_skype"
+                        android:layout_centerVertical="true"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvSkype"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/imSkype"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/list_item_selector"
+                        android:text="@string/call_skype"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <RelativeLayout
+                    android:id="@+id/linWhatsApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imWhatsApp"
+                        app:srcCompat="@drawable/ic_whatsapp"
+                        android:layout_centerVertical="true"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvWhatsApp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/imWhatsApp"
+                        android:layout_width="match_parent"
+                        android:gravity="top"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/list_item_selector"
+                        android:text="@string/call_whatsApp"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />-->
+
+            <RelativeLayout
+                android:id="@+id/linMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imMessage"
+                    app:srcCompat="@drawable/ic_whatsapp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvMessage"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/imMessage"
+                    android:layout_width="match_parent"
+                    android:gravity="top"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/call_whatsApp"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_240_240_240"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/firstTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/we_are_in_social_networks"
+                    android:textColor="@color/gray_155_155_155"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/linFB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imFB"
+                    app:srcCompat="@drawable/ic_button_dark_common_facebook"
+                    android:layout_centerVertical="true"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvFB"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/imFB"
+                    android:layout_width="match_parent"
+                    android:gravity="top"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/facebook"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linTW"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imTW"
+                    app:srcCompat="@drawable/ic_button_dark_common_twitter"
+                    android:layout_centerVertical="true"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvTW"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/imTW"
+                    android:layout_width="match_parent"
+                    android:gravity="top"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/twitter"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linINS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imINS"
+                    app:srcCompat="@drawable/ic_button_dark_common_instahram"
+                    android:layout_centerVertical="true"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvINS"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/imINS"
+                    android:layout_width="match_parent"
+                    android:gravity="top"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/instagram"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+             </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

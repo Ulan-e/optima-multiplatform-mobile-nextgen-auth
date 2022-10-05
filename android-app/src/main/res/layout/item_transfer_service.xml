@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/service_image"
+        android:layout_width="60dp"
+        android:paddingTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="60dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/ic_whatsapp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/service_title"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:text="Блокировать Карту"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/service_image"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

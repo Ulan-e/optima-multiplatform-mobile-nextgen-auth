@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_10dp"
+    android:background="@drawable/bg_seal_blue"
+    android:forceDarkAllowed="false"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/margin_3dp"
+    android:rotation="-9">
+
+    <ImageView
+        android:id="@+id/seal_image_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_3dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_optima_bank_blue" />
+
+    <TextView
+        android:id="@+id/seal_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_marginBottom="2dp"
+        android:maxLines="2"
+        android:textColor="@color/seal_blue"
+        android:textSize="@dimen/text_size_12sp"
+        tools:text="Платеж в обработке" />
+</LinearLayout>

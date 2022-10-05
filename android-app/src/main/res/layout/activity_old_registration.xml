@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="kz.optimabank.optima24.secondary_registration.ui.OldRegistrationActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue_0_93_186"
+        app:contentInsetStartWithNavigation="0dp"
+        app:navigationIcon="@drawable/arrow_left"
+        app:popupTheme="@style/Theme.MaterialComponents.Light.NoActionBar"
+        app:title="@string/registration"
+        app:titleTextColor="@color/white">
+
+        <com.shuhart.stepview.StepView
+            android:id="@+id/step_view"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/margin_15dp"
+            app:sv_animationType="All"
+            app:sv_doneCircleRadius="9dp"
+            app:sv_doneStepMarkColor="@color/green_ink"
+            app:sv_nextStepCircleColor="@color/white"
+            app:sv_nextStepLineColor="@color/white"
+            app:sv_nextTextColor="@color/white"
+            app:sv_selectedCircleColor="@color/white"
+            app:sv_selectedCircleRadius="9dp"
+            app:sv_selectedTextColor="@color/red_atf"
+            app:sv_stepLineWidth="1dp"
+            app:sv_stepPadding="3dp"
+            app:sv_stepsNumber="3" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"/>
+</LinearLayout>

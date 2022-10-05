@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue_0_93_186"
+            app:navigationIcon="@drawable/arrow_left">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextViewTitle"
+                android:text="@string/limits_info" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/linAmoutDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAmoutDay"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/amount_payments_day"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvAmoutDayInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:text="@string/not_limited"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/separatorEtReceiverNameATM"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linInternetPayments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvInternetPayments"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/Internet_payments"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvInternetPaymentsInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linLimitRK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitRK"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limit_for_cash_withdrawal_rk"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitRKInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitOutsideRK"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limit_for_cash_withdrawal_outside_rk"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitOutsideRKInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:id="@+id/linLimitOutsideRK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitUSAC"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitUSAC"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitUSACInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitUSAM"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitUSAM"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitUSAMInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitUSAR"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitUSAR"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitUSARInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitAPC"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitAPC"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitAPCInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitAPM"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitAPM"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitAPMInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitAPR"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitAPR"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitAPRInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitCHINAC"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitCHINAC"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitCHINACInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitCHINAM"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitCHINAM"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitCHINAMInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitCHINAR"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitCHINAR"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitCHINARInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitTHAILANDC"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitTHAILANDC"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitTHAILANDCInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitTHAILANDM"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitTHAILANDM"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitTHAILANDMInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLimitTHAILANDR"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="195dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_selector"
+                    android:text="@string/limitTHAILANDR"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvLimitTHAILANDRInfo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/disabled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue_0_93_186"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e7e7e7" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_vertical|start"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvDictionaryCode"
+            android:textSize="18sp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="17dp"
+            android:textColor="@color/gray_black_56_56_56"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvDictionaryDesc"
+            android:textSize="18sp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="17dp"
+            android:layout_toEndOf="@+id/tvDictionaryCode"
+            android:textColor="@color/gray_black_56_56_56"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="55dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/imgIsSelected"
+                android:visibility="gone"
+                android:src="@drawable/chek"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/separator"
+        android:background="#e7e7e7" />
+
+</LinearLayout>
