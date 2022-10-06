@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.interfaces.InvoicePayment;
 import kz.optimabank.optima24.model.manager.GeneralManager;
@@ -22,7 +22,7 @@ public class InvoicePaymentImpl extends GeneralService implements InvoicePayment
     @Override
     public void invoicePayment(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().invoicePayment(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().invoicePayment(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 body, new NetworkResponse.SuccessRequestListener<ResponseBody>() {
                     @Override
                     public void onSuccess(ResponseBody response, ResponseBody errorBody, int httpStatusCode) {

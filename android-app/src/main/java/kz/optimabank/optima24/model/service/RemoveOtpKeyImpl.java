@@ -2,7 +2,7 @@ package kz.optimabank.optima24.model.service;
 
 import android.content.Context;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.RemoveOtpKeyInterface;
@@ -17,7 +17,7 @@ public class RemoveOtpKeyImpl implements RemoveOtpKeyInterface {
     public void removeOtpKeyRequest(Context context, int otpKey) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().removeOtpKeyRequest(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId), otpKey, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
+                HeaderHelper.getOpenSessionHeader(context, sessionId), otpKey, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
                         if (otpKeyCallBack != null) {

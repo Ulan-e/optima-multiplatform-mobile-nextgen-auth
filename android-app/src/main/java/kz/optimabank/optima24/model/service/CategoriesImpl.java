@@ -5,7 +5,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.Category;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -24,7 +24,7 @@ public class CategoriesImpl extends GeneralService implements Categories {
     @Override
     public void getCategories(final Context context, boolean isShowPB) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getCategories(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getCategories(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<Category>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<Category>> response, String errorMessage, int code) {

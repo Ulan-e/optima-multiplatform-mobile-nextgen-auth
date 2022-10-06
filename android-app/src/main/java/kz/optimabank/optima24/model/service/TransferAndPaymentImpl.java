@@ -6,7 +6,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.db.controllers.PaymentContextController;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.base.TemplateTransfer;
@@ -29,7 +29,8 @@ public class TransferAndPaymentImpl extends GeneralService implements TransferAn
 
     @Override
     public void getPaymentContext(final Context context) {
-        NetworkResponse.getInstance().getPaymentContext(context, OptimaBank.getInstance().getOpenSessionHeader(GeneralManager.getInstance().getSessionId()),
+        String sessionId = GeneralManager.getInstance().getSessionId();
+        NetworkResponse.getInstance().getPaymentContext(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<PaymentContextResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<PaymentContextResponse> response, String errorMessage, int code) {
@@ -65,7 +66,8 @@ public class TransferAndPaymentImpl extends GeneralService implements TransferAn
     }
 
     private void payCont(final Context context){
-        NetworkResponse.getInstance().getPaymentContext(context, OptimaBank.getInstance().getOpenSessionHeader(GeneralManager.getInstance().getSessionId()),
+        String sessionId = GeneralManager.getInstance().getSessionId();
+        NetworkResponse.getInstance().getPaymentContext(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<PaymentContextResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<PaymentContextResponse> response, String errorMessage, int code) {
@@ -100,7 +102,7 @@ public class TransferAndPaymentImpl extends GeneralService implements TransferAn
     @Override
     public void getPaymentSubscriptions(final Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getPaymentSubscriptions(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getPaymentSubscriptions(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<PaymentTemplateResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<PaymentTemplateResponse> response, String errorMessage, int code) {
@@ -132,7 +134,7 @@ public class TransferAndPaymentImpl extends GeneralService implements TransferAn
     @Override
     public void getTransferTemplate(Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getTransferTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getTransferTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<TemplateTransfer>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<TemplateTransfer>> response, String errorMessage, int code) {

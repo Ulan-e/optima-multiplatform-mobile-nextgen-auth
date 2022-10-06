@@ -7,7 +7,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.Data;
 import kz.optimabank.optima24.model.interfaces.CardsInterface;
@@ -21,7 +21,7 @@ public class CardDataImpl extends GeneralService implements CardsInterface {
     @Override
     public void getInterfaceViewData(Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getInterfaceViewData(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),  // null чтоб получить только user agent для получения токена нужно указать ключ
+        NetworkResponse.getInstance().getInterfaceViewData(context, HeaderHelper.getOpenSessionHeader(context, sessionId),  // null чтоб получить только user agent для получения токена нужно указать ключ
                 (response, errorBody, httpStatusCode) -> {
                     if (httpStatusCode == 200) {
                         callback.onSuccessfulResponse(httpStatusCode, errorMessage, response.data);

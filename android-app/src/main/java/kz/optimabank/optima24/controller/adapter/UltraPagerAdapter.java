@@ -1,7 +1,5 @@
 package kz.optimabank.optima24.controller.adapter;
 
-import static kz.optimabank.optima24.app.OptimaBank.getContext;
-
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -22,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import kg.optima.mobile.R;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.model.base.Banner;
 import kz.optimabank.optima24.utility.BannersDirectoryNamePreferences;
 import kz.optimabank.optima24.utility.ImageDownloader;
@@ -55,7 +54,7 @@ public class UltraPagerAdapter extends PagerAdapter {
         if(banner != null) {
             if (banner.getBannerUrl() != null) {
                 String imageName = banner.getImageName();
-                String bannerDirectoryName = BannersDirectoryNamePreferences.getInstance(getContext()).returnDirectory();
+                String bannerDirectoryName = BannersDirectoryNamePreferences.getInstance(OptimaApp.Companion.getInstance()).returnDirectory();
                 ImageDownloader.loadImageFromStorage(bannerDirectoryName, background, imageName);
                 if (!hasImage(background)) {
                     mapLoader.setVisibility(View.VISIBLE);

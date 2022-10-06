@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BankRequisitesResponse;
 import kz.optimabank.optima24.model.interfaces.IRequisites;
@@ -23,7 +23,7 @@ public class RequisitesImpl extends GeneralService implements IRequisites {
     public void getBanksRequisites(Context context, String branchCode, String currency, String accountNumber) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().getBanksRequisites(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId), branchCode, currency, accountNumber,
+                HeaderHelper.getOpenSessionHeader(context, sessionId), branchCode, currency, accountNumber,
                 (response, errorBody, httpStatusCode) -> {
                     if(response != null) {
                         Log.d("TAG", "unregisterInfoMe httpStatusCode = " + httpStatusCode);

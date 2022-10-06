@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.gson.response.Bool;
@@ -25,7 +25,7 @@ public class SmsInformImpl extends GeneralService implements SmsInform {
     @Override
     public void checkSmsInform(Context context, int code, boolean isShowProgress) {
         final String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().checkSmsInform(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<Bool>>() {
+        NetworkResponse.getInstance().checkSmsInform(context, HeaderHelper.getOpenSessionHeader(context, sessionId), new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<Bool>>() {
             @Override
             public void onSuccess(BaseResponse<Bool> response, String errorMessage, int code) {
                 if(response.data != null)
@@ -44,7 +44,7 @@ public class SmsInformImpl extends GeneralService implements SmsInform {
     @Override
     public void setSmsInform(Context context, int code, JSONObject body, boolean isShowProgress) {
         final String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().setSmsInform(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().setSmsInform(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListener<BaseResponse<String>>() {
             @Override
             public void onSuccess(BaseResponse response, ResponseBody errorBody, int httpStatusCode) {

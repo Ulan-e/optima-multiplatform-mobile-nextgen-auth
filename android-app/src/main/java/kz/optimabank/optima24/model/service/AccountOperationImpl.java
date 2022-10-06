@@ -2,10 +2,7 @@ package kz.optimabank.optima24.model.service;
 
 import android.content.Context;
 
-import java.util.ArrayList;
-
-import kz.optimabank.optima24.app.OptimaBank;
-import kz.optimabank.optima24.model.base.ATFStatement;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.base.StatementsWithStats;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -27,7 +24,7 @@ public class AccountOperationImpl extends GeneralService implements AccountOpera
     public void getAccountOperationsAndStats(Context context, int code, String fromDate, String toDate,
                                              final boolean isMainPage,boolean isShowProgress) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        call = NetworkResponse.getInstance().getAccountOperationsAndStats(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        call = NetworkResponse.getInstance().getAccountOperationsAndStats(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 code, fromDate, toDate, isShowProgress, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<StatementsWithStats>>() {
                     @Override
                     public void onSuccess(BaseResponse<StatementsWithStats> response, String errorMessage, int code) {

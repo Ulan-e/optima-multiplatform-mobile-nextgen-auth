@@ -89,7 +89,6 @@ import kz.optimabank.optima24.utility.views.CirclePageIndicatorOfCards;
 
 import static android.app.Activity.RESULT_OK;
 import static kz.optimabank.optima24.activity.AccountDetailsActivity.ACCOUNT;
-import static kz.optimabank.optima24.app.OptimaBank.NFC_TAG;
 import static kz.optimabank.optima24.utility.Constants.BLOCK_CARD_ACTION;
 import static kz.optimabank.optima24.utility.Constants.CONNECTION_ERROR_STATUS;
 import static kz.optimabank.optima24.utility.Constants.DELETE_TOKEN_ACTION;
@@ -679,7 +678,6 @@ public class CardDetailsFragment extends ATFFragment implements AccountOperation
     }
 
     private void updateAllDigitizedCards() {
-        Log.d(NFC_TAG, "updateAllDigitizedCards");
         GeneralManager.getInstance().setRbsDefaultCard("");
         DigitizedCardController digitizedCardController = DigitizedCardController.getController();
 

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.db.entry.ForeignBank;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -19,7 +19,7 @@ public class ForeignBankImpl extends GeneralService implements ForeignBankContex
 
     @Override
     public void filterForeignBanks(Context context, String param) {
-        NetworkResponse.getInstance().filterForeignBanks(context, OptimaBank.getInstance().getOpenSessionHeader(null), param,
+        NetworkResponse.getInstance().filterForeignBanks(context, HeaderHelper.getOpenSessionHeader(context, null), param,
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<ForeignBank>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<ForeignBank>> response, String errorMessage, int code) {

@@ -7,7 +7,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.base.PushResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -27,7 +27,7 @@ public class PushImpl extends GeneralService implements PushInterface {
     @Override
     public void getPushSettings(Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getPushSettings(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getPushSettings(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<PushResponse.PushSettings>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<PushResponse.PushSettings>> response, String errorMessage, int code) {
@@ -44,7 +44,7 @@ public class PushImpl extends GeneralService implements PushInterface {
     @Override
     public void setPushSettings(Context context, JSONArray body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().setPushSettings(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), body,
+        NetworkResponse.getInstance().setPushSettings(context, HeaderHelper.getOpenSessionHeader(context, sessionId), body,
                 new NetworkResponse.SuccessRequestListener<ResponseBody>() {
                     @Override
                     public void onSuccess(ResponseBody response, ResponseBody errorBody, int httpStatusCode) {

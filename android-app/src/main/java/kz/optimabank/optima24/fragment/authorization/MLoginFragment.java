@@ -40,7 +40,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -63,10 +62,9 @@ import java.security.MessageDigest;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.PollsActivity;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.activity.LoginActivity;
 import kz.optimabank.optima24.activity.MenuActivity;
-import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.db.controllers.DHKeyController;
 import kz.optimabank.optima24.db.controllers.PushTokenKeyController;
 import kz.optimabank.optima24.fragment.ATFFragment;
@@ -451,12 +449,12 @@ public class MLoginFragment extends ATFFragment implements FingerprintUiHelper.C
                 finishReg = true;
             } else if (statusCode == Constants.SUCCESS) {
                 // после логина меняем состояние срочного сообщения
-                OptimaBank.getContext().changeUrgentMessageState(false);
+                OptimaApp.Companion.getInstance().changeUrgentMessageState(false);
                 sendPushToken();
                 entryToApp();
 
                 // после логина меняем состояние срочного сообщения
-                OptimaBank.getContext().changeUrgentMessageState(false);
+                OptimaApp.Companion.getInstance().changeUrgentMessageState(false);
 
                 GeneralManager.getInstance().setAlarmManagerOn(requireContext());
             } else if (statusCode == -100 || statusCode == -105) {

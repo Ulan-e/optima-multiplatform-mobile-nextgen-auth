@@ -5,7 +5,7 @@ import android.content.Context;
 import java.util.Map;
 
 import io.reactivex.Single;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.model.interfaces.IApiMethods;
 import kz.optimabank.optima24.model.manager.GeneralManager;
@@ -35,6 +35,6 @@ public class RegisterPushTokenActionImpl implements RegisterPushTokenAction {
 
     private Map<String, String> getHeader() {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        return OptimaBank.getInstance().getOpenSessionHeader(sessionId);
+        return HeaderHelper.getOpenSessionHeader(context, sessionId);
     }
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.HistoryItem;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -23,7 +23,7 @@ public class HistoryImpl extends GeneralService implements History {
     @Override
     public void getPaymentHistory(Context context, String fromDate, String toDate) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getPaymentHistory(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), fromDate,
+        NetworkResponse.getInstance().getPaymentHistory(context, HeaderHelper.getOpenSessionHeader(context, sessionId), fromDate,
                 toDate, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<HistoryItem.PaymentHistoryItem>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<HistoryItem.PaymentHistoryItem>> response, String errorMessage, int code){
@@ -44,7 +44,7 @@ public class HistoryImpl extends GeneralService implements History {
     @Override
     public void getTransferHistory(Context context, String fromDate, String toDate) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getTransferHistory(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), fromDate,
+        NetworkResponse.getInstance().getTransferHistory(context, HeaderHelper.getOpenSessionHeader(context, sessionId), fromDate,
                 toDate, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<HistoryItem.TransferHistoryItem>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<HistoryItem.TransferHistoryItem>> response, String errorMessage, int code){

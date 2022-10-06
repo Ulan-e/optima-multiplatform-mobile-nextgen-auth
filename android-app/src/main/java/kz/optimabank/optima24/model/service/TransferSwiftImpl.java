@@ -6,7 +6,7 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.gson.response.CheckResponse;
@@ -27,7 +27,7 @@ public class TransferSwiftImpl extends GeneralService implements TransfersSwift 
     @Override
     public void checkSwift(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().checkSwift(context, body, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().checkSwift(context, body, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<CheckResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<CheckResponse> response, String errorMessage, int code) {
@@ -49,7 +49,7 @@ public class TransferSwiftImpl extends GeneralService implements TransfersSwift 
     @Override
     public void confirmSwift(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().confirmSwift(context, body, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().confirmSwift(context, body, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<TransferConfirmResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<TransferConfirmResponse> response, String errorMessage, int code) {

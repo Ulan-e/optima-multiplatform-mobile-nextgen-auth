@@ -2,7 +2,7 @@ package kz.optimabank.optima24.model.service;
 
 import android.content.Context;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import okhttp3.ResponseBody;
@@ -18,7 +18,7 @@ public class CheckVersionImpl extends GeneralService {
 
 
     public void checkVersion() {
-        NetworkResponse.getInstance().checkVersion(contextT, OptimaBank.getInstance().getOpenSessionHeader(null),
+        NetworkResponse.getInstance().checkVersion(contextT, HeaderHelper.getOpenSessionHeader(contextT, null),
                 new NetworkResponse.SuccessRequestListener<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, ResponseBody errorBody, int httpStatusCode) {

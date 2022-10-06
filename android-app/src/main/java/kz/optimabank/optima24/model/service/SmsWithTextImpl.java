@@ -2,7 +2,7 @@ package kz.optimabank.optima24.model.service;
 
 import android.content.Context;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.SmsWithTextSend;
@@ -21,7 +21,7 @@ public class SmsWithTextImpl implements SmsWithTextSend {
     public void sendSmsWithText(Context context, int otpKey, String amountWithCurrency, String operationCode) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().confirmationCodeWithKeyAmountAndCurrencyRequest(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId), otpKey, amountWithCurrency, operationCode, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
+                HeaderHelper.getOpenSessionHeader(context, sessionId), otpKey, amountWithCurrency, operationCode, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
                         if (smsSendWithTextCallback != null) {
@@ -43,7 +43,7 @@ public class SmsWithTextImpl implements SmsWithTextSend {
     public void sendSmsWithTextForPayment(Context context, int otpKey, String amount, String operationCode) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().confirmationCodeWithKeyAmountAndCurrencyRequest(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId), otpKey, amount, operationCode, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
+                HeaderHelper.getOpenSessionHeader(context, sessionId), otpKey, amount, operationCode, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
                         if (smsSendWithTextForPaymentCallback != null) {
@@ -66,7 +66,7 @@ public class SmsWithTextImpl implements SmsWithTextSend {
     public void sendSmsWithOperationCode(Context context, int otpKey, String amount, String operationCode) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().confirmationCodeWithKeyAmountAndCurrencyRequest(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId), otpKey, amount, operationCode, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
+                HeaderHelper.getOpenSessionHeader(context, sessionId), otpKey, amount, operationCode, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
                         if (smsSendWithOperationCodeCallback != null) {
@@ -88,7 +88,7 @@ public class SmsWithTextImpl implements SmsWithTextSend {
     public void sendSmsForOtpValidation(Context context, int otpKey, String smsCode) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().checkIsOtpKeyValid(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId), otpKey, smsCode,
+                HeaderHelper.getOpenSessionHeader(context, sessionId), otpKey, smsCode,
                 (response, errorMessage, code) -> {
                     if (isOtpKeyValidCallback != null) {
                         isOtpKeyValidCallback.setResponseIsOtpKeyValid(code, errorMessage);
@@ -104,7 +104,7 @@ public class SmsWithTextImpl implements SmsWithTextSend {
     public void sendOtpWithText(Context context, int otpKey) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().sendSMS(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId), otpKey,
+                HeaderHelper.getOpenSessionHeader(context, sessionId), otpKey,
                 (response, errorMessage, code) -> {
                     if (sendOtpWithTextCallback != null) {
                         sendOtpWithTextCallback.setResponseSendOtpWithText(code, errorMessage);

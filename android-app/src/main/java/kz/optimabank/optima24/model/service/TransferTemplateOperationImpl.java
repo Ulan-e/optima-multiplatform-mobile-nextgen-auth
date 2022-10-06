@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.TransferTemplateOperation;
@@ -23,7 +23,7 @@ public class TransferTemplateOperationImpl extends GeneralService implements Tra
     @Override
     public void deleteTransferTemplate(Context context, int templateId) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().deleteTransferTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().deleteTransferTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 templateId, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
@@ -40,7 +40,7 @@ public class TransferTemplateOperationImpl extends GeneralService implements Tra
     @Override
     public void changeTransferTemplate(Context context, JSONObject body, int templateId) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().changeTransferTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().changeTransferTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 body, templateId, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
@@ -61,7 +61,7 @@ public class TransferTemplateOperationImpl extends GeneralService implements Tra
     @Override
     public void changeActiveTransferTemplate(Context context, int templateId, boolean IsActive) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().changeActiveTransfersTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().changeActiveTransfersTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 templateId, IsActive, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {

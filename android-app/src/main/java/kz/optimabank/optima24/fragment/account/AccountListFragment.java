@@ -63,10 +63,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kg.optima.mobile.R;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.activity.AccountDetailsActivity;
 import kz.optimabank.optima24.activity.InterfaceFormActivity;
 import kz.optimabank.optima24.activity.NavigationActivity;
-import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.controller.adapter.AccountListAdapter;
 import kz.optimabank.optima24.controller.adapter.CardsAdapter;
@@ -247,7 +247,7 @@ public class AccountListFragment extends ATFFragment implements CategoriesImpl.C
 
         btnClose.setOnClickListener(view -> {
             AnimationUtils.goneView(urgentMessageLayout);
-            OptimaBank.getContext().changeUrgentMessageState(true);
+            OptimaApp.Companion.getInstance().changeUrgentMessageState(true);
         });
     }
 
@@ -636,7 +636,7 @@ public class AccountListFragment extends ATFFragment implements CategoriesImpl.C
         if (digitizedCardsMap == null)
             if (digitizedCardsMap.isEmpty()) {
                 Log.i("byteArrayFullImgUPDATE", "111");
-                ArrayList<DigitizedCard> digitizedCards = digitizedCardController.getAllCards(getPreferences(OptimaBank.getContext()).getString(Constants.userPhone, ""));
+                ArrayList<DigitizedCard> digitizedCards = digitizedCardController.getAllCards(getPreferences(OptimaApp.Companion.getInstance()).getString(Constants.userPhone, ""));
                 for (DigitizedCard digitizedCard : digitizedCards) {
                     digitizedCardsMap.put(digitizedCard.getRbsNumber(), digitizedCard);
                 }
@@ -747,7 +747,7 @@ public class AccountListFragment extends ATFFragment implements CategoriesImpl.C
             if (urgentMessage.getActive()) {
 
                 // проверяем не нажата ли была кнопка закрытия срочного уведомления
-                if (!OptimaBank.getContext().getUrgentMessageState()) {
+                if (!OptimaApp.Companion.getInstance().getUrgentMessageState()) {
                     showAlertUrgentMessage(urgentMessage);
                 }
             }

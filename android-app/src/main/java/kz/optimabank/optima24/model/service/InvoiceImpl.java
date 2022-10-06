@@ -2,7 +2,7 @@ package kz.optimabank.optima24.model.service;
 
 import android.content.Context;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.InvoiceContainerItem;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.interfaces.Invoice;
@@ -21,7 +21,7 @@ public class InvoiceImpl extends GeneralService implements Invoice {
     @Override
     public void getInvoice(Context context, long invoiceId) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getInvoice(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getInvoice(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 invoiceId, new NetworkResponse.SuccessRequestListener<InvoiceContainerItem>() {
                     @Override
                     public void onSuccess(InvoiceContainerItem response, ResponseBody errorBody, int httpStatusCode) {

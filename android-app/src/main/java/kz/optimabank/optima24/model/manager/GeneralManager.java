@@ -24,12 +24,11 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 import kg.optima.mobile.R;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.activity.SessionDialogActivity;
-import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.db.controllers.DHKeyController;
 import kz.optimabank.optima24.db.controllers.PaymentContextController;
 import kz.optimabank.optima24.db.controllers.PushTokenKeyController;
-import kz.optimabank.optima24.db.entry.Message;
 import kz.optimabank.optima24.db.entry.PaymentCategory;
 import kz.optimabank.optima24.model.base.ATFStatement;
 import kz.optimabank.optima24.model.base.Category;
@@ -53,8 +52,6 @@ import kz.optimabank.optima24.model.gson.response.PaymentTemplateResponse;
 import kz.optimabank.optima24.model.gson.response.UserAccounts;
 import kz.optimabank.optima24.utility.Constants;
 import kz.optimabank.optima24.utility.crypt.CryptoUtils;
-
-import static kz.optimabank.optima24.utility.Constants.NOTIF_COUNT;
 
 /**
  * Created by Timur on 12.02.2017.
@@ -378,7 +375,7 @@ public class GeneralManager {
     }
 
     public String getLanguageApp() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OptimaBank.getContext());
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OptimaApp.Companion.getInstance());
         return preferences.getString(Constants.APP_LANGUAGE, "ru");
     }
 
@@ -1630,7 +1627,7 @@ public class GeneralManager {
         transferModels.add(new TransferModel(Constants.ITEM_ID, context.getString(R.string.transfer_card_visa_to_visa_for_item)));
         transferModels.add(new TransferModel(Constants.ITEM_ID, context.getString(R.string.transfer_phone_number)));
         transferModels.add(new TransferModel(Constants.ITEM_ID, context.getString(R.string.transfer_swift_tenge)));
-        transferModels.add(new TransferModel(Constants.ITEM_ID, OptimaBank.getInstance().getString(R.string.transfer_swift)));
+        transferModels.add(new TransferModel(Constants.ITEM_ID, context.getString(R.string.transfer_swift)));
         return transferModels;
     }
 
@@ -1944,7 +1941,7 @@ public class GeneralManager {
     }
 
     public int getRegionID() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OptimaBank.getContext());
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OptimaApp.Companion.getInstance());
         return preferences.getInt(Constants.CHOSEN_REGION, 1);
     }
 

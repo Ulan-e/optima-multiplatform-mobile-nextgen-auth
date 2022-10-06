@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.ChangePassword;
@@ -23,7 +23,7 @@ public class ChangePasswordImpl extends GeneralService implements ChangePassword
     public void ChangePassword(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().changePassword(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+                HeaderHelper.getOpenSessionHeader(context, sessionId),
                 body, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {

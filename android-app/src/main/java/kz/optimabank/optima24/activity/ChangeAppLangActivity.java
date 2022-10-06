@@ -1,7 +1,5 @@
 package kz.optimabank.optima24.activity;
 
-import static kz.optimabank.optima24.app.OptimaBank.getContext;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kg.optima.mobile.R;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.controllers.BannerController;
 import kz.optimabank.optima24.model.manager.GeneralManager;
 import kz.optimabank.optima24.utility.Constants;
@@ -81,7 +80,7 @@ public class ChangeAppLangActivity extends OptimaActivity {
                         break;
                 }
 
-                BannerController.getController().setContext(getContext());
+                BannerController.getController().setContext(OptimaApp.Companion.getInstance());
                 BannerController.getController().clearCache();
             }
         });

@@ -10,11 +10,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.fragment.account.model.UrgentMessage;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.IApiMethods;
+import kz.optimabank.optima24.model.manager.GeneralManager;
 
 import static kz.optimabank.optima24.utility.Constants.API_BASE_URL;
 import static kz.optimabank.optima24.utility.Constants.URGENT_MESSAGE_TAG;
@@ -31,7 +32,8 @@ public class AccountsListViewModel extends AndroidViewModel {
 
     // запрос на получение срочного сообщения
     public void requestNoticeMessage() {
-        compositeDisposable.add(getApi().getUrgentMessage(OptimaBank.getInstance().getOpenSessionHeader(null))
+        String sessionId = GeneralManager.getInstance().getSessionId();
+        compositeDisposable.add(getApi().getUrgentMessage(HeaderHelper.getOpenSessionHeader(getApplication(), sessionId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<BaseResponse<UrgentMessage>>() {

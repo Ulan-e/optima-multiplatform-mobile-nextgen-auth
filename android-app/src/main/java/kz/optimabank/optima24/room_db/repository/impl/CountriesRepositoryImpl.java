@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.Country;
 import kz.optimabank.optima24.room_db.daos.CountryDao;
 import kz.optimabank.optima24.room_db.repository.CountriesRepository;
@@ -12,7 +12,7 @@ import kz.optimabank.optima24.room_db.repository.CountriesRepository;
 public class CountriesRepositoryImpl implements CountriesRepository {
 
     private static final String TAG = CountriesRepositoryImpl.class.getSimpleName();
-    private final CountryDao dao = OptimaBank.getInstance().appDatabase.countryDao();
+    private final CountryDao dao = OptimaApp.Companion.getAppDatabase().countryDao();
 
     @Override
     public void insertAll(List<Country> countries) {

@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.BaseRegistrationResponse;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.base.SecretQuestionResponse;
@@ -32,7 +32,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void checkClient(final Context context, JSONObject body) {
-        NetworkResponse.getInstance().checkClient(context, OptimaBank.getInstance().getOpenSessionHeader(null), body,
+        NetworkResponse.getInstance().checkClient(context, HeaderHelper.getOpenSessionHeader(context, null), body,
                 new NetworkResponse.SuccessRequestListener<BaseRegistrationResponse>() {
                     @Override
                     public void onSuccess(BaseRegistrationResponse response, ResponseBody errorBody, int httpStatusCode) {
@@ -52,7 +52,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void getSecretQuestions(final Context context) {
-        NetworkResponse.getInstance().getSecretQuestions(context, OptimaBank.getInstance().getOpenSessionHeader(null),
+        NetworkResponse.getInstance().getSecretQuestions(context, HeaderHelper.getOpenSessionHeader(context, null),
                 new NetworkResponse.SuccessRequestListener<List<SecretQuestionResponse>>() {
                     @Override
                     public void onSuccess(List<SecretQuestionResponse> response, ResponseBody errorBody, int httpStatusCode) {
@@ -72,7 +72,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void requestSmsClientBank(final Context context, JSONObject body) {
-        NetworkResponse.getInstance().requestSmsForClientBank(context, OptimaBank.getInstance().getOpenSessionHeader(null), body,
+        NetworkResponse.getInstance().requestSmsForClientBank(context, HeaderHelper.getOpenSessionHeader(context, null), body,
                 new NetworkResponse.SuccessRequestListener<BaseRegistrationResponse>() {
                     @Override
                     public void onSuccess(BaseRegistrationResponse response, ResponseBody errorBody, int httpStatusCode) {
@@ -92,7 +92,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void requestSmsNoClientBank(final Context context, JSONObject clientBody) {
-        NetworkResponse.getInstance().requestSmsForNoClientBank(context, OptimaBank.getInstance().getOpenSessionHeader(null), clientBody,
+        NetworkResponse.getInstance().requestSmsForNoClientBank(context, HeaderHelper.getOpenSessionHeader(context, null), clientBody,
                 new NetworkResponse.SuccessRequestListener<BaseRegistrationResponse>() {
                     @Override
                     public void onSuccess(BaseRegistrationResponse response, ResponseBody errorBody, int httpStatusCode) {
@@ -112,7 +112,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void requestSmsAgain(final Context context, String phoneNumber) {
-        NetworkResponse.getInstance().requestSmsAgain(context, OptimaBank.getInstance().getOpenSessionHeader(null), phoneNumber,
+        NetworkResponse.getInstance().requestSmsAgain(context, HeaderHelper.getOpenSessionHeader(context, null), phoneNumber,
                 new NetworkResponse.SuccessRequestListener<BaseRegistrationResponse>() {
                     @Override
                     public void onSuccess(BaseRegistrationResponse response, ResponseBody errorBody, int httpStatusCode) {
@@ -132,7 +132,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void finishRegForClientBank(final Context context, JSONObject body) {
-        NetworkResponse.getInstance().finishRegClientBank(context, OptimaBank.getInstance().getOpenSessionHeader(null), body,
+        NetworkResponse.getInstance().finishRegClientBank(context, HeaderHelper.getOpenSessionHeader(context, null), body,
                 new NetworkResponse.SuccessRequestListener<BaseRegistrationResponse>() {
                     @Override
                     public void onSuccess(BaseRegistrationResponse response, ResponseBody errorBody, int httpStatusCode) {
@@ -152,7 +152,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void finishRegForNoClientBank(final Context context, JSONObject body) {
-        NetworkResponse.getInstance().finishRegNoClientBank(context, OptimaBank.getInstance().getOpenSessionHeader(null), body,
+        NetworkResponse.getInstance().finishRegNoClientBank(context, HeaderHelper.getOpenSessionHeader(context, null), body,
                 new NetworkResponse.SuccessRequestListener<BaseRegistrationResponse>() {
                     @Override
                     public void onSuccess(BaseRegistrationResponse response, ResponseBody errorBody, int httpStatusCode) {
@@ -172,7 +172,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void changeTempPassword(final Context context, JSONObject body) {
-        NetworkResponse.getInstance().changeTempPassword(context, OptimaBank.getInstance().getOpenSessionHeader(null), body,
+        NetworkResponse.getInstance().changeTempPassword(context, HeaderHelper.getOpenSessionHeader(context, null), body,
                 new NetworkResponse.SuccessRequestListener<BaseRegistrationResponse>() {
                     @Override
                     public void onSuccess(BaseRegistrationResponse response, ResponseBody errorBody, int httpStatusCode) {
@@ -192,7 +192,7 @@ public class RegistrationClientImpl extends GeneralService implements Registrati
 
     @Override
     public void checkPhoneNumber(Context context, String phoneNumber) {
-        NetworkResponse.getInstance().checkPhoneNumber(phoneNumber, context, OptimaBank.getInstance().getOpenSessionHeader(null),
+        NetworkResponse.getInstance().checkPhoneNumber(phoneNumber, context, HeaderHelper.getOpenSessionHeader(context, null),
                 (response, errorBody, httpStatusCode) -> {
                     if (httpStatusCode != 200) {
                         errorMessage = getErrorMessage(errorBody);

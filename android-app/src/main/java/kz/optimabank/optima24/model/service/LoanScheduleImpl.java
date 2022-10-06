@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.gson.response.LoanScheduleResponse;
@@ -23,7 +23,7 @@ public class LoanScheduleImpl extends GeneralService implements LoanSchedule {
     @Override
     public void getLoanSchedule(Context context, int code) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getLoanSchedule(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getLoanSchedule(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 code, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<LoanScheduleResponse>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<LoanScheduleResponse>> response, String errorMessage, int code) {

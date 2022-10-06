@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.PaymentTemplateOperation;
@@ -23,7 +23,7 @@ public class PaymentTemplateOperationImpl extends GeneralService implements Paym
     @Override
     public void deletePaymentTemplate(Context context, int templateId) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().deletePaymentTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().deletePaymentTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 templateId, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
@@ -40,7 +40,7 @@ public class PaymentTemplateOperationImpl extends GeneralService implements Paym
     @Override
     public void changePaymentTemplate(Context context, JSONObject body, int templateId, boolean processAfterSaving) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().changePaymentTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), body,
+        NetworkResponse.getInstance().changePaymentTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId), body,
                 templateId, processAfterSaving, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
@@ -61,7 +61,7 @@ public class PaymentTemplateOperationImpl extends GeneralService implements Paym
     @Override
     public void changeActivePaymentTemplate(Context context, int templateId, boolean IsActive) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().changeActivePaymentTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().changeActivePaymentTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 templateId, IsActive, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
@@ -82,7 +82,7 @@ public class PaymentTemplateOperationImpl extends GeneralService implements Paym
     @Override
     public void quickPayment(Context context, int templateId) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().quickPayment(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), templateId,
+        NetworkResponse.getInstance().quickPayment(context, HeaderHelper.getOpenSessionHeader(context, sessionId), templateId,
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMEssage, int code) {

@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.PaymentCategory;
 import kz.optimabank.optima24.room_db.daos.PaymentCategoryDao;
 import kz.optimabank.optima24.room_db.repository.PaymentCategoryRepository;
@@ -12,7 +12,7 @@ import kz.optimabank.optima24.room_db.repository.PaymentCategoryRepository;
 public class PaymentCategoryRepositoryImpl implements PaymentCategoryRepository {
 
     private static final String TAG = PaymentCategoryRepositoryImpl.class.getSimpleName();
-    private final PaymentCategoryDao dao = OptimaBank.getInstance().appDatabase.paymentCategoryDao();
+    private final PaymentCategoryDao dao = OptimaApp.Companion.getAppDatabase().paymentCategoryDao();
 
     @Override
     public void insertAll(List<PaymentCategory> paymentCategories) {

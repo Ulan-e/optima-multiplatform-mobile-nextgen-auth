@@ -5,7 +5,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.Limit;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.interfaces.LimitInterface;
@@ -20,7 +20,7 @@ public class LimitInterfaceImpl extends GeneralService implements LimitInterface
     @Override
     public void getLimit(Context context, int code, boolean isShowProgress) {
         String sessionID = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getLimit(context, OptimaBank.getInstance().getOpenSessionHeader(sessionID),
+        NetworkResponse.getInstance().getLimit(context, HeaderHelper.getOpenSessionHeader(context, sessionID),
                 code, isShowProgress, (response, errorMessage, code1) -> {
                     ArrayList<Limit> listLimits = new ArrayList<>();
 

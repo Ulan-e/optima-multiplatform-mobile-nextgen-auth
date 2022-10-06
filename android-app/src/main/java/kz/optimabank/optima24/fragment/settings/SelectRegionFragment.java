@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kg.optima.mobile.R;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.activity.SettingsActivity;
-import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.controller.adapter.DictionaryAdapter;
 import kz.optimabank.optima24.db.controllers.PaymentContextController;
 import kz.optimabank.optima24.db.entry.PaymentRegions;
@@ -154,7 +154,7 @@ public class SelectRegionFragment extends ATFFragment implements TransferAndPaym
     }
 
     private void getConfirmDialog(PaymentRegions regions) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OptimaBank.getContext());
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(OptimaApp.Companion.getInstance());
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(Constants.CHOSEN_REGION, regions.getId());
         editor.apply();

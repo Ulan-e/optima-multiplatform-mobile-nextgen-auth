@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.PaymentRegions;
 import kz.optimabank.optima24.room_db.daos.PaymentRegionsDao;
 import kz.optimabank.optima24.room_db.repository.PaymentRegionsRepository;
@@ -12,7 +12,7 @@ import kz.optimabank.optima24.room_db.repository.PaymentRegionsRepository;
 public class PaymentRegionsRepositoryImpl implements PaymentRegionsRepository {
 
     private static final String TAG = PaymentRegionsRepositoryImpl.class.getSimpleName();
-    private final PaymentRegionsDao dao = OptimaBank.getInstance().appDatabase.paymentRegionsDao();
+    private final PaymentRegionsDao dao = OptimaApp.Companion.getAppDatabase().paymentRegionsDao();
 
     @Override
     public void insertAll(List<PaymentRegions> paymentRegions) {

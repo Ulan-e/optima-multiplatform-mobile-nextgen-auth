@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.SetLimitInterface;
@@ -19,7 +19,7 @@ public class SetLimitInterfaceImpl extends GeneralService implements SetLimitInt
     @Override
     public void setLimit(Context context, int code, boolean isShowProgress, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().setLimit(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), code, isShowProgress,
+        NetworkResponse.getInstance().setLimit(context, HeaderHelper.getOpenSessionHeader(context, sessionId), code, isShowProgress,
                 body, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {

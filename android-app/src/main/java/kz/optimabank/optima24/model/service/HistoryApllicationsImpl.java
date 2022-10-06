@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.ApplicationTypeDto;
 import kz.optimabank.optima24.model.base.HistoryApplications;
 import kz.optimabank.optima24.model.base.HistoryDetailsApplications;
@@ -30,7 +30,7 @@ public class HistoryApllicationsImpl extends GeneralService implements HistoryAp
     @Override
     public void getHistoryApplications(Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getHistoryApplications(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getHistoryApplications(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                  new NetworkResponse.SuccessRequestListener<ArrayList<HistoryApplications>>() {
                     @Override
                     public void onSuccess(ArrayList<HistoryApplications> response, ResponseBody errorBody, int httpStatusCode) {
@@ -57,7 +57,7 @@ public class HistoryApllicationsImpl extends GeneralService implements HistoryAp
     @Override
     public void getTypesApplications(Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getTypesApplications(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getTypesApplications(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListener<ArrayList<ApplicationTypeDto>>() {
                     @Override
                     public void onSuccess(ArrayList<ApplicationTypeDto> response, ResponseBody errorBody, int httpStatusCode) {
@@ -78,7 +78,7 @@ public class HistoryApllicationsImpl extends GeneralService implements HistoryAp
     @Override
     public void getApplicationById(Context context, int id) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getApplicationById(context, id, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getApplicationById(context, id, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListener<ApplicationTypeDto>() {
                     @Override
                     public void onSuccess(ApplicationTypeDto response, ResponseBody errorBody, int httpStatusCode) {
@@ -99,7 +99,7 @@ public class HistoryApllicationsImpl extends GeneralService implements HistoryAp
     @Override
     public void getApplicationDetailsById(Context context, int id) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getApplicationDetailsById(context, id, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getApplicationDetailsById(context, id, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListener<ApplicationTypeDto>() {
                     @Override
                     public void onSuccess(ApplicationTypeDto response, ResponseBody errorBody, int httpStatusCode) {
@@ -120,7 +120,7 @@ public class HistoryApllicationsImpl extends GeneralService implements HistoryAp
     @Override
     public void getHistoryDetailsById(Context context, int id) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getHistoryDetailsById(context, id, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getHistoryDetailsById(context, id, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListener<HistoryDetailsApplications>() {
                     @Override
                     public void onSuccess(HistoryDetailsApplications response, ResponseBody errorBody, int httpStatusCode) {
@@ -141,7 +141,7 @@ public class HistoryApllicationsImpl extends GeneralService implements HistoryAp
     @Override
     public void getHistoryApplicationsByDate(Context context, String dateFrom, String dateTo) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getHistoryApplicationsByDate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), dateFrom, dateTo,
+        NetworkResponse.getInstance().getHistoryApplicationsByDate(context, HeaderHelper.getOpenSessionHeader(context, sessionId), dateFrom, dateTo,
                  new NetworkResponse.SuccessRequestListener<ArrayList<HistoryApplications>>() {
                     @Override
                     public void onSuccess(ArrayList<HistoryApplications> response, ResponseBody errorBody, int httpStatusCode) {
@@ -162,7 +162,7 @@ public class HistoryApllicationsImpl extends GeneralService implements HistoryAp
     @Override
     public void createApplication(Context context, JSONObject applicationBody) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().createApplication(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), applicationBody,
+        NetworkResponse.getInstance().createApplication(context, HeaderHelper.getOpenSessionHeader(context, sessionId), applicationBody,
                 new NetworkResponse.SuccessRequestListener<ResponseBody>() {
                     @Override
                     public void onSuccess(ResponseBody response, ResponseBody errorBody, int httpStatusCode) {

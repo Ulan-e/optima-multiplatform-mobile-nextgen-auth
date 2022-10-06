@@ -5,7 +5,7 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.AccStatusResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -31,7 +31,7 @@ public class TransferImpl extends GeneralService implements Transfers {
     @Override
     public void getAccountData(final Context context, String cardNumber) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getAccData(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getAccData(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 cardNumber, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<AccStatusResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<AccStatusResponse> response, String errorMessage, int code) {
@@ -50,7 +50,7 @@ public class TransferImpl extends GeneralService implements Transfers {
     @Override
     public void mastercardRegister(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().registerMasterCard(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), body,
+        NetworkResponse.getInstance().registerMasterCard(context, HeaderHelper.getOpenSessionHeader(context, sessionId), body,
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ResponseBody>>() {
                     @Override
                     public void onSuccess(BaseResponse<ResponseBody> response, String errorMessage, int code) {
@@ -74,7 +74,7 @@ public class TransferImpl extends GeneralService implements Transfers {
     @Override
     public void checkMt100Transfer(Context context,JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().checkMt100Transfer(context, body, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().checkMt100Transfer(context, body, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<CheckResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<CheckResponse> response, String errorMessage, int code) {
@@ -100,7 +100,7 @@ public class TransferImpl extends GeneralService implements Transfers {
     @Override
     public void confirmMt100Transfer(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().confirmMt100Transfer(context, body, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().confirmMt100Transfer(context, body, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<TransferConfirmResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<TransferConfirmResponse> response, String errorMessage, int code) {

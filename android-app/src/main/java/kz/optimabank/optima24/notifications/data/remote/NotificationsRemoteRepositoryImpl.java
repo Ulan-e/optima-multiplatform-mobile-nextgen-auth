@@ -1,13 +1,12 @@
 package kz.optimabank.optima24.notifications.data.remote;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Single;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.model.interfaces.IApiMethods;
 import kz.optimabank.optima24.model.manager.GeneralManager;
@@ -53,6 +52,6 @@ public class NotificationsRemoteRepositoryImpl implements NotificationsRemoteRep
            // SessionPreferences sessionPreferences = new SessionPreferencesImpl((context));
          //   sessionId = sessionPreferences.getSessionID();
         }
-        return OptimaBank.getInstance().getOpenSessionHeader(sessionId);
+        return HeaderHelper.getOpenSessionHeader(context, sessionId);
     }
 }

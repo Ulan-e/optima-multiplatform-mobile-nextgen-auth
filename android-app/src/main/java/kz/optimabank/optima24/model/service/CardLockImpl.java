@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.CardLock;
 import kz.optimabank.optima24.model.base.NetworkResponse;
@@ -23,7 +23,7 @@ public class CardLockImpl extends GeneralService implements CardLock {
     public void setCardLock(Context context, int code, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().setLockCard(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+                HeaderHelper.getOpenSessionHeader(context, sessionId),
                 code, body, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int httpStatusCode) {

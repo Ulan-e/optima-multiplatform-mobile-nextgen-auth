@@ -2,7 +2,7 @@ package kz.optimabank.optima24.model.service;
 
 import android.content.Context;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.MobileOperatorResponse;
 import kz.optimabank.optima24.model.interfaces.MobileOperator;
@@ -21,7 +21,7 @@ public class MobileOperatorImpl extends GeneralService implements MobileOperator
     @Override
     public void getMobileOperator(Context context, String mobileNumber) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getMobileOperator(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), mobileNumber,
+        NetworkResponse.getInstance().getMobileOperator(context, HeaderHelper.getOpenSessionHeader(context, sessionId), mobileNumber,
                 new NetworkResponse.SuccessRequestListener<MobileOperatorResponse>() {
                     @Override
                     public void onSuccess(MobileOperatorResponse response, ResponseBody errorBody, int httpStatusCode) {

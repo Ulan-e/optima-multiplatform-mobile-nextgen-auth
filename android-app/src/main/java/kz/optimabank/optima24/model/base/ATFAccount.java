@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.utility.Constants;
 
 public class ATFAccount implements Serializable {
@@ -130,7 +130,7 @@ public class ATFAccount implements Serializable {
         sum = "<b>" + formatter.format(bd.doubleValue()) + " " + currency + "</b>";
         if (multi_currency_info != null) {
             if (multi_currency_info.size() > 0) {
-                sum = OptimaBank.getContext().getString(R.string.total_multi) + " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  " + "<b>" + formatter.format(bd.doubleValue()) + " " + currency + "</b>";
+                sum = OptimaApp.Companion.getInstance().getString(R.string.total_multi) + " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  " + "<b>" + formatter.format(bd.doubleValue()) + " " + currency + "</b>";
                 for (int i = multi_currency_info.size() - 1; i >= 0; i--) {
                     sum = sum + "<br/>" + multi_currency_info.get(i);
                 }

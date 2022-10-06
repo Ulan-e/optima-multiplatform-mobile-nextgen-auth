@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.CancelApplicationModel;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.interfaces.CancelApplicationsInterface;
@@ -19,7 +19,7 @@ public class CancelApllicationsImpl extends GeneralService implements CancelAppl
     @Override
     public void cancelApplicationFirst(Context context, int id) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().cancelApplicationFirst(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), id,
+        NetworkResponse.getInstance().cancelApplicationFirst(context, HeaderHelper.getOpenSessionHeader(context, sessionId), id,
                 new NetworkResponse.SuccessRequestListener<CancelApplicationModel>() {
                     @Override
                     public void onSuccess(CancelApplicationModel response, ResponseBody errorBody, int httpStatusCode) {
@@ -43,7 +43,7 @@ public class CancelApllicationsImpl extends GeneralService implements CancelAppl
     @Override
     public void cancelApplicationSecond(Context context, JSONObject applicationBody) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().cancelApplicationSecond(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), applicationBody,
+        NetworkResponse.getInstance().cancelApplicationSecond(context, HeaderHelper.getOpenSessionHeader(context, sessionId), applicationBody,
                 new NetworkResponse.SuccessRequestListener<ResponseBody>() {
                     @Override
                     public void onSuccess(ResponseBody response, ResponseBody errorBody, int httpStatusCode) {

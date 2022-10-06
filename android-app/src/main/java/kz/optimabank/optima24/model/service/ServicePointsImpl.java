@@ -4,7 +4,7 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.base.Terminal;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -23,7 +23,7 @@ public class ServicePointsImpl extends GeneralService implements ServicePoints {
 
     @Override
     public void getAllServicePoints(final Context context) {
-        if(NetworkResponse.getInstance().getAllServicePoints(context, OptimaBank.getInstance().getOpenSessionHeader(null),
+        if(NetworkResponse.getInstance().getAllServicePoints(context, HeaderHelper.getOpenSessionHeader(context, null),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<Terminal>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<Terminal>> response, String errorMessage, int code) {

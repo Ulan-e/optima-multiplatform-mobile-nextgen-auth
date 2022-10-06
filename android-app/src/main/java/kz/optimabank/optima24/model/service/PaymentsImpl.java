@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BankReference;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -26,7 +26,7 @@ public class PaymentsImpl extends GeneralService implements Payments {
     @Override
     public void checkPayments(Context context, final boolean isCheckBalance, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().checkPayments(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().checkPayments(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 body, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<CheckPaymentsResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<CheckPaymentsResponse> response, String errorMessage, int code) {
@@ -45,7 +45,7 @@ public class PaymentsImpl extends GeneralService implements Payments {
     @Override
     public void confirmPayments(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().confirmPayments(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().confirmPayments(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 body, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<BankReference>>() {
                     @Override
                     public void onSuccess(BaseResponse<BankReference> response, String errorMessage, int code) {
@@ -67,7 +67,7 @@ public class PaymentsImpl extends GeneralService implements Payments {
     @Override
     public void getTaxDict(Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getTaxDict(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getTaxDict(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<TaxDictResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<TaxDictResponse> response, String errorMessage, int code) {

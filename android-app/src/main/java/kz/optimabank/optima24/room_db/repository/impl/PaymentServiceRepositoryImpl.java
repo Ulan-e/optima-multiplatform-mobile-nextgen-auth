@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.PaymentService;
 import kz.optimabank.optima24.room_db.daos.PaymentServiceDao;
 import kz.optimabank.optima24.room_db.repository.PaymentServiceRepository;
@@ -12,7 +12,7 @@ import kz.optimabank.optima24.room_db.repository.PaymentServiceRepository;
 public class PaymentServiceRepositoryImpl implements PaymentServiceRepository {
 
     private static final String TAG = PaymentServiceRepositoryImpl.class.getSimpleName();
-    private final PaymentServiceDao dao = OptimaBank.getInstance().appDatabase.paymentServiceDao();
+    private final PaymentServiceDao dao = OptimaApp.Companion.getAppDatabase().paymentServiceDao();
 
     @Override
     public void insertAll(List<PaymentService> paymentServices) {

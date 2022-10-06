@@ -2,7 +2,7 @@ package kz.optimabank.optima24.room_db.repository.impl;
 
 import android.util.Log;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.ProfilePicture;
 import kz.optimabank.optima24.room_db.daos.ProfilePictureDao;
 import kz.optimabank.optima24.room_db.repository.ProfilePictureRepository;
@@ -10,7 +10,7 @@ import kz.optimabank.optima24.room_db.repository.ProfilePictureRepository;
 public class ProfilePictureRepositoryImpl implements ProfilePictureRepository {
 
     private static final String TAG = ProfilePictureRepositoryImpl.class.getSimpleName();
-    private final ProfilePictureDao dao = OptimaBank.getInstance().appDatabase.profilePictureDao();
+    private final ProfilePictureDao dao = OptimaApp.Companion.getAppDatabase().profilePictureDao();
 
     @Override
     public void insert(ProfilePicture profilePicture) {

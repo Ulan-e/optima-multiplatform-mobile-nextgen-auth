@@ -5,7 +5,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.db.controllers.DictionaryController;
 import kz.optimabank.optima24.db.entry.Country;
 import kz.optimabank.optima24.db.entry.ForeignBank;
@@ -23,7 +23,7 @@ public class DictionaryImpl extends GeneralService implements DictionaryContext 
 
     @Override
     public void getAllDictionary(Context context) {
-        NetworkResponse.getInstance().getAllDictionary(context, OptimaBank.getInstance().getOpenSessionHeader(null),
+        NetworkResponse.getInstance().getAllDictionary(context, HeaderHelper.getOpenSessionHeader(context, null),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<DictionaryResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<DictionaryResponse> response, String errorMessage, int code) {

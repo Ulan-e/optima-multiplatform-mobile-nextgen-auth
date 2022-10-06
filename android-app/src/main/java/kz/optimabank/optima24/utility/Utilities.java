@@ -72,11 +72,11 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 import kg.optima.mobile.R;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.DigitizedCard;
 import kz.optimabank.optima24.model.gson.response.UserAccounts;
 import kz.optimabank.optima24.utility.crypt.CryptoUtils;
 
-import static kz.optimabank.optima24.app.OptimaBank.getContext;
 import static kz.optimabank.optima24.utility.Constants.DATE_FORMAT_FOR_REQEST;
 import static kz.optimabank.optima24.utility.Constants.PHONE_NUMBER_PREFIX;
 import static kz.optimabank.optima24.utility.Constants.PHONE_NUMBER_PREFIX_PLUS;
@@ -140,10 +140,10 @@ public final class Utilities {
     }
 
     public static boolean isInternetConnectionError() {
-        if (!Utilities.hasInternetConnection(getContext())) {
+        if (!Utilities.hasInternetConnection(OptimaApp.Companion.getInstance())) {
             // может вызываться не в главном потоке
             new Handler(Looper.getMainLooper()).post(() ->
-                Toast.makeText(getContext(), getContext().getString(R.string.internet_switched_off), Toast.LENGTH_SHORT).show());
+                Toast.makeText(OptimaApp.Companion.getInstance(), OptimaApp.Companion.getInstance().getString(R.string.internet_switched_off), Toast.LENGTH_SHORT).show());
             return true;
         }
         return false;

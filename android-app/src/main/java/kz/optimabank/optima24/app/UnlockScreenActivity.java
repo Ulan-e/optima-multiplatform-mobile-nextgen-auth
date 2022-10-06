@@ -17,8 +17,6 @@ import kz.optimabank.optima24.db.controllers.DigitizedCardController;
 import kz.optimabank.optima24.db.entry.DigitizedCard;
 import kz.optimabank.optima24.utility.Constants;
 
-import static kz.optimabank.optima24.app.OptimaBank.NFC_TAG;
-
 
 public class UnlockScreenActivity extends OptimaActivity {
     @Override
@@ -89,25 +87,25 @@ public class UnlockScreenActivity extends OptimaActivity {
     @Override
     public void onAttachedToWindow() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Log.i(NFC_TAG,"Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ==== TRUE");
+            Log.i("NFC_TAG","Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ==== TRUE");
 
                 KeyguardManager mKeyguardManager = (KeyguardManager) getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
                 if (mKeyguardManager != null) {
                     mKeyguardManager.requestDismissKeyguard(this, new KeyguardManager.KeyguardDismissCallback() {
                         @Override
                         public void onDismissError() {
-                            Log.i(NFC_TAG,"onDismissError");
+                            Log.i("NFC_TAG","onDismissError");
                             super.onDismissError();
-                            Log.i(NFC_TAG,"onDismissError");
+                            Log.i("NFC_TAG","onDismissError");
                         }
 
 
 
                         @Override
                         public void onDismissSucceeded() {
-                            Log.i(NFC_TAG,"onDismissSucceeded");
+                            Log.i("NFC_TAG","onDismissSucceeded");
                             super.onDismissSucceeded();
-                            Log.i(NFC_TAG,"onDismissSucceeded");
+                            Log.i("NFC_TAG","onDismissSucceeded");
 
                         }
 
@@ -117,14 +115,14 @@ public class UnlockScreenActivity extends OptimaActivity {
 
 
         } else {
-            Log.i(NFC_TAG,"Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ==== FALSE");
+            Log.i("NFC_TAG","Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ==== FALSE");
             //getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON,
                     WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         }
         setContentView(R.layout.unlock_screen);
 
-        Log.d(NFC_TAG,"onCreate UnlockScreenActivity");
+        Log.d("NFC_TAG","onCreate UnlockScreenActivity");
         Handler handler = new Handler();
         final Runnable r = new Runnable() {
             public void run() {

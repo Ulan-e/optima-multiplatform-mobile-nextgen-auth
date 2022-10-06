@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.DigitizedCard;
 import kz.optimabank.optima24.room_db.daos.CardImageDao;
 import kz.optimabank.optima24.room_db.repository.CardImageRepository;
@@ -12,7 +12,7 @@ import kz.optimabank.optima24.room_db.repository.CardImageRepository;
 public class CardImageRepositoryImpl implements CardImageRepository {
 
     private static final String TAG = CardImageRepositoryImpl.class.getSimpleName();
-    private final CardImageDao dao = OptimaBank.getInstance().appDatabase.cardImageDao();
+    private final CardImageDao dao = OptimaApp.Companion.getAppDatabase().cardImageDao();
 
     @Override
     public List<DigitizedCard> getAll(String phone) {

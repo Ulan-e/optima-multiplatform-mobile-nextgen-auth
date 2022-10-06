@@ -5,7 +5,7 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.Limit;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -27,7 +27,7 @@ public class InternetImpl extends GeneralService implements InternetInterface {
     @Override
     public void checkInternet(Context context, int code, boolean isShowProgress) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().checkInternet(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().checkInternet(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<Limit.Internet>>() {
                     @Override
                     public void onSuccess(BaseResponse<Limit.Internet> response, String errorMessage, int code) {
@@ -47,7 +47,7 @@ public class InternetImpl extends GeneralService implements InternetInterface {
     @Override
     public void setInternet(Context context, int code, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().setInternet(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId), new NetworkResponse.SuccessRequestListener<BaseResponse<String>>() {
+        NetworkResponse.getInstance().setInternet(context, HeaderHelper.getOpenSessionHeader(context, sessionId), new NetworkResponse.SuccessRequestListener<BaseResponse<String>>() {
             @Override
             public void onSuccess(BaseResponse response, ResponseBody errorBody, int httpStatusCode) {
                 /*if (httpStatusCode!=200){

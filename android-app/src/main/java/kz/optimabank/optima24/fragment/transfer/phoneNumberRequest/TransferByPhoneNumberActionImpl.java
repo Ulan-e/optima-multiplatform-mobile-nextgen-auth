@@ -4,7 +4,7 @@ import static kz.optimabank.optima24.utility.Constants.CONNECTION_ERROR_STATUS;
 
 import android.content.Context;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.manager.GeneralManager;
 
@@ -15,7 +15,7 @@ public class TransferByPhoneNumberActionImpl implements TransferByPhoneNumberAct
     @Override
     public void getAccountDataByPhoneNumber(Context context, String phoneNumber) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getAccDataByPhoneNumber(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getAccDataByPhoneNumber(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 phoneNumber, (response, errorMessage, code) -> {
                     if (response != null) {
                         accDataByPhoneNumberCallback.getAccDataByPhoneNumberResponse(code, errorMessage, response.data);

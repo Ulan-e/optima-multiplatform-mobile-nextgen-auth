@@ -3,7 +3,8 @@ package kz.optimabank.optima24.model.service;
 import android.content.Context;
 import android.util.Log;
 import org.json.JSONObject;
-import kz.optimabank.optima24.app.OptimaBank;
+
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.ProfImageLoader;
@@ -20,7 +21,7 @@ public class ProfImageLoaderImpl extends GeneralService implements ProfImageLoad
     public void setProfImage(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
         NetworkResponse.getInstance().setImageProfile(context,
-                OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+                HeaderHelper.getOpenSessionHeader(context, sessionId),
                 body, new NetworkResponse.SuccessRequestListener<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, ResponseBody errorBody, int httpStatusCode) {
@@ -39,7 +40,7 @@ public class ProfImageLoaderImpl extends GeneralService implements ProfImageLoad
     @Override
     public void getProfImage(Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getProfImage(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getProfImage(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListener<ResponseBody>() {
                     @Override
                     public void onSuccess(ResponseBody response, ResponseBody errorBody, int httpStatusCode) {

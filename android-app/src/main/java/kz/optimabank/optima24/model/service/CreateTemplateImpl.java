@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.CreateTemplate;
@@ -22,7 +22,7 @@ public class CreateTemplateImpl extends GeneralService implements CreateTemplate
     @Override
     public void createPaymentTemplate(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().createPaymentTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().createPaymentTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 body, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {
@@ -43,7 +43,7 @@ public class CreateTemplateImpl extends GeneralService implements CreateTemplate
     @Override
     public void createTransferTemplate(Context context, JSONObject body) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().createTransferTemplate(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().createTransferTemplate(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 body, new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {

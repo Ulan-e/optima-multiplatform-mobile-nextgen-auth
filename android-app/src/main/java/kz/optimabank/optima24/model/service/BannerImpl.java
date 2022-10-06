@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.model.base.Banner;
 import kz.optimabank.optima24.model.base.NetworkResponse;
@@ -30,7 +30,7 @@ public class BannerImpl extends GeneralService implements BannerInterface {
 
     @Override
     public void getBanners(Context context) {
-        NetworkResponse.getInstance().getBanners(context, OptimaBank.getInstance().getOpenSessionHeader(null),
+        NetworkResponse.getInstance().getBanners(context, HeaderHelper.getOpenSessionHeader(context, null),
                 (response, errorMessage, code) -> {
                     if (response != null)
                         bannersCallback.jsonBannersResponse(code, errorMessage, response.data);
@@ -44,7 +44,7 @@ public class BannerImpl extends GeneralService implements BannerInterface {
 
     @Override
     public void checkServerAvailability(Context context) {
-        getApi(context).checkServer(OptimaBank.getInstance().getOpenSessionHeader(null))
+        getApi(context).checkServer(HeaderHelper.getOpenSessionHeader(context, null))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableSingleObserver<Response<BaseResponse<String>>>() {

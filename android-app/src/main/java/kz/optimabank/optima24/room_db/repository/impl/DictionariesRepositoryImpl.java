@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.Dictionary;
 import kz.optimabank.optima24.room_db.daos.DictionaryDao;
 import kz.optimabank.optima24.room_db.repository.DictionariesRepository;
@@ -12,7 +12,7 @@ import kz.optimabank.optima24.room_db.repository.DictionariesRepository;
 public class DictionariesRepositoryImpl implements DictionariesRepository {
 
     private static final String TAG = DictionariesRepositoryImpl.class.getSimpleName();
-    private final DictionaryDao dao = OptimaBank.getInstance().appDatabase.dictionaryDao();
+    private final DictionaryDao dao = OptimaApp.Companion.getAppDatabase().dictionaryDao();
 
     @Override
     public void insertAll(List<Dictionary> dictionaries) {

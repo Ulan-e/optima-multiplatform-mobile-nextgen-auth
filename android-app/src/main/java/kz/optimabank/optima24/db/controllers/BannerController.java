@@ -6,10 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.model.base.Banner;
 import kz.optimabank.optima24.utility.BannersDirectoryNamePreferences;
-import kz.optimabank.optima24.utility.ImageDownloader;
 
 public class BannerController {
     private  static BannerController controller;
@@ -62,7 +60,7 @@ public class BannerController {
 //                realm.insert(banners);
 //            });
 //            for (Banner banner : banners) {
-//                ImageDownloader.getBannerImage(context, OptimaBank.getInstance().getOpenSessionHeader(null), banner.BannerUrl, banner.ImageName);
+//                ImageDownloader.getBannerImage(context, HeaderHelper.getOpenSessionHeader(context, sessionId), banner.BannerUrl, banner.ImageName);
 //            }
 //        }
     }

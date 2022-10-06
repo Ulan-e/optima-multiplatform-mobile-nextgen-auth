@@ -1,11 +1,10 @@
 package kz.optimabank.optima24.model.service;
 
 import android.content.Context;
-import android.graphics.drawable.LevelListDrawable;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.base.NewsItem;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -24,7 +23,7 @@ public class NewsImpl extends GeneralService implements News {
 
     @Override
     public void getNews(Context context) {
-        NetworkResponse.getInstance().getNews(context, OptimaBank.getInstance().getOpenSessionHeader(null),
+        NetworkResponse.getInstance().getNews(context, HeaderHelper.getOpenSessionHeader(context, null),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<NewsItem>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<NewsItem>> response, String errorMessage, int code) {
@@ -44,7 +43,7 @@ public class NewsImpl extends GeneralService implements News {
 
     @Override
     public void getNewsImage(Context context, String name, String category) {
-        NetworkResponse.getInstance().getNewsImage(context, OptimaBank.getInstance().getOpenSessionHeader(null), name, category,
+        NetworkResponse.getInstance().getNewsImage(context, HeaderHelper.getOpenSessionHeader(context,  null), name, category,
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<String>>() {
                     @Override
                     public void onSuccess(BaseResponse<String> response, String errorMessage, int code) {

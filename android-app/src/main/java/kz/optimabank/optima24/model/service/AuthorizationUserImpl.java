@@ -3,12 +3,11 @@ package kz.optimabank.optima24.model.service;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.util.Log;
 
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.AuthorizationResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -28,7 +27,7 @@ public class AuthorizationUserImpl extends GeneralService implements Authorizati
     @Override
     public void loginRequest(final Context context, String login, String password, String sms) {
         NetworkResponse.getInstance().openSession(context,
-                getOpenSessionBody(login, password, sms), OptimaBank.getInstance().getOpenSessionHeader(null),
+                getOpenSessionBody(login, password, sms), HeaderHelper.getOpenSessionHeader(context, null),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<AuthorizationResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<AuthorizationResponse> response, String errorMessage, int code) {
@@ -109,7 +108,7 @@ public class AuthorizationUserImpl extends GeneralService implements Authorizati
 
     @Override
     public void getAuthorizationType(Context context, String login) {
-        NetworkResponse.getInstance().getAuthorizationType(context, OptimaBank.getInstance().getOpenSessionHeader(null), login,
+        NetworkResponse.getInstance().getAuthorizationType(context, HeaderHelper.getOpenSessionHeader(context, null), login,
                 (response, errorMessage, code) -> {
                     if (response != null) {
                         getAuthorizationTypeCallback.jsonCheckPasswordResponse(code, errorMessage, response.data);

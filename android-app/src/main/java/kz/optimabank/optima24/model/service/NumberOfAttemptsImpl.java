@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.interfaces.NumberOfAttemptsInterface;
 import kz.optimabank.optima24.model.manager.GeneralManager;
@@ -17,7 +17,7 @@ public class NumberOfAttemptsImpl implements NumberOfAttemptsInterface {
     @Override
     public void getMaxNumberOfAttemptsRequest(Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getMaxNumberOfAttemptsRequest(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getMaxNumberOfAttemptsRequest(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 (response, errorBody, httpStatusCode) -> {
                     if (httpStatusCode == 0) {
                         callback.onNumberOfAttemptsResponse(httpStatusCode, response.message,response.data);

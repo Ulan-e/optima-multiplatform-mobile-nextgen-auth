@@ -5,7 +5,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.ATFStatement;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.AccountsResponse;
@@ -28,7 +28,7 @@ public class AccountsImpl extends GeneralService implements Accounts {
     @Override
     public void getAccounts(final Context context, boolean isShowPB, boolean needUpdate) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        accountsCall = NetworkResponse.getInstance().getAccounts(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        accountsCall = NetworkResponse.getInstance().getAccounts(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<AccountsResponse>>() {
                     @Override
                     public void onSuccess(BaseResponse<AccountsResponse> response, String errorMessage, int code) {
@@ -64,7 +64,7 @@ public class AccountsImpl extends GeneralService implements Accounts {
     @Override
     public void getAccountsOperations(final Context context) {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        NetworkResponse.getInstance().getAccountsOperations(context, OptimaBank.getInstance().getOpenSessionHeader(sessionId),
+        NetworkResponse.getInstance().getAccountsOperations(context, HeaderHelper.getOpenSessionHeader(context, sessionId),
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<ATFStatement>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<ATFStatement>> response, String errorMessage, int code) {

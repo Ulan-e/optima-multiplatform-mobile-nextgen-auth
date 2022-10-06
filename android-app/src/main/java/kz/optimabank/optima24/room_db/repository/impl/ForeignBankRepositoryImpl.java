@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
-import kz.optimabank.optima24.app.OptimaBank;
+import kg.optima.mobile.android.OptimaApp;
 import kz.optimabank.optima24.db.entry.ForeignBank;
 import kz.optimabank.optima24.room_db.daos.ForeignBankDao;
 import kz.optimabank.optima24.room_db.repository.ForeignBankRepository;
@@ -12,7 +12,7 @@ import kz.optimabank.optima24.room_db.repository.ForeignBankRepository;
 public class ForeignBankRepositoryImpl implements ForeignBankRepository {
 
     private static final String TAG = ForeignBankRepositoryImpl.class.getSimpleName();
-    private final ForeignBankDao dao = OptimaBank.getInstance().appDatabase.foreignBankDao();
+    private final ForeignBankDao dao = OptimaApp.Companion.getAppDatabase().foreignBankDao();
 
     @Override
     public void insertAll(List<ForeignBank> foreignBanks) {

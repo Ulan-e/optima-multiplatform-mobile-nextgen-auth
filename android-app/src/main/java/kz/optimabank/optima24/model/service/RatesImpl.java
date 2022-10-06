@@ -4,7 +4,7 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.base.Rate;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -23,7 +23,7 @@ public class RatesImpl extends GeneralService implements Rates {
 
     @Override
     public void getRates(final Context context, boolean visibleProgressBar) {
-        NetworkResponse.getInstance().getRates(context, OptimaBank.getInstance().getOpenSessionHeader(null), visibleProgressBar,
+        NetworkResponse.getInstance().getRates(context, HeaderHelper.getOpenSessionHeader(context, null), visibleProgressBar,
                 new NetworkResponse.SuccessRequestListenerAllResponse<BaseResponse<ArrayList<Rate>>>() {
                     @Override
                     public void onSuccess(BaseResponse<ArrayList<Rate>> response, String errorMessage, int code) {

@@ -18,7 +18,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.model.base.SecretQuestionResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -59,7 +59,7 @@ public class RegistrationViewModel extends AndroidViewModel {
 
     // запрос на получения вопросов при для регистрации
     public void fetchQuestions() {
-        compositeDisposable.add(getApi().getQuestions(OptimaBank.getInstance().getOpenSessionHeader(null))
+        compositeDisposable.add(getApi().getQuestions(HeaderHelper.getOpenSessionHeader(getApplication(), null))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<QuestionsResponse>() {
@@ -87,7 +87,7 @@ public class RegistrationViewModel extends AndroidViewModel {
     private void requestSaveUser(String login, String password, String answer, String questionId) {
         compositeDisposable.add(getApi().saveUser(
                 getRequestBody(login, password, answer, questionId),
-                OptimaBank.getInstance().getOpenSessionHeader(null)
+                HeaderHelper.getOpenSessionHeader(getApplication(), null)
         )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

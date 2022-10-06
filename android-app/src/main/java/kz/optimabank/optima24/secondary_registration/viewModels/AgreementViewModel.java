@@ -14,7 +14,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.app.OptimaBank;
+import kz.optimabank.optima24.app.HeaderHelper;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
 import kz.optimabank.optima24.model.interfaces.IApiMethods;
@@ -47,7 +47,7 @@ public class AgreementViewModel extends AndroidViewModel {
 
     // запрашиваем ссылку на получения документа пользовательского соглашения
     private void requestAgreementDocument() {
-        compositeDisposable.add(getApi().getAgreement(OptimaBank.getInstance().getOpenSessionHeader(null))
+        compositeDisposable.add(getApi().getAgreement(HeaderHelper.getOpenSessionHeader(getApplication(), null))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<BaseResponse<String>>() {
@@ -74,7 +74,7 @@ public class AgreementViewModel extends AndroidViewModel {
 
     // запрашиваем проверку пользователя перед началом регистрации
     private void requestCheckUser(String login, String password) {
-        compositeDisposable.add(getApi().checkUser(login, password, null, OptimaBank.getInstance().getOpenSessionHeader(null))
+        compositeDisposable.add(getApi().checkUser(login, password, null, HeaderHelper.getOpenSessionHeader(getApplication(), null))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<BaseResponse<String>>() {
@@ -99,7 +99,7 @@ public class AgreementViewModel extends AndroidViewModel {
 
     // запрашиваем потверждение на проверку пользователя перед началом регистрации
     private void requestConfirmCheckUser(String login, String password, String confirmationCode) {
-        Disposable disposable = getApi().checkUser(login, password, confirmationCode, OptimaBank.getInstance().getOpenSessionHeader(null))
+        Disposable disposable = getApi().checkUser(login, password, confirmationCode, HeaderHelper.getOpenSessionHeader(getApplication(), null))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<BaseResponse<String>>() {
