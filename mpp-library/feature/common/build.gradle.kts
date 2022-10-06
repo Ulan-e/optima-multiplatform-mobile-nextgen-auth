@@ -10,9 +10,9 @@ dependencies {
     commonMainImplementation(project(":mpp-library:base"))
     commonMainImplementation(project(":mpp-library:core"))
     commonMainImplementation(project(":mpp-library:feature"))
-    commonMainImplementation(project(":mpp-library:feature:auth"))
 
     commonMainImplementation("io.insert-koin:koin-core:3.1.4")
+    commonMainImplementation(libs.coroutines)
 }
 
 android {

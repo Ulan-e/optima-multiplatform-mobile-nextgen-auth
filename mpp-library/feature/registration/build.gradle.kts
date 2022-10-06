@@ -15,6 +15,7 @@ dependencies {
     commonMainImplementation(project(":mpp-library:core:data:network"))
     commonMainImplementation(project(":mpp-library:core:data:storage"))
     commonMainImplementation(project(":mpp-library:feature"))
+    commonMainImplementation(project(":mpp-library:feature:common"))
 
     commonMainImplementation(libs.coroutines)
     commonMainImplementation("io.insert-koin:koin-core:3.1.4")

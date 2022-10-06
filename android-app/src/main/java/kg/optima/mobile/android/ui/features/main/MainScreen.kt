@@ -5,9 +5,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.navigation.root.MainComponent
-import kotlinx.parcelize.IgnoredOnParcel
+import kg.optima.mobile.android.ui.base.MainContainer
 
 @Parcelize
 class MainScreen(

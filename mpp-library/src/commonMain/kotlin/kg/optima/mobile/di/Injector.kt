@@ -2,6 +2,7 @@ package kg.optima.mobile.di
 
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.common.CommonFeatureFactory
+import kg.optima.mobile.feature.FeatureFactory
 import kg.optima.mobile.network.NetworkFactory
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.storage.StorageFactory
@@ -18,6 +19,7 @@ object Injector {
 	)
 
 	private val featureModules: List<Module> = listOf(
+		FeatureFactory.module,
 		AuthFeatureFactory.module,
 		CommonFeatureFactory.module,
 		RegistrationFeatureFactory.module,

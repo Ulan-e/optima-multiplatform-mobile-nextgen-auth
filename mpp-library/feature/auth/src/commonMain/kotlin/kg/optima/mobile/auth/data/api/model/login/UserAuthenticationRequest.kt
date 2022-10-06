@@ -1,17 +1,16 @@
 package kg.optima.mobile.auth.data.api.model.login
 
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 class UserAuthenticationRequest(
-    val grantType: GrantType,
-    val clientId: String,
-    val password: String,
-) {
-	val map: Map<String, String>
-		get() = mapOf(
-            "client_id" to "optima-24",
-            "grant_type" to grantType.method,
-            "username" to clientId,
-            "password" to password,
-		)
-}
+	@SerialName("login")
+	val clientId: String,
+
+	@SerialName("hashpassword")
+	val password: String,
+
+	@SerialName("confirmationcode")
+	val smsCode: String?
+)

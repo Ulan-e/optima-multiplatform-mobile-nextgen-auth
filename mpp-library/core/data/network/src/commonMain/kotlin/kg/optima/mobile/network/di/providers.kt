@@ -17,83 +17,81 @@ import kg.optima.mobile.network.logger.KtorLogger
 import kotlinx.serialization.json.Json
 
 fun provideNetworkClient(httpClient: HttpClient, json: Json): NetworkClient {
-    return NetworkClientImpl(httpClient, json)
+	return NetworkClientImpl(httpClient, json)
 }
 
 fun provideSerializer() = KotlinxSerializer(
-    Json {
-        isLenient = true
-        ignoreUnknownKeys = true
-        explicitNulls = false
-    }
+	Json {
+		isLenient = true
+		ignoreUnknownKeys = true
+		explicitNulls = false
+	}
 )
 
 fun provideJson() = Json {
-    isLenient = true
-    prettyPrint = true
-    ignoreUnknownKeys = true
-    encodeDefaults = true
+	isLenient = true
+	prettyPrint = true
+	ignoreUnknownKeys = true
+	encodeDefaults = true
 }
 
 private const val TIME_OUT = 60000L
 fun provideHttpClient(
-    kotlinxSerializer: KotlinxSerializer,
-    httpLogger: Logger = KtorLogger(),
-    networkFailure: NetworkFailure,
-    params: StringMap,
+	kotlinxSerializer: KotlinxSerializer,
+	httpLogger: Logger = KtorLogger(),
+	networkFailure: NetworkFailure,
+	params: StringMap,
 ): HttpClient {
-    return HttpClient {
-        install(JsonFeature) {
-            serializer = kotlinxSerializer
-            accept(ContentType.Application.FormUrlEncoded)
-            accept(ContentType.Application.Json)
-            accept(ContentType.Text.Plain)
-            accept(ContentType.Text.Html)
-        }
-        install(DefaultHeader) {
-            headers = { params }
-        }
-        HttpResponseValidator {
-            handleResponseException { error ->
-                print(error)
-                when (error) {
-                    is ClientRequestException -> {
-                        throw getError(error, networkFailure)
-                    }
-                    else -> {
-                        throw networkFailure.getUnknownException()
-                    }
-                }
-            }
-        }
-        install(HttpTimeout) {
-            connectTimeoutMillis = TIME_OUT
-            socketTimeoutMillis = TIME_OUT
-            requestTimeoutMillis = TIME_OUT
-        }
-        install(Logging) {
-            level = LogLevel.ALL
-            logger = httpLogger
-        }
-    }
+	return HttpClient {
+		install(JsonFeature) {
+			serializer = kotlinxSerializer
+			accept(ContentType.Application.FormUrlEncoded)
+			accept(ContentType.Application.Json)
+			accept(ContentType.Text.Plain)
+			accept(ContentType.Text.Html)
+		}
+		install(DefaultHeader) {
+			headers = { params }
+		}
+		HttpResponseValidator {
+			handleResponseException { error ->
+				print(error)
+				when (error) {
+					is ClientRequestException -> throw getError(error, networkFailure)
+					else -> throw networkFailure.getUnknownException()
+				}
+			}
+		}
+		install(HttpTimeout) {
+			connectTimeoutMillis = TIME_OUT
+			socketTimeoutMillis = TIME_OUT
+			requestTimeoutMillis = TIME_OUT
+		}
+		install(Logging) {
+			level = LogLevel.ALL
+			logger = httpLogger
+		}
+	}
 }
 
-private suspend fun getError(
-    error: ClientRequestException,
-    networkFailure: NetworkFailure,
+suspend fun getError(
+	error: ClientRequestException,
+	networkFailure: NetworkFailure,
 ): Throwable {
-    return try {
-        when (error.response.status) {
-            HttpStatusCode.NotFound -> {
-                networkFailure.getNotFoundFailure()
-            }
-            else -> {
-                //        crashLogger.recordException(failure)
-                val errorResponse = error.response.readText(Charsets.UTF_8)
-                networkFailure.getBaseFailure(errorResponse)
-            }
-        }
-    } catch (e: Throwable) {
-        networkFailure.getUnknownException()
-    }
+	return try {
+		when (error.response.status) {
+			HttpStatusCode.BadRequest ->
+				networkFailure.getBadRequestException()
+			HttpStatusCode.Unauthorized ->
+				networkFailure.getNotFoundFailure()
+			HttpStatusCode.NotFound ->
+				networkFailure.getNotFoundFailure()
+			else -> {
+				val errorResponse = error.response.readText(Charsets.UTF_8)
+				networkFailure.getBaseFailure(errorResponse)
+			}
+		}
+	} catch (e: Throwable) {
+		networkFailure.getUnknownException()
+	}
 }

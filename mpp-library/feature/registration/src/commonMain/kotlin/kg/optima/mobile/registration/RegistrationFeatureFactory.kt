@@ -26,8 +26,8 @@ import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
-import kg.optima.mobile.registration.presentation.sms_code.SmsCodeIntent
-import kg.optima.mobile.registration.presentation.sms_code.SmsCodeState
+import kg.optima.mobile.registration.presentation.sms_code.RegistrationSmsCodeIntent
+import kg.optima.mobile.registration.presentation.sms_code.RegistrationSmsCodeState
 import org.koin.core.component.KoinComponent
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -49,8 +49,8 @@ object RegistrationFeatureFactory : Factory {
 		factory { AgreementState() }
 		factory { st -> AgreementIntent(st.get()) }
 
-		factory { SmsCodeState() }
-		factory { st -> SmsCodeIntent(st.get()) }
+		factory { RegistrationSmsCodeState() }
+		factory { st -> RegistrationSmsCodeIntent(st.get()) }
 
 		factory { OfferState() }
 		factory { st -> OfferIntent(st.get()) }

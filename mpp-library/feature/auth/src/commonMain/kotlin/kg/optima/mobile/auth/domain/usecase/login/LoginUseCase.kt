@@ -1,15 +1,18 @@
 package kg.optima.mobile.auth.domain.usecase.login
 
-import kg.optima.mobile.auth.data.api.model.login.LoginResponse
 import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationRequest
-import kg.optima.mobile.auth.data.component.AuthPreferences
+import kg.optima.mobile.feature.auth.component.AuthPreferences
 import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.base.data.model.onSuccess
 import kg.optima.mobile.base.domain.BaseUseCase
+import kg.optima.mobile.core.common.CryptographyUtils
 import kg.optima.mobile.core.error.Failure
+import kg.optima.mobile.feature.auth.component.SessionData
+import kg.optima.mobile.feature.auth.model.AuthOtpModel
+import kg.optima.mobile.feature.auth.model.SignInInfo
+import kg.optima.mobile.network.const.NetworkCode
 
 /* TODO
    1. Refactor saving params with throwing errors and handling them.
@@ -18,14 +21,14 @@ import kg.optima.mobile.core.error.Failure
 class LoginUseCase(
 	private val authRepository: AuthRepository,
 	private val authPreferences: AuthPreferences,
-) : BaseUseCase<LoginUseCase.Params, LoginModel.Success>() {
+) : BaseUseCase<LoginUseCase.Params, LoginModel.SignInResult>() {
 
 	override suspend fun execute(
 		model: Params,
-	): Either<Failure, LoginModel.Success> {
+	): Either<Failure, LoginModel.SignInResult> {
 		return when (model) {
 			is Params.Biometry -> signIn()
-			is Params.Password -> signIn(model.grantType, model.clientId, model.password)
+			is Params.Password -> signIn(model.clientId, model.password, model.smsCode)
 			is Params.Pin -> {
 				if (model.pin == authPreferences.pin) {
 					signIn()
@@ -37,47 +40,60 @@ class LoginUseCase(
 	}
 
 	private suspend fun signIn(
-		grantType: GrantType = GrantType.Password,
 		clientId: String = authPreferences.clientId.orEmpty(),
 		password: String = authPreferences.password,
-	): Either<Failure, LoginModel.Success> {
-		val response: Either<Failure, LoginResponse> = if (clientId == "371564" && password == "killme123") {
-			Either.Right(LoginResponse(
-				accessToken = "",
-				expiresIn = 0,
-				refreshToken = "",
-				refreshTokenExpiresIn = 0,
-				sessionState = "",
-			))
-		} else {
-			Either.Left(Failure.Message("Неверный пароль"))
-		}
+		smsCode: String? = null,
+	): Either<Failure, LoginModel.SignInResult> {
+		val request = UserAuthenticationRequest(
+			clientId = clientId,
+			password = CryptographyUtils.getHash(password),
+			smsCode = smsCode,
+		)
+		return authRepository.login(request).map {
+			authPreferences.clearProfile()
+			when (NetworkCode.byCode(it.code)) {
+				NetworkCode.Success -> {
+					authPreferences.clientId = clientId
+					it.data?.let { data ->
+						authPreferences.password = password
+						authPreferences.sessionData = SessionData(
+							accessToken = data.accessToken,
+							startDateTime = data.startDateTime,
+							lastUpdate = data.lastUpdate,
+							sessionDuration = data.sessionDuration
+						)
+						authPreferences.isAuthorized = true
 
-//		val request = UserAuthenticationRequest(
-//			grantType = grantType,
-//			clientId = clientId,
-//			password = password,
-//		)
-//		return authRepository.login(request.map)
-		val firstAuth = !authPreferences.isAuthorized
-		return response
-			.onSuccess {
-				authPreferences.clientId = clientId
-				authPreferences.password = password
-				authPreferences.saveToken(it.accessToken)
-				authPreferences.refreshToken = it.refreshToken
-				authPreferences.isAuthorized = true
+						LoginModel.SignInResult.SuccessAuth(firstAuth = !authPreferences.isAuthorized)
+					} ?: run {
+						LoginModel.SignInResult.Error
+					}
+				}
+				NetworkCode.SmsCodeRequired -> {
+					authPreferences.clientId = clientId
+					authPreferences.isAuthorized = false
+
+					LoginModel.SignInResult.SmsCodeRequired(
+						AuthOtpModel(
+							phoneNumber = "+996 556 250 626",
+							signInInfo = SignInInfo(clientId, password, smsCode)
+						)
+					)
+				}
+				NetworkCode.IncorrectCodeOrPassword ->
+					LoginModel.SignInResult.IncorrectData(it.message)
+				NetworkCode.UserBlocked -> LoginModel.SignInResult.UserBlocked
+				else -> LoginModel.SignInResult.Error
 			}
-			.map { LoginModel.Success(firstAuth) }
+		}
 	}
 
 	sealed interface Params {
 		class Password(
 			val clientId: String,
 			val password: String,
-		) : Params {
-			val grantType = GrantType.Password
-		}
+			val smsCode: String?
+		) : Params
 
 		class Pin(
 			val pin: String
