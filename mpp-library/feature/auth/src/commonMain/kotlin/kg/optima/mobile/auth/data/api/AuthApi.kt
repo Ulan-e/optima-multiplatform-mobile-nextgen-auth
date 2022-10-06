@@ -18,4 +18,9 @@ abstract class AuthApi(
 		path: String = "api/auth/session",
 		request: UserAuthenticationRequest,
 	): BaseDto<LoginResponse>
+
+	abstract suspend fun keepAlive(
+		path: String = "api/auth/session/keepalive",
+		sessionId: String,
+	): BaseDto<String>
 }

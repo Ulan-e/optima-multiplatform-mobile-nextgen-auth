@@ -39,7 +39,7 @@ abstract class BaseApi(
 
 	suspend inline fun <Request : Any?, reified V> post(
 		path: String,
-		noinline headers: HeadersBuilder.() -> Unit,
+		noinline headers: HeadersBuilder.() -> Unit = {},
 		request: Request,
 	): V {
 		return networkClient.post(baseUrl, path, headers, request)
@@ -47,7 +47,7 @@ abstract class BaseApi(
 
 	suspend inline fun <reified V> get(
 		path: String,
-		noinline headers: HeadersBuilder.() -> Unit,
+		noinline headers: HeadersBuilder.() -> Unit = {},
 		params: StringMap = mapOf(),
 	): V {
 		return networkClient.get(baseUrl, path, headers, params)

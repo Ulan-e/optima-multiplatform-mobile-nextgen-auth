@@ -54,7 +54,7 @@ dependencies {
     commonMainApi(libs.mokoCrashReportingCrashlytics)
     commonMainApi(libs.mokoCrashReportingNapier)
 
-    commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")
+    commonMainImplementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
 
     commonTestImplementation(libs.mokoTestCore)
     commonTestImplementation(libs.mokoMvvmTest)

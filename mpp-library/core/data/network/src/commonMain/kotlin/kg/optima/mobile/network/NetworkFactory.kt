@@ -15,16 +15,17 @@ object NetworkFactory {
 	val module: Module = module {
 		factory { provideJson() }
         factory { provideSerializer() }
-		factory() {
+		factory {
 			provideHttpClient(
                 kotlinxSerializer = get(),
 				networkFailure = NetworkFailureImpl(json = get()),
 				params = mapOf(
-					HttpHeaders.UserAgent to "Optima24/2.10.3 (Android/12; Samsung SM-G991B/vbeb8u4kz7ooj99o)"
+					HttpHeaders.UserAgent to "Optima24/2.10.3 (Android/12; Samsung SM-G991B/vbeb8u4kz7ooj99o)",
+					HttpHeaders.AcceptLanguage to "ru-RU",
 				)
 			)
 		}
-		factory() {
+		factory {
 			provideNetworkClient(httpClient = get(), json = get())
 		}
 	}

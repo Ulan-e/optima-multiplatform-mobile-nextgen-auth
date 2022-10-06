@@ -49,8 +49,12 @@ object BottomNavigationScreen : BaseScreen {
 
 		val navigator = LocalNavigator.currentOrThrow
 
-		androidx.activity.compose.BackHandler {
-			if (!navigator.canPop) activity.finish() else navigator.pop()
+		BackHandler {
+			if (!navigator.canPop) {
+				activity.finish()
+			} else {
+				navigator.pop()
+			}
 		}
 
 		Scaffold(

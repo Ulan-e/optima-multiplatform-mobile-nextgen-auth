@@ -80,11 +80,13 @@ suspend fun getError(
 ): Throwable {
 	return try {
 		when (error.response.status) {
-			HttpStatusCode.NotFound -> {
+			HttpStatusCode.BadRequest ->
+				networkFailure.getBadRequestException()
+			HttpStatusCode.Unauthorized ->
 				networkFailure.getNotFoundFailure()
-			}
+			HttpStatusCode.NotFound ->
+				networkFailure.getNotFoundFailure()
 			else -> {
-				//        crashLogger.recordException(failure)
 				val errorResponse = error.response.readText(Charsets.UTF_8)
 				networkFailure.getBaseFailure(errorResponse)
 			}

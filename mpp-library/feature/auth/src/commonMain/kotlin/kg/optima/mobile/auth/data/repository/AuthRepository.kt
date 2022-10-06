@@ -10,4 +10,6 @@ import kg.optima.mobile.core.error.Failure
 interface AuthRepository {
 
 	suspend fun login(request: UserAuthenticationRequest): Either<Failure, BaseDto<LoginResponse>>
+
+	suspend fun keepAlive(sessionId: String): Either<Failure, BaseDto<String>>
 }

@@ -5,27 +5,18 @@ import kotlinx.serialization.json.Json
 
 class NetworkFailureImpl(private val json: Json) : NetworkFailure {
 
-    override fun getDefaultFailure(): Throwable {
-        return Failure.Default
-    }
+    override fun getDefaultFailure() = Failure.Default
 
-    override fun getNotFoundFailure(): Throwable {
-        return Failure.NotFoundFailure
-    }
-
-    override fun getBadRequestException(): Throwable {
-        return Failure.BadRequestException
-    }
-
-    override fun getUnknownException(): Throwable {
-        return Failure.UnknownException
-    }
+    override fun getUnknownException() = Failure.UnknownException
 
     override fun getBaseFailure(errorResponse: String): Throwable {
-        val exception = json.decodeFromString(
-            ApiError.serializer(),
-            errorResponse
-        )
+        val exception = json.decodeFromString(ApiError.serializer(), errorResponse)
         return Failure.Message(exception.message ?: "Network Error")
     }
+
+    override fun getBadRequestException() = Failure.BadRequestException
+
+    override fun getUnauthorizedException() = Failure.UnauthorizedException
+
+    override fun getNotFoundFailure() = Failure.NotFoundFailure
 }

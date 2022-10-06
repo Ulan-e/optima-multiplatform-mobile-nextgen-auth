@@ -7,6 +7,7 @@ import kg.optima.mobile.auth.data.repository.AuthRepository
 import kg.optima.mobile.auth.data.repository.AuthRepositoryImpl
 import kg.optima.mobile.auth.domain.usecase.biometry_auth.SetupBiometryUseCase
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
+import kg.optima.mobile.auth.domain.usecase.keep_alive.KeepAliveUseCase
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.domain.usecase.pin_set.PinSetUseCase
 import kg.optima.mobile.auth.presentation.login.LoginIntent
@@ -30,7 +31,8 @@ object AuthFeatureFactory : Factory() {
 				kotlinxSerializer = get(),
 				networkFailure = NetworkFailureImpl(json = get()),
 				params = mapOf(
-					HttpHeaders.UserAgent to "Optima24/2.10.3 (Android/12; OnePlus 8/in2010asdas)"
+					HttpHeaders.UserAgent to "Optima24/2.10.3 (Android/12; Samsung SM-G991B/vbeb8u4kz7ooj99o)",
+					HttpHeaders.AcceptLanguage to "ru-RU",
 				),
 			)
 		}
@@ -48,6 +50,7 @@ object AuthFeatureFactory : Factory() {
 		factory { ClientInfoUseCase(authPreferences = get()) }
 		factory { PinSetUseCase(authPreferences = get()) }
 		factory { SetupBiometryUseCase(authPreferences = get()) }
+		factory { KeepAliveUseCase(authRepository = get(), authPreferences = get()) }
 
 		// States and Intents injection by pair
 		factory { next -> LoginState(next.get()) }

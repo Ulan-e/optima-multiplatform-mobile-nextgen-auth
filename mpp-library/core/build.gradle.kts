@@ -36,7 +36,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.ktorClient)
-                implementation("com.arkivanov.decompose:decompose:0.8.0")
+                implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
                 api("com.soywiz.korlibs.krypto:krypto:2.7.0")
             }
         }
