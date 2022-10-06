@@ -1,5 +1,6 @@
 package kz.optimabank.optima24.room_db.daos;
 
+import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -11,6 +12,7 @@ import io.reactivex.Single;
 import kz.optimabank.optima24.db.entry.Country;
 import kz.optimabank.optima24.db.entry.DigitizedCard;
 
+@Dao
 public interface CardImageDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

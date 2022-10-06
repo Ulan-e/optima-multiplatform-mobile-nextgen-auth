@@ -17,6 +17,7 @@ public class Country implements Serializable {
     @SerializedName("AlphaCode")
     public String AlphaCode;
     @SerializedName("Name")
+    @PrimaryKey
     public String Name;
     @SerializedName("NumericCode")
     public String NumericCode;
