@@ -9,6 +9,7 @@ import SwiftUI
 import design
 import registration
 import biometric
+import MultiPlatformLibrary
 
 public struct WelcomeView: View {
     
@@ -18,9 +19,15 @@ public struct WelcomeView: View {
     @State var showContact: Bool = false
     @State var showRegistration: Bool = false
     @State var isLoad: Bool = false
-    
+
+    var state: WelcomeState
+    var intent: WelcomeIntent
+
     public init(isLoad: Bool = false) {
         self.isLoad = isLoad
+
+        self.state = WelcomeState()
+        self.intent = WelcomeIntent(mppState: state)
     }
     
     public var body: some View {
@@ -65,7 +72,8 @@ public struct WelcomeView: View {
                     
                     NavigationLink(destination: DescriptionVerigramView(), isActive: $showLogin) {
                         RedButtonView(title: "Войти") { result in
-                            showLogin.toggle()
+//                            showLogin.toggle()
+                            intent.checkIsAuthorized()
                         }
                     }
                     
@@ -89,12 +97,45 @@ public struct WelcomeView: View {
                     NavigationItemView()
                 }
             }
+            .onAppear() {
+                observeState()
+            }
 //        }
+    }
+    
+    private func observeState() {
+        state.commonStateFlow.watch { state in
+            switch(state) {
+            case let x where x is BaseMppStateStateModelInitial:
+                print("Init")
+            case let x where x is BaseMppStateStateModelLoading:
+                print("Loading")
+            case let x where x is BaseMppStateStateModelError:
+                print("Error")
+            case .none:
+                print("none")
+            case .some(let a):
+                print("some\(a)")
+            default:
+                print("Default")
+            }
+//            if state is BaseMppStateStateModelInitial {
+//                print("Init")
+//            } else if state is BaseMppStateStateModelLoading {
+//                print("Loading")
+//                } else if state is BaseMppStateStateModelError {
+//                    print("Error")
+//                }
+//            else {
+//                print(state)
+//            }
+
+        }
     }
 }
 
-struct WelcomView_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeView()
-    }
-}
+//struct WelcomView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WelcomeView(factory: SharedFactory)
+//    }
+//}

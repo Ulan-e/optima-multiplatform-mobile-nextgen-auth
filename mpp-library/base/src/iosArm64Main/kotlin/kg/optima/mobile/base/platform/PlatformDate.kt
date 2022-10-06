@@ -1,7 +1,9 @@
 package kg.optima.mobile.base.platform
 
 import kg.optima.mobile.base.utils.orEmpty
-import platform.Foundation.*
+import platform.Foundation.NSDate
+import platform.Foundation.NSDateFormatter
+import platform.Foundation.timeIntervalSince1970
 
 actual object PlatformDate {
 

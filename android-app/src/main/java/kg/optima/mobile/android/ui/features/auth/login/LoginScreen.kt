@@ -16,7 +16,8 @@ import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.di.createWithStateParam
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -38,12 +39,12 @@ class LoginScreen(
 	@Composable
 	override fun Content() {
 		val product = remember {
-			AuthFeatureFactory.create<LoginIntent, LoginState>(nextScreenModel)
+			AuthFeatureFactory.createWithStateParam<LoginIntent, LoginState>(nextScreenModel)
 		}
 		val state = product.state
 		val intent = product.intent
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
 		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
@@ -58,7 +59,7 @@ class LoginScreen(
 		}
 
 		when (val loginState = model) {
-			is State.StateModel.Initial ->
+			is BaseMppState.StateModel.Initial ->
 				intent.getClientId()
 			is LoginState.LoginStateModel.ClientId ->
 				clientIdInputFieldState.value = loginState.clientId.orEmpty()

@@ -42,5 +42,6 @@ TODO: Add long description of the pod here.
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'biometric'
   s.dependency 'design'
+  s.dependency 'MultiPlatformLibrary'
   
 end

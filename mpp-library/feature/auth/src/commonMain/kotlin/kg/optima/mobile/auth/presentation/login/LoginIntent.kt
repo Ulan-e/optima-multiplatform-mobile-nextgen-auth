@@ -7,12 +7,12 @@ import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
 import kg.optima.mobile.auth.presentation.login.utils.toUseCaseModel
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.base.presentation.Intent
+import kg.optima.mobile.base.presentation.BaseMppIntent
 import org.koin.core.component.inject
 
 class LoginIntent(
-	override val state: LoginState,
-) : Intent<LoginModel>() {
+	override val mppState: LoginState,
+) : BaseMppIntent<LoginModel>() {
 
 	private val loginUseCase: LoginUseCase by inject()
 	private val clientInfoUseCase: ClientInfoUseCase by inject()

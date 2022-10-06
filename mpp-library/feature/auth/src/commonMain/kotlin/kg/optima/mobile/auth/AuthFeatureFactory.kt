@@ -23,7 +23,7 @@ import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-object AuthFeatureFactory : Factory() {
+object AuthFeatureFactory : Factory {
 
 	override val module: Module = module {
 		factory(qualifier = named("AuthHttpClient")) {

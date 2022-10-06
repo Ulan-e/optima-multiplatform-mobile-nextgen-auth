@@ -1,10 +1,12 @@
 package kg.optima.mobile.registration.presentation.create_password
 
+import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.feature.common.CommonScreenModel
 import kg.optima.mobile.registration.presentation.create_password.validity.PasswordValidityModel
 
-class CreatePasswordState : State<CreatePasswordModel>() {
+class CreatePasswordState : BaseMppState<CreatePasswordModel>() {
 
 	override fun handle(entity: CreatePasswordModel) {
 		val stateModel: StateModel = when (entity) {

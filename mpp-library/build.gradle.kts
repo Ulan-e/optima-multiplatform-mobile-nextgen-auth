@@ -77,7 +77,8 @@ multiplatformResources {
 val modules = listOf(
     projects.mppLibrary.base,
     projects.mppLibrary.core,
-//    projects.mppLibrary.feature.auth,
+    projects.mppLibrary.feature.auth,
+    projects.mppLibrary.feature.common,
     projects.mppLibrary.feature.registration,
 )
 

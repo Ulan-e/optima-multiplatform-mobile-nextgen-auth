@@ -1,27 +1,13 @@
 plugins {
-    kotlin("multiplatform")
-    kotlin("native.cocoapods")
+    id("multiplatform-library-convention")
+    id("detekt-convention")
+    id("dev.icerock.mobile.multiplatform.cocoapods")
+
     id("com.android.library")
     kotlin("plugin.serialization")
 }
 
 version = "1.0"
-
-kotlin {
-    android()
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        framework {
-            baseName = "registration"
-        }
-    }
-}
 
 dependencies {
     commonMainImplementation(project(":mpp-library:base"))

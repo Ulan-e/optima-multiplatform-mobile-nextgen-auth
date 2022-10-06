@@ -6,20 +6,20 @@ import java.util.*
 
 actual object PlatformDate {
 
-    private const val DATE_PATTERN = "E, dd MMM yyyy HH:mm:ss"
+	private const val DATE_PATTERN = "E, dd MMM yyyy HH:mm:ss"
 
-    actual fun convertToTimeMills(date: String): Long {
-        return try {
-            val inputFormat: DateFormat = SimpleDateFormat(DATE_PATTERN)
-            val d: Date? = inputFormat.parse(date)
-            d?.time ?: 0
-        } catch (e: Exception) {
-            0
-        }
-    }
+	actual fun convertToTimeMills(date: String): Long {
+		return try {
+			val inputFormat: DateFormat = SimpleDateFormat(DATE_PATTERN)
+			val d: Date? = inputFormat.parse(date)
+			d?.time ?: 0
+		} catch (e: Exception) {
+			0
+		}
+	}
 
-    actual fun getTimeMills(): String {
-        return System.currentTimeMillis().toString()
-    }
+	actual fun getTimeMills(): String {
+		return System.currentTimeMillis().toString()
+	}
 
 }

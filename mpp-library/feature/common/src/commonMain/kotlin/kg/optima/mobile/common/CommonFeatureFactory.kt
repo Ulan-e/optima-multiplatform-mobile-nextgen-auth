@@ -9,7 +9,7 @@ import kg.optima.mobile.common.presentation.welcome.WelcomeState
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object CommonFeatureFactory : Factory() {
+object CommonFeatureFactory : Factory {
 
 	override val module: Module = module {
 

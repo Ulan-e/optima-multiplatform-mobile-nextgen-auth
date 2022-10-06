@@ -17,6 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
+import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.base.di.create
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
@@ -53,7 +56,7 @@ class CreatePasswordScreen(
         val intent = product.intent
         val state = product.state
 
-        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
         val buttonEnabled = remember { mutableStateOf(false) }
         val passwordValidity = remember { mutableStateOf(PasswordValidityModel.BASIC_VALIDITY) }

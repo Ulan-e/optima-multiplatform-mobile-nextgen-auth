@@ -24,7 +24,8 @@ import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.utils.loadFile
 import kg.optima.mobile.android.utils.readTextFile
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.di.create
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -65,7 +66,7 @@ object LivenessScreen : Screen {
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
 		val context = LocalContext.current
 
@@ -77,44 +78,44 @@ object LivenessScreen : Screen {
 		val livenessSessionId = remember { mutableStateOf("") }
 		val livenessResult = remember { mutableStateOf("") }
 
-		when (val livenessModel = model) {
-			is State.StateModel.Error.BaseError -> {
-				state.init()
-				bottomSheetState.value = BottomSheetInfo(
-					title = "Сервис временно недоступен. Пожалуйста, попробуйте позже или обратитесь в Банк.",
-					buttons = listOf(
-						ButtonView.Primary(
-							text = "Связаться с банком",
-							composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
-							onClickListener = ButtonView.onClickListener {
-								intent.navigate(CommonScreenModel.BankContacts)
-							}
-						),
-						ButtonView.Transparent(
-							text = "Отмена",
-							onClickListener = ButtonView.onClickListener {
-								intent.navigate(WelcomeScreenModel.Welcome)
-							}
-						)
-					)
-				)
-			}
-			is LivenessState.LivenessModel.Passed -> {
-				state.init()
-				bottomSheetState.value = BottomSheetInfo(
-					title = livenessModel.message ?: "",
-					buttons = listOf(
-						ButtonView.Primary(
-							text = "Продолжить",
-							composeColor = ComposeColor.composeColor(ComposeColors.Green),
-							onClickListener = ButtonView.onClickListener {
-								intent.navigate(RegistrationScreenModel.ControlQuestion)
-							}
-						)
-					)
-				)
-			}
-		}
+        when (val livenessModel = model) {
+            is BaseMppState.StateModel.Error.BaseError -> {
+                state.init()
+                bottomSheetState.value = BottomSheetInfo(
+                    title = "Сервис временно недоступен. Пожалуйста, попробуйте позже или обратитесь в Банк.",
+                    buttons = listOf(
+                        ButtonView.Primary(
+                            text = "Связаться с банком",
+                            composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
+                            onClickListener = ButtonView.onClickListener {
+                                intent.navigate(CommonScreenModel.BankContacts)
+                            }
+                        ),
+                        ButtonView.Transparent(
+                            text = "Отмена",
+                            onClickListener = ButtonView.onClickListener {
+                                intent.navigate(WelcomeScreenModel.Welcome)
+                            }
+                        )
+                    )
+                )
+            }
+            is LivenessState.LivenessModel.Passed -> {
+                state.init()
+                bottomSheetState.value = BottomSheetInfo(
+                    title = livenessModel.message ?: "",
+                    buttons = listOf(
+                        ButtonView.Primary(
+                            text = "Продолжить",
+                            composeColor = ComposeColor.composeColor(ComposeColors.Green),
+                            onClickListener = ButtonView.onClickListener {
+                                intent.navigate(RegistrationScreenModel.ControlQuestion)
+                            }
+                        )
+                    )
+                )
+            }
+        }
 
 		val onBack = {
 			bottomSheetState.value = BottomSheetInfo(

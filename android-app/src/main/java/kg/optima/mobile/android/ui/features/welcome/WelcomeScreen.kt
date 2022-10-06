@@ -15,6 +15,7 @@ import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.android.utils.appVersion
+import kg.optima.mobile.base.di.create
 import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.welcome.WelcomeIntent
 import kg.optima.mobile.common.presentation.welcome.WelcomeState

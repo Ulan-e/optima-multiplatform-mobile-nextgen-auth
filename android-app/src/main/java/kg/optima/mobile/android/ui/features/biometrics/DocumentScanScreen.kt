@@ -23,7 +23,8 @@ import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.android.utils.saveFile
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.di.create
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.common.Constants.DOCUMENT_FILE_NAME
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -54,7 +55,7 @@ object DocumentScanScreen : Screen {
         val intent = product.intent
         val state = product.state
 
-        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
         val context = LocalContext.current
 
