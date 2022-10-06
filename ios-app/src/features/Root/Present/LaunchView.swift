@@ -8,8 +8,8 @@ import MultiPlatformLibrary
 import SwiftUI
 import UIKit
 
-class RootViewController: UIViewController {
-    let contentView = UIHostingController(rootView: RootView(isLoad: .constant(false)))
+class LaunchViewController: UIViewController {
+    let contentView = UIHostingController(rootView: LaunchView(isLoad: .constant(false)))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class RootViewController: UIViewController {
     }
 }
 
-struct RootView: View {
+struct LaunchView: View {
     @State var isActive: Bool = false
     @Binding var isLoad: Bool
 
@@ -47,8 +47,8 @@ struct RootView: View {
 
 struct SplashViewController: UIViewControllerRepresentable {
     func makeUIViewController(context _: Context) -> some UIViewController {
-        let storyboard = UIStoryboard(name: "Root", bundle: Bundle.main)
-        let controller = storyboard.instantiateViewController(identifier: "Root")
+        let storyboard = UIStoryboard(name: "Launch", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(identifier: "Launch")
         return controller
     }
 

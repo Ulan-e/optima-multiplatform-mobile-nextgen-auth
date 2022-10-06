@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Launch View Controller-->
         <scene sceneID="tna-li-uF0">
             <objects>
-                <viewController storyboardIdentifier="Root" id="FjK-ji-pOp" customClass="RootViewController" customModule="Optima24" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Launch" id="FjK-ji-pOp" customClass="LaunchViewController" customModule="Optima24" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VRh-OQ-ZBn"/>
                         <viewControllerLayoutGuide type="bottom" id="grx-sX-aaW"/>
