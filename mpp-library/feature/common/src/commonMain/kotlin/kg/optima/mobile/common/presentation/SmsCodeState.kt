@@ -1,21 +1,19 @@
 package kg.optima.mobile.common.presentation
 
-import kg.optima.mobile.base.presentation.State
-import kg.optima.mobile.core.common.Constants
-import kg.optima.mobile.feature.registration.RegistrationScreenModel
+import kg.optima.mobile.base.presentation.BaseMppState
 
-open class SmsCodeState : State<CheckSmsCodeInfo>() {
+open class SmsCodeState : BaseMppState<CheckSmsCodeInfo>() {
 
-    override fun handle(entity: CheckSmsCodeInfo) {
-        when (entity) {
-            is CheckSmsCodeInfo.TimeLeft ->
-                setStateModel(SmsCodeStateModel.TimeLeft(entity.timeout))
-            else -> Unit
-        }
-    }
+	override fun handle(entity: CheckSmsCodeInfo) {
+		when (entity) {
+			is CheckSmsCodeInfo.TimeLeft ->
+				setStateModel(SmsCodeStateModel.TimeLeft(entity.timeout))
+			else -> Unit
+		}
+	}
 
-    sealed interface SmsCodeStateModel : StateModel {
-        class TimeLeft(val timeLeft: Int) : SmsCodeStateModel
-    }
+	sealed interface SmsCodeStateModel : StateModel {
+		class TimeLeft(val timeLeft: Int) : SmsCodeStateModel
+	}
 
 }

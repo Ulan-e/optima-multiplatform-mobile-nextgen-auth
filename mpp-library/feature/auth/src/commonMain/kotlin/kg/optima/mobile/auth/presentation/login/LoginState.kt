@@ -1,13 +1,13 @@
 package kg.optima.mobile.auth.presentation.login
 
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
 
 class LoginState(
 	private val nextScreenModel: ScreenModel,
-) : State<LoginModel>() {
+) : BaseMppState<LoginModel>() {
 
 	override fun handle(entity: LoginModel) {
 		val state: StateModel = when (entity) {

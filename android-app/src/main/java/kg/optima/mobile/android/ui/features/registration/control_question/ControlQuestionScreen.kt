@@ -14,11 +14,9 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.BaseMppState
-import kg.optima.mobile.android.ui.base.MainContainer
-import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.dropdown_list.DropDownItemModel

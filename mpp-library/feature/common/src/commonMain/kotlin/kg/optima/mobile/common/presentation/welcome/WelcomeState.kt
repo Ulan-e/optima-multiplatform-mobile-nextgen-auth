@@ -1,8 +1,6 @@
 package kg.optima.mobile.common.presentation.welcome
 
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
 import kg.optima.mobile.base.presentation.BaseMppState
-import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
 import kg.optima.mobile.feature.auth.model.GrantType

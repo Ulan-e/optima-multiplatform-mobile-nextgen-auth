@@ -28,7 +28,7 @@ import kg.optima.mobile.android.ui.base.permission.requestPermission
 import kg.optima.mobile.android.ui.base.processing.processError
 import kg.optima.mobile.android.ui.base.routing.Router
 import kg.optima.mobile.android.utils.asActivity
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.bottomsheet.InfoBottomSheet
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
@@ -46,7 +46,7 @@ typealias PopLast = () -> Unit
 @Composable
 fun MainContainer(
 	modifier: Modifier = Modifier,
-	mainState: State.StateModel?,
+	mainState: BaseMppState.StateModel?,
 	sheetInfo: BottomSheetInfo? = null,
 	permissionController: PermissionController? = null,
 	component: Root.Child.Component? = null,
@@ -129,28 +129,28 @@ fun MainContainer(
 	) {
 		Box(contentAlignment = Alignment.Center) {
 			when (mainState) {
-				is State.StateModel.Navigate -> {
+				is BaseMppState.StateModel.Navigate -> {
 //                        component?.addAll(mainState.screenModels)
 					router.push(mainState.screenModels)
 				}
-				is State.StateModel.Pop -> {
+				is BaseMppState.StateModel.Pop -> {
 //						component?.pop()
 //						router.popLast()
 				}
-				is State.StateModel.Error -> {
+				is BaseMppState.StateModel.Error -> {
 					processError(
 						errorState = mainState,
 						onSheetStateChanged = onChangeSheetState,
 						onBottomSheetHidden = onBottomSheetHidden,
 					)
 				}
-				is State.StateModel.RequestPermissions -> {
+				is BaseMppState.StateModel.RequestPermissions -> {
 					requestPermission(
 						requestPermissionState = mainState,
 						permissionController = permissionController,
 					)
 				}
-				is State.StateModel.CustomPermissionRequired -> {
+				is BaseMppState.StateModel.CustomPermissionRequired -> {
 					customPermissionRequired(
 						customPermissionRequired = mainState,
 						context = context,
@@ -160,7 +160,7 @@ fun MainContainer(
 				}
 			}
 
-			if (mainState is State.StateModel.Loading) {
+			if (mainState is BaseMppState.StateModel.Loading) {
 				CircularProgress(modifier = Modifier.align(Alignment.Center))
 			}
 

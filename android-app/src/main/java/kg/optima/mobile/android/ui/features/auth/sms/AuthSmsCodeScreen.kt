@@ -6,8 +6,9 @@ import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.features.common.otp.OtpContent
 import kg.optima.mobile.auth.presentation.sms.AuthSmsCodeIntent
 import kg.optima.mobile.auth.presentation.sms.AuthSmsCodeState
+import kg.optima.mobile.base.di.create
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
-import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.SmsCodeState
@@ -28,7 +29,7 @@ class AuthSmsCodeScreen(
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
 		val codeState = remember { mutableStateOf(emptyString) }
 		val timeLeftState = remember { mutableStateOf(0) }
@@ -36,7 +37,7 @@ class AuthSmsCodeScreen(
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
 
 		when (val model = model) {
-			is State.StateModel.Error -> {
+			is BaseMppState.StateModel.Error -> {
 				codeState.value = emptyString; errorState.value = model.error
 			}
 			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {

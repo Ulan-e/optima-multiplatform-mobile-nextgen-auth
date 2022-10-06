@@ -1,7 +1,6 @@
 package kg.optima.mobile.common.presentation.launch
 
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.base.presentation.Intent
 import kg.optima.mobile.common.domain.LaunchUseCase
 import kg.optima.mobile.base.presentation.BaseMppIntent
 import org.koin.core.component.inject

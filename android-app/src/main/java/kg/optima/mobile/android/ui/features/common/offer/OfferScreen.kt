@@ -16,11 +16,9 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat.startActivity
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.BaseMppState
-import kg.optima.mobile.android.ui.base.MainContainer
-import kg.optima.mobile.base.presentation.State
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.offer.OfferIntent
 import kg.optima.mobile.registration.presentation.offer.OfferState

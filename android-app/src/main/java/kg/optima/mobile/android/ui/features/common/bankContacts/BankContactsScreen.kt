@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.base.MainContainer
+import kg.optima.mobile.base.di.create
 import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.welcome.WelcomeIntent
 import kg.optima.mobile.common.presentation.welcome.WelcomeState

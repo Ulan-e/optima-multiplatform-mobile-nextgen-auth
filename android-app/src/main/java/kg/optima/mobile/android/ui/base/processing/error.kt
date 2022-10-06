@@ -1,7 +1,7 @@
 package kg.optima.mobile.android.ui.base.processing
 
 import androidx.compose.runtime.Composable
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
@@ -9,13 +9,13 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 
 @Composable
 fun processError(
-	errorState: State.StateModel.Error,
+	errorState: BaseMppState.StateModel.Error,
 	onSheetStateChanged: (sheetInfo: BottomSheetInfo?) -> Unit,
 	onBottomSheetHidden: () -> Unit,
 ) {
 	// TODO process error
 	when (errorState) {
-		is State.StateModel.Error.ApiError -> onSheetStateChanged(
+		is BaseMppState.StateModel.Error.ApiError -> onSheetStateChanged(
 			BottomSheetInfo(
 				title = errorState.error,
 				buttons = listOf(
