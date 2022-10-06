@@ -10,10 +10,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
+import kg.optima.mobile.android.ui.features.auth.login.LoginScreen
+import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.base.di.create
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -40,9 +43,20 @@ object WelcomeScreen : BaseScreen {
 		val state = product.state
 		val intent = product.intent
 
+		val navigator = LocalNavigator.currentOrThrow
+
 		val model by state.stateFlow.collectAsState(initial = null)
 
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
+
+		when (val welcomeModel = model) {
+			is WelcomeState.Model.NavigateTo.Login -> {
+				navigator.push(LoginScreen(welcomeModel.nextScreenModel))
+			}
+			is WelcomeState.Model.NavigateTo.RegisterAgreement -> {
+				navigator.push(AgreementScreen)
+			}
+		}
 
 		MainContainer(
 			mainState = model,
@@ -73,7 +87,7 @@ object WelcomeScreen : BaseScreen {
 			PrimaryButton(
 				modifier = Modifier.fillMaxWidth(),
 				text = "Войти",
-				onClick = { intent.checkIsAuthorized() },
+				onClick = { intent.login() },
 			)
 			TransparentButton(
 				modifier = Modifier
@@ -92,11 +106,4 @@ object WelcomeScreen : BaseScreen {
 			)
 		}
 	}
-}
-
-
-@Preview
-@Composable
-private fun WelcomeScreenPreview() {
-	WelcomeScreen.Content()
 }
