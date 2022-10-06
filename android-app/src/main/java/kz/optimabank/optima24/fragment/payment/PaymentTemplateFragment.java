@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.fourmob.datetimepicker.date.DatePickerDialog;
 
 import org.json.JSONObject;
 
@@ -46,12 +45,11 @@ import static kz.optimabank.optima24.utility.Constants.DATE_PICKER_TAG;
 import static kz.optimabank.optima24.utility.Constants.DAY_MONTH_YEAR_FORMAT;
 import static kz.optimabank.optima24.utility.Constants.PAYMENT_OTP_KEY;
 import static kz.optimabank.optima24.utility.Constants.SELECT_ACCOUNT_FROM_REQUEST_CODE;
-import static kz.optimabank.optima24.utility.Utilities.amountFormat;
 import static kz.optimabank.optima24.utility.Utilities.getDoubleType;
 import static kz.optimabank.optima24.utility.Utilities.getFieldNamesAndValues;
 
 public class PaymentTemplateFragment extends PaymentFragment implements View.OnClickListener,
-        PaymentTemplateOperationImpl.CallbackChangePayment, PaymentTemplateOperationImpl.CallbackOperationPayment, DatePickerDialog.OnDateSetListener, SmsWithTextImpl.SmsSendWithOperationCodeCallback, SmsWithTextImpl.SmsSendWithTextForPaymentCallback {
+        PaymentTemplateOperationImpl.CallbackChangePayment, PaymentTemplateOperationImpl.CallbackOperationPayment, /*DatePickerDialog.OnDateSetListener,*/ SmsWithTextImpl.SmsSendWithOperationCodeCallback, SmsWithTextImpl.SmsSendWithTextForPaymentCallback {
     private static final String TAG = PaymentTemplateFragment.class.getSimpleName();
 
     TemplatesPayment templatesPayment;
@@ -71,7 +69,7 @@ public class PaymentTemplateFragment extends PaymentFragment implements View.OnC
     int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
-    DatePickerDialog dateBeginDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+  //  DatePickerDialog dateBeginDialog = DatePickerDialog.newInstance(this, year, month, day, false);
     AlertDialog.Builder builder;
 
     SmsWithTextImpl smsSend;
@@ -82,7 +80,7 @@ public class PaymentTemplateFragment extends PaymentFragment implements View.OnC
         paymentTemplateOperation = new PaymentTemplateOperationImpl();
         paymentTemplateOperation.registerCallBackChange(this);
         paymentTemplateOperation.registerCallBack(this);
-        dateBeginDialog.setStartDate(year, month, day);
+     //   dateBeginDialog.setStartDate(year, month, day);
 
         smsSend = new SmsWithTextImpl();
         smsSend.registerSmsWithOperationCodeCallBack(this);
@@ -90,7 +88,7 @@ public class PaymentTemplateFragment extends PaymentFragment implements View.OnC
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    @Override
+    /*@Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
         CharSequence dateString = DAY_MONTH_YEAR_FORMAT.format(date.getTime());
@@ -99,7 +97,7 @@ public class PaymentTemplateFragment extends PaymentFragment implements View.OnC
         tvTimeBegin.setTextColor(getResources().getColor(R.color.gray_black_56_56_56));
         tvTimeBegin.setText(dateString);
         calendar = date;
-    }
+    }*/
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -268,17 +266,17 @@ public class PaymentTemplateFragment extends PaymentFragment implements View.OnC
         }
     }
 
-    private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
+    /*private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
         if (datePickerDialog != null) {
             datePickerDialog.show(requireActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
         }
-    }
+    }*/
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.timeBegin_linear:
-                createDatePickerDialog(dateBeginDialog);
+                //createDatePickerDialog(dateBeginDialog);
                 break;
             case R.id.regular_pay_time_linear:
                 buildAlert(1);

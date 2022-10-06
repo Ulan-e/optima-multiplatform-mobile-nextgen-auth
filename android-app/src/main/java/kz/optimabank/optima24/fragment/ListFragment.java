@@ -15,8 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.data.Entry;
-
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -46,7 +44,6 @@ public class ListFragment extends ATFFragment implements AccountsImpl.Callback{
 
     ArrayList<UserAccounts> accounts = new ArrayList<>();
     Accounts accountsInterface;
-    ArrayList<Entry> values;
     String account = "";
     boolean isClickableRecyclerView;
 

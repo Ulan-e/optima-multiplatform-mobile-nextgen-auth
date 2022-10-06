@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import kg.optima.mobile.databinding.ItemContactBinding;
 import kz.optimabank.optima24.activity.contacts.data.Contact;
-import kz.optimabank.optima24.databinding.ItemContactBinding;
 
 public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
 

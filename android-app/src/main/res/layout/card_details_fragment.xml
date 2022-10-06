@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/gradient_toolbar"
+            android:background="@color/red_atf"
             app:layout_collapseMode="pin"
             app:navigationIcon="@drawable/arrow_left">
 
@@ -27,7 +27,7 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/TABBAR"
@@ -114,7 +114,7 @@
                             app:layout_constraintBottom_toBottomOf="@id/service_recycler"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@id/service_recycler"
-                            app:srcCompat="@drawable/ic_arrow_black" />
+                            android:src="@drawable/ic_arrow_left" />
 
                         <View
                             android:layout_width="match_parent"
@@ -127,7 +127,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:drawableStart="@drawable/ic_card_unlock"
                             android:paddingStart="80dp"
                             android:paddingEnd="80dp"
                             android:text="@string/reason_unblock_card"
@@ -170,7 +169,7 @@
                         android:id="@+id/header"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/gradient_toolbar"
+                        android:background="@color/red_atf"
                         android:orientation="vertical">
 
                         <androidx.viewpager.widget.ViewPager

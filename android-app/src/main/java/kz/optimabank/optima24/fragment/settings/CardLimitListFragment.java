@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kg.optima.mobile.R;
+import kg.optima.mobile.databinding.FragmentCardLimitListBinding;
 import kz.optimabank.optima24.activity.CardLimitActivity;
 import kz.optimabank.optima24.controller.adapter.SelectCardLimitAdapter;
-import kz.optimabank.optima24.databinding.FragmentCardLimitListBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.model.base.Limit;
 import kz.optimabank.optima24.model.interfaces.LimitInterface;

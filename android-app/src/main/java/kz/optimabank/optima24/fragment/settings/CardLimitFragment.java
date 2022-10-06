@@ -1,5 +1,6 @@
 package kz.optimabank.optima24.fragment.settings;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +24,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -64,7 +64,7 @@ import static kz.optimabank.optima24.utility.Utilities.getFormatForDate;
  * Created by Max on 29.08.2017.
  */
 
-public class CardLimitFragment extends ATFFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener,
+public class CardLimitFragment extends ATFFragment implements View.OnClickListener, /*DatePickerDialog.OnDateSetListener,*/
         LimitInterfaceImpl.Callback, SetLimitInterfaceImpl.Callback {
 
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -149,11 +149,11 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-        dateFromPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+        /*dateFromPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
         dateFromPickerDialog.setYearRange(2000, year+5);//В календаре от текущего кода отображать плюс 5
 
         dateToPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
-        dateToPickerDialog.setYearRange(2000, year+5);//В календаре от текущего кода отображать плюс 5
+        dateToPickerDialog.setYearRange(2000, year+5);//В календаре от текущего кода отображать плюс 5*/
         if (type == 4){
             linChooseCountry.setVisibility(View.GONE);
             regLiner.setVisibility(View.GONE);
@@ -449,7 +449,7 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
     private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
         if(datePickerDialog!=null) {
 //            datePickerDialog.setStartDate(year,month,day);
-            datePickerDialog.show(getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
+            //datePickerDialog.show(getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
         }
     }
 
@@ -593,7 +593,7 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
         });
     }
 
-    @Override
+    /*@Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         period = null;
         GregorianCalendar date = new GregorianCalendar(year, month, day);
@@ -622,7 +622,7 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
             fromDate = date;
             toDate = date;
         }
-    }
+    }*/
 
     public void getBundle() {
         if (getArguments()!=null){

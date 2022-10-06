@@ -17,7 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.model.base.SecretQuestionResponse;

@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/gradient_toolbar"
+        android:background="@color/red_atf"
         app:layout_collapseMode="pin"
         app:navigationIcon="@drawable/arrow_left">
 
@@ -45,7 +45,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/gradient_toolbar"
+                android:background="@color/red_atf"
                 android:orientation="vertical">
 
                 <ImageView
@@ -53,13 +53,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:alpha="0.7"/>
-
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pieChart"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="230dp"
-                    android:layout_height="230dp"/>
 
             </FrameLayout>
 

@@ -1,5 +1,10 @@
 package kz.optimabank.optima24.notifications.ui.adapter;
 
+import static kz.optimabank.optima24.notifications.models.items.BaseNotificationItem.HEADER_ITEM;
+import static kz.optimabank.optima24.notifications.models.items.BaseNotificationItem.NOTIFICATION_ITEM;
+import static kz.optimabank.optima24.utility.DateConverterUtils.stringFromDate;
+import static kz.optimabank.optima24.utility.DateConverterUtils.stringHourMinuteFromDate;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,18 +18,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import java.util.List;
 
-import kz.optimabank.optima24.R;
-import kz.optimabank.optima24.databinding.ItemNotificationBinding;
-import kz.optimabank.optima24.databinding.ItemNotificationHeaderBinding;
+import kg.optima.mobile.R;
+import kg.optima.mobile.databinding.ItemNotificationBinding;
+import kg.optima.mobile.databinding.ItemNotificationHeaderBinding;
 import kz.optimabank.optima24.notifications.models.Notification;
 import kz.optimabank.optima24.notifications.models.items.BaseNotificationItem;
 import kz.optimabank.optima24.notifications.models.items.HeaderItem;
 import kz.optimabank.optima24.notifications.models.items.NotificationItem;
-
-import static kz.optimabank.optima24.notifications.models.items.BaseNotificationItem.HEADER_ITEM;
-import static kz.optimabank.optima24.notifications.models.items.BaseNotificationItem.NOTIFICATION_ITEM;
-import static kz.optimabank.optima24.utility.DateConverterUtils.stringFromDate;
-import static kz.optimabank.optima24.utility.DateConverterUtils.stringHourMinuteFromDate;
 
 public class NotificationsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

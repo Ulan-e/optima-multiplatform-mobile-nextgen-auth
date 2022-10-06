@@ -40,7 +40,7 @@
                 android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/gradient_toolbar"
+                android:background="@color/red_atf"
                 android:orientation="vertical">
 
             <LinearLayout
@@ -48,7 +48,7 @@
                 android:layout_height="match_parent"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:background="@drawable/gradient_toolbar"
+                android:background="@color/red_atf"
                 android:paddingBottom="30dp"
                 android:orientation="vertical">
 
@@ -260,7 +260,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/gradient_toolbar"
+            android:background="@color/red_atf"
             app:layout_collapseMode="pin"
             app:navigationIcon="@drawable/arrow_left">
 

@@ -1,22 +1,20 @@
 package kz.optimabank.optima24.secondary_registration.ui;
 
+import static kz.optimabank.optima24.utility.Constants.REGISTRATION_CODE;
+import static kz.optimabank.optima24.utility.Constants.REGISTRATION_LOGIN;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.view.WindowManager;
 
 import androidx.viewpager2.widget.ViewPager2;
 
+import kg.optima.mobile.android.ui.SingleActivity;
+import kg.optima.mobile.databinding.ActivityOldRegistrationBinding;
 import kz.optimabank.optima24.activity.OptimaActivity;
-import kz.optimabank.optima24.activity.UnauthorizedTabActivity;
-import kz.optimabank.optima24.databinding.ActivityOldRegistrationBinding;
-import kz.optimabank.optima24.feature.authorization.authorization.enter.EnterActivity;
 import kz.optimabank.optima24.secondary_registration.adapter.RegistrationScreensPagerAdapter;
-
-import static kz.optimabank.optima24.utility.Constants.REGISTRATION_CODE;
-import static kz.optimabank.optima24.utility.Constants.REGISTRATION_LOGIN;
 
 public class OldRegistrationActivity extends OptimaActivity {
 
@@ -118,7 +116,7 @@ public class OldRegistrationActivity extends OptimaActivity {
     // возвращаемся в главный экран
     private void backToMainPage() {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(this, EnterActivity.class);
+            Intent intent = new Intent(this, SingleActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

@@ -15,9 +15,8 @@ import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
-import kz.optimabank.optima24.activity.LoginActivity;
-import kz.optimabank.optima24.databinding.FragmentSuccessRegistrationBinding;
-import kz.optimabank.optima24.feature.authorization.authorization.enter.EnterActivity;
+import kg.optima.mobile.android.ui.SingleActivity;
+import kg.optima.mobile.databinding.FragmentSuccessRegistrationBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.fragment.authorization.MLoginFragment;
 
@@ -76,7 +75,7 @@ public class SuccessRegistrationFragment extends ATFFragment {
 
     // переходим на экран логина
     private void openLoginScreen() {
-        Intent intent = new Intent(parentActivity, EnterActivity.class);
+        Intent intent = new Intent(parentActivity, SingleActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

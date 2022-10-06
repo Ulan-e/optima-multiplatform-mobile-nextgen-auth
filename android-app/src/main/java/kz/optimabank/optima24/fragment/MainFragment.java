@@ -43,15 +43,15 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.BuildConfig;
+import kg.optima.mobile.BuildConfig;
 import kg.optima.mobile.R;
+import kg.optima.mobile.android.ui.SingleActivity;
 import kz.optimabank.optima24.activity.ChangeAppLangActivity;
 import kz.optimabank.optima24.activity.Communications;
 import kz.optimabank.optima24.activity.LoginActivity;
 import kz.optimabank.optima24.activity.NavigationActivity;
 import kz.optimabank.optima24.controller.adapter.UltraPagerAdapter;
 import kz.optimabank.optima24.db.controllers.BannerController;
-import kz.optimabank.optima24.feature.authorization.authorization.enter.EnterActivity;
 import kz.optimabank.optima24.imprint.FingerprintAuthentication;
 import kz.optimabank.optima24.imprint.FingerprintUiHelper;
 import kz.optimabank.optima24.model.base.Banner;
@@ -141,7 +141,7 @@ public class MainFragment extends ATFFragment implements View.OnClickListener, F
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_login:
-                startActivity(new Intent(requireActivity(), EnterActivity.class));
+                startActivity(new Intent(requireActivity(), SingleActivity.class));
 //                openLoginScreen();
                 break;
             case R.id.relContact:

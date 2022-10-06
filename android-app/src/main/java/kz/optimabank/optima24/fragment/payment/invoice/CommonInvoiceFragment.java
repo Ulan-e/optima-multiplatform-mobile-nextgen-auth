@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import java.util.Locale;
 
 import butterknife.BindView;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.db.controllers.PaymentContextController;
 import kz.optimabank.optima24.db.entry.PaymentService;
 import kz.optimabank.optima24.fragment.ATFFragment;

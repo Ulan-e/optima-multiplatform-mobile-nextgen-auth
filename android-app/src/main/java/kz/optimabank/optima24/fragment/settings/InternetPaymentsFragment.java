@@ -20,7 +20,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fourmob.datetimepicker.date.DatePickerDialog;
 
 import org.json.JSONObject;
 
@@ -32,7 +31,7 @@ import java.util.GregorianCalendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.model.base.Limit;
 import kz.optimabank.optima24.model.interfaces.InternetInterface;
@@ -52,7 +51,7 @@ import static kz.optimabank.optima24.utility.Utilities.getFormatForDate;
  */
 
 public class InternetPaymentsFragment extends ATFFragment implements InternetImpl.callbackCheck, InternetImpl.callbackSet,
-         View.OnClickListener, DatePickerDialog.OnDateSetListener {
+         View.OnClickListener {//, DatePickerDialog.OnDateSetListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -77,8 +76,8 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
     String from = "T00:00:00", to = "T23:59:59";
     String fromCheck, toCheck;
 
-    private DatePickerDialog dialogFrom;
-    private DatePickerDialog dialogTo;
+    /*private DatePickerDialog dialogFrom;
+    private DatePickerDialog dialogTo;*/
     private final Calendar calendar = Calendar.getInstance();
     private Calendar calendarFrom = Calendar.getInstance();
     private Calendar calendarTo = Calendar.getInstance();
@@ -132,12 +131,12 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        dialogFrom = DatePickerDialog.newInstance(this, year, month, day, false);
-        dialogTo = DatePickerDialog.newInstance(this, year, month, day, false);
-        dialogFrom.setStartDate(year, month, day);
-        Log.i("DATELIMITIM", "year = " + year + "   month= " + month + "   day = " + day);
-        Log.i("DATELIMITIM", "year = " + year + "   month= " + month + 10 + "   day = " + day);
-        dialogFrom.setDateRange(year, month, day-1, year+10, month, day);
+//        dialogFrom = DatePickerDialog.newInstance(this, year, month, day, false);
+//        dialogTo = DatePickerDialog.newInstance(this, year, month, day, false);
+//        dialogFrom.setStartDate(year, month, day);
+//        Log.i("DATELIMITIM", "year = " + year + "   month= " + month + "   day = " + day);
+//        Log.i("DATELIMITIM", "year = " + year + "   month= " + month + 10 + "   day = " + day);
+//        dialogFrom.setDateRange(year, month, day-1, year+10, month, day);
 //        dialogFrom.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
 //            @Override
 //            public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
@@ -281,14 +280,14 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
         }
     }
 
-    @Override
+    /*@Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
         setTimeToMidnight(date);
         if(date.compareTo(setTimeToMidnight(Calendar.getInstance())) > 0 || date.compareTo(setTimeToMidnight(Calendar.getInstance())) == 0){
             if (view != null) {
                 if (view == tvSpinnerBegin) {
-                    dialogTo.setStartDate(year, month, day + 1);
+                 //   dialogTo.setStartDate(year, month, day + 1);
                     isFirstDateSelected = true;
                 }
                 view.setError(null);
@@ -301,7 +300,7 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
         } else {
             Toast.makeText(getActivity(), getString(R.string.choose_correct_date), Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
     public static Calendar setTimeToMidnight(Calendar calendar) {
         calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -318,13 +317,13 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
             case R.id.linSpinnerBegin:
             case R.id.tvSpinnerBegin:
                 view = tvSpinnerBegin;
-                createDatePickerDialog(dialogFrom);
+                //createDatePickerDialog(dialogFrom);
                 break;
             case R.id.linSpinnerEnd:
             case R.id.tvSpinnerEnd:
                 if (isFirstDateSelected) {
                     view = tvSpinnerEnd;
-                    createDatePickerDialog(dialogTo);
+                    //createDatePickerDialog(dialogTo);
                 } else {
                     if (tvSpinnerBegin.getText().toString().isEmpty())
                         tvSpinnerBegin.setError(getString(R.string.error_empty));
@@ -363,12 +362,13 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
             progressDialog.show();        }
     }
 
-    private void createDatePickerDialog(DatePickerDialog dialog) {
+    // TODO Datepicker
+    /*private void createDatePickerDialog(DatePickerDialog dialog) {
         if (dialog != null) {
             dialog.setYearRange(2018,2030);
             dialog.show(getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
         }
-    }
+    }*/
 
     public JSONObject getBody() {
         //JSONObject body = new JSONObject();

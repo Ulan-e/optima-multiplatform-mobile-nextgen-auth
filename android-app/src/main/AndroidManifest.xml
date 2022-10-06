@@ -100,14 +100,12 @@
         <activity
             android:name="kz.optimabank.optima24.activity.UnauthorizedTabActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:icon="@drawable/optima_launch"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="kz.optimabank.optima24.notifications.ui.NotificationsActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:icon="@drawable/optima_launch"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -209,12 +207,6 @@
             android:theme="@style/MainTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="kz.optimabank.optima24.activity.StatmentChart"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
             android:name="kz.optimabank.optima24.activity.PaymentResultActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -241,8 +233,7 @@
         </service>
 
         <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/opt_logo_small" />
+            android:name="com.google.firebase.messaging.default_notification_icon" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/white" />
@@ -264,9 +255,9 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyD87ev_u-fDGxPmEH7yWnn-785sHrCSbDI" />
 
-        <activity
+        <!--<activity
             android:name="kz.optimabank.optima24.scan.RPSScanCardActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" />-->
         <activity android:name="kz.optimabank.optima24.activity.LoginAfterRegActivity" />
         <activity android:name="kz.optimabank.optima24.activity.CropImageActivity" />
 

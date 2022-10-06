@@ -15,8 +15,12 @@ android {
     buildFeatures.viewBinding = true
 
 
+    compileSdkVersion(32)
     defaultConfig {
+        minSdk = 23
+        targetSdk = 32
         applicationId = "kg.optima.mobile"
+        vectorDrawables.useSupportLibrary = true
 
         versionCode = Integer.parseInt(project.property("VERSION_CODE") as String)
         versionName = project.property("VERSION_NAME") as String
@@ -38,6 +42,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.2.0-rc02"
     }
+
 }
 
 kapt {
@@ -79,6 +84,7 @@ dependencies {
     implementation("androidx.fragment:fragment:1.5.3")
     implementation("androidx.lifecycle:lifecycle-process:2.5.1")
     implementation("androidx.annotation:annotation:1.5.0")
+   //implementation("com.github.flavienlaurent.datetimepicker:library:0.0.2")
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")
@@ -115,8 +121,10 @@ dependencies {
     implementation("io.fotoapparat:fotoapparat:2.7.0")
     implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
 
-    implementation("io.realm.kotlin:library-base:1.2.0")
+    implementation("androidx.leanback:leanback:1.0.0")
 
+    implementation(platform("com.google.firebase:firebase-bom:28.0.1"))
+    implementation("com.google.firebase:firebase-messaging")
 
     implementation("com.google.android.material:material:1.6.1")
     testImplementation("junit:junit:4.13.2")
@@ -156,8 +164,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.3.2")
     implementation("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
 
-   // implementation("ir.beigirad:ZigzagView:1.2.0")
-    // implementation("cards.pay:paycardsrecognizer:1.1.0")
+   // implementation("cards.pay:paycardsrecognizer:1.1.0")
 
     implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
     implementation("com.alibaba.android:ultraviewpager:1.0.7.7@aar")
@@ -180,6 +187,6 @@ dependencies {
     implementation("org.greenrobot:eventbus:3.1.1")
     annotationProcessor("com.jakewharton:butterknife-compiler:10.0.0")
     implementation("com.uttampanchasara.pdfgenerator:pdfgenerator:1.3")
-    implementation("com.github.flavienlaurent.datetimepicker:library:0.0.2")
+    implementation("androidx.legacy:legacy-support-v13:1.0.0")
    // implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
 }

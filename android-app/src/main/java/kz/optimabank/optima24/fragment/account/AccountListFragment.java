@@ -9,7 +9,6 @@ import static kz.optimabank.optima24.utility.Utilities.getPreferences;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -41,9 +40,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.skydoves.balloon.ArrowOrientation;
@@ -70,7 +66,6 @@ import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.AccountDetailsActivity;
 import kz.optimabank.optima24.activity.InterfaceFormActivity;
 import kz.optimabank.optima24.activity.NavigationActivity;
-import kz.optimabank.optima24.activity.UnauthorizedTabActivity;
 import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.controller.adapter.AccountListAdapter;
@@ -98,7 +93,7 @@ import kz.optimabank.optima24.utility.IntegerListener;
 import kz.optimabank.optima24.utility.Utilities;
 import okhttp3.OkHttpClient;
 
-public class AccountListFragment extends ATFFragment implements OnChartValueSelectedListener, CategoriesImpl.Callback,
+public class AccountListFragment extends ATFFragment implements CategoriesImpl.Callback,
         AccountsImpl.Callback, SwipeRefreshLayout.OnRefreshListener, CardDataImpl.Callback, CardsAdapter.CardClickListener, SmsWithTextImpl.SendOtpWithTextCallback, SmsWithTextImpl.IsOtpKeyValidCallback, AccountsListViewModel.UrgentMessageListener {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -663,16 +658,6 @@ public class AccountListFragment extends ATFFragment implements OnChartValueSele
         swipeRefreshLayout.setColorSchemeColors(getResources().getIntArray(R.array.swipe_refresh_color));
 
         swipeRefreshLayout.setRefreshing(true);
-    }
-
-    @Override
-    public void onValueSelected(Entry e, Highlight h) {
-
-    }
-
-    @Override
-    public void onNothingSelected() {
-        Log.i("PieChart", "nothing selected");
     }
 
     @Override

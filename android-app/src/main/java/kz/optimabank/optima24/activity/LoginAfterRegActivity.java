@@ -60,7 +60,6 @@ public class LoginAfterRegActivity extends OptimaActivity implements TextWatcher
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_after_reg);
         ButterKnife.bind(this);
 
         authorizationUser = new AuthorizationUserImpl();

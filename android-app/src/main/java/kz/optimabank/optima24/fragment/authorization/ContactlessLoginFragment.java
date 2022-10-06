@@ -1,5 +1,8 @@
 package kz.optimabank.optima24.fragment.authorization;
 
+import static kz.optimabank.optima24.utility.Utilities.getPreferences;
+import static kz.optimabank.optima24.utility.Utilities.isDeviceScreenLocked;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,14 +11,10 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.CompoundButton;
 
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.NavigationActivity;
-
-import static kz.optimabank.optima24.utility.Utilities.getPreferences;
-import static kz.optimabank.optima24.utility.Utilities.isDeviceScreenLocked;
 
 public class ContactlessLoginFragment extends MLoginFragment {
 

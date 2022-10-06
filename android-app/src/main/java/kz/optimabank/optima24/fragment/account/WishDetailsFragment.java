@@ -28,13 +28,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
@@ -81,7 +74,6 @@ import static kz.optimabank.optima24.utility.Utilities.getFormattedBalance;
 public class WishDetailsFragment extends ATFFragment implements AccountOperationImpl.Callback,SwipeRefreshLayout.OnRefreshListener,
         AccountVisibilityImpl.Callback{
     @BindView(R.id.tvTitle) TextView tvTitle;
-    @BindView(R.id.pieChart) PieChart mChart;
     @BindView(R.id.toolbar) Toolbar toolbar;
 
     @BindView(R.id.ntb_horizontal) NavigationTabBar navigationTabBar;
@@ -397,7 +389,7 @@ public class WishDetailsFragment extends ATFFragment implements AccountOperation
     }
 
     private void initChart() {
-        mChart.getDescription().setEnabled(false);
+        /*mChart.getDescription().setEnabled(false);
         remainPay = wishAccounts.totalAmount - wishAccounts.balance;
         mChart.setCenterText(TextUtils.concat(generateCenterSpannableTextInfo(), "\n", "\n",
                 generateCenterSpannableTextInfo2(), "\n", "\n" , generateCenterSpannableTextInfo3()));
@@ -414,11 +406,11 @@ public class WishDetailsFragment extends ATFFragment implements AccountOperation
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
         Legend l = mChart.getLegend();
-        l.setEnabled(false);
+        l.setEnabled(false);*/
     }
 
     private void setData() {
-        ArrayList<PieEntry> entries = new ArrayList<>();
+        /*ArrayList<PieEntry> entries = new ArrayList<>();
         float f1 = (float) wishAccounts.totalAmount;
         float f2 = (float) wishAccounts.balance;
         entries.add(new PieEntry(f2,""));
@@ -437,7 +429,7 @@ public class WishDetailsFragment extends ATFFragment implements AccountOperation
         data.setDrawValues(false);
         mChart.setData(data);
 
-        mChart.invalidate();
+        mChart.invalidate();*/
     }
 
     private SpannableString generateCenterSpannableTextInfo() {

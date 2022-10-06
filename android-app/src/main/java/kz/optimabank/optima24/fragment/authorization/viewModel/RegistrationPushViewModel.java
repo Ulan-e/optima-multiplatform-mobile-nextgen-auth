@@ -13,7 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import kz.optimabank.optima24.BuildConfig;
+import kg.optima.mobile.BuildConfig;
 import kz.optimabank.optima24.fragment.authorization.source.RegisterPushTokenAction;
 import kz.optimabank.optima24.fragment.authorization.source.RegisterPushTokenActionImpl;
 import kz.optimabank.optima24.notifications.models.RegistrationTokenBody;

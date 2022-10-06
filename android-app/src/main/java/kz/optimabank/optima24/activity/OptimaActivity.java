@@ -7,7 +7,7 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.multidex.BuildConfig;
+import kg.optima.mobile.BuildConfig;
 
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.utility.LocaleUtils;

@@ -1,15 +1,11 @@
 package kz.optimabank.optima24.fragment.settings;
 
-import static kz.optimabank.optima24.feature.authorization.utils.ConstantsAuthorization.CONTACTS_FROM_UNAUTH;
-import static kz.optimabank.optima24.feature.authorization.utils.ConstantsAuthorization.CONTACTS_FROM_UNAUTH_ONBACKPRESED;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,11 +23,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kg.optima.mobile.R;
-import kz.optimabank.optima24.activity.MenuActivity;
 import kz.optimabank.optima24.activity.NavigationActivity;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferences;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferencesImpl;
-import kz.optimabank.optima24.feature.authorization.authorization.enter.EnterActivity;
 import kz.optimabank.optima24.fragment.ATFFragment;
 
 /**
@@ -56,7 +48,7 @@ public class CommunicationsFragment extends ATFFragment implements View.OnClickL
     @BindView(R.id.linMessage)
     RelativeLayout linMessage;
     //@BindView(R.id.linWhatsApp) RelativeLayout linWhatsApp;
-    private SessionPreferences sessionPreferences;
+   // private SessionPreferences sessionPreferences;
 
     private boolean isFromUnAuthContact;
 
@@ -65,7 +57,7 @@ public class CommunicationsFragment extends ATFFragment implements View.OnClickL
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_communication, container, false);
         ButterKnife.bind(this, view);
-        sessionPreferences = new SessionPreferencesImpl(requireContext());
+     //   sessionPreferences = new SessionPreferencesImpl(requireContext());
 
         onBackPressed();
         initTiilBar();
@@ -93,11 +85,12 @@ public class CommunicationsFragment extends ATFFragment implements View.OnClickL
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sessionPreferences.getSessionID() == null) {
+                //TODO sessionPreferences
+                /*if (sessionPreferences.getSessionID() == null) {
                     startActivity(new Intent(requireContext(), EnterActivity.class));
                 } else {
                     startActivity(new Intent(requireContext(), MenuActivity.class));
-                }
+                }*/
             }
         });
     }
@@ -188,11 +181,12 @@ public class CommunicationsFragment extends ATFFragment implements View.OnClickL
         OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                if (sessionPreferences.getSessionID() == null) {
+                //TODO sessionPreferences
+                /*if (sessionPreferences.getSessionID() == null) {
                     startActivity(new Intent(requireContext(), EnterActivity.class));
                 } else {
                     startActivity(new Intent(requireContext(), MenuActivity.class));
-                }
+                }*/
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);

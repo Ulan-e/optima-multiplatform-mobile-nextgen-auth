@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.SettingsActivity;
 import kz.optimabank.optima24.controller.adapter.DictionaryAdapter;
 import kz.optimabank.optima24.db.controllers.PaymentContextController;

@@ -1,4 +1,10 @@
+/*
 package kz.optimabank.optima24.scan.fragments;
+
+import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_DATE;
+import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_GRAB_CARD_IMAGE;
+import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_NAME;
+import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_NUMBER;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,9 +15,6 @@ import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.RestrictTo;
-import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,26 +22,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
+import androidx.fragment.app.Fragment;
+
 import java.io.ByteArrayOutputStream;
 
-import cards.pay.paycardsrecognizer.sdk.BuildConfig;
-import cards.pay.paycardsrecognizer.sdk.Card;
-import cards.pay.paycardsrecognizer.sdk.camera.ScanManager;
-import cards.pay.paycardsrecognizer.sdk.camera.widget.CameraPreviewLayout;
-import cards.pay.paycardsrecognizer.sdk.ndk.RecognitionResult;
-import cards.pay.paycardsrecognizer.sdk.ui.ScanCardRequest;
-import cards.pay.paycardsrecognizer.sdk.ui.views.ProgressBarIndeterminate;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.scan.RPSScanCardIntent;
 
-import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_DATE;
-import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_GRAB_CARD_IMAGE;
-import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_NAME;
-import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_NUMBER;
-
+*/
 /**
-  Created by Тимур on 02.02.2018.
- */
+ * Created by Тимур on 02.02.2018.
+ *//*
+
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 public class RPSScanCardFragment extends Fragment {
@@ -88,9 +85,11 @@ public class RPSScanCardFragment extends Fragment {
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "onCreateAnimation() called with: " +  "transit = [" + transit + "], enter = [" + enter + "], nextAnim = [" + nextAnim + "]");
+        if (BuildConfig.DEBUG)
+            Log.d(TAG, "onCreateAnimation() called with: " + "transit = [" + transit + "], enter = [" + enter + "], nextAnim = [" + nextAnim + "]");
         // SurfaceView is hard to animate
-        Animation a = new Animation() {};
+        Animation a = new Animation() {
+        };
         a.setDuration(0);
         return a;
     }
@@ -99,7 +98,7 @@ public class RPSScanCardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root =  inflater.inflate(R.layout.fragment_scan, container, false);
+        View root = inflater.inflate(R.layout.fragment_scan, container, false);
 
         mProgressBar = root.findViewById(cards.pay.paycardsrecognizer.sdk.R.id.wocr_progress_bar);
 
@@ -126,7 +125,7 @@ public class RPSScanCardFragment extends Fragment {
         }
 
         int recognitionMode = RECOGNIZER_MODE_NUMBER;
-        if (mRequest.isScanCardHolderEnabled()) recognitionMode |=  RECOGNIZER_MODE_NAME;
+        if (mRequest.isScanCardHolderEnabled()) recognitionMode |= RECOGNIZER_MODE_NAME;
         if (mRequest.isScanExpirationDateEnabled()) recognitionMode |= RECOGNIZER_MODE_DATE;
         if (mRequest.isGrabCardImageEnabled()) recognitionMode |= RECOGNIZER_MODE_GRAB_CARD_IMAGE;
 
@@ -141,7 +140,8 @@ public class RPSScanCardFragment extends Fragment {
                 if (getView() == null) return;
                 mProgressBar.hideSlow();
                 mCameraPreviewLayout.setBackgroundDrawable(null);
-                if (mFlashButton != null) mFlashButton.setVisibility(isFlashSupported ? View.VISIBLE : View.GONE);
+                if (mFlashButton != null)
+                    mFlashButton.setVisibility(isFlashSupported ? View.VISIBLE : View.GONE);
 
                 innitSoundPool();
             }
@@ -164,7 +164,7 @@ public class RPSScanCardFragment extends Fragment {
                     if (TextUtils.isEmpty(result.getDate())) {
                         date = null;
                     } else {
-                        date =  result.getDate().substring(0, 2) + '/' + result.getDate().substring(2);
+                        date = result.getDate().substring(0, 2) + '/' + result.getDate().substring(2);
                     }
 
                     Card card = new Card(result.getNumber(), result.getName(), date);
@@ -180,13 +180,16 @@ public class RPSScanCardFragment extends Fragment {
             }
 
             @Override
-            public void onFpsReport(String report) {}
+            public void onFpsReport(String report) {
+            }
 
             @Override
-            public void onAutoFocusMoving(boolean start, String cameraFocusMode) {}
+            public void onAutoFocusMoving(boolean start, String cameraFocusMode) {
+            }
 
             @Override
-            public void onAutoFocusComplete(boolean success, String cameraFocusMode) {}
+            public void onAutoFocusComplete(boolean success, String cameraFocusMode) {
+            }
 
             @Nullable
             private byte[] compressCardImage(Bitmap img) {
@@ -260,11 +263,12 @@ public class RPSScanCardFragment extends Fragment {
             public void onClick(final View v) {
                 if (v.isEnabled()) {
                     v.setEnabled(false);
-                    if (mListener != null) mListener.onScanCardCanceled(RPSScanCardIntent.ADD_MANUALLY_PRESSED);
+                    if (mListener != null)
+                        mListener.onScanCardCanceled(RPSScanCardIntent.ADD_MANUALLY_PRESSED);
                 }
             }
         });
-        if(mFlashButton != null) {
+        if (mFlashButton != null) {
             mFlashButton.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("RestrictedApi")
                 @Override
@@ -303,7 +307,10 @@ public class RPSScanCardFragment extends Fragment {
 
     public interface InteractionListener {
         void onScanCardCanceled(@RPSScanCardIntent.CancelReason int cancelReason);
+
         void onScanCardFailed(Exception e);
+
         void onScanCardFinished(Card card, byte[] cardImage);
     }
 }
+*/

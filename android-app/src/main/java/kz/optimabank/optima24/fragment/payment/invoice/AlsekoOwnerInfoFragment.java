@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.InvoiceAblePaymentActivity;
 import kz.optimabank.optima24.activity.SelectAccountActivity;
 import kz.optimabank.optima24.activity.SmsConfirmActivity;

@@ -35,14 +35,12 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
-import cards.pay.paycardsrecognizer.sdk.Card;
-import cards.pay.paycardsrecognizer.sdk.ScanCardIntent;
 import kg.optima.mobile.R;
+import kg.optima.mobile.databinding.FragmentTransferVisaToVisaBinding;
 import kz.optimabank.optima24.activity.MenuActivity;
 import kz.optimabank.optima24.activity.SelectAccountActivity;
 import kz.optimabank.optima24.activity.SmsConfirmActivity;
 import kz.optimabank.optima24.activity.TransfersActivity;
-import kz.optimabank.optima24.databinding.FragmentTransferVisaToVisaBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.model.gson.BodyModel;
 import kz.optimabank.optima24.model.gson.response.AccStatusResponse;
@@ -461,7 +459,7 @@ public class TransferVisaToVisaFragment extends ATFFragment implements
             Log.i(TAG_VISA_TO_VISA, "Joined to Scan");
             ifChange = true;
             if (resultCode == Activity.RESULT_OK) {
-                Card card = data.getParcelableExtra(ScanCardIntent.RESULT_PAYCARDS_CARD);
+                /*Card card = data.getParcelableExtra(ScanCardIntent.RESULT_PAYCARDS_CARD);
                 String cardData = null;
                 if (card != null) {
                     cardData = "Card number: " + card.getCardNumber() + "\n"
@@ -474,9 +472,9 @@ public class TransferVisaToVisaFragment extends ATFFragment implements
                     if (binding.editTextReceiverName.getText().toString().isEmpty()) {
                         binding.editTextReceiverName.setText(card.getCardHolderName());
                     }
-                }
+                }*/
                 binding.editTextRecipientCardNumber.setSelection(binding.editTextRecipientCardNumber.getText().length());
-                Log.i(TAG_VISA_TO_VISA, "Card info: " + cardData);
+              //  Log.i(TAG_VISA_TO_VISA, "Card info: " + cardData);
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 binding.editTextRecipientCardNumber.getText().clear();
                 binding.editTextRecipientCardNumber.requestFocus();
@@ -639,8 +637,8 @@ public class TransferVisaToVisaFragment extends ATFFragment implements
         binding.scanCardImageView.setOnClickListener(scanImageView -> {
             if (accountFrom != null) {
                 if (accountFrom instanceof UserAccounts.Cards) {
-                    Intent intent = new RPSScanCardIntent.Builder(getContext()).build();
-                    startActivityForResult(intent, MY_SCAN_REQUEST_CODE);
+                    //Intent intent = new RPSScanCardIntent.Builder(getContext()).build();
+                  //  startActivityForResult(intent, MY_SCAN_REQUEST_CODE);
                 }
             }
         });

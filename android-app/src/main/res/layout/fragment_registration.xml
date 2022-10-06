@@ -138,7 +138,7 @@
                 android:layout_height="45dp"
                 android:layout_marginHorizontal="@dimen/margin_20dp"
                 android:layout_marginVertical="@dimen/margin_15dp"
-                android:background="@drawable/selector_button_enable"
+                android:background="@drawable/selector_primary_filled_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_new_password_confirmation"

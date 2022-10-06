@@ -19,7 +19,7 @@ public interface CardImageDao {
     @Query("SELECT * FROM digitizedCard WHERE userPhone=:phone")
     List<DigitizedCard> getAll(String phone);
 
-    @Query("SELECT * FROM digitizedcard WHERE rbsNumber=:rbsNumber and userPhone=:phone)
+    @Query("SELECT * FROM digitizedcard WHERE rbsNumber=:rbsNumber and userPhone=:phone")
     DigitizedCard getByRbsNumber(String rbsNumber, String phone);
 
     @Query("DELETE FROM digitizedcard")

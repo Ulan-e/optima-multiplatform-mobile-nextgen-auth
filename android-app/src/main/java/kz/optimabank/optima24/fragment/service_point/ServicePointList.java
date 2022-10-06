@@ -23,7 +23,7 @@ import java.util.Comparator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.ServicePointDetails;
 import kz.optimabank.optima24.controller.adapter.ATMListAdapter;
 import kz.optimabank.optima24.fragment.ATFFragment;

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
-import kz.optimabank.optima24.databinding.FragmentNotificationDetailsBinding;
+import kg.optima.mobile.databinding.FragmentNotificationDetailsBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.notifications.models.Notification;
 import kz.optimabank.optima24.notifications.models.NotificationIdBody;

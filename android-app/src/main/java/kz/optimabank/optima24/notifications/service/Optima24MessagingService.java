@@ -32,15 +32,8 @@ import java.util.Random;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import kz.optimabank.optima24.R;
-import kz.optimabank.optima24.common.preferences.biometricCredentials.BiometricPreferences;
-import kz.optimabank.optima24.common.preferences.biometricCredentials.BiometricPreferencesImpl;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferences;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferencesImpl;
-import kz.optimabank.optima24.common.preferences.userCredentials.UserPreferences;
-import kz.optimabank.optima24.common.preferences.userCredentials.UserPreferencesImpl;
-import kz.optimabank.optima24.feature.authorization.authorization.enter.EnterActivity;
-import kz.optimabank.optima24.feature.authorization.authorization.pin.PinEnterActivity;
+import kg.optima.mobile.R;
+import kg.optima.mobile.android.ui.SingleActivity;
 import kz.optimabank.optima24.model.manager.GeneralManager;
 import kz.optimabank.optima24.notifications.data.remote.NotificationsRemoteRepository;
 import kz.optimabank.optima24.notifications.data.remote.NotificationsRemoteRepositoryImpl;
@@ -57,9 +50,9 @@ public class Optima24MessagingService extends FirebaseMessagingService {
     private static final String DATA_BODY = "body";
 
     private NotificationsRemoteRepository remoteRepository;
-    private UserPreferences userPreferences;
+    /*private UserPreferences userPreferences;
     private BiometricPreferences biometricPreferences;
-    private SessionPreferences sessionPreferences;
+    private SessionPreferences sessionPreferences;*/
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
@@ -77,9 +70,10 @@ public class Optima24MessagingService extends FirebaseMessagingService {
     }
 
     private void initPreferences() {
-        userPreferences = new UserPreferencesImpl(this);
+        //TODO Optima24MessagingService
+       /* userPreferences = new UserPreferencesImpl(this);
         biometricPreferences = new BiometricPreferencesImpl(this);
-        sessionPreferences = new SessionPreferencesImpl(this);
+        sessionPreferences = new SessionPreferencesImpl(this);*/
     }
 
     // получаем айди из ключа значение который отправляет сервис пушей
@@ -149,17 +143,17 @@ public class Optima24MessagingService extends FirebaseMessagingService {
 
     // создаем intent для сообщения
     private Intent createNotificationIntent(Notification notification) {
-        SessionPreferences sessionPreferences = new SessionPreferencesImpl(this);
+       // SessionPreferences sessionPreferences = new SessionPreferencesImpl(this);
         Intent intent;
 
-        if (userPreferences.isPinSet()) {
+        if (true) {
             if (GeneralManager.getInstance().getSessionId() == null) {
-                intent = new Intent(this, PinEnterActivity.class);
+                intent = new Intent(this, SingleActivity.class);
             } else {
                 intent = new Intent(this, NotificationsActivity.class);
             }
         } else {
-            intent = new Intent(this, EnterActivity.class);
+            intent = new Intent(this, SingleActivity.class);
         }
 
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

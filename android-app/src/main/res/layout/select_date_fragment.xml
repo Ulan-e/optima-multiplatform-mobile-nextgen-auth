@@ -80,7 +80,7 @@
                     <ImageView
                         android:layout_width="17dp"
                         android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_button_dark_common_down"
+                        android:src="@drawable/ic_arrow_left"
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"/>
                 </LinearLayout>
@@ -118,7 +118,7 @@
                     <ImageView
                         android:layout_width="17dp"
                         android:layout_height="17dp"
-                        app:srcCompat="@drawable/ic_button_dark_common_down"
+                        android:src="@drawable/ic_arrow_left"
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"/>
                 </LinearLayout>

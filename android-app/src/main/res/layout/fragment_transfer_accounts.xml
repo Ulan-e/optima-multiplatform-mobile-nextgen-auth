@@ -217,7 +217,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -386,7 +386,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -469,7 +469,7 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:visibility="gone"
-                            app:srcCompat="@drawable/ic_button_dark_common_down" />
+                            android:src="@drawable/ic_arrow_left" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -522,7 +522,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -688,7 +688,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -731,7 +731,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -825,7 +825,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -859,7 +859,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -893,7 +893,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
 
                         </LinearLayout>
 
@@ -948,7 +948,7 @@
                             android:layout_marginEnd="@dimen/margin_5dp"
                             android:background="?attr/selectableItemBackground"
                             android:visibility="gone"
-                            app:srcCompat="@drawable/ic_baseline_info_24"
+                            android:src="@drawable/ic_dialog_info"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
 

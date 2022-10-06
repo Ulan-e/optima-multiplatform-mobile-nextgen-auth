@@ -9,8 +9,6 @@ import java.util.Map;
 import io.reactivex.Single;
 import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.app.ServiceGenerator;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferences;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferencesImpl;
 import kz.optimabank.optima24.model.interfaces.IApiMethods;
 import kz.optimabank.optima24.model.manager.GeneralManager;
 import kz.optimabank.optima24.notifications.models.DeliveredNotificationResponse;
@@ -52,8 +50,8 @@ public class NotificationsRemoteRepositoryImpl implements NotificationsRemoteRep
     private Map<String, String> getHeader() {
         String sessionId = GeneralManager.getInstance().getSessionId();
         if(sessionId == null){
-            SessionPreferences sessionPreferences = new SessionPreferencesImpl((context));
-            sessionId = sessionPreferences.getSessionID();
+           // SessionPreferences sessionPreferences = new SessionPreferencesImpl((context));
+         //   sessionId = sessionPreferences.getSessionID();
         }
         return OptimaBank.getInstance().getOpenSessionHeader(sessionId);
     }

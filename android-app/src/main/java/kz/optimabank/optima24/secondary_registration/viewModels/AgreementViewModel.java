@@ -13,7 +13,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.app.OptimaBank;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;

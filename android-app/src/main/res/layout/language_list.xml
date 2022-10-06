@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/gradient_toolbar"
+        android:background="@color/red_atf"
         app:layout_anchor="@id/lin_search"
         app:layout_collapseMode="pin"
         app:layout_collapseParallaxMultiplier="1.0"

@@ -19,10 +19,10 @@ import android.os.Looper;
 import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.multidex.BuildConfig;
 
 import java.util.Locale;
 
+import kg.optima.mobile.BuildConfig;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.model.service.CheckVersionImpl;
 import kz.optimabank.optima24.utility.Constants;

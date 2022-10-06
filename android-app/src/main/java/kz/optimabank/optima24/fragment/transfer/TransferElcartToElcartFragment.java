@@ -51,11 +51,11 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
 import kg.optima.mobile.R;
+import kg.optima.mobile.databinding.FragmentTransferVisaToVisaBinding;
 import kz.optimabank.optima24.activity.MenuActivity;
 import kz.optimabank.optima24.activity.SelectAccountActivity;
 import kz.optimabank.optima24.activity.SmsConfirmActivity;
 import kz.optimabank.optima24.activity.TransfersActivity;
-import kz.optimabank.optima24.databinding.FragmentTransferVisaToVisaBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.model.gson.BodyModel;
 import kz.optimabank.optima24.model.gson.response.AccStatusResponse;

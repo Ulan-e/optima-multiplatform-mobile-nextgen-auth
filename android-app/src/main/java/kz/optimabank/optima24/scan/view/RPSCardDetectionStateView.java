@@ -1,3 +1,4 @@
+/*
 package kz.optimabank.optima24.scan.view;
 
 import android.annotation.SuppressLint;
@@ -9,9 +10,11 @@ import android.util.Log;
 import cards.pay.paycardsrecognizer.sdk.camera.widget.CardDetectionStateView;
 import cards.pay.paycardsrecognizer.sdk.ndk.RecognitionResult;
 
+*/
 /**
   Created by Тимур on 04.02.2018.
- */
+ *//*
+
 
 public class RPSCardDetectionStateView extends CardDetectionStateView {
     private final Context context;
@@ -45,3 +48,4 @@ public class RPSCardDetectionStateView extends CardDetectionStateView {
         }
     }
 }
+*/

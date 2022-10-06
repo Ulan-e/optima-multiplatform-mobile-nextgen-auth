@@ -33,13 +33,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,8 +70,6 @@ public class CreditDetailsFragment extends ATFFragment implements LoanScheduleIm
         AccountVisibilityImpl.Callback {
     @BindView(R.id.tvTitle)
     TextView tvTitle;
-    @BindView(R.id.pieChart)
-    PieChart mChart;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -358,7 +349,7 @@ public class CreditDetailsFragment extends ATFFragment implements LoanScheduleIm
     }
 
     private void initChart() {
-        mChart.getDescription().setEnabled(false);
+       /* mChart.getDescription().setEnabled(false);
         remainPay = creditAccounts.balance;//creditAccounts.agreementAmount -
         mChart.setCenterText(TextUtils.concat(generateCenterSpannableTextInfo(), "\n", "\n",
                 generateCenterSpannableTextInfo2(), "\n", "\n", generateCenterSpannableTextInfo3()));
@@ -375,11 +366,11 @@ public class CreditDetailsFragment extends ATFFragment implements LoanScheduleIm
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
         Legend l = mChart.getLegend();
-        l.setEnabled(false);
+        l.setEnabled(false);*/
     }
 
     private void setData() {
-        ArrayList<PieEntry> entries = new ArrayList<>();
+       /* ArrayList<PieEntry> entries = new ArrayList<>();
         float f1 = 0.0f;
         float f2 = 0.0f;
         if (!creditAccounts.isClosed) {
@@ -405,7 +396,7 @@ public class CreditDetailsFragment extends ATFFragment implements LoanScheduleIm
         data.setDrawValues(false);
         mChart.setData(data);
 
-        mChart.invalidate();
+        mChart.invalidate();*/
     }
 
     private SpannableString generateCenterSpannableTextInfo() {

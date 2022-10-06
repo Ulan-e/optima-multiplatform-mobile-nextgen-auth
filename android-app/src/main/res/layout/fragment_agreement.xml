@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginBottom="@dimen/margin_15dp"
-        android:background="@drawable/selector_button_enable"
+        android:background="@drawable/selector_primary_filled_button"
         android:text="@string/t_continue"
         app:layout_constraintBottom_toBottomOf="parent" />
 

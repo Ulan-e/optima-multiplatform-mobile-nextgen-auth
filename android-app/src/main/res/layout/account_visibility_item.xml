@@ -94,9 +94,9 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_invision"
             android:id="@+id/imgVisibility"
             android:layout_weight="0.1"/>
+        <!--app:srcCompat="@drawable/ic_invision"-->
 
     </LinearLayout>
 

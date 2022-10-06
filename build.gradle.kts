@@ -1,5 +1,6 @@
 
 import org.gradle.api.internal.artifacts.DefaultModuleVersionSelector
+import org.jetbrains.kotlin.gradle.plugin.statistics.ReportStatisticsToElasticSearch.url
 
 plugins {
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
@@ -11,8 +12,9 @@ buildscript {
         mavenCentral()
         google()
         gradlePluginPortal()
-        maven { url = uri("https://plugins.gradle.org/m2/") }
-        maven { url  = uri("https://jitpack.io") }
+
+        maven(url = "https://pay.cards/maven")
+        maven(url = "https://jitpack.io")
 
         flatDir {
             dirs("libs")

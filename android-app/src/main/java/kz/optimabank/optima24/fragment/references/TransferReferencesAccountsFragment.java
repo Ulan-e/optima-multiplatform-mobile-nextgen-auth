@@ -8,8 +8,6 @@ import android.view.View;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 
-import cards.pay.paycardsrecognizer.sdk.Card;
-import cards.pay.paycardsrecognizer.sdk.ScanCardIntent;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.SelectAccountActivity;
 import kz.optimabank.optima24.activity.SelectParameterActivity;
@@ -78,9 +76,10 @@ public class TransferReferencesAccountsFragment extends TransferAccountsFragment
         if (requestCode == MY_SCAN_REQUEST_CODE) {
             ifChange = true;
             if (resultCode == Activity.RESULT_OK) {
-                Card card = data.getParcelableExtra(ScanCardIntent.RESULT_PAYCARDS_CARD);
-                //etReceiverName.getText().clear();
-                edSpinnerTo.setText(card.getCardNumber());
+                // TODO SCAN card
+//                Card card = data.getParcelableExtra(ScanCardIntent.RESULT_PAYCARDS_CARD);
+//                //etReceiverName.getText().clear();
+//                edSpinnerTo.setText(card.getCardNumber());
             } else if (resultCode == 101) {
                 edSpinnerTo.getText().clear();
                 edSpinnerTo.requestFocus();

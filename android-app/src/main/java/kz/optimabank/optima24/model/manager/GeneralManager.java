@@ -26,8 +26,6 @@ import java.util.HashMap;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.SessionDialogActivity;
 import kz.optimabank.optima24.app.OptimaBank;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferences;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferencesImpl;
 import kz.optimabank.optima24.db.controllers.DHKeyController;
 import kz.optimabank.optima24.db.controllers.PaymentContextController;
 import kz.optimabank.optima24.db.controllers.PushTokenKeyController;

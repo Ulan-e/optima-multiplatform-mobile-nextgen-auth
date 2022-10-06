@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.InvoiceAblePaymentActivity;
 import kz.optimabank.optima24.activity.NavigationActivity;
 import kz.optimabank.optima24.activity.PaymentActivity;

@@ -1,6 +1,5 @@
 package kz.optimabank.optima24.controller.adapter;
 
-import static kz.optimabank.optima24.utility.Constants.DATE_PICKER_TAG;
 import static kz.optimabank.optima24.utility.Constants.SELECT_ACCOUNT_FROM_REQUEST_CODE;
 import static kz.optimabank.optima24.utility.Constants.VIEW_DATE_FORMAT;
 import static kz.optimabank.optima24.utility.Utilities.getLayoutParamsForImageSize;
@@ -23,11 +22,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.redmadrobot.inputmask.MaskedTextChangedListener;
@@ -38,7 +35,6 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -120,7 +116,8 @@ public class ApplCreateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 return new EditTextViewHolder(view,false);
             case DATE_TYPE:
                 view = inflater.inflate(R.layout.application_date_item, viewGroup, false);
-                return new SelectDateViewHolder(view);
+                return null;
+                        //new SelectDateViewHolder(view);
             case SPINNER_TYPE:
                 view = inflater.inflate(R.layout.application_spinner_item, viewGroup, false);
                 return new SpinnerViewHolder(view);
@@ -659,7 +656,7 @@ public class ApplCreateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    class SelectDateViewHolder extends BaseViewHolder implements DatePickerDialog.OnDateSetListener {
+    /*class SelectDateViewHolder extends BaseViewHolder implements DatePickerDialog.OnDateSetListener {
 
         @BindView(R.id.param_date)
         View selectDateView;
@@ -673,14 +670,15 @@ public class ApplCreateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
-            final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+            // TODO
+           *//* final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
            // datePickerDialog.setStartDate(year, month, day);
             selectDateView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     datePickerDialog.show(fragment.getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
                 }
-            });
+            });*//*
         }
 
         @Override
@@ -707,7 +705,7 @@ public class ApplCreateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             }
             return valid;
         }
-    }
+    }*/
 
     class CurrentDateViewHolder extends BaseViewHolder {
 

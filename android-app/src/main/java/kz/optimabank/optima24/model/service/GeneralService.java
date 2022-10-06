@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import kz.optimabank.optima24.BuildConfig;
+import kg.optima.mobile.BuildConfig;
 import kz.optimabank.optima24.model.gson.APIError;
 import kz.optimabank.optima24.model.manager.GeneralManager;
 import kz.optimabank.optima24.utility.ErrorUtils;

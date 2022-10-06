@@ -4,6 +4,7 @@ import static kz.optimabank.optima24.utility.Constants.APP_VERSION;
 import static kz.optimabank.optima24.utility.Constants.PUSH_TAG;
 
 import android.annotation.TargetApi;
+import android.app.Application;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +20,6 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
-import androidx.multidex.MultiDexApplication;
 
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
@@ -33,7 +33,7 @@ import kg.optima.mobile.R;
 import kz.optimabank.optima24.room_db.AppDatabase;
 import kz.optimabank.optima24.utility.Constants;
 
-public class OptimaBank extends MultiDexApplication implements LifecycleObserver {
+public class OptimaBank extends Application implements LifecycleObserver {
     private static OptimaBank instance;
     private boolean isBackground;
     private boolean urgentMessageState;

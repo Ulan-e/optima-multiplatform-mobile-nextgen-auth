@@ -25,8 +25,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import kz.optimabank.optima24.R;
-import kz.optimabank.optima24.databinding.FragmentAgreementBinding;
+import kg.optima.mobile.R;
+import kg.optima.mobile.databinding.FragmentAgreementBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.secondary_registration.viewModels.AgreementViewModel;
 import kz.optimabank.optima24.secondary_registration.viewModels.AgreementViewModelFactory;

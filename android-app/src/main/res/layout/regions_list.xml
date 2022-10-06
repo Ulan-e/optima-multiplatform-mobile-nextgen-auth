@@ -14,7 +14,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/gradient_toolbar"
+            android:background="@color/red_atf"
             app:layout_collapseMode="pin"
             app:navigationIcon="@drawable/arrow_left">
 
@@ -73,7 +73,7 @@
                     android:id="@+id/collapsingToolbarLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_toolbar"
+                    android:background="@color/red_atf"
                     android:fitsSystemWindows="false"
                     android:gravity="center"
                     android:paddingBottom="15dp"

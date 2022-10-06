@@ -70,8 +70,6 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cards.pay.paycardsrecognizer.sdk.Card;
-import cards.pay.paycardsrecognizer.sdk.ScanCardIntent;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.activity.MenuActivity;
 import kz.optimabank.optima24.activity.SelectAccountActivity;
@@ -541,14 +539,15 @@ public class TransferAccountsFragment extends ATFFragment implements View.OnClic
             Log.i(TAG, "Joined to Scan");
             ifChange = true;
             if (resultCode == Activity.RESULT_OK) {
-                Card card = data.getParcelableExtra(ScanCardIntent.RESULT_PAYCARDS_CARD);
+                // TODO Card recongnizer
+                /*Card card = data.getParcelableExtra(ScanCardIntent.RESULT_PAYCARDS_CARD);
                 String cardData = "Card number: " + card.getCardNumber() + "\n"
                         + "Card holder: " + card.getCardHolderName() + "\n"
                         + "Card expiration date: " + card.getExpirationDate();
                 etReceiverName.getText().clear();
                 edSpinnerTo.setText(card.getCardNumber());
                 edSpinnerTo.setSelection(edSpinnerTo.getText().length());
-                Log.i(TAG, "Card info: " + cardData);
+                Log.i(TAG, "Card info: " + cardData);*/
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 edSpinnerTo.getText().clear();
                 edSpinnerTo.requestFocus();
@@ -603,8 +602,8 @@ public class TransferAccountsFragment extends ATFFragment implements View.OnClic
     }
 
     public void scanCard() {
-        Intent intent = new RPSScanCardIntent.Builder(getContext()).build();
-        startActivityForResult(intent, MY_SCAN_REQUEST_CODE);
+        /*Intent intent = new RPSScanCardIntent.Builder(getContext()).build();
+        startActivityForResult(intent, MY_SCAN_REQUEST_CODE);*/
     }
 
     @Override

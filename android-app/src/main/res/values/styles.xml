@@ -9,7 +9,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/sp16</item>
-        <item name="android:background">@drawable/selector_primary_filled_button</item>
+<!--        <item name="android:background">@drawable/selector_primary_filled_button</item>-->
         <item name="android:textAllCaps">false</item>
         <item name="android:textAlignment">center</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
@@ -122,7 +122,7 @@
     </style>
 
     <style name="payProgressBar" parent="android:Widget.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/pay_progress_bar_horizontal</item>
+       <!-- <item name="android:progressDrawable">@drawable/pay_progress_bar_horizontal</item>-->
         <item name="android:minHeight">8dp</item>
         <item name="android:maxHeight">18dp</item>
     </style>
@@ -160,7 +160,7 @@
     <style name="RedButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/text_size_16sp</item>
-        <item name="android:background">@drawable/selector_button_enable</item>
+<!--        <item name="android:background">@drawable/selector_primary_filled_button</item>-->
         <item name="android:textAllCaps">false</item>
         <item name="android:layout_marginStart">@dimen/margin_25dp</item>
         <item name="android:layout_marginEnd">@dimen/margin_25dp</item>
@@ -278,7 +278,7 @@
     <style name="ProgressDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColor">@color/gray_126_126_126</item>
         <item name="android:textSize">@dimen/text_size_15sp</item>
-        <item name="android:background">@drawable/bg_rounded_corners</item>
+<!--        <item name="android:background">@drawable/bg_rounded_corners</item>-->
         <item name="colorAccent">@color/red_atf</item>
     </style>
 
@@ -286,7 +286,7 @@
     <style name="MainAlertDialogStyle" parent="AlertDialogTheme">
         <item name="android:textColor">@color/gray_126_126_126</item>
         <item name="android:textSize">@dimen/text_size_14sp</item>
-        <item name="android:background">@drawable/bg_rounded_corners</item>
+<!--        <item name="android:background">@drawable/bg_rounded_corners</item>-->
         <item name="colorAccent">@color/red_atf</item>
     </style>
 

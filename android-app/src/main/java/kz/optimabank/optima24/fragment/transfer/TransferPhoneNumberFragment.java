@@ -61,13 +61,13 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
 import kg.optima.mobile.R;
+import kg.optima.mobile.databinding.FragmentTransferPhoneNumberBinding;
 import kz.optimabank.optima24.activity.MenuActivity;
 import kz.optimabank.optima24.activity.SelectAccountActivity;
 import kz.optimabank.optima24.activity.SmsConfirmActivity;
 import kz.optimabank.optima24.activity.TransfersActivity;
 import kz.optimabank.optima24.activity.contacts.SelectContactsActivity;
 import kz.optimabank.optima24.activity.contacts.data.Contact;
-import kz.optimabank.optima24.databinding.FragmentTransferPhoneNumberBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.fragment.transfer.phoneNumberRequest.TransferByPhoneNumberAction;
 import kz.optimabank.optima24.fragment.transfer.phoneNumberRequest.TransferByPhoneNumberActionImpl;

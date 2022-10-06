@@ -1,3 +1,4 @@
+/*
 package kz.optimabank.optima24.scan.view;
 
 import android.annotation.SuppressLint;
@@ -8,9 +9,11 @@ import android.util.Log;
 import cards.pay.paycardsrecognizer.sdk.BuildConfig;
 import cards.pay.paycardsrecognizer.sdk.camera.OrientationHelper;
 
+*/
 /**
  * Created by Тимур on 06.02.2018.
- */
+ *//*
+
 
 public class RPSCardRectCoordsMapper {
     private static final int[] DEFAULT_CAMERA_RESOLUTION = {1280, 720};
@@ -37,24 +40,32 @@ public class RPSCardRectCoordsMapper {
 
     private static final String TAG = "RPSCardRectCoordsMapper";
 
-    /**
+    */
+/**
      * Card rect (in camera coordinates)
-     */
+     *//*
+
     private final Rect mCardCameraRectRaw = new Rect();
 
-    /**
+    */
+/**
      * Camera resolution
-     */
+     *//*
+
     private final int[] mCameraPreviewSize = new int[]{DEFAULT_CAMERA_RESOLUTION[0], DEFAULT_CAMERA_RESOLUTION[1]};
 
-    /**
+    */
+/**
      * Camera rotation
-     */
+     *//*
+
     private int mCameraRotation = DEFAULT_CAMERA_ROTATION;
 
-    /**
+    */
+/**
      * Card rect (in view coordinates)
-     */
+     *//*
+
     private final Rect mCardRect = new Rect();
 
     private final Rect mCardCameraRect = new Rect();
@@ -219,3 +230,4 @@ public class RPSCardRectCoordsMapper {
         return (mCameraRotation == 0) || (mCameraRotation == 180) ? mCameraPreviewSize[1] : mCameraPreviewSize[0];
     }
 }
+*/

@@ -39,7 +39,7 @@
             android:layout_marginEnd="@dimen/margin_5dp"
             android:background="?attr/selectableItemBackground"
             android:visibility="gone"
-            app:srcCompat="@drawable/ic_baseline_info_24"
+            android:src="@drawable/ic_dialog_info"
             tools:ignore="ContentDescription" />
     </LinearLayout>
 

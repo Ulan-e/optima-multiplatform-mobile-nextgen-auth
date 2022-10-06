@@ -23,7 +23,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-import kz.optimabank.optima24.BuildConfig;
+import kg.optima.mobile.BuildConfig;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.model.interfaces.IApiMethods;
 import kz.optimabank.optima24.model.manager.GeneralManager;
@@ -120,19 +120,6 @@ public class ServiceGenerator {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClientBuilder.addInterceptor(logging);
-    }
-
-    private static void initSSL(OkHttpClient.Builder okhttpBuilder, Context context) {
-        SSLContext sslContext = null;
-        try {
-            sslContext = createCertificate(context.getResources().openRawResource(R.raw.optimabankkg));
-        } catch (CertificateException | IOException | KeyStoreException
-                | KeyManagementException | NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        if (sslContext != null) {
-            okhttpBuilder.sslSocketFactory(sslContext.getSocketFactory(), systemDefaultTrustManager());
-        }
     }
 
     private static void initUnsafeSSL(OkHttpClient.Builder okhttpBuilder) {

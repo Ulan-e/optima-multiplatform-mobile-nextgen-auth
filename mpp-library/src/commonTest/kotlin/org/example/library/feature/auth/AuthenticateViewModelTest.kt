@@ -26,7 +26,7 @@ internal class AuthenticateViewModelTest : TestCases() {
 
     @Ignore // ignore while ios not passed
     @Test
-    fun `success login`() {
+    fun success login() {
         val authFactory = createAuthFactory { request ->
             when (request.url.encodedPath) {
                 "/signin" -> {

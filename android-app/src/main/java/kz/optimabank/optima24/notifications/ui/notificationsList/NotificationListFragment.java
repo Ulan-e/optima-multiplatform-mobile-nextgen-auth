@@ -19,11 +19,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.util.List;
 
-import kz.optimabank.optima24.R;
+import kg.optima.mobile.R;
+import kg.optima.mobile.databinding.FragmentNotificationListBinding;
 import kz.optimabank.optima24.activity.MenuActivity;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferences;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferencesImpl;
-import kz.optimabank.optima24.databinding.FragmentNotificationListBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.notifications.models.items.BaseNotificationItem;
 import kz.optimabank.optima24.notifications.ui.adapter.NotificationsAdapter;
@@ -34,7 +32,7 @@ public class NotificationListFragment extends ATFFragment {
     private static final String IS_FROM_SINGLE_NOTIFICATION = "isFromSingleNotification";
     private static final String NOTIFICATION_ID = "notificationId";
 
-    private SessionPreferences sessionPreferences;
+   // private SessionPreferences sessionPreferences;
 
     private FragmentNotificationListBinding binding;
     private NotificationsListViewModel model;
@@ -50,7 +48,7 @@ public class NotificationListFragment extends ATFFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sessionPreferences = new SessionPreferencesImpl(requireContext());
+      //  sessionPreferences = new SessionPreferencesImpl(requireContext());
 
         binding.toolbar.setNavigationOnClickListener(toolbar -> navigateToMenuActivity());
 
@@ -90,7 +88,8 @@ public class NotificationListFragment extends ATFFragment {
         if(preferences.getString(BANK_ID, null) != null) {
             bankId = preferences.getString(BANK_ID, "");
         }else {
-            bankId = sessionPreferences.getSessionID();
+            //TODO Session
+           // bankId = sessionPreferences.getSessionID();
         }
     }
 

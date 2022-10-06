@@ -62,8 +62,8 @@ import java.security.MessageDigest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kg.optima.mobile.R;
 import kz.optimabank.optima24.PollsActivity;
-import kz.optimabank.optima24.R;
 import kz.optimabank.optima24.activity.LoginActivity;
 import kz.optimabank.optima24.activity.MenuActivity;
 import kz.optimabank.optima24.app.OptimaBank;
@@ -81,8 +81,6 @@ import kz.optimabank.optima24.model.service.AuthorizationUserImpl;
 import kz.optimabank.optima24.secondary_registration.ui.OldRegistrationActivity;
 import kz.optimabank.optima24.utility.Constants;
 import kz.optimabank.optima24.utility.Utilities;
-import rps.pincode.managers.AppLock;
-import rps.pincode.managers.LockManager;
 
 public class MLoginFragment extends ATFFragment implements FingerprintUiHelper.Callback,
         AuthorizationUserImpl.Callback, AuthorizationUserImpl.GetAuthorizationTypeCallback, TextWatcher {
@@ -621,9 +619,9 @@ public class MLoginFragment extends ATFFragment implements FingerprintUiHelper.C
     void setCode() {
         Intent intent = new Intent(requireContext(), LoginActivity.class);
         if (getPreferences(requireContext()).getBoolean(CODE, false)) {
-            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.UNLOCK_PIN);
+           // intent.putExtra(AppLock.EXTRA_TYPE, AppLock.UNLOCK_PIN);
         } else {
-            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK);
+          //  intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK);
 
         }
         startActivityForResult(intent, REQUEST_CODE_ENABLE);
@@ -762,8 +760,8 @@ public class MLoginFragment extends ATFFragment implements FingerprintUiHelper.C
         //for code
         deleteLogin();
         deletePassword();
-        LockManager mLockManager = new LockManager();
-        mLockManager.disableAppLock();
+        //LockManager mLockManager = new LockManager();
+       // mLockManager.disableAppLock();
         SharedPreferences.Editor editor1 = getPreferences(requireContext()).edit();
         editor1.putBoolean(CODE, false);
         editor1.apply();

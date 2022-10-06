@@ -8,7 +8,7 @@ import java.util.Locale;
 
 import javax.xml.namespace.QName;
 
-import kz.optimabank.optima24.BuildConfig;
+import kg.optima.mobile.BuildConfig;
 
 public final class Constants {
     // TEST

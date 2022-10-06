@@ -240,7 +240,7 @@ public class TransferFragAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 //   holder.tvTitle.setText(paymentCategory.getName()+"\n");
                 //}
                 Log.i("configurePayment", "position = " + position);
-                holder.relTIL.setBackground(context.getResources().getDrawable(R.drawable.border_new));
+                holder.relTIL.setBackground(context.getResources().getDrawable(R.drawable.bg_rounded_shadow));
                 Utilities.setMargins(holder.relTIL, 17, 17, 17, 17);
                 if (paymentCategory.alias != null) {
                     //setPaymentImage(context,holder.imgItem,paymentCategory.getExternalId());

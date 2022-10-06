@@ -204,7 +204,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                app:srcCompat="@drawable/ic_arrow_drop_down_24" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -496,7 +496,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                app:srcCompat="@drawable/ic_arrow_drop_down_24" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -564,7 +564,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                app:srcCompat="@drawable/ic_arrow_drop_down_24" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -636,7 +636,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                app:srcCompat="@drawable/ic_arrow_drop_down_24" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -843,7 +843,7 @@
                                     android:layout_height="17dp"
                                     android:layout_gravity="center"
                                     android:layout_marginStart="10dp"
-                                    app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                    app:srcCompat="@drawable/ic_arrow_drop_down_24" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -877,7 +877,7 @@
                                     android:layout_height="17dp"
                                     android:layout_gravity="center"
                                     android:layout_marginStart="10dp"
-                                    app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                    app:srcCompat="@drawable/ic_arrow_drop_down_24" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -911,7 +911,7 @@
                                     android:layout_height="17dp"
                                     android:layout_gravity="center"
                                     android:layout_marginStart="10dp"
-                                    app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                    app:srcCompat="@drawable/ic_arrow_drop_down_24" />
 
                             </LinearLayout>
                         </LinearLayout>

@@ -19,7 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
-import kz.optimabank.optima24.BuildConfig;
+import kg.optima.mobile.BuildConfig;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.model.gson.response.BankRequisitesResponse;
 import kz.optimabank.optima24.model.gson.response.UserAccounts;

@@ -335,7 +335,7 @@
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/title_default_card"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_info_24" />
+            android:src="@drawable/ic_dialog_info" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_default_card"
@@ -347,7 +347,7 @@
             android:padding="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/selector_bookmark"
+            android:src="@drawable/selector_bookmark"
             app:switchPadding="@dimen/margin_10dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

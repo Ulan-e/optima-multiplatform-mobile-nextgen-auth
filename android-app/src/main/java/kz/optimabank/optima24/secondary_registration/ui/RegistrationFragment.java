@@ -16,8 +16,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-import kz.optimabank.optima24.R;
-import kz.optimabank.optima24.databinding.FragmentRegistrationBinding;
+import kg.optima.mobile.R;
+import kg.optima.mobile.databinding.FragmentRegistrationBinding;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.model.base.SecretQuestionResponse;
 import kz.optimabank.optima24.secondary_registration.viewModels.RegistrationViewModel;

@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.google.android.gms.common.api.CommonStatusCodes;
 
 import java.util.Calendar;
@@ -32,7 +31,7 @@ import static kz.optimabank.optima24.utility.Utilities.getFormatForDate;
   Created by Timur on 08.06.2017.
  */
 
-public class SelectDateFragment extends ATFFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener{
+public class SelectDateFragment extends ATFFragment implements View.OnClickListener/*, DatePickerDialog.OnDateSetListener*/{
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.tvTitle) TextView tvTitle;
     @BindView(R.id.btnShow) Button btnShow;
@@ -49,8 +48,8 @@ public class SelectDateFragment extends ATFFragment implements View.OnClickListe
     private Calendar calendar = Calendar.getInstance();
     private Calendar fromDate = Calendar.getInstance();
     private Calendar toDate = Calendar.getInstance();
-    DatePickerDialog dateFromPickerDialog;
-    DatePickerDialog dateToPickerDialog;
+    /*DatePickerDialog dateFromPickerDialog;
+    DatePickerDialog dateToPickerDialog;*/
     String dateTag, period;
     int from;
     int day,month,year;
@@ -72,9 +71,9 @@ public class SelectDateFragment extends ATFFragment implements View.OnClickListe
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        dateFromPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
-        dateFromPickerDialog.setYearRange(2010, year+5);  //В календаре от текущего кода отображать плюс 5
-        dateToPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+//        dateFromPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+//        dateFromPickerDialog.setYearRange(2010, year+5);  //В календаре от текущего кода отображать плюс 5
+//        dateToPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
         return view;
     }
 
@@ -85,7 +84,7 @@ public class SelectDateFragment extends ATFFragment implements View.OnClickListe
 
     }
 
-    @Override
+    /*@Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         period = null;
         GregorianCalendar date = new GregorianCalendar(year, month, day);
@@ -108,21 +107,21 @@ public class SelectDateFragment extends ATFFragment implements View.OnClickListe
             toDate = date;
             Log.i("OnDateSetSDF", "toDate = "+ date);
         }
-    }
+    }*/
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.linSpinnerFrom:
                 from = 1;
-                createDatePickerDialog(dateFromPickerDialog);
+             //   createDatePickerDialog(dateFromPickerDialog);
                 break;
             case R.id.linSpinnerTo:
                 if (isFirstDateSelected) {
                     Log.i("OnDateSetSDF----","year = "+year+"  month = "+ month+"  day = "+day);
                     from = 2;
-                    dateToPickerDialog.setStartDate(year, month, day + 1);
-                    createDatePickerDialog(dateToPickerDialog);
+                   // dateToPickerDialog.setStartDate(year, month, day + 1);
+                  //  createDatePickerDialog(dateToPickerDialog);
                 } else {
                     //if (tvSpinnerFrom.getText().toString().isEmpty())
                         tvSpinnerFrom.setError(getString(R.string.error_empty));
@@ -190,11 +189,11 @@ public class SelectDateFragment extends ATFFragment implements View.OnClickListe
         }
     }
 
-    private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
-        if(datePickerDialog!=null) {
-            datePickerDialog.show(getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
-        }
-    }
+//    private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
+//        if(datePickerDialog!=null) {
+//            datePickerDialog.show(getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
+//        }
+//    }
 
     private void setDate(int day) {
         Calendar curDate = GregorianCalendar.getInstance();

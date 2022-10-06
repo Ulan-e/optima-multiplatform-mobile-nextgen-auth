@@ -1,5 +1,9 @@
 package kz.optimabank.optima24.model.base;
 
+import static kz.optimabank.optima24.utility.Constants.API_BASE_URL;
+import static kz.optimabank.optima24.utility.Constants.TAG;
+import static kz.optimabank.optima24.utility.Utilities.isInternetConnectionError;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,10 +23,10 @@ import java.util.List;
 import java.util.Map;
 
 import kg.optima.mobile.R;
+import kg.optima.mobile.android.ui.SingleActivity;
 import kz.optimabank.optima24.activity.OptimaActivity;
 import kz.optimabank.optima24.app.ServiceGenerator;
 import kz.optimabank.optima24.db.entry.ForeignBank;
-import kz.optimabank.optima24.feature.authorization.authorization.pin.PinEnterActivity;
 import kz.optimabank.optima24.model.gson.APIError;
 import kz.optimabank.optima24.model.gson.response.AccStatusResponse;
 import kz.optimabank.optima24.model.gson.response.AccountsResponse;
@@ -50,10 +54,6 @@ import retrofit2.Callback;
 import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-
-import static kz.optimabank.optima24.utility.Constants.API_BASE_URL;
-import static kz.optimabank.optima24.utility.Constants.TAG;
-import static kz.optimabank.optima24.utility.Utilities.isInternetConnectionError;
 
 public class NetworkResponse {
     private static NetworkResponse mInstance;
@@ -146,7 +146,7 @@ public class NetworkResponse {
                 builder.setPositiveButton(context.getString(R.string._yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(context, PinEnterActivity.class);
+                        Intent intent = new Intent(context, SingleActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
@@ -205,7 +205,7 @@ public class NetworkResponse {
                 builder.setPositiveButton(context.getString(R.string.status_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(context, PinEnterActivity.class);
+                        Intent intent = new Intent(context, SingleActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);

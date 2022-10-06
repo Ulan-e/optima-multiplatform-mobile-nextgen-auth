@@ -9,11 +9,6 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.app.OptimaBank;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferences;
-import kz.optimabank.optima24.common.preferences.sessionCredentials.SessionPreferencesImpl;
-import kz.optimabank.optima24.common.preferences.userCredentials.UserPreferences;
-import kz.optimabank.optima24.common.preferences.userCredentials.UserPreferencesImpl;
-import kz.optimabank.optima24.domain.entity.dto.UserResponse;
 import kz.optimabank.optima24.model.base.NetworkResponse;
 import kz.optimabank.optima24.model.gson.response.AuthorizationResponse;
 import kz.optimabank.optima24.model.gson.response.BaseResponse;
@@ -47,7 +42,7 @@ public class AuthorizationUserImpl extends GeneralService implements Authorizati
                                 AuthorizationResponse authResponse = response.data;
                                 GeneralManager.dispose();
                                 GeneralManager.getInstance().setInitializedMobocardsSdk(isInitializedMobocardsSdk);
-                                SessionPreferences sessionPreferences = new SessionPreferencesImpl(context);
+                              //  SessionPreferences sessionPreferences = new SessionPreferencesImpl(context);
 //                                GeneralManager.getInstance().setSessionId(sessionPreferences.getSessionId());
                                 GeneralManager.getInstance().setUser(mapToUser(context));
                                 GeneralManager.getInstance().setAppOpen(true);
@@ -79,7 +74,8 @@ public class AuthorizationUserImpl extends GeneralService implements Authorizati
     }
 
     private AuthorizationResponse.User mapToUser(Context context){
-        UserPreferences userPreferences = new UserPreferencesImpl(context);
+        return null;
+        /*UserPreferences userPreferences = new UserPreferencesImpl(context);
 
         AuthorizationResponse.User user = new AuthorizationResponse.User();
         user.setAddress(userPreferences.getAddress());
@@ -94,7 +90,7 @@ public class AuthorizationUserImpl extends GeneralService implements Authorizati
         user.setSex(userPreferences.getSex());
         user.setMobilePhoneNumber(userPreferences.getPhoneNumber());
         user.setAutoEncrypt(userPreferences.getAutoEncrypt());
-        return user;
+        return user;*/
     }
 
     // сохранение банка айди

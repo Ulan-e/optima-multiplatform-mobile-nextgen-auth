@@ -217,7 +217,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -589,7 +589,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -643,7 +643,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -788,7 +788,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -843,7 +843,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -948,7 +948,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -1002,7 +1002,7 @@
                                 android:layout_height="17dp"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="10dp"
-                                app:srcCompat="@drawable/ic_button_dark_common_down" />
+                                android:src="@drawable/ic_arrow_left" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -1232,7 +1232,7 @@
                                     <!--android:layout_height="17dp"-->
                                     <!--android:layout_gravity="center"-->
                                     <!--android:layout_marginStart="10dp"-->
-                                    <!--app:srcCompat="@drawable/ic_button_dark_common_down" />-->
+                                    <!--android:src="@drawable/ic_arrow_left" />-->
                             <!--</LinearLayout>-->
 
                         <!--</LinearLayout>-->
@@ -1432,7 +1432,7 @@
                                     <!--android:layout_height="17dp"-->
                                     <!--android:layout_gravity="center"-->
                                     <!--android:layout_marginStart="10dp"-->
-                                    <!--app:srcCompat="@drawable/ic_button_dark_common_down" />-->
+                                    <!--android:src="@drawable/ic_arrow_left" />-->
                             <!--</LinearLayout>-->
 
                         <!--</LinearLayout>-->
