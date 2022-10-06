@@ -1,7 +1,5 @@
 package kg.optima.mobile.auth.presentation.login
 
-import com.arkivanov.essenty.parcelable.Parcelable
-import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
@@ -29,20 +27,17 @@ class LoginIntent(
 		}
 	}
 
-	sealed interface SignInInfo : Parcelable {
-		@Parcelize
+	sealed interface SignInInfo {
 		data class Password(
 			val clientId: String,
 			val password: String,
 			val smsCode: String? = null,
 		) : SignInInfo
 
-		@Parcelize
 		class Pin(
 			val pin: String,
 		) : SignInInfo
 
-		@Parcelize
 		object Biometry : SignInInfo
 	}
 }

@@ -73,13 +73,14 @@ public struct WelcomeView: View {
                     NavigationLink(destination: DescriptionVerigramView(), isActive: $showLogin) {
                         RedButtonView(title: "Войти") { result in
 //                            showLogin.toggle()
-                            intent.checkIsAuthorized()
+                            intent.login()
                         }
                     }
                     
                     NavigationLink(destination: OnboardingView(), isActive: $showRegistration) {
                         CustomButtonView(title: "Зарегистрироваться", color: AppColors.getColor(.primaryRed)) { result in
-                            showRegistration = true
+//                            showRegistration = true
+                            intent.register()
                         }
                     }
                     
@@ -112,6 +113,10 @@ public struct WelcomeView: View {
                 print("Loading")
             case let x where x is BaseMppStateStateModelError:
                 print("Error")
+            case let x where x is WelcomeStateModelNavigateToLogin:
+                print("Login")
+            case let x where x is WelcomeStateModelNavigateToRegisterAgreement:
+                print("Register")
             case .none:
                 print("none")
             case .some(let a):

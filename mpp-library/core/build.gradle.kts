@@ -11,7 +11,7 @@ version = "1.0"
 
 dependencies {
     commonMainImplementation(libs.ktorClient)
-    commonMainImplementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
+    commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")
     commonMainApi("com.soywiz.korlibs.krypto:krypto:2.7.0")
 }
 

@@ -98,8 +98,8 @@ dependencies {
     implementation("cafe.adriel.voyager:voyager-core:$voyagerVersion")
     implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
 
-    implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
-    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")
+    implementation("com.arkivanov.decompose:decompose:0.8.0")
+    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:0.8.0")
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
 

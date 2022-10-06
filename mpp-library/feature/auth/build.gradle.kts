@@ -22,8 +22,6 @@ dependencies {
 	commonMainImplementation(libs.ktorClientLogging)
 	commonMainImplementation(libs.ktorClientSerialization)
 
-	commonMainImplementation("com.arkivanov.essenty:parcelable:0.6.0")
-
 	commonMainApi(libs.mokoMvvmLiveData)
 	commonMainApi(libs.mokoResources)
 	commonMainApi(libs.mokoErrors)
