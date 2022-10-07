@@ -41,6 +41,7 @@ class OptimaApp : Application() {
 
 	private fun initLegacyProject(application: Application) {
 		instance = this
+		// appDatabase = AppDatabase.getInstance(this)
 		//для сохранении последнего статуса закрыт или открыт.
 		//ProcessLifecycleOwner.get().lifecycle.addObserver(this)
 
@@ -60,7 +61,7 @@ class OptimaApp : Application() {
 		built.isLoggingEnabled = true
 		Picasso.setSingletonInstance(built)
 
-		appDatabase = AppDatabase.getInstance(this)
+
 	}
 
 	fun getUrgentMessageState(): Boolean {
