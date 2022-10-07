@@ -1,5 +1,6 @@
 package kz.optimabank.optima24.activity;
 
+import static org.koin.java.KoinJavaComponent.inject;
 import static kz.optimabank.optima24.activity.PaymentActivity.CATEGORY_NAME;
 import static kz.optimabank.optima24.activity.PaymentActivity.EXTERNAL_ID;
 import static kz.optimabank.optima24.utility.Constants.BACKGROUND_NOTIFICATION_ID;
@@ -37,6 +38,8 @@ import java.util.ArrayList;
 
 import devlight.io.library.ntb.NavigationTabBar;
 import kg.optima.mobile.R;
+import kg.optima.mobile.feature.auth.component.AuthPreferences;
+import kotlin.Lazy;
 import kz.optimabank.optima24.app.NonSwipeableViewPager;
 import kz.optimabank.optima24.controller.adapter.TabAdapter;
 import kz.optimabank.optima24.db.controllers.PaymentContextController;
@@ -52,6 +55,7 @@ import kz.optimabank.optima24.fragment.transfer.TransfersFragment;
 import kz.optimabank.optima24.model.base.NewsItem;
 import kz.optimabank.optima24.model.base.Templates;
 import kz.optimabank.optima24.model.base.TemplatesPayment;
+import kz.optimabank.optima24.model.gson.response.AuthorizationResponse;
 import kz.optimabank.optima24.model.gson.response.Invoices;
 import kz.optimabank.optima24.model.interfaces.News;
 import kz.optimabank.optima24.model.interfaces.TransferAndPayment;
@@ -88,9 +92,7 @@ public class MenuActivity extends OptimaActivity implements TransferAndPaymentIm
 
     private NotificationsListViewModel model;
 
-//    private SessionPreferences sessionPreferences;
-//    private UserPreferences userPreferences;
-//    private BiometricPreferences biometricPreferences;
+    private Lazy<AuthPreferences> authPreferences = inject(AuthPreferences.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,17 +101,13 @@ public class MenuActivity extends OptimaActivity implements TransferAndPaymentIm
         generalManager = GeneralManager.getInstance();
         Log.i("TAG", "checkPlayServices = " + checkPlayServices());
 
-//        sessionPreferences = new SessionPreferencesImpl(this);
-//        userPreferences = new UserPreferencesImpl(this);
-//        biometricPreferences = new BiometricPreferencesImpl(this);
-
         setContentView(R.layout.fragment_container);
 
         GeneralManager.dispose();
-//        GeneralManager.getInstance().setSessionId(sessionPreferences.getSessionID());
-//
-//        initViewModel();
-//        saveUserData();
+        GeneralManager.getInstance().setSessionId(authPreferences.getValue().getSessionData().getAccessToken());
+
+        initViewModel();
+        saveUserData();
 
         final RelativeLayout mainRelMenu = (RelativeLayout) findViewById(R.id.mainRelMenu);
 
@@ -215,18 +213,15 @@ public class MenuActivity extends OptimaActivity implements TransferAndPaymentIm
 
         }
     }
-/*
     private void saveUserData() {
-        SessionPreferences sessionPreferences = new SessionPreferencesImpl(this);
-        UserPreferences userPreferences = new UserPreferencesImpl(this);
-        GeneralManager.getInstance().setUser(mapToUser(userPreferences));
+        GeneralManager.getInstance().setUser(mapToUser());
         GeneralManager.getInstance().setAppOpen(true);
-        GeneralManager.getInstance().setAutoEncrypt(userPreferences.getAutoEncrypt());
-        GeneralManager.setPhone(userPreferences.getPhoneNumber());
-        GeneralManager.setSessionDuration(sessionPreferences.getSessionDuration());
-        GeneralManager.getInstance().setProfImage(userPreferences.getUserPhoto());
-        saveBankId(userPreferences.getBankId());
-    }*/
+        GeneralManager.getInstance().setAutoEncrypt(authPreferences.getValue().getUserInfo().getAutoEncrypt());
+        GeneralManager.setPhone(authPreferences.getValue().getUserInfo().getPhoneNumber());
+        GeneralManager.setSessionDuration(authPreferences.getValue().getSessionData().getSessionDuration());
+        GeneralManager.getInstance().setProfImage(authPreferences.getValue().getUserInfo().getImageHash());
+        saveBankId(authPreferences.getValue().getUserInfo().getBankId());
+    }
 
     private void saveBankId(String bankId) {
         SharedPreferences.Editor editor
@@ -235,23 +230,22 @@ public class MenuActivity extends OptimaActivity implements TransferAndPaymentIm
         editor.apply();
     }
 
-   /* private AuthorizationResponse.User mapToUser(UserPreferences userPreferences) {
-
+    private AuthorizationResponse.User mapToUser() {
         AuthorizationResponse.User user = new AuthorizationResponse.User();
-        user.setAddress(userPreferences.getAddress());
-        user.setBankId(userPreferences.getBankId());
-        user.setFirstName(userPreferences.getFirstName());
-        user.setIdn(userPreferences.getIdn());
-        user.setFullName(userPreferences.getFullName());
-        user.setImageHash(userPreferences.getUserPhoto());
-        user.setLogin(userPreferences.getUserLogin());
-        user.setLastName(userPreferences.getLastName());
-        user.setMiddleName(userPreferences.getMiddleName());
-        user.setSex(userPreferences.getSex());
-        user.setMobilePhoneNumber(userPreferences.getPhoneNumber());
-        user.setAutoEncrypt(userPreferences.getAutoEncrypt());
+        user.setAddress(authPreferences.getValue().getUserInfo().getAddress());
+        user.setBankId(authPreferences.getValue().getUserInfo().getBankId());
+        user.setFirstName(authPreferences.getValue().getUserInfo().getFirstName());
+        user.setIdn(authPreferences.getValue().getUserInfo().getIdn());
+        user.setFullName(authPreferences.getValue().getUserInfo().getFullName());
+        user.setImageHash(authPreferences.getValue().getUserInfo().getImageHash());
+        user.setLogin(authPreferences.getValue().getUserInfo().getLogin());
+        user.setLastName(authPreferences.getValue().getUserInfo().getLastName());
+        user.setMiddleName(authPreferences.getValue().getUserInfo().getMiddleName());
+        user.setSex(authPreferences.getValue().getUserInfo().getSex());
+        user.setMobilePhoneNumber(authPreferences.getValue().getUserInfo().getPhoneNumber());
+        user.setAutoEncrypt(authPreferences.getValue().getUserInfo().getAutoEncrypt());
         return user;
-    }*/
+    }
 
     private void initViewModel() {
         model = new ViewModelProvider(

@@ -48,10 +48,6 @@ public class NotificationsRemoteRepositoryImpl implements NotificationsRemoteRep
 
     private Map<String, String> getHeader() {
         String sessionId = GeneralManager.getInstance().getSessionId();
-        if(sessionId == null){
-           // SessionPreferences sessionPreferences = new SessionPreferencesImpl((context));
-         //   sessionId = sessionPreferences.getSessionID();
-        }
         return HeaderHelper.getOpenSessionHeader(context, sessionId);
     }
 }

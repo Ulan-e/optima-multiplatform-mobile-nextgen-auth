@@ -19,7 +19,7 @@ class LoginState(
 					)
 				is LoginModel.SignInResult.SmsCodeRequired ->
 					StateModel.Navigate(AuthScreenModel.SmsCode(nextScreenModel, entity.otpModel))
-				is LoginModel.SignInResult.SuccessAuth -> StateModel.Navigate(nextScreenModel)
+				is LoginModel.SignInResult.SuccessAuth -> LoginStateModel.Hell
 				LoginModel.SignInResult.UserBlocked -> TODO()
 			}
 			is LoginModel.ClientId ->
@@ -34,6 +34,7 @@ class LoginState(
 	sealed interface LoginStateModel : StateModel {
 		object ShowBiometry : LoginStateModel
 		class ClientId(val clientId: String?) : LoginStateModel
+		object Hell: LoginStateModel
 
 		sealed interface SignInResult : LoginStateModel {
 			class IncorrectData(val message: String) : SignInResult

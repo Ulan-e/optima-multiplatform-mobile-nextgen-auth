@@ -10,12 +10,14 @@ interface AuthPreferences {
         const val DEVICE_ID = "DEVICE_ID"
         const val FIRST_START = "FIRST_START"
         const val SESSION_DATA = "SESSION_DATA"
+        const val USER_INFO = "USER_INFO"
     }
 
     var clientId: String?
     var isAuthorized: Boolean
     var deviceId: String
     var sessionData: SessionData?
+    var userInfo: UserInfo?
 
     var password: String
     var pin: String

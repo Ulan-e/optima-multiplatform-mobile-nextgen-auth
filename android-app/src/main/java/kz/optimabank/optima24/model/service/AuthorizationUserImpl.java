@@ -41,8 +41,6 @@ public class AuthorizationUserImpl extends GeneralService implements Authorizati
                                 AuthorizationResponse authResponse = response.data;
                                 GeneralManager.dispose();
                                 GeneralManager.getInstance().setInitializedMobocardsSdk(isInitializedMobocardsSdk);
-                              //  SessionPreferences sessionPreferences = new SessionPreferencesImpl(context);
-//                                GeneralManager.getInstance().setSessionId(sessionPreferences.getSessionId());
                                 GeneralManager.getInstance().setUser(mapToUser(context));
                                 GeneralManager.getInstance().setAppOpen(true);
                                 GeneralManager.getInstance().setAutoEncrypt(authResponse.user.autoEncrypt);

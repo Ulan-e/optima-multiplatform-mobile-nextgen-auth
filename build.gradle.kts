@@ -35,6 +35,14 @@ gitHooks {
 }
 
 allprojects {
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+
+        maven(url = "https://dl.bintray.com/ekito/koin")
+    }
+
     configurations.configureEach {
         resolutionStrategy {
             val coroutines: MinimalExternalModuleDependency = rootProject.libs.coroutines.get()
@@ -50,4 +58,8 @@ allprojects {
 tasks.register("clean", Delete::class).configure {
     group = "build"
     delete(rootProject.buildDir)
+}
+
+repositories {
+    mavenCentral()
 }

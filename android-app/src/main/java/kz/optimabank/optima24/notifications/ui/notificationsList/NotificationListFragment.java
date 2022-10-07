@@ -1,5 +1,6 @@
 package kz.optimabank.optima24.notifications.ui.notificationsList;
 
+import static org.koin.java.KoinJavaComponent.inject;
 import static kz.optimabank.optima24.utility.Constants.BANK_ID;
 import static kz.optimabank.optima24.utility.Utilities.clickAnimation;
 import static kz.optimabank.optima24.utility.Utilities.getPreferences;
@@ -21,6 +22,8 @@ import java.util.List;
 
 import kg.optima.mobile.R;
 import kg.optima.mobile.databinding.FragmentNotificationListBinding;
+import kg.optima.mobile.feature.auth.component.AuthPreferences;
+import kotlin.Lazy;
 import kz.optimabank.optima24.activity.MenuActivity;
 import kz.optimabank.optima24.fragment.ATFFragment;
 import kz.optimabank.optima24.notifications.models.items.BaseNotificationItem;
@@ -32,7 +35,7 @@ public class NotificationListFragment extends ATFFragment {
     private static final String IS_FROM_SINGLE_NOTIFICATION = "isFromSingleNotification";
     private static final String NOTIFICATION_ID = "notificationId";
 
-   // private SessionPreferences sessionPreferences;
+    private Lazy<AuthPreferences> authPreferences = inject(AuthPreferences.class);
 
     private FragmentNotificationListBinding binding;
     private NotificationsListViewModel model;
@@ -48,7 +51,6 @@ public class NotificationListFragment extends ATFFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-      //  sessionPreferences = new SessionPreferencesImpl(requireContext());
 
         binding.toolbar.setNavigationOnClickListener(toolbar -> navigateToMenuActivity());
 
@@ -88,8 +90,7 @@ public class NotificationListFragment extends ATFFragment {
         if(preferences.getString(BANK_ID, null) != null) {
             bankId = preferences.getString(BANK_ID, "");
         }else {
-            //TODO Session
-           // bankId = sessionPreferences.getSessionID();
+           bankId = authPreferences.getValue().getUserInfo().getBankId();
         }
     }
 

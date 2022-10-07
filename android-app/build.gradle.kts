@@ -88,7 +88,6 @@ dependencies {
     implementation("io.insert-koin:koin-android:3.1.4")
     implementation("io.insert-koin:koin-androidx-compose:3.1.4")
 
-
     val composeVersion = "1.3.0-alpha01"
     implementation("androidx.compose.animation:animation:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")

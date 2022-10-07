@@ -8,11 +8,13 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import dev.icerock.moko.parcelize.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
+import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
@@ -29,6 +31,7 @@ import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarContent
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
+import kz.optimabank.optima24.activity.MenuActivity
 
 @Parcelize
 class LoginScreen(
@@ -43,6 +46,8 @@ class LoginScreen(
 		}
 		val state = product.state
 		val intent = product.intent
+
+		val context = LocalContext.current
 
 		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
@@ -67,6 +72,9 @@ class LoginScreen(
 				when (loginState) {
 					is LoginState.LoginStateModel.SignInResult.IncorrectData -> TODO()
 				}
+			}
+			is LoginState.LoginStateModel.Hell -> {
+				context.navigateTo(MenuActivity())
 			}
 		}
 

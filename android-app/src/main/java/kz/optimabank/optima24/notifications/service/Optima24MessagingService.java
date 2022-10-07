@@ -50,9 +50,6 @@ public class Optima24MessagingService extends FirebaseMessagingService {
     private static final String DATA_BODY = "body";
 
     private NotificationsRemoteRepository remoteRepository;
-    /*private UserPreferences userPreferences;
-    private BiometricPreferences biometricPreferences;
-    private SessionPreferences sessionPreferences;*/
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
@@ -60,20 +57,11 @@ public class Optima24MessagingService extends FirebaseMessagingService {
 
         remoteRepository = new NotificationsRemoteRepositoryImpl(this);
 
-        initPreferences();
-
         Notification notification = getPayloadData(remoteMessage);
 
         saveNotificationInPreferences(notification);
         prepareNotification(notification);
         makeDeliveredNotification(notification.getId());
-    }
-
-    private void initPreferences() {
-        //TODO Optima24MessagingService
-       /* userPreferences = new UserPreferencesImpl(this);
-        biometricPreferences = new BiometricPreferencesImpl(this);
-        sessionPreferences = new SessionPreferencesImpl(this);*/
     }
 
     // получаем айди из ключа значение который отправляет сервис пушей
@@ -143,9 +131,9 @@ public class Optima24MessagingService extends FirebaseMessagingService {
 
     // создаем intent для сообщения
     private Intent createNotificationIntent(Notification notification) {
-       // SessionPreferences sessionPreferences = new SessionPreferencesImpl(this);
         Intent intent;
 
+        //TODO check is pin set
         if (true) {
             if (GeneralManager.getInstance().getSessionId() == null) {
                 intent = new Intent(this, SingleActivity.class);

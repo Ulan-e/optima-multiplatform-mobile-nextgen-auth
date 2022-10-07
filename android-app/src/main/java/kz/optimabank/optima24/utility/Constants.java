@@ -14,10 +14,10 @@ public final class Constants {
     // TEST
     // public static String API_BASE_URL = "http:/10.185.233.208:3080/";  //main test3
     // public static String API_BASE_URL = "http://10.185.233.237:5555/";  //main test
-     public static String API_BASE_URL = "https://test-cl-mapi.optima24.kg/";  //main test
+    // public static String API_BASE_URL = "https://test-cl-mapi.optima24.kg/";  //main test
 
     // БОЙ
-    // public static String API_BASE_URL = "https://telebank3.optima24.kg:3080";
+    public static String API_BASE_URL = "https://telebank3.optima24.kg:3080";
 
     // public static String API_BASE_URL = "http://192.168.10.157:8083/"; //optima sasha
     // public static String API_BASE_URL = "http://192.168.11.200:61/"; //optima
