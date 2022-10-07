@@ -43,9 +43,18 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("com.squareup.okhttp3:okhttp:4.10.0")
+                implementation("io.ktor:ktor-client-okhttp:1.6.8")
+            }
+        }
         val androidTest by getting
-        val iosX64Main by getting
+        val iosX64Main by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-ios:1.6.8")
+            }
+        }
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
@@ -55,7 +64,7 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
 
             dependencies {
-//                implementation("io.ktor:ktor-client-darwin:2.0.3")
+                implementation("io.ktor:ktor-client-ios:1.6.8")
             }
         }
         val iosX64Test by getting

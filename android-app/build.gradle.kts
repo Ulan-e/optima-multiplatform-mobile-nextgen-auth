@@ -112,8 +112,8 @@ dependencies {
     implementation("cafe.adriel.voyager:voyager-core:$voyagerVersion")
     implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
 
-    implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
-    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")
+    implementation("com.arkivanov.decompose:decompose:0.8.0")
+    implementation("com.arkivanov.decompose:extensions-compose-jetbrains:0.8.0")
 
     implementation(files("libs/paycards-1.1.0.aar"))
     implementation("com.facebook.device.yearclass:yearclass:2.1.0")

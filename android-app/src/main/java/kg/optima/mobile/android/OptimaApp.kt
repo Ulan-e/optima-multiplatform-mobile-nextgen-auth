@@ -7,8 +7,8 @@ import com.jakewharton.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import kg.optima.mobile.BuildConfig
-import kg.optima.mobile.android.ui.base.Router
-import kg.optima.mobile.android.ui.base.RouterImpl
+import kg.optima.mobile.android.ui.base.routing.Router
+import kg.optima.mobile.android.ui.base.routing.RouterImpl
 import kg.optima.mobile.di.Injector
 import kz.optimabank.optima24.room_db.AppDatabase
 import org.koin.android.ext.koin.androidContext

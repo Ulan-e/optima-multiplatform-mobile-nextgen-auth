@@ -1,10 +1,11 @@
 package kg.optima.mobile.registration.presentation.phone_number
 
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
-class PhoneNumberState : State<CheckPhoneNumberInfo>() {
+class PhoneNumberState : BaseMppState<CheckPhoneNumberInfo>() {
 
     override fun handle(entity: CheckPhoneNumberInfo) {
         val stateModel: StateModel = when (entity) {
@@ -13,7 +14,7 @@ class PhoneNumberState : State<CheckPhoneNumberInfo>() {
             is CheckPhoneNumberInfo.Check -> {
                 if (entity.success) {
                     val screenModel = RegistrationScreenModel.AcceptCode(
-                        phoneNumber = entity.phoneNumber,
+                        phoneNumber = phoneFormatter(entity.phoneNumber),
                         timeLeft = entity.timeLeft,
                         referenceId = entity.referenceId
                     )
@@ -25,6 +26,20 @@ class PhoneNumberState : State<CheckPhoneNumberInfo>() {
         }
 
         setStateModel(stateModel)
+    }
+
+    private fun phoneFormatter(phone: String): String {
+        val builder = StringBuilder().apply {
+            append(Constants.PHONE_NUMBER_CODE)
+            for (i in phone.indices) {
+                if (i == 0) append("(")
+                append(phone[i])
+
+                if (i == 2) append(") ")
+                if (i % 2 == 0 && i != 8 && i > 2) append(" ")
+            }
+        }
+        return builder.toString()
     }
 
     sealed interface PhoneNumberStateModel : StateModel {

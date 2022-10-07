@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 
-abstract class BaseUseCase<in Model, out Result> where Result : Any {
+abstract class BaseUseCase<in Model, out Result> where Result : Any? {
 
    abstract suspend fun execute(model: Model): Either<Failure, Result>
 

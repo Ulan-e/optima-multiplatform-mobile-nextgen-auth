@@ -115,7 +115,7 @@ fun InputField(
 		enabled = enabled,
 		keyboardOptions = KeyboardOptions(
 			keyboardType = keyboardType,
-			imeAction = imeAction
+			imeAction = imeAction,
 		),
 		keyboardActions = KeyboardActions(
 			onDone = {

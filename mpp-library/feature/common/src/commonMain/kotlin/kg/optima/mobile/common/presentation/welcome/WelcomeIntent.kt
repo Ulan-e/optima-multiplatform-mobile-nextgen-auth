@@ -1,29 +1,15 @@
 package kg.optima.mobile.common.presentation.welcome
 
-import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
-import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.base.presentation.Intent
-import org.koin.core.component.inject
+import kg.optima.mobile.base.presentation.BaseMppIntent
+
 
 class WelcomeIntent(
-	override val state: WelcomeState,
-) : Intent<WelcomeEntity>() {
+	override val mppState: WelcomeState,
+) : BaseMppIntent<WelcomeEntity>() {
 
-	private val clientInfoUseCase: ClientInfoUseCase by inject()
+	fun login() =
+		mppState.handle(WelcomeEntity.Login)
 
-	fun checkIsAuthorized() {
-		launchOperation {
-			clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
-				WelcomeEntity.ClientInfo(
-					isAuthorized = it.isAuthorized,
-					clientId = it.clientId,
-					grantTypes = it.grantTypes
-				)
-			}
-		}
-	}
-
-	fun register() {
-		state.handle(WelcomeEntity.Register)
-	}
+	fun register() =
+		mppState.handle(WelcomeEntity.Register)
 }

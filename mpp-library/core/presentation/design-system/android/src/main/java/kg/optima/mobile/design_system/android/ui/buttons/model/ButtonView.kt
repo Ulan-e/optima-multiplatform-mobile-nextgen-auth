@@ -22,6 +22,16 @@ sealed interface ButtonView : Parcelable {
 
 	val button: @Composable () -> Unit
 
+	companion object {
+		fun onClickListener(onClick: () -> Unit): OnClickListener {
+			return object : OnClickListener {
+				override val onClick: () -> Unit = onClick
+				override fun describeContents(): Int = 0
+				override fun writeToParcel(p0: Parcel?, p1: Int) = Unit
+			}
+		}
+	}
+
 	@Parcelize
 	class Primary(
 		override val enabled: Boolean = true,
@@ -84,16 +94,6 @@ sealed interface ButtonView : Parcelable {
 	}
 
 	interface OnClickListener : Parcelable {
-		companion object {
-			fun onClickListener(onClick: () -> Unit): OnClickListener {
-				return object : OnClickListener {
-					override val onClick: () -> Unit = onClick
-					override fun describeContents(): Int = 0
-					override fun writeToParcel(p0: Parcel?, p1: Int) = Unit
-				}
-			}
-		}
-
 		@IgnoredOnParcel
 		val onClick: () -> Unit get() = {}
 	}

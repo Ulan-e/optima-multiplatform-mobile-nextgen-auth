@@ -1,10 +1,10 @@
 package kg.optima.mobile.registration.presentation.self_confirm
 
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 import kg.optima.mobile.registration.presentation.self_confirm.model.AnimationModel
 
-class SelfConfirmState : State<SelfConfirmModel>() {
+class SelfConfirmState : BaseMppState<SelfConfirmModel>() {
     override fun handle(entity: SelfConfirmModel) {
         val stateModel = when (entity) {
             is SelfConfirmModel.AnimationModels ->

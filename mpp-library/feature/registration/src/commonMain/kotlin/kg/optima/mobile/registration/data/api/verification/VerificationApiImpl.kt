@@ -51,15 +51,4 @@ class VerificationApiImpl(
             },
             request = verifyClientRequest,
         )
-
-    private fun userAgent(): String {
-        return "Optima24/1.0 (Android; Samsung Galaxy S21 Ultra/000000000000000)"
-//		return format(
-//			format = "%s (%s; %s/%s)",
-//			"Optima24/1.0",
-//			PlatformInfo.os,
-//			PlatformInfo.deviceModel,
-//			"000000000000000"
-//		)
-    }
 }

@@ -5,20 +5,12 @@ sealed class Failure(
 ) : Throwable() {
 
     object Default : Failure()
-
+    object UnknownException : Failure()
     class Message(override val message: String) : Failure()
 
-    object UnknownException : Failure()
-
     object BadRequestException : Failure()
-
-    class ApiCodeFailure(override val message: String) : Failure()
-    class ApiMessageFailure(override val message: String) : Failure()
-    object ApiDataFailure : Failure()
-    object RepositoryFailure : Failure()
-
+    object UnauthorizedException : Failure()
     object NotFoundFailure : Failure()
-    object NullPointFailure : Failure()
 
     object SocketTimeoutException : Failure()
     object ClientRequestException : Failure()

@@ -34,9 +34,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(":mpp-library:base"))
                 implementation(project(":mpp-library:core"))
+                implementation(project(":mpp-library:core:data:storage"))
+
                 implementation(libs.kotlinSerialization)
                 implementation("com.arkivanov.decompose:decompose:0.8.0")
+                implementation("io.insert-koin:koin-core:3.1.4")
             }
         }
         val commonTest by getting {

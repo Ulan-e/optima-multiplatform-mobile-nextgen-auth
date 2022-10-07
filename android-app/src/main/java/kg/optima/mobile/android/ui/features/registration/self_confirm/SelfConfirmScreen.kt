@@ -1,8 +1,11 @@
 package kg.optima.mobile.android.ui.features.registration.self_confirm
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.LocalOverscrollConfiguration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -11,11 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.android.ui.base.permission.PermissionController
 import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
 import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
-import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.di.create
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnimModel
@@ -47,7 +51,7 @@ object SelfConfirmScreen : Screen {
 
         val context = LocalContext.current
 
-        val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
         var items by remember { mutableStateOf<List<FadeInAnimModel>>(emptyList()) }
         var buttonEnabled by remember { mutableStateOf(false) }
@@ -55,7 +59,7 @@ object SelfConfirmScreen : Screen {
         val identificationMode by remember { mutableStateOf(IdentificationMode.FULL) }
 
         when (val selfConfirmStateModel = model) {
-            is State.StateModel.Initial -> intent.fadeAnimationModels(identificationMode)
+            is BaseMppState.StateModel.Initial -> intent.fadeAnimationModels(identificationMode)
             is SelfConfirmState.SelfConfirmStateModel.AnimationModels ->
                 items = selfConfirmStateModel.models.toUiModel()
         }

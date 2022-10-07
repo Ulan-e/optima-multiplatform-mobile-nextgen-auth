@@ -3,7 +3,7 @@ package kg.optima.mobile.android.ui.features.registration
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
-import kg.optima.mobile.android.ui.features.common.bankContacts.BankContacts
+import kg.optima.mobile.android.ui.features.common.bankContacts.BankContactsScreen
 import kg.optima.mobile.android.ui.features.common.interview.InterviewScreen
 import kg.optima.mobile.android.ui.features.common.offer.OfferScreen
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
@@ -11,7 +11,7 @@ import kg.optima.mobile.android.ui.features.registration.control_question.Contro
 import kg.optima.mobile.android.ui.features.registration.create_password.CreatePasswordScreen
 import kg.optima.mobile.android.ui.features.registration.phone_number.PhoneNumberScreen
 import kg.optima.mobile.android.ui.features.registration.self_confirm.SelfConfirmScreen
-import kg.optima.mobile.android.ui.features.registration.sms_otp.OtpScreen
+import kg.optima.mobile.android.ui.features.registration.sms_otp.RegistrationOtpScreen
 import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
@@ -21,7 +21,7 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
             RegistrationScreenModel.Agreement -> AgreementScreen
             is RegistrationScreenModel.Offerta -> OfferScreen(screenModel.url)
             RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
-            is RegistrationScreenModel.AcceptCode -> OtpScreen(
+            is RegistrationScreenModel.AcceptCode -> RegistrationOtpScreen(
                 phoneNumber = screenModel.phoneNumber,
                 timeLeft = screenModel.timeLeft,
                 referenceId = screenModel.referenceId,
@@ -33,9 +33,6 @@ object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
                 questionId = screenModel.questionId,
                 answer = screenModel.answer
             )
-
-			RegistrationScreenModel.BankContacts -> BankContacts
-            RegistrationScreenModel.Interview -> InterviewScreen("https://docs.google.com/forms/d/10xKZzz7I2N0kJQjsseCa2-5QNAwL9O-DNnnX4RRwP9U")
         }
     }
 }

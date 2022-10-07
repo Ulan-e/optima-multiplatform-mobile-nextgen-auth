@@ -11,7 +11,7 @@ import kg.optima.mobile.registration.domain.model.CheckPhoneEntity
 
 class CheckPhoneNumberUseCase(
 	private val registrationRepository: RegistrationRepository,
-	private val registrationPreferences: RegistrationPreferences
+	private val registrationPreferences: RegistrationPreferences,
 ) : BaseUseCase<String, CheckPhoneEntity>() {
 
 	override suspend fun execute(model: String): Either<Failure, CheckPhoneEntity> {
@@ -20,7 +20,7 @@ class CheckPhoneNumberUseCase(
 				success = it.success,
 				referenceId = it.data?.refId.orEmpty(),
 				timeLeft = it.data?.timeLeft ?: 0L,
-				message = it.message
+				message = it.message,
 			)
 		}.onSuccess {
 			registrationPreferences.referenceId = it.referenceId

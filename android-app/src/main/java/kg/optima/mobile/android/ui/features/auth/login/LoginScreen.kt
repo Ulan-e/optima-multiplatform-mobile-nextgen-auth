@@ -12,11 +12,12 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import dev.icerock.moko.parcelize.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.common.MainContainer
+import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.di.createWithStateParam
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -24,7 +25,6 @@ import kg.optima.mobile.design_system.android.ui.checkbox.Checkbox
 import kg.optima.mobile.design_system.android.ui.input.InputField
 import kg.optima.mobile.design_system.android.ui.input.PasswordInput
 import kg.optima.mobile.design_system.android.ui.text_fields.TitleTextField
-import kg.optima.mobile.design_system.android.ui.toolbars.NavigationIcon
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarContent
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
@@ -39,31 +39,35 @@ class LoginScreen(
 	@Composable
 	override fun Content() {
 		val product = remember {
-			AuthFeatureFactory.create<LoginIntent, LoginState>(nextScreenModel)
+			AuthFeatureFactory.createWithStateParam<LoginIntent, LoginState>(nextScreenModel)
 		}
 		val state = product.state
 		val intent = product.intent
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
 		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
 		val checkedState = remember { mutableStateOf(true) }
 
+		val signIn: () -> Unit = {
+			val info = LoginIntent.SignInInfo.Password(
+				clientId = clientIdInputFieldState.value,
+				password = passwordInputFieldState.value,
+			)
+			intent.signIn(info)
+		}
+
 		when (val loginState = model) {
-			is State.StateModel.Initial ->
+			is BaseMppState.StateModel.Initial ->
 				intent.getClientId()
 			is LoginState.LoginStateModel.ClientId ->
 				clientIdInputFieldState.value = loginState.clientId.orEmpty()
-		}
-
-		val signIn: () -> Unit = {
-			intent.signIn(
-				info = LoginIntent.SignInInfo.Password(
-					clientId = clientIdInputFieldState.value,
-					password = passwordInputFieldState.value,
-				)
-			)
+			is LoginState.LoginStateModel.SignInResult -> {
+				when (loginState) {
+					is LoginState.LoginStateModel.SignInResult.IncorrectData -> TODO()
+				}
+			}
 		}
 
 		MainContainer(
@@ -105,9 +109,7 @@ class LoginScreen(
 			)
 			Spacer(modifier = Modifier.weight(1f))
 			PrimaryButton(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(all = Deps.Spacing.standardPadding),
+				modifier = Modifier.fillMaxWidth(),
 				text = "Продолжить",
 				onClick = signIn,
 			)

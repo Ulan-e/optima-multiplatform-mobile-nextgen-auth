@@ -1,6 +1,6 @@
 package kg.optima.mobile.auth.domain.usecase.biometry_auth
 
-import kg.optima.mobile.auth.data.component.AuthPreferences
+import kg.optima.mobile.feature.auth.component.AuthPreferences
 import kg.optima.mobile.auth.domain.usecase.pin_set.SetupAuthResult
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.domain.BaseUseCase

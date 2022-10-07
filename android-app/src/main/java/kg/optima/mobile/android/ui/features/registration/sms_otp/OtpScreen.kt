@@ -1,7 +1,6 @@
 package kg.optima.mobile.android.ui.features.registration.sms_otp
 
 import android.text.format.DateUtils
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
@@ -11,9 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
-import kg.optima.mobile.android.ui.features.common.MainContainer
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.android.ui.base.MainContainer
+import kg.optima.mobile.base.di.create
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.common.presentation.SmsCodeState
 import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -24,8 +25,8 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.registration.RegistrationFeatureFactory
-import kg.optima.mobile.registration.presentation.sms_code.SmsCodeIntent
-import kg.optima.mobile.registration.presentation.sms_code.SmsCodeState
+import kg.optima.mobile.registration.presentation.sms_code.RegistrationSmsCodeIntent
+import kg.optima.mobile.registration.presentation.sms_code.RegistrationSmsCodeState
 import kg.optima.mobile.resources.Headings
 
 @Parcelize
@@ -39,11 +40,12 @@ class OtpScreen(
 	@Suppress("NAME_SHADOWING")
 	@Composable
 	override fun Content() {
-		val product = remember { RegistrationFeatureFactory.create<SmsCodeIntent, SmsCodeState>() }
+		val product =
+			remember { RegistrationFeatureFactory.create<RegistrationSmsCodeIntent, RegistrationSmsCodeState>() }
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = State.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
 
 		val codeState = remember { mutableStateOf(emptyString) }
 		val timeLeftState = remember { mutableStateOf(0) }
@@ -52,10 +54,10 @@ class OtpScreen(
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
 		when (val model = model) {
-			is State.StateModel.Initial -> {
+			is BaseMppState.StateModel.Initial -> {
 				intent.startTimer(timeLeft, System.currentTimeMillis())
 			}
-			is State.StateModel.Error -> {
+			is BaseMppState.StateModel.Error -> {
 				codeState.value = emptyString
 				errorState.value = Constants.OTP_INVALID_ERROR_CODE
 				if (triesCountState.value <= 0) {
@@ -65,7 +67,7 @@ class OtpScreen(
 						buttons = listOf(
 							ButtonView.Primary(
 								text = "Закрыть",
-								onClickListener = ButtonView.OnClickListener.onClickListener {
+								onClickListener = ButtonView.onClickListener {
 									intent.startTimer(timeLeft, System.currentTimeMillis())
 									bottomSheetState.value = null
 								},
@@ -74,13 +76,13 @@ class OtpScreen(
 					)
 				}
 			}
-			SmsCodeState.SmsCodeStateModel.Request -> {
+			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {
+				timeLeftState.value = model.timeLeft
+			}
+			RegistrationSmsCodeState.SmsCodeStateModel.Request -> {
 				triesCountState.value = Constants.OTP_MAX_TRIES
 				codeState.value = emptyString
 				errorState.value = emptyString
-			}
-			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {
-				timeLeftState.value = model.timeLeft
 			}
 		}
 

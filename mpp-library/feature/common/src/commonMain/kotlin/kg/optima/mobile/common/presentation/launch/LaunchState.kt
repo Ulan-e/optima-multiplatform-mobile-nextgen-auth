@@ -1,13 +1,13 @@
 package kg.optima.mobile.common.presentation.launch
 
-import kg.optima.mobile.auth.domain.usecase.login.GrantType
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.feature.auth.AuthScreenModel
+import kg.optima.mobile.feature.auth.model.GrantType
 import kg.optima.mobile.feature.main.BottomNavScreenModel
 import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 
-class LaunchState : State<LaunchEntity>() {
+class LaunchState : BaseMppState<LaunchEntity>() {
 
 	override fun handle(entity: LaunchEntity) {
 		val screenModels = mutableListOf<ScreenModel>()

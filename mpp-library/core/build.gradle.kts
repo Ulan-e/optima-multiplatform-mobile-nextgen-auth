@@ -1,7 +1,7 @@
 plugins {
-    kotlin("multiplatform")
-    kotlin("native.cocoapods")
-    id("com.android.library")
+    id("multiplatform-library-convention")
+    id("detekt-convention")
+    id("dev.icerock.mobile.multiplatform.cocoapods")
 
     id("kotlinx-serialization")
     id("kotlin-parcelize")
@@ -9,67 +9,10 @@ plugins {
 
 version = "1.0"
 
-kotlin {
-    android()
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    targets.apply {
-        withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
-            binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework> {
-                isStatic = false
-            }
-        }
-    }
-
-    cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        framework {
-            baseName = "core"
-        }
-    }
-
-    sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(libs.ktorClient)
-                implementation("com.arkivanov.decompose:decompose:0.8.0")
-                api("com.soywiz.korlibs.krypto:krypto:2.7.0")
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.lifecycleViewModel)
-            }
-        }
-        val androidTest by getting
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
-        }
-        val iosX64Test by getting
-        val iosArm64Test by getting
-        val iosSimulatorArm64Test by getting
-        val iosTest by creating {
-            dependsOn(commonTest)
-            iosX64Test.dependsOn(this)
-            iosArm64Test.dependsOn(this)
-            iosSimulatorArm64Test.dependsOn(this)
-        }
-    }
+dependencies {
+    commonMainImplementation(libs.ktorClient)
+    commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")
+    commonMainApi("com.soywiz.korlibs.krypto:krypto:2.7.0")
 }
 
 android {

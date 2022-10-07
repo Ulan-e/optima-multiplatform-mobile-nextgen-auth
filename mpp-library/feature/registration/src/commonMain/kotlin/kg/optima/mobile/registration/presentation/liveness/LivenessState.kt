@@ -1,9 +1,9 @@
 package kg.optima.mobile.registration.presentation.liveness
 
-import kg.optima.mobile.base.presentation.State
+import kg.optima.mobile.base.presentation.BaseMppState
 import kg.optima.mobile.core.navigation.ScreenModel
 
-class LivenessState : State<LivenessState.LivenessModel>() {
+class LivenessState : BaseMppState<LivenessState.LivenessModel>() {
 
     override fun handle(entity: LivenessModel) {
         val stateModel: StateModel = when (entity) {
