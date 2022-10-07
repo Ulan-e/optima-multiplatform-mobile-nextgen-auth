@@ -1,6 +1,5 @@
 
 import org.gradle.api.internal.artifacts.DefaultModuleVersionSelector
-import org.jetbrains.kotlin.gradle.plugin.statistics.ReportStatisticsToElasticSearch.url
 
 plugins {
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
@@ -12,11 +11,6 @@ buildscript {
         mavenCentral()
         google()
         gradlePluginPortal()
-
-        maven(url = "https://maven.google.com")
-        maven(url = "https://pay.cards/maven")
-        maven(url = "https://jitpack.io")
-        maven(url = "https://plugins.gradle.org/m2/")
 
         flatDir {
             dirs("libs")
@@ -33,8 +27,6 @@ buildscript {
         classpath(libs.firebaseCrashlyticsGradle)
         classpath(libs.googleServicesGradle)
         classpath(":build-logic")
-
-        classpath("io.realm.kotlin:gradle-plugin:1.2.0")
     }
 }
 

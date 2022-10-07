@@ -115,6 +115,13 @@ dependencies {
     implementation("com.arkivanov.decompose:decompose:1.0.0-alpha-04")
     implementation("com.arkivanov.decompose:extensions-compose-jetbrains:1.0.0-alpha-04")
 
+    implementation(files("libs/paycards-1.1.0.aar"))
+    implementation("com.facebook.device.yearclass:yearclass:2.1.0")
+   // implementation(files("libs/veridoc-module-release-v1.16.1.aar"))
+   // implementation(files("libs/liveness-module-v1.13.4.aar"))
+
+    implementation("androidx.activity:activity-ktx:1.5.1")
+
     implementation("io.fotoapparat:fotoapparat:2.7.0")
     implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
 
@@ -130,6 +137,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     implementation("com.jakewharton.timber:timber:5.0.1")
+   // implementation("cards.pay:paycardsrecognizer:1.1.0")
     implementation("androidx.preference:preference:1.2.0")
     implementation("com.github.skydoves:balloon:1.4.5")
     implementation("ru.egslava:MaskedEditText:1.0.5")
@@ -161,10 +169,11 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.3.2")
     implementation("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
 
-   // implementation("cards.pay:paycardsrecognizer:1.1.0")
-
     implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
-    implementation("com.alibaba.android:ultraviewpager:1.0.7.7@aar")
+    implementation("com.alibaba.android:ultraviewpager:1.0.7.7@aar"){
+        isTransitive = true
+    }
+
     implementation("com.isseiaoki:simplecropview:1.1.7")
     implementation("com.akexorcist:RoundCornerProgressBar:2.0.3")
     implementation("me.leolin:ShortcutBadger:1.1.4@aar")

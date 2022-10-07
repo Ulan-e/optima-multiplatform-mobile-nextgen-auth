@@ -72,7 +72,7 @@ public class CardDetection extends View {
     private RPSCardRectCoordsMapper mCardFrame;
     private Paint mBackgroundPaint;
 
-    @SuppressLint("PrivateResource")
+    @SuppressLint({"PrivateResource", "RestrictedApi"})
     private void init(final Context context) {
         float density = getResources().getDisplayMetrics().density;
         mDisplayDensity = density;
