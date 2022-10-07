@@ -11,7 +11,7 @@ struct OptimaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView(isLoad: .constant(false))
+            LaunchView(isLoad: .constant(false))
         }
     }
 }
