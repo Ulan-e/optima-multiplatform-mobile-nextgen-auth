@@ -5,8 +5,7 @@ import com.arkivanov.decompose.router.stack.*
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
-import kg.optima.mobile.core.navigation.ScreenModel
-import kg.optima.mobile.feature.menu.MenuScreenModel
+import kg.optima.mobile.base.presentation.UiState
 
 class MenuComponent(
 	override val componentContext: ComponentContext,
@@ -22,20 +21,20 @@ class MenuComponent(
 			childFactory = { config, _ -> childFactory(config) },
 		)
 
-	override val backStack: Value<ChildStack<*, ScreenModel>> = childStack
+	override val backStack: Value<ChildStack<*, UiState.Model.Navigate>> = childStack
 
-	override fun addAll(screenModels: List<ScreenModel>) {
+	override fun addAll(stateModels: List<UiState.Model.Navigate>) {
 		// TODO check if SM is not MSM
-		screenModels.filterIsInstance<MenuScreenModel>().forEach {
+		stateModels.forEach {
 			stackNavigation.push(it.toConfig())
 		}
 	}
 
 	override fun pop() = stackNavigation.pop()
 
-	private fun childFactory(config: Config) =
+	private fun childFactory(config: Config): UiState.Model.Navigate =
 		when (config) {
-			is Config.MainPage -> MenuScreenModel.Main
+			is Config.MainPage -> TODO()
 		}
 
 	private sealed interface Config : Parcelable {
@@ -43,9 +42,9 @@ class MenuComponent(
 		class MainPage : Config
 	}
 
-	private fun MenuScreenModel.toConfig(): Config {
+	private fun UiState.Model.Navigate.toConfig(): Config {
 		return when (this) {
-			MenuScreenModel.Main -> Config.MainPage()
+			else -> Config.MainPage()
 		}
 	}
 }

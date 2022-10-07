@@ -1,9 +1,9 @@
 package kg.optima.mobile.registration.presentation.sms_code
 
+import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.common.presentation.CheckSmsCodeInfo
 import kg.optima.mobile.common.presentation.SmsCodeState
 import kg.optima.mobile.core.common.Constants
-import kg.optima.mobile.feature.registration.RegistrationScreenModel
 
 class RegistrationSmsCodeState : SmsCodeState() {
 
@@ -11,10 +11,9 @@ class RegistrationSmsCodeState : SmsCodeState() {
 		when (entity) {
 			is RegistrationCheckSmsCodeInfo.OtpCheck -> {
 				if (entity.success) {
-					val screenModel = RegistrationScreenModel.SelfConfirm
-					setStateModel(StateModel.Navigate(screenModel))
+					SmsCodeStateModel.NavigateToSelfConfirm
 				} else {
-					setStateModel(StateModel.Error.BaseError(Constants.OTP_INVALID_ERROR_CODE))
+					setStateModel(Model.Error.BaseError(Constants.OTP_INVALID_ERROR_CODE))
 				}
 			}
 			is RegistrationCheckSmsCodeInfo.Check ->
@@ -22,14 +21,17 @@ class RegistrationSmsCodeState : SmsCodeState() {
 					setStateModel(SmsCodeStateModel.Request)
 				} else {
 					setStateModel(
-						StateModel.Error.BaseError("Не удалось запросить новый смс-код.")
+						Model.Error.BaseError("Не удалось запросить новый смс-код.")
 					)
 				}
 			else -> super.handle(entity)
 		}
 	}
 
-	sealed interface SmsCodeStateModel : StateModel {
+	sealed interface SmsCodeStateModel : Model {
 		object Request : SmsCodeStateModel
+
+		@Parcelize
+		object NavigateToSelfConfirm : SmsCodeStateModel, Model.Navigate
 	}
 }

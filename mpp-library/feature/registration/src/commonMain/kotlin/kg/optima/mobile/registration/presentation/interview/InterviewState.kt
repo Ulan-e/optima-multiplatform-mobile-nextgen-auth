@@ -1,14 +1,16 @@
 package kg.optima.mobile.registration.presentation.interview
 
-import kg.optima.mobile.base.presentation.BaseMppState
-import kg.optima.mobile.feature.welcome.WelcomeScreenModel
+import com.arkivanov.essenty.parcelable.Parcelize
+import kg.optima.mobile.base.presentation.UiState
 
-class InterviewState : BaseMppState<InterviewInfo>() {
+class InterviewState : UiState<InterviewEntity>() {
 
-	override fun handle(entity: InterviewInfo) {
-		val stateModel = when (entity) {
-			is InterviewInfo.toWelcomeScreen -> StateModel.Navigate(WelcomeScreenModel.Welcome)
-		}
-		setStateModel(stateModel)
+	override fun handle(entity: InterviewEntity) {
+		setStateModel(Model.NavigateToMain)
+	}
+
+	sealed interface Model : UiState.Model {
+		@Parcelize
+		object NavigateToMain : Model, UiState.Model.Navigate
 	}
 }

@@ -8,23 +8,19 @@ import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthState
-import kg.optima.mobile.base.di.createWithStateParam
+import kg.optima.mobile.base.di.create
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
-import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
 import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
 import kg.optima.mobile.design_system.android.ui.screens.pin.headers.pinSetScreenHeader
 
 @Parcelize
-class PinSetScreen(
-	private val nextScreenModel: ScreenModel,
-) : BaseScreen {
+object PinSetScreen : BaseScreen {
 	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
-		val product = remember {
-			AuthFeatureFactory.createWithStateParam<SetupAuthIntent, SetupAuthState>(nextScreenModel)
-		}
+		val product = remember { AuthFeatureFactory.create<SetupAuthIntent, SetupAuthState>() }
 		val state = product.state
 		val intent = product.intent
 
@@ -34,7 +30,7 @@ class PinSetScreen(
 		val subheaderState = remember { mutableStateOf("для быстрого входа в приложение") }
 		val codeState = remember { mutableStateOf(emptyString) }
 
-		when (val pinSetState = model) {
+		when (val pinSetState: UiState.Model? = model) {
 			is SetupAuthState.SetupAuthStateModel -> {
 				when (pinSetState) {
 					SetupAuthState.SetupAuthStateModel.SavePin -> {
@@ -48,6 +44,7 @@ class PinSetScreen(
 							// TODO pin not matches
 						}
 					}
+					else -> Unit
 				}
 			}
 		}

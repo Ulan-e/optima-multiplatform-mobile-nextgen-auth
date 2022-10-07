@@ -5,26 +5,32 @@ import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.presentation.login.model.LoginModel
 import kg.optima.mobile.auth.presentation.login.utils.toUseCaseModel
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.base.presentation.BaseMppIntent
+import kg.optima.mobile.base.presentation.UiIntent
+import kg.optima.mobile.base.presentation.UiState
 import org.koin.core.component.inject
 
-class LoginIntent(
-	override val mppState: LoginState,
-) : BaseMppIntent<LoginModel>() {
+open class LoginIntent(
+	override val uiState: LoginState,
+) : UiIntent<LoginModel>() {
 
 	private val loginUseCase: LoginUseCase by inject()
 	private val clientInfoUseCase: ClientInfoUseCase by inject()
 
-	fun signIn(info: SignInInfo) {
+	override fun init() {
 		launchOperation {
-			loginUseCase.execute(info.toUseCaseModel())
+			clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
+				LoginModel.ClientInfo(
+					clientId = it.clientId,
+					isAuthorized = it.isAuthorized,
+					pinEnabled = it.pinEnabled,
+					biometryEnabled = it.biometryEnabled,
+				)
+			}
 		}
 	}
 
-	fun getClientId() {
-		launchOperation {
-			clientInfoUseCase.execute(ClientInfoUseCase.Params).map { LoginModel.ClientId(it) }
-		}
+	fun signIn(info: SignInInfo) {
+		launchOperation { loginUseCase.execute(info.toUseCaseModel()) }
 	}
 
 	sealed interface SignInInfo {

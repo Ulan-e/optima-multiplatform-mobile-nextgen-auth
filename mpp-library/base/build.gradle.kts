@@ -6,6 +6,8 @@ plugins {
     id("dev.icerock.mobile.multiplatform.ios-framework")
 
     kotlin("plugin.serialization")
+    id("kotlinx-serialization")
+    id("kotlin-parcelize")
 }
 
 version = "1.0"
@@ -25,6 +27,8 @@ dependencies {
     commonMainImplementation(libs.ktorClient)
     commonMainImplementation(libs.ktorClientLogging)
     commonMainImplementation(libs.ktorClientSerialization)
+
+    commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")
 
     iosMainImplementation("io.ktor:ktor-client-ios:1.6.7")
 }

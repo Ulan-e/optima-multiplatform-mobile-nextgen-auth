@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.android.ui.base.permission.PermissionController
-import kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity
-import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
+import kg.optima.mobile.android.ui.features.biometrics.document_scan.DocumentScanActivity
+import kg.optima.mobile.android.utils.navigateTo
 import kg.optima.mobile.base.di.create
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnim
 import kg.optima.mobile.design_system.android.ui.animation.FadeInAnimModel
@@ -31,7 +31,7 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
 import kg.optima.mobile.registration.RegistrationFeatureFactory
-import kg.optima.mobile.registration.presentation.self_confirm.IdentificationMode
+import kg.optima.mobile.registration.presentation.self_confirm.model.IdentificationMode
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmIntent
 import kg.optima.mobile.registration.presentation.self_confirm.SelfConfirmState
 import kg.optima.mobile.resources.Headings
@@ -51,28 +51,33 @@ object SelfConfirmScreen : Screen {
 
         val context = LocalContext.current
 
-        val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
+        val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
 
         var items by remember { mutableStateOf<List<FadeInAnimModel>>(emptyList()) }
         var buttonEnabled by remember { mutableStateOf(false) }
 
         val identificationMode by remember { mutableStateOf(IdentificationMode.FULL) }
 
-        when (val selfConfirmStateModel = model) {
-            is BaseMppState.StateModel.Initial -> intent.fadeAnimationModels(identificationMode)
-            is SelfConfirmState.SelfConfirmStateModel.AnimationModels ->
-                items = selfConfirmStateModel.models.toUiModel()
+        when (val selfConfirmStateModel: UiState.Model? = model) {
+            is UiState.Model.Initial ->
+                intent.fadeAnimationModels(identificationMode)
+            is SelfConfirmState.SelfConfirmStateModel -> when (selfConfirmStateModel) {
+                is SelfConfirmState.SelfConfirmStateModel.AnimationModels ->
+                    items = selfConfirmStateModel.models.toUiModel()
+                SelfConfirmState.SelfConfirmStateModel.NavigateToDocumentScan -> {
+                    VeridocInitializer.init()
+                    context.navigateTo(DocumentScanActivity())
+                }
+            }
         }
 
         LaunchedEffect(key1 = !buttonEnabled) {
             buttonEnabled = when (identificationMode) {
                 IdentificationMode.FULL -> {
-                    delay(6000)
-                    true
+                    delay(6000); true
                 }
                 IdentificationMode.SHORT -> {
-                    delay(1500)
-                    true
+                    delay(1500); true
                 }
             }
         }
@@ -86,17 +91,16 @@ object SelfConfirmScreen : Screen {
             mainState = model,
             permissionController = {
                 when (it) {
-                    PermissionController.State.Accepted -> {
-                        VeridocInitializer.init()
-                        context.navigateTo(DocumentScanActivity())
-                    }
-                    is PermissionController.State.DeniedAlways -> {
+                    PermissionController.State.Accepted ->
+                        intent.onPermissionsAccepted()
+                    is PermissionController.State.DeniedAlways ->
                         intent.customPermissionRequired(it.permissions)
-                    }
                 }
             },
             toolbarInfo = ToolbarInfo(
-                navigationIcon = NavigationIcon(onBackClick = { })
+                navigationIcon = NavigationIcon(onBackClick = {
+                    // TODO onBackClick
+                })
             ),
             contentHorizontalAlignment = Alignment.Start,
         ) {

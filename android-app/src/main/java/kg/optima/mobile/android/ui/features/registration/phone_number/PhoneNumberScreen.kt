@@ -12,9 +12,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.base.MainContainer
-import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
+import kg.optima.mobile.android.utils.navigateTo
 import kg.optima.mobile.base.di.create
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -25,7 +25,6 @@ import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.utils.resources.sp
 import kg.optima.mobile.design_system.android.values.Deps
-import kg.optima.mobile.feature.welcome.WelcomeScreenModel
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberIntent
 import kg.optima.mobile.registration.presentation.phone_number.PhoneNumberState
@@ -42,7 +41,7 @@ object PhoneNumberScreen : Screen {
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
 
 		var phoneNumber by remember { mutableStateOf(emptyString) }
 		var buttonEnabled by remember { mutableStateOf(false) }
@@ -50,18 +49,21 @@ object PhoneNumberScreen : Screen {
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 		val context = LocalContext.current
 
+		when (val phoneNumberModel: UiState.Model? = model) {
+			is PhoneNumberState.PhoneNumberStateModel.NavigateTo.Welcome ->
+				context.navigateTo(phoneNumberModel)
+		}
+
 		when (val model = model) {
-			is BaseMppState.StateModel.Error -> {
-				state.init()
+			is UiState.Model.Error -> {
+				intent.init()
 				bottomSheetState.value = BottomSheetInfo(
 					title = model.error,
 					buttons = listOf(
 						ButtonView.Primary(
 							text = "На главную",
 							composeColor = ComposeColor.composeColor(ComposeColors.Green),
-							onClickListener = ButtonView.onClickListener {
-								context.navigateTo(WelcomeScreenModel.Welcome)
-							}
+							onClickListener = ButtonView.onClickListener(intent::returnToMain),
 						)
 					)
 				)

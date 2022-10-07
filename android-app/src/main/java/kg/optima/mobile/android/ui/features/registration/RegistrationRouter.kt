@@ -3,36 +3,28 @@ package kg.optima.mobile.android.ui.features.registration
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
-import kg.optima.mobile.android.ui.features.common.bankContacts.BankContactsScreen
-import kg.optima.mobile.android.ui.features.common.interview.InterviewScreen
-import kg.optima.mobile.android.ui.features.common.offer.OfferScreen
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
-import kg.optima.mobile.android.ui.features.registration.control_question.ControlQuestionScreen
-import kg.optima.mobile.android.ui.features.registration.create_password.CreatePasswordScreen
-import kg.optima.mobile.android.ui.features.registration.phone_number.PhoneNumberScreen
-import kg.optima.mobile.android.ui.features.registration.self_confirm.SelfConfirmScreen
-import kg.optima.mobile.android.ui.features.registration.sms_otp.RegistrationOtpScreen
-import kg.optima.mobile.feature.registration.RegistrationScreenModel
+import kg.optima.mobile.base.presentation.UiState
 
-object RegistrationRouter : FeatureRouter<RegistrationScreenModel> {
+object RegistrationRouter : FeatureRouter<UiState.Model.Navigate> {
     @Composable
-    override fun compose(screenModel: RegistrationScreenModel): Screen {
-        return when (screenModel) {
+    override fun compose(stateModel: UiState.Model.Navigate): Screen {
+        return AgreementScreen/*when (stateModel) {
             RegistrationScreenModel.Agreement -> AgreementScreen
-            is RegistrationScreenModel.Offerta -> OfferScreen(screenModel.url)
+            is RegistrationScreenModel.Offerta -> OfferScreen(stateModel.url)
             RegistrationScreenModel.EnterPhone -> PhoneNumberScreen
             is RegistrationScreenModel.AcceptCode -> RegistrationOtpScreen(
-                phoneNumber = screenModel.phoneNumber,
-                timeLeft = screenModel.timeLeft,
-                referenceId = screenModel.referenceId,
+                phoneNumber = stateModel.phoneNumber,
+                timeLeft = stateModel.timeLeft,
+                referenceId = stateModel.referenceId,
             )
             RegistrationScreenModel.SelfConfirm -> SelfConfirmScreen
             RegistrationScreenModel.ControlQuestion -> ControlQuestionScreen("hashCode")
             is RegistrationScreenModel.CreatePassword -> CreatePasswordScreen(
-                hash = screenModel.hash,
-                questionId = screenModel.questionId,
-                answer = screenModel.answer
+                hash = stateModel.hash,
+                questionId = stateModel.questionId,
+                answer = stateModel.answer
             )
-        }
+        }*/
     }
 }

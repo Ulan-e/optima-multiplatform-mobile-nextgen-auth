@@ -2,6 +2,10 @@ plugins {
     id("multiplatform-library-convention")
     id("detekt-convention")
     id("dev.icerock.mobile.multiplatform.cocoapods")
+
+    kotlin("plugin.serialization")
+    id("kotlinx-serialization")
+    id("kotlin-parcelize")
 }
 
 version = "1.0"
@@ -13,6 +17,8 @@ dependencies {
 
     commonMainImplementation("io.insert-koin:koin-core:3.1.4")
     commonMainImplementation(libs.coroutines)
+
+    commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")
 }
 
 android {

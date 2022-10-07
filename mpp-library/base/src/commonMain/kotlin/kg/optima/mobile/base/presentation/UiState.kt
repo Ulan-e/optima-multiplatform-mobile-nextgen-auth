@@ -1,9 +1,9 @@
 package kg.optima.mobile.base.presentation
 
 import co.touchlab.stately.concurrency.AtomicReference
+import com.arkivanov.essenty.parcelable.Parcelable
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.core.error.Failure
-import kg.optima.mobile.core.navigation.ScreenModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -12,39 +12,39 @@ import kotlinx.coroutines.flow.asSharedFlow
 /**
  * [E] - Entity. In parameter, receiving from Domain.
  **/
-abstract class BaseMppState<in E>(
+abstract class UiState<in E : BaseEntity>(
 	coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) {
-	protected val stateValue: AtomicReference<@UnsafeVariance StateModel?> = AtomicReference(null)
+	protected val stateValue: AtomicReference<@UnsafeVariance Model?> = AtomicReference(null)
 
 	/**
 	 * Common state for each screen. Use with sealed classes.
 	 **/
-	private val _stateFlow = MutableSharedFlow<StateModel?>()
+	private val _stateFlow = MutableSharedFlow<Model?>()
 
 	/**
 	 * For Android.
 	 */
-	val stateFlow: Flow<StateModel?> = _stateFlow.asSharedFlow()
+	val stateFlow: Flow<Model?> = _stateFlow.asSharedFlow()
 
 	/**
 	 * For iOS.
 	 */
-	val commonStateFlow: CommonFlow<StateModel?> = _stateFlow.asCommonFlow()
+	val commonStateFlow: CommonFlow<Model?> = _stateFlow.asCommonFlow()
 
 	private val coroutineScope = CoroutineScope(coroutineDispatcher + SupervisorJob())
 
 	/**
-	* To use only with intent.
-	**/
-	fun setStateModel(newState: @UnsafeVariance StateModel?) {
+	 * To use only with intent.
+	 **/
+	protected fun setStateModel(newState: @UnsafeVariance Model?) {
 		coroutineScope.launch { _stateFlow.emit(newState) }
 	}
 
-	internal fun setLoading() = setStateModel(StateModel.Loading)
+	internal fun setLoading() = setStateModel(Model.Loading)
 
 	// TODO perform error
-	internal fun setError(error: StateModel.Error) = setStateModel(error)
+	internal fun setError(error: Model.Error) = setStateModel(error)
 
 	// TODO perform error
 	internal fun setError(failure: Failure) {
@@ -65,33 +65,43 @@ abstract class BaseMppState<in E>(
 //        }
 	}
 
-	internal fun pop() = setStateModel(StateModel.Pop)
+	internal fun pop() = setStateModel(Model.Pop)
 
 	abstract fun handle(entity: E)
 
-	fun init() = setStateModel(StateModel.Initial)
+	internal fun handle(baseEntity: BaseEntity) = when (baseEntity) {
+		BaseEntity.Initial ->
+			setStateModel(Model.Initial)
+		is BaseEntity.RequestPermissions ->
+			setStateModel(Model.RequestPermissions(baseEntity.permissions))
+		is BaseEntity.RequestCustomPermissions ->
+			setStateModel(Model.CustomPermissionRequired(baseEntity.text, baseEntity.permissions))
+		else -> Unit
+	}
 
-	interface StateModel {
-		object Initial : StateModel
+	internal fun init() = setStateModel(Model.Initial)
 
-		object Loading : StateModel
+	interface Model {
+		object Initial : Model
 
-		class Navigate(val screenModels: List<ScreenModel>) : StateModel {
-			constructor(screenModel: ScreenModel) : this(listOf(screenModel))
+		object Loading : Model
+
+		interface Navigate : Model, Parcelable {
+			val dropBackStack: Boolean get() = false
 		}
 
-		object Pop : StateModel
+		object Pop : Model
 
 		class RequestPermissions(
 			val permissions: List<Permission>
-		) : StateModel
+		) : Model
 
 		class CustomPermissionRequired(
 			val text: String,
 			val permissions: List<Permission>
-		) : StateModel
+		) : Model
 
-		sealed interface Error : StateModel {
+		sealed interface Error : Model {
 			val error: String
 
 			class BaseError(override val error: String) : Error

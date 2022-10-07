@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import kg.optima.mobile.android.ui.base.MainContainer
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -26,7 +26,7 @@ import kg.optima.mobile.resources.Headings
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun OtpContent(
-	model: BaseMppState.StateModel?,
+	model: UiState.Model?,
 	description: String,
 	phoneNumber: String,
 	code: String,
@@ -42,8 +42,8 @@ fun OtpContent(
 	val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
 	when (model) {
-		is BaseMppState.StateModel.Initial -> onStartTimer()
-		is BaseMppState.StateModel.Error -> {
+		is UiState.Model.Initial -> onStartTimer()
+		is UiState.Model.Error -> {
 			if (triesCount <= 0) {
 				onPauseTimer()
 				bottomSheetState.value = BottomSheetInfo(

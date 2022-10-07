@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.biometrics
+package kg.optima.mobile.android.ui.features.biometrics.document_scan
 
 import android.os.Bundle
 import androidx.activity.compose.setContent

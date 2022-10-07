@@ -1,17 +1,17 @@
 package kg.optima.mobile.registration.presentation.agreement
 
-import kg.optima.mobile.base.presentation.BaseMppIntent
+import kg.optima.mobile.base.presentation.UiIntent
 
 class AgreementIntent(
-	override val mppState: AgreementState
-) : BaseMppIntent<AgreementModel>() {
+	override val uiState: AgreementState
+) : UiIntent<AgreementModel>() {
 
 	fun confirm() {
-		mppState.handle(AgreementModel.AgreementInfo(true))
+		uiState.handle(AgreementModel.AgreementInfo(true))
 	}
 
 	fun openOfferta() {
-		mppState.handle(AgreementModel.Offerta(
+		uiState.handle(AgreementModel.Offerta(
 			url = "https://forms.optimabank.kg/offers/o24-20220101-en.html"
 		))
 	}

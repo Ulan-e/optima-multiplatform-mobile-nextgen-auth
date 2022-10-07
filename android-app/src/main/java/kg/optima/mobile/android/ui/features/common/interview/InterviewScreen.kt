@@ -17,7 +17,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import kg.optima.mobile.R
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.base.di.create
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
@@ -40,7 +40,7 @@ class InterviewScreen(
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
 		val loadingState = remember { mutableStateOf(true) }
 
 		MainContainer(
@@ -65,10 +65,10 @@ class InterviewScreen(
 					) {
 						IconButton(
 							modifier = Modifier.padding(start = 20.dp),
-							onClick = { intent.navigate() }
+							onClick = { intent.close() }
 						) {
 							Icon(
-								painter = painterResource(id = R.drawable.ic_arrow_back),
+								painter = painterResource(id = R.drawable.ic_close),
 								contentDescription = null,
 								tint = ComposeColors.PrimaryDisabledGray,
 							)

@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.biometrics
+package kg.optima.mobile.android.ui.features.biometrics.liveness
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -17,7 +17,7 @@ class LivenessActivity : AppCompatActivity() {
 			ProvideWindowInsets {
 				Theme.OptimaTheme {
 					LivenessInitializer.init()
-					Navigator(LivenessScreen)
+					Navigator(LivenessScreen())
 				}
 			}
 		}

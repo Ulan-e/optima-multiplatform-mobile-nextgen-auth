@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.presentation.permissions.Permission
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
@@ -21,7 +21,7 @@ var customRationaleRequest = CustomRationale.FIRST_REQUEST
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun requestPermission(
-	requestPermissionState: BaseMppState.StateModel.RequestPermissions,
+	requestPermissionState: UiState.Model.RequestPermissions,
 	permissionController: PermissionController?,
 ) {
 	val permissionsState = rememberMultiplePermissionsState(
@@ -67,7 +67,7 @@ fun requestPermission(
 @SuppressLint("ComposableNaming")
 @Composable
 fun customPermissionRequired(
-	customPermissionRequired: BaseMppState.StateModel.CustomPermissionRequired,
+	customPermissionRequired: UiState.Model.CustomPermissionRequired,
 	context: Context,
 	onSheetStateChanged: (sheetInfo: BottomSheetInfo?) -> Unit,
 	onBottomSheetHidden: () -> Unit,
