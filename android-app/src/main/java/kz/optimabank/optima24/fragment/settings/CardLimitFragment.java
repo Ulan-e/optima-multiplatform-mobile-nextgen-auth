@@ -1,6 +1,5 @@
 package kz.optimabank.optima24.fragment.settings;
 
-import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +37,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
+import com.fourmob.datetimepicker.date.DatePickerDialog;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kg.optima.mobile.R;
@@ -64,7 +65,7 @@ import static kz.optimabank.optima24.utility.Utilities.getFormatForDate;
  * Created by Max on 29.08.2017.
  */
 
-public class CardLimitFragment extends ATFFragment implements View.OnClickListener, /*DatePickerDialog.OnDateSetListener,*/
+public class CardLimitFragment extends ATFFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener,
         LimitInterfaceImpl.Callback, SetLimitInterfaceImpl.Callback {
 
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -149,7 +150,7 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-        /*dateFromPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+        dateFromPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
         dateFromPickerDialog.setYearRange(2000, year+5);//В календаре от текущего кода отображать плюс 5
 
         dateToPickerDialog = DatePickerDialog.newInstance(this, year, month, day, false);
@@ -171,11 +172,11 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
             } else {
                 linLayF.setVisibility(View.GONE);
                 firstTV.setText(R.string.forbidden);
-//                if (limit.getStatus()){
-//                    setButtonUseable(true);
-//                } else {
-//                    setButtonUseable(false);
-//                }
+                if (limit.getStatus()){
+                    setButtonUseable(true);
+                } else {
+                    setButtonUseable(false);
+                }
             }
         });
 
@@ -362,15 +363,15 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
         return isNotCheck;
     }
 
-//    private void setButtonUseable(boolean usable){
-//        if (usable){
-//            btnSave.setBackground(getResources().getDrawable(R.drawable.button_default));
-//            btnSave.setClickable(true);
-//        } else {
-//            btnSave.setBackground(getResources().getDrawable(R.drawable.button_not_active));
-//            btnSave.setClickable(false);
-//        }
-//    }
+    private void setButtonUseable(boolean usable){
+        if (usable){
+            btnSave.setBackground(getResources().getDrawable(R.drawable.button_default));
+            btnSave.setClickable(true);
+        } else {
+            btnSave.setBackground(getResources().getDrawable(R.drawable.button_not_active));
+            btnSave.setClickable(false);
+        }
+    }
 
     private void setToZero(){
         linLayF.setVisibility(View.GONE);
@@ -437,10 +438,10 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
                 break;
             case R.id.linSetLimitType:
             case R.id.tvLimitType:
-//                intent = new Intent(getActivity(),SelectAccountActivity.class);
-//                intent.putExtra("chooseLimit",true);
-//                intent.putExtra("limitTypeList", limitTypeList);
-//                startActivityForResult(intent, SELECT_LIMIT_REQUEST_CODE);
+                intent = new Intent(getActivity(),SelectAccountActivity.class);
+                intent.putExtra("chooseLimit",true);
+                intent.putExtra("limitTypeList", limitTypeList);
+                startActivityForResult(intent, SELECT_LIMIT_REQUEST_CODE);
                 break;
 
         }
@@ -448,8 +449,8 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
 
     private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
         if(datePickerDialog!=null) {
-//            datePickerDialog.setStartDate(year,month,day);
-            //datePickerDialog.show(getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
+            datePickerDialog.setStartDate(year,month,day);
+            datePickerDialog.show(getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
         }
     }
 
@@ -593,7 +594,7 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
         });
     }
 
-    /*@Override
+    @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         period = null;
         GregorianCalendar date = new GregorianCalendar(year, month, day);
@@ -622,7 +623,7 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
             fromDate = date;
             toDate = date;
         }
-    }*/
+    }
 
     public void getBundle() {
         if (getArguments()!=null){
@@ -632,16 +633,16 @@ public class CardLimitFragment extends ATFFragment implements View.OnClickListen
             limitMass.add(getArguments().getParcelable(STRING_KEY));
             setLimit(limitMass.get(0));
 
-            //Log.i("code"," code ==== "+code);
+            Log.i("code"," code ==== "+code);
 
-//       selectedLimitType = (String) getArguments().getString(STRING_KEY);
-//       Log.e("selectedLimitType22",selectedLimitType);
-//       limit = getLimitByType(selectedLimitType);
-//       if (limit != null) {
-//       setLimit(limit);
-//       }
-//       tvLimitType.setText(selectedLimitType);
-//       tvLimitType.setError(null);
+       selectedLimitType = (String) getArguments().getString(STRING_KEY);
+       Log.e("selectedLimitType22",selectedLimitType);
+       limit = getLimitByType(selectedLimitType);
+       if (limit != null) {
+       setLimit(limit);
+       }
+       tvLimitType.setText(selectedLimitType);
+       tvLimitType.setError(null);
         }
     }
 

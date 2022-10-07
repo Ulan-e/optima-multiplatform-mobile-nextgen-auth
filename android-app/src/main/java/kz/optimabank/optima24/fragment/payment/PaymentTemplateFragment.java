@@ -48,8 +48,10 @@ import static kz.optimabank.optima24.utility.Constants.SELECT_ACCOUNT_FROM_REQUE
 import static kz.optimabank.optima24.utility.Utilities.getDoubleType;
 import static kz.optimabank.optima24.utility.Utilities.getFieldNamesAndValues;
 
+import com.fourmob.datetimepicker.date.DatePickerDialog;
+
 public class PaymentTemplateFragment extends PaymentFragment implements View.OnClickListener,
-        PaymentTemplateOperationImpl.CallbackChangePayment, PaymentTemplateOperationImpl.CallbackOperationPayment, /*DatePickerDialog.OnDateSetListener,*/ SmsWithTextImpl.SmsSendWithOperationCodeCallback, SmsWithTextImpl.SmsSendWithTextForPaymentCallback {
+        PaymentTemplateOperationImpl.CallbackChangePayment, PaymentTemplateOperationImpl.CallbackOperationPayment, DatePickerDialog.OnDateSetListener, SmsWithTextImpl.SmsSendWithOperationCodeCallback, SmsWithTextImpl.SmsSendWithTextForPaymentCallback {
     private static final String TAG = PaymentTemplateFragment.class.getSimpleName();
 
     TemplatesPayment templatesPayment;
@@ -88,7 +90,7 @@ public class PaymentTemplateFragment extends PaymentFragment implements View.OnC
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    /*@Override
+    @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
         CharSequence dateString = DAY_MONTH_YEAR_FORMAT.format(date.getTime());
@@ -97,7 +99,7 @@ public class PaymentTemplateFragment extends PaymentFragment implements View.OnC
         tvTimeBegin.setTextColor(getResources().getColor(R.color.gray_black_56_56_56));
         tvTimeBegin.setText(dateString);
         calendar = date;
-    }*/
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

@@ -50,11 +50,13 @@ import static kz.optimabank.optima24.utility.Constants.TRANSFER_INTERBANK_TYPE_C
 import static kz.optimabank.optima24.utility.Utilities.getDoubleType;
 import static kz.optimabank.optima24.utility.Utilities.getFieldNamesAndValues;
 
+import com.fourmob.datetimepicker.date.DatePickerDialog;
+
 /**
  * Created by Timur on 12.06.2017.
  */
 
-public class TransferInterbankTemplate extends TransferInterbank implements TransferTemplateOperationImpl.CallbackChangeTransfer, SmsWithTextImpl.SmsSendWithOperationCodeCallback, View.OnClickListener/*, DatePickerDialog.OnDateSetListener*/ {
+public class TransferInterbankTemplate extends TransferInterbank implements TransferTemplateOperationImpl.CallbackChangeTransfer, SmsWithTextImpl.SmsSendWithOperationCodeCallback, View.OnClickListener, DatePickerDialog.OnDateSetListener {
     TemplateTransfer templateTransfer;
     int actionTag, time = 10, dayWeekMonth = 10;
     String[] mass;
@@ -68,7 +70,7 @@ public class TransferInterbankTemplate extends TransferInterbank implements Tran
     int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
-    //DatePickerDialog dateBeginDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+    DatePickerDialog dateBeginDialog = DatePickerDialog.newInstance(this, year, month, day, false);
     private int AutoPayTypeInt;
 
     @Nullable
@@ -412,11 +414,11 @@ public class TransferInterbankTemplate extends TransferInterbank implements Tran
         builder.show();
     }
 
-   /* private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
+    private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
         if (datePickerDialog != null) {
             datePickerDialog.show(requireActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
         }
-    }*/
+    }
 
     private void checkForAutoPay() {
         if (actionTag == Constants.TAG_CHANGE) {
@@ -645,7 +647,6 @@ public class TransferInterbankTemplate extends TransferInterbank implements Tran
         return getFieldNamesAndValues(templateTransfer);
     }
 
-/*
     @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
@@ -655,7 +656,7 @@ public class TransferInterbankTemplate extends TransferInterbank implements Tran
         tvTimeBegin.setTextColor(getResources().getColor(R.color.gray_black_56_56_56));
         tvTimeBegin.setText(dateString);
         calendar = date;
-    }*/
+    }
 
     @Override
     public void onSmsOperationCodeResponse(int statusCode, String errorMessage, Integer errorCode) {

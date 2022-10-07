@@ -7,13 +7,10 @@ plugins {
 
     id("kotlinx-serialization")
     id("kotlin-parcelize")
-
-    id("io.realm.kotlin")
 }
 
 android {
     buildFeatures.viewBinding = true
-
 
     compileSdkVersion(32)
     defaultConfig {
@@ -67,6 +64,7 @@ dependencies {
     implementation(libs.firebaseCrashlytics)
     // Hilt
     implementation(libs.hilt)
+    implementation(project(":datetimepicker-library"))
     kapt(libs.hiltCompiler)
 
     implementation(projects.mppLibrary)
@@ -84,7 +82,6 @@ dependencies {
     implementation("androidx.fragment:fragment:1.5.3")
     implementation("androidx.lifecycle:lifecycle-process:2.5.1")
     implementation("androidx.annotation:annotation:1.5.0")
-   //implementation("com.github.flavienlaurent.datetimepicker:library:0.0.2")
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")

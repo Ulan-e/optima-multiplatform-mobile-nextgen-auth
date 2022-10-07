@@ -13,8 +13,10 @@ buildscript {
         google()
         gradlePluginPortal()
 
+        maven(url = "https://maven.google.com")
         maven(url = "https://pay.cards/maven")
         maven(url = "https://jitpack.io")
+        maven(url = "https://plugins.gradle.org/m2/")
 
         flatDir {
             dirs("libs")

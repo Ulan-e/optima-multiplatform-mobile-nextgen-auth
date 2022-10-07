@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,12 +47,14 @@ import static kz.optimabank.optima24.utility.Utilities.formatDate;
 import static kz.optimabank.optima24.utility.Utilities.getFieldNamesAndValues;
 import static kz.optimabank.optima24.utility.Utilities.getFormatForDate;
 
+import com.fourmob.datetimepicker.date.DatePickerDialog;
+
 /**
  * Created by Max on 08.11.2017.
  */
 
 public class InternetPaymentsFragment extends ATFFragment implements InternetImpl.callbackCheck, InternetImpl.callbackSet,
-         View.OnClickListener {//, DatePickerDialog.OnDateSetListener {
+         View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -76,12 +79,12 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
     String from = "T00:00:00", to = "T23:59:59";
     String fromCheck, toCheck;
 
-    /*private DatePickerDialog dialogFrom;
-    private DatePickerDialog dialogTo;*/
+    private DatePickerDialog dialogFrom;
+    private DatePickerDialog dialogTo;
     private final Calendar calendar = Calendar.getInstance();
     private Calendar calendarFrom = Calendar.getInstance();
     private Calendar calendarTo = Calendar.getInstance();
-//    private SimpleDateFormat sdfFromServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private SimpleDateFormat sdfFromServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
     SimpleDateFormat dateFormat = getFormatForDate("yyyy-MM-dd'T'HH:mm:ss");
     Date startDate;
     Date endDate;
@@ -131,19 +134,19 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-//        dialogFrom = DatePickerDialog.newInstance(this, year, month, day, false);
-//        dialogTo = DatePickerDialog.newInstance(this, year, month, day, false);
-//        dialogFrom.setStartDate(year, month, day);
-//        Log.i("DATELIMITIM", "year = " + year + "   month= " + month + "   day = " + day);
-//        Log.i("DATELIMITIM", "year = " + year + "   month= " + month + 10 + "   day = " + day);
-//        dialogFrom.setDateRange(year, month, day-1, year+10, month, day);
-//        dialogFrom.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
-//                dialogTo.setStartDate(year, month, day+1);
-//                isFirstDateSelected = true;
-//            }
-//        });
+        dialogFrom = DatePickerDialog.newInstance(this, year, month, day, false);
+        dialogTo = DatePickerDialog.newInstance(this, year, month, day, false);
+        dialogFrom.setStartDate(year, month, day);
+        Log.i("DATELIMITIM", "year = " + year + "   month= " + month + "   day = " + day);
+        Log.i("DATELIMITIM", "year = " + year + "   month= " + month + 10 + "   day = " + day);
+        dialogFrom.setDateRange(year, month, day-1, year+10, month, day);
+        dialogFrom.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+                dialogTo.setStartDate(year, month, day+1);
+                isFirstDateSelected = true;
+            }
+        });
 
         linSpinnerBegin.setOnClickListener(this);
         linSpinnerEnd.setOnClickListener(this);
@@ -280,7 +283,7 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
         }
     }
 
-    /*@Override
+    @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
         setTimeToMidnight(date);
@@ -300,7 +303,7 @@ public class InternetPaymentsFragment extends ATFFragment implements InternetImp
         } else {
             Toast.makeText(getActivity(), getString(R.string.choose_correct_date), Toast.LENGTH_LONG).show();
         }
-    }*/
+    }
 
     public static Calendar setTimeToMidnight(Calendar calendar) {
         calendar.set(Calendar.HOUR_OF_DAY, 0);

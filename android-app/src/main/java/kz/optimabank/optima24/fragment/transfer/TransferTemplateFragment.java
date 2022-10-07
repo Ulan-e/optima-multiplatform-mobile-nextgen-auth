@@ -57,8 +57,10 @@ import static kz.optimabank.optima24.utility.Utilities.getDoubleType;
 import static kz.optimabank.optima24.utility.Utilities.getFieldNamesAndValues;
 import static kz.optimabank.optima24.utility.Utilities.hasInternetConnection;
 
+import com.fourmob.datetimepicker.date.DatePickerDialog;
+
 public class TransferTemplateFragment extends TransferAccountsFragment implements View.OnClickListener,
-        TransferTemplateOperationImpl.CallbackChangeTransfer, /*DatePickerDialog.OnDateSetListener,*/ SmsWithTextImpl.SmsSendWithOperationCodeCallback {
+        TransferTemplateOperationImpl.CallbackChangeTransfer, DatePickerDialog.OnDateSetListener, SmsWithTextImpl.SmsSendWithOperationCodeCallback {
     private static final String TAG = TransferTemplateFragment.class.getSimpleName();
 
     TemplateTransfer templateTransfer;
@@ -73,7 +75,7 @@ public class TransferTemplateFragment extends TransferAccountsFragment implement
     int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
-   // DatePickerDialog dateBeginDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+    DatePickerDialog dateBeginDialog = DatePickerDialog.newInstance(this, year, month, day, false);
     AlertDialog.Builder builder;
     SmsWithTextImpl smsSend;
     private String templateOperationCode = String.valueOf(System.currentTimeMillis());
@@ -84,7 +86,7 @@ public class TransferTemplateFragment extends TransferAccountsFragment implement
         isTemplate = true;
         transferTemplateOperation = new TransferTemplateOperationImpl();
         transferTemplateOperation.registerCallBackChange(this);
-      //  dateBeginDialog.setStartDate(year, month, day);
+        dateBeginDialog.setStartDate(year, month, day);
         smsSend = new SmsWithTextImpl();
         smsSend.registerSmsWithOperationCodeCallBack(this);
         return super.onCreateView(inflater, container, savedInstanceState);
@@ -272,11 +274,11 @@ public class TransferTemplateFragment extends TransferAccountsFragment implement
         }
     }
 
-    /*private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
+    private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
         if (datePickerDialog != null) {
             datePickerDialog.show(requireActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
         }
-    }*/
+    }
 
     private void buildAlert(final int is) {
         builder = new AlertDialog.Builder(getActivity());
@@ -806,7 +808,7 @@ public class TransferTemplateFragment extends TransferAccountsFragment implement
         return getFieldNamesAndValues(templateTransfer);
     }
 
-   /* @Override
+    @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
         CharSequence dateString = DAY_MONTH_YEAR_FORMAT.format(date.getTime());
@@ -815,7 +817,7 @@ public class TransferTemplateFragment extends TransferAccountsFragment implement
         tvTimeBegin.setTextColor(getResources().getColor(R.color.gray_black_56_56_56));
         tvTimeBegin.setText(dateString);
         calendar = date;
-    }*/
+    }
 
     @Override
     public void onSmsOperationCodeResponse(int statusCode, String errorMessage, Integer errorCode) {

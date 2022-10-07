@@ -46,12 +46,14 @@ import static kz.optimabank.optima24.utility.Constants.DATE_PICKER_TAG;
 import static kz.optimabank.optima24.utility.Constants.DAY_MONTH_YEAR_FORMAT;
 import static kz.optimabank.optima24.utility.Utilities.getFieldNamesAndValues;
 
+import com.fourmob.datetimepicker.date.DatePickerDialog;
+
 /**
   Created by Timur on 04.08.2017.
  */
 
 public class ChangeInvoiceTemplate extends ATFFragment implements View.OnClickListener,
-        PaymentTemplateOperationImpl.CallbackChangePayment/*, DatePickerDialog.OnDateSetListener */{
+        PaymentTemplateOperationImpl.CallbackChangePayment, DatePickerDialog.OnDateSetListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.tvTitle)
@@ -92,7 +94,7 @@ public class ChangeInvoiceTemplate extends ATFFragment implements View.OnClickLi
     int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
- //   DatePickerDialog dateBeginDialog = DatePickerDialog.newInstance(this, year, month, day, false);
+    DatePickerDialog dateBeginDialog = DatePickerDialog.newInstance(this, year, month, day, false);
     String isTTF;
     String date;
     String[] mass;
@@ -164,7 +166,7 @@ public class ChangeInvoiceTemplate extends ATFFragment implements View.OnClickLi
                 builder.show();
             }
         }
-        //dateBeginDialog.setStartDate(year, month, day);
+        dateBeginDialog.setStartDate(year, month, day);
         linTimeBegin.setOnClickListener(this);
         linRePayTime.setOnClickListener(this);
         linRepeat.setOnClickListener(this);
@@ -218,12 +220,12 @@ public class ChangeInvoiceTemplate extends ATFFragment implements View.OnClickLi
         }
     }
 
-   /* private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
+    private void createDatePickerDialog(DatePickerDialog datePickerDialog) {
         if(datePickerDialog!=null) {
             //datePickerDialog.setYearRange(2015, 2030);
             datePickerDialog.show(getActivity().getSupportFragmentManager(), DATE_PICKER_TAG);
         }
-    }*/
+    }
 
     private void buildAlert(final int is){
         builder = new AlertDialog.Builder(getActivity());
@@ -568,7 +570,7 @@ public class ChangeInvoiceTemplate extends ATFFragment implements View.OnClickLi
         return bodyList;
     }
 
-    /*@Override
+    @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
         CharSequence dateString = Constants.DAY_MONTH_YEAR_FORMAT.format(date.getTime());
@@ -577,5 +579,5 @@ public class ChangeInvoiceTemplate extends ATFFragment implements View.OnClickLi
         tvTimeBegin.setText(dateString);
         calendar = date;
         this.date = DATE_FORMAT_FOR_REQEST.format(date.getTime());
-    }*/
+    }
 }

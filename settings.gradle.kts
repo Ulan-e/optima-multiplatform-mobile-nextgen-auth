@@ -21,6 +21,7 @@ dependencyResolutionManagement {
 includeBuild("build-logic")
 
 include(":android-app")
+include(":datetimepicker-library")
 include(":mpp-library")
 include(":mpp-library:base")
 include(":mpp-library:core")
