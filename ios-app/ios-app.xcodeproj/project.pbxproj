@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0837BDE328E4678F00359174 /* OptimaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0837BDE228E4678F00359174 /* OptimaApp.swift */; };
-		08C6581128E58DE9005EFE6D /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6581028E58DE9005EFE6D /* LaunchView.swift */; };
-		08C6581428E58E01005EFE6D /* LaunchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6581328E58E01005EFE6D /* LaunchRouter.swift */; };
-		08C6581728E59370005EFE6D /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6581928E59370005EFE6D /* Launch.storyboard */; };
+		08C6581128E58DE9005EFE6D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6581028E58DE9005EFE6D /* RootView.swift */; };
+		08C6581428E58E01005EFE6D /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6581328E58E01005EFE6D /* RootRouter.swift */; };
+		08C6581728E59370005EFE6D /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C6581928E59370005EFE6D /* Root.storyboard */; };
 		0E42E0F92701D4B500A0B283 /* icerock.swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 0E42E0F82701D4B500A0B283 /* icerock.swiftformat */; };
 		144E845764A9F874F56D4411 /* Pods_ios_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81ABCAD09C1DB1D7628A1B3B /* Pods_ios_app.framework */; };
 		451D7B1A235845B100095112 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451D7B19235845B100095112 /* AppComponent.swift */; };
@@ -32,9 +32,9 @@
 
 /* Begin PBXFileReference section */
 		0837BDE228E4678F00359174 /* OptimaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimaApp.swift; sourceTree = "<group>"; };
-		08C6581028E58DE9005EFE6D /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
-		08C6581328E58E01005EFE6D /* LaunchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRouter.swift; sourceTree = "<group>"; };
-		08C6581828E59370005EFE6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
+		08C6581028E58DE9005EFE6D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		08C6581328E58E01005EFE6D /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		08C6581828E59370005EFE6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Root.storyboard; sourceTree = "<group>"; };
 		0E42E0F82701D4B500A0B283 /* icerock.swiftformat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icerock.swiftformat; sourceTree = "<group>"; };
 		287627FF1F319065007FA12B /* Optima24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optima24.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		451D7B19235845B100095112 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
@@ -106,9 +106,9 @@
 		08C6581A28E598AA005EFE6D /* Present */ = {
 			isa = PBXGroup;
 			children = (
-				08C6581028E58DE9005EFE6D /* LaunchView.swift */,
-				08C6581328E58E01005EFE6D /* LaunchRouter.swift */,
-				08C6581928E59370005EFE6D /* Launch.storyboard */,
+				08C6581028E58DE9005EFE6D /* RootView.swift */,
+				08C6581328E58E01005EFE6D /* RootRouter.swift */,
+				08C6581928E59370005EFE6D /* Root.storyboard */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08C6581728E59370005EFE6D /* Launch.storyboard in Resources */,
+				08C6581728E59370005EFE6D /* Root.storyboard in Resources */,
 				0E42E0F92701D4B500A0B283 /* icerock.swiftformat in Resources */,
 				45F4791E219463C7003D25FA /* Main.storyboard in Resources */,
 				45F4791D219463C7003D25FA /* LaunchScreen.storyboard in Resources */,
@@ -431,7 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08C6581428E58E01005EFE6D /* LaunchRouter.swift in Sources */,
+				08C6581428E58E01005EFE6D /* RootRouter.swift in Sources */,
 				45F47922219463C7003D25FA /* AppDelegate.swift in Sources */,
 				4989F81C2747538300C6DCC0 /* BaseTabBarCoordinator.swift in Sources */,
 				BDCC3691263E8CE10097A176 /* BaseViewController.swift in Sources */,
@@ -445,19 +445,19 @@
 				BDCC369C263E98AA0097A176 /* AppCoordinator.swift in Sources */,
 				BDCC368F263E8CE10097A176 /* BaseCoordinator.swift in Sources */,
 				BDCC369A263E91840097A176 /* BaseCoordinator+Extensions.swift in Sources */,
-				08C6581128E58DE9005EFE6D /* LaunchView.swift in Sources */,
+				08C6581128E58DE9005EFE6D /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		08C6581928E59370005EFE6D /* Launch.storyboard */ = {
+		08C6581928E59370005EFE6D /* Root.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				08C6581828E59370005EFE6D /* Base */,
 			);
-			name = Launch.storyboard;
+			name = Root.storyboard;
 			sourceTree = "<group>";
 		};
 		45F47912219463C7003D25FA /* LaunchScreen.storyboard */ = {
