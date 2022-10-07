@@ -1,4 +1,3 @@
-/*
 package kz.optimabank.optima24.scan.fragments;
 
 import static cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants.RECOGNIZER_MODE_DATE;
@@ -28,13 +27,17 @@ import androidx.fragment.app.Fragment;
 
 import java.io.ByteArrayOutputStream;
 
+import cards.pay.paycardsrecognizer.sdk.Card;
+import cards.pay.paycardsrecognizer.sdk.camera.ScanManager;
+import cards.pay.paycardsrecognizer.sdk.camera.widget.CameraPreviewLayout;
+import cards.pay.paycardsrecognizer.sdk.ndk.RecognitionResult;
+import cards.pay.paycardsrecognizer.sdk.ui.ScanCardRequest;
+import cards.pay.paycardsrecognizer.sdk.ui.views.ProgressBarIndeterminate;
+import kg.optima.mobile.BuildConfig;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.scan.RPSScanCardIntent;
 
-*/
-/**
- * Created by Тимур on 02.02.2018.
- *//*
+
 
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -313,4 +316,3 @@ public class RPSScanCardFragment extends Fragment {
         void onScanCardFinished(Card card, byte[] cardImage);
     }
 }
-*/

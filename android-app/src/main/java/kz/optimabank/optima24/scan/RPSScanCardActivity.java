@@ -1,4 +1,3 @@
-/*
 package kz.optimabank.optima24.scan;
 
 import android.annotation.SuppressLint;
@@ -21,10 +20,6 @@ import kz.optimabank.optima24.activity.OptimaActivity;
 import kz.optimabank.optima24.scan.fragments.RPSInitLibraryFragment;
 import kz.optimabank.optima24.scan.fragments.RPSScanCardFragment;
 
-*/
-/**
-  Created by Тимур on 02.02.2018.
- *//*
 
 
 public class RPSScanCardActivity extends OptimaActivity implements RPSScanCardFragment.InteractionListener,
@@ -127,4 +122,3 @@ public class RPSScanCardActivity extends OptimaActivity implements RPSScanCardFr
         return request;
     }
 }
-*/

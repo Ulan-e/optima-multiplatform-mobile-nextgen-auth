@@ -18,9 +18,10 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/wocr_iv_flash_id"
-            style="@style/PrimaryButtonFilledStyle"
+            style="@style/wocr_FlashButton"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:src="@drawable/wocr_ic_flash"
             tools:visibility="visible"
             tools:ignore="RtlHardcoded" />
 
@@ -56,5 +57,12 @@
         <!--</LinearLayout>-->
 
     </RelativeLayout>
+
+    <cards.pay.paycardsrecognizer.sdk.ui.views.ProgressBarIndeterminate
+        android:id="@+id/wocr_progress_bar"
+        android:layout_gravity="center"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:visibility="visible"/>
 
 </FrameLayout>

@@ -1,4 +1,3 @@
-/*
 package kz.optimabank.optima24.scan.view;
 
 import android.annotation.SuppressLint;
@@ -17,12 +16,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
+import cards.pay.paycardsrecognizer.sdk.ndk.RecognitionConstants;
+import cards.pay.paycardsrecognizer.sdk.utils.Fonts;
 import kg.optima.mobile.R;
-
-*/
-/**
-  Created by Тимур on 06.02.2018.
- *//*
 
 
 public class CardDetection extends View {
@@ -324,4 +320,3 @@ public class CardDetection extends View {
         );
     }
 }
-*/

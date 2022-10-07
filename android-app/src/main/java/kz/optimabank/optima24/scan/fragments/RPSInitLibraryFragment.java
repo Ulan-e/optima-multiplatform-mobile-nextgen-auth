@@ -1,4 +1,3 @@
-/*
 package kz.optimabank.optima24.scan.fragments;
 
 import android.Manifest;
@@ -24,11 +23,6 @@ import cards.pay.paycardsrecognizer.sdk.camera.widget.CameraPreviewLayout;
 import cards.pay.paycardsrecognizer.sdk.ndk.RecognitionCore;
 import kg.optima.mobile.R;
 import kz.optimabank.optima24.scan.RPSScanCardIntent;
-
-*/
-/**
-  Created by Тимур on 02.02.2018.
- *//*
 
 
 public class RPSInitLibraryFragment extends Fragment {
@@ -89,6 +83,7 @@ public class RPSInitLibraryFragment extends Fragment {
         if (mFlashButton != null) mFlashButton.setVisibility(View.GONE);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -204,4 +199,3 @@ public class RPSInitLibraryFragment extends Fragment {
         }
     }
 }
-*/

@@ -1,13 +1,17 @@
 package kz.optimabank.optima24.scan;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.RestrictTo;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import cards.pay.paycardsrecognizer.sdk.ui.ScanCardRequest;
 
 /**
   Created by Тимур on 02.02.2018.
@@ -87,14 +91,13 @@ public class RPSScanCardIntent {
             return this;
         }
 
-        //TODO ScanCardRequest
-        /*public Intent build() {
+        public Intent build() {
             Intent intent = new Intent(mContext, RPSScanCardActivity.class);
             @SuppressLint("RestrictedApi")
             ScanCardRequest request = new ScanCardRequest(mEnableSound, mScanExpirationDate,
                     mScanCardHolder, mGrabCardImage);
             intent.putExtra(KEY_SCAN_CARD_REQUEST, request);
             return intent;
-        }*/
+        }
     }
 }
