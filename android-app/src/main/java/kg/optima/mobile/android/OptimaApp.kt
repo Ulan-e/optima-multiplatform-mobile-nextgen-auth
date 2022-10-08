@@ -1,12 +1,9 @@
 package kg.optima.mobile.android
 
 import android.app.Application
-import com.google.firebase.FirebaseApp
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.jakewharton.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
-import kg.optima.mobile.BuildConfig
 import kg.optima.mobile.android.ui.base.routing.Router
 import kg.optima.mobile.android.ui.base.routing.RouterImpl
 import kg.optima.mobile.di.Injector
@@ -22,6 +19,7 @@ class OptimaApp : Application() {
 
 	override fun onCreate() {
 		super.onCreate()
+		instance = this
 //        initFirebase()
 		initDi()
 
@@ -40,14 +38,7 @@ class OptimaApp : Application() {
 	}
 
 	private fun initLegacyProject(application: Application) {
-		instance = this
-		// appDatabase = AppDatabase.getInstance(this)
-		//для сохранении последнего статуса закрыт или открыт.
-		//ProcessLifecycleOwner.get().lifecycle.addObserver(this)
-
-		// для поддержки обратной совместимости векторной графики
-		// AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-		//registerActivityLifecycleCallbacks(new AppLifeCycle());
+		appDatabase = AppDatabase.getInstance(this)
 
 		// для перехвата ошибок в RxJava, когда реактивные процессы не закончены
 		RxJavaPlugins.setErrorHandler { error: Throwable ->
@@ -60,7 +51,6 @@ class OptimaApp : Application() {
 		built.setIndicatorsEnabled(true)
 		built.isLoggingEnabled = true
 		Picasso.setSingletonInstance(built)
-
 
 	}
 

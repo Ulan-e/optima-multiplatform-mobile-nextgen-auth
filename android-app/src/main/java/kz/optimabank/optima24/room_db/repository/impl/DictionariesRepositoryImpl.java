@@ -16,8 +16,8 @@ public class DictionariesRepositoryImpl implements DictionariesRepository {
 
     @Override
     public void insertAll(List<Dictionary> dictionaries) {
-        Long count = dao.insertAll(dictionaries);
-        Log.d(TAG, "insertAll " + count);
+        List<Long> count = dao.insertAll(dictionaries);
+        Log.d(TAG, "insertAll " + count.size());
     }
 
     @Override

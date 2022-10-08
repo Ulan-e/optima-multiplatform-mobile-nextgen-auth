@@ -26,10 +26,10 @@ public class HeaderHelper {
         Map<String, String> header = new HashMap<>();
         header.put("Content-Type", "application/json");
         header.put("Accept-Language", getLanguage(context));
-        header.put("User-Agent", String.format("%s (%s; %s/%s)", APP_VERSION,
+        header.put("User-Agent", "Optima24/2.10.3 (Android/12; Samsung SM-G991B/vbeb8u4kz7ooj99o)"); /*String.format("%s (%s; %s/%s)", APP_VERSION,
                 getOSVersion(),
                 getDeviceModel(),
-                getDeviceId(context)));
+                getDeviceId(context)))*/;
         if (sessionId != null) {
             header.put("XX-TB-AuthToken", sessionId);
         }

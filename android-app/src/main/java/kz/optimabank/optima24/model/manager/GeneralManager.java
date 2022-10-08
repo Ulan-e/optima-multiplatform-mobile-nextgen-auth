@@ -365,7 +365,6 @@ public class GeneralManager {
     }
 
     public String getSessionId() {
-        Log.d("terra", "get session id -> " + sessionId);
         return this.sessionId;
     }
 

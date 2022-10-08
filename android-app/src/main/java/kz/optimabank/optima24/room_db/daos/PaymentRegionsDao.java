@@ -13,7 +13,7 @@ import kz.optimabank.optima24.db.entry.PaymentRegions;
 public interface PaymentRegionsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Long insertAll(List<PaymentRegions> paymentRegions);
+    List<Long> insertAll(List<PaymentRegions> paymentRegions);
 
     @Query("SELECT * FROM paymentregions")
     List<PaymentRegions> getAll();

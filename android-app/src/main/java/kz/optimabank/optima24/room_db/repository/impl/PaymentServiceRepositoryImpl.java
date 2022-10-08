@@ -16,8 +16,8 @@ public class PaymentServiceRepositoryImpl implements PaymentServiceRepository {
 
     @Override
     public void insertAll(List<PaymentService> paymentServices) {
-        Long count = dao.insertAll(paymentServices);
-        Log.d(TAG, "insertAll " + count);
+        List<Long> count = dao.insertAll(paymentServices);
+        Log.d(TAG, "insertAll " + count.size());
     }
 
     @Override

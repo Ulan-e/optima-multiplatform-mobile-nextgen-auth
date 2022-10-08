@@ -39,7 +39,8 @@ import kz.optimabank.optima24.room_db.daos.ProfilePictureDao;
 public abstract class AppDatabase extends RoomDatabase {
 
     // не менять название базы данных
-    private static final String DATABASE_NAME = "notifications11.db";
+    private static final String DATABASE_NAME = "notifications.db";
+
     private static volatile AppDatabase INSTANCE;
 
     public abstract NotificationDao notificationDao();
@@ -62,12 +63,12 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
-            synchronized (AppDatabase.class) {
-                INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+          //  synchronized (AppDatabase.class) {
+                INSTANCE = Room.databaseBuilder(context,
                                 AppDatabase.class, DATABASE_NAME)
                         .allowMainThreadQueries()
                         .build();
-            }
+          //  }
         }
         return INSTANCE;
     }

@@ -1,7 +1,9 @@
 package kz.optimabank.optima24.db.entry;
 
+import java.util.Arrays;
 import java.util.Date;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -17,9 +19,12 @@ public class DigitizedCard{
     private String brand;
     private String productName;
     private int cardAccountCode;
+
+    @Ignore
     private Date expireDate;
     private boolean isMultiBalance;
     @PrimaryKey
+    @NonNull
     private String rbsNumber;
     private byte[] byteArrayFullImg;
     private byte[] byteArrayMiniatureImg;
@@ -206,5 +211,33 @@ public class DigitizedCard{
 
     public void setNeedReplenish(boolean needReplenish) {
         this.needReplenish = needReplenish;
+    }
+
+    @Override
+    public String toString() {
+        return "DigitizedCard{" +
+                "userPhone='" + userPhone + '\'' +
+                ", code=" + code +
+                ", number='" + number + '\'' +
+                ", currency='" + currency + '\'' +
+                ", name='" + name + '\'' +
+                ", cardholderName='" + cardholderName + '\'' +
+                ", brand='" + brand + '\'' +
+                ", productName='" + productName + '\'' +
+                ", cardAccountCode=" + cardAccountCode +
+                ", expireDate=" + expireDate +
+                ", isMultiBalance=" + isMultiBalance +
+                ", rbsNumber='" + rbsNumber + '\'' +
+                ", byteArrayFullImg=" + Arrays.toString(byteArrayFullImg) +
+                ", byteArrayMiniatureImg=" + Arrays.toString(byteArrayMiniatureImg) +
+                ", isDefault=" + isDefault +
+                ", cardSuspended=" + cardSuspended +
+                ", cardInactive=" + cardInactive +
+                ", tokenId='" + tokenId + '\'' +
+                ", isBlocked=" + isBlocked +
+                ", isVisible=" + isVisible +
+                ", isClosed=" + isClosed +
+                ", needReplenish=" + needReplenish +
+                '}';
     }
 }

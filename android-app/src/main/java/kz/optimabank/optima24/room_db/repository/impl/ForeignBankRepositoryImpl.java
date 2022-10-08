@@ -16,8 +16,8 @@ public class ForeignBankRepositoryImpl implements ForeignBankRepository {
 
     @Override
     public void insertAll(List<ForeignBank> foreignBanks) {
-        Long count = dao.insertAll(foreignBanks);
-        Log.d(TAG, "insertAll " + count);
+        List<Long> count = dao.insertAll(foreignBanks);
+        Log.d(TAG, "insertAll " + count.size());
     }
 
     @Override

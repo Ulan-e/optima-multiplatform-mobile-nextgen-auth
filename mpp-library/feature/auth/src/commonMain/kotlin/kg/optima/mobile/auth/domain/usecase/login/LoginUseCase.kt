@@ -57,6 +57,8 @@ class LoginUseCase(
 					authPreferences.clientId = clientId
 					it.data?.let { data ->
 						authPreferences.password = password
+						println("terra accessToken ${data.accessToken}")
+
 						authPreferences.sessionData = SessionData(
 							accessToken = data.accessToken,
 							startDateTime = data.startDateTime,

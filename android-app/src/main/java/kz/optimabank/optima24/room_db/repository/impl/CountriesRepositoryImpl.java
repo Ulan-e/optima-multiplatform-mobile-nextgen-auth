@@ -16,8 +16,8 @@ public class CountriesRepositoryImpl implements CountriesRepository {
 
     @Override
     public void insertAll(List<Country> countries) {
-        Long count = dao.insertAll(countries);
-        Log.d(TAG, "insertAll " + count);
+        List<Long> count = dao.insertAll(countries);
+        Log.d(TAG, "insertAll " + count.size());
     }
 
     @Override

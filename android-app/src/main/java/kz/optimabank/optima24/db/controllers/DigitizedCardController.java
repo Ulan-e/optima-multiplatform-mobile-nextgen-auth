@@ -1,5 +1,7 @@
 package kz.optimabank.optima24.db.controllers;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import kz.optimabank.optima24.db.entry.DigitizedCard;
@@ -155,6 +157,8 @@ public class DigitizedCardController {
     }
 
     public void updateImagesDigitizedCardMiniature(DigitizedCard digitizedCard, byte[] byteArrayMiniatureImg) {
+        Log.d("terra", "updateImagesDigitizedCardMiniature digitizedCard" + digitizedCard.toString());
+        Log.d("terra", "updateImagesDigitizedCardMiniature byteArrayMiniatureImg " + byteArrayMiniatureImg);
         if (byteArrayMiniatureImg != null) {
             digitizedCard.setByteArrayFullImg(byteArrayMiniatureImg);
             cardImageRepository.addCardImage(digitizedCard);

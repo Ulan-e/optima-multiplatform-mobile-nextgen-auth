@@ -13,7 +13,7 @@ import kz.optimabank.optima24.db.entry.Country;
 public interface CountryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Long insertAll(List<Country> countries);
+    List<Long> insertAll(List<Country> countries);
 
     @Query("SELECT * FROM country")
     List<Country> getAll();

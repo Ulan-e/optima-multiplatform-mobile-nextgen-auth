@@ -9,6 +9,8 @@ import androidx.room.PrimaryKey;
  * Created by Жексенов on 14.11.2014.
  * <p/>
  */
+
+
 public class Region {
     //        private static final long serialVersionUID = 7367936263743995287L;
     @SerializedName("Alias")

@@ -31,6 +31,7 @@ public class ForeignBank implements Parcelable {
 
     public ForeignBank() {}
 
+    @Ignore
     public ForeignBank(int id, String bic, String name, String country, String address, String description) {
         this.id = id;
         this.bic = bic;

@@ -1,5 +1,6 @@
 package kz.optimabank.optima24.db.entry;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -17,6 +18,7 @@ public class Country implements Serializable {
     public String AlphaCode;
     @SerializedName("Name")
     @PrimaryKey
+    @NonNull
     public String Name;
     @SerializedName("NumericCode")
     public String NumericCode;

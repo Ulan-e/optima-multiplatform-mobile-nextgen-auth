@@ -16,8 +16,8 @@ public class PaymentCategoryRepositoryImpl implements PaymentCategoryRepository 
 
     @Override
     public void insertAll(List<PaymentCategory> paymentCategories) {
-        Long count = dao.insertAll(paymentCategories);
-        Log.d(TAG, "insertAll " + count);
+        List<Long> count = dao.insertAll(paymentCategories);
+        Log.d(TAG, "insertAll " + count.size());
     }
 
     @Override

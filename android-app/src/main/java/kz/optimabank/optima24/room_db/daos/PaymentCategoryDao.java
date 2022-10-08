@@ -13,7 +13,7 @@ import kz.optimabank.optima24.db.entry.PaymentCategory;
 public interface PaymentCategoryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Long insertAll(List<PaymentCategory> paymentCategories);
+    List<Long> insertAll(List<PaymentCategory> paymentCategories);
 
     @Query("SELECT * FROM paymentcategory")
     List<PaymentCategory> getAll();

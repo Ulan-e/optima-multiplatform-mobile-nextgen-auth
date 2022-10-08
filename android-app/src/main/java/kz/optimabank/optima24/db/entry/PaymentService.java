@@ -3,7 +3,9 @@ package kz.optimabank.optima24.db.entry;
 import android.annotation.TargetApi;
 import android.os.Build;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
@@ -20,6 +22,7 @@ import kz.optimabank.optima24.model.base.PaymentServiceParameter;
 @Entity
 public class PaymentService implements Serializable {
     @PrimaryKey
+    @NonNull
     @SerializedName("Alias")
     public String alias;
     @SerializedName("Id")
@@ -37,6 +40,8 @@ public class PaymentService implements Serializable {
     @SerializedName("PaymentCategoryId")
     public int paymentCategoryId;
     @SerializedName("Parameters")
+
+    @Ignore
     public List<PaymentServiceParameter> parameters;
     @SerializedName("Fee")
     public double Fee;
@@ -44,7 +49,9 @@ public class PaymentService implements Serializable {
     public boolean IsInvoiceable;
     @SerializedName("IsPenalties")
     public boolean IsPenalties;
+
     @SerializedName("Regions")
+    @Ignore
     public List<Region> regions;
 
     public int getId() {

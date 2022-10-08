@@ -1,5 +1,10 @@
 package kz.optimabank.optima24.db.entry;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -9,9 +14,6 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Date;
 
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
 import kz.optimabank.optima24.utility.Constants;
 
 @Entity
@@ -21,6 +23,7 @@ public class PaymentCategory implements Serializable{
     public String headerName;
     
     @PrimaryKey
+    @NonNull
     @SerializedName("Alias")
     public String alias;
     @SerializedName("ExternalId")
@@ -30,6 +33,47 @@ public class PaymentCategory implements Serializable{
     @SerializedName("Name")
     private String name;
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public boolean isTemplate() {
+        return isTemplate;
+    }
+
+    public void setTemplate(boolean template) {
+        isTemplate = template;
+    }
+
+    public String getHeaderName() {
+        return headerName;
+    }
+
+    public void setHeaderName(String headerName) {
+        this.headerName = headerName;
+    }
+
+    public void setAlias(@NonNull String alias) {
+        this.alias = alias;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Ignore
     public PaymentCategory() {
     }
 

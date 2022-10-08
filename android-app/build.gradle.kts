@@ -12,12 +12,8 @@ plugins {
 android {
     buildFeatures.viewBinding = true
 
-    compileSdkVersion(32)
     defaultConfig {
-        minSdk = 23
-        targetSdk = 32
         applicationId = "kg.optima.mobile"
-        vectorDrawables.useSupportLibrary = true
 
         versionCode = Integer.parseInt(project.property("VERSION_CODE") as String)
         versionName = project.property("VERSION_NAME") as String
@@ -160,12 +156,13 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxjava:3.0.0")
 
     // Room
-    implementation("androidx.room:room-runtime:2.4.2")
-    implementation("androidx.room:room-rxjava2:2.4.2")
-    annotationProcessor("androidx.room:room-compiler:2.4.2")
+    implementation("androidx.room:room-runtime:2.4.3")
+    implementation("androidx.room:room-ktx:2.4.3")
+    implementation("androidx.room:room-rxjava2:2.4.3")
+    kapt("androidx.room:room-compiler:2.4.3")
 
     // Picasso
-    implementation("com.squareup.picasso:picasso:2.3.2")
+    implementation("com.squareup.picasso:picasso:2.5.2")
     implementation("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
 
     implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
@@ -176,7 +173,10 @@ dependencies {
     implementation("com.isseiaoki:simplecropview:1.1.7")
     implementation("com.akexorcist:RoundCornerProgressBar:2.0.3")
     implementation("me.leolin:ShortcutBadger:1.1.4@aar")
+    
     implementation("com.jakewharton:butterknife:10.0.0")
+    kapt("com.jakewharton:butterknife-compiler:10.0.0")
+
     implementation("devlight.io:navigationtabbar:1.2.5")
     implementation("fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar")
     implementation("com.tubb.smrv:swipemenu-recyclerview:5.4.0")

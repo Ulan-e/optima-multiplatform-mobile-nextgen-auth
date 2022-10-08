@@ -16,8 +16,8 @@ public class PaymentRegionsRepositoryImpl implements PaymentRegionsRepository {
 
     @Override
     public void insertAll(List<PaymentRegions> paymentRegions) {
-        Long count = dao.insertAll(paymentRegions);
-        Log.d(TAG, "insertAll " + count);
+        List<Long> count = dao.insertAll(paymentRegions);
+        Log.d(TAG, "insertAll " + count.size());
     }
 
     @Override

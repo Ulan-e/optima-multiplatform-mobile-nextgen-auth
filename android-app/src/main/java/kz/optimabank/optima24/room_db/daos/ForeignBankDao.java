@@ -13,7 +13,7 @@ import kz.optimabank.optima24.db.entry.ForeignBank;
 public interface ForeignBankDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Long insertAll(List<ForeignBank> foreignBanks);
+    List<Long> insertAll(List<ForeignBank> foreignBanks);
 
     @Query("SELECT * FROM foreignbank")
     List<ForeignBank> getAll();

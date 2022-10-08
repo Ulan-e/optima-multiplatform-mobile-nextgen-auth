@@ -14,7 +14,7 @@ import kz.optimabank.optima24.db.entry.Dictionary;
 public interface DictionaryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Long insertAll(List<Dictionary> dictionaries);
+    List<Long> insertAll(List<Dictionary> dictionaries);
 
     @Query("SELECT * FROM dictionary")
     List<Dictionary> getAll();
@@ -26,5 +26,5 @@ public interface DictionaryDao {
     Dictionary getByCode(String code);
 
     @Query("DELETE FROM notification")
-    Completable deleteAll();
+    void deleteAll();
 }
