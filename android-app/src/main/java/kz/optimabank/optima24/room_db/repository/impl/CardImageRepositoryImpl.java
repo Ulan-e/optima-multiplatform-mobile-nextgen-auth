@@ -14,12 +14,12 @@ public class CardImageRepositoryImpl implements CardImageRepository {
 
     private static final String TAG = "CardImageRepository";
     private final AppDatabase database = AppDatabase.getInstance(OptimaApp.Companion.getInstance());
-    private final CardImageDao dao =database.cardImageDao();
+    private final CardImageDao dao = database.cardImageDao();
 
     @Override
     public List<DigitizedCard> getAll(String phone) {
         List<DigitizedCard> digitizedCards = dao.getAll(phone);
-        Log.d(TAG, "addCardImage " + digitizedCards.size());
+        Log.d(TAG, "getAll " + digitizedCards.size());
         return digitizedCards;
     }
 

@@ -159,11 +159,13 @@ public class DigitizedCardController {
     public void updateImagesDigitizedCardMiniature(DigitizedCard digitizedCard, byte[] byteArrayMiniatureImg) {
         Log.d("terra", "updateImagesDigitizedCardMiniature digitizedCard" + digitizedCard.toString());
         Log.d("terra", "updateImagesDigitizedCardMiniature byteArrayMiniatureImg " + byteArrayMiniatureImg);
-        if (byteArrayMiniatureImg != null) {
-            digitizedCard.setByteArrayFullImg(byteArrayMiniatureImg);
-            cardImageRepository.addCardImage(digitizedCard);
+        if (digitizedCard != null) {
+            if (byteArrayMiniatureImg != null) {
+                digitizedCard.setByteArrayFullImg(byteArrayMiniatureImg);
+                cardImageRepository.addCardImage(digitizedCard);
+            }
         }
-//        if (digitizedCard != null) {
+//        }
 //            try {
 //                //Log.i("byteArrayFullImgUPDATE","DCC byteArrayMiniatureImg = "+byteArrayMiniatureImg);
 //                //Log.i("byteArrayFullImgUPDATE","DCC digitizedCard.getByteArrayMiniatureImg() = "+digitizedCard.getByteArrayMiniatureImg());

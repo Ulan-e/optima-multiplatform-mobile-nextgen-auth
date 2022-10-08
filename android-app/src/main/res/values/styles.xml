@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor">#FFFFFF</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
@@ -278,7 +278,7 @@
     <style name="ProgressDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColor">@color/gray_126_126_126</item>
         <item name="android:textSize">@dimen/text_size_15sp</item>
-<!--        <item name="android:background">@drawable/bg_rounded_corners</item>-->
+        <item name="android:background">@drawable/bg_rounded_corners</item>
         <item name="colorAccent">@color/red_atf</item>
     </style>
 
@@ -286,7 +286,7 @@
     <style name="MainAlertDialogStyle" parent="AlertDialogTheme">
         <item name="android:textColor">@color/gray_126_126_126</item>
         <item name="android:textSize">@dimen/text_size_14sp</item>
-<!--        <item name="android:background">@drawable/bg_rounded_corners</item>-->
+        <item name="android:background">@drawable/bg_rounded_corners</item>
         <item name="colorAccent">@color/red_atf</item>
     </style>
 

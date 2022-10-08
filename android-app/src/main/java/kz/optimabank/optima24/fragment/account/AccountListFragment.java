@@ -1,6 +1,7 @@
 package kz.optimabank.optima24.fragment.account;
 
 import static android.app.Activity.RESULT_OK;
+import static org.koin.java.KoinJavaComponent.inject;
 import static kz.optimabank.optima24.utility.Constants.IS_SHOW_TIP_DEF_CARD;
 import static kz.optimabank.optima24.utility.Constants.SUCCESS;
 import static kz.optimabank.optima24.utility.Utilities.clickAnimation;
@@ -64,6 +65,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kg.optima.mobile.R;
 import kg.optima.mobile.android.OptimaApp;
+import kg.optima.mobile.feature.auth.component.AuthPreferences;
+import kotlin.Lazy;
 import kz.optimabank.optima24.activity.AccountDetailsActivity;
 import kz.optimabank.optima24.activity.InterfaceFormActivity;
 import kz.optimabank.optima24.activity.NavigationActivity;
@@ -141,6 +144,7 @@ public class AccountListFragment extends ATFFragment implements CategoriesImpl.C
     private AlertDialog alertDialog;
     private View viewAlertDialog;
     private AccountsListViewModel model;
+    private Lazy<AuthPreferences> authPreferences = inject(AuthPreferences.class);
 
     @Override
     public void onAttach(Context context) {
@@ -456,7 +460,6 @@ public class AccountListFragment extends ATFFragment implements CategoriesImpl.C
                 }
             }
             try {
-                Log.i("loadAllImage", "cardsWithImageUrl = " + cardsWithImageUrl);
                 if (cardsWithImageUrl.size() * 2 != loadedURLs && totalLoaded < 2)
                     loadAllImage(cardsWithImageUrl);
                 else
@@ -633,18 +636,22 @@ public class AccountListFragment extends ATFFragment implements CategoriesImpl.C
     private void updateImagesForDigitizedCard(UserAccounts.Cards card, boolean isFull) {
         if (digitizedCardController == null)
             digitizedCardController = DigitizedCardController.getController();
-        if (digitizedCardsMap == null)
-            if (digitizedCardsMap.isEmpty()) {
-                Log.i("byteArrayFullImgUPDATE", "111");
-                ArrayList<DigitizedCard> digitizedCards = digitizedCardController.getAllCards(getPreferences(OptimaApp.Companion.getInstance()).getString(Constants.userPhone, ""));
-                for (DigitizedCard digitizedCard : digitizedCards) {
-                    digitizedCardsMap.put(digitizedCard.getRbsNumber(), digitizedCard);
-                }
+
+        if (digitizedCardsMap.isEmpty()) {
+            ArrayList<DigitizedCard> digitizedCards = digitizedCardController.getAllCards(authPreferences.getValue().getClientId());
+            Log.i("terra", "digitizedCards size" + digitizedCards.size());
+            for (DigitizedCard digitizedCard : digitizedCards) {
+                digitizedCardsMap.put(digitizedCard.getRbsNumber(), digitizedCard);
             }
-        if (isFull)
-            digitizedCardController.updateImagesDigitizedCardFull(digitizedCardsMap.get(card.rbsNumber), card.getByteArrayFullImg());
-        else
-            digitizedCardController.updateImagesDigitizedCardMiniature(digitizedCardsMap.get(card.rbsNumber), card.getByteArrayMiniatureImg());
+        }
+
+        DigitizedCard imageCard = digitizedCardsMap.get(card.rbsNumber);
+        if(imageCard != null) {
+            if (isFull)
+                digitizedCardController.updateImagesDigitizedCardFull(imageCard, card.getByteArrayFullImg());
+            else
+                digitizedCardController.updateImagesDigitizedCardMiniature(imageCard, card.getByteArrayMiniatureImg());
+        }
     }
 
     private void initSwipeRefreshLayout() {
