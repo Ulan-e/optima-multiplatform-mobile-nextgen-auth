@@ -281,9 +281,9 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyD87ev_u-fDGxPmEH7yWnn-785sHrCSbDI" />
 
-        <!--<activity
+        <activity
             android:name="kz.optimabank.optima24.scan.RPSScanCardActivity"
-            android:theme="@style/AppTheme" />-->
+            android:theme="@style/AppTheme" />
         <activity
             android:name="kz.optimabank.optima24.activity.LoginAfterRegActivity"
             android:exported="true" />
