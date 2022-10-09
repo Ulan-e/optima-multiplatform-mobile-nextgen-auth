@@ -6,6 +6,7 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.base.presentation.UiState
+import kg.optima.mobile.main.presentation.MainNavigationModel
 
 class MainComponent(
 	override val componentContext: ComponentContext,
@@ -16,7 +17,7 @@ class MainComponent(
 	private val childStack =
 		childStack(
 			source = stackNavigation,
-			initialConfiguration = Config.MainPage(),
+			initialConfiguration = Config.MainPage,
 			key = "FirstStack",
 			childFactory = { config, _ -> childFactory(config) },
 		)
@@ -24,8 +25,7 @@ class MainComponent(
 	override val backStack: Value<ChildStack<*, UiState.Model.Navigate>> = childStack
 
 	override fun addAll(stateModels: List<UiState.Model.Navigate>) {
-		// TODO check if SM is not MSM
-		stateModels.forEach {
+		stateModels.filterIsInstance<MainNavigationModel>().forEach {
 			stackNavigation.push(it.toConfig())
 		}
 	}
@@ -34,18 +34,23 @@ class MainComponent(
 
 	private fun childFactory(
 		config: Config,
-	): UiState.Model.Navigate = when (config) {
-		is Config.MainPage -> TODO()
+	): MainNavigationModel = when (config) {
+		is Config.MainPage -> MainModel
 	}
 
 	private sealed interface Config : Parcelable {
 		@Parcelize
-		class MainPage : Config
+		object MainPage : Config
 	}
 
-	private fun UiState.Model.Navigate.toConfig(): Config {
+	private fun MainNavigationModel.toConfig(): Config {
 		return when (this) {
-			else -> Config.MainPage()
+			else -> Config.MainPage
 		}
+	}
+
+	@Parcelize
+	private object MainModel : MainNavigationModel {
+
 	}
 }

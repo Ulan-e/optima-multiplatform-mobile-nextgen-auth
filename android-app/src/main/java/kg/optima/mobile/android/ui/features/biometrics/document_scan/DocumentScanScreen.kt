@@ -83,7 +83,7 @@ object DocumentScanScreen : Screen {
 		}
 
         when (val livenessModel: UiState.Model? = model) {
-            is LivenessState.LivenessModel.NavigateTo.SelfConfirm ->
+            is LivenessState.Model.NavigateTo.SelfConfirm ->
                 context.navigateTo(livenessModel)
         }
 

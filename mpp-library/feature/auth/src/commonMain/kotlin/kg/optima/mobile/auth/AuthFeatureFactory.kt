@@ -9,9 +9,11 @@ import kg.optima.mobile.auth.domain.usecase.biometry_auth.SetupBiometryUseCase
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
 import kg.optima.mobile.auth.domain.usecase.keep_alive.KeepAliveUseCase
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
+import kg.optima.mobile.auth.domain.usecase.logout.LogoutUseCase
 import kg.optima.mobile.auth.domain.usecase.pin_set.PinSetUseCase
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
+import kg.optima.mobile.auth.presentation.login.model.LoginEntity
 import kg.optima.mobile.auth.presentation.pin_enter.PinEnterIntent
 import kg.optima.mobile.auth.presentation.pin_enter.PinEnterState
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
@@ -49,14 +51,15 @@ object AuthFeatureFactory : Factory {
 
 		//UseCases injection
 		factory { LoginUseCase(authRepository = get(), authPreferences = get()) }
+		factory { LogoutUseCase(authRepository = get(), authPreferences = get()) }
 		factory { ClientInfoUseCase(authPreferences = get()) }
 		factory { PinSetUseCase(authPreferences = get()) }
 		factory { SetupBiometryUseCase(authPreferences = get()) }
 		factory { KeepAliveUseCase(authRepository = get(), authPreferences = get()) }
 
 		// States and Intents injection by pair
-		factory { LoginState() }
-		factory { st -> LoginIntent(st.get()) }
+		factory { LoginState<LoginEntity>() }
+		factory { st -> LoginIntent<LoginEntity>(st.get()) }
 
 		factory { PinEnterState() }
 		factory { st -> PinEnterIntent(st.get()) }

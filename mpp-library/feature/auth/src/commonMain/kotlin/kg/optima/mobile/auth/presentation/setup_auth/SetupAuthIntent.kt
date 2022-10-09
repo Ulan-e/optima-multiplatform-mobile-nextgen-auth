@@ -30,4 +30,6 @@ class SetupAuthIntent(
 			setupBiometryUseCase.execute(SetupBiometryUseCase.Params(accessed))
 		}
 	}
+
+	fun onClose() = uiState.handle(SetupAuthResult.Skip)
 }

@@ -1,14 +1,13 @@
 package kg.optima.mobile.auth.domain.usecase.login
 
 import kg.optima.mobile.auth.data.api.model.login.UserAuthenticationRequest
-import kg.optima.mobile.feature.auth.component.AuthPreferences
 import kg.optima.mobile.auth.data.repository.AuthRepository
-import kg.optima.mobile.auth.presentation.login.model.LoginModel
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.common.CryptographyUtils
 import kg.optima.mobile.core.error.Failure
+import kg.optima.mobile.feature.auth.component.AuthPreferences
 import kg.optima.mobile.feature.auth.component.SessionData
 import kg.optima.mobile.feature.auth.component.UserInfo
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
@@ -22,11 +21,11 @@ import kg.optima.mobile.network.const.NetworkCode
 class LoginUseCase(
 	private val authRepository: AuthRepository,
 	private val authPreferences: AuthPreferences,
-) : BaseUseCase<LoginUseCase.Params, LoginModel.SignInResult>() {
+) : BaseUseCase<LoginUseCase.Params, LoginSignInResult>() {
 
 	override suspend fun execute(
 		model: Params,
-	): Either<Failure, LoginModel.SignInResult> {
+	): Either<Failure, LoginSignInResult> {
 		return when (model) {
 			is Params.Biometry -> signIn()
 			is Params.Password -> signIn(model.clientId, model.password, model.smsCode)
@@ -44,7 +43,7 @@ class LoginUseCase(
 		clientId: String = authPreferences.clientId.orEmpty(),
 		password: String = authPreferences.password,
 		smsCode: String? = null,
-	): Either<Failure, LoginModel.SignInResult> {
+	): Either<Failure, LoginSignInResult> {
 		val request = UserAuthenticationRequest(
 			clientId = clientId,
 			password = CryptographyUtils.getHash(password),
@@ -57,7 +56,6 @@ class LoginUseCase(
 					authPreferences.clientId = clientId
 					it.data?.let { data ->
 						authPreferences.password = password
-
 						authPreferences.sessionData = SessionData(
 							accessToken = data.accessToken,
 							startDateTime = data.startDateTime,
@@ -79,18 +77,19 @@ class LoginUseCase(
 							phoneNumber = data.userInfo.phoneNumber,
 							imageHash = data.userInfo.imageHash
 						)
+						val isAuthorized = authPreferences.isAuthorized
 						authPreferences.isAuthorized = true
 
-						LoginModel.SignInResult.SuccessAuth(firstAuth = !authPreferences.isAuthorized)
+						LoginSignInResult.SuccessAuth(firstAuth = !isAuthorized)
 					} ?: run {
-						LoginModel.SignInResult.Error
+						LoginSignInResult.Error
 					}
 				}
 				NetworkCode.SmsCodeRequired -> {
 					authPreferences.clientId = clientId
 					authPreferences.isAuthorized = false
 
-					LoginModel.SignInResult.SmsCodeRequired(
+					LoginSignInResult.SmsCodeRequired(
 						AuthOtpModel(
 							phoneNumber = "+996 556 250 626",
 							signInInfo = SignInInfo(clientId, password, smsCode)
@@ -98,9 +97,9 @@ class LoginUseCase(
 					)
 				}
 				NetworkCode.IncorrectCodeOrPassword ->
-					LoginModel.SignInResult.IncorrectData(it.message)
-				NetworkCode.UserBlocked -> LoginModel.SignInResult.UserBlocked
-				else -> LoginModel.SignInResult.Error
+					LoginSignInResult.IncorrectData(it.message)
+				NetworkCode.UserBlocked -> LoginSignInResult.UserBlocked
+				else -> LoginSignInResult.Error
 			}
 		}
 	}

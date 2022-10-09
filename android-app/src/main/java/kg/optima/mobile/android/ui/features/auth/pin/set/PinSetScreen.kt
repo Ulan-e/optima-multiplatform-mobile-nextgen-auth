@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.auth.pin
+package kg.optima.mobile.android.ui.features.auth.pin.set
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
@@ -31,22 +31,17 @@ object PinSetScreen : BaseScreen {
 		val codeState = remember { mutableStateOf(emptyString) }
 
 		when (val pinSetState: UiState.Model? = model) {
-			is SetupAuthState.SetupAuthStateModel -> {
-				when (pinSetState) {
-					SetupAuthState.SetupAuthStateModel.SavePin -> {
-						headerState.value = "Повторить PIN-код"
-					}
-					is SetupAuthState.SetupAuthStateModel.ComparePin -> {
-						if (pinSetState.isMatches) {
-							// TODO showSetBiometry
-							intent.setBiometry(true)
-						} else {
-							// TODO pin not matches
-						}
-					}
-					else -> Unit
+			SetupAuthState.Model.SavePin ->
+				headerState.value = "Повторить PIN-код"
+			is SetupAuthState.Model.ComparePin -> {
+				if (pinSetState.isMatches) {
+					// TODO showSetBiometry
+					intent.setBiometry(true)
+				} else {
+					// TODO pin not matches
 				}
 			}
+			else -> Unit
 		}
 
 		MainContainer(mainState = model) {
@@ -55,18 +50,14 @@ object PinSetScreen : BaseScreen {
 				codeState = codeState,
 				onInputCompleted = {
 					when (model) {
-						null -> {
-							intent.savePin(codeState.value)
-							codeState.value = emptyString
-						}
-						SetupAuthState.SetupAuthStateModel.SavePin -> {
+						SetupAuthState.Model.SavePin ->
 							intent.comparePin(codeState.value)
+						else -> {
+							intent.savePin(codeState.value); codeState.value = emptyString
 						}
 					}
 				},
-				actionCell = ActionCell.Close {
-
-				}
+				actionCell = ActionCell.Close { intent.onClose() },
 			)
 		}
 	}

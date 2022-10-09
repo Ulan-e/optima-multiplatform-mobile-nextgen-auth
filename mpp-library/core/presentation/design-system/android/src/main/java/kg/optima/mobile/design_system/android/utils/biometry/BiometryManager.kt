@@ -14,7 +14,11 @@ object BiometryManager {
 		.setNegativeButtonText("Использовать код доступа")
 		.build()
 
-	fun authorize(activity: FragmentActivity?, doOnSuccess: () -> Unit, doOnFailure: () -> Unit) {
+	fun authorize(
+		activity: FragmentActivity?,
+		doOnSuccess: () -> Unit,
+		doOnFailure: () -> Unit = {}
+	) {
 		if (activity != null && activity.packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) {
 			biometricPrompt(activity, doOnSuccess, doOnFailure).authenticate(promptInfo)
 		}

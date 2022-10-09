@@ -1,6 +1,6 @@
 package kg.optima.mobile.registration.presentation.sms_code
 
-import kg.optima.mobile.common.presentation.CheckSmsCodeInfo
+import kg.optima.mobile.common.presentation.sms.CheckSmsCodeInfo
 
 sealed interface RegistrationCheckSmsCodeInfo : CheckSmsCodeInfo {
 	class Check(

@@ -4,26 +4,27 @@ import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.core.common.Constants
+import kg.optima.mobile.registration.presentation.RegistrationNavigateModel
 
 class PhoneNumberState : UiState<CheckPhoneNumberInfo>() {
 
 	override fun handle(entity: CheckPhoneNumberInfo) {
-		val stateModel: Model = when (entity) {
+		val stateModel: UiState.Model = when (entity) {
 			is CheckPhoneNumberInfo.Validation ->
-				PhoneNumberStateModel.ValidateResult(entity.success, entity.message)
+				Model.ValidateResult(entity.success, entity.message)
 			is CheckPhoneNumberInfo.Check -> {
 				if (entity.success) {
-					PhoneNumberStateModel.NavigateTo.RegistrationAcceptCode(
+					Model.NavigateTo.RegistrationSmsCode(
 						phoneNumber = phoneFormatter(entity.phoneNumber),
 						timeLeft = entity.timeLeft,
 						referenceId = entity.referenceId
 					)
 				} else {
-					Model.Error.BaseError(entity.message)
+					UiState.Model.Error.BaseError(entity.message)
 				}
 			}
 			CheckPhoneNumberInfo.NavigateToMain ->
-				PhoneNumberStateModel.NavigateTo.Welcome
+				Model.NavigateTo.Welcome
 		}
 
 		setStateModel(stateModel)
@@ -43,18 +44,18 @@ class PhoneNumberState : UiState<CheckPhoneNumberInfo>() {
 		return builder.toString()
 	}
 
-	sealed interface PhoneNumberStateModel : Model {
+	sealed interface Model : UiState.Model {
 		class ValidateResult(
 			val success: Boolean,
 			val message: String = emptyString,
-		) : PhoneNumberStateModel
+		) : Model
 
-		sealed interface NavigateTo : PhoneNumberStateModel, Model.Navigate {
+		sealed interface NavigateTo : Model, RegistrationNavigateModel {
 			@Parcelize
 			object Welcome : NavigateTo
 
 			@Parcelize
-			class RegistrationAcceptCode(
+			class RegistrationSmsCode(
 				val phoneNumber: String,
 				val timeLeft: Long,
 				val referenceId: String,

@@ -2,6 +2,7 @@ package kg.optima.mobile.registration.presentation.agreement
 
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.base.presentation.UiState
+import kg.optima.mobile.registration.presentation.RegistrationNavigateModel
 
 class AgreementState : UiState<AgreementModel>() {
 
@@ -17,9 +18,10 @@ class AgreementState : UiState<AgreementModel>() {
 	}
 
 	sealed interface Model : UiState.Model {
-		sealed interface NavigateTo : Model, UiState.Model.Navigate {
+		sealed interface NavigateTo : Model, RegistrationNavigateModel {
 			@Parcelize
 			object RegistrationEnterPhone : NavigateTo
+
 			@Parcelize
 			class RegistrationOfferta(val url: String) : NavigateTo
 		}
