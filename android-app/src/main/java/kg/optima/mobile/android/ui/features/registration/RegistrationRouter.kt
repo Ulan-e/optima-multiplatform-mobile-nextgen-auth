@@ -3,7 +3,6 @@ package kg.optima.mobile.android.ui.features.registration
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
-import kg.optima.mobile.android.ui.features.BottomNavigationScreen
 import kg.optima.mobile.android.ui.features.biometrics.liveness.LivenessRouter
 import kg.optima.mobile.android.ui.features.common.interview.InterviewRouter
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementRouter
@@ -13,7 +12,6 @@ import kg.optima.mobile.android.ui.features.registration.create_password.CreateP
 import kg.optima.mobile.android.ui.features.registration.phone_number.PhoneNumberRouter
 import kg.optima.mobile.android.ui.features.registration.self_confirm.SelfConfirmRouter
 import kg.optima.mobile.android.ui.features.registration.sms_otp.RegistrationOtpRouter
-import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.registration.presentation.RegistrationNavigateModel
 import kg.optima.mobile.registration.presentation.agreement.AgreementState
 import kg.optima.mobile.registration.presentation.control_question.ControlQuestionState

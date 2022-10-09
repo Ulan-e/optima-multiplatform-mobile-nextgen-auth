@@ -235,4 +235,10 @@ public class NavigationActivity extends OptimaActivity {
         fragment.setArguments(bundle);
         return fragment;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

@@ -92,10 +92,7 @@ object LoginScreen : BaseScreen {
 				valueState = clientIdInputFieldState,
 				hint = "Client ID",
 				keyboardType = KeyboardType.Number,
-				imeAction = ImeAction.Next,
-				bottomActionButton = "Запросить Client ID" to {
-					// TODO get clientid
-				},
+				imeAction = ImeAction.Next
 			)
 			PasswordInput(
 				modifier = Modifier

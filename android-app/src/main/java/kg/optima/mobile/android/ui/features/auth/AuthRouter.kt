@@ -3,11 +3,12 @@ package kg.optima.mobile.android.ui.features.auth
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
-import kg.optima.mobile.android.ui.features.BottomNavigationScreen
 import kg.optima.mobile.android.ui.features.auth.login.LoginRouter
 import kg.optima.mobile.android.ui.features.auth.pin.enter.PinEnterRouter
 import kg.optima.mobile.android.ui.features.auth.pin.set.PinSetRouter
 import kg.optima.mobile.android.ui.features.auth.sms.AuthSmsCodeRouter
+import kg.optima.mobile.android.ui.features.optima24.Optima24Model
+import kg.optima.mobile.android.ui.features.optima24.Optima24Screen
 import kg.optima.mobile.auth.presentation.AuthNavigateModel
 import kg.optima.mobile.auth.presentation.login.LoginState
 import kg.optima.mobile.auth.presentation.pin_enter.PinEnterState
@@ -26,7 +27,7 @@ object AuthRouter : FeatureRouter<AuthNavigateModel> {
 				PinSetRouter.compose(stateModel = stateModel)
 			is PinEnterState.Model.NavigateTo ->
 				PinEnterRouter.compose(stateModel = stateModel)
-			else -> BottomNavigationScreen
+			else -> Optima24Screen(Optima24Model.MainPage)
 		}
 	}
 }

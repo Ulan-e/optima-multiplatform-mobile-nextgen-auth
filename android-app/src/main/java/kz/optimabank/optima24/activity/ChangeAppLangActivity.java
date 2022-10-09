@@ -148,4 +148,10 @@ public class ChangeAppLangActivity extends OptimaActivity {
             Constants.resetVIEW_DATE_FORMAT();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

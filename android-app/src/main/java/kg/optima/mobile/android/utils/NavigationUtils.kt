@@ -11,6 +11,10 @@ fun Context.navigateTo(activity: AppCompatActivity) {
     this.startActivity(intent)
 }
 
+fun Context.navigateTo(intent: Intent) {
+    this.startActivity(intent)
+}
+
 fun Context.navigateTo(stateModel: UiState.Model.Navigate) {
     val intent = Intent(this, SingleActivity::class.java)
     intent.putExtra(SingleActivity.TARGET_NAVIGATE_MODEL, stateModel)

@@ -75,6 +75,10 @@ object WelcomeScreen : BaseScreen {
 			WelcomeScreenButtonBlock(
 				modifier = Modifier.weight(5.5f),
 				verticalAlignment = Alignment.Top,
+				onMapClick = { intent.openMap() },
+				onLangClick = { intent.openLanguages() },
+				onContactsClick = { intent.openContacts() },
+				onRatesClick = { intent.openRates() }
 			)
 			PrimaryButton(
 				modifier = Modifier.fillMaxWidth(),

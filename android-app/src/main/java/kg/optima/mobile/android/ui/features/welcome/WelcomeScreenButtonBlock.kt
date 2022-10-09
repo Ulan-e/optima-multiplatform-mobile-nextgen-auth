@@ -25,6 +25,10 @@ import kg.optima.mobile.resources.images.MainImages
 fun WelcomeScreenButtonBlock(
 	modifier: Modifier,
 	verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
+	onMapClick: () -> Unit = {},
+	onLangClick: () -> Unit = {},
+	onRatesClick: () -> Unit = {},
+	onContactsClick: () -> Unit = {},
 ) {
 	Row(
 		modifier = modifier,
@@ -38,15 +42,13 @@ fun WelcomeScreenButtonBlock(
 			Button(
 				imageResId = MainImages.pin.resId(),
 				text = "На карте",
-			) {
-
-			}
+				onClick = onMapClick
+			)
 			Button(
 				imageResId = MainImages.chartup.resId(),
 				text = "Курсы валют",
-			) {
-
-			}
+				onClick = onRatesClick
+			)
 		}
 		Column(
 			horizontalAlignment = Alignment.CenterHorizontally,
@@ -55,15 +57,13 @@ fun WelcomeScreenButtonBlock(
 			Button(
 				imageResId = MainImages.ellipse.resId(),
 				text = "Языки",
-			) {
-
-			}
+				onClick = onLangClick
+			)
 			Button(
 				imageResId = MainImages.phone.resId(),
 				text = "Контакты",
-			) {
-
-			}
+				onClick = onContactsClick
+			)
 		}
 	}
 }
