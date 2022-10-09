@@ -1,8 +1,9 @@
 package kg.optima.mobile.auth.presentation.login.model
 
+import kg.optima.mobile.base.presentation.BaseEntity
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
 
-sealed interface LoginModel {
+sealed interface LoginModel : BaseEntity {
 	sealed interface SignInResult : LoginModel {
 		class SuccessAuth(
 			val firstAuth: Boolean,
@@ -21,6 +22,16 @@ sealed interface LoginModel {
 		object Error : SignInResult
 	}
 
-	class ClientId(val id: String?) : LoginModel
-	class Biometry(val enabled: Boolean) : LoginModel
+	class ClientInfo(
+		val clientId: String,
+		val isAuthorized: Boolean,
+		val pinEnabled: Boolean,
+		val biometryEnabled: Boolean,
+	) : LoginModel
+
+	class ClientIdInfo(
+		val cardNumber: String,
+		val clientId: String,
+		val expiredDate: String,
+	) : LoginModel
 }

@@ -7,29 +7,27 @@ import kg.optima.mobile.android.ui.features.common.otp.OtpContent
 import kg.optima.mobile.auth.presentation.sms.AuthSmsCodeIntent
 import kg.optima.mobile.auth.presentation.sms.AuthSmsCodeState
 import kg.optima.mobile.base.di.create
-import kg.optima.mobile.base.presentation.BaseMppState
-import kg.optima.mobile.feature.auth.model.AuthOtpModel
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.common.CommonFeatureFactory
 import kg.optima.mobile.common.presentation.SmsCodeState
 import kg.optima.mobile.core.common.Constants
-import kg.optima.mobile.core.navigation.ScreenModel
+import kg.optima.mobile.feature.auth.model.AuthOtpModel
 
 @Parcelize
 class AuthSmsCodeScreen(
 	private val otpModel: AuthOtpModel,
-	private val nextScreenModel: ScreenModel
 ) : BaseScreen {
 	@Suppress("NAME_SHADOWING")
 	@Composable
 	override fun Content() {
 		val product = remember {
-			CommonFeatureFactory.create<AuthSmsCodeIntent, AuthSmsCodeState>(nextScreenModel)
+			CommonFeatureFactory.create<AuthSmsCodeIntent, AuthSmsCodeState>()
 		}
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
 
 		val codeState = remember { mutableStateOf(emptyString) }
 		val timeLeftState = remember { mutableStateOf(0) }
@@ -37,7 +35,7 @@ class AuthSmsCodeScreen(
 		val triesCountState = remember { mutableStateOf(Constants.OTP_MAX_TRIES) }
 
 		when (val model = model) {
-			is BaseMppState.StateModel.Error -> {
+			is UiState.Model.Error -> {
 				codeState.value = emptyString; errorState.value = model.error
 			}
 			is SmsCodeState.SmsCodeStateModel.TimeLeft -> {

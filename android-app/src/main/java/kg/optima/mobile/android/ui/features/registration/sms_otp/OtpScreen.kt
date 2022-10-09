@@ -12,7 +12,7 @@ import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.di.create
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.common.presentation.SmsCodeState
 import kg.optima.mobile.core.common.Constants
@@ -45,7 +45,7 @@ class OtpScreen(
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
 
 		val codeState = remember { mutableStateOf(emptyString) }
 		val timeLeftState = remember { mutableStateOf(0) }
@@ -54,10 +54,10 @@ class OtpScreen(
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
 		when (val model = model) {
-			is BaseMppState.StateModel.Initial -> {
+			is UiState.Model.Initial -> {
 				intent.startTimer(timeLeft, System.currentTimeMillis())
 			}
-			is BaseMppState.StateModel.Error -> {
+			is UiState.Model.Error -> {
 				codeState.value = emptyString
 				errorState.value = Constants.OTP_INVALID_ERROR_CODE
 				if (triesCountState.value <= 0) {

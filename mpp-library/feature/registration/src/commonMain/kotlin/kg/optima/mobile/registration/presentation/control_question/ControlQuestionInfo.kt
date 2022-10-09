@@ -1,9 +1,10 @@
 package kg.optima.mobile.registration.presentation.control_question
 
+import kg.optima.mobile.base.presentation.BaseEntity
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.registration.presentation.control_question.model.Question
 
-sealed interface ControlQuestionInfo {
+sealed interface ControlQuestionInfo : BaseEntity {
 
 	class GetQuestions(
 		val success: Boolean,

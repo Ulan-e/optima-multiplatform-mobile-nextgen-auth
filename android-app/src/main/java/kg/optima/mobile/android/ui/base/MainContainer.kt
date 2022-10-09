@@ -27,8 +27,7 @@ import kg.optima.mobile.android.ui.base.permission.customPermissionRequired
 import kg.optima.mobile.android.ui.base.permission.requestPermission
 import kg.optima.mobile.android.ui.base.processing.processError
 import kg.optima.mobile.android.ui.base.routing.Router
-import kg.optima.mobile.android.utils.asActivity
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.bottomsheet.InfoBottomSheet
 import kg.optima.mobile.design_system.android.ui.progressbars.CircularProgress
@@ -46,7 +45,7 @@ typealias PopLast = () -> Unit
 @Composable
 fun MainContainer(
 	modifier: Modifier = Modifier,
-	mainState: BaseMppState.StateModel?,
+	mainState: UiState.Model?,
 	sheetInfo: BottomSheetInfo? = null,
 	permissionController: PermissionController? = null,
 	component: Root.Child.Component? = null,
@@ -63,13 +62,8 @@ fun MainContainer(
 
 	val navigator = LocalNavigator.currentOrThrow
 	val context = LocalContext.current
-	val activity = context.asActivity()
 
 	val focusManager = LocalFocusManager.current
-	if (sheetInfo != null) {
-		focusManager.clearFocus()
-	}
-
 	val coroutineScope = rememberCoroutineScope()
 	val sheetState = rememberModalBottomSheetState(
 		initialValue = ModalBottomSheetValue.Hidden,
@@ -118,6 +112,8 @@ fun MainContainer(
 //		}
 //	}
 
+	if (sheetInfo != null) focusManager.clearFocus()
+
 	onChangeSheetState(sheetInfo)
 
 	ModalBottomSheetLayout(
@@ -129,28 +125,28 @@ fun MainContainer(
 	) {
 		Box(contentAlignment = Alignment.Center) {
 			when (mainState) {
-				is BaseMppState.StateModel.Navigate -> {
-//                        component?.addAll(mainState.screenModels)
-					router.push(mainState.screenModels)
+				is UiState.Model.Navigate -> {
+					component?.addAll(mainState)
+					router.push(mainState)
 				}
-				is BaseMppState.StateModel.Pop -> {
+				is UiState.Model.Pop -> {
 //						component?.pop()
 //						router.popLast()
 				}
-				is BaseMppState.StateModel.Error -> {
+				is UiState.Model.Error -> {
 					processError(
 						errorState = mainState,
 						onSheetStateChanged = onChangeSheetState,
 						onBottomSheetHidden = onBottomSheetHidden,
 					)
 				}
-				is BaseMppState.StateModel.RequestPermissions -> {
+				is UiState.Model.RequestPermissions -> {
 					requestPermission(
 						requestPermissionState = mainState,
 						permissionController = permissionController,
 					)
 				}
-				is BaseMppState.StateModel.CustomPermissionRequired -> {
+				is UiState.Model.CustomPermissionRequired -> {
 					customPermissionRequired(
 						customPermissionRequired = mainState,
 						context = context,
@@ -160,7 +156,7 @@ fun MainContainer(
 				}
 			}
 
-			if (mainState is BaseMppState.StateModel.Loading) {
+			if (mainState is UiState.Model.Loading) {
 				CircularProgress(modifier = Modifier.align(Alignment.Center))
 			}
 

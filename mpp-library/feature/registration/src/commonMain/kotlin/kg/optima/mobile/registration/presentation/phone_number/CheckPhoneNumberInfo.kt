@@ -1,8 +1,9 @@
 package kg.optima.mobile.registration.presentation.phone_number
 
+import kg.optima.mobile.base.presentation.BaseEntity
 import kg.optima.mobile.base.utils.emptyString
 
-sealed interface CheckPhoneNumberInfo {
+sealed interface CheckPhoneNumberInfo : BaseEntity {
 
 	class Validation(
 		val success: Boolean,
@@ -16,5 +17,7 @@ sealed interface CheckPhoneNumberInfo {
 		val timeLeft: Long,
 		val message: String
 	) : CheckPhoneNumberInfo
+
+	object NavigateToMain : CheckPhoneNumberInfo
 
 }

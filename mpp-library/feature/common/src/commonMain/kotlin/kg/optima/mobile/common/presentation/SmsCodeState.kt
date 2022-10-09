@@ -1,8 +1,8 @@
 package kg.optima.mobile.common.presentation
 
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 
-open class SmsCodeState : BaseMppState<CheckSmsCodeInfo>() {
+open class SmsCodeState : UiState<CheckSmsCodeInfo>() {
 
 	override fun handle(entity: CheckSmsCodeInfo) {
 		when (entity) {
@@ -12,7 +12,7 @@ open class SmsCodeState : BaseMppState<CheckSmsCodeInfo>() {
 		}
 	}
 
-	sealed interface SmsCodeStateModel : StateModel {
+	sealed interface SmsCodeStateModel : Model {
 		class TimeLeft(val timeLeft: Int) : SmsCodeStateModel
 	}
 

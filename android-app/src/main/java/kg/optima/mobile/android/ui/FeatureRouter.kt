@@ -2,9 +2,9 @@ package kg.optima.mobile.android.ui
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
-import kg.optima.mobile.core.navigation.ScreenModel
+import kg.optima.mobile.base.presentation.UiState
 
-interface FeatureRouter<In : ScreenModel> {
+interface FeatureRouter<In : UiState.Model> {
 	@Composable
-	fun compose(screenModel: In): Screen
+	fun compose(stateModel: In): Screen
 }

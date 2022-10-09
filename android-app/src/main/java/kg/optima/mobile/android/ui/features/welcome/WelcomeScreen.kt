@@ -15,8 +15,6 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
-import kg.optima.mobile.android.ui.features.auth.login.LoginScreen
-import kg.optima.mobile.android.ui.features.registration.agreement.AgreementScreen
 import kg.optima.mobile.android.utils.appVersion
 import kg.optima.mobile.base.di.create
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -48,15 +46,6 @@ object WelcomeScreen : BaseScreen {
 		val model by state.stateFlow.collectAsState(initial = null)
 
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
-
-		when (val welcomeModel = model) {
-			is WelcomeState.Model.NavigateTo.Login -> {
-				navigator.push(LoginScreen(welcomeModel.nextScreenModel))
-			}
-			is WelcomeState.Model.NavigateTo.RegisterAgreement -> {
-				navigator.push(AgreementScreen)
-			}
-		}
 
 		MainContainer(
 			mainState = model,
