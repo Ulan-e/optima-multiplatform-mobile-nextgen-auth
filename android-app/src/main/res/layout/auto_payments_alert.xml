@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/regular_payment"
+                        android:background="@color/blue_0_93_186"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        android:paddingStart="40dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb1"
+                        android:layoutDirection="rtl"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb2"
+                        android:layoutDirection="rtl"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb3"
+                        android:gravity="left"
+                        android:layoutDirection="rtl"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb4"
+                        android:layoutDirection="rtl"
+                        android:gravity="left"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb5"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb6"
+                        android:gravity="left"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb7"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb8"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb9"
+                        android:gravity="left"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb10"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb11"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb12"
+                        android:gravity="left"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb13"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb14"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb15"
+                        android:gravity="left"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb16"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb17"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb18"
+                        android:gravity="left"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb19"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb20"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb21"
+                        android:gravity="left"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb22"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb23"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb24"
+                        android:layoutDirection="rtl"
+                        android:visibility="gone"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="40dp"/>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </androidx.cardview.widget.CardView>
+    <!--</LinearLayout>-->
+
+</LinearLayout>

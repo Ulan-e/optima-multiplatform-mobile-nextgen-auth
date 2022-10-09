@@ -35,6 +35,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.2.0-rc02"
     }
+
 }
 
 kapt {
@@ -47,7 +48,8 @@ kapt {
 }
 
 dependencies {
-    implementation(libs.appCompat)
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
+
     implementation(libs.material)
     implementation(libs.recyclerView)
     implementation(libs.swipeRefreshLayout)
@@ -69,6 +71,13 @@ dependencies {
     implementation(project(":mpp-library:feature:auth"))
     implementation(project(":mpp-library:feature:common"))
     implementation(project(":mpp-library:feature:registration"))
+    implementation(project(":android-app:datetimepicker-library"))
+
+    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("androidx.activity:activity-ktx:1.5.1")
+    implementation("androidx.fragment:fragment:1.5.3")
+    implementation("androidx.lifecycle:lifecycle-process:2.5.1")
+    implementation("androidx.annotation:annotation:1.5.0")
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.4")
@@ -101,13 +110,86 @@ dependencies {
     implementation("com.arkivanov.decompose:decompose:0.8.0")
     implementation("com.arkivanov.decompose:extensions-compose-jetbrains:0.8.0")
 
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
-
-    implementation(files("libs/veridoc-module-release-v1.16.1.aar"))
-    implementation(files("libs/liveness-module-v1.13.4.aar"))
+    implementation(files("libs/paycards-1.1.0.aar"))
+    implementation("com.facebook.device.yearclass:yearclass:2.1.0")
+   // implementation(files("libs/veridoc-module-release-v1.16.1.aar"))
+   // implementation(files("libs/liveness-module-v1.13.4.aar"))
 
     implementation("androidx.activity:activity-ktx:1.5.1")
 
     implementation("io.fotoapparat:fotoapparat:2.7.0")
     implementation("com.sdsmdg.harjot:vectormaster:1.1.3")
+
+    implementation("androidx.leanback:leanback:1.0.0")
+
+    implementation(platform("com.google.firebase:firebase-bom:28.0.1"))
+    implementation("com.google.firebase:firebase-messaging")
+
+    implementation("com.google.android.material:material:1.6.1")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
+    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation("androidx.preference:preference:1.2.0")
+    implementation("com.github.skydoves:balloon:1.4.5")
+    implementation("ru.egslava:MaskedEditText:1.0.5")
+
+    // UI
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.7.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+
+    // GCM
+    implementation("com.google.android.gms:play-services-location:18.0.0")
+    implementation("com.google.android.gms:play-services-maps:18.0.0")
+
+    // RxJava3
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.0")
+
+    // Room
+    implementation("androidx.room:room-runtime:2.4.3")
+    implementation("androidx.room:room-ktx:2.4.3")
+    implementation("androidx.room:room-rxjava2:2.4.3")
+    kapt("androidx.room:room-compiler:2.4.3")
+
+    // Picasso
+    implementation("com.squareup.picasso:picasso:2.5.2")
+    implementation("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
+
+    implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
+    implementation("com.alibaba.android:ultraviewpager:1.0.7.7@aar"){
+        isTransitive = true
+    }
+
+    implementation("com.isseiaoki:simplecropview:1.1.7")
+    implementation("com.akexorcist:RoundCornerProgressBar:2.0.3")
+    implementation("me.leolin:ShortcutBadger:1.1.4@aar")
+    
+    implementation("com.jakewharton:butterknife:10.0.0")
+    kapt("com.jakewharton:butterknife-compiler:10.0.0")
+
+    implementation("devlight.io:navigationtabbar:1.2.5")
+    implementation("fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar")
+    implementation("com.tubb.smrv:swipemenu-recyclerview:5.4.0")
+    implementation("me.henrytao:smooth-app-bar-layout:25.3.1.0")
+    implementation("com.nineoldandroids:library:2.4.0")
+    implementation("com.daimajia.slider:library:1.1.5@aar")
+    implementation("com.wang.avi:library:2.1.3")
+    implementation("com.redmadrobot:inputmask:2.3.0")
+    implementation("com.wang.avi:library:2.1.3")//ПрогрессБар
+    implementation("com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0")
+    implementation("com.redmadrobot:inputmask:2.3.0")  //Маска
+    implementation("com.shuhart.stepview:stepview:1.5.1")
+    implementation("org.greenrobot:eventbus:3.1.1")
+    annotationProcessor("com.jakewharton:butterknife-compiler:10.0.0")
+    implementation("com.uttampanchasara.pdfgenerator:pdfgenerator:1.3")
+    implementation("androidx.legacy:legacy-support-v13:1.0.0")
 }

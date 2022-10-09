@@ -1,21 +1,21 @@
 package kg.optima.mobile.registration.presentation.phone_number
 
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.base.presentation.BaseMppIntent
+import kg.optima.mobile.base.presentation.UiIntent
 import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
 import org.koin.core.component.inject
 
 class PhoneNumberIntent(
-	override val mppState: PhoneNumberState,
-) : BaseMppIntent<CheckPhoneNumberInfo>() {
+	override val uiState: PhoneNumberState,
+) : UiIntent<CheckPhoneNumberInfo>() {
 
     private val phoneNumberValidator = PhoneNumberValidator
     private val checkPhoneNumberUseCase: CheckPhoneNumberUseCase by inject()
 
     fun onValueChanged(number: String) {
         phoneNumberValidator.validate(number).fold(
-            fnL = { mppState.handle(CheckPhoneNumberInfo.Validation(false, it.message)) },
-            fnR = { mppState.handle(CheckPhoneNumberInfo.Validation(true)) }
+            fnL = { uiState.handle(CheckPhoneNumberInfo.Validation(false, it.message)) },
+            fnR = { uiState.handle(CheckPhoneNumberInfo.Validation(true)) }
         )
     }
 
@@ -27,9 +27,12 @@ class PhoneNumberIntent(
                     referenceId = it.referenceId,
                     phoneNumber = number,
                     timeLeft = it.timeLeft,
-                    message = it.message ?: ""
+                    message = it.message.orEmpty(),
                 )
             }
         }
     }
+
+    fun returnToMain() =
+        uiState.handle(CheckPhoneNumberInfo.NavigateToMain)
 }

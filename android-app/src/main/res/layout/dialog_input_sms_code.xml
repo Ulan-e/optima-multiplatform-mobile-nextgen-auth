@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_rounded_corners_white_15">
+
+    <TextView
+        android:id="@+id/title_dialog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_13dp"
+        android:layout_marginTop="@dimen/margin_13dp"
+        android:gravity="start"
+        android:text="@string/title_input_sms_code"
+        android:textColor="@color/gray_atf"
+        android:textSize="@dimen/button_text_size_17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subtitle_dialog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_13dp"
+        android:layout_marginTop="@dimen/margin_5dp"
+        android:lineSpacingExtra="2dp"
+        android:text="@string/subtitle_sms_code_sent_to_phone"
+        android:textColor="@color/dove_gray"
+        android:textSize="@dimen/text_size_16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_dialog" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_sms_code"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/margin_40dp"
+        android:layout_margin="@dimen/margin_15dp"
+        android:layout_marginHorizontal="@dimen/margin_13dp"
+        android:background="@drawable/bg_simple_outlined_gray"
+        android:hint="@string/sms_code"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:maxLength="4"
+        android:paddingVertical="@dimen/margin_3dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle_dialog" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        android:background="?attr/selectableItemBackground"
+        android:paddingHorizontal="5dp"
+        android:text="@string/cancel"
+        android:textColor="@color/red_atf"
+        android:textSize="@dimen/text_size_15sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_send_sms_code"
+        app:layout_constraintTop_toBottomOf="@+id/input_sms_code" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_send_sms_code"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:background="?attr/selectableItemBackground"
+        android:paddingHorizontal="@dimen/margin_5dp"
+        android:text="@string/confirm"
+        android:textColor="@color/red_atf"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_sms_code" />
+</androidx.constraintlayout.widget.ConstraintLayout>

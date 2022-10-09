@@ -16,7 +16,7 @@ import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.base.di.create
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
@@ -48,7 +48,7 @@ object AgreementScreen : BaseScreen {
 		val intent = product.intent
 		val state = product.state
 
-		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
 
 		val infoState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 

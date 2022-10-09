@@ -4,22 +4,19 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
 import kg.optima.mobile.android.ui.features.auth.login.LoginScreen
-import kg.optima.mobile.android.ui.features.auth.pin.PinEnterScreen
-import kg.optima.mobile.android.ui.features.auth.pin.PinSetScreen
-import kg.optima.mobile.android.ui.features.auth.sms.AuthSmsCodeScreen
-import kg.optima.mobile.feature.auth.AuthScreenModel
+import kg.optima.mobile.base.presentation.UiState
 
-object AuthRouter : FeatureRouter<AuthScreenModel> {
+object AuthRouter : FeatureRouter<UiState.Model.Navigate> {
 	@Composable
-	override fun compose(screenModel: AuthScreenModel): Screen {
-		return when (screenModel) {
-			is AuthScreenModel.Login -> LoginScreen(screenModel.nextScreenModel)
+	override fun compose(stateModel: UiState.Model.Navigate): Screen {
+		return LoginScreen/*when (stateModel) {
+			is AuthScreenModel.Login -> LoginScreen(stateModel.nextScreenModel)
 			is AuthScreenModel.PinEnter ->
-				PinEnterScreen(screenModel.showBiometry, screenModel.nextScreenModel)
-			is AuthScreenModel.PinSet -> PinSetScreen(screenModel.nextScreenModel)
+				PinEnterScreen(stateModel.showBiometry, stateModel.nextScreenModel)
+			is AuthScreenModel.PinSet -> PinSetScreen(stateModel.nextScreenModel)
 			is AuthScreenModel.SmsCode ->
-				AuthSmsCodeScreen(screenModel.otpModel, screenModel.nextScreenModel)
-		}
+				AuthSmsCodeScreen(stateModel.otpModel, stateModel.nextScreenModel)
+		}*/
 	}
 
 }

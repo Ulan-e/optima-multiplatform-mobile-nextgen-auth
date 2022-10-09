@@ -1,0 +1,105 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- GENERAL COLORS -->
+    <color name="white">#ffffffff</color>
+    <color name="white_transparent">#83ffffff</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="gray_transparent">#E1DED7</color>
+    <color name="green_ink">#50DD3A</color>
+    <color name="green_19_136_52">#50DD3A</color>
+    <color name="red_deficit">#D25630</color>
+    <color name="orange_atf">#ED1C24</color>
+    <color name="blue_atf">#ED1C24</color>
+    <color name="red_atf">#ED1C24</color>
+    <color name="blue_atf_transparent">#40004179</color>
+    <color name="gray">#999999</color>
+    <color name="gray_">#999999</color>
+    <color name="gray_atf">#545454</color>
+    <color name="dove_gray">#656565</color>
+    <color name="gray_chart">#e2dede</color>
+    <color name="ic_optima24_launch_background">#ffffff</color>
+    <color name="gray_atf_">#A4A4A4</color>
+    <color name="light_gray">#A4A4A4</color>
+    <color name="blue_0_93_186">#ED1C24</color>
+    <color name="gray_button">#9dffffff</color>
+    <color name="blue_131_0_93_186">#83005dba</color>
+    <color name="not_active_button">#4c7aa4</color>
+    <color name="blue_230_0_93_186">#e6005dba</color>
+    <color name="blue">#e6005dba</color>
+    <color name="light_grey_blue">#99b3cb</color>
+    <color name="gray_atf_for_news_data">#c6c6c6</color>
+    <color name="gray_black_56_56_56">#383838</color>
+    <color name="gray_middle">#5C5C5C</color>
+    <color name="gray_155_155_155">#9b9b9b</color>
+    <color name="gray_180_180_180">#b4b4b4</color>
+    <color name="white_240_240_240">#f0f0f0</color>
+    <color name="white_blure">#75f0f0f0</color>
+    <color name="white_126_240_240_240">#7ef0f0f0</color>
+    <color name="blue_8_111_213">#ED1C24</color>
+    <color name="blue_6_83_161">#ED1C24</color>
+    <color name="orange_246_121_37">#ED1C24</color>
+    <color name="orange_61_246_121_37">#3df67925</color>
+    <color name="transparent_255_255_255_25">#19ffffff</color>
+    <color name="red_attention">#ff3a3a</color>
+    <color name="gray_126_126_126">#7e7e7e</color>
+    <color name="gray_231_231_231">#e7e7e7</color>
+    <color name="blue_178_198_216">#b2c6d8</color>
+    <color name="gray_181_181_181">#b5b5b5</color>
+    <color name="card_gold">#DAA02F</color>
+    <color name="card_union_pay">#9F854F</color>
+    <color name="card_platinum">#828282</color>
+    <color name="card_color">#134e93</color>
+    <color name="red_255_58_58">#ff3a3a</color>
+    <color name="green_65_117_5">#417505</color>
+    <color name="black_42_42_42">#2a2a2a</color>
+    <color name="purple_88_1_129">#580181</color>
+    <color name="purple_144_43_191">#902bbf</color>
+    <color name="yellow_255_160_8">#ffa008</color>
+    <color name="yellow_240_180_31">#f0b41f</color>
+    <color name="yellow_234_188_42">#eabc2a</color>
+    <color name="gray_230_229_236_242">#e6e5ecf2</color>
+    <color name="gray_102_0_0_0">#66000000</color>
+    <color name="blue_124_161_206">#7ca1ce</color>
+    <color name="blue_152_187_229">#98bbe5</color>
+    <color name="gray_light">#F0F4F6</color>
+    <color name="gray_223_230_235">#dfe6eb</color>
+    <color name="gray_white">#FBFAFA</color>
+    <color name="colorLoadingBackground">#b9000000</color>
+    <color name="rate_header_red">#F70202</color>
+    <color name="silver">#D3D3D3</color>
+
+    <color name="warning_color">#f4511e</color>
+    <color name="hint_color">#42000000</color>
+    <color name="success_color">#009688</color>
+    <color name="test_color" tools:ignore="PrivateResource">#2f4267</color>
+    <color name="black">#000000</color>
+    <color name="pre_black">#151515</color>
+    <color name="tabBar">#00000000</color>
+    <color name="dark_grey_color">#4a636f</color>
+    <color name="md_white_1000">#e6e8e9</color>
+    <color name="md_blue_600">#004179</color>
+    <color name="md_black_1000">#000000</color>
+    <color name="rippelColor">#4a636f</color>
+    <color name="black_alpha_10">#1A000000</color>
+    <color name="black_alpha_0">#B3000000</color>
+    <color name="grey_black">#535252</color>
+    <color name="seal_blue">#0470cb</color>
+
+    <array name="swipe_refresh_color">
+        <item>#ED1C24</item>
+        <item>#ED1C24</item>
+    </array>
+
+    <array name="avatar_placeholder_colors">
+        <item>#7549C5</item>
+        <item>#98CC5C</item>
+        <item>#19A89B</item>
+        <item>#F4B04A</item>
+        <item>#E65183</item>
+        <item>#D6E44C</item>
+        <item>#C051D3</item>
+        <item>#3567E4</item>
+        <item>#23D5C4</item>
+    </array>
+
+</resources>

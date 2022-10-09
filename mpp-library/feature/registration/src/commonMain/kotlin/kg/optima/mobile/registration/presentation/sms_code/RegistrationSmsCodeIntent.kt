@@ -7,8 +7,8 @@ import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
 import org.koin.core.component.inject
 
 class RegistrationSmsCodeIntent(
-	override val mppState: RegistrationSmsCodeState,
-) : SmsCodeIntent(mppState) {
+	override val uiState: RegistrationSmsCodeState,
+) : SmsCodeIntent(uiState) {
 
 	private val checkSmsCodeUseCase: CheckSmsCodeUseCase by inject()
 	private val checkPhoneNumberUseCase: CheckPhoneNumberUseCase by inject()

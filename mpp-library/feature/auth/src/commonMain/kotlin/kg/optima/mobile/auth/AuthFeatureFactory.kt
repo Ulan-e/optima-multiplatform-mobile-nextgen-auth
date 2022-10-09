@@ -12,6 +12,8 @@ import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.domain.usecase.pin_set.PinSetUseCase
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
+import kg.optima.mobile.auth.presentation.pin_enter.PinEnterIntent
+import kg.optima.mobile.auth.presentation.pin_enter.PinEnterState
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthIntent
 import kg.optima.mobile.auth.presentation.setup_auth.SetupAuthState
 import kg.optima.mobile.auth.presentation.sms.AuthSmsCodeIntent
@@ -53,13 +55,16 @@ object AuthFeatureFactory : Factory {
 		factory { KeepAliveUseCase(authRepository = get(), authPreferences = get()) }
 
 		// States and Intents injection by pair
-		factory { next -> LoginState(next.get()) }
+		factory { LoginState() }
 		factory { st -> LoginIntent(st.get()) }
 
-		factory { next -> SetupAuthState(next.get()) }
+		factory { PinEnterState() }
+		factory { st -> PinEnterIntent(st.get()) }
+
+		factory { SetupAuthState() }
 		factory { st -> SetupAuthIntent(st.get()) }
 
-		factory { next -> AuthSmsCodeState(next.get()) }
+		factory { AuthSmsCodeState() }
 		factory { st -> AuthSmsCodeIntent(st.get()) }
 	}
 }

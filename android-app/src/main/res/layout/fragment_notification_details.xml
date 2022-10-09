@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue_0_93_186"
+        app:navigationIcon="@drawable/arrow_left">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextViewTitle"
+            android:text="@string/notice4" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollable_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/details_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_20dp">
+
+            <ImageView
+                android:id="@+id/image_view_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_access_time_30"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/date_notification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_13dp"
+                android:layout_marginTop="@dimen/margin_3dp"
+                android:textColor="@color/grey_black"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image_view_date"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="4 августа 13:45" />
+
+            <ImageView
+                android:id="@+id/divider_one"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_32dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@drawable/line_with_dots"
+                app:layout_constraintTop_toBottomOf="@+id/date_notification" />
+
+            <ImageView
+                android:id="@+id/image_view_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:src="@drawable/ic_outline_label_31"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_one" />
+
+            <TextView
+                android:id="@+id/title_notification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_13dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:textColor="@color/grey_black"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image_view_title"
+                app:layout_constraintTop_toBottomOf="@+id/divider_one"
+                tools:text="Title" />
+
+            <View
+                android:id="@+id/divider_two"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@drawable/line_with_dots"
+                app:layout_constraintTop_toBottomOf="@+id/title_notification" />
+
+            <ImageView
+                android:id="@+id/image_view_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:src="@drawable/ic_outline_message_30"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_two" />
+
+            <TextView
+                android:id="@+id/message_notification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_13dp"
+                android:layout_marginTop="@dimen/margin_13dp"
+                android:linksClickable="true"
+                android:textColor="@color/pre_black"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/text_size_16sp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image_view_message"
+                app:layout_constraintTop_toBottomOf="@+id/divider_two"
+                tools:text="Message" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading_progress"
+        android:layout_width="@dimen/margin_40dp"
+        android:layout_height="@dimen/margin_40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:visibility="gone"
+        android:indeterminate="true"/>
+</LinearLayout>

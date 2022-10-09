@@ -1,6 +1,8 @@
 package kg.optima.mobile.registration.presentation.agreement
 
-sealed interface AgreementModel {
+import kg.optima.mobile.base.presentation.BaseEntity
+
+sealed interface AgreementModel : BaseEntity {
 	class AgreementInfo(
 		val confirmed: Boolean,
 	) : AgreementModel

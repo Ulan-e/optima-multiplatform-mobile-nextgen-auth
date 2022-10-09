@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="fragment.transfer.TransferInterbank">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue_0_93_186"
+            app:navigationIcon="@drawable/arrow_left">
+
+            <TextView
+                style="@style/TextViewTitle"
+                android:id="@+id/tvTitle" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="15dp">
+
+            <LinearLayout
+                android:id="@+id/linMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edTemplateName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/list_item_selector"
+                    android:hint="@string/save_template_name"
+                    android:maxLines="1"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+               <!-- <TextView
+                    android:id="@+id/tvAttention"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/white"
+                    android:drawableEnd="@android:drawable/arrow_down_float"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp"
+                    android:text="@string/s_attention" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white_240_240_240"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/money_from"
+                        android:textColor="@color/gray_155_155_155"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/linSpinnerFrom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="20dp">
+
+                        <TextView
+                            android:id="@+id/tvSpinnerFrom"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/account_number"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:id="@+id/linFromAccountInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/imgTypeFrom"
+                                    android:layout_width="55dp"
+                                    android:layout_height="60dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_multi_from"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:text="@string/multi"
+                                    android:textColor="@color/gray_180_180_180"
+                                    android:visibility="gone"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tvFromAccountName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textColor="@color/gray_black_56_56_56"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:id="@+id/tvFromAccountBalance"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="end"
+                                        android:layout_marginStart="10dp"
+                                        android:textColor="@color/gray_atf"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="2dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/tvFromAccountNumber"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textColor="@color/gray_180_180_180"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/tvStatusFrom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/gray_black_56_56_56"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="17dp"
+                                android:layout_height="17dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_arrow_left" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                <include layout="@layout/layout_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/edAmountHint"
+                            style="@style/TextInputLayoutNoBottomLine"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="7dp"
+                            android:layout_weight="0.3"
+                            android:hint="@string/sum">
+
+                            <EditText
+                                android:id="@+id/edAmount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@drawable/list_item_selector"
+                                android:digits="0123456789,."
+                                android:inputType="numberDecimal"
+                                android:maxLines="2"
+                                android:textColor="@color/gray_atf"
+                                android:textSize="20sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tvCurrency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edPayerNameHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/sender_name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edPayerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/list_item_selector"
+                            android:editable="false"
+                            android:maxLines="3"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:background="#e7e7e7" />-->
+
+                    <!--<android.support.design.widget.TextInputLayout-->
+                        <!--android:id="@+id/edPayerCityHint"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginEnd="7dp"-->
+                        <!--android:layout_marginStart="7dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:layout_weight="0.3"-->
+                        <!--android:hint="@string/sender_city">-->
+
+                        <!--<android.support.design.widget.TextInputEditText-->
+                            <!--android:id="@+id/edPayerCity"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@drawable/list_item_selector"-->
+                            <!--android:maxLines="2"-->
+                            <!--android:paddingBottom="20dp"-->
+                            <!--android:paddingLeft="10dp"-->
+                            <!--android:paddingRight="10dp"-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:textColor="@color/gray_black_56_56_56"-->
+                            <!--android:textSize="18sp" />-->
+
+                    <!--</android.support.design.widget.TextInputLayout>-->
+
+                    <!--<View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <LinearLayout
+                    android:id="@+id/linPayerCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvPayerCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="@color/gray_black_56_56_56"
+                        android:hint="@string/sender_country"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/ic_button_dark_common_down" />
+                    </LinearLayout>
+
+                </LinearLayout>-->
+
+                    <include layout="@layout/layout_line" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edPayerAddressHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/sender_address">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edPayerAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/list_item_selector"
+                            android:maxLines="2"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white_240_240_240"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/money_to"
+                        android:textColor="@color/gray_155_155_155"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linSpinnerTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edSpinnerToHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/text_receiver_acc_number">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edSpinnerTo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/list_item_selector"
+                            android:inputType="textCapCharacters|textAutoComplete|none"
+                            android:maxLines="2"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <View
+                        android:id="@+id/separatorEdCitizenship"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e7e7e7" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/separatorEtReceiverName"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+                <LinearLayout
+                    android:id="@+id/linField2BA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etReceiverNameHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/text_receiver">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etReceiverName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:inputType="textCapCharacters|textAutoComplete"
+                            android:maxLines="2"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--<CheckBox
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tvResident"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/text_resident" />-->
+
+                    <include layout="@layout/layout_line" />
+
+
+                    <!--<android.support.design.widget.TextInputLayout-->
+                        <!--android:id="@+id/edReceiverIINHint"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginEnd="7dp"-->
+                        <!--android:layout_marginStart="7dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:layout_weight="0.3"-->
+                        <!--android:hint="@string/text_receiver_iin"-->
+                        <!--android:visibility="gone">-->
+
+                        <!--<android.support.design.widget.TextInputEditText-->
+                            <!--android:id="@+id/edReceiverIIN"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@android:color/transparent"-->
+                            <!--android:digits="0123456789"-->
+                            <!--android:inputType="numberDecimal"-->
+                            <!--android:maxLength="12"-->
+                            <!--android:maxLines="2"-->
+                            <!--android:paddingBottom="20dp"-->
+                            <!--android:paddingLeft="10dp"-->
+                            <!--android:paddingRight="10dp"-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:textColor="@color/gray_black_56_56_56"-->
+                            <!--android:textSize="18sp" />-->
+
+                    <!--</android.support.design.widget.TextInputLayout>-->
+
+                    <include layout="@layout/layout_line" />
+
+                    <LinearLayout
+                        android:id="@+id/linContragentCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            style="@style/TextInputLayoutNoBottomLine"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginStart="7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.3"
+                            android:hint="@string/contragent_country">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvContragentCountry"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:maxLines="10"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textColor="@color/gray_black_56_56_56"
+                                android:textSize="18sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp">
+
+                            <ImageView
+                                android:layout_width="17dp"
+                                android:layout_height="17dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_arrow_left" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    <LinearLayout
+                        android:id="@+id/linContragentRegisterCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            style="@style/TextInputLayoutNoBottomLine"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginStart="7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.3"
+                            android:hint="@string/contragent_register_country">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvContragentRegisterCountry"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:maxLines="10"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textColor="@color/gray_black_56_56_56"
+                                android:textSize="18sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp">
+
+                            <ImageView
+                                android:layout_width="17dp"
+                                android:layout_height="17dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_arrow_left" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edContragentAddressHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/contragent_address">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edContragentAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/list_item_selector"
+                            android:maxLines="2"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tvReceiverIINHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/text_receiver_iin">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edTvReceiverIIN"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:digits="0123456789"
+                            android:inputType="numberDecimal"
+                            android:maxLength="14"
+                            android:maxLines="2"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <include layout="@layout/layout_line" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edKppHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/kpp"
+                        android:visibility="gone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edKpp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:maxLines="2"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    <LinearLayout
+                        android:id="@+id/linReceiversBankName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            style="@style/TextInputLayoutNoBottomLine"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginStart="7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.3"
+                            android:hint="@string/receivers_bank_name">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvReceiversBankName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:maxLines="10"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textColor="@color/gray_black_56_56_56"
+                                android:textSize="18sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp">
+
+                            <ImageView
+                                android:layout_width="17dp"
+                                android:layout_height="17dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_arrow_left" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    <LinearLayout
+                        android:id="@+id/linSpinnerBIC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tvSpinnerBICHint"
+                            style="@style/TextInputLayoutNoBottomLine"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginStart="7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.3"
+                            android:hint="@string/text_bic">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvSpinnerBIC"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:maxLines="10"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textColor="@color/gray_black_56_56_56"
+                                android:textSize="18sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp">
+
+                            <ImageView
+                                android:layout_width="17dp"
+                                android:layout_height="17dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_arrow_left" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/separatorEdReceiverIIN"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e7e7e7" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edReceiversBankCorAccountHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.3"
+                        android:hint="@string/receivers_bank_cor_account">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edReceiversBankCorAccount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/list_item_selector"
+                            android:maxLines="2"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white_240_240_240"
+                        android:orientation="vertical"
+                        android:paddingRight="12dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/requisites_intermediary_bank_hint"
+                            android:textColor="@color/gray_155_155_155"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linMediatorBankName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            style="@style/TextInputLayoutNoBottomLine"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginStart="7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.3"
+                            android:hint="@string/t_mediator_bank">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvMediatorBankName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:maxLines="10"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textColor="@color/gray_black_56_56_56"
+                                android:textSize="18sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp">
+
+                            <ImageView
+                                android:layout_width="17dp"
+                                android:layout_height="17dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_arrow_left" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <include layout="@layout/layout_line" />
+
+                    <LinearLayout
+                        android:id="@+id/linMediatorBIC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            style="@style/TextInputLayoutNoBottomLine"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="7dp"
+                            android:layout_marginStart="7dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.3"
+                            android:hint="@string/t_mediator_bic">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvMediatorBIC"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:maxLines="10"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textColor="@color/gray_black_56_56_56"
+                                android:textSize="18sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="20dp">
+
+                            <ImageView
+                                android:layout_width="17dp"
+                                android:layout_height="17dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_arrow_left" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/linMediatorAccNum"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="#e7e7e7" />-->
+
+                        <!--<android.support.design.widget.TextInputLayout-->
+                            <!--android:id="@+id/tvMediatorAccNumHint"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="0dp"-->
+                            <!--android:layout_marginEnd="7dp"-->
+                            <!--android:layout_marginStart="7dp"-->
+                            <!--android:layout_marginTop="5dp"-->
+                            <!--android:layout_weight="0.3"-->
+                            <!--android:hint="@string/account_number">-->
+
+                            <!--<android.support.design.widget.TextInputEditText-->
+                                <!--android:id="@+id/edMediatorAccNum"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:inputType="textCapCharacters|textAutoComplete"-->
+                                <!--android:background="@android:color/transparent"-->
+                                <!--android:paddingBottom="20dp"-->
+                                <!--android:paddingLeft="10dp"-->
+                                <!--android:paddingRight="10dp"-->
+                                <!--android:paddingTop="10dp"-->
+                                <!--android:textColor="@color/gray_black_56_56_56"-->
+                                <!--android:textSize="18sp" />-->
+
+                        <!--</android.support.design.widget.TextInputLayout>-->
+                        <!--&lt;!&ndash;android:maxLength="25"&ndash;&gt;-->
+
+                    <!--</LinearLayout>-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:background="#e7e7e7" />-->
+
+                    <!--<android.support.design.widget.TextInputLayout-->
+                        <!--android:id="@+id/tvMediatorCorAccNumHint"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginEnd="7dp"-->
+                        <!--android:layout_marginStart="7dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:layout_weight="0.3"-->
+                        <!--android:hint="@string/t_mediator_bank_cor_account">-->
+
+                        <!--<android.support.design.widget.TextInputEditText-->
+                            <!--android:id="@+id/tvMediatorCorAccNum"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@android:color/transparent"-->
+                            <!--android:maxLines="10"-->
+                            <!--android:paddingBottom="20dp"-->
+                            <!--android:paddingLeft="10dp"-->
+                            <!--android:paddingRight="10dp"-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:textColor="@color/gray_black_56_56_56"-->
+                            <!--android:textSize="18sp" />-->
+
+                    <!--</android.support.design.widget.TextInputLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white_240_240_240"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/translation_information"
+                            android:textColor="@color/gray_155_155_155"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tvSpinnerKNPHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/penalty_knp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvSpinnerKNP"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:maxLines="1"
+                            android:maxLength="5"
+                            android:inputType="phone"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <View
+                        android:id="@+id/separatorLinSpinnerKNP"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e7e7e7" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white_240_240_240"
+                        android:orientation="vertical"
+                        android:paddingRight="12dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/text_knp_hint"
+                            android:textColor="@color/gray_155_155_155"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edPurposeHint"
+                        style="@style/TextInputLayoutNoBottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/text_knp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edPurpose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:maxLength="5000"
+                            android:inputType="textMultiLine"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/linVo"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:visibility="gone">-->
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="#e7e7e7" />-->
+
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:baselineAligned="false"-->
+                            <!--android:orientation="horizontal">-->
+
+                            <!--<android.support.design.widget.TextInputLayout-->
+                                <!--android:id="@+id/edVOHint"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginEnd="7dp"-->
+                                <!--android:layout_marginStart="7dp"-->
+                                <!--android:layout_marginTop="5dp"-->
+                                <!--android:layout_weight="0.3"-->
+                                <!--android:hint="@string/vo_code">-->
+
+                                <!--<android.support.design.widget.TextInputEditText-->
+                                    <!--android:id="@+id/edVO"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:layout_gravity="center"-->
+                                    <!--android:layout_weight="1"-->
+                                    <!--android:background="@android:color/transparent"-->
+                                    <!--android:editable="false"-->
+                                    <!--android:maxLength="500"-->
+                                    <!--android:paddingBottom="20dp"-->
+                                    <!--android:paddingLeft="10dp"-->
+                                    <!--android:paddingRight="10dp"-->
+                                    <!--android:paddingTop="10dp"-->
+                                    <!--android:textColor="@color/gray_black_56_56_56"-->
+                                    <!--android:textSize="18sp" />-->
+
+                            <!--</android.support.design.widget.TextInputLayout>-->
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:paddingBottom="20dp"-->
+                                <!--android:paddingLeft="15dp"-->
+                                <!--android:paddingRight="15dp"-->
+                                <!--android:paddingTop="20dp">-->
+
+                                <!--<ImageView-->
+                                    <!--android:layout_width="17dp"-->
+                                    <!--android:layout_height="17dp"-->
+                                    <!--android:layout_gravity="center"-->
+                                    <!--android:layout_marginStart="10dp"-->
+                                    <!--android:src="@drawable/ic_arrow_left" />-->
+                            <!--</LinearLayout>-->
+
+                        <!--</LinearLayout>-->
+
+                    <!--</LinearLayout>-->
+
+                    <include layout="@layout/layout_line" />
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical">-->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="4dp"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:text="@string/fee_type" />
+
+                        <!--<RadioGroup-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@color/white">-->
+
+
+                            <RadioButton
+                                android:id="@+id/feeType1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:drawablePadding="8dp"
+                                android:gravity="center_vertical"
+                                android:paddingBottom="4dp"
+                                android:paddingEnd="8dp"
+                                android:paddingStart="8dp"
+                                android:checked="true"
+                                android:paddingTop="4dp"
+                                android:text="@string/paid_by_sender" />
+
+                            <!--<RadioButton-->
+                                <!--android:id="@+id/feeType2"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:background="@color/white"-->
+                                <!--android:drawablePadding="8dp"-->
+                                <!--android:gravity="center_vertical"-->
+                                <!--android:paddingBottom="4dp"-->
+                                <!--android:paddingEnd="8dp"-->
+                                <!--android:paddingStart="8dp"-->
+                                <!--android:paddingTop="4dp"-->
+                                <!--android:text="@string/paid_by_receiver" />-->
+
+                            <!--<RadioButton-->
+                                <!--android:id="@+id/feeType3"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:background="@color/white"-->
+                                <!--android:drawablePadding="8dp"-->
+                                <!--android:gravity="center_vertical"-->
+                                <!--android:paddingBottom="4dp"-->
+                                <!--android:paddingEnd="8dp"-->
+                                <!--android:paddingStart="8dp"-->
+                                <!--android:paddingTop="4dp"-->
+                                <!--android:text="@string/paid_by_both" />-->
+
+                        <!--</RadioGroup>-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/textFeeHint"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@color/white"-->
+                            <!--android:drawableEnd="@android:drawable/arrow_down_float"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:maxLines="1"-->
+                            <!--android:paddingBottom="10dp"-->
+                            <!--android:paddingEnd="10dp"-->
+                            <!--android:paddingStart="10dp"-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:text="@string/paid_by_both_hint" />-->
+
+                        <!--&lt;!&ndash;<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="#D8D8D8"-->
+                        <!--android:paddingBottom="4dp"-->
+                        <!--android:paddingStart="8dp"-->
+                        <!--android:paddingTop="8dp"-->
+                        <!--android:text="@string/swift_fee_account" />&ndash;&gt;-->
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="#e7e7e7" />-->
+
+                        <!--<LinearLayout-->
+                            <!--android:id="@+id/linspinnerFee"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="horizontal"-->
+                            <!--android:paddingBottom="20dp"-->
+                            <!--android:paddingLeft="15dp"-->
+                            <!--android:paddingRight="15dp"-->
+                            <!--android:paddingTop="20dp">-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/spinnerFee"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:text="@string/swift_fee_account"-->
+                                <!--android:textSize="18sp" />-->
+
+                            <!--<LinearLayout-->
+                                <!--android:id="@+id/linFeeAccountInfo"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:visibility="gone">-->
+
+                                <!--<ImageView-->
+                                    <!--android:id="@+id/imgTypeFee"-->
+                                    <!--android:layout_width="55dp"-->
+                                    <!--android:layout_height="60dp" />-->
+
+                                <!--<LinearLayout-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:layout_marginStart="20dp"-->
+                                    <!--android:orientation="vertical">-->
+
+                                    <!--<LinearLayout-->
+                                        <!--android:layout_width="match_parent"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:orientation="vertical">-->
+
+                                        <!--<TextView-->
+                                            <!--android:id="@+id/tvFeeAccountName"-->
+                                            <!--android:layout_width="wrap_content"-->
+                                            <!--android:layout_height="0dp"-->
+                                            <!--android:layout_marginEnd="10dp"-->
+                                            <!--android:layout_weight="1"-->
+                                            <!--android:ellipsize="end"-->
+                                            <!--android:maxLines="1"-->
+                                            <!--android:textColor="@color/gray_black_56_56_56"-->
+                                            <!--android:textSize="18sp" />-->
+
+                                        <!--<TextView-->
+                                            <!--android:id="@+id/tvFeeAccountBalance"-->
+                                            <!--android:layout_width="wrap_content"-->
+                                            <!--android:layout_height="wrap_content"-->
+                                            <!--android:layout_gravity="end"-->
+                                            <!--android:layout_marginStart="10dp"-->
+                                            <!--android:textColor="@color/gray_atf"-->
+                                            <!--android:textSize="18sp" />-->
+
+                                    <!--</LinearLayout>-->
+
+                                    <!--<LinearLayout-->
+                                        <!--android:layout_width="match_parent"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:layout_marginBottom="2dp"-->
+                                        <!--android:orientation="horizontal">-->
+
+                                        <!--<TextView-->
+                                            <!--android:id="@+id/tvFeeAccountNumber"-->
+                                            <!--android:layout_width="0dp"-->
+                                            <!--android:layout_height="wrap_content"-->
+                                            <!--android:layout_weight="1"-->
+                                            <!--android:ellipsize="end"-->
+                                            <!--android:maxLines="1"-->
+                                            <!--android:textColor="@color/gray_180_180_180"-->
+                                            <!--android:textSize="15sp" />-->
+
+                                    <!--</LinearLayout>-->
+
+                                    <!--<TextView-->
+                                        <!--android:id="@+id/tvStatusFee"-->
+                                        <!--android:layout_width="match_parent"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:textColor="@color/gray_black_56_56_56"-->
+                                        <!--android:textSize="14sp" />-->
+                                <!--</LinearLayout>-->
+
+                            <!--</LinearLayout>-->
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="match_parent">-->
+
+                                <!--<ImageView-->
+                                    <!--android:layout_width="17dp"-->
+                                    <!--android:layout_height="17dp"-->
+                                    <!--android:layout_gravity="center"-->
+                                    <!--android:layout_marginStart="10dp"-->
+                                    <!--android:src="@drawable/ic_arrow_left" />-->
+                            <!--</LinearLayout>-->
+
+                        <!--</LinearLayout>-->
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="#e7e7e7" />-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:paddingBottom="4dp"-->
+                            <!--android:paddingLeft="8dp"-->
+                            <!--android:paddingTop="8dp"-->
+                            <!--android:text="@string/transfer_target" />-->
+
+                        <!--&lt;!&ndash;<android.support.design.widget.TextInputLayout-->
+                        <!--android:id="@+id/transferTargetHint"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginEnd="7dp"-->
+                        <!--android:layout_marginStart="7dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:layout_weight="0.3"-->
+                        <!--android:hint="@string/transfer_target">-->
+
+                        <!--<android.support.design.widget.TextInputEditText-->
+                            <!--android:id="@+id/transferTarget"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@android:color/transparent"-->
+                            <!--android:maxLength="500"-->
+                            <!--android:paddingBottom="20dp"-->
+                            <!--android:paddingLeft="10dp"-->
+                            <!--android:paddingRight="10dp"-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:textColor="@color/gray_black_56_56_56"-->
+                            <!--android:textSize="18sp" />-->
+
+                    <!--</android.support.design.widget.TextInputLayout>&ndash;&gt;-->
+
+                        <!--<EditText-->
+                            <!--android:id="@+id/transferTarget"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@drawable/list_item_selector"-->
+                            <!--android:maxLength="250"-->
+                            <!--android:padding="8dp"-->
+                            <!--android:paddingBottom="10dp"-->
+                            <!--android:textAppearance="@android:style/TextAppearance.Small" />-->
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="#e7e7e7" />-->
+
+                        <!--&lt;!&ndash;android:hint="@string/transfer_target"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/gray_black_56_56_56"&ndash;&gt;-->
+
+
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:paddingBottom="4dp"-->
+                            <!--android:paddingLeft="8dp"-->
+                            <!--android:paddingTop="8dp"-->
+                            <!--android:text="@string/your_relationships_with_receiver" />-->
+
+                        <!--<EditText-->
+                            <!--android:id="@+id/relationships"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@drawable/list_item_selector"-->
+                            <!--android:maxLength="250"-->
+                            <!--android:padding="8dp"-->
+                            <!--android:paddingBottom="10dp"-->
+                            <!--android:textAppearance="@android:style/TextAppearance.Small" />-->
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="#e7e7e7" />-->
+
+                        <!--&lt;!&ndash;android:hint="@string/your_relationships_with_receiver"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/gray_black_56_56_56"&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="#D8D8D8"-->
+                        <!--android:paddingBottom="4dp"-->
+                        <!--android:paddingEnd="8dp"-->
+                        <!--android:paddingStart="8dp"-->
+                        <!--android:paddingTop="8dp"-->
+                        <!--android:text="@string/i_approve" />-->
+<!--&ndash;&gt;-->
+                        <!--&lt;!&ndash;<CheckBox-->
+                        <!--android:id="@+id/agreementCheckBox1"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="8dp"-->
+                        <!--android:background="@color/white"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:padding="8dp"-->
+                        <!--android:paddingEnd="4dp"-->
+                        <!--android:paddingStart="10dp"-->
+                        <!--android:text="@string/i_agree" />-->
+<!--&ndash;&gt;-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/tvLicenseAgreement"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginTop="12dp"-->
+                            <!--android:background="@color/white"-->
+                            <!--android:drawableEnd="@android:drawable/arrow_down_float"-->
+                            <!--android:drawablePadding="6dp"-->
+                            <!--android:ellipsize="end"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:maxLines="2"-->
+                            <!--android:paddingBottom="10dp"-->
+                            <!--android:paddingEnd="10dp"-->
+                            <!--android:paddingStart="10dp"-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:text="@string/license_agreement" />-->
+
+                        <!--<CheckBox-->
+                            <!--android:id="@+id/agreementCheckBox"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginTop="8dp"-->
+                            <!--android:background="@color/white"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:padding="8dp"-->
+                            <!--android:paddingEnd="4dp"-->
+                            <!--android:paddingStart="10dp"-->
+                            <!--android:text="@string/i_agree" />-->
+
+                    <!--</LinearLayout>-->
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e7e7e7" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <LinearLayout
+                    android:id="@+id/fee_linear_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="20dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fee"
+                            android:textColor="@color/gray_180_180_180"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tvFee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="20dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/transfer_sum"
+                            android:textColor="@color/gray_180_180_180"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tvSumWithFee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray_black_56_56_56"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnTransfer"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/button_default"
+                    android:text="@string/confirm"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -10,6 +10,7 @@ import kg.optima.mobile.base.domain.BaseUseCase
 import kg.optima.mobile.core.common.CryptographyUtils
 import kg.optima.mobile.core.error.Failure
 import kg.optima.mobile.feature.auth.component.SessionData
+import kg.optima.mobile.feature.auth.component.UserInfo
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
 import kg.optima.mobile.feature.auth.model.SignInInfo
 import kg.optima.mobile.network.const.NetworkCode
@@ -56,11 +57,27 @@ class LoginUseCase(
 					authPreferences.clientId = clientId
 					it.data?.let { data ->
 						authPreferences.password = password
+
 						authPreferences.sessionData = SessionData(
 							accessToken = data.accessToken,
 							startDateTime = data.startDateTime,
 							lastUpdate = data.lastUpdate,
 							sessionDuration = data.sessionDuration
+						)
+						authPreferences.userInfo = UserInfo(
+							id = data.userInfo.id,
+							bankId = data.userInfo.bankId,
+							fullName = data.userInfo.fullName,
+							firstName = data.userInfo.firstName,
+							lastName = data.userInfo.lastName,
+							middleName = data.userInfo.middleName,
+							login = data.userInfo.login,
+							idn = data.userInfo.idn,
+							sex = data.userInfo.sex,
+							autoEncrypt = data.userInfo.autoEncrypt,
+							address = data.userInfo.address,
+							phoneNumber = data.userInfo.phoneNumber,
+							imageHash = data.userInfo.imageHash
 						)
 						authPreferences.isAuthorized = true
 

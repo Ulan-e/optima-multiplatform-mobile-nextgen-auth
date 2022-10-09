@@ -8,6 +8,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import dev.icerock.moko.parcelize.Parcelize
@@ -16,10 +17,9 @@ import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
-import kg.optima.mobile.base.di.createWithStateParam
-import kg.optima.mobile.base.presentation.BaseMppState
+import kg.optima.mobile.base.di.create
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
-import kg.optima.mobile.core.navigation.ScreenModel
 import kg.optima.mobile.design_system.android.ui.buttons.PrimaryButton
 import kg.optima.mobile.design_system.android.ui.checkbox.Checkbox
 import kg.optima.mobile.design_system.android.ui.input.InputField
@@ -29,22 +29,20 @@ import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarContent
 import kg.optima.mobile.design_system.android.ui.toolbars.ToolbarInfo
 import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 import kg.optima.mobile.design_system.android.values.Deps
+import kz.optimabank.optima24.activity.MenuActivity
 
 @Parcelize
-class LoginScreen(
-	private val nextScreenModel: ScreenModel,
-) : BaseScreen {
+object LoginScreen : BaseScreen {
 
 	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
-		val product = remember {
-			AuthFeatureFactory.createWithStateParam<LoginIntent, LoginState>(nextScreenModel)
-		}
+		val product = remember { AuthFeatureFactory.create<LoginIntent, LoginState>() }
 		val state = product.state
 		val intent = product.intent
 
-		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
+		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
+		val context = LocalContext.current
 
 		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
@@ -58,15 +56,15 @@ class LoginScreen(
 			intent.signIn(info)
 		}
 
-		when (val loginState = model) {
-			is BaseMppState.StateModel.Initial ->
-				intent.getClientId()
-			is LoginState.LoginStateModel.ClientId ->
-				clientIdInputFieldState.value = loginState.clientId.orEmpty()
-			is LoginState.LoginStateModel.SignInResult -> {
-				when (loginState) {
-					is LoginState.LoginStateModel.SignInResult.IncorrectData -> TODO()
-				}
+		when (val loginState: UiState.Model? = model) {
+			is UiState.Model.Initial -> intent.init()
+			is LoginState.Model -> when (loginState) {
+				is LoginState.Model.ClientId ->
+					clientIdInputFieldState.value = loginState.clientId
+				is LoginState.Model.NavigateTo.PinEnter ->
+					clientIdInputFieldState.value = loginState.clientId
+				is LoginState.Model.SignInResult.IncorrectData -> TODO()
+				else -> Unit
 			}
 		}
 

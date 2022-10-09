@@ -27,7 +27,7 @@ public struct WelcomeView: View {
         self.isLoad = isLoad
 
         self.state = WelcomeState()
-        self.intent = WelcomeIntent(mppState: state)
+        self.intent = WelcomeIntent(uiState: state)
     }
     
     public var body: some View {
@@ -107,11 +107,11 @@ public struct WelcomeView: View {
     private func observeState() {
         state.commonStateFlow.watch { state in
             switch(state) {
-            case let x where x is BaseMppStateStateModelInitial:
+            case let x where x is UiStateModelInitial:
                 print("Init")
-            case let x where x is BaseMppStateStateModelLoading:
+            case let x where x is UiStateModelLoading:
                 print("Loading")
-            case let x where x is BaseMppStateStateModelError:
+            case let x where x is UiStateModelError:
                 print("Error")
             case let x where x is WelcomeStateModelNavigateToLogin:
                 print("Login")

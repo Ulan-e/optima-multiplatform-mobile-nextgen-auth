@@ -3,7 +3,7 @@ package kg.optima.mobile.navigation.root
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
-import kg.optima.mobile.core.navigation.ScreenModel
+import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.navigation.BottomNavItem
 
 interface Root {
@@ -36,12 +36,12 @@ interface Root {
 
 		interface Component {
 			val componentContext: ComponentContext
-			val backStack: Value<ChildStack<*, ScreenModel>>
+			val backStack: Value<ChildStack<*, UiState.Model.Navigate>>
 
 			val items get() = backStack.value.items.map { it.configuration }
 
-			fun addAll(screenModels: List<ScreenModel>)
-			fun addAll(screenModel: ScreenModel) = addAll(listOf(screenModel))
+			fun addAll(stateModels: List<UiState.Model.Navigate>)
+			fun addAll(stateModel: UiState.Model.Navigate) = addAll(listOf(stateModel))
 
 			fun pop()
 		}

@@ -4,7 +4,10 @@ plugins {
     id("dev.icerock.mobile.multiplatform.cocoapods")
 
     id("com.android.library")
+
     kotlin("plugin.serialization")
+    id("kotlinx-serialization")
+    id("kotlin-parcelize")
 }
 
 version = "1.0"
@@ -21,6 +24,8 @@ dependencies {
     commonMainImplementation("io.insert-koin:koin-core:3.1.4")
     commonMainImplementation(libs.kotlinSerialization)
     commonMainImplementation(libs.ktorClient)
+
+    commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")
 
     commonMainApi(libs.mokoMvvmLiveData)
     commonMainApi(libs.mokoResources)

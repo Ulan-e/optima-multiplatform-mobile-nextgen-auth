@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linMain"
+        android:paddingBottom="15dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/metDat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/meters_data"
+                android:padding="16dp"
+                android:textSize="17sp"
+                android:textColor="@color/gray_black_56_56_56"/>
+
+            <CheckBox
+                android:padding="16dp"
+                android:textSize="15sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/isPay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pay_action" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_180_180_180"
+                    android:text="@string/current"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/edLastCount"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/gray_black_56_56_56"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.4"
+                android:text="-"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_180_180_180"
+                    android:gravity="center"
+                    android:text="@string/past"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:textSize="18sp"
+                    android:id="@+id/edPrevCount"
+                    android:layout_gravity="center"
+                    android:textColor="@color/gray_black_56_56_56"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.4"
+                android:text="="
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_180_180_180"
+                    android:gravity="center"
+                    android:text="@string/consumption"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tvDifCount"
+                    android:text="156 кВт/ч"
+                    android:textColor="@color/gray_black_56_56_56"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTariffLabel"
+            android:layout_weight="1"
+            android:text="@string/tariffs"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="16dp"
+            android:textSize="17sp"
+            android:textColor="@color/gray_black_56_56_56"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvIfOneTarif"
+            android:layout_weight="1"
+            android:text="156 кВт/ч"
+            android:paddingRight="16dp"
+            android:textColor="@color/gray_black_56_56_56"
+            android:textSize="17sp"
+            android:gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linMinTariff"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMinThreshold"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="@color/gray_180_180_180"
+                android:text="до 350 кВт/ч"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMinTariffValue"
+                android:layout_weight="1"
+                android:text="156 кВт/ч"
+                android:textColor="@color/gray_black_56_56_56"
+                android:textSize="17sp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linMiddleTariff"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMiddleThreshold"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="@color/gray_180_180_180"
+                android:text="до 350 кВт/ч"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMiddleTariffValue"
+                android:layout_weight="1"
+                android:text="156 кВт/ч"
+                android:textColor="@color/gray_black_56_56_56"
+                android:textSize="17sp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linMaxTariff"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMaxThreshold"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="@color/gray_180_180_180"
+                android:text="до 350 кВт/ч"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMaxTariffValue"
+                android:layout_weight="1"
+                android:text="156 кВт/ч"
+                android:textColor="@color/gray_black_56_56_56"
+                android:textSize="17sp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="@color/gray_black_56_56_56"
+                android:text="@string/sum_to_payment"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edAmount"
+                android:layout_weight="1"
+                android:textColor="@color/gray_black_56_56_56"
+                android:textSize="17sp"
+                android:background="@null"
+                android:inputType="numberDecimal"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linDebt"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbDebt"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="@color/gray_black_56_56_56"
+                android:text="@string/pay_debt"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:checked="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDebt"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="@color/gray_black_56_56_56"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linPenalty"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbPenalty"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="@color/gray_black_56_56_56"
+                android:text="@string/penalty"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:checked="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:id="@+id/tvPenalty"
+                android:textColor="@color/gray_black_56_56_56"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTotalServiceText"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="@color/gray_black_56_56_56"
+                android:text="@string/total_service_"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTotalServiceAmount"
+                android:layout_weight="1"
+                android:textColor="@color/gray_black_56_56_56"
+                android:textSize="17sp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <include layout="@layout/footer" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,19 +1,1460 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Optima.kg</string>
-    <string name="no_data">No data</string>
-    <string name="submit_btn">Submit</string>
-    <string name="token_hint">API token</string>
-    <string name="language_hint">Language code</string>
-    <string name="retry_btn">Retry</string>
+    <string name="no_data" translatable="false">No data</string>
+    <string name="submit_btn" translatable="false">Submit</string>
+    <string name="token_hint" translatable="false">API token</string>
+    <string name="language_hint" translatable="false">Language code</string>
+    <string name="retry_btn" translatable="false">Retry</string>
 
-    <string name="continue_" >Продолжить</string>
-    <string name="start" >Начать</string>
-    <string name="face_scanning">Сканирование лица</string>
-    <string name="document_scanning">Сканирование паспорта</string>
-    <string name="ready">Готово</string>
-    <string name="cancel">Отменить</string>
-    <string name="are_u_sure_exit">Вы действительно хотите выйти?</string>
-    <string name="identification_is_not_finished">Идентификация не закончена. Процесс будет остановлен и вы будете перенапралены на главный экран.</string>
+    <string name="continue_" translatable="false">Продолжить</string>
+    <string name="start" translatable="false">Начать</string>
+    <string name="face_scanning" translatable="false">Сканирование лица</string>
+    <string name="document_scanning" translatable="false">Сканирование паспорта</string>
+    <string name="ready" translatable="false">Готово</string>
+    <string name="are_u_sure_exit" translatable="false">Вы действительно хотите выйти?</string>
+    <string name="identification_is_not_finished" translatable="false">Идентификация не закончена. Процесс будет остановлен и вы будете перенапралены на главный экран.</string>
     <string name="exit">Выйти</string>
+
+    <string name="ENEJKG22">ENEJKG22</string>
+    <string name="AP">Азия-тихоокеанский регион</string>
+    <string name="AboutCard">О карте</string>
+    <string name="BKS">BKS</string>
+    <string name="CHINA">Китай</string>
+    <string name="CNY" translatable="false">¥</string>
+    <string name="CRYPTOGRAPHY_ERROR">На платформе мобильных платежей возникла ошибка. Пожалуйста, повторите ваш запрос позднее, или свяжитесь со службой поддержки системы</string>
+    <string name="Card_lock">Блокировка карты</string>
+    <string name="Cash_withdrawal">Снятие наличныx в банкоматах</string>
+    <string name="select_limit_type">Выберите тип лимита</string>
+    <string name="limit_type">Тип лимита</string>
+    <string name="DUPLICATE_PAYMENT_APP_INSTANCE_ID">Обнаружен дубликат мобильного приложения на сервере мобильных платежей. Пожалуйста, начните процесс регистрации с начала</string>
+    <string name="EUR" translatable="false">€</string>
+    <string name="FixCount">FixCount</string>
+    <string name="FixSum">FixSum</string>
+    <string name="GBP" translatable="false">£</string>
+    <string name="INTERNAL_SERVICE_FAILURE">Некорректный формат запроса. Пожалуйста, проверьте доступность обновлений приложения на Google Play Market</string>
+    <string name="INVALID_ELIGIBILITY_RECEIPT">Некорректный enrollment reference. Пожалуйста, повторите процесс оцифровки карты или свяжитесь с центром поддержки пользователей</string>
+    <string name="INVALID_MPA_VERSION">Запрос к платформе мобильных платежей отклонён. Возможно, ваше мобильное приложение устарело и требует обновления. Пожалуйста, проверьте доступность обновлений приложения на Google Play Market</string>
+    <string name="INVALID_TASK_ID">Ошибка получения состояния данных. Пожалуйста, повторите процедуру позднее</string>
+    <string name="INVALID_TERMS_AND_CONDITIONS">Некорректная ссылка на Условия договора. Повторите оцифровку позднее или свяжитесь со службой поддержки</string>
+    <string name="INVALID_TOKEN_STATUS">Ваше приложение заблокировано или оцифрованная карта приостановлена. Пожалуйста, свяжитесь с банком</string>
+    <string name="INVALID_TOKEN_UNIQUE_REFERENCE">Невозможно выполнить операцию с данным токеном. Пожалуйста, обновите список карт, свяжитесь с банком или провайдером услуг.</string>
+    <string name="INVALID_WORKFLOW">Ошибка последовательности обработки данных. Если это сообщение возникает постоянно, пожалуйста, переустановите приложение</string>
+    <string name="InterfaceLanguage">Язык интерфейса</string>
+    <string name="Internet_limit_payments">Интернет платежи</string>
+    <string name="Internet_payments">Интернет платежи</string>
+    <string name="IsCounterService">IsCounterService</string>
+    <string name="KGS">с</string>
+    <string name="LIMDom">Снятие наличных в банкоматах на территории КР</string>
+    <string name="LIMVAcq">Снятие наличных в банкоматах за пределами КР</string>
+    <string name="LastCount">LastCount</string>
+    <string name="LastCountDate">LastCountDate</string>
+    <string name="Limits">Лимиты</string>
+    <string name="M1000">Более 1000 метров</string>
+    <string name="M500">Не далее 500 метров</string>
+    <string name="Mm1000">Не далее 1000 метров</string>
+    <string name="NONEMV">Индонезия, Непал, Индия, Япония</string>
+    <string name="NO_ACTIVE_SESSION">Нет доступного сеанса связи с сервером</string>
+    <string name="NO_CARDS_AVAILABLE">Нет доступных карт. Пожалуйста, выберите другой тип карты или свяжитесь с банком</string>
+    <string name="PAN_ALREADY_DIGITIZED">Карта уже оцифрована в вашем мобильном кошельке. Пожалуйста, проверьте статус карты или свяжитесь с банком</string>
+    <string name="PrevCount">PrevCount</string>
+    <string name="PrevCountDate">PrevCountDate</string>
+    <string name="REGISTRATION_EXPIRED">Время для регистрации на сервере мобильных платежей истекло. Пожалуйста, выполните процесс с начала</string>
+    <string name="REGISTRATION_IN_PROGRESS">Запущен параллельный процесс регистрации: для устройства уже выполняется процесс регистрации на платформе мобильных платежей. Вы можете провести регистрацию позже</string>
+    <string name="RESOURCE_NOT_FOUND">Сервис временно недоступен. Пожалуйста, повторите ваш запрос позднее</string>
+    <string name="RNS_UNAVAILABLE">На платформе мобильных платежей возникла ошибка. Пожалуйста, повторите ваш запрос позднее, или свяжитесь со службой поддержки системы</string>
+    <string name="RUB" translatable="false">₽</string>
+    <string name="SMS_alert">СМС/Пуш уведомления</string>
+    <string name="ServiceId">ServiceId</string>
+    <string name="ServiceName">ServiceName</string>
+    <string name="THAILAND">Таиланд</string>
+    <string name="TransferConversionInsideMultiCurrencyCard">Конвертация внутри мультивалютной карты</string>
+    <string name="TransferForeignCurrencyToAnotherBank">Перевод в иностранной валюте</string>
+    <string name="TransferMoneyFromMasterToVisa">Перевод на карту Visa</string>
+    <string name="TransferMoneyFromVisaToMaster">Перевод на карту Mastercard</string>
+    <string name="TransferMoneyInsideBankFromAccountToAccount">Перевод внутри банка на счет</string>
+    <string name="TransferMoneyInsideBankFromAccountToCard">Перевод внутри банка на карту</string>
+    <string name="TransferMoneyInsideBankFromCardAccountToAccount">Перевод внутри банка на счет</string>
+    <string name="TransferMoneyInsideBankFromCardAccountToCard">Перевод внутри банка на карту</string>
+    <string name="TransferMoneyInsideClientAccountToCard">Перевод со своего счета на карт-счет</string>
+    <string name="TransferMoneyInsideClientAccounts">Перевод между своими счетами</string>
+    <string name="TransferMoneyInsideClientCardToAccount">Перевод со своего карт-счета на счет</string>
+    <string name="TransferMoneyInsideClientCards">Перевод между своими картами</string>
+    <string name="TransferMoneyInsideClientDepositToAccount">Перевод со своего депозита на счет</string>
+    <string name="TransferMoneyInsideClientDepositToCard">Перевод со своего депозита на карту</string>
+    <string name="TransferMoneyMasterCardToMasterCard">Перевод на карту Mastercard</string>
+    <string name="TransferMoneyToAnotherBank">Межбанковский перевод</string>
+    <string name="TransferMoneyToDeposit">Пополнение депозита</string>
+    <string name="TransferMoneyToOutsideCard">Перевод на карту Visa</string>
+    <string name="UNKNOWN_CRDPRODUCT">Неизвестный тип карты получен от систем банка. Пожалуйста, свяжитесь с банком или повторите операцию позднее</string>
+    <string name="UNKNOWN_HOST">Ошибка доступа к серверу мобильных платежей. Проверьте соединение с интернет</string>
+    <string name="USA">США</string>
+    <string name="USD" translatable="false">$</string>
+    <string name="VTS_COMMUNICATION_ERROR">Ошибка доступа к Visa Tokenization Service</string>
+    <string name="VTS_ERROR">Ошибка работы с Visa Tokenization Service</string>
+    <string name="VTS_INVALID_CARD">Ошибка доступа к данным Visa Tokenization Service. Пожалуйста, свяжитесь с банком</string>
+    <string name="VTS_INVALID_PARAMETERS">Отказ в обработке запроса в Visa Tokenization Service. Пожалуйста, свяжитесь с банком и проверьте статус карты</string>
+    <string name="VTS_OPERATIONS_NOT_ALLOWED">Отказ в обработке запроса в Visa Tokenization Service. Пожалуйста, свяжитесь с банком и проверьте статус карты</string>
+    <string name="VTS_SERVICE_ERROR">Внутренняя ошибка в Visa Tokenization Service</string>
+    <string name="VTS_TEMP_ERROR">Произошла внутренняя ошибка в Visa Tokenization Service</string>
+    <string name="plus_sign">+</string>
+    <string name="_7">+7</string>
+    <string name="_formatted_text_monthly" formatted="false">%s в %s-го числа в %s</string>
+    <string name="_formatted_text_weekly" formatted="false">%s в %s в %s</string>
+    <string name="_formatted_text_yearly" formatted="false">%s %s в %s</string>
+    <string name="_no">Нет</string>
+    <string name="_t_choose_branch">Выберите из списка</string>
+    <string name="_t_choose_service">Выберите услугу из списка</string>
+    <string name="_t_choose_transfer_type">Выберите вид перевода</string>
+    <string name="_t_fill_">Заполните поле</string>
+    <string name="_t_fill_all_required_">Заполните все обязательные поля</string>
+    <string name="_yes">Да</string>
+    <string name="abc_action_bar_home_description" translatable="false">Navigate home</string>
+    <string name="abc_action_bar_home_description_format" translatable="false">%1$s, %2$s</string>
+    <string name="abc_action_bar_home_subtitle_description_format" translatable="false">%1$s, %2$s, %3$s</string>
+    <string name="abc_action_bar_up_description" translatable="false">Navigate up</string>
+    <string name="abc_action_menu_overflow_description" translatable="false">More options</string>
+    <string name="abc_action_mode_done" translatable="false">Done</string>
+    <string name="abc_activity_chooser_view_see_all" translatable="false">See all</string>
+    <string name="abc_activitychooserview_choose_application" translatable="false">Choose an app</string>
+    <string name="abc_capital_off" translatable="false">OFF</string>
+    <string name="abc_capital_on" translatable="false">ON</string>
+    <string name="abc_font_family_body_1_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_body_2_material" translatable="false" >sans-serif-medium</string>
+    <string name="abc_font_family_button_material" translatable="false">sans-serif-medium</string>
+    <string name="abc_font_family_caption_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_display_1_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_display_2_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_display_3_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_display_4_material" translatable="false">sans-serif-light</string>
+    <string name="abc_font_family_headline_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_menu_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_subhead_material" translatable="false">sans-serif</string>
+    <string name="abc_font_family_title_material" translatable="false">sans-serif-medium</string>
+    <string name="abc_search_hint" translatable="false">Search…</string>
+    <string name="abc_searchview_description_clear" translatable="false">Clear query</string>
+    <string name="abc_searchview_description_query" translatable="false">Search query</string>
+    <string name="abc_searchview_description_search" translatable="false">Search</string>
+    <string name="abc_searchview_description_submit" translatable="false">Submit query</string>
+    <string name="abc_searchview_description_voice" translatable="false">Voice search</string>
+    <string name="abc_shareactionprovider_share_with" translatable="false">Share with</string>
+    <string name="abc_shareactionprovider_share_with_application" translatable="false">Share with %s</string>
+    <string name="abc_toolbar_collapse_description" translatable="false">Collapse</string>
+    <string name="abonent_is_found">Абонент найден</string>
+    <string name="card_number">Номер карты</string>
+    <string name="acc_visi">Возможно Ваши карты и счета скрыты в настройках видимости. Чтобы изменить перейдите, пожалуйста, в раздел \"Настройки видимости счетов\"</string>
+    <string name="account_amount">Сумма на счете:</string>
+    <string name="account_blocked">Заблокирован</string>
+    <string name="account_card_number">Номер карты/счета</string>
+    <string name="account_currency">Валюта счета</string>
+    <string name="account_details">Детали</string>
+    <string name="account_is_blocked">Заблокировано</string>
+    <string name="account_number">Номер счета</string>
+    <string name="account_number_">Номер счета:</string>
+    <string name="account_number_from">Со счета</string>
+    <string name="will_be_written_off" translatable="false">будет списано</string>
+    <string name="account_number_to" translatable="false">на счет</string>
+    <string name="will_be_creditted" translatable="false">будет зачислено</string>
+    <string name="for_one" translatable="false">за 1</string>
+    <string name="account_open">Открыт</string>
+    <string name="account_or_card">Счет или карта оплаты</string>
+    <string name="account_rename">Переименование счета</string>
+    <string name="account_schedule">График</string>
+    <string name="account_settings">Настройки</string>
+    <string name="account_statement">Выписка</string>
+    <string name="accounts">Счета</string>
+    <string name="accumulated">Накоплено</string>
+    <string name="acorn">Желудь</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_nfc_payment_settings_info">Выберите приложение Optima24 как основное средство оплаты</string>
+    <string name="action_refresh">Обновить</string>
+    <string name="activation_confirm">Активировать карту?</string>
+    <string name="activation_contactless">Включение бесконтактной оплаты</string>
+    <string name="add_subscription">Добавить подписку</string>
+    <string name="additional_invoice_info">Дополнительная информация</string>
+    <string name="agreement">Соглашение</string>
+    <string name="alert_error">Ошибка</string>
+    <string name="alert_info">Информация</string>
+    <string name="alert_you_sure">Вы точно хотите заблокировать эту карту?</string>
+    <string name="alert_you_sure_service">Вы точно хотите подключить эту услугу?</string>
+    <string name="all_country">Все страны</string>
+    <string name="all_regions">Все регионы</string>
+    <string name="all_templates">Все</string>
+    <string name="allowed">Операции разрешены</string>
+    <string name="allowed_forbidden" translatable="false">Разрешить/Запретить</string>
+    <string name="alseco_account">Счет</string>
+    <string name="alseco_owner_address">Адрес</string>
+    <string name="alseco_owner_full_name">Ф.И.О <!--плательщика--></string>
+    <string name="alseco_personal_code">Лицевой счет</string>
+    <string name="alseco_total_amount">Итого к оплате по квитанции:</string>
+    <string name="american_dollar">Американский доллар</string>
+    <string name="amount">Сумма</string>
+    <string name="amount_conversion">Сумма конвертации</string>
+    <string name="amount_of_indexes">Количество</string>
+    <string name="amount_payments_day">Сумма платежей в сутки</string>
+    <string name="amount_with_fee">Сумма с учетом комиссии</string>
+    <item name="ampm_circle_radius_multiplier" type="string" translatable="false">0.19</item>
+    <string name="animals">Животные</string>
+    <string name="answer">Ответ на вопрос</string>
+    <string name="app_name">Optima24</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="application_date">Дата подачи заявки:</string>
+    <string name="application_date2">Дата подачи заявки</string>
+    <string name="application_details">Детали заявки</string>
+    <string name="application_language">Язык интерфейса</string>
+    <string name="application_number">Номер заявки:</string>
+    <string name="application_number2">Номер заявки</string>
+    <string name="application_status">Статус заявки:</string>
+    <string name="applications">Заявки</string>
+    <string name="applications_catalog">Каталог заявок</string>
+    <string name="applications_history">История заявок</string>
+    <string name="at_you">У вас</string>
+    <string name="atf24">Optima 24</string>
+    <string name="atf_news">Новости Optima24</string>
+    <string name="atm">Банкомат</string>
+    <string name="branches_and_terminals_atm">Банкоматы, офисы, терминалы</string>
+    <string name="attempt_atf">Осталось попыток</string>
+    <string name="attention">Внимание!</string>
+    <string name="authorize">Авторизироваться</string>
+    <string name="auto_make_active">Запустить</string>
+    <string name="auto_make_stop">Остановить</string>
+    <string name="auto_pay_add">Автоплатёж добавлен</string>
+    <string name="auto_pay_update">Автоплатёж обновлен</string>
+    <string name="auto_payment">Автооплата</string>
+    <string name="auto_payment_activ">Запущен</string>
+    <string name="auto_payment_activ2">Работает</string>
+    <string name="auto_payment_date">Число</string>
+    <string name="auto_payment_days">Дни</string>
+    <string name="auto_payment_deleted">Автоплатеж успешно удален</string>
+    <string name="auto_payment_out_of_count">Количество 0</string>
+    <string name="auto_payment_period">Периодичность</string>
+    <string name="auto_payment_start_date">Дата первого платежа</string>
+    <string name="auto_payment_stop">Остановлен</string>
+    <string name="auto_payment_stop_by_manager">Остановлен менеджером</string>
+    <string name="auto_payment_time">Время</string>
+    <string name="auto_payment_type_can_be_only_monthly">Периодичность может быть только ежемесячным</string>
+    <string name="auto_payment_write_off_type">Тип списания</string>
+    <string name="auto_template_exists">Автоплатеж с данными параметрами уже сохранен</string>
+    <string name="auto_template_name">Название автоплатежа</string>
+    <string name="auto_templates">Автоплатежи</string>
+    <string name="available">Доступно</string>
+    <string name="back">назад</string>
+    <string name="back_">Назад</string>
+    <string name="background_mode_atf24">Фоновый режим Optima24</string>
+    <string name="bank">Банк</string>
+    <string name="bank_contacts">Контакты банка</string>
+    <string name="bank_name">Введите название банка</string>
+    <string name="bank_of_name">ОАО Оптима Банк</string>
+    <string name="bank_recipient">Банк получатель</string>
+    <string name="before">до</string>
+    <string name="begin_period">Начало периода</string>
+    <string name="begin_time">Дата начала</string>
+    <string name="behind">за</string>
+    <string name="beneficiary_account">Cчет получателя платежа</string>
+    <string name="bic">БИК</string>
+    <string name="block">Блокировать</string>
+    <string name="block_card">Заблокировать карту</string>
+    <string name="blocked_amount">Заблокированная сумма</string>
+    <string name="branch">Отделение банка</string>
+    <string name="branches">Офисы</string>
+    <string name="bring_phone_to_reader">Поднесите смартфон к устройству чтения карт</string>
+    <string name="bring_the_card">"Поднесите карту,
+чтобы отсканировать"</string>
+    <string name="button10_large_text" translatable="false">Отмена</string>
+    <string name="button11_large_text" translatable="false">0</string>
+    <string name="button1_large_text" translatable="false">1</string>
+    <string name="button2_large_text" translatable="false">2</string>
+    <string name="button2_small_text" translatable="false">ABC</string>
+    <string name="button3_large_text" translatable="false">3</string>
+    <string name="button3_small_text" translatable="false">DEF</string>
+    <string name="button4_large_text" translatable="false">4</string>
+    <string name="button4_small_text" translatable="false">GHI</string>
+    <string name="button5_large_text" translatable="false">5</string>
+    <string name="button5_small_text" translatable="false">JKL</string>
+    <string name="button6_large_text" translatable="false">6</string>
+    <string name="button6_small_text" translatable="false">MNO</string>
+    <string name="button7_large_text" translatable="false">7</string>
+    <string name="button7_small_text" translatable="false">PQRS</string>
+    <string name="button8_large_text" translatable="false">8</string>
+    <string name="button8_small_text" translatable="false">TUV</string>
+    <string name="button9_large_text" translatable="false">9</string>
+    <string name="button9_small_text" translatable="false">WXYZ</string>
+    <string name="buy_bank">"Покупка
+Банком"</string>
+    <string name="by">по</string>
+    <string name="calc_param1">Количество проживающих</string>
+    <string name="calc_param2">Отапливаемая площадь</string>
+    <string name="call_center_text">call-центр</string>
+    <string name="call_skype">Позвонить через скайп</string>
+    <string name="call_whatsApp">Отправить сообщение в WhatsApp</string>
+    <string name="cancel">Отменить</string>
+    <string name="cancel_app">Отменить заявку</string>
+    <string name="cancel_request">Введите комментарий для отмены заявки</string>
+    <string name="cancellation_confirmation_question">Вы действительно хотите отменить заявку?</string>
+    <string name="cancellation_reason_hint">Напишите причину отмены заявки…</string>
+    <string name="capitalization">Капитализация</string>
+    <string name="capitalization2">Капитализация:</string>
+    <string name="card">Карта</string>
+    <string name="card_accounts">Карты</string>
+    <string name="card_and_accounts">Счета и карты</string>
+    <string name="card_debt">Общая задолженность</string>
+    <string name="card_digitization_error">Ошибка оцифровки карты</string>
+    <string name="card_for_payment">Карта для оплаты</string>
+    <string name="card_is_blocked">Заблокирована</string>
+    <string name="card_is_closed">Закрыта</string>
+    <string name="card_limit">Сумма кредитного лимита</string>
+    <string name="card_not_defined">Карта не определена</string>
+    <string name="card_rename">Переименование карты</string>
+    <string name="card_writing_out">Выписка по карте</string>
+    <string name="cards">Карты</string>
+    <string name="cards_deposits_credits">Карточки / Кредиты / Депозиты</string>
+    <string name="carry_auto_payment_24hours">"Проведение автоплатежа
+через 24 часа"</string>
+    <string name="cash_out">Выдача наличных</string>
+    <string name="cash_out_input">Выдача и прием наличных</string>
+    <string name="cat">Кот</string>
+    <string name="change">Изменить</string>
+    <string name="change_card_status">Статус карты был изменен</string>
+    <string name="change_number_acc">Переименование текущего счета</string>
+    <string name="change_number_card">Переименование карты</string>
+    <string name="change_number_credit">Переименование кредита</string>
+    <string name="change_number_depoz">Переименование депозита</string>
+    <string name="change_number_nakop">Переименование накопительного счета</string>
+    <string name="change_number_wish">Переименование цели</string>
+    <string name="change_password">Поменять пароль</string>
+    <string name="change_template">Изменить шаблон платежа</string>
+    <string name="change_transfer_template">Изменить шаблон перевода</string>
+    <string name="changes_history">История изменений</string>
+    <string name="channel_name">Optima24</string>
+    <string name="channel_description">Optima24 Notifications</string>
+    <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+    <string name="check_requisites">Для совершения операции проверьте указанные ранее реквизиты.</string>
+    <string name="china_yuan">Китайский юань</string>
+    <string name="choose">Выберите</string>
+    <string name="choose_account">Выберите счет</string>
+    <string name="choose_account_toast">Выберите счет списания</string>
+    <string name="choose_action">Выберите действие</string>
+    <string name="choose_card">Выберите карту</string>
+    <string name="choose_card_for_payment">Выбор карты для оплаты</string>
+    <string name="choose_card_to_payment">Выберите счет списания</string>
+    <string name="choose_card_toast">Выберите карту списания</string>
+    <string name="choose_correct_date">Выберите актуальную дату</string>
+    <string name="choose_region">Выберите регион</string>
+    <string name="chooser_email">Выберите мессенджер</string>
+    <item name="circle_radius_multiplier" translatable="false" type="string">0.82</item>
+    <item name="circle_radius_multiplier_24HourMode" translatable="false" type="string">0.85</item>
+    <string name="citizenship">Гражданство</string>
+    <string name="city">Город</string>
+    <string name="client_already_registered">Пользователь уже зарегистрирован в приложении Optima24, для дальнейшей работы с приложением пройдите процедуру авторизации или обратитесь в Контакт-центр по номеру 2424</string>
+    <string name="client_already_registered_generic_error">Пользователь уже зарегистрирован в приложении Optima24, для дальнейшей работы с приложением пройдите процедуру авторизации или обратитесь в Контакт-центр по номеру 2424</string>
+    <string name="client_has_blocked">Пользователь уже зарегистрирован в приложении Optima24. В данный момент учетная запись пользователя заблокирована, обратитесь в Контакт-центр по номеру 2424</string>
+    <string name="client_not_found">Клиент не найден</string>
+    <string name="client_with_idn_has_already_exist">"К сожалению, вы не можете быть зарегистрированы.
+Такой номер ИИН уже зарегистрирован."</string>
+    <string name="client_with_number_has_already_exist">"К сожалению, вы не можете быть зарегистрированы.
+Такой номер телефона уже зарегистрирован."</string>
+    <string name="close_date">Дата закрытия:</string>
+    <string name="closed_account">Данный счет закрыт</string>
+    <string name="closed_card">Карта закрыта</string>
+    <string name="closed_deposit">Данный депозит закрыт</string>
+    <string name="cny">Китайский юань</string>
+    <string name="code">Вход по коду</string>
+    <string name="code_expire">Ваш код истечет в течении минут!</string>
+    <string name="comment">Комментарий</string>
+    <string name="comments">Комментарии</string>
+    <string name="common_google_play_services_enable_button" translatable="false">Enable</string>
+    <string name="common_google_play_services_enable_text" translatable="false">"%1$s wont work unless you enable Google Play services."</string>
+    <string name="common_google_play_services_enable_title" translatable="false">Enable Google Play services</string>
+    <string name="common_google_play_services_install_button" translatable="false">Install</string>
+    <string name="common_google_play_services_install_text" translatable="false">"%1$s wont run without Google Play services, which are missing from your device."</string>
+    <string name="common_google_play_services_install_title" translatable="false">Get Google Play services</string>
+    <string name="common_google_play_services_notification_ticker" translatable="false">Google Play services error</string>
+    <string name="common_google_play_services_unknown_issue" translatable="false">%1$s is having trouble with Google Play services. Please try again.</string>
+    <string name="common_google_play_services_unsupported_text" translatable="false">"%1$s wont run without Google Play services, which are not supported by your device."</string>
+    <string name="common_google_play_services_update_button" translatable="false">Update</string>
+    <string name="common_google_play_services_update_text" translatable="false">"%1$s wont run unless you update Google Play services."</string>
+    <string name="common_google_play_services_update_title" translatable="false">Update Google Play services</string>
+    <string name="common_google_play_services_updating_text" translatable="false">"%1$s wont run without Google Play services, which are currently updating."</string>
+    <string name="common_google_play_services_wear_update_text" translatable="false">New version of Google Play services needed. It will update itself shortly.</string>
+    <string name="common_open_on_phone" translatable="false">Open on phone</string>
+    <string name="common_signin_button_text" translatable="false">Sign in</string>
+    <string name="common_signin_button_text_long" translatable="false">Sign in with Google</string>
+    <string name="commun_with_bank">Связь с банком</string>
+    <string name="complete_full">Заполните все поля</string>
+    <string name="comprosentation">Компрометация карты</string>
+    <string name="conclusion_date">Дата заключения:</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="confirm_change_default_card">Вы хотите сменить карту для оплаты?</string>
+    <string name="confirm_default_card">Выберите карту для оплаты и нажмите «Подтвердить»</string>
+    <string name="confirm_password">Подтверждение пароля</string>
+    <string name="confirmation_requisites">Подтверждение реквизитов</string>
+    <string name="connect">Подключить</string>
+    <string name="connect_to_atf24">"Подлючиться
+к Optima24"</string>
+    <string name="connect_with_bank">Связаться с банком</string>
+    <string name="consumption">Потребление</string>
+    <string name="contact_bank">Связаться с банком</string>
+    <string name="contact_center">Контакт центр</string>
+    <string name="contract">Договор</string>
+    <string name="contract_number">Номер договора:</string>
+    <string name="contract_number_">№ договора:</string>
+    <string name="contragent_address">Адрес получателя</string>
+    <string name="contragent_country">Страна получателя</string>
+    <string name="contragent_register_country">Страна регистрации получателя</string>
+    <string name="conversion_rate">Курс конвертации</string>
+    <string name="convert">Конвертировать</string>
+    <string name="convert_currency">Конвертировать валюту</string>
+    <string name="costs">Расходы</string>
+    <string name="costs_30_days">Расходы за 30 дней</string>
+    <string name="costs_month_days">За текущий месяц</string>
+    <string name="count_trank_day">Количество транзакций (в сутки)</string>
+    <string name="countries_name">Введите название страны</string>
+    <string name="country">Страна</string>
+    <string name="create">Создать</string>
+    <string name="create_auto_pay">Создание автоплатежа</string>
+    <string name="create_template">Создать шаблон</string>
+    <string name="create_template_">Создание шаблона</string>
+    <string name="create_template_payment">Создать шаблон платежа</string>
+    <string name="credit_account">Счет зачисления</string>
+    <string name="credited">Начислено</string>
+    <string name="currency">Валюта транзакции</string>
+    <string name="currency_">Валюта транзакции:</string>
+    <string name="currency_balances">Валютные остатки</string>
+    <string name="current">Текущие</string>
+    <string name="current_account_type">Текущий счет</string>
+    <string name="current_accounts">Счета</string>
+    <string name="current_accounts_tek">Текущие счета</string>
+    <string name="current_accounts_type">Текущие счета</string>
+    <string name="current_card_accounts">Карточный счет</string>
+    <string name="current_card_closed">Карточный счет закрыт</string>
+    <string name="current_cards_accounts">Карточные счета</string>
+    <string name="current_cards_accounts_cards">Карточные счета/Карты</string>
+    <string name="current_counter_index">Текущие показатели</string>
+    <string name="current_counter_index_date">Дата текущих показателей</string>
+    <string name="current_password">Текущий пароль</string>
+    <string name="data_time">Данные на</string>
+    <string name="day_of_week_label_typeface" translatable="false">sans-serif-light</string>
+    <string name="day_picker_description" translatable="false">Month grid of days</string>
+    <string name="dear_customer">Уважаемый клиент!</string>
+    <string name="dear_customer_alert">Данная страна является страной с высоким риском мошенничества. ОАО «Оптима Банк» не рекомендует снимать ограничения для стран с повышенным риском мошенничества. Снимая ограничения Вы соглашаетесь, что осознаете высокую степень риска и подтверждаете своё решение. В случае снятия ограничения, «ОАО Оптима Банк» рекомендует по возвращению в Кыргызстан осуществить перевыпуск карты и ПИН-кода</string>
+    <string name="debit">Списания</string>
+    <string name="debit_account">Счет списания</string>
+    <string name="debt">Долг</string>
+    <string name="debt_">Долг:</string>
+    <string name="debt_sum">Сумма задолженности</string>
+    <string name="delete_auto_payment">Удалить автоплатеж</string>
+    <string name="delete_auto_template">Удалить автоплатеж?</string>
+    <string name="delete_subscription">Удалить подписку</string>
+    <string name="delete_template">Удалить шаблон платежа</string>
+    <string name="delete_template_transfer">Удалить шаблон?</string>
+    <string name="delete_transfer_template">Удалить шаблон перевода</string>
+    <string name="deleted_key" translatable="false">%1$s deleted</string>
+    <string name="deposit_account_amount">Сумма на депозите:</string>
+    <string name="deposit_accounts">Депозиты</string>
+    <string name="deposit_info">ИНФОРМАЦИЯ ПО ДЕПОЗИТУ</string>
+    <string name="deposit_name">Название депозита</string>
+    <string name="deposit_rate">Ставка:</string>
+    <string name="deposit_rate_">Ставка:</string>
+    <string name="deposit_rename">Переименование депозита</string>
+    <string name="deposites">Депозиты</string>
+    <string name="details">Детали счета</string>
+    <string name="details_balance">Баланс:</string>
+    <string name="start_balance">Остаток на начало периода</string>
+    <string name="end_balance">Остаток на конец периода</string>
+    <string name="details_cardholder">Владелец:</string>
+    <string name="details_expire_date">Активна до:</string>
+    <string name="details_number">Номер:</string>
+    <string name="device_status">Статус устройства</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="digital_world_ATFBank">"Готовы вступить
+в мир Digital
+ от Optima банка?"</string>
+    <string name="digitization_info">Оцифровка карты позволит Вам оплачивать покупки вашим смартфоном, достаточно просто приложить телефон к бесконтактном терминалу.</string>
+    <string name="disabled">Выключено</string>
+    <string name="disabled2">Выключены</string>
+    <string name="do_not_use_code_more">Отключить авторизацию по коду?</string>
+    <string name="do_not_use_code_more_switch">Использовать код доступа</string>
+    <string name="do_not_use_fingerprint_more">Отключить авторизацию по Touch ID?</string>
+    <string name="do_not_use_fingerprint_more_switch">Использовать Touch ID</string>
+    <string name="doc_num">Номер документа</string>
+    <string name="done">Выполнен</string>
+    <string name="done_">Готово</string>
+    <string name="done_label" translatable="false">Done</string>
+    <string name="download_request">Скачать заявку</string>
+    <string name="during_period">за период</string>
+    <string name="empty_list_view">Список пуст</string>
+    <string name="enable_nfc">Включите NFC для продолжения</string>
+    <string name="enabled">Включено</string>
+    <string name="enabled2">Включены</string>
+    <string name="end_period">Конец периода</string>
+    <string name="end_period_cant">Конец периода не может быть раньше начала</string>
+    <string name="english" translatable="false">English</string>
+    <string name="enter">Вход</string>
+    <string name="enter_into_ATF24">Войти в Optima24</string>
+    <string name="enter_manually">Ввести вручную</string>
+    <string name="entry_using_login_code">Войти с помощью логина и пароля</string>
+    <string name="error_auto_pay">Ошибка проведения автоплатежа</string>
+    <string name="error_card_brand">Не удалось получить тип карты</string>
+    <string name="error_contactless_payment">Произошла ошибка при оплате</string>
+    <string name="error_empty">Пустое поле</string>
+    <string name="error_large_sum">Введенная сумма больше доступного остатка</string>
+    <string name="error_number_of_characters">Недопустимое количество символов</string>
+    <string name="error_register_client">Не удалось зарегистрировать клиента</string>
+    <string name="error_wrong_date">не раньше текущей даты</string>
+    <string name="error_wrong_format">неверный формат</string>
+    <string name="establish">Установить</string>
+    <string name="euro">Международный евро</string>
+    <string name="euro_" translatable="false">Euro</string>
+    <string name="exception">Возникла ошибка сбора данных.</string>
+    <string name="exception_data">Возникла ошибка сбора данных,пожалуйста перезапустите приложение.</string>
+    <string name="exception_mail">Возникла ошибка, возможно у вас нет мессенджера.</string>
+    <string name="exception_password_wrong">Неверный номер телефона или пароль.</string>
+    <string name="exception_skype">Возникла ошибка, возможно у вас не установлен Skype.</string>
+    <string name="exchange">Курсы</string>
+    <string name="exchange_rates">Курсы валют</string>
+    <string name="exist_subscription">Данная подписка уже добавлена</string>
+    <string name="exiting_application">Выход из приложения</string>
+    <string name="expenses">Затраты:</string>
+    <string name="expire_date_to">Действительна до</string>
+    <string name="facebook" translatable="false">Facebook</string>
+    <string name="fcm_fallback_notification_channel_label" translatable="false">Miscellaneous</string>
+    <string name="fee">Комиссия</string>
+    <string name="fee_type">Тип комиссии</string>
+    <string name="female">Женский</string>
+    <string name="filter">Фильтр</string>
+    <string name="fingerprint_description">Confirm fingerprint to continue</string>
+    <string name="fingerprint_hint">Авторизация с помощью отпечатка пальца</string>
+    <string name="fingerprint_not_recognized">Не распознано. Попробуйте еще</string>
+    <string name="fingerprint_success">Распознано</string>
+    <string name="first_name">Фамилия</string>
+    <string name="fitsamat">fitsamat</string>
+    <string name="fixed_payment">Фиксированная плата</string>
+    <string name="fixed_payments">Фиксированные платежи</string>
+    <string name="for_half_year">За пол года</string>
+    <string name="for_month">За месяц</string>
+    <string name="for_three_month">За три месяца</string>
+    <string name="for_week">За неделю</string>
+    <string name="forbidden">Операции запрещены</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="free_by_KZ_at_mobile">Короткий номер для абонентов сети Beeline, MegaCom и О!</string>
+    <string name="free_by_KZ_at_teleph">Бесплатно по Казахстану с городского</string>
+    <string name="free_by_KZ_at_telephAround">Круглосуточная поддержка держателей карточек</string>
+    <string name="free_by_KZ_at_telephStacionar">Бесплатная линия со стационарных телефонов ОАО "Кыргызтелеком"</string>
+    <string name="free_call_station_text">бесплатно по Казахстану с городских телефонов</string>
+    <string name="free_call_text">бесплатно по Казахстану с мобильного вашего оператора</string>
+    <string name="from">Начало</string>
+    <string name="from_">Откуда</string>
+    <string name="from_currency">С валюты</string>
+    <string name="general_category">Общая категория</string>
+    <string name="general_settings">Общие</string>
+    <string name="get_balance">Узнать задолженность</string>
+    <string name="get_balans">Узнать баланс</string>
+    <string name="hint_how_to_add_template">Добавить шаблон вы можете в меню \"Платежи\" и \"Переводы\"</string>
+    <string name="history_amount">Cумма</string>
+    <string name="history_date">Дата</string>
+    <string name="history_service">Тип платежа</string>
+    <string name="history_status">Статус оплаты</string>
+    <string name="history_title">История операций</string>
+    <string name="hour_picker_description" translatable="false">Hours circular slider</string>
+    <string name="https">https</string>
+    <string name="i_agree">подтверждаю согласие с вышеприведенными условиями!</string>
+    <string name="i_agree_with_contract_and_policy">Я ознакомлен и присоединяюсь к Договору и Условиям конфиденциальности.</string>
+    <string name="i_approve">3. Настоящим подтверждаю, что данная операция проводится от моего имени и за мой счет, что перевод не связан с незаконной деятельностью либо сокрытием от налогообложения. Обязуюсь в случае возникновения дополнительных вопросов по данной операции предоставить необходимую информацию по запросу ОАО «Оптима Банк» и иностранных Банков.</string>
+    <string name="iin">ИИН</string>
+    <string name="in">в</string>
+    <string name="inATM">В банкоматах</string>
+    <string name="in_from_account">в валюте списания</string>
+    <string name="in_total">Итого</string>
+    <string name="in_trade_and_service_enterprises">В торгово-сервисных предприятиях:</string>
+    <string name="including_commission">Включая комиссию</string>
+    <string name="amount_including_commission">Сумма включая комиссию</string>
+    <string name="incorrect_card_number">Некорректный номер карты</string>
+    <string name="incorrect_beneficiary_number">Неверный счет получателя</string>
+    <string name="incorrect_code_operation">Неверный код подтверждения операции</string>
+    <string name="incorrect_sms_code_confirmation">Неверный СМС-код подтверждения</string>
+    <string name="incorrect_phone_number">Неправильный номер телефона</string>
+    <string name="incorrect_temp_password" translatable="false">Неверный временный пароль</string>
+    <string name="incorrect_password">Неверный пароль</string>
+    <string name="india">Индия</string>
+    <string name="indonesia">Индонезия</string>
+    <string name="initials_or_company_name">ФИО или название компании</string>
+    <string name="initials_or_name_recipient">ФИО/Наименование получателя</string>
+    <string name="initials_fullname_lastname">ФИО</string>
+    <string name="inn">ИНН</string>
+    <string name="input_card_from_number_fmt">Введите номер карты-получателя платёжной системы %1$s или %2$s</string>
+    <string name="input_first_last_name_error">Поле получателя должно содержать Имя и Фамилию латинскими буквами, разделенные одним пробелом.</string>
+    <string name="input_sms_to_register">Для завершения регистрации введите код подтверждения, отправленный вам по СМС.</string>
+    <string name="input_sum_greater_than_0">Введите сумму больше нуля</string>
+    <string name="input_sum">Введите сумму</string>
+    <string name="instagram" translatable="false">Instagram</string>
+    <string name="installing_non_market_apps">Устройство допускает установку с неизвестных источников</string>
+    <string name="interfaceLang">Язык интерфейса</string>
+    <string name="internet_connection_error">Ошибка соединения</string>
+    <string name="internet_switched_off">Проверьте соединение с интернетом</string>
+    <string name="introduce_new">Ввести новую карту/счет</string>
+    <string name="introduced">Ознакомлен</string>
+    <string name="invoiceable">Подписки</string>
+    <string name="is_visible">видимость</string>
+    <string name="item_is_selected" translatable="false">%1$s selected</string>
+    <string name="kazakh" translatable="false">Қазақша</string>
+    <string name="kazakhstan_tenge">Казахстанский тенге</string>
+    <string name="knp_name">Введите название кода</string>
+    <string name="kpp">КПП получателя</string>
+    <string name="kyrgyz" translatable="false">Кыргыз</string>
+    <string name="kyrgyz_som">Киргизский сом</string>
+    <string name="kz">КЗ</string>
+    <string name="kzt">KZT</string>
+    <string name="last_name">Отчество</string>
+    <string name="last_version_of_android_os">Рекомендуем обновить ОС до последней версии Android</string>
+    <string name="license_agreement">"1. Разрешаю Банку предоставлять информацию о проводимом переводе денег в правоохранительные органы и Национальный Банк КР по их требованию.
+ 2. Настоящим подтверждаю, что данный перевод денег не связан с осуществлением валютной операции, требующей получения регистрационного свидетельства, свидетельства об уведомлении, учетного номера контракта.
+ 3. Банк не несет ответственности за неверно или не полностью указанные Отправителем реквизиты Бенефициара. В случае возврата перевода по вине Клиента Банк зачисляет на счет Клиента сумму, возвращенную банком - корреспондентом (при наличии счета - Отправителя). Ответственность за предоставление недостоверных данных, отраженных в поручении на перевод денег возлагается на отправителя денег.
+ 4. Подтверждаю, что данный платеж и (или) перевод денег не связан с финансированием террористической или экстремистской деятельности и иным пособничеством терроризму либо экстремизму.
+ 5. Настоящим подтверждаю, что данная операция проводится от моего имени и за мой счет, что перевод не связан с незаконной деятельностью либо сокрытием от налогообложения. Обязуюсь в случае возникновения дополнительных вопросов по данной операции предоставить необходимую информацию по запросу ОАО «Оптима Банк» и иностранных Банков."</string>
+    <string name="limitAPC">Лимит на оплату по чипу Азиатско - Тихоокеанский регион</string>
+    <string name="limitAPM">Лимит на оплату по магнитной ленте Азиатско - Тихоокеанский регион</string>
+    <string name="limitAPR">Лимит на оплату с предъявление карты Азиатско - Тихоокеанский регион</string>
+    <string name="limitCHINAC">Лимит на оплату по чипу CHINA</string>
+    <string name="limitCHINAM">Лимит на оплату по магнитной ленте CHINA</string>
+    <string name="limitCHINAR">Лимит на оплату с предъявление карты CHINA</string>
+    <string name="limitTHAILANDC">Лимит на оплату по чипу THAILAND</string>
+    <string name="limitTHAILANDM">Лимит на оплату по магнитной ленте THAILAND</string>
+    <string name="limitTHAILANDR">Лимит на оплату с предъявление карты THAILAND</string>
+    <string name="limitUSAC">Лимит на оплату по чипу USA</string>
+    <string name="limitUSAM">Лимит на оплату по магнитной ленте USA</string>
+    <string name="limitUSAR">Лимит на оплату с предъявление карты USA</string>
+    <string name="limit_dayKZT">Общий лимит (с)</string>
+    <string name="limit_dayUSD">Лимит в сутки (в USD)</string>
+    <string name="limit_daySOM">Лимит в сутки (в сомах)</string>
+    <string name="set_limit_start_date">Дата установки лимита</string>
+    <string name="set_limit_end_date">Дата окончания лимита</string>
+    <string name="ATM_LIMIT_CASH_LIMIT" translatable="false">Обналичивание в АТМ и POS-терминалах</string>
+    <string name="MAGSTRIPE_INTERNATIONAL" translatable="false">Суточный лимит на операции по магнитной полосе за пределами КР</string>
+    <string name="RETAIL_CARD_PRESENT" translatable="false">Безналичные покупки через POS-терминалы</string>
+    <string name="CARD_NOT_PRESENT" translatable="false">Интернет-покупки / платежи</string>
+    <string name="limit_for_cash_withdrawal_outside_rk">Лимит на снятие наличных за пределами КР</string>
+    <string name="limit_for_cash_withdrawal_rk">Лимит на снятие наличных в банкоматах по КР</string>
+    <string name="limit_touch_id">Превышен лимит попыток авторизации с Touch ID</string>
+    <string name="limits_info">Информация о лимитах</string>
+    <string name="loading">Загрузка…</string>
+    <string name="loan_accounts">Кредиты</string>
+    <string name="loan_amount">Cумма платежа</string>
+    <string name="loan_card">Остаток на карте</string>
+    <string name="loan_date">Дата платежа</string>
+    <string name="loan_debt">Остаток долга</string>
+    <string name="loan_debt_sum">Сумма долга</string>
+    <string name="loan_end_date">"Дата окончания
+займа"</string>
+    <string name="loan_graphic">График погашения</string>
+    <string name="loan_info">ИНФОРМАЦИЯ ПО КРЕДИТУ</string>
+    <string name="loan_interest">Проценты</string>
+    <string name="loan_is_closed">Закрыт</string>
+    <string name="loan_name">Название кредита</string>
+    <string name="loan_next_date">"Дата следующего
+платежа:"</string>
+    <string name="loan_next_pay_sum">"Сумма следующего
+платежа:"</string>
+    <string name="loan_rename">Переименование кредита</string>
+    <string name="loan_schedule">График погашения</string>
+    <string name="loan_start_date">Дата начала займа</string>
+    <string name="loan_sum">Сумма займа</string>
+    <string name="loans">Кредиты</string>
+    <string name="lock">Заблокировать</string>
+    <string name="lock_card_hint">"Вы собираетесь заблокировать платежную карту
+"</string>
+    <string name="lock_hint">После блокировки карты Вы НЕ сможете ее использовать для снятия денег и проведения платежей в торговой сети и в сети Интернет. Разблокировать карту Вы сможете в Интернет-банкинге Оптима24 или заполнив соответствующее заявление в отделении Банка, если вы уверены, что данные карты не попали посторонним лицам. Иначе рекомендуется ее перевыпустить.</string>
+    <string name="login">Логин</string>
+    <string name="login_key">login_key</string>
+    <string name="logout">Выйти</string>
+    <string name="lost_card">Утеря карты</string>
+    <string name="m_attention">Уважаемый Клиент! В связи с плавающим курсом сом и возможными изменениями валютных курсов в короткие промежутки времени, - при осуществлении операции по конвертациям производится блокировка суммы по курсу НБ КР. Фактическое списание осуществляется по курсу Банка на момент разблокировки и завершения операции</string>
+    <string name="main">Главная</string>
+    <string name="main_debt_sum">Сумма основного долга</string>
+    <string name="main_office_address">ул. Панфилова, 98А</string>
+    <string name="make_card_account_visible_first">Сначала сделайте карточный счет видимым</string>
+    <string name="male">Мужской</string>
+    <string name="manual">Инструкция</string>
+    <string name="many_attempts">Слишком много попыток</string>
+    <string name="map">Map</string>
+    <string name="max_limit_dayKZT">Максимальная сумма операции (с)</string>
+    <string name="menu">Меню</string>
+    <string name="message_title">Сообщения</string>
+    <string name="meters">метров</string>
+    <string name="meters_data">Показания счетчиков</string>
+    <string name="middle_name">Имя</string>
+    <string name="min_balance">Неснижаемый остаток</string>
+    <string name="min_payment">Сумма минимального платежа</string>
+    <string name="minute_picker_description" translatable="false">Minutes circular slider</string>
+    <string name="mobile_operator_not_found">Мобильный оператор не найден, попробуйте повторно набрать номер абонента</string>
+    <string name="mobile_phone">Мобильный телефон</string>
+    <string name="money_from">Откуда снять деньги</string>
+    <string name="money_to">Куда перевести</string>
+    <string name="monthly_payment">Ежемесячный платеж:</string>
+    <string name="move_to_link">Для вxода перейдите по ссылке</string>
+    <string name="movement_of_funds">Движения средств</string>
+    <string name="multi" translatable="false">MULTI</string>
+    <string name="name">Название</string>
+    <string name="name_op_recipient">Название операции или получателя</string>
+    <string name="need_agreement">Подтвердите согласие с условиями банка</string>
+    <string name="need_fill_field_fmt">Необходимо заполнить поле %1$s</string>
+    <string name="need_replenish_savings_acc">Необходимость пополнить накопительный счет</string>
+    <string name="nepal">Непал</string>
+    <string name="net_payments">Интернет платежи</string>
+    <string name="new_fines">Новые штрафы</string>
+    <string name="new_fingerprint_enrolled_description">Новые данные для авторизации по Touch ID будут добавлены в устройство, укажите ваш пароль для устройства.</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="new_receipts">Новые квитанции</string>
+    <string name="news">Новости</string>
+    <string name="news_bank">Новости банка</string>
+    <string name="next">Далее</string>
+    <string name="next_payment">След. платеж:</string>
+    <string name="next_row">"
+"</string>
+    <string name="Cancel">нет</string>
+    <string name="no_accounts">Нет счетов</string>
+    <string name="non_contact_payments">Бесконтактные платежи</string>
+    <string name="non_contact_payments_n">"Бесконтактные
+платежи"</string>
+    <string name="noncontact_payments">Бесконтактные платежи</string>
+    <string name="not_available">Данный функционал не доступен.</string>
+    <string name="not_chosen_card">Карта списания не выбрана</string>
+    <string name="not_data">Нет данных</string>
+    <string name="not_data_fmt">Нет данных за период %1$s - %2$s</string>
+    <string name="not_digitized_card">У Вас не имеется оцифрованных карт. Пожалуйста авторизуйтесь в приложении и произведите оцифровку нужной вам карты</string>
+    <string name="not_done">Не выполнен</string>
+    <string name="not_enough_balance">Недостаточно средств на счете</string>
+    <string name="not_equals_password">пароли не совпадают</string>
+    <string name="not_invoices">Нет неоплаченных квитанций</string>
+    <string name="not_limited">Не ограничено</string>
+    <string name="not_notice">У Вас нет уведомлений</string>
+    <string name="not_now">Не сейчас</string>
+    <string name="note">Обратите внимание!</string>
+    <string name="nothing_find">Ничего не найдено</string>
+    <string name="notice">Уведомления</string>
+    <string name="notice1">уведомления</string>
+    <string name="notice2">уведомлений</string>
+    <string name="notice3">уведомление</string>
+    <string name="notice4">Уведомление</string>
+    <string name="empty_notifications_placeholder">У Вас пока нет уведомлений</string>
+    <string name="now_you_can_enter_atf24">Теперь Вы можете войти в Optima24. Для входа перейти перейдите на страницу авторизации</string>
+    <string name="num" translatable="false">9595</string>
+    <string name="number">Номер</string>
+    <string name="number_attempt">Вы исчерпали количество попыток</string>
+    <string name="number_of_days">Количество дней (начиная с сегодня)</string>
+    <item name="numbers_radius_multiplier_inner"  translatable="false" type="string">0.6</item>
+    <item name="numbers_radius_multiplier_normal" translatable="false" type="string">0.81</item>
+    <item name="numbers_radius_multiplier_outer" translatable="false" type="string">0.83</item>
+    <string name="of">из</string>
+    <string name="of_fmt">из %1$s</string>
+    <string name="of_year">года</string>
+    <string name="off">от</string>
+    <string name="offices_and_atms">Офисы и Банкоматы</string>
+    <string name="on_internet">в интернете</string>
+    <string name="online_applications">Онлайн-заявки</string>
+    <string name="open_date">Дата открытия:</string>
+    <string name="operation_number">Номер операции</string>
+    <string name="operation_success">Операция выполнена успешно</string>
+    <string name="operations_from">Операции с</string>
+    <string name="operations_to">по</string>
+    <string name="orb_search_action" translatable="false">Search Action</string>
+    <string name="other">Прочее</string>
+    <string name="overpayment">Переплата</string>
+    <string name="owner">Собственник:</string>
+    <string name="paid">Выплачено:</string>
+    <string name="paid_by_both">раздельная</string>
+    <string name="paid_by_both_hint">При выборе раздельной комиссии отправитель оплачивает комиссию за услуги своего банка, получатель оплачивает комиссию за услуги всех остальных банков (банка-корреспондента, банка-посредника, банка получателя)</string>
+    <string name="paid_by_receiver">за счет получателя</string>
+    <string name="paid_by_sender">за счет отправителя</string>
+    <string name="password">Пароль</string>
+    <string name="password_hint">Длина пароля не может быть меньше 8 и больше 15 символов. Пароль должен содержать как буквы так и цифры. Будьте внимательны при вводе. Пароль чувствителен к регистру.</string>
+    <string name="password_key">password_key</string>
+    <string name="password_successful_changed">Пароль успешно изменен!</string>
+    <string name="password_toggle_content_description" translatable="false">Toggle password visibility</string>
+    <string name="passwords_doesnt_match">Пароль не соответствует</string>
+    <string name="past">Прошлые</string>
+    <string name="pay_action">Оплатить</string>
+    <string name="pay_again">Повторить платеж</string>
+    <string name="pay_by_phone">Оплатить телефоном</string>
+    <string name="pay_debt">Оплатить долг</string>
+    <string name="pay_service">Оплатить услугу</string>
+    <string name="payed">Оплачено</string>
+    <string name="payment_accepted_for_processing">Платеж принят в обработку</string>
+    <string name="payment_amount">Платеж на сумму</string>
+    <string name="payment_confirmation">Подтверждение платежа</string>
+    <string name="payment_date">Дата операции</string>
+    <string name="payment_fines">штраф</string>
+    <string name="payment_format_hint">Формат ввода:</string>
+    <string name="payment_info">Информация о платеже</string>
+    <string name="payment_services">Оплата услуг</string>
+    <string name="payment_sum">Сумма платежа</string>
+    <string name="payment_code">Код платежа</string>
+    <string name="payments">Платежи</string>
+    <string name="payments_history">История</string>
+    <string name="payments_history_title">История платежей</string>
+    <string name="payments_list">Список</string>
+    <string name="payments_without_reg">Платежи без регистрации</string>
+    <string name="payments_without_registration">"Платежи без
+регистрации"</string>
+    <string name="penalty">Пеня</string>
+    <string name="penalty_auto_num">Номер автомашины</string>
+    <string name="penalty_blank_num">Номер бланка</string>
+    <string name="penalty_blank_ser">Серия бланка</string>
+    <string name="penalty_blank_type">Тип бланка</string>
+    <string name="penalty_date">Дата нарушения</string>
+    <string name="penalty_doc_num">Номер водительского удостоверения</string>
+    <string name="penalty_info">Информация о штрафе</string>
+    <string name="penalty_kbk">КБК</string>
+    <string name="penalty_kno">КНО</string>
+    <string name="penalty_knp">КНП</string>
+    <string name="penalty_location">Место нарушения</string>
+    <string name="penalty_number">Номер штрафа</string>
+    <string name="penalty_person">Нарушитель</string>
+    <string name="penalty_person_idn">ИИН нарушителя</string>
+    <string name="penalty_sum">Сумма штрафа</string>
+    <string name="penalty_type">Вид нарушения</string>
+    <string name="penny">Пеня</string>
+    <string name="percent_symbol" translatable="false">%</string>
+    <string name="period">Период</string>
+    <string name="perpetual_deposit">Бессрочно</string>
+    <string name="personal_account">Личный счет</string>
+    <string name="personal_data">Личные данные</string>
+    <string name="phone">XXX XXX XX XX</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="photo_deleted">Фото удалено</string>
+    <string name="photo_uploaded">Фото загружено</string>
+    <string name="pin_code_step_enable_confirm">Введите код доступа еще раз</string>
+    <string name="pin_code_step_unlock">Ввод кода доступа</string>
+    <string name="please_confirm_contract_policy">Пожалуйста, подтвердите присоединение к Договору и Политике конфиденциальности.</string>
+    <string name="pond">Океан</string>
+    <string name="pos_terminal_pay">Оплата в POS-терминалах</string>
+    <string name="postal_code">Почтовый индекс</string>
+    <string name="pound_sterling">Фунт стерлингов</string>
+    <string name="prev_counter_index">Предыдущие показатели</string>
+    <string name="prev_counter_index_date">Дата предыдущих показателей</string>
+    <string name="priceSmsNotif">Стоимость сервиса определяется тарифами Банка в зависимости от выбранного тарифного плана SMS-уведомления подключаются на номер телефона, указанный вами при заключении Договора с Банком. Для уточнения номера телефона, обратитесь в Контакт-центр Банка по телефону 2424 Для включения или выключения услуги SMS-уведомления переведите тумблер в нужное положение на «Включено» либо «Выключено» и нажмите кнопку «Продолжить».</string>
+    <string name="process_digitizing_card">Процесс оцифровки карты</string>
+    <string name="profile_photo">Фото профиля</string>
+    <string name="profile_photo_update">Фото профиля успешно обновлен</string>
+    <string name="public_service">Коммунальные</string>
+    <string name="purchase_done">Операция выполнена</string>
+    <string name="purchases">Расходы</string>
+    <string name="push_notice">Push уведомления</string>
+    <string name="q_delete">Удалить шаблон?</string>
+    <string name="q_delete_subscription">Удалить подписку?</string>
+    <string name="q_delete_template">Удалить шаблон платежа?</string>
+    <string name="q_logout">Выйти?</string>
+    <string name="q_pay">Оплатить?</string>
+    <string name="radial_numbers_typeface" translatable="false">sans-serif</string>
+    <string name="rate">Валюта</string>
+    <!--RATE-->
+    <string name="pc_courses">Курсы по платежным картам</string>
+    <string name="cash_courses">Наличные курсы</string>
+    <string name="cashless_courses">Безналичные курсы</string>
+    <string name="nbrk_courses">Курсы НБКР</string>
+
+    <string name="rate_title">Курс валют</string>
+    <string name="rate_update_date">Курс для обмена валют и проведения операций в Optima24. Данные на</string>
+    <string name="re_new_password">Повторите новый пароль</string>
+    <string name="read_phone_state_text">Без доступа к идентификатору телефона или SIM карты приложение может работать некорректно. Предоставить доступ?</string>
+    <string name="reason_block_card">Причина блокировки</string>
+    <string name="reason_block_card_hint">Причина блокировки</string>
+    <string name="reason_card_lock">Укажите причину блокировки</string>
+    <string name="reccuring_payment_time">Время повторного платежа</string>
+    <string name="receipt">Квитанция</string>
+    <string name="receipt_">Квитанция:</string>
+    <string name="receipt_date">Дата счета</string>
+    <string name="receipt_expire_date">Оплатить до</string>
+    <string name="receipt_expire_date_">Оплатить до:</string>
+    <string name="receipt_number">Номер квитанции</string>
+    <string name="receiver">Получатель</string>
+    <string name="receiver_name">Имя получателя</string>
+    <string name="receivers_address">Адрес получателя</string>
+    <string name="receivers_bank_bic">БИК банка получателя</string>
+    <string name="receivers_bank_cor_account">Корсчет банка получателя</string>
+    <string name="receivers_bank_name">Наименование банка получателя</string>
+    <string name="receivers_country">Страна получателя</string>
+    <string name="receivers_country_choose">Выберите страну</string>
+    <string name="receivers_name_hint">Имя получателя указанное на карте</string>
+    <string name="recharge">Пополнения</string>
+    <string name="reenter_password">Повтор ввода пароля</string>
+    <string name="reference">Референс</string>
+    <string name="refresh_app">Для корректной работы нужно обновить приложение</string>
+    <string name="reg_filter_regex3" translatable="false">[a-zA-Zа-яА-ЯёЁ \\-/()]+</string>
+    <string name="region">Регионы</string>
+    <string name="region_or_type_operation">Выберите регион либо тип операции</string>
+    <string name="region_selected">Выбран регион</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="register_client">Зарегистрировать клиента</string>
+    <string name="registration">Регистрация</string>
+    <string name="regular_payment">Регулярный платеж</string>
+    <string name="remain_pay">"Текущая
+задолженность:"</string>
+    <string name="remainder">Неснижаемый остаток:</string>
+    <string name="remuneration">Вознаграждение</string>
+    <string name="repeat_payment">Повторять платеж</string>
+    <string name="repeat_time">Время повторного платежа</string>
+    <string name="replenish">Пополнить</string>
+    <string name="replenish_deposit">Пополнить депозит</string>
+    <string name="replenishment">по пополнению</string>
+    <string name="requests">Заявки</string>
+    <string name="requisites">Реквизиты</string>
+    <string name="requisites_intermediary_bank">Реквизиты банка посредника</string>
+    <string name="requisites_intermediary_bank_hint">Банк посредник(обязательно для заполнения для сумм более 100 000$)</string>
+    <string name="rotate">Вращать</string>
+    <string name="rub">Российский рубль</string>
+    <string name="rub_filter_regex1" translatable="false">[a-zA-Zа-яА-Я0-9-/()., ]+</string>
+    <string name="rub_filter_regex2" translatable="false">[a-zA-Zа-яА-Я0-9-/() ]+</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="russian_ruble">Российский рубль</string>
+    <string name="s_attention">\u0009<b>Обратите внимание!</b>"
+ \u0009 • При отправке перевода в пользу"<b> физического лица:</b> - выбрать сектор экономики<b> «9»</b>"
+ \u0009 • При отправке перевода в пользу"<b> юридического лица:</b> - выбрать сектор экономики от<b> «1»</b> до<b> «8»</b>"
+ \u0009 • Отправка перевода"<b> в российских рублях в бюджетную систему</b> Российской Федерации через Optima24<u> не осуществляется.</u>"
+ \u0009 • При отправке перевода"<b> по договору, счету, инвойсу</b> и пр. документу, необходимо<u> предоставить оригинал документа в отделение Банка</u>", где открыт банковский счет.
+ \u0009 • Банк имеет право запросить дополнительные подтверждающие документы.
+ \u0009 • Перевод отправляется из Банка"<b> в течении 1 рабочего дня,</b>" срок зачисления денег могут зависеть от банка-получателя перевода.
+
+"<b> !</b> Оформить перевод возможно в рабочий день (за исключением выходных и праздничных дней) с<b> 9-00</b> до<b> 18-00</b> по времени г Астана.</string>
+    <string name="sale_bank">"Продажа
+Банком"</string>
+    <string name="same_account">Вы не можете сделать перевод в рамках одного карт-счета</string>
+    <string name="sans_serif" translatable="false">sans-serif</string>
+    <string name="save">Сохранить</string>
+    <string name="save_auto_payment">Создать автоплатеж</string>
+    <string name="save_changed_template">Сохранить изменения</string>
+    <string name="save_login">Запомнить логин</string>
+    <string name="save_template">Сохранить шаблон</string>
+    <string name="save_template_name">Название шаблона</string>
+    <string name="scan">Сканировать</string>
+    <string name="screen_locked_setting_info">Для продолжения установите пароль, pin-код или графический ключ в настройках безопасности</string>
+    <string name="search">Поиск</string>
+    <string name="search_bank_name">По наименованию</string>
+    <string name="search_by_address">Поиск по адресу</string>
+    <string name="search_by_bic">По бику</string>
+    <string name="search_by_service">Поиск по услугам</string>
+    <string name="search_menu_title" translatable="false">Search</string>
+    <string name="search_region">Введите название региона</string>
+    <string name="seco_name">Введите сектор экономики</string>
+    <string name="secret_question">Секретный вопрос</string>
+    <string name="security">Безопасность</string>
+    <string name="select_currency">Выберите валюту</string>
+    <string name="select_date">Выберите дату</string>
+    <string name="select_day" translatable="false">Select month and day</string>
+    <string name="select_default_card">Выберите карту для оплаты</string>
+    <string name="select_hours" translatable="false">Select hours</string>
+    <string name="select_minutes" translatable="false">Select minutes</string>
+    <string name="select_period">Выбор периода</string>
+    <string name="select_year" translatable="false">Select year</string>
+    <item name="selection_radius_multiplier" translatable="false" type="string">0.16</item>
+    <string name="sendSMS">На ваш номер было отправлено SMS</string>
+    <string name="send_again">Отправить СМС еще раз</string>
+    <string name="send_email">"Отравить
+ квитанцию на email"</string>
+    <string name="send_messaage">Отправить сообщение</string>
+    <string name="send_transfer">Отправить перевод</string>
+    <string name="sender_address">Адрес отправителя</string>
+    <string name="sender_city">Город отправителя</string>
+    <string name="sender_country">Страна отправителя</string>
+    <string name="sender_name">Имя отправителя</string>
+    <string name="service_name">Поставщик услуг</string>
+    <string name="setting">Настройки</string>
+    <string name="settings">Настройки счета</string>
+    <string name="settings_not_chosen">Регион не выбран</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_visibility">Настройки видимости</string>
+    <string name="settings_visibility_title">Настройки видимости</string>
+    <string name="show">Показать</string>
+    <string name="show_all">Показать все</string>
+    <string name="sign_in">Sign in</string>
+    <string name="simple_ime">Simple IME</string>
+    <string name="skype_download">Не установлено приложение Skype. Установить?</string>
+    <string name="sms">СМС</string>
+    <string name="smsNotif">Это простой и удобный sms-сервис, позволяющий получать информацию обо всех операциях по картам. Система автоматически проинформирует вас в виде SMS сообщения о расходной и приходной операции по вашему счету, что позволит обеспечить полный контроль всех производимых операций.</string>
+    <string name="sms_code_confirmation">СМС-код подтверждения</string>
+    <string name="sms_confirm">Для совершения операции введите код подтверждения, отправленный вам по СМС.</string>
+    <string name="sms_input_info_30_secs">Последующая отправка SMS будет доступна по истечении 30 секунд. Если у вас возникли проблемы с вводом, пожалуйста, обратитесь в Контакт-центр по номеру 2424.</string>
+    <string name="sms_input_info_5_minutes">Последующий ввод будет доступен спустя 5 минут. Если у вас возникли проблемы с вводом, пожалуйста, обратитесь в Контакт-центр по номеру 2424.</string>
+    <string name="sms_input_info_60_secs">Последующая отправка SMS будет доступна по истечении 60 секунд. Если у вас возникли проблемы с вводом, пожалуйста, обратитесь в Контакт-центр по номеру 2424.</string>
+    <string name="sms_input_info_five_hours">Последующая отправка SMS будет доступна спустя 5 часов. Если у вас возникли проблемы с вводом, пожалуйста, обратитесь в Контакт-центр по номеру 2424.</string>
+    <string name="sms_input_info_one_hour">Последующая отправка SMS будет доступна спустя 1 час. Если у вас возникли проблемы с вводом, пожалуйста, обратитесь в Контакт-центр по номеру 2424.</string>
+    <string name="sms_notif">Информирование в виде SMS/PUSH сообщений обо всех операциях по Вашей платежной карточке. Оплата услуги согласно тарифам Банка.</string>
+    <string name="space">\\s</string>
+    <string name="state">Штат</string>
+    <string name="state_1">Новая</string>
+    <string name="state_2">Отправлена</string>
+    <string name="state_3">В работе у Банка</string>
+    <string name="state_4">Отложена</string>
+    <string name="state_5">Завершена</string>
+    <string name="state_6">Отклонена</string>
+    <string name="state_7">Отменена</string>
+    <string name="state_99">Ошибка</string>
+    <string name="statement">Выписка по счету</string>
+    <string name="statement_date">Дата выписки:</string>
+    <string name="status">Статус</string>
+    <string name="status_">Статус:</string>
+    <string name="status_bar_notification_info_overflow" translatable="false">999+</string>
+    <string name="status_false">не исполнен</string>
+    <string name="status_offline">Статус: не работает/не доступен в данное время</string>
+    <string name="status_ok">Ок</string>
+    <string name="status_online">Статус: доступен</string>
+    <string name="status_sms_notifications_not_determined">Состояние смс уведомлений еще не было определено</string>
+    <string name="session_end">Завершение сеанса</string>
+    <string name="session_end_attention_title">Внимание! Сеанс будет автоматически завершен через</string>
+    <string name="Second1_timer">секунду</string>
+    <string name="Second2_timer">секунды</string>
+    <string name="Second3_timer">секунд</string>
+    <string name="session_continue">Продолжить сеанс</string>
+    <string name="status_warning">Статус: режим ограниченной функциональности</string>
+    <string name="subscription_name">Наименование подписки</string>
+    <string name="subscriptions_not_found">Подписки не найдены</string>
+    <string name="subtype_en_US">English (US)</string>
+    <string name="success_auto_pay">"Успешное проведение
+автоплатежа"</string>
+    <string name="success_digitized">Ваша карта успешно оцифрована</string>
+    <string name="success_reference">Референс:</string>
+    <string name="success_registration">Регистрация прошла успешно!</string>
+    <string name="sum">Сумма</string>
+    <string name="sum_to_payment">Сумма к оплате</string>
+    <string name="sum_with_fee">Сумма к оплате с учетом комиссии</string>
+    <string name="amount_to_payment">Сумма к оплате</string>
+    <string name="suspend_confirm">Приостановить карту?</string>
+    <string name="suspend_contactless">Отключение бесконтактной оплаты</string>
+    <string name="swift_fee_account">Счет списания комиссии</string>
+    <string name="switch_off">Выключить</string>
+    <string name="switch_on">Включить</string>
+    <string name="t_app_restart">Приложение будет перезапущено</string>
+    <string name="t_application">Заявка</string>
+    <string name="t_apps_type">Типы заявок</string>
+    <string name="t_atm">Банкоматы</string>
+    <string name="terminals">Терминалы</string>
+    <string name="terminal">Терминал</string>
+    <string name="t_atm_on_map">Банкомат на карте</string>
+    <string name="t_attention">"Лимит (по курсу Банка) за один календарный месяц:
+Сумма одной операции на территории РК: 2500 $
+ Сумма одной операции за пределами РК: 2500 $
+ Количество операций в сутки на территории РК: 5
+ Количество операций в сутки за пределами РК: 5
+ Количество операций за 4 дня: 20
+ Общая сумма операций за 4 дня: 10 000$
+ Ряд стран и банков могут ограничивать владельцев своих карточек в проведении данной операции (Колумбия, США и пр.). Список таких стран устанавливается правилами платежной системы и может меняться."</string>
+    <string name="t_attention_">ВНИМАНИЕ!</string>
+    <string name="t_branch">Отделения</string>
+    <string name="t_branch_address">Адрес отделения</string>
+    <string name="t_branch_on_map">Отделение на карте</string>
+    <string name="t_can_read_sms">могут читать смс</string>
+    <string name="t_cash_in">Выдача и прием наличных</string>
+    <string name="t_cash_in_not">Выдача наличных</string>
+    <string name="t_confirm_payment">Вы подтверждаете платеж?</string>
+    <string name="t_confirm_payment_with_sum">Вы подтверждаете платеж на сумму</string>
+    <string name="t_continue">Продолжить</string>
+    <string name="t_end">Завершить</string>
+    <string name="t_current_and_card_accounts">Optima24</string>
+    <string name="t_general_branch">главный офис</string>
+    <string name="t_in_list">Списком</string>
+    <string name="t_loading">Загрузка данных</string>
+    <string name="t_mediator_bank">Наименование банка-посредника</string>
+    <string name="t_mediator_bank_account">Номер счета</string>
+    <string name="t_mediator_bank_cor_account">Корсчет банка-посредника</string>
+    <string name="t_mediator_bic">БИК банка-посредника</string>
+    <string name="t_new_category">Новая категория</string>
+    <string name="t_not_show_more">Больше не показывать</string>
+    <string name="t_offline">не работает/не доступен в данное время</string>
+    <string name="t_on_map">На карте</string>
+    <string name="t_online">доступен</string>
+    <string name="t_parameter">Параметр</string>
+    <string name="t_payments_by_region">Оплата по региону</string>
+    <string name="t_payments_title">Оплата услуг</string>
+    <string name="t_potential_danger_apps">Данное устройство содержит потенциально опасные приложения для банкинга:</string>
+    <string name="t_send">Отправить</string>
+    <string name="t_status">СТАТУС</string>
+    <string name="t_terminal_address">Адрес банкомата</string>
+    <string name="t_warning">режим ограниченной функциональности</string>
+    <string name="t_working_time">Гравик работы и услуги</string>
+    <string name="tariff">Тариф</string>
+    <string name="tariffs">Тарифы</string>
+    <string name="teleph" translatable="false">8 8000 800 283</string>
+    <string name="telephAround" translatable="false">+996 (312) 90-59-59</string>
+    <string name="telephFreeStacionar" translatable="false">0-800-800-00-00</string>
+    <string name="temp_password">Временный пароль</string>
+    <string name="temp_password_has_send_to_phone">Временный пароль для входа в Optima24 выслан на ваш номер телефона</string>
+    <string name="template_create_successfully">Шаблон успешно создан</string>
+    <string name="template_deleted_successfully">Шаблон успешно удален</string>
+    <string name="template_error">В данном шаблоне не корректные данные</string>
+    <string name="template_errorMessage">Вы будете перенаправлены назад.</string>
+    <string name="template_errorMessage2">"Вам нужно отредактировать данные.
+Вы будете перенаправлены назад."</string>
+    <string name="template_exists">Шаблон с данными параметрами уже сохранен</string>
+    <string name="template_name">Наименование шаблона</string>
+    <string name="template_rename">Переименование шаблона</string>
+    <string name="template_updated_successfully">Шаблон успешно обновлен</string>
+    <string name="templates">Шаблоны</string>
+    <string name="tenge_icon" translatable="false">₸</string>
+    <string name="test">Новости</string>
+    <string name="test_message">Произошла непредвиденная ошибка, повторите операцию позже!</string>
+    <string name="text_bic">БИК банка получателя</string>
+    <string name="text_bic_mediator">БИК банка посредника</string>
+    <string name="text_transfer_type">Тип перевода</string>
+    <string name="transfer_type_cleering">Клиринг</string>
+    <string name="transfer_type_gross">ГРОСС</string>
+    <string name="text_delete_btn">Удалить</string>
+    <string name="text_from_account">Счет списания</string>
+    <string name="text_from_account_account">Счет списания</string>
+    <string name="text_from_card">С карты</string>
+    <string name="text_from_card_account">Карта списания</string>
+    <string name="text_google_play_service">Для работы с картами вам нужно устонавить Google Play Service</string>
+    <string name="text_knp">Назначение перевода</string>
+    <string name="text_knp_hint">Укажите цель(за что) и основание (№, дата контракта, договора, счета на оплату). Указывается перевод на английском языке)</string>
+    <string name="text_knp_hint_interbank">Основание перевода (за что, на основании чего, № и дата договора/контракта при наличии)</string>
+    <string name="text_knp_code">Код назначение перевода</string>
+    <string name="text_payment_code">Код оплаты</string>
+    <string name="text_not_resident">Нерезидент КР</string>
+    <string name="text_password">Пароль</string>
+    <string name="text_receiver">Получатель</string>
+    <string name="text_receiver_acc_number">Номер счета получателя</string>
+    <string name="text_receiver_iin">ИНН/ИИН/БИН получателя</string>
+    <string name="text_resident">Резидент КР</string>
+    <string name="text_seco_code">Сектор экономики</string>
+    <item name="text_size_multiplier_inner" translatable="false" type="string">0.14</item>
+    <item name="text_size_multiplier_normal" translatable="false" type="string">0.17</item>
+    <item name="text_size_multiplier_outer" translatable="false" type="string">0.11</item>
+    <string name="text_sms_code">"Вам отправлен смс-код
+Введите смс код"</string>
+    <string name="text_sms">Введите смс-код</string>
+    <string name="sms_code">СМС-код</string>
+    <string name="text_sum">Сумма</string>
+    <string name="text_tel_number">Номер мобильного</string>
+    <string name="text_to_account_account">Счет зачисления</string>
+    <string name="text_to_card">Номер карты для зачисления</string>
+    <string name="text_to_card_account">Карта зачисления</string>
+    <string name="text_to_deposit">На депозит</string>
+    <string name="text_transfer_to_other_bank">На счет клиента другого банка</string>
+    <string name="text_writing_out">Укажите период, за который вы хотите получить отчет</string>
+    <string name="thanks">Спасибо!</string>
+    <string name="the_value_should_be_number_up_to_19_digits">Значение должено быть числом до 19 цифр</string>
+    <string name="the_value_should_be_number_uper_to_0">Значение должно быть числом и больше 0</string>
+    <string name="theft_card">Кража карты</string>
+    <string name="thx_request">Ваша заявка зарегистрирована под номером %1$s</string>
+    <string name="time">Время</string>
+    <string name="time_placeholder" translatable="false">--</string>
+    <string name="time_separator" translatable="false">:</string>
+    <string name="title_dialog">Touch ID для «Optima24»</string>
+    <string name="to">Конец</string>
+    <string name="to_">Куда</string>
+    <string name="to_contract">Договору</string>
+    <string name="to_currency">На валюту</string>
+    <string name="to_payment">Оплачиваю</string>
+    <string name="to_policy">Условиям конфиденциальности</string>
+    <string name="to_use_imprint">Для аутентификации с отпечатком пальцев нужно настроить Imprint в настройках безопасности. Открыть настройки?</string>
+    <string name="toast_empty_history">Нет данных за указанный период</string>
+    <string name="toast_empty_payments">Нет сервисов оплаты</string>
+    <string name="toast_empty_schedule">Нет графика погашения</string>
+    <string name="toast_empty_statement">За указанный период операций не найдено</string>
+    <string name="toast_empty_templates">Нет шаблонов</string>
+    <string name="toast_empty_transfer_history">Нет переводов за данный период</string>
+    <string name="too_many_attempts">Сканер отпечатка пальцев временно недоступен. Используйте логин и пароль</string>
+    <string name="total">Итого по счету</string>
+    <string name="total_admission">Итого поступления</string>
+    <string name="total_debt_text">"Общая задолженность по карте на
+сегодня для погашения до отчетной
+даты"</string>
+    <string name="total_fee">Итого комиссия</string>
+    <string name="total_multi">Всего</string>
+    <string name="total_service_">Итого за услугу:</string>
+    <string name="total_sum_not_valid">Недопустимая сумма операции</string>
+    <string name="total_with_fee">С учетом комиссии</string>
+    <string name="total_write_off">Итого списания</string>
+    <string name="touchId" translatable="false">TouchID</string>
+    <string name="transfer_acc_acc">Перевод на счет</string>
+    <string name="transfer_acc_acc_to_other_bank">Клиенту другого банка</string>
+    <string name="transfer_acc_deposit">Пополнение депозита</string>
+    <string name="transfer_accounts">Переводы</string>
+    <string name="transfer_action">Перевести</string>
+    <string name="transfer_amount">Перевод на сумму</string>
+    <string name="transfer_card">Переводы по номеру карты/счета</string>
+
+    <string name="transfer_card_visa_to_visa_for_item">Моментальные переводы VISA2VISA</string>
+    <string name="transfer_card_elcard_to_elcard_for_item">Переводы "Элкарт на Элкарт"</string>
+    <string name="transfer_card_visa_to_visa_for_for_description">Переводы на карты VISA зарубежных банков и банков КР</string>
+    <string name="transfer_card_elcard_to_elcard_for_for_description">Переводы на карты Элкарт банков КР</string>
+    <string name="transfer_card_visa_to_visa_for_for_error">Переводы данного типа доступны только на карты VISA. Проверьте номер карты получателя</string>
+    <string name="transfer_card_elcart_to_elcart_for_for_error">Переводы данного типа доступны только на карты Элкарт.
+        Проверьте номер карты получателя</string>
+    <string name="transfer_card_elcard_for_error">Введите номер карты Элкарт</string>
+    <string name="transfer_confirm">Подтвердить перевод</string>
+    <string name="transfer_confirmation">Подтверждение перевода</string>
+    <string name="transfer_further">Далее</string>
+    <string name="transfer_history_title">История переводов</string>
+    <string name="transfer_info">Информация о переводе</string>
+    <string name="transfer_inner">Внутрибанковский перевод</string>
+    <string name="transfer_inner_account">На счет клиента банка</string>
+    <string name="transfer_inner_card">На карту клиента банка</string>
+    <string name="transfer_money">Перевести деньги</string>
+    <string name="transfer_multi_card">Конвертация валюты</string>
+    <string name="transfer_number">Номер перевода</string>
+    <string name="transfer_state">Исполнен</string>
+    <string name="transfer_state_false">Отказан</string>
+    <string name="transfer_state_true">Принят</string>
+    <string name="transfer_sum">Сумма перевода</string>
+    <string name="transfer_swift">Межбанк в валюте</string>
+    <string name="transfer_swift_tenge">Межбанк в сомах</string>
+    <string name="transfer_swift_tengeN">"Межбанк
+в сомах"</string>
+    <string name="transfer_target">1. C какой целью осуществляется безвозмездный перевод денег?</string>
+    <string name="transfer_tenge_info">\u0009<b>Обратите внимание!</b>"
+ \u0009Данный тип перевода"<u> не предназначен</u>" для оплаты налогов, других обязательных платежей, таможенных платежей, пеней и штрафов.
+ \u0009Перевод отправляется из Банка"<b> в течении 1 рабочего дня</b>, сроки зачисления денег могут зависеть от Банка-получателя перевода.</string>
+    <string name="transfer_title">Перевод</string>
+    <string name="transfer_type">Операция</string>
+    <string name="transfer_visa_to_visa">Visa to visa</string>
+    <string name="transfers">Переводы</string>
+    <string name="transfers_and_payments_title">Платежи и переводы</string>
+    <string name="transfers_from_card_to_card">Перевод с карты на карту</string>
+    <string name="transfers_title">Переводы</string>
+    <string name="translation_information">Информация по переводу</string>
+    <string name="twitter" translatable="false">Twitter</string>
+    <string name="un_success_response">Неудачная попытка</string>
+    <string name="unlimit">Без ограничений</string>
+    <string name="unlock_device">Разблокировка устройства</string>
+    <string name="unlock_phone_for_payment">Для проведения оплаты, разблокируйте телефон</string>
+    <string name="update">Обновить</string>
+    <string name="update_page">Чтобы увидеть изменения обновите страницу</string>
+    <string name="update_text">Обновить статус автоплатежа?</string>
+    <string name="usd">Доллар США</string>
+    <string name="use_fingerprint_in_future">Использовать авторизацию по Touch ID в будущем</string>
+    <string name="use_fingerprint_to_authenticate_key" translatable="false">have_bool_key</string>
+    <string name="use_fingerprint_to_authenticate_title">Использовать авторизацию по Touch ID</string>
+    <string name="use_imprint">Вход по Touch ID</string>
+    <string name="user">Профиль</string>
+    <string name="using_the_chip_of_the_payment_card">C использованием чипа платежной карточки:</string>
+    <string name="using_the_magnetic_strip_of_the_payment_card">С использованием магнитной полосы платежной карточки:</string>
+    <string name="utilities">Коммунальные платежи</string>
+    <string name="validate_end">истек срок действия карты</string>
+    <string name="session_ended">Истек срок действия вашей сессии</string>
+    <string name="validate_ending_text">Срок действия Вашей карты истекает в текущем месяце</string>
+    <string name="validation">Срок действия</string>
+    <string name="validation_">Срок действия:</string>
+    <string name="vendor_name">Введите название поставщика</string>
+    <string name="visa_attention">\u0009<b>Обратите внимание!</b>"
+ Осуществление переводов на платежные карты Visa/Mastercard по всему миру*.
+
+ Данная услуга доступна круглосуточно.
+
+ • Максимальная сумма операций за один календарный месяц:"<b> 10 000$;</b>"
+ • Максимальное количество операций за один календарный месяц:"<b> 20 операций;</b>"
+ • Максимальная сумма одной операции в сутки:"<b> 2 500$;</b>"
+ • Максимальное количество операций в сутки:"<b> 5 операций.</b>"
+
+ *Ряд стран и банков могут ограничивать владельцев своих карточек в проведении данной операции (Колумбия, США и пр.). Список таких стран устанавливается правилами платежной системы и может меняться."</string>
+    <string name="visibility_account">Видимость счетов</string>
+    <string name="vo_code">VO код</string>
+    <string name="we_are_in_social_networks">Мы в социальных сетях</string>
+    <string name="whatsapp_download">Не установлено приложение WhatsApp. Установить?</string>
+    <string name="widget_info">Информация по виджетам</string>
+    <string name="wish">Цели</string>
+    <string name="wish_text">Осталось/Всего</string>
+    <string name="with">с</string>
+    <string name="with_physical_presentation_of_payment_card">Төлем карточкасын іс жүзінде ұсыну арқылы:</string>
+    <string name="work_time">Время работы</string>
+    <string name="working_time">График работы:</string>
+    <string name="write_off">по списанию</string>
+    <string name="writing_out_account">Выписка по счету</string>
+    <string name="writing_out_deposit">Выписка по депозиту</string>
+    <string name="wrong_card_type_from">Неверно выбран тип карты списания</string>
+    <string name="year_picker_description" translatable="false">Year list</string>
+    <string name="yes">да</string>
+    <string name="yes_ready">Да, готов</string>
+    <string name="youNothingChoose">Вы ничего не выбрали</string>
+    <string name="you_time_expired">Ваше время истекло</string>
+    <string name="your_device_is_rooted">Ваше устройство работает под правами суперпользователя root, что делает использование Optima24 уязвимым для вредоносного ПО и угрожает сохранности ваших денег. Банк не несет ответственность за возможный ущерб.</string>
+    <string name="your_relationships_with_receiver">2. Какие у Вас взаимоотношения с бенефициаром/получателем денег?</string>
+    <string name="СurrencyExchange">Конвертация</string>
+    <string name="сalcul_comm"><b>Расчет конвертации</b></string>
+    <string name="bank_number_title" translatable="false">Счёт №</string>
+    <string name="choose_currency">Выберите валюту</string>
+    <string name="share">"Поделиться "</string>
+    <string name="export_pdf">Экспорт в PDF</string>
+    <string name="export_doc">Экспорт в DOC</string>
+    <string name="how_share">Выберите способ экспорта</string>
+    <string name="insufficient_funds">Недостаточно средств</string>
+    <string name="cant_transfer_tovisa">Запрещено делать перевод на карту Visa другого банка</string>
+    <string name="bonuses_bank" translatable="false">Бонусы Оптимы Банка</string>
+    <string name="bonus_amount" translatable="false">Бонусный счёт</string>
+    <string name="scores_amount" translatable="false">123 балла</string>
+    <string name="products" translatable="false">Продукты</string>
+    <string name="forbidden_transfer_to_account">Запрещено делать перевод на счёт</string>
+    <string name="number_of_attempts">Количество оставшихся попыток :</string>
+    <string name="reason_unblock_card">Разблокировать карту</string>
+    <string name="reason_temporary_blocking">Временная блокировка</string>
+    <string name="reason_compromising_data">После блокировки карты по причине "Компрометация данных (утечка данных карты)" или "Кража карты" Вы НЕ сможете ее использовать для снятия денег и проведения платежей в торговой сети и в сети Интернет. Разблокировать карту Вы сможете заполнив соответствующее заявление в отделении Банка, если вы уверены, что данные карты не попали посторонним лицам. Иначе рекомендуется ее перевыпустить.</string>
+    <string name="label_sms_code_sent">На указанный Вами номер отправлено SMS-сообщение. \nВведите код из SMS-сообщения</string>
+    <string name="title_input_sms_code">Введите код из SMS-сообщения</string>
+    <string name="subtitle_sms_code_sent_to_phone">На указанный Вами номер отправлено SMS-сообщение.</string>
+    <string name="input_receiver_card_number">Введите номер карты получателя</string>
+    <string name="input_receiver_phone_number" translatable="false">Введите номер телефона получателя</string>
+
+    <string name="security_question">Контрольный вопрос</string>
+    <string name="text_input_answer">Введите ответ</string>
+    <string name="text_input_new_password">Введите новый пароль</string>
+    <string name="text_input_password_confirmation">Введите потверждение пароля</string>
+    <string name="text_accept_agreement">Я ознакомился/ознакомилась и принимаю данное соглашение</string>
+    <string name="text_error_loading_pdf_file">Ошибка при загрузка PDF файла</string>
+    <string name="text_these_question_helps_to_restore_the_account">Эти вопросы помогут идентификации при восстановлении пароля</string>
+    <string name="text_sub_description_input_password">не меньше 8 и не более 15 символов и при этом ДОЛЖЕН содержать как буквы так и цифры</string>
+    <string name="text_receipt_on_operation">Чек по операции</string>
+    <string name="text_operation_time">Время операции</string>
+    <string name="text_show_receipt">Показать чек</string>
+    <string name="text_share">Поделиться</string>
+    <string name="text_in_process">В обработке</string>
+    <string name="text_payment_in_process">Платеж в обработке</string>
+    <string name="text_payment_is_done">Платеж выполнен</string>
+    <string name="text_transfer_done">Перевод выполнен</string>
+    <string name="text_transfer_failed">Перевод не выполнен</string>
+    <string name="text_transfer" translatable="false">Перевод </string>
+    <string name="text_more_dots">Доступный остаток в сомах по всем валютам по курсу покупки Банка.</string>
+    <string name="text_available_balance">Доступный остаток</string>
+    <string name="text_amount_in_precess">Сумма в обработке</string>
+    <string name="text_amount_by_currency">В разрезе валют</string>
+    <string name="text_available_balance_description">Доступный остаток - это сумма остатков в разрезе валют по курсу покупки по платежным картам Банка на момент запроса. Доступный остаток служит для ориентира. При изменении курсов валют доступный остаток может меняться.</string>
+    <string name="text_available_amount_in_process_description">Для расчета суммы по всем
+        валютам используется курс покупки по платежным картам Банка на момент совершения операции.</string>
+    <string name="text_multiplicator_description">Мультипликатор – это коэффициент, применяемый при блокировании денежных средств при проведении карточной операции в иностранной валюте с участием мультивалютных карт и оно производится в сомах. Также при снятии денежных средств в АТМ и POSах с мультивалютных карт применяется мультипликатор. Окончательное списание денежных средств по проведенным операциям выполняется по коммерческому курсу Банка на день проведения операции.</string>
+
+    <string name="text_default_incoming_card_title">Основная карта</string>
+    <string name="text_default_incoming_card">Основная карта - карта выбранная по умолчанию для получения переводов,
+        отправленных по номеру телефона внутри Банка.</string>
+    <string name="text_default_incoming_card_tip">Основная карта - карта выбранная по умолчанию для получения
+        переводов. Если хотите сменить, выберите другую карту.</string>
+    <string name="transfer_phone_number">Переводы по номеру телефона</string>
+    <string name="text_select_contacts">Контакты</string>
+    <string name="phone_number_requesites">Реквизиты перевода</string>
+    <string name="text_paste">Вставить</string>
+    <string name="phone_number_mask" translatable="false">999999999</string>
+
+    <string name="text_phone_number_in_profile">Ваш текущий номер телефона в Optima24</string>
+
+    <string name="access_to_contacts">Для получения доступа к контактам, перейдите в Настройки - Приложение - Optima24- Разрешение- Контакты (ВКЛ)</string>
+    <string-array name="auto_payment_status">
+        <item>Активно</item>
+        <item>Остановлено</item>
+        <item>Остановлено менеджером</item>
+        <item>Количество равно 0</item>
+    </string-array>
+    <string-array name="auto_payment_times">
+        <item>00:00</item>
+        <item>01:00</item>
+        <item>02:00</item>
+        <item>03:00</item>
+        <item>04:00</item>
+        <item>05:00</item>
+        <item>06:00</item>
+        <item>07:00</item>
+        <item>08:00</item>
+        <item>09:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+        <item>19:00</item>
+        <item>20:00</item>
+        <item>21:00</item>
+        <item>22:00</item>
+        <item>23:00</item>
+    </string-array>
+    <string-array name="auto_payment_type">
+        <item>Ежедневно</item>
+        <item>Еженедельно</item>
+        <item>Ежемесячно</item>
+    </string-array>
+    <string-array name="auto_payment_type_agb">
+        <item>Фиксированная сумма</item>
+        <item>Выставленная сумма</item>
+    </string-array>
+    <string-array name="auto_payment_type_invoice">
+        <item>Выставленная сумма</item>
+    </string-array>
+    <string-array name="auto_payment_week_days">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+        <item>Воскресенье</item>
+    </string-array>
+    <string-array name="edit_photo_items">
+        <item>Выбрать из галереи</item>
+        <item>Сделать снимок</item>
+        <item>Удалить существующее</item>
+    </string-array>
+    <string-array name="empty_accounts">
+        <item>У вас нет активных счетов и карт</item>
+        <item>У вас нет активных карт</item>
+        <item>У вас нет активных счетов</item>
+        <item>У вас нет активных кредитов</item>
+        <item>У вас нет активных депозитов</item>
+    </string-array>
+    <string-array name="languages">
+        <item>Русский</item>
+        <item>Кыргыз</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="month">
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+    <string-array name="month_for_date">
+        <item>Января</item>
+        <item>Февраля</item>
+        <item>Марта</item>
+        <item>Апреля</item>
+        <item>Мая</item>
+        <item>Июня</item>
+        <item>Июля</item>
+        <item>Августа</item>
+        <item>Сентября</item>
+        <item>Октября</item>
+        <item>Ноября</item>
+        <item>Декабря</item>
+    </string-array>
+    <string-array name="transfer_history_status">
+        <item>На редактировании</item>
+        <item>На подписи</item>
+        <item>На доставке</item>
+        <item>Доставлен</item>
+        <item>Принят</item>
+        <item>В обработке</item>
+        <item>Отложен</item>
+        <item>Отозван</item>
+        <item>Удален</item>
+        <item>Двойной</item>
+        <item>Ошибка обработки документа</item>
+    </string-array>
+
+    <string-array name="transfer_history_seal_status">
+        <item>Перевод на редактировании</item>
+        <item>Перевод на подписи</item>
+        <item>Перевод на доставке</item>
+        <item>Перевод доставлен</item>
+        <item>Перевод принят</item>
+        <item>Перевод в обработке</item>
+        <item>Перевод отложен</item>
+        <item>Перевод отозван</item>
+        <item>Перевод удален</item>
+        <item>Перевод двойной</item>
+        <item>Перевод ошибка обработки документа</item>
+    </string-array>
 </resources>

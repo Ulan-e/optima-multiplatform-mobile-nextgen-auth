@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/instruction_5"
+        android:id="@+id/imgInstruction"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relConfirm"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvInfo"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textColor="@color/blue_0_93_186"
+            android:text="@string/digital_world_ATFBank"
+            android:layout_marginTop="60dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvInfo"
+            android:layout_marginTop="110dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingRight="60dp"
+                android:paddingLeft="60dp"
+                android:id="@+id/btnFurther"
+                android:text="@string/yes_ready"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/round_orange_button"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnFinish"
+                android:paddingRight="60dp"
+                android:paddingLeft="60dp"
+                android:layout_gravity="center"
+                android:text="@string/not_now"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/round_orange_button"
+                android:layout_marginTop="40dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingHorizontal="@dimen/margin_20dp"
+    android:paddingBottom="@dimen/margin_10dp"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/card_image_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/visa_classic_optima" />
+
+    <TextView
+        android:id="@+id/title_multi_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:layout_marginEnd="@dimen/margin_20dp"
+        android:text="@string/multi"
+        android:textColor="@color/gray_180_180_180"
+        app:layout_constraintEnd_toStartOf="@+id/card_name_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_image_view" />
+
+    <TextView
+        android:id="@+id/card_name_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/gray_black_56_56_56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card_image_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Card Name" />
+
+    <TextView
+        android:id="@+id/card_balance_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_5dp"
+        android:drawableEnd="@drawable/ic_button_dark_common_down"
+        android:drawablePadding="3dp"
+        android:maxLines="1"
+        android:textColor="@color/gray_atf"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_name_text"
+        tools:ignore="UseCompatTextViewDrawableXml"
+        tools:text="44 774 KGS" />
+
+    <TextView
+        android:id="@+id/card_number_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/gray_180_180_180"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/card_balance_text"
+        tools:text="9417-79**-****-9606" />
+
+    <TextView
+        android:id="@+id/card_status_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_20dp"
+        android:layout_marginVertical="@dimen/margin_10dp"
+        android:textColor="@color/gray_black_56_56_56"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintEnd_toStartOf="@+id/card_balance_text"
+        app:layout_constraintStart_toEndOf="@+id/card_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/card_number_text"
+        tools:text="Заблокирован" />
+</androidx.constraintlayout.widget.ConstraintLayout>

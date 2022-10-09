@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="fragment.transfer.TransferInterbank">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue_0_93_186"
+            app:navigationIcon="@drawable/arrow_left">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextViewTitle"
+                android:text="@string/agreement"/>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbarSize="7sp"
+        android:fadeScrollbars="false"
+        android:scrollbarThumbVertical="@color/blue_0_93_186"
+        android:layout_below="@+id/app_bar_layout"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvAgreement"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:autoLink="web"
+                android:textColor="@color/black"
+                android:layout_marginBottom="70dp"/>
+
+            &lt;!&ndash;<LinearLayout&ndash;&gt;
+                &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;
+                &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;
+                &lt;!&ndash;android:background="@color/white"&ndash;&gt;
+                &lt;!&ndash;android:orientation="vertical"&ndash;&gt;
+                &lt;!&ndash;android:paddingBottom="15dp">&ndash;&gt;
+
+                &lt;!&ndash;<LinearLayout&ndash;&gt;
+                    &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;
+                    &lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;
+                    &lt;!&ndash;android:layout_marginTop="80dp"&ndash;&gt;
+                    &lt;!&ndash;android:orientation="vertical"&ndash;&gt;
+                    &lt;!&ndash;android:gravity="bottom"&ndash;&gt;
+                    &lt;!&ndash;android:paddingLeft="15dp"&ndash;&gt;
+                    &lt;!&ndash;android:paddingRight="15dp">&ndash;&gt;
+
+                    &lt;!&ndash;<Button&ndash;&gt;
+                        &lt;!&ndash;android:id="@+id/btnAcquaintedWith"&ndash;&gt;
+                        &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;
+                        &lt;!&ndash;android:layout_height="50dp"&ndash;&gt;
+                        &lt;!&ndash;android:background="@drawable/button_default"&ndash;&gt;
+                        &lt;!&ndash;android:text="@string/introduced"&ndash;&gt;
+                        &lt;!&ndash;android:textAllCaps="false"&ndash;&gt;
+                        &lt;!&ndash;android:textColor="@color/white"&ndash;&gt;
+                        &lt;!&ndash;android:textSize="17sp"&ndash;&gt;
+                        &lt;!&ndash;android:paddingLeft="15dp"&ndash;&gt;
+                        &lt;!&ndash;android:paddingRight="15dp"/>&ndash;&gt;
+
+                &lt;!&ndash;</LinearLayout>&ndash;&gt;
+            &lt;!&ndash;</LinearLayout>&ndash;&gt;
+        </LinearLayout>
+    </ScrollView>
+-->
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_below="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAcquaintedWith"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/button_default"
+        android:text="@string/introduced"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

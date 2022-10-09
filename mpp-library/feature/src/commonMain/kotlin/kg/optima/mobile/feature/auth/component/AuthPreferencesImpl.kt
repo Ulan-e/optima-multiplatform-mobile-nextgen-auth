@@ -34,6 +34,15 @@ class AuthPreferencesImpl(
                 storageRepository.remove(AuthPreferences.SESSION_DATA)
             }
         }
+    override var userInfo: UserInfo?
+        get() = storageRepository.getObject(UserInfo.serializer(), AuthPreferences.USER_INFO)
+        set(value) {
+            if (value != null) {
+                storageRepository.putObject(value, UserInfo.serializer(), AuthPreferences.USER_INFO)
+            } else {
+                storageRepository.remove(AuthPreferences.USER_INFO)
+            }
+        }
 
     override var password: String
         get() = storageRepository.getString("PASSWORD", emptyString)

@@ -5,8 +5,7 @@ import com.arkivanov.decompose.router.stack.*
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
-import kg.optima.mobile.core.navigation.ScreenModel
-import kg.optima.mobile.feature.transfers.TransfersScreenModel
+import kg.optima.mobile.base.presentation.UiState
 
 class TransfersComponent(
 	override val componentContext: ComponentContext,
@@ -22,11 +21,11 @@ class TransfersComponent(
 			childFactory = { config, _ -> childFactory(config) },
 		)
 
-	override val backStack: Value<ChildStack<*, ScreenModel>> = childStack
+	override val backStack: Value<ChildStack<*, UiState.Model.Navigate>> = childStack
 
-	override fun addAll(screenModels: List<ScreenModel>) {
+	override fun addAll(screenModels: List<UiState.Model.Navigate>) {
 		// TODO check if SM is not TSM
-		screenModels.filterIsInstance<TransfersScreenModel>().forEach {
+		screenModels.forEach {
 			stackNavigation.push(it.toConfig())
 		}
 	}
@@ -35,8 +34,8 @@ class TransfersComponent(
 
 	private fun childFactory(
 		config: Config,
-	): TransfersScreenModel = when (config) {
-		is Config.MainPage -> TransfersScreenModel.Main
+	): UiState.Model.Navigate = when (config) {
+		is Config.MainPage -> TODO()
 	}
 
 	private sealed interface Config : Parcelable {
@@ -44,9 +43,9 @@ class TransfersComponent(
 		class MainPage : Config
 	}
 
-	private fun TransfersScreenModel.toConfig(): Config {
+	private fun UiState.Model.Navigate.toConfig(): Config {
 		return when (this) {
-			TransfersScreenModel.Main -> Config.MainPage()
+			else -> Config.MainPage()
 		}
 	}
 }

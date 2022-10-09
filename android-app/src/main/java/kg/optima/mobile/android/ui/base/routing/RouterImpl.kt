@@ -6,23 +6,18 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kg.optima.mobile.android.ui.features.BottomNavigationScreen
 import kg.optima.mobile.android.ui.features.auth.AuthRouter
-import kg.optima.mobile.android.ui.features.common.CommonRouter
-import kg.optima.mobile.android.ui.features.main.MainRouter
-import kg.optima.mobile.android.ui.features.registration.RegistrationRouter
+import kg.optima.mobile.android.ui.features.auth.login.LoginRouter
 import kg.optima.mobile.android.ui.features.welcome.WelcomeRouter
-import kg.optima.mobile.core.navigation.ScreenModel
-import kg.optima.mobile.feature.auth.AuthScreenModel
-import kg.optima.mobile.feature.common.CommonScreenModel
-import kg.optima.mobile.feature.main.MainScreenModel
-import kg.optima.mobile.feature.registration.RegistrationScreenModel
-import kg.optima.mobile.feature.welcome.WelcomeScreenModel
+import kg.optima.mobile.auth.presentation.login.LoginState
+import kg.optima.mobile.base.presentation.UiState
+import kg.optima.mobile.common.presentation.welcome.WelcomeState
 
 object RouterImpl : Router {
 	@SuppressLint("ComposableNaming")
 	@Composable
-	override fun push(screenModels: List<ScreenModel>) {
+	override fun push(stateModels: List<UiState.Model.Navigate>) {
 		val navigator = LocalNavigator.currentOrThrow
-		compose(screenModels = screenModels).forEach {
+		compose(stateModels = stateModels).forEach {
 			if (it.dropBackStack) {
 				navigator.replaceAll(it.screen)
 			} else {
@@ -32,30 +27,30 @@ object RouterImpl : Router {
 	}
 
 	@Composable
-	override fun compose(screenModels: List<ScreenModel>): List<RouteInfo> {
+	override fun compose(stateModels: List<UiState.Model.Navigate>): List<RouteInfo> {
 		val screens = mutableListOf<RouteInfo>()
-		screenModels.forEach {
+		stateModels.forEach {
 			val screen = when (it) {
-				is WelcomeScreenModel -> RouteInfo(
-					screen = WelcomeRouter.compose(screenModel = it),
+				is WelcomeState.Model.NavigateTo -> RouteInfo(
+					screen = WelcomeRouter.compose(stateModel = it),
 					dropBackStack = it.dropBackStack
 				)
-				is AuthScreenModel -> RouteInfo(
-					screen = AuthRouter.compose(screenModel = it),
+				is LoginState.Model.NavigateTo -> RouteInfo(
+					screen = LoginRouter.compose(stateModel = it),
 					dropBackStack = it.dropBackStack
 				)
-				is CommonScreenModel -> RouteInfo(
-					screen = CommonRouter.compose(screenModel = it),
-					dropBackStack = it.dropBackStack
-				)
-				is MainScreenModel -> RouteInfo(
-					screen = MainRouter.compose(screenModel = it),
-					dropBackStack = it.dropBackStack
-				)
-				is RegistrationScreenModel -> RouteInfo(
-					screen = RegistrationRouter.compose(screenModel = it),
-					dropBackStack = it.dropBackStack
-				)
+//				is CommonScreenModel -> RouteInfo(
+//					screen = CommonRouter.compose(stateModel = it),
+//					dropBackStack = it.dropBackStack
+//				)
+//				is MainScreenModel -> RouteInfo(
+//					screen = MainRouter.compose(stateModel = it),
+//					dropBackStack = it.dropBackStack
+//				)
+//				is RegistrationScreenModel -> RouteInfo(
+//					screen = RegistrationRouter.compose(stateModel = it),
+//					dropBackStack = it.dropBackStack
+//				)
 				else -> RouteInfo(
 					screen = BottomNavigationScreen,
 					dropBackStack = it.dropBackStack

@@ -22,6 +22,8 @@ dependencies {
 	commonMainImplementation(libs.ktorClientLogging)
 	commonMainImplementation(libs.ktorClientSerialization)
 
+	commonMainImplementation("com.arkivanov.decompose:decompose:0.8.0")
+
 	commonMainApi(libs.mokoMvvmLiveData)
 	commonMainApi(libs.mokoResources)
 	commonMainApi(libs.mokoErrors)
