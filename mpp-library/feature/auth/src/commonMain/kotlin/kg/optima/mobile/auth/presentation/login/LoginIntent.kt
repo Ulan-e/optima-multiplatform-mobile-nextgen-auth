@@ -10,9 +10,9 @@ import kg.optima.mobile.base.presentation.UiIntent
 import org.koin.core.component.inject
 
 @Suppress("UNCHECKED_CAST")
-open class LoginIntent <T : LoginEntity>(
-	override val uiState: LoginState<T>,
-) : UiIntent<T>() {
+open class LoginIntent(
+	override val uiState: LoginState,
+) : UiIntent<LoginEntity>() {
 
 	private val loginUseCase: LoginUseCase by inject()
 	private val clientInfoUseCase: ClientInfoUseCase by inject()
@@ -25,7 +25,7 @@ open class LoginIntent <T : LoginEntity>(
 					isAuthorized = it.isAuthorized,
 					pinEnabled = it.pinEnabled,
 					biometryEnabled = it.biometryEnabled,
-				) as T
+				)
 			}
 		}
 	}
@@ -33,7 +33,7 @@ open class LoginIntent <T : LoginEntity>(
 	fun signIn(info: SignInInfo) {
 		launchOperation {
 			loginUseCase.execute(info.toUseCaseModel()).map {
-				it.toEntity() as T
+				it.toEntity()
 			}
 		}
 	}

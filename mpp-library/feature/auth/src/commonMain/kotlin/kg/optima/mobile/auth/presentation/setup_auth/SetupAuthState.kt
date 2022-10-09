@@ -24,7 +24,9 @@ class SetupAuthState : UiState<SetupAuthResult>() {
 
 		sealed interface NavigateTo : Model, AuthNavigateModel {
 			@Parcelize
-			object Main : NavigateTo, AuthNavigateModel
+			object Main : NavigateTo, AuthNavigateModel {
+				override val dropBackStack: Boolean = true
+			}
 		}
 	}
 }
