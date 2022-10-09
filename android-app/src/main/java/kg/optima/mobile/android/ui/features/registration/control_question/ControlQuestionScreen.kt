@@ -65,13 +65,13 @@ class ControlQuestionScreen(
 		BackHandler(enabled = true, onBack = {})
 
 		when (val model = model) {
-			ControlQuestionState.ControlQuestionModel.ShowQuestions -> {
+			ControlQuestionState.Model.ShowQuestions -> {
 				dropDownExpandedState.value = true
 			}
-			ControlQuestionState.ControlQuestionModel.HideQuestions -> {
+			ControlQuestionState.Model.HideQuestions -> {
 				dropDownExpandedState.value = false
 			}
-			is ControlQuestionState.ControlQuestionModel.SetQuestion -> {
+			is ControlQuestionState.Model.SetQuestion -> {
 				items.value = items.value.copy(
 					selectedItemIndex = items.value.list.indexOf(
 						DropDownItemModel(model.question.question, model.question)
@@ -80,12 +80,12 @@ class ControlQuestionScreen(
 				dropDownExpandedState.value = false
 				buttonEnabled.value = validationChecked.value && questionChecked.value
 			}
-			is ControlQuestionState.ControlQuestionModel.ValidateResult -> {
+			is ControlQuestionState.Model.ValidateResult -> {
 				validationChecked.value = model.success
 				buttonEnabled.value = validationChecked.value && questionChecked.value
 			}
 
-			is ControlQuestionState.ControlQuestionModel.GetQuestions -> {
+			is ControlQuestionState.Model.GetQuestions -> {
 				val newList = mutableListOf<DropDownItemModel<Question>>()
 				model.questions.map {
 					newList.add(DropDownItemModel(it.question, it))

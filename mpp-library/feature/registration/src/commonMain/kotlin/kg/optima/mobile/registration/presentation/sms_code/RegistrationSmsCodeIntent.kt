@@ -1,7 +1,7 @@
 package kg.optima.mobile.registration.presentation.sms_code
 
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.common.presentation.SmsCodeIntent
+import kg.optima.mobile.common.presentation.sms.SmsCodeIntent
 import kg.optima.mobile.registration.domain.usecase.CheckPhoneNumberUseCase
 import kg.optima.mobile.registration.domain.usecase.CheckSmsCodeUseCase
 import org.koin.core.component.inject

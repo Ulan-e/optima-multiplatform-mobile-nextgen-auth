@@ -7,14 +7,10 @@ import kg.optima.mobile.base.presentation.UiState
 interface Router {
 	@SuppressLint("ComposableNaming")
 	@Composable
-	fun push(stateModels: List<UiState.Model.Navigate>)
-
-	@SuppressLint("ComposableNaming")
-	@Composable
-	fun push(stateModel: UiState.Model.Navigate) = push(stateModels = listOf(stateModel))
+	fun push(stateModel: UiState.Model.Navigate)
 
 	@Composable
-	fun compose(stateModels: List<UiState.Model.Navigate>): List<RouteInfo>
+	fun compose(stateModel: UiState.Model.Navigate): RouteInfo
 
 	@SuppressLint("ComposableNaming")
 	@Composable

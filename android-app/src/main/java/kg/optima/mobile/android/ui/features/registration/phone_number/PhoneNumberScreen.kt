@@ -50,7 +50,7 @@ object PhoneNumberScreen : Screen {
 		val context = LocalContext.current
 
 		when (val phoneNumberModel: UiState.Model? = model) {
-			is PhoneNumberState.PhoneNumberStateModel.NavigateTo.Welcome ->
+			is PhoneNumberState.Model.NavigateTo.Welcome ->
 				context.navigateTo(phoneNumberModel)
 		}
 
@@ -68,7 +68,7 @@ object PhoneNumberScreen : Screen {
 					)
 				)
 			}
-			is PhoneNumberState.PhoneNumberStateModel.ValidateResult -> {
+			is PhoneNumberState.Model.ValidateResult -> {
 				buttonEnabled = model.success
 			}
 		}

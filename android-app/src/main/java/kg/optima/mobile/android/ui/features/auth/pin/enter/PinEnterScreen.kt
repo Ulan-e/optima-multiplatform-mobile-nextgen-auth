@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui.features.auth.pin
+package kg.optima.mobile.android.ui.features.auth.pin.enter
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
@@ -42,9 +42,6 @@ object PinEnterScreen : BaseScreen {
 			BiometryManager.authorize(
 				activity = context.asActivity(),
 				doOnSuccess = { intent.signIn(LoginIntent.SignInInfo.Biometry) },
-				doOnFailure = {
-					// TODO
-				},
 			)
 		}
 

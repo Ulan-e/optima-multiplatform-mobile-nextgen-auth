@@ -97,7 +97,7 @@ class LivenessScreen : Screen {
 					)
 				)
 			}
-			is LivenessState.LivenessModel.Passed -> {
+			is LivenessState.Model.Passed -> {
 				intent.init()
 				bottomSheetState.value = BottomSheetInfo(
 					title = livenessModel.message.orEmpty(),

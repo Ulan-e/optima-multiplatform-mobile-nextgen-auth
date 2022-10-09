@@ -7,7 +7,7 @@ import kg.optima.mobile.android.ui.features.common.otp.OtpContent
 import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
-import kg.optima.mobile.common.presentation.SmsCodeState
+import kg.optima.mobile.common.presentation.sms.SmsCodeState
 import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.registration.RegistrationFeatureFactory
 import kg.optima.mobile.registration.presentation.sms_code.RegistrationSmsCodeIntent
@@ -15,9 +15,7 @@ import kg.optima.mobile.registration.presentation.sms_code.RegistrationSmsCodeSt
 
 @Parcelize
 class RegistrationOtpScreen(
-	private val phoneNumber: String,
-	private val timeLeft: Long,
-	private val referenceId: String,
+	private val registrationOtpModel: RegistrationOtpModel,
 ) : BaseScreen {
 
 	@Suppress("NAME_SHADOWING")
@@ -40,7 +38,7 @@ class RegistrationOtpScreen(
 				codeState.value = emptyString
 				errorState.value = model.error
 			}
-			is RegistrationSmsCodeState.SmsCodeStateModel.Request -> {
+			is RegistrationSmsCodeState.Model.Request -> {
 				triesCountState.value = Constants.OTP_MAX_TRIES
 				codeState.value = emptyString
 				errorState.value = emptyString
@@ -54,12 +52,14 @@ class RegistrationOtpScreen(
 			model = model,
 			description = "Вводя код из SMS вы подписываете оферту, подтверждая свое согласие\n" +
 					"Мы отправили SMS на номер:",
-			phoneNumber = phoneNumber,
+			phoneNumber = registrationOtpModel.phoneNumber,
 			code = codeState.value,
 			timeLeft = timeLeftState.value,
 			error = errorState.value,
 			triesCount = triesCountState.value,
-			onStartTimer = { intent.startTimer(timeLeft, System.currentTimeMillis()) },
+			onStartTimer = {
+				intent.startTimer(registrationOtpModel.timeLeft, System.currentTimeMillis())
+			},
 			onPauseTimer = intent::pauseTimer,
 			onValueChanged = {
 				if (errorState.value.isNotEmpty()) errorState.value = emptyString
@@ -67,10 +67,16 @@ class RegistrationOtpScreen(
 			},
 			onInputCompleted = {
 				if (triesCountState.value > 0) {
-					triesCountState.value--; intent.smsCodeEntered(phoneNumber, it, referenceId)
+					triesCountState.value--; intent.smsCodeEntered(
+						phoneNumber = registrationOtpModel.phoneNumber,
+						smsCode = it,
+						referenceId = registrationOtpModel.referenceId
+					)
 				}
 			},
-			onButtonClicked = { intent.smsCodeRequest(phoneNumber, System.currentTimeMillis()) }
+			onButtonClicked = {
+				intent.smsCodeRequest(registrationOtpModel.phoneNumber, System.currentTimeMillis())
+			}
 		)
 	}
 }

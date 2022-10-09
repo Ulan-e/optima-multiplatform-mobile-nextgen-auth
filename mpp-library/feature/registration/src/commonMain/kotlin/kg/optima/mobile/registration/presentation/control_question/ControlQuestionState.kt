@@ -3,22 +3,23 @@ package kg.optima.mobile.registration.presentation.control_question
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.registration.presentation.RegistrationNavigateModel
 import kg.optima.mobile.registration.presentation.control_question.model.Question
 
 class ControlQuestionState : UiState<ControlQuestionInfo>() {
 
 	override fun handle(entity: ControlQuestionInfo) {
-		val stateModel: Model = when (entity) {
-			ControlQuestionInfo.ShowQuestions -> ControlQuestionModel.ShowQuestions
-			ControlQuestionInfo.HideQuestions -> ControlQuestionModel.HideQuestions
-			is ControlQuestionInfo.SetQuestion -> ControlQuestionModel.SetQuestion(entity.question)
-			is ControlQuestionInfo.GetQuestions -> ControlQuestionModel.GetQuestions(entity.questions)
-			is ControlQuestionInfo.Validation -> ControlQuestionModel.ValidateResult(
+		val stateModel: UiState.Model = when (entity) {
+			ControlQuestionInfo.ShowQuestions -> Model.ShowQuestions
+			ControlQuestionInfo.HideQuestions -> Model.HideQuestions
+			is ControlQuestionInfo.SetQuestion -> Model.SetQuestion(entity.question)
+			is ControlQuestionInfo.GetQuestions -> Model.GetQuestions(entity.questions)
+			is ControlQuestionInfo.Validation -> Model.ValidateResult(
 				entity.success,
 				entity.message
 			)
 			is ControlQuestionInfo.ConfirmQuestion ->
-				ControlQuestionModel.NavigateToCreatePassword(
+				Model.NavigateTo.CreatePassword(
 					hash = entity.hashCode,
 					questionId = entity.questionId,
 					answer = entity.answer
@@ -27,29 +28,33 @@ class ControlQuestionState : UiState<ControlQuestionInfo>() {
 		setStateModel(stateModel)
 	}
 
-	sealed interface ControlQuestionModel : Model {
-		object ShowQuestions : ControlQuestionModel
-		object HideQuestions : ControlQuestionModel
+	sealed interface Model : UiState.Model {
+		object ShowQuestions :
+			Model
+		object HideQuestions :
+			Model
 
 		class SetQuestion(
 			val question: Question
-		) : ControlQuestionModel
+		) : Model
 
 		class GetQuestions(
 			val questions: List<Question>
-		) : ControlQuestionModel
+		) : Model
 
 		class ValidateResult(
 			val success: Boolean,
 			val message: String = emptyString,
-		) : ControlQuestionModel
+		) : Model
 
-		@Parcelize
-		class NavigateToCreatePassword(
-			val hash: String,
-			val questionId: String,
-			val answer: String,
-		) : ControlQuestionModel, Model.Navigate
+		sealed interface NavigateTo : Model, RegistrationNavigateModel {
+			@Parcelize
+			class CreatePassword(
+				val hash: String,
+				val questionId: String,
+				val answer: String,
+			) : NavigateTo, RegistrationNavigateModel
+		}
 	}
 
 }

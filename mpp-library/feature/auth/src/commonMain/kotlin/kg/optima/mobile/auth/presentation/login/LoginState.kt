@@ -1,37 +1,39 @@
 package kg.optima.mobile.auth.presentation.login
 
 import com.arkivanov.essenty.parcelable.Parcelize
-import kg.optima.mobile.auth.presentation.login.model.LoginModel
+import kg.optima.mobile.auth.presentation.AuthNavigateModel
+import kg.optima.mobile.auth.presentation.login.model.LoginEntity
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
 
-open class LoginState : UiState<LoginModel>() {
+open class LoginState<T : LoginEntity> : UiState<T>() {
 
-	override fun handle(entity: LoginModel) {
+	override fun handle(entity: T) {
 		val state: UiState.Model = when (entity) {
-			is LoginModel.SignInResult -> when (entity) {
-				LoginModel.SignInResult.Error -> TODO()
-				is LoginModel.SignInResult.IncorrectData ->
+			is LoginEntity.SignInResult -> when (entity) {
+				LoginEntity.SignInResult.Error -> TODO()
+				is LoginEntity.SignInResult.IncorrectData ->
 					Model.SignInResult.IncorrectData(entity.message ?: "Неверный ID код или пароль")
-				is LoginModel.SignInResult.SmsCodeRequired ->
+				is LoginEntity.SignInResult.SmsCodeRequired ->
 					Model.NavigateTo.SmsCode(entity.otpModel)
-				is LoginModel.SignInResult.SuccessAuth ->
+				is LoginEntity.SignInResult.SuccessAuth ->
 					if (entity.firstAuth) Model.NavigateTo.PinSet else Model.NavigateTo.MainPage
-				LoginModel.SignInResult.UserBlocked -> TODO()
+				LoginEntity.SignInResult.UserBlocked -> TODO()
 			}
-			is LoginModel.ClientInfo -> {
+			is LoginEntity.ClientInfo -> {
 				if (entity.isAuthorized && entity.pinEnabled) {
 					Model.NavigateTo.PinEnter(entity.clientId)
 				} else {
 					Model.ClientId(clientId = entity.clientId)
 				}
 			}
-			is LoginModel.ClientIdInfo ->
+			is LoginEntity.ClientIdInfo ->
 				Model.NavigateTo.ClientIdInfo(
 					cardNumber = entity.cardNumber,
 					clientId = entity.clientId,
 					expiredDate = entity.expiredDate
 				)
+			else -> UiState.Model.Initial
 		}
 
 		setStateModel(state)
@@ -42,7 +44,7 @@ open class LoginState : UiState<LoginModel>() {
 			val clientId: String,
 		) : Model
 
-		sealed interface NavigateTo : Model, UiState.Model.Navigate {
+		sealed interface NavigateTo : Model, AuthNavigateModel {
 			@Parcelize
 			class ClientIdInfo(
 				val cardNumber: String,

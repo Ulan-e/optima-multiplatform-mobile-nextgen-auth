@@ -16,6 +16,7 @@ import kg.optima.mobile.android.ui.base.MainContainer
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
+import kg.optima.mobile.auth.presentation.login.model.LoginEntity
 import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
@@ -35,7 +36,9 @@ object LoginScreen : BaseScreen {
 	@OptIn(ExperimentalMaterialApi::class)
 	@Composable
 	override fun Content() {
-		val product = remember { AuthFeatureFactory.create<LoginIntent, LoginState>() }
+		val product = remember {
+			AuthFeatureFactory.create<LoginIntent<LoginEntity>, LoginState<LoginEntity>>()
+		}
 		val state = product.state
 		val intent = product.intent
 
@@ -60,7 +63,9 @@ object LoginScreen : BaseScreen {
 					clientIdInputFieldState.value = loginState.clientId
 				is LoginState.Model.NavigateTo.PinEnter ->
 					clientIdInputFieldState.value = loginState.clientId
-				is LoginState.Model.SignInResult.IncorrectData -> TODO()
+				is LoginState.Model.SignInResult.IncorrectData -> {
+					// TODO incorrect data
+				}
 				else -> Unit
 			}
 		}

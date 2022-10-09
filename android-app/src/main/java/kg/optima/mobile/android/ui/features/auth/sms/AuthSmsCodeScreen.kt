@@ -10,7 +10,7 @@ import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
 import kg.optima.mobile.common.CommonFeatureFactory
-import kg.optima.mobile.common.presentation.SmsCodeState
+import kg.optima.mobile.common.presentation.sms.SmsCodeState
 import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
 

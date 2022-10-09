@@ -1,4 +1,4 @@
-package kg.optima.mobile.common.presentation
+package kg.optima.mobile.common.presentation.sms
 
 import kg.optima.mobile.base.data.model.Either
 import kg.optima.mobile.base.presentation.UiIntent

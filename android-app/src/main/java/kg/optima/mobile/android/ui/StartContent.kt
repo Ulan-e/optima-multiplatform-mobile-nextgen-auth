@@ -14,7 +14,7 @@ fun StartContent(stateModel: UiState.Model.Navigate? = null) {
 
 	val screens = mutableListOf<Screen>(WelcomeScreen)
 	if (stateModel != null)
-		screens.addAll(router.compose(stateModels = listOf(stateModel)).map { it.screen })
+		screens.add(router.compose(stateModel = stateModel).screen)
 
 	Navigator(screens = screens)
 }

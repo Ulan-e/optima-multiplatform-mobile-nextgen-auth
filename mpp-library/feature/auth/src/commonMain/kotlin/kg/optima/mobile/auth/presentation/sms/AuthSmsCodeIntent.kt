@@ -3,7 +3,7 @@ package kg.optima.mobile.auth.presentation.sms
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
 import kg.optima.mobile.auth.presentation.sms.model.AuthCheckSmsCodeInfo
 import kg.optima.mobile.base.data.model.map
-import kg.optima.mobile.common.presentation.SmsCodeIntent
+import kg.optima.mobile.common.presentation.sms.SmsCodeIntent
 import kg.optima.mobile.feature.auth.model.SignInInfo
 import org.koin.core.component.inject
 

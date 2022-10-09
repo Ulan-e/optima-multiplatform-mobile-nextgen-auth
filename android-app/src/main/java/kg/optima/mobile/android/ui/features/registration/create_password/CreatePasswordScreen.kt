@@ -39,9 +39,7 @@ import kg.optima.mobile.registration.presentation.create_password.validity.Passw
 import kg.optima.mobile.resources.Headings
 
 class CreatePasswordScreen(
-	val hash: String,
-	val questionId: String,
-	val answer: String,
+	private val createPasswordModel: CreatePasswordModel
 ) : Screen {
 
 	@OptIn(ExperimentalMaterialApi::class)
@@ -72,13 +70,13 @@ class CreatePasswordScreen(
 		LaunchedEffect(key1 = buttonEnabled) { focusManager.clearFocus() }
 
 		when (val createPasswordStateModel: UiState.Model? = model) {
-			is CreatePasswordState.CreatePasswordStateModel.ValidationResult -> {
+			is CreatePasswordState.Model.ValidationResult -> {
 				passwordValidity.value = createPasswordStateModel.validityModels
 			}
-			is CreatePasswordState.CreatePasswordStateModel.ComparisonResult -> {
+			is CreatePasswordState.Model.ComparisonResult -> {
 				buttonEnabled.value = createPasswordStateModel.matches
 			}
-			is CreatePasswordState.CreatePasswordStateModel.RegisterSuccessResult -> {
+			is CreatePasswordState.Model.RegisterSuccessResult -> {
 				intent.init()
 				bottomSheetState.value = BottomSheetInfo(
 					title = createPasswordStateModel.message,
@@ -123,7 +121,7 @@ class CreatePasswordScreen(
 					)
 				)
 			}
-			is CreatePasswordState.CreatePasswordStateModel.RegisterFailedResult -> {
+			is CreatePasswordState.Model.RegisterFailedResult -> {
 				intent.init()
 				bottomSheetState.value = BottomSheetInfo(
 					title = createPasswordStateModel.message,
@@ -136,7 +134,7 @@ class CreatePasswordScreen(
 					)
 				)
 			}
-			is CreatePasswordState.CreatePasswordStateModel.NavigateTo.Welcome ->
+			is CreatePasswordState.Model.NavigateTo.Welcome ->
 				context.navigateTo(createPasswordStateModel)
 		}
 
@@ -150,8 +148,8 @@ class CreatePasswordScreen(
 			TitleTextField(text = "Создание пароля")
 			PasswordOutlineInput(
 				modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = Deps.Spacing.spacing),
+					.fillMaxWidth()
+					.padding(top = Deps.Spacing.spacing),
 				passwordState = passwordState,
 				hint = "Пароль",
 				onValueChange = {
@@ -177,16 +175,16 @@ class CreatePasswordScreen(
 			)
 			Text(
 				modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = Deps.Spacing.swiperTopMargin),
+					.fillMaxWidth()
+					.padding(top = Deps.Spacing.swiperTopMargin),
 				text = "Пароль для входа в приложение",
 				color = ComposeColors.DescriptionGray,
 				fontSize = Headings.H5.sp,
 			)
 			PasswordOutlineInput(
 				modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = Deps.Spacing.spacing),
+					.fillMaxWidth()
+					.padding(top = Deps.Spacing.spacing),
 				passwordState = rePasswordState,
 				onValueChange = {
 					passwordValidity.value = PasswordValidator.validate(passwordState.value, it)
@@ -230,10 +228,10 @@ class CreatePasswordScreen(
 				enabled = buttonEnabled.value,
 				onClick = {
 					intent.register(
-						hash = hash,
+						hash = createPasswordModel.hash,
 						password = passwordState.value,
-						questionId = questionId,
-						answer = answer
+						questionId = createPasswordModel.questionId,
+						answer = createPasswordModel.answer,
 					)
 				}
 			)

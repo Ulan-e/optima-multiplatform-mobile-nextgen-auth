@@ -7,5 +7,7 @@ sealed interface SetupAuthResult : BaseEntity {
 
 	class Compare(val isMatch: Boolean) : SetupAuthResult
 
+	object Skip : SetupAuthResult
+
 	object Done : SetupAuthResult
 }

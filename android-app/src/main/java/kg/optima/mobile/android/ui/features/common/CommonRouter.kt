@@ -3,17 +3,20 @@ package kg.optima.mobile.android.ui.features.common
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.base.routing.RouteInfo
+import kg.optima.mobile.android.ui.features.BottomNavigationScreen
 import kg.optima.mobile.android.ui.features.common.bankContacts.BankContactsScreen
+import kg.optima.mobile.android.ui.features.welcome.WelcomeRouter
 import kg.optima.mobile.base.presentation.UiState
+import kg.optima.mobile.common.presentation.welcome.WelcomeState
 
 object CommonRouter : FeatureRouter<UiState.Model.Navigate> {
 	@Composable
 	override fun compose(stateModel: UiState.Model.Navigate): Screen {
-		return BankContactsScreen/*when (stateModel) {
-			CommonScreenModel.BankContacts -> BankContactsScreen
-			is CommonScreenModel.Interview -> InterviewScreen(stateModel.url)
-			is CommonScreenModel.SmsCode -> SmsCodeScreen(otpModel = stateModel.otpModel)
-		}*/
+		return when (stateModel) {
+			is WelcomeState.Model.NavigateTo -> WelcomeRouter.compose(stateModel = stateModel)
+			else -> BottomNavigationScreen
+		}
 	}
 
 }

@@ -3,8 +3,8 @@ package kg.optima.mobile.auth.presentation.login.model
 import kg.optima.mobile.base.presentation.BaseEntity
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
 
-sealed interface LoginModel : BaseEntity {
-	sealed interface SignInResult : LoginModel {
+interface LoginEntity : BaseEntity {
+	sealed interface SignInResult : LoginEntity {
 		class SuccessAuth(
 			val firstAuth: Boolean,
 		) : SignInResult
@@ -27,11 +27,11 @@ sealed interface LoginModel : BaseEntity {
 		val isAuthorized: Boolean,
 		val pinEnabled: Boolean,
 		val biometryEnabled: Boolean,
-	) : LoginModel
+	) : LoginEntity
 
 	class ClientIdInfo(
 		val cardNumber: String,
 		val clientId: String,
 		val expiredDate: String,
-	) : LoginModel
+	) : LoginEntity
 }

@@ -2,26 +2,29 @@ package kg.optima.mobile.registration.presentation.self_confirm
 
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.base.presentation.UiState
+import kg.optima.mobile.registration.presentation.RegistrationNavigateModel
 import kg.optima.mobile.registration.presentation.self_confirm.model.AnimationModel
 
 class SelfConfirmState : UiState<SelfConfirmEntity>() {
     override fun handle(entity: SelfConfirmEntity) {
         val stateModel = when (entity) {
             is SelfConfirmEntity.AnimationModels ->
-                SelfConfirmStateModel.AnimationModels(entity.models)
+                Model.AnimationModels(entity.models)
             SelfConfirmEntity.PermissionsAccepted ->
-                SelfConfirmStateModel.NavigateToDocumentScan
+                Model.NavigateTo.DocumentScan
         }
 
         setStateModel(stateModel)
     }
 
-    sealed interface SelfConfirmStateModel : Model {
+    sealed interface Model : UiState.Model {
         class AnimationModels(
-            val models: List<AnimationModel>
-        ) : SelfConfirmStateModel
+            val models: List<AnimationModel>,
+        ) : Model
 
-        @Parcelize
-        object NavigateToDocumentScan : SelfConfirmStateModel, Model.Navigate
+        sealed interface NavigateTo : Model, RegistrationNavigateModel {
+            @Parcelize
+            object DocumentScan : NavigateTo, RegistrationNavigateModel
+        }
     }
 }

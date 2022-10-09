@@ -2,16 +2,17 @@ package kg.optima.mobile.auth.presentation.login
 
 import kg.optima.mobile.auth.domain.usecase.client_info.ClientInfoUseCase
 import kg.optima.mobile.auth.domain.usecase.login.LoginUseCase
-import kg.optima.mobile.auth.presentation.login.model.LoginModel
+import kg.optima.mobile.auth.presentation.login.model.LoginEntity
+import kg.optima.mobile.auth.presentation.login.utils.toEntity
 import kg.optima.mobile.auth.presentation.login.utils.toUseCaseModel
 import kg.optima.mobile.base.data.model.map
 import kg.optima.mobile.base.presentation.UiIntent
-import kg.optima.mobile.base.presentation.UiState
 import org.koin.core.component.inject
 
-open class LoginIntent(
-	override val uiState: LoginState,
-) : UiIntent<LoginModel>() {
+@Suppress("UNCHECKED_CAST")
+open class LoginIntent <T : LoginEntity>(
+	override val uiState: LoginState<T>,
+) : UiIntent<T>() {
 
 	private val loginUseCase: LoginUseCase by inject()
 	private val clientInfoUseCase: ClientInfoUseCase by inject()
@@ -19,18 +20,22 @@ open class LoginIntent(
 	override fun init() {
 		launchOperation {
 			clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
-				LoginModel.ClientInfo(
+				LoginEntity.ClientInfo(
 					clientId = it.clientId,
 					isAuthorized = it.isAuthorized,
 					pinEnabled = it.pinEnabled,
 					biometryEnabled = it.biometryEnabled,
-				)
+				) as T
 			}
 		}
 	}
 
 	fun signIn(info: SignInInfo) {
-		launchOperation { loginUseCase.execute(info.toUseCaseModel()) }
+		launchOperation {
+			loginUseCase.execute(info.toUseCaseModel()).map {
+				it.toEntity() as T
+			}
+		}
 	}
 
 	sealed interface SignInInfo {
