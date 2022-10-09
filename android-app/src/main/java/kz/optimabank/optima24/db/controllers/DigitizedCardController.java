@@ -1,12 +1,10 @@
 package kz.optimabank.optima24.db.controllers;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 import kz.optimabank.optima24.db.entry.DigitizedCard;
-import kz.optimabank.optima24.room_db.repository.CardImageRepository;
-import kz.optimabank.optima24.room_db.repository.impl.CardImageRepositoryImpl;
+import kz.optimabank.optima24.local.repository.CardImageRepository;
+import kz.optimabank.optima24.local.repository.implementations.CardImageRepositoryImpl;
 
 public class DigitizedCardController {
     private static DigitizedCardController controller;

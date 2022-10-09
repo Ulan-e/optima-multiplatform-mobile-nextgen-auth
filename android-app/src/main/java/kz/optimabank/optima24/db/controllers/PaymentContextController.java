@@ -1,7 +1,6 @@
 package kz.optimabank.optima24.db.controllers;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +10,14 @@ import kz.optimabank.optima24.db.entry.Country;
 import kz.optimabank.optima24.db.entry.PaymentCategory;
 import kz.optimabank.optima24.db.entry.PaymentRegions;
 import kz.optimabank.optima24.db.entry.PaymentService;
-import kz.optimabank.optima24.room_db.repository.CountriesRepository;
-import kz.optimabank.optima24.room_db.repository.PaymentCategoryRepository;
-import kz.optimabank.optima24.room_db.repository.PaymentRegionsRepository;
-import kz.optimabank.optima24.room_db.repository.PaymentServiceRepository;
-import kz.optimabank.optima24.room_db.repository.impl.CountriesRepositoryImpl;
-import kz.optimabank.optima24.room_db.repository.impl.PaymentCategoryRepositoryImpl;
-import kz.optimabank.optima24.room_db.repository.impl.PaymentRegionsRepositoryImpl;
-import kz.optimabank.optima24.room_db.repository.impl.PaymentServiceRepositoryImpl;
+import kz.optimabank.optima24.local.repository.CountriesRepository;
+import kz.optimabank.optima24.local.repository.PaymentCategoryRepository;
+import kz.optimabank.optima24.local.repository.PaymentRegionsRepository;
+import kz.optimabank.optima24.local.repository.PaymentServiceRepository;
+import kz.optimabank.optima24.local.repository.implementations.CountriesRepositoryImpl;
+import kz.optimabank.optima24.local.repository.implementations.PaymentCategoryRepositoryImpl;
+import kz.optimabank.optima24.local.repository.implementations.PaymentRegionsRepositoryImpl;
+import kz.optimabank.optima24.local.repository.implementations.PaymentServiceRepositoryImpl;
 
 /**
  * Created by Timur on 14.04.2017.

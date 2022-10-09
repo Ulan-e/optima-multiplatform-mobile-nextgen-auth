@@ -11,8 +11,8 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import kz.optimabank.optima24.notifications.models.Notification;
-import kz.optimabank.optima24.room_db.AppDatabase;
-import kz.optimabank.optima24.room_db.daos.NotificationDao;
+import kz.optimabank.optima24.local.repository.database.AppDatabase;
+import kz.optimabank.optima24.local.daos.NotificationDao;
 
 public class NotificationsLocalRepositoryImpl implements NotificationsLocalRepository {
 

@@ -4,12 +4,6 @@
     package="kg.optima.mobile"
     tools:ignore="MissingLeanbackLauncher">
 
-    <queries>
-        <package android:name="com.whatsapp" />
-    </queries>
-
-    <uses-sdk tools:overrideLibrary="com.uttampanchasara.pdfgenerator" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -26,6 +20,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <queries>
+        <package android:name="com.whatsapp" />
+    </queries>
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -52,6 +50,8 @@
         android:name="android.hardware.nfc.hce"
         android:required="false" />
 
+    <uses-sdk tools:overrideLibrary="com.uttampanchasara.pdfgenerator" />
+
     <application
         android:name=".android.OptimaApp"
         android:allowBackup="false"
@@ -75,194 +75,178 @@
         </activity>
 
         <activity
+            android:name="kz.optimabank.optima24.activity.CardLimitActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name="kz.optimabank.optima24.activity.InterfaceFormActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+
+        <activity
+            android:name="kz.optimabank.optima24.activity.UnauthorizedTabActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.notifications.ui.NotificationsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.TemplateActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.MenuActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateVisible|adjustPan"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.AccountDetailsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.InvoiceAblePaymentActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.TransfersActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.StatementActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.PaymentActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.SelectAccountActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TransparentForOreo"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.SelectParameterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.SmsConfirmActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.ServicePointDetails"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.NavigationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.Communications"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.ChangeAppLangActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.PaymentResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.receipt.ui.ReceiptActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.SessionDialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name="kz.optimabank.optima24.activity.contacts.SelectContactsActivity" />
+
+        <activity
+            android:name="kz.optimabank.optima24.scan.RPSScanCardActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="kz.optimabank.optima24.activity.LoginAfterRegActivity"/>
+        <activity
+            android:name="kz.optimabank.optima24.activity.CropImageActivity" />
+
+        <activity
             android:name="kg.optima.mobile.android.ui.features.biometrics.LivenessActivity"
-            android:exported="true"
             android:noHistory="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name="kg.optima.mobile.android.ui.features.biometrics.DocumentScanActivity"
-            android:exported="true"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity
-            android:name="kz.optimabank.optima24.activity.CardLimitActivity"
-            android:exported="false" />
-
-        <activity android:name="kz.optimabank.optima24.activity.InterfaceFormActivity" />
-        <activity android:name="kz.optimabank.optima24.activity.TestWebViewActivity" />
-
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
-
-        <activity
-            android:name="kz.optimabank.optima24.activity.UnauthorizedTabActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.notifications.ui.NotificationsActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.LoginActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.TemplateActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.MenuActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="stateVisible|adjustPan" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.AccountDetailsActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.InvoiceAblePaymentActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.TransfersActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.StatementActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.PaymentActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.SelectAccountActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.TransparentForOreo" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.SelectParameterActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.SmsConfirmActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.ServicePointDetails"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.NavigationActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.Communications"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.ChangeAppLangActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.ProfileActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.SettingsActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.PaymentResultActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name="kz.optimabank.optima24.receipt.ui.ReceiptActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:noHistory="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.SessionDialogActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Dialog" />
-
-        <activity
-            android:name="kz.optimabank.optima24.activity.contacts.SelectContactsActivity"
-            android:exported="true" />
-
-        <service
-            android:name="kz.optimabank.optima24.notifications.service.Optima24MessagingService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
-        <meta-data android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/opt_logo_small"/>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/opt_logo_small" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/white" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyD87ev_u-fDGxPmEH7yWnn-785sHrCSbDI" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -274,27 +258,17 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyD87ev_u-fDGxPmEH7yWnn-785sHrCSbDI" />
+        <service
+            android:name="kz.optimabank.optima24.notifications.service.Optima24MessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
-        <activity
-            android:name="kz.optimabank.optima24.scan.RPSScanCardActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.LoginAfterRegActivity"
-            android:exported="true" />
-        <activity
-            android:name="kz.optimabank.optima24.activity.CropImageActivity"
-            android:exported="true" />
-
-        <activity
-            android:name="kz.optimabank.optima24.PollsActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
     </application>
 </manifest>

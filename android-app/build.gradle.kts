@@ -132,7 +132,6 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     implementation("com.jakewharton.timber:timber:5.0.1")
-   // implementation("cards.pay:paycardsrecognizer:1.1.0")
     implementation("androidx.preference:preference:1.2.0")
     implementation("com.github.skydoves:balloon:1.4.5")
     implementation("ru.egslava:MaskedEditText:1.0.5")
@@ -193,5 +192,4 @@ dependencies {
     annotationProcessor("com.jakewharton:butterknife-compiler:10.0.0")
     implementation("com.uttampanchasara.pdfgenerator:pdfgenerator:1.3")
     implementation("androidx.legacy:legacy-support-v13:1.0.0")
-   // implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
 }

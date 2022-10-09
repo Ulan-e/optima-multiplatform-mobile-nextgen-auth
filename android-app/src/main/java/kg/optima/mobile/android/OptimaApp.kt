@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import kg.optima.mobile.android.ui.base.routing.Router
 import kg.optima.mobile.android.ui.base.routing.RouterImpl
 import kg.optima.mobile.di.Injector
-import kz.optimabank.optima24.room_db.AppDatabase
+import kz.optimabank.optima24.local.repository.database.AppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module

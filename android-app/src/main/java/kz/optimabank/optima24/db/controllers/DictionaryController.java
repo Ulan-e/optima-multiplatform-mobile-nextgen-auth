@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import kz.optimabank.optima24.db.entry.Country;
 import kz.optimabank.optima24.db.entry.Dictionary;
 import kz.optimabank.optima24.db.entry.ForeignBank;
-import kz.optimabank.optima24.room_db.repository.CountriesRepository;
-import kz.optimabank.optima24.room_db.repository.DictionariesRepository;
-import kz.optimabank.optima24.room_db.repository.ForeignBankRepository;
-import kz.optimabank.optima24.room_db.repository.impl.CountriesRepositoryImpl;
-import kz.optimabank.optima24.room_db.repository.impl.DictionariesRepositoryImpl;
-import kz.optimabank.optima24.room_db.repository.impl.ForeignBankRepositoryImpl;
+import kz.optimabank.optima24.local.repository.CountriesRepository;
+import kz.optimabank.optima24.local.repository.DictionariesRepository;
+import kz.optimabank.optima24.local.repository.ForeignBankRepository;
+import kz.optimabank.optima24.local.repository.implementations.CountriesRepositoryImpl;
+import kz.optimabank.optima24.local.repository.implementations.DictionariesRepositoryImpl;
+import kz.optimabank.optima24.local.repository.implementations.ForeignBankRepositoryImpl;
 
 /**
  * Created by Timur on 13.05.2017.
