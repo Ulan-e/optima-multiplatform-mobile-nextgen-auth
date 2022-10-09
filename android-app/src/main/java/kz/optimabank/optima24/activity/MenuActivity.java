@@ -1,6 +1,7 @@
 package kz.optimabank.optima24.activity;
 
 import static org.koin.java.KoinJavaComponent.inject;
+import static kg.optima.mobile.android.utils.NavigationUtilsKt.toBankContactsScreen;
 import static kz.optimabank.optima24.activity.PaymentActivity.CATEGORY_NAME;
 import static kz.optimabank.optima24.activity.PaymentActivity.EXTERNAL_ID;
 import static kz.optimabank.optima24.utility.Constants.BACKGROUND_NOTIFICATION_ID;
@@ -574,6 +575,7 @@ public class MenuActivity extends OptimaActivity implements TransferAndPaymentIm
                 intent = new Intent(this, NavigationActivity.class);
                 intent.putExtra("isContact", true);
                 Log.d("asdsadasdas", "onClick: dsadas");
+                toBankContactsScreen(this);
                 closeMenu();
                 break;
             case R.id.relExit:

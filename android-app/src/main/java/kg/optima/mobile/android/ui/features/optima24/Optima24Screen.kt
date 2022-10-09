@@ -14,7 +14,9 @@ import kz.optimabank.optima24.notifications.ui.NotificationsActivity
 import kz.optimabank.optima24.utility.Constants
 
 @Parcelize
-class Optima24Screen(val model: Optima24Model) : BaseScreen {
+class Optima24Screen(
+    val model: Optima24Model
+) : BaseScreen {
 
     companion object {
         private const val mapScreen = "isMap"
