@@ -16,7 +16,7 @@ public interface PaymentServiceDao {
     List<Long> insertAll(List<PaymentService> paymentServices);
 
     @Query("SELECT * FROM paymentservice")
-    List<PaymentService> getByCategoryId();
+    List<PaymentService> getAll();
 
     @Query("SELECT * FROM paymentservice WHERE paymentCategoryId=:categoryId")
     List<PaymentService> getByCategoryId(Integer categoryId);

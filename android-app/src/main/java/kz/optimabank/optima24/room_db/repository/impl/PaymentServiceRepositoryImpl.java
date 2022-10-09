@@ -22,7 +22,7 @@ public class PaymentServiceRepositoryImpl implements PaymentServiceRepository {
 
     @Override
     public List<PaymentService> getAll() {
-        List<PaymentService> paymentServices = dao.getByCategoryId();
+        List<PaymentService> paymentServices = dao.getAll();
         Log.d(TAG, "getAll " + paymentServices.size());
         return paymentServices;
     }

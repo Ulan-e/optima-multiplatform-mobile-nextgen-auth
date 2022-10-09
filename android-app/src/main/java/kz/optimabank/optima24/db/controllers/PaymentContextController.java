@@ -25,11 +25,10 @@ import kz.optimabank.optima24.room_db.repository.impl.PaymentServiceRepositoryIm
  */
 
 public class PaymentContextController {
-    private static PaymentContextController controller;
-    private PaymentServiceRepository serviceRepository;
-    private PaymentRegionsRepository regionsRepository;
-    private PaymentCategoryRepository categoryRepository;
-    private CountriesRepository countriesRepository;
+    private final PaymentServiceRepository serviceRepository;
+    private final PaymentRegionsRepository regionsRepository;
+    private final PaymentCategoryRepository categoryRepository;
+    private final CountriesRepository countriesRepository;
 
     private PaymentContextController() {
         super();
@@ -60,30 +59,24 @@ public class PaymentContextController {
     }
 
     public ArrayList<PaymentCategory> getAllPaymentCategory() {
-        Log.d("terra", "getAllPaymentCategory --->>>>>>>" + categoryRepository.getAll().size());
         return new ArrayList<>(categoryRepository.getAll());
-//        return new ArrayList<>(mRealm.where(PaymentCategory.class).findAll());
     }
 
     public ArrayList<PaymentRegions> getAllPaymentRegions() {
-        Log.d("terra", "getAllPaymentRegions --->>>>>>>" + regionsRepository.getAll().size());
         return new ArrayList<>(regionsRepository.getAll());
-//        return new ArrayList<>(mRealm.where(PaymentRegions.class).findAll());
     }
 
     public ArrayList<Country> getAllPaymentCountryes() {
-        Log.d("terra", "getAllPaymentCountryes --->>>>>" + countriesRepository.getAll().size());
         return new ArrayList<>(countriesRepository.getAll());
-//        return new ArrayList<>(mRealm.where(Country.class).findAll());
     }
 
     public ArrayList<PaymentCategory> getPaymentCategory(Context context) {
         ArrayList<PaymentCategory> paymentCategories = new ArrayList<>();
 
-        for(PaymentCategory paymentCategory : getAllPaymentCategory()) {
-            if(!paymentCategory.getName().toUpperCase().contains(context.getString(R.string.payment_fines).toUpperCase())) {
+        for (PaymentCategory paymentCategory : getAllPaymentCategory()) {
+            if (!paymentCategory.getName().toUpperCase().contains(context.getString(R.string.payment_fines).toUpperCase())) {
                 paymentCategories.add(paymentCategory);
-            }else{
+            } else {
                 paymentCategories.add(paymentCategory);
             }
         }
@@ -92,20 +85,17 @@ public class PaymentContextController {
     }
 
     public PaymentCategory getPaymentCategoryByServiceId(int serviceId) {
-        Log.d("terra", "getPaymentCategoryByServiceId " + serviceId);
         return categoryRepository.getById(serviceId);
 //        return mRealm.where(PaymentCategory.class).equalTo("id",serviceId).findFirst();
     }
 
     public ArrayList<PaymentService> getPaymentServiceByCategoryId(int id) {
-        Log.d("terra", "getPaymentServiceByCategoryId --->>>> " + serviceRepository.getServiceByCategoryId(id).size());
         return new ArrayList<>(serviceRepository.getServiceByCategoryId(id));
 //        return new ArrayList<> (mRealm.copyFromRealm
 //                (mRealm.where(PaymentService.class).equalTo("paymentCategoryId",id).findAll()));
     }
 
     public PaymentService getPaymentServiceById(int id) {
-        Log.d("terra", "getPaymentServiceById <<<<<<<<" + serviceRepository.getById(id));
         return serviceRepository.getById(id);
 //        return mRealm.where(PaymentService.class).equalTo("id",id).findFirst();
     }
@@ -116,12 +106,11 @@ public class PaymentContextController {
     }
 
     public PaymentService getPaymentServiceByExternalId(int id) {
-        Log.d("terra", "getPaymentServiceByExternalId " + id);
         return serviceRepository.getByExternalId(id);
         //   return mRealm.where(PaymentService.class).equalTo("ExternalId",id).findFirst();
     }
 
-    public void close(){
-        serviceRepository.deleteAll();
+    public void close() {
+
     }
 }

@@ -105,23 +105,18 @@ public class PaymentAdapFragment extends ATFFragment implements TransferAndPayme
             if (isAdd)
                 paymentCategories.add(paymentCategory);
         }*/
-        getPymentCategories();
+         getPymentCategories();
     }
 
     private void getPymentCategories(){
         paymentCategories.clear();
-        Log.d("terrar", "paymentContextController.getAllPaymentCategory() " +paymentContextController.getAllPaymentCategory());
         for (PaymentCategory paymentCategory : paymentContextController.getAllPaymentCategory()) {
             /*for (PaymentService paymentService : paymentContextController.getPaymentServiceByCategoryId(paymentCategory.getId())) {
                 paymentServices.add(paymentService);
             }*/
-            Log.d("terrar", "paymentCategory.getId()" + paymentCategory.getId());
             ArrayList<PaymentService> paymentService = paymentContextController.getPaymentServiceByCategoryId(paymentCategory.getId());
-            Log.d("terrar", "sss paymentService size" + paymentService.size());
-            if(paymentService.size() > 0) {
+            if(paymentService.size() > 0)
                 paymentCategories.add(paymentCategory);
-                Log.d("terrar", "cccc paymentCategories size" + paymentCategories.size());
-            }
             paymentServices.addAll(paymentService);
         }
     }
@@ -135,8 +130,8 @@ public class PaymentAdapFragment extends ATFFragment implements TransferAndPayme
     }
 
     @Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_payment_tab, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_payment_tab, container, false);
         ButterKnife.bind(this, view);
         initToolbar();
         initSwipeRefreshLayout();
@@ -169,8 +164,8 @@ public class PaymentAdapFragment extends ATFFragment implements TransferAndPayme
                 edSearch.setText("");
             }
         });
-		return view;
-	}
+        return view;
+    }
 
     @Override
     public void onStart() {
@@ -185,14 +180,14 @@ public class PaymentAdapFragment extends ATFFragment implements TransferAndPayme
     }
 
     @Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         if (GeneralManager.getInstance().getSessionId() != null) {
             transferAndPayment = new TransferAndPaymentImpl();
             transferAndPayment.registerCallBack(this);
             request(false);
         }
-	}
+    }
 
     @Override
     public void onResume() {
@@ -210,6 +205,12 @@ public class PaymentAdapFragment extends ATFFragment implements TransferAndPayme
         if(paymentController!=null) {
             paymentController.close();
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -260,7 +261,7 @@ public class PaymentAdapFragment extends ATFFragment implements TransferAndPayme
                /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     filterWithStream(editable.toString());
                 } else {*/
-                    filter(editable.toString());
+                filter(editable.toString());
                 //}
             }
         }
@@ -360,11 +361,11 @@ public class PaymentAdapFragment extends ATFFragment implements TransferAndPayme
                         Log.d("view","view = " + view);
                         if(isClickableRecyclerView) {
                             Object object = null;
-                             if(items!=null && !items.isEmpty()) {
-                                 object =  items.get(position);
-                             } else if(fullListForAdapter !=null && !fullListForAdapter.isEmpty()) {
-                                 object =  fullListForAdapter.get(position);
-                             }
+                            if(items!=null && !items.isEmpty()) {
+                                object =  items.get(position);
+                            } else if(fullListForAdapter !=null && !fullListForAdapter.isEmpty()) {
+                                object =  fullListForAdapter.get(position);
+                            }
                             clickAction(object);
                         }
                     }

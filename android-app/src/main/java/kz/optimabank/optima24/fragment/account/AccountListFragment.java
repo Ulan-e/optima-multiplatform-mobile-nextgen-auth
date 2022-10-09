@@ -181,6 +181,8 @@ public class AccountListFragment extends ATFFragment implements CategoriesImpl.C
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        hideSoftKeyBoard(requireContext());
+
         if (GeneralManager.getInstance().getSessionId() != null) {
             if (accounts == null)
                 accounts = new AccountsImpl();

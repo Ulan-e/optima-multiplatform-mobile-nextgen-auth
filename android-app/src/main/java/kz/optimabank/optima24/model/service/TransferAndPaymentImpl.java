@@ -44,10 +44,10 @@ public class TransferAndPaymentImpl extends GeneralService implements TransferAn
                             }catch (Exception e){
 
                                 //if return null get it again
-                                paymentContextController.close();
+                               //  paymentContextController.close();
                                 payCont(context);
                             }
-                            paymentContextController.close();
+                           // paymentContextController.close();
                             GeneralManager.setLocaleChanged(false);
                         }
                         if(callback!=null) {

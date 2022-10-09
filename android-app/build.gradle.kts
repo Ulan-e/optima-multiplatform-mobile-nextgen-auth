@@ -60,7 +60,6 @@ dependencies {
     implementation(libs.firebaseCrashlytics)
     // Hilt
     implementation(libs.hilt)
-    implementation(project(":datetimepicker-library"))
     kapt(libs.hiltCompiler)
 
     implementation(projects.mppLibrary)
@@ -72,6 +71,7 @@ dependencies {
     implementation(project(":mpp-library:feature:auth"))
     implementation(project(":mpp-library:feature:common"))
     implementation(project(":mpp-library:feature:registration"))
+    implementation(project(":android-app:datetimepicker-library"))
 
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("androidx.activity:activity-ktx:1.5.1")
