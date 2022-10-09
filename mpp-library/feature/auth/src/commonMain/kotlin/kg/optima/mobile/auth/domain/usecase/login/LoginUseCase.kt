@@ -28,7 +28,10 @@ class LoginUseCase(
 	): Either<Failure, LoginSignInResult> {
 		return when (model) {
 			is Params.Biometry -> signIn()
-			is Params.Password -> signIn(model.clientId, model.password, model.smsCode)
+			is Params.Password -> {
+				authPreferences.clearProfile()
+				signIn(model.clientId, model.password, model.smsCode)
+			}
 			is Params.Pin -> {
 				if (model.pin == authPreferences.pin) {
 					signIn()
@@ -50,7 +53,6 @@ class LoginUseCase(
 			smsCode = smsCode,
 		)
 		return authRepository.login(request).map {
-			authPreferences.clearProfile()
 			when (NetworkCode.byCode(it.code)) {
 				NetworkCode.Success -> {
 					authPreferences.clientId = clientId

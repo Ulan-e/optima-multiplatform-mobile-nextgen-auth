@@ -39,7 +39,7 @@ object LoginScreen : BaseScreen {
 	@Composable
 	override fun Content() {
 		val product = remember {
-			AuthFeatureFactory.create<LoginIntent<LoginEntity>, LoginState<LoginEntity>>()
+			AuthFeatureFactory.create<LoginIntent, LoginState>()
 		}
 		val state = product.state
 		val intent = product.intent

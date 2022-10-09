@@ -45,9 +45,15 @@ object PinEnterScreen : BaseScreen {
 			)
 		}
 
-		when (model) {
+		when (val pinEnterModel: UiState.Model? = model) {
 			is UiState.Model.Initial -> intent.init()
-			is LoginState.Model.Biometry -> onBiometryAuthenticate()
+			is PinEnterState.Model.Biometry -> {
+				if (pinEnterModel.enabled) {
+					onBiometryAuthenticate()
+				} else {
+					// TODO hide biometry authenticate btn
+				}
+			}
 		}
 
 		MainContainer(

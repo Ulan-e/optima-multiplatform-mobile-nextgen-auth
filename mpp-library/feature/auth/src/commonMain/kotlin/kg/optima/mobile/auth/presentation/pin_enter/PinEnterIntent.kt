@@ -5,9 +5,9 @@ import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.base.data.model.map
 import org.koin.core.component.inject
 
-open class PinEnterIntent(
+class PinEnterIntent(
 	override val uiState: PinEnterState,
-) : LoginIntent<PinEnterEntity>(uiState) {
+) : LoginIntent(uiState) {
 
 	private val logoutUseCase: LogoutUseCase by inject()
 

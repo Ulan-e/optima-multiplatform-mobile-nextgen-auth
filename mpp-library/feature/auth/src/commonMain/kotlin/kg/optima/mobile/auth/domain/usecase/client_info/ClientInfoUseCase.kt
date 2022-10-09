@@ -14,7 +14,7 @@ class ClientInfoUseCase(
 			clientId = authPreferences.clientId.orEmpty(),
 			isAuthorized = authPreferences.isAuthorized,
 			pinEnabled = authPreferences.pin.isNotBlank(),
-			biometryEnabled = authPreferences.biometry.isNotBlank(),
+			biometryEnabled = true//authPreferences.biometry.isNotBlank(), TODO
 		)
 		return Either.Right(info)
 	}

@@ -15,7 +15,7 @@ object CommonFeatureFactory : Factory {
 
 		// States and Intents injection by pair
 		factory { WelcomeState() }
-		factory { sm -> WelcomeIntent(sm.get()) }
+		factory { sm -> WelcomeIntent(sm.get(), get()) }
 
 	}
 }

@@ -6,9 +6,9 @@ import kg.optima.mobile.auth.presentation.login.model.LoginEntity
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.feature.auth.model.AuthOtpModel
 
-open class LoginState<T : LoginEntity> : UiState<T>() {
+open class LoginState : UiState<LoginEntity>() {
 
-	override fun handle(entity: T) {
+	override fun handle(entity: LoginEntity) {
 		val state: UiState.Model = when (entity) {
 			is LoginEntity.SignInResult -> when (entity) {
 				LoginEntity.SignInResult.Error -> TODO()
@@ -66,10 +66,10 @@ open class LoginState<T : LoginEntity> : UiState<T>() {
 			object PinSet : NavigateTo
 
 			@Parcelize
-			object MainPage : NavigateTo
+			object MainPage : NavigateTo {
+				override val dropBackStack: Boolean = true
+			}
 		}
-
-		object Biometry : Model
 
 		sealed interface SignInResult : Model {
 			class IncorrectData(val message: String) : SignInResult

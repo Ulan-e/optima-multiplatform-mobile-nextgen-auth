@@ -58,8 +58,8 @@ object AuthFeatureFactory : Factory {
 		factory { KeepAliveUseCase(authRepository = get(), authPreferences = get()) }
 
 		// States and Intents injection by pair
-		factory { LoginState<LoginEntity>() }
-		factory { st -> LoginIntent<LoginEntity>(st.get()) }
+		factory { LoginState() }
+		factory { st -> LoginIntent(st.get()) }
 
 		factory { PinEnterState() }
 		factory { st -> PinEnterIntent(st.get()) }

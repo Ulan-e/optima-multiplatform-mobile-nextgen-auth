@@ -13,7 +13,9 @@ class InterviewState : UiState<InterviewEntity>() {
 	sealed interface Model : UiState.Model {
 		sealed interface NavigateTo : Model, RegistrationNavigateModel {
 			@Parcelize
-			object Main : NavigateTo, RegistrationNavigateModel
+			object Main : NavigateTo, RegistrationNavigateModel {
+				override val dropBackStack: Boolean = true
+			}
 		}
 	}
 }
