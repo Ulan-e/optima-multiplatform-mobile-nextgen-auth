@@ -14,7 +14,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import dev.icerock.moko.parcelize.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
-import kg.optima.mobile.android.ui.features.biometrics.NavigationManager.navigateTo
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
@@ -45,8 +44,6 @@ object LoginScreen : BaseScreen {
 		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
 		val context = LocalContext.current
 
-		val model by state.stateFlow.collectAsState(initial = BaseMppState.StateModel.Initial)
-
 		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
 		val checkedState = remember { mutableStateOf(true) }
@@ -68,9 +65,6 @@ object LoginScreen : BaseScreen {
 					clientIdInputFieldState.value = loginState.clientId
 				is LoginState.Model.SignInResult.IncorrectData -> TODO()
 				else -> Unit
-			}
-			is LoginState.LoginStateModel.Hell -> {
-				context.navigateTo(MenuActivity())
 			}
 		}
 
