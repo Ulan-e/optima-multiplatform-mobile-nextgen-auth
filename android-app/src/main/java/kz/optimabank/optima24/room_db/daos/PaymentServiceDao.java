@@ -16,13 +16,16 @@ public interface PaymentServiceDao {
     List<Long> insertAll(List<PaymentService> paymentServices);
 
     @Query("SELECT * FROM paymentservice")
-    List<PaymentService> getAll();
+    List<PaymentService> getByCategoryId();
 
-    @Query("SELECT * FROM paymentservice WHERE id=:id")
-    List<PaymentService> getAll(Integer id);
+    @Query("SELECT * FROM paymentservice WHERE paymentCategoryId=:categoryId")
+    List<PaymentService> getByCategoryId(Integer categoryId);
 
     @Query("SELECT * FROM paymentservice WHERE id=:id")
     PaymentService getById(Integer id);
+
+    @Query("SELECT * FROM paymentservice WHERE ExternalId=:externalId")
+    PaymentService getByExternalId(Integer externalId);
 
     @Query("DELETE FROM paymentservice")
     void deleteAll();

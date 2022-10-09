@@ -10,9 +10,11 @@ public interface PaymentServiceRepository {
 
     List<PaymentService> getAll();
 
-    List<PaymentService> getAllById(Integer id);
+    List<PaymentService> getServiceByCategoryId(int id);
 
-    PaymentService getById(Integer id);
+    PaymentService getById(int id);
+
+    PaymentService getByExternalId(int id);
 
     void deleteAll();
 }

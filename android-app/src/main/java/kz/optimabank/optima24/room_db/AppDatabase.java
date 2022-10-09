@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 import kz.optimabank.optima24.db.entry.Country;
 import kz.optimabank.optima24.db.entry.Dictionary;
@@ -24,6 +25,7 @@ import kz.optimabank.optima24.room_db.daos.PaymentCategoryDao;
 import kz.optimabank.optima24.room_db.daos.PaymentRegionsDao;
 import kz.optimabank.optima24.room_db.daos.PaymentServiceDao;
 import kz.optimabank.optima24.room_db.daos.ProfilePictureDao;
+import kz.optimabank.optima24.room_db.repository.converters.PaymentParametersConverters;
 
 @Database(entities = {
         Notification.class,
@@ -35,11 +37,12 @@ import kz.optimabank.optima24.room_db.daos.ProfilePictureDao;
         PaymentRegions.class,
         PaymentService.class,
         ProfilePicture.class
-}, version = 2, exportSchema = false)
+}, version = 3, exportSchema = false)
+@TypeConverters({PaymentParametersConverters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     // не менять название базы данных
-    private static final String DATABASE_NAME = "notifications.db";
+    private static final String DATABASE_NAME = "notifications11.db";
 
     private static volatile AppDatabase INSTANCE;
 
@@ -63,12 +66,13 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
-          //  synchronized (AppDatabase.class) {
-                INSTANCE = Room.databaseBuilder(context,
-                                AppDatabase.class, DATABASE_NAME)
-                        .allowMainThreadQueries()
-                        .build();
-          //  }
+            //  synchronized (AppDatabase.class) {
+            INSTANCE = Room.databaseBuilder(context,
+                            AppDatabase.class, DATABASE_NAME)
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build();
+            //  }
         }
         return INSTANCE;
     }

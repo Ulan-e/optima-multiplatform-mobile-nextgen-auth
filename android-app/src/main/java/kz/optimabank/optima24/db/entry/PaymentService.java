@@ -21,10 +21,10 @@ import kz.optimabank.optima24.model.base.PaymentServiceParameter;
 
 @Entity
 public class PaymentService implements Serializable {
-    @PrimaryKey
-    @NonNull
     @SerializedName("Alias")
     public String alias;
+    @PrimaryKey
+    @NonNull
     @SerializedName("Id")
     public int id;
     @SerializedName("ExternalId")
@@ -40,8 +40,6 @@ public class PaymentService implements Serializable {
     @SerializedName("PaymentCategoryId")
     public int paymentCategoryId;
     @SerializedName("Parameters")
-
-    @Ignore
     public List<PaymentServiceParameter> parameters;
     @SerializedName("Fee")
     public double Fee;

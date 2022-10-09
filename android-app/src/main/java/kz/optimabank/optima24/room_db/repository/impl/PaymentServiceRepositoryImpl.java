@@ -22,22 +22,29 @@ public class PaymentServiceRepositoryImpl implements PaymentServiceRepository {
 
     @Override
     public List<PaymentService> getAll() {
-        List<PaymentService> paymentServices = dao.getAll();
+        List<PaymentService> paymentServices = dao.getByCategoryId();
         Log.d(TAG, "getAll " + paymentServices.size());
         return paymentServices;
     }
 
     @Override
-    public List<PaymentService> getAllById(Integer id) {
-        List<PaymentService> paymentServices = dao.getAll();
-        Log.d(TAG, "getAll " + paymentServices.size());
+    public List<PaymentService> getServiceByCategoryId(int id) {
+        List<PaymentService> paymentServices = dao.getByCategoryId(id);
+        Log.d(TAG, "getServiceByCategoryId " + paymentServices.size());
         return paymentServices;
     }
 
     @Override
-    public PaymentService getById(Integer id) {
+    public PaymentService getById(int id) {
         PaymentService paymentService = dao.getById(id);
         Log.d(TAG, "getById " + paymentService);
+        return paymentService;
+    }
+
+    @Override
+    public PaymentService getByExternalId(int id) {
+        PaymentService paymentService = dao.getByExternalId(id);
+        Log.d(TAG, "getByExternalId " + paymentService);
         return paymentService;
     }
 

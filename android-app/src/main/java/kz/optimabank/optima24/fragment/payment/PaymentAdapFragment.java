@@ -110,13 +110,18 @@ public class PaymentAdapFragment extends ATFFragment implements TransferAndPayme
 
     private void getPymentCategories(){
         paymentCategories.clear();
+        Log.d("terrar", "paymentContextController.getAllPaymentCategory() " +paymentContextController.getAllPaymentCategory());
         for (PaymentCategory paymentCategory : paymentContextController.getAllPaymentCategory()) {
             /*for (PaymentService paymentService : paymentContextController.getPaymentServiceByCategoryId(paymentCategory.getId())) {
                 paymentServices.add(paymentService);
             }*/
+            Log.d("terrar", "paymentCategory.getId()" + paymentCategory.getId());
             ArrayList<PaymentService> paymentService = paymentContextController.getPaymentServiceByCategoryId(paymentCategory.getId());
-            if(paymentService.size() > 0)
+            Log.d("terrar", "sss paymentService size" + paymentService.size());
+            if(paymentService.size() > 0) {
                 paymentCategories.add(paymentCategory);
+                Log.d("terrar", "cccc paymentCategories size" + paymentCategories.size());
+            }
             paymentServices.addAll(paymentService);
         }
     }

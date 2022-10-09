@@ -639,7 +639,6 @@ public class AccountListFragment extends ATFFragment implements CategoriesImpl.C
 
         if (digitizedCardsMap.isEmpty()) {
             ArrayList<DigitizedCard> digitizedCards = digitizedCardController.getAllCards(authPreferences.getValue().getClientId());
-            Log.i("terra", "digitizedCards size" + digitizedCards.size());
             for (DigitizedCard digitizedCard : digitizedCards) {
                 digitizedCardsMap.put(digitizedCard.getRbsNumber(), digitizedCard);
             }
