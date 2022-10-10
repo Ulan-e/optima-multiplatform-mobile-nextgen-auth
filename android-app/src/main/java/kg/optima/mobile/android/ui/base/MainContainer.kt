@@ -58,7 +58,7 @@ fun MainContainer(
 	contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
 	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
 	onSheetStateChanged: (ModalBottomSheetValue, PopLast) -> Unit = { _, _ -> },
-	sheetStatus: SheetStatus = SheetStatus.NOT_DISMISSIBLE,
+	sheetStatus: SheetStatus = SheetStatus.DISMISS,
 	sheetNavigationScreen: Screen? = null,
 	content: @Composable ColumnScope.(PopLast) -> Unit,
 ) {
@@ -169,10 +169,6 @@ fun MainContainer(
 				}
 			}
 
-			if (mainState is UiState.Model.Loading) {
-				CircularProgress(modifier = Modifier.align(Alignment.Center))
-			}
-
 			Column(
 				modifier = Modifier
 					.fillMaxSize()
@@ -199,6 +195,10 @@ fun MainContainer(
 					horizontalAlignment = contentHorizontalAlignment,
 					content = { content { navigator.pop() } },
 				)
+			}
+
+			if (mainState is UiState.Model.Loading) {
+				CircularProgress(modifier = Modifier.align(Alignment.Center))
 			}
 		}
 	}
