@@ -9,13 +9,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
+import kg.optima.mobile.android.ui.features.auth.login.LoginScreen
+import kg.optima.mobile.android.utils.Constants
 import kg.optima.mobile.android.utils.appVersion
+import kg.optima.mobile.android.utils.asBaseActivity
 import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.common.CommonFeatureFactory
@@ -42,7 +44,14 @@ object WelcomeScreen : BaseScreen {
 		val state = product.state
 		val intent = product.intent
 
-		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
+		val activity = LocalContext.current.asBaseActivity()
+
+		val onBackClicked =
+			activity?.navigationController?.get(Constants.LOGIN_SCREEN_ON_BACK_CLICKED)
+
+		val model by state.stateFlow.collectAsState(
+			initial = if (onBackClicked == true) null else UiState.Model.Initial
+		)
 
 		val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
@@ -79,7 +88,10 @@ object WelcomeScreen : BaseScreen {
 			PrimaryButton(
 				modifier = Modifier.fillMaxWidth(),
 				text = "Войти",
-				onClick = { intent.login() },
+				onClick = {
+					activity?.navigationController?.set(Constants.LOGIN_SCREEN_ON_BACK_CLICKED, false)
+					intent.login()
+				},
 			)
 			TransparentButton(
 				modifier = Modifier
@@ -89,7 +101,7 @@ object WelcomeScreen : BaseScreen {
 						bottom = Deps.Spacing.standardMargin,
 					),
 				text = "Зарегистрироваться",
-				onClick = { intent.register() },
+				onClick = intent::register,
 			)
 			Text(
 				text = "Версия $appVersion",

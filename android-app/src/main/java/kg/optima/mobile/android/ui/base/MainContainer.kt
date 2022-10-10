@@ -1,5 +1,6 @@
 package kg.optima.mobile.android.ui.base
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -27,6 +28,8 @@ import kg.optima.mobile.android.ui.base.permission.customPermissionRequired
 import kg.optima.mobile.android.ui.base.permission.requestPermission
 import kg.optima.mobile.android.ui.base.processing.processError
 import kg.optima.mobile.android.ui.base.routing.Router
+import kg.optima.mobile.android.ui.features.welcome.WelcomeScreen
+import kg.optima.mobile.android.utils.asActivity
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
 import kg.optima.mobile.design_system.android.ui.bottomsheet.InfoBottomSheet
@@ -51,6 +54,7 @@ fun MainContainer(
 	component: Root.Child.Component? = null,
 	toolbarInfo: ToolbarInfo? = ToolbarInfo(),
 	scrollable: Boolean = false,
+	onBackParameters: Pair<Boolean, (() -> Unit)>? = null,
 	contentModifier: Modifier = Modifier.padding(all = Deps.Spacing.standardPadding),
 	contentHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
 	onSheetStateChanged: (ModalBottomSheetValue, PopLast) -> Unit = { _, _ -> },
@@ -62,6 +66,7 @@ fun MainContainer(
 
 	val navigator = LocalNavigator.currentOrThrow
 	val context = LocalContext.current
+	val activity = context.asActivity()
 
 	val focusManager = LocalFocusManager.current
 	val coroutineScope = rememberCoroutineScope()
@@ -92,7 +97,6 @@ fun MainContainer(
 		}
 	)
 	val sheetInfoState = remember { mutableStateOf(sheetInfo) }
-	val isLoading = remember { mutableStateOf(false) }
 
 	val onChangeSheetState: (BottomSheetInfo?) -> Unit = {
 		coroutineScope.launch {
@@ -104,13 +108,22 @@ fun MainContainer(
 		coroutineScope.launch { sheetState.hide() }
 	}
 
-//	BackHandler(!navigator.canPop) {
-//		if (navigator.lastItem != WelcomeScreen) {
-//			navigator.replace(WelcomeScreen)
-//		} else {
-//			activity?.finish()
-//		}
-//	}
+	BackHandler(true) {
+		when {
+			onBackParameters != null -> {
+				onBackParameters.second()
+				if (onBackParameters.first)
+					navigator.pop()
+			}
+			!navigator.canPop ->
+				if (navigator.lastItem != WelcomeScreen) {
+					navigator.replace(WelcomeScreen)
+				} else {
+					activity?.finish()
+				}
+			else -> navigator.pop()
+		}
+	}
 
 	if (sheetInfo != null) focusManager.clearFocus()
 
@@ -174,12 +187,12 @@ fun MainContainer(
 						)
 					)
 				}
-				val columnModifier = contentModifier
+				var columnModifier = contentModifier
 					.fillMaxSize()
 					.weight(1f, false)
 					.background(ComposeColors.Background)
 				if (scrollable)
-					columnModifier.verticalScroll(rememberScrollState())
+					columnModifier = columnModifier.verticalScroll(rememberScrollState())
 
 				Column(
 					modifier = columnModifier,

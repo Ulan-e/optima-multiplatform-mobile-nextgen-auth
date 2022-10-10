@@ -2,7 +2,7 @@ package kg.optima.mobile.android.ui.features.registration.control_question
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
-import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.features.FeatureRouter
 import kg.optima.mobile.android.ui.features.registration.create_password.CreatePasswordModel
 import kg.optima.mobile.android.ui.features.registration.create_password.CreatePasswordScreen
 import kg.optima.mobile.registration.presentation.control_question.ControlQuestionState

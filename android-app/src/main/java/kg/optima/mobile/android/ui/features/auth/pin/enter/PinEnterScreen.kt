@@ -6,7 +6,9 @@ import androidx.compose.ui.platform.LocalContext
 import com.arkivanov.essenty.parcelable.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
+import kg.optima.mobile.android.utils.Constants
 import kg.optima.mobile.android.utils.asActivity
+import kg.optima.mobile.android.utils.asBaseActivity
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
@@ -31,6 +33,8 @@ object PinEnterScreen : BaseScreen {
 		}
 		val state = product.state
 		val intent = product.intent
+
+		val activity = LocalContext.current.asBaseActivity()
 
 		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
 
@@ -59,6 +63,12 @@ object PinEnterScreen : BaseScreen {
 		MainContainer(
 			mainState = model,
 			toolbarInfo = null,
+			onBackParameters = true to {
+				activity?.navigationController?.set(
+					key = Constants.PIN_ENTER_SCREEN_ON_BACK_CLICKED,
+					value = true,
+				)
+			}
 		) { onBack ->
 			PinScreen(
 				header = enterPinScreenHeader(

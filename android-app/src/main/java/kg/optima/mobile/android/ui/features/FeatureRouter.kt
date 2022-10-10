@@ -1,4 +1,4 @@
-package kg.optima.mobile.android.ui
+package kg.optima.mobile.android.ui.features
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
