@@ -2,7 +2,7 @@ package kg.optima.mobile.android.ui.features.biometrics.liveness
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
-import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.features.FeatureRouter
 import kg.optima.mobile.android.ui.features.common.bankContacts.BankContactsScreen
 import kg.optima.mobile.android.ui.features.registration.control_question.ControlQuestionScreen
 import kg.optima.mobile.android.ui.features.registration.self_confirm.SelfConfirmScreen

@@ -17,7 +17,7 @@ class PinEnterState : LoginState() {
 				setStateModel(stateModel)
 			}
 			else -> {
-				if (entity is LoginEntity.ClientInfo) // TODO now working
+				if (entity is LoginEntity.ClientInfo) // TODO not working
 					setStateModel(Model.Biometry(entity.biometryEnabled))
 				super.handle(entity)
 			}

@@ -14,10 +14,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import dev.icerock.moko.parcelize.Parcelize
 import kg.optima.mobile.android.ui.base.BaseScreen
 import kg.optima.mobile.android.ui.base.MainContainer
+import kg.optima.mobile.android.utils.Constants
+import kg.optima.mobile.android.utils.asBaseActivity
 import kg.optima.mobile.auth.AuthFeatureFactory
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.auth.presentation.login.LoginState
-import kg.optima.mobile.auth.presentation.login.model.LoginEntity
 import kg.optima.mobile.base.di.create
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
@@ -44,8 +45,14 @@ object LoginScreen : BaseScreen {
 		val state = product.state
 		val intent = product.intent
 
-		val model by state.stateFlow.collectAsState(initial = UiState.Model.Initial)
-		val context = LocalContext.current
+		val activity = LocalContext.current.asBaseActivity()
+
+		val onBackClicked =
+			activity?.navigationController?.get(Constants.PIN_ENTER_SCREEN_ON_BACK_CLICKED)
+
+		val model by state.stateFlow.collectAsState(
+			initial = if (onBackClicked == true) null else UiState.Model.Initial
+		)
 
 		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
 		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
@@ -60,6 +67,7 @@ object LoginScreen : BaseScreen {
 		}
 
 		when (val loginState: UiState.Model? = model) {
+			null -> intent.showClientId()
 			is UiState.Model.Initial -> intent.init()
 			is LoginState.Model -> when (loginState) {
 				is LoginState.Model.ClientId ->
@@ -76,6 +84,14 @@ object LoginScreen : BaseScreen {
 		MainContainer(
 			mainState = model,
 			toolbarInfo = ToolbarInfo(content = ToolbarContent.Nothing),
+			onBackParameters = true to {
+				activity?.navigationController?.set(
+					mapOf(
+						Constants.LOGIN_SCREEN_ON_BACK_CLICKED to true,
+						Constants.PIN_ENTER_SCREEN_ON_BACK_CLICKED to false,
+					)
+				)
+			},
 			contentModifier = Modifier
 				.padding(all = Deps.Spacing.standardPadding)
 				.background(ComposeColors.Background),

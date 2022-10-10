@@ -1,6 +1,5 @@
 package kg.optima.mobile.android.ui.features.registration.control_question
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -62,7 +61,6 @@ class ControlQuestionScreen(
 		val maxSize = 20
 
 		val keyboardController = LocalSoftwareKeyboardController.current
-		BackHandler(enabled = true, onBack = {})
 
 		when (val model = model) {
 			ControlQuestionState.Model.ShowQuestions -> {
@@ -99,6 +97,7 @@ class ControlQuestionScreen(
 			toolbarInfo = ToolbarInfo(
 				navigationIcon = null
 			),
+			onBackParameters = false to {}, // TODO
 			contentHorizontalAlignment = Alignment.Start,
 		) {
 			Spacer(modifier = Modifier.weight(1f))
@@ -124,11 +123,11 @@ class ControlQuestionScreen(
 				fontSize = Headings.H5.sp,
 				lineHeight = 17.sp,
 				modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        top = Deps.Spacing.swiperTopMargin,
-                        bottom = Deps.Spacing.standardPadding
-                    ),
+					.fillMaxWidth()
+					.padding(
+						top = Deps.Spacing.swiperTopMargin,
+						bottom = Deps.Spacing.standardPadding
+					),
 			)
 			InputField(
 				keyboardType = KeyboardType.Email,

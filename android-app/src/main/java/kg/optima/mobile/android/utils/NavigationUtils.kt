@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import kg.optima.mobile.android.ui.SingleActivity
+import kg.optima.mobile.android.ui.base.BaseActivity
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.common.presentation.welcome.WelcomeState
 import kg.optima.mobile.common.presentation.welcome.model.WelcomeEntity
@@ -20,7 +21,7 @@ fun Context.navigateTo(intent: Intent) {
 
 fun Context.navigateTo(stateModel: UiState.Model.Navigate) {
     val intent = Intent(this, SingleActivity::class.java)
-    intent.putExtra(SingleActivity.TARGET_NAVIGATE_MODEL, stateModel)
+    intent.putExtra(BaseActivity.TARGET_NAVIGATE_MODEL, stateModel)
     this.startActivity(intent)
 }
 

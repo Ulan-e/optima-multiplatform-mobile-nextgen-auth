@@ -28,7 +28,6 @@ abstract class UiIntent<in E : BaseEntity>(
 	): Job {
 		return coroutineScope.launch(handler) {
 			if (withLoading) uiState.setLoading()
-			delay(200)
 			operation().fold(
 				fnL = { err -> uiState.setError(UiState.Model.Error.BaseError(err.message)) },
 				fnR = { model -> uiState.handle(model) }

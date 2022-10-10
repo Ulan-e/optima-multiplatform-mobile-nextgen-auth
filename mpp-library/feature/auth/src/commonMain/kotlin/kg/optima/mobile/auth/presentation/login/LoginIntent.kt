@@ -38,6 +38,19 @@ open class LoginIntent(
 		}
 	}
 
+	fun showClientId() {
+		launchOperation {
+			clientInfoUseCase.execute(ClientInfoUseCase.Params).map {
+				LoginEntity.ClientInfo(
+					clientId = it.clientId,
+					isAuthorized = it.isAuthorized,
+					pinEnabled = false,
+					biometryEnabled = false,
+				)
+			}
+		}
+	}
+
 	sealed interface SignInInfo {
 		data class Password(
 			val clientId: String,

@@ -2,7 +2,7 @@ package kg.optima.mobile.android.ui.features.registration.phone_number
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
-import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.features.FeatureRouter
 import kg.optima.mobile.android.ui.features.registration.sms_otp.RegistrationOtpModel
 import kg.optima.mobile.android.ui.features.registration.sms_otp.RegistrationOtpScreen
 import kg.optima.mobile.android.ui.features.welcome.WelcomeScreen

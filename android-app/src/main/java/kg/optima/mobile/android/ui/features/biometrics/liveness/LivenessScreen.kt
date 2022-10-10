@@ -2,7 +2,6 @@ package kg.optima.mobile.android.ui.features.biometrics.liveness
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -138,10 +137,9 @@ class LivenessScreen : Screen {
 			contentModifier = Modifier.fillMaxSize(),
 			toolbarInfo = null,
 			sheetInfo = bottomSheetState.value,
+			onBackParameters = false to onBack,
 			contentHorizontalAlignment = Alignment.Start
 		) {
-			BackHandler(onBack = onBack)
-
 			Column {
 				TopAppBar(
 					modifier = Modifier.fillMaxWidth(),
