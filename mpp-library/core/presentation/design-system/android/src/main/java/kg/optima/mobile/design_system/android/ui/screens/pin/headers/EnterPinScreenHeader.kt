@@ -20,53 +20,54 @@ import kg.optima.mobile.resources.images.MainImages
 
 @Composable
 fun enterPinScreenHeader(
-	onCloseClick: () -> Unit = {},
-	onLogoutClick: () -> Unit = {},
+    onCloseClick: () -> Unit = {},
+    onLogoutClick: () -> Unit = {},
+    username: String,
 //	profileImageId: Painter,
 ): @Composable ColumnScope.(Modifier) -> Unit = {
-	Box(
-		modifier = Modifier
+    Box(
+        modifier = Modifier
 			.fillMaxWidth()
 			.height(Deps.Size.buttonHeight)
 			.padding(horizontal = Deps.Spacing.standardPadding),
-		content = {
-			Icon(
-				modifier = Modifier
+        content = {
+            Icon(
+                modifier = Modifier
 					.size(Deps.Size.mainButtonImageSize)
-					.align(Alignment.CenterEnd)
+					.align(Alignment.CenterStart)
 					.clickable(onClick = onCloseClick),
-				painter = painterResource(id = MainImages.remove.resId()),
-				contentDescription = emptyString,
-			)
-		}
-	)
-	Row(
-		modifier = it
+                painter = painterResource(id = R.drawable.ic_arrow_back),
+                contentDescription = emptyString,
+            )
+        }
+    )
+    Row(
+        modifier = it
 			.fillMaxWidth()
 			.padding(horizontal = Deps.Spacing.standardPadding),
-		verticalAlignment = Alignment.CenterVertically,
-		horizontalArrangement = Arrangement.Center,
-	) {
-		//	CoilImage() TODO later
-		Image(
-			painter = painterResource(id = R.drawable.ic_avatar_placeholder),
-			contentDescription = null,
-		)
-		Text(
-			modifier = Modifier
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        //	CoilImage() TODO later
+        Image(
+            painter = painterResource(id = R.drawable.ic_avatar_placeholder),
+            contentDescription = null
+        )
+        Text(
+            modifier = Modifier
 				.weight(1f)
 				.padding(horizontal = Deps.Spacing.rowElementMargin),
-			text = "Пользователь,\nдобрый день!",
-			fontSize = Headings.H3.sp,
-			fontWeight = FontWeight.Medium,
-		)
-		Icon(
-			modifier = Modifier
+            text = "$username,\nдобрый день!",
+            fontSize = Headings.H3.sp,
+            fontWeight = FontWeight.Medium,
+        )
+        Icon(
+            modifier = Modifier
 				.size(Deps.Size.mainButtonImageSize)
 				.clickable(onClick = onLogoutClick),
-			painter = painterResource(id = MainImages.logout.resId()),
-			contentDescription = null,
-		)
-	}
+            painter = painterResource(id = MainImages.logout.resId()),
+            contentDescription = null,
+        )
+    }
 
 }

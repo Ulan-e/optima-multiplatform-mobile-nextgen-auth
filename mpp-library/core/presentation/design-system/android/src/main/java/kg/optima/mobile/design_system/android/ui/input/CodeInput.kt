@@ -45,6 +45,7 @@ fun CodeInput(
 	showValue : Boolean = false,
 	showKeyboardPermanently : Boolean = false,
 	isValid: Boolean = true,
+	attempts: Int = 4,
 	onValueChanged: (String) -> Unit = {},
 	onInputCompleted: (String) -> Unit = {},
 ) {
@@ -83,33 +84,39 @@ fun CodeInput(
 		keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
 	)
 
-	Row(
-		modifier = Modifier.fillMaxWidth(),
-		horizontalArrangement = Arrangement.Center,
-	) {
-		repeat(length) {
-			OtpCell(
-				showValue = showValue,
-				modifier = modifier.clickable {
-					if (withKeyboard) {
-						focusRequester.requestFocus()
-						if (inputEnabled) {
-							keyboard?.show()
+	Column(modifier = Modifier.fillMaxWidth()) {
+		Row(
+			modifier = Modifier.fillMaxWidth(),
+			horizontalArrangement = Arrangement.Center,
+		) {
+			repeat(length) {
+				OtpCell(
+					showValue = showValue,
+					modifier = modifier.clickable {
+						if (withKeyboard) {
+							focusRequester.requestFocus()
+							if (inputEnabled) {
+								keyboard?.show()
+							}
 						}
+					},
+					cellStatus = when {
+						!isValid -> CellStatus.Error
+						value.length == it -> CellStatus.Focused
+						value.length > it -> CellStatus.Filled
+						else -> CellStatus.Empty
+					},
+					value = when {
+						value.length > it -> value[it].toString()
+						else -> null
 					}
-				},
-				cellStatus = when {
-					!isValid -> CellStatus.Error
-					value.length == it -> CellStatus.Focused
-					value.length > it -> CellStatus.Filled
-					else -> CellStatus.Empty
-				},
-				value = when {
-					value.length > it -> value[it].toString()
-					else -> null
-				}
-			)
+				)
+			}
 		}
+		PinEnterError(
+			error = !isValid,
+			attempts = attempts
+		)
 	}
 }
 
@@ -186,6 +193,37 @@ private fun OtpCell(
 					}
 
 			}
+		}
+	}
+}
+
+@Composable
+private fun PinEnterError(
+	error: Boolean = false,
+	attempts: Int = 0
+) {
+	if (error) {
+		Row(
+			modifier = Modifier
+				.fillMaxWidth()
+				.height(30.dp),
+			horizontalArrangement = Arrangement.Center
+		) {
+			Text(
+				modifier = Modifier
+					.padding(top = Deps.Spacing.rowElementMargin),
+				text = "Неверный PIN-код. ",
+				color = ComposeColors.PrimaryRed,
+				fontWeight = FontWeight(500),
+				fontSize = kg.optima.mobile.resources.Headings.H5.sp,
+			)
+			Text(
+				modifier = Modifier
+					.padding(top = Deps.Spacing.rowElementMargin),
+				text = "Осталось $attempts попытки",
+				color = ComposeColors.DescriptionGray,
+				fontSize = kg.optima.mobile.resources.Headings.H5.sp,
+			)
 		}
 	}
 }
