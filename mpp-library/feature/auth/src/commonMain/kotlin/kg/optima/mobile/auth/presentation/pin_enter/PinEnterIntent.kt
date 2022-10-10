@@ -3,6 +3,7 @@ package kg.optima.mobile.auth.presentation.pin_enter
 import kg.optima.mobile.auth.domain.usecase.logout.LogoutUseCase
 import kg.optima.mobile.auth.presentation.login.LoginIntent
 import kg.optima.mobile.base.data.model.map
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.feature.auth.component.AuthPreferences
 import org.koin.core.component.inject
 
@@ -21,9 +22,20 @@ class PinEnterIntent(
 
     fun username() = authPreferences.userInfo?.firstName ?: ""
 
-    fun attempts() = authPreferences.pinAttempts
+    fun pinAttempts() = authPreferences.pinAttempts
 
-    fun decreaseAttempts() {
-        authPreferences.pinAttempts = attempts().dec()
+    fun decreasePinAttempts() {
+        authPreferences.pinAttempts = pinAttempts() - 1
+    }
+
+    fun touchAttempts() = authPreferences.touchAttempts
+
+    fun decreaseTouchAttempts() {
+        authPreferences.touchAttempts = touchAttempts() - 1
+    }
+
+    fun navigateToLogin(){
+        authPreferences.pinAttempts = Constants.MAX_ATTEMPTS
+        uiState.handle(PinEnterEntity.NavigateTo.Login)
     }
 }

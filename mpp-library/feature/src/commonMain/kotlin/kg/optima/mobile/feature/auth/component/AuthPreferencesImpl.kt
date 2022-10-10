@@ -57,6 +57,11 @@ class AuthPreferencesImpl(
         set(value) {
             storageRepository.putInt(AuthPreferences.PIN_ATTEMPTS, value)
         }
+    override var touchAttempts: Int
+        get() = storageRepository.getInt(AuthPreferences.TOUCH_ATTEMPTS, Constants.MAX_ATTEMPTS)
+        set(value) {
+            storageRepository.putInt(AuthPreferences.TOUCH_ATTEMPTS, value)
+        }
 
     override var biometry: String
         get() = storageRepository.getString("Biometry", emptyString)

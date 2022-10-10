@@ -12,6 +12,7 @@ class PinEnterState : LoginState() {
 			is PinEnterEntity -> {
 				val stateModel: Model = when (entity) {
 					PinEnterEntity.Logout -> Model.NavigateTo.Welcome
+					PinEnterEntity.NavigateTo.Login -> Model.NavigateTo.Login
 				}
 
 				setStateModel(stateModel)
@@ -30,6 +31,9 @@ class PinEnterState : LoginState() {
 		sealed interface NavigateTo : Model, AuthNavigateModel {
 			@Parcelize
 			object Welcome : NavigateTo
+
+			@Parcelize
+			object Login : NavigateTo
 		}
 	}
 }

@@ -16,10 +16,14 @@ import kg.optima.mobile.auth.presentation.pin_enter.PinEnterState
 import kg.optima.mobile.base.di.createWithStateParam
 import kg.optima.mobile.base.presentation.UiState
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.design_system.android.ui.bottomsheet.BottomSheetInfo
+import kg.optima.mobile.design_system.android.ui.buttons.model.ButtonView
 import kg.optima.mobile.design_system.android.ui.screens.pin.ActionCell
 import kg.optima.mobile.design_system.android.ui.screens.pin.PinScreen
 import kg.optima.mobile.design_system.android.ui.screens.pin.headers.enterPinScreenHeader
 import kg.optima.mobile.design_system.android.utils.biometry.BiometryManager
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColor
+import kg.optima.mobile.design_system.android.utils.resources.ComposeColors
 
 @Parcelize
 object PinEnterScreen : BaseScreen {
@@ -41,6 +45,7 @@ object PinEnterScreen : BaseScreen {
 
         val codeState = remember { mutableStateOf(emptyString) }
         val errorState = remember { mutableStateOf(Pair(false, 0)) }
+        val bottomSheetState = remember { mutableStateOf<BottomSheetInfo?>(null) }
 
         val onBiometryAuthenticate: () -> Unit = {
             BiometryManager.authorize(
@@ -52,8 +57,22 @@ object PinEnterScreen : BaseScreen {
         when (val pinEnterModel: UiState.Model? = model) {
             is UiState.Model.Initial -> intent.init()
             is UiState.Model.Error.BaseError -> {
-                errorState.value = Pair(first = true, second = intent.attempts())
-                intent.decreaseAttempts()
+                val attempts = intent.pinAttempts()
+                if (attempts > 0) {
+                    errorState.value = Pair(first = true, second = intent.pinAttempts())
+                    intent.decreasePinAttempts()
+                } else {
+                    bottomSheetState.value = BottomSheetInfo(
+                        title = "Превышено количество попыток входа \\n Выполните вход по логину/паролю",
+                        buttons = listOf(
+                            ButtonView.Primary(
+                                text = "Закрыть",
+                                composeColor = ComposeColor.composeColor(ComposeColors.PrimaryRed),
+                                onClickListener = ButtonView.onClickListener(intent::navigateToLogin)
+                            )
+                        )
+                    )
+                }
             }
             is PinEnterState.Model.Biometry -> {
                 if (pinEnterModel.enabled) {

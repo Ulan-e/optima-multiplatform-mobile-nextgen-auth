@@ -6,7 +6,7 @@ object Constants {
 
 	const val PIN_LENGTH = 4
 	const val OTP_LENGTH = 4
-	const val MAX_ATTEMPTS = 4
+	const val MAX_ATTEMPTS = 5
 
 	const val PHONE_NUMBER_LENGTH = 9
 	const val PHONE_NUMBER_CODE = "+996 "

@@ -12,6 +12,7 @@ interface AuthPreferences {
         const val SESSION_DATA = "SESSION_DATA"
         const val USER_INFO = "USER_INFO"
         const val PIN_ATTEMPTS = "PIN_ATTEMPTS"
+        const val TOUCH_ATTEMPTS = "TOUCH_ATTEMPTS"
     }
 
     var clientId: String?
@@ -23,6 +24,7 @@ interface AuthPreferences {
     var password: String
     var pin: String
     var pinAttempts: Int
+    var touchAttempts: Int
     var biometry: String
 
     val grantTypes: List<GrantType> get() {
