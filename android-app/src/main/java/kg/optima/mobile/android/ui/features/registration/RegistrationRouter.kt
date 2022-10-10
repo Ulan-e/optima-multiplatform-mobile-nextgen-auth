@@ -2,7 +2,7 @@ package kg.optima.mobile.android.ui.features.registration
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
-import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.features.FeatureRouter
 import kg.optima.mobile.android.ui.features.biometrics.liveness.LivenessRouter
 import kg.optima.mobile.android.ui.features.common.interview.InterviewRouter
 import kg.optima.mobile.android.ui.features.registration.agreement.AgreementRouter

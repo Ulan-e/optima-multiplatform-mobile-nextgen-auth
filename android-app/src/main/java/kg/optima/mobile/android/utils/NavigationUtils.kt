@@ -27,6 +27,6 @@ fun Context.navigateTo(stateModel: UiState.Model.Navigate) {
 
 fun toBankContactsScreen(context: Context) {
     val intent = Intent(context, SingleActivity::class.java)
-    intent.putExtra(SingleActivity.TARGET_NAVIGATE_MODEL, WelcomeState.Model.NavigateTo.Contacts)
+    intent.putExtra(BaseActivity.TARGET_NAVIGATE_MODEL, WelcomeState.Model.NavigateTo.Contacts)
     context.startActivity(intent)
 }

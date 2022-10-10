@@ -2,8 +2,8 @@ package kg.optima.mobile.feature.auth.component
 
 import kg.optima.mobile.base.platform.PlatformDate
 import kg.optima.mobile.base.utils.emptyString
+import kg.optima.mobile.core.common.Constants
 import kg.optima.mobile.storage.StorageRepository
-import kg.optima.mobile.storage.cache.RuntimeCache
 
 class AuthPreferencesImpl(
     private val storageRepository: StorageRepository,
@@ -51,6 +51,12 @@ class AuthPreferencesImpl(
     override var pin: String
         get() = storageRepository.getString("PIN", emptyString)
         set(value) = storageRepository.putString("PIN", value)
+
+    override var pinAttempts: Int
+        get() = storageRepository.getInt(AuthPreferences.PIN_ATTEMPTS, Constants.MAX_ATTEMPTS)
+        set(value) {
+            storageRepository.putInt(AuthPreferences.PIN_ATTEMPTS, value)
+        }
 
     override var biometry: String
         get() = storageRepository.getString("Biometry", emptyString)

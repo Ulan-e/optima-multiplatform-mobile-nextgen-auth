@@ -2,7 +2,7 @@ package kg.optima.mobile.android.ui.features.auth.login
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
-import kg.optima.mobile.android.ui.FeatureRouter
+import kg.optima.mobile.android.ui.features.FeatureRouter
 import kg.optima.mobile.android.ui.features.auth.pin.enter.PinEnterScreen
 import kg.optima.mobile.android.ui.features.auth.pin.set.PinSetScreen
 import kg.optima.mobile.android.ui.features.auth.sms.AuthSmsCodeScreen
