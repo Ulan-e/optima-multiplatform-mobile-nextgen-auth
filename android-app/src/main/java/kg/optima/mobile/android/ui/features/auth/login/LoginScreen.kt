@@ -36,99 +36,101 @@ import kz.optimabank.optima24.activity.MenuActivity
 @Parcelize
 object LoginScreen : BaseScreen {
 
-	@OptIn(ExperimentalMaterialApi::class)
-	@Composable
-	override fun Content() {
-		val product = remember {
-			AuthFeatureFactory.create<LoginIntent, LoginState>()
-		}
-		val state = product.state
-		val intent = product.intent
+    @OptIn(ExperimentalMaterialApi::class)
+    @Composable
+    override fun Content() {
+        val product = remember {
+            AuthFeatureFactory.create<LoginIntent, LoginState>()
+        }
+        val state = product.state
+        val intent = product.intent
 
-		val activity = LocalContext.current.asBaseActivity()
+        val activity = LocalContext.current.asBaseActivity()
 
-		val onBackClicked =
-			activity?.navigationController?.get(Constants.PIN_ENTER_SCREEN_ON_BACK_CLICKED)
+        val onBackClicked =
+            activity?.navigationController?.get(Constants.PIN_ENTER_SCREEN_ON_BACK_CLICKED)
 
-		val model by state.stateFlow.collectAsState(
-			initial = if (onBackClicked == true) null else UiState.Model.Initial
-		)
+        val model by state.stateFlow.collectAsState(
+            initial = if (onBackClicked == true) null else UiState.Model.Initial
+        )
 
-		val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
-		val passwordInputFieldState = remember { mutableStateOf(emptyString) }
-		val checkedState = remember { mutableStateOf(true) }
+        val clientIdInputFieldState = remember { mutableStateOf(emptyString) }
+        val passwordInputFieldState = remember { mutableStateOf(emptyString) }
+        val checkedState = remember { mutableStateOf(true) }
 
-		val signIn: () -> Unit = {
-			val info = LoginIntent.SignInInfo.Password(
-				clientId = clientIdInputFieldState.value,
-				password = passwordInputFieldState.value,
-			)
-			intent.signIn(info)
-		}
+        val signIn: () -> Unit = {
+            val info = LoginIntent.SignInInfo.Password(
+                clientId = clientIdInputFieldState.value,
+                password = passwordInputFieldState.value,
+            )
+            intent.signIn(info)
+        }
 
-		when (val loginState: UiState.Model? = model) {
-			null -> intent.showClientId()
-			is UiState.Model.Initial -> intent.init()
-			is LoginState.Model -> when (loginState) {
-				is LoginState.Model.ClientId ->
-					clientIdInputFieldState.value = loginState.clientId
-				is LoginState.Model.NavigateTo.PinEnter ->
-					clientIdInputFieldState.value = loginState.clientId
-				is LoginState.Model.SignInResult.IncorrectData -> {
-					// TODO incorrect data
-				}
-				else -> Unit
-			}
-		}
+        when (val loginState: UiState.Model? = model) {
+            null -> intent.showClientId()
+            is UiState.Model.Initial -> intent.init()
+            is LoginState.Model -> when (loginState) {
+                is LoginState.Model.ClientId ->
+                    clientIdInputFieldState.value = loginState.clientId
+                is LoginState.Model.NavigateTo.PinEnter ->
+                    clientIdInputFieldState.value = loginState.clientId
+                is LoginState.Model.SignInResult.IncorrectData -> {
+                    // TODO incorrect data
+                }
+                else -> Unit
+            }
+        }
 
-		MainContainer(
-			mainState = model,
-			toolbarInfo = ToolbarInfo(content = ToolbarContent.Nothing),
-			onBackParameters = true to {
-				activity?.navigationController?.set(
-					mapOf(
-						Constants.LOGIN_SCREEN_ON_BACK_CLICKED to true,
-						Constants.PIN_ENTER_SCREEN_ON_BACK_CLICKED to false,
-					)
-				)
-			},
-			contentModifier = Modifier
+        MainContainer(
+            mainState = model,
+            toolbarInfo = ToolbarInfo(content = ToolbarContent.Nothing),
+            onBackParameters = true to {
+                activity?.navigationController?.set(
+                    mapOf(
+                        Constants.LOGIN_SCREEN_ON_BACK_CLICKED to true,
+                        Constants.PIN_ENTER_SCREEN_ON_BACK_CLICKED to false,
+                    )
+                )
+            },
+            contentModifier = Modifier
 				.padding(all = Deps.Spacing.standardPadding)
 				.background(ComposeColors.Background),
-			contentHorizontalAlignment = Alignment.Start,
-		) {
-			TitleTextField(
-				modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 3),
-				text = "Авторизация"
-			)
-			InputField(
-				modifier = Modifier
+            contentHorizontalAlignment = Alignment.Start,
+        ) {
+            TitleTextField(
+                modifier = Modifier.padding(top = Deps.Spacing.standardMargin * 3),
+                text = "Вход"
+            )
+            InputField(
+                modifier = Modifier
 					.fillMaxWidth()
 					.padding(top = Deps.Spacing.marginFromTitle),
-				valueState = clientIdInputFieldState,
-				hint = "Client ID",
-				keyboardType = KeyboardType.Number,
-				imeAction = ImeAction.Next
-			)
-			PasswordInput(
-				modifier = Modifier
+                valueState = clientIdInputFieldState,
+                hint = "Логин",
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next
+            )
+            PasswordInput(
+                modifier = Modifier
 					.fillMaxWidth()
 					.padding(top = Deps.Spacing.spacing),
-				passwordState = passwordInputFieldState,
-				hint = "Пароль",
-				onKeyboardActionDone = signIn,
-			)
-			Checkbox(
-				modifier = Modifier.padding(top = Deps.Spacing.spacing),
-				checkedState = checkedState,
-				text = "Запомнить логин",
-			)
-			Spacer(modifier = Modifier.weight(1f))
-			PrimaryButton(
-				modifier = Modifier.fillMaxWidth(),
-				text = "Продолжить",
-				onClick = signIn,
-			)
-		}
-	}
+                passwordState = passwordInputFieldState,
+                hint = "Пароль",
+                onKeyboardActionDone = signIn,
+            )
+            Checkbox(
+                modifier = Modifier.padding(top = Deps.Spacing.spacing),
+                checkedState = checkedState,
+                text = "Запомнить логин для быстрого входа",
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            PrimaryButton(
+                modifier = Modifier.fillMaxWidth(),
+                text = "Продолжить",
+                enabled = clientIdInputFieldState.value.length > 1
+                        && passwordInputFieldState.value.length > 8,
+                onClick = signIn,
+            )
+        }
+    }
 }
